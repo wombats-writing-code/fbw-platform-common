@@ -1,8 +1,8 @@
 import _ from 'lodash'
 import { connect } from 'react-redux'
 
-import { getTargetQuestions } from 'platform-common/selectors'
-import { setQuestionListHeight } from 'platform-common/reducers/Mission/setQuestionListHeight'
+import { getTargetQuestions } from '../selectors'
+import { setQuestionListHeight } from '../reducers/Mission/setQuestionListHeight'
 
 const mapStateToProps = (state, ownProps) => {
 

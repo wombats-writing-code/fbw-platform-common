@@ -1,10 +1,10 @@
 import _ from 'lodash'
 import { connect } from 'react-redux'
 
-import { getTargetQuestions } from 'platform-common/selectors'
-import { selectChoice } from 'platform-common/reducers/Mission/selectChoice'
-import { submitResponse } from 'platform-common/reducers/Mission/submitResponse'
-import { showAnswer } from 'platform-common/reducers/Mission/showAnswer'
+import { getTargetQuestions } from '../selectors'
+import { selectChoice } from '../reducers/Mission/selectChoice'
+import { submitResponse } from '../reducers/Mission/submitResponse'
+import { showAnswer } from '../reducers/Mission/showAnswer'
 
 const mapStateToProps = (state, ownProps) => {
   console.log('state in question container', state)

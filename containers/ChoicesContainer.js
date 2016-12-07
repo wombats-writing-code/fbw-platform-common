@@ -1,8 +1,8 @@
 import _ from 'lodash'
 import { connect } from 'react-redux'
 
-import { selectChoice } from 'platform-common/reducers/Mission/selectChoice'
-import { setChoiceHeight } from 'platform-common/reducers/Mission/setChoiceHeight'
+import { selectChoice } from '../reducers/Mission/selectChoice'
+import { setChoiceHeight } from '../reducers/Mission/setChoiceHeight'
 
 const mapStateToProps = (state, ownProps) => {
   return {
