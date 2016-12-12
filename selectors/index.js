@@ -130,6 +130,9 @@ export function findBankDomain (bankId, enrolledBanks) {
       case 'college_algebra':
         return 'algebra'
 
+      case 'sandbox':
+        return 'algebra'
+
       default:
         return 'accounting'
     }
