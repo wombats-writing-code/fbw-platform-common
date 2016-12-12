@@ -12,7 +12,7 @@ if (process.env.BROWSER) {
   isBrowser = true
   Lockr = require('lockr')
 } else {
-  store = require('react-native-simple-store')
+  // store = require('react-native-simple-store')
 }
 
 import { isTarget, targetKey } from '../selectors'
