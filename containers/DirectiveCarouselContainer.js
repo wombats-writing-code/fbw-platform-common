@@ -25,7 +25,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         // "over" mission results include all questions, so
         //   don't have to get them dynamically
         dispatch(getSectionQuestions(data));
-    },
+      }
+    }
   }
 }
 
