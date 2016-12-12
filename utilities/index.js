@@ -67,17 +67,17 @@ export function qbankToMoment(timeObject) {
   })
 }
 
-export function adjustedQBankToMoment(timeObject) {
+export function adjustedQBankToMomentObj(timeObject) {
   // for mission times that were already adjusted in stores,
   // and moment.js takes months as 1-12
-  return moment.utc({
+  return {
     years: timeObject.year,
     months: timeObject.month + 1,
     days: timeObject.day,
     hours: timeObject.hour,
     minutes: timeObject.minute,
     second: timeObject.second
-  })
+  }
 }
 
 export function convertPythonDateToJS (pythonTime) {
