@@ -19,8 +19,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onSelectDirective: (data) => {
-      dispatch(selectDirective(data.directiveIndex));
+    onSelectDirective: (directiveIndex) => {
+      dispatch(selectDirective(directiveIndex));
       // if (checkMissionStatus(data.mission) === "pending") {
       //   // "over" mission results include all questions, so
       //   //   don't have to get them dynamically
