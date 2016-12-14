@@ -34,10 +34,21 @@ export function selectClosedMission (data) {
         'x-fbw-username': data.username
       }
     }
+
+    let resultSections
     return axios(options)
     .then((response) => {
+      resultSections = response.data
       //console.log('received mission results', response)
-
+      let flatQuestions = _.flatten(_.map(resultSections, 'questions'))
+      return Q.all(_.map(flatQuestions, convertImagePaths))
+    })
+    .then((questionsWithImages) => {
+      _.each(resultSections, (section) => {
+        _.each(section.questions, (question) => {
+          question = _.find(questionsWithImages, {id: question.id})
+        })
+      })
       dispatch(receiveGetUserMissionResults(response.data, true))
     })
     .catch((error) => {

@@ -1,5 +1,5 @@
 import _ from 'lodash'
-
+import axios from 'axios'
 import Q from 'q'
 
 let moment = require('moment')
@@ -97,45 +97,39 @@ export function getSchoolQBankId (school) {
 
 
 export function convertImagePaths (itemObject) {
-  // TODO: move this into fbw-utils?
-  // TODO: refactor with axios?
-  // Grabs the 302 CloudFront URL from the QBank one and replaces it in the
+  // Grabs the 302 CloudFront URL from the middleman and replaces it in the
   // question / choice / feedback text.
   var itemString = JSON.stringify(itemObject),
     mc3RegEx = /https:\/\/mc3.mit.edu\/fbw-author.*?\/url/g,
     matches = itemString.match(mc3RegEx),
     cloudFrontPromises = [],
     originalURLs = [];
-
+  // console.log('matches', matches)
   if (matches) {
-    while (match = mc3RegEx.exec(itemString)) {
-      let mc3URL = match[0],
-        params = {
-          path: mc3URL.replace('https://mc3.mit.edu/fbw-author/api/v2/', '')
+    _.each(matches, (match) => {
+      let params = {
+          url: match.replace('https://mc3.mit.edu/fbw-author/api/v2/repository', `${getDomain()}/middleman`)
         };
-      originalURLs.push(mc3URL);
-      cloudFrontPromises.push(qbankFetch(params));
-    }
-  }
+      originalURLs.push(match);
+      // console.log('params', params)
+      cloudFrontPromises.push(axios(params));
+    })
 
-  if (cloudFrontPromises.length > 0) {
-    // use the error callback -- fetch will automagically redirect to the
-    // CloudFront URL, and then 502 error out -- from that error response,
-    // we can get the CF URL and replace that in the itemString, so
-    // the WebViews render images.
-    return Q.all(cloudFrontPromises)
-      .then((res) => {  // each res should be status code 403 from CloudFront
-        _.each(res, (cf403, index) => {
-          let cfURL = cf403.url,
-            mc3URL = originalURLs[index];
-          itemString = itemString.replace(mc3URL, cfURL);
-        });
-        return Q.when(JSON.parse(itemString));
-      })
-      .catch((error) => {
-        console.log('error getting cloudfront urls!');
+    return axios.all(cloudFrontPromises)
+    .then((responses) => {  // each res should have the CloudFront URL
+      // console.log('axios responses', responses)
+      _.each(responses, (response, index) => {
+        let mc3URL = originalURLs[index];
+        itemString = itemString.replace(mc3URL, response.data);
       });
+      // console.log('modified item', itemString)
+      return Q.when(JSON.parse(itemString));
+    })
+    .catch((error) => {
+      console.log('error getting cloudfront urls!');
+    });
   } else {
+    // console.log("no promises")
     return Q.when(JSON.parse(itemString));
   }
 }
