@@ -76,6 +76,7 @@ export function selectOpenMission (data) {
           return question
         })
       })
+      dispatch(receiveOpenMission(_assessmentSections))
     })
     .catch((error) => {
       console.log('error getting mission data', error)
