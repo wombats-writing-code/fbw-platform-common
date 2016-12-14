@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Q from 'q'
 import { getDomain } from '../../utilities'
 
 // ----
