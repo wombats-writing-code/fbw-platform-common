@@ -13,22 +13,22 @@
 7 silly cache add   rawSpec: '.',
 7 silly cache add   spec: '/Users/luwenh/projects/fbw-platform-common',
 7 silly cache add   type: 'directory' }
-8 verbose addLocalDirectory /Users/luwenh/.npm/fbw-platform-common/0.4.5/package.tgz not in flight; packing
+8 verbose addLocalDirectory /Users/luwenh/.npm/fbw-platform-common/0.6.5/package.tgz not in flight; packing
 9 verbose correctMkdir /Users/luwenh/.npm correctMkdir not in flight; initializing
-10 info lifecycle fbw-platform-common@0.4.5~prepublish: fbw-platform-common@0.4.5
-11 silly lifecycle fbw-platform-common@0.4.5~prepublish: no script for prepublish, continuing
-12 verbose tar pack [ '/Users/luwenh/.npm/fbw-platform-common/0.4.5/package.tgz',
+10 info lifecycle fbw-platform-common@0.6.5~prepublish: fbw-platform-common@0.6.5
+11 silly lifecycle fbw-platform-common@0.6.5~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/luwenh/.npm/fbw-platform-common/0.6.5/package.tgz',
 12 verbose tar pack   '/Users/luwenh/projects/fbw-platform-common' ]
-13 verbose tarball /Users/luwenh/.npm/fbw-platform-common/0.4.5/package.tgz
+13 verbose tarball /Users/luwenh/.npm/fbw-platform-common/0.6.5/package.tgz
 14 verbose folder /Users/luwenh/projects/fbw-platform-common
-15 verbose addLocalTarball adding from inside cache /Users/luwenh/.npm/fbw-platform-common/0.4.5/package.tgz
+15 verbose addLocalTarball adding from inside cache /Users/luwenh/.npm/fbw-platform-common/0.6.5/package.tgz
 16 verbose correctMkdir /Users/luwenh/.npm correctMkdir not in flight; initializing
-17 silly cache afterAdd fbw-platform-common@0.4.5
-18 verbose afterAdd /Users/luwenh/.npm/fbw-platform-common/0.4.5/package/package.json not in flight; writing
+17 silly cache afterAdd fbw-platform-common@0.6.5
+18 verbose afterAdd /Users/luwenh/.npm/fbw-platform-common/0.6.5/package/package.json not in flight; writing
 19 verbose correctMkdir /Users/luwenh/.npm correctMkdir not in flight; initializing
-20 verbose afterAdd /Users/luwenh/.npm/fbw-platform-common/0.4.5/package/package.json written
+20 verbose afterAdd /Users/luwenh/.npm/fbw-platform-common/0.6.5/package/package.json written
 21 silly publish { name: 'fbw-platform-common',
-21 silly publish   version: '0.4.5',
+21 silly publish   version: '0.6.5',
 21 silly publish   description: 'Common stuff to the FbW apps',
 21 silly publish   main: 'index.js',
 21 silly publish   engines: { node: '>=4.5.0', npm: '^3.0.0' },
@@ -103,10 +103,10 @@
 21 silly publish      'sinon-chai': '^2.8.0',
 21 silly publish      'webpack-dev-middleware': '^1.6.1',
 21 silly publish      'webpack-hot-middleware': '^2.12.2' },
-21 silly publish   gitHead: '95d89b9add60ffbd4a1077a164aa2e6b4c841609',
+21 silly publish   gitHead: 'c483aa290f95ae25ba5b4f48246244e8512bdbe0',
 21 silly publish   readme: 'ERROR: No README data found!',
-21 silly publish   _id: 'fbw-platform-common@0.4.5',
-21 silly publish   _shasum: '1013c0f6b1ad214772ed54c43ba2abc7954927a2',
+21 silly publish   _id: 'fbw-platform-common@0.6.5',
+21 silly publish   _shasum: '0d761a0d0ed039e3302285fd3fb0f079734610da',
 21 silly publish   _from: '.' }
 22 verbose getPublishConfig undefined
 23 silly mapToRegistry name fbw-platform-common
@@ -122,29 +122,29 @@
 26 silly mapToRegistry   type: 'tag' }
 27 silly mapToRegistry uri https://registry.npmjs.org/fbw-platform-common
 28 verbose publish registryBase https://registry.npmjs.org/
-29 silly publish uploading /Users/luwenh/.npm/fbw-platform-common/0.4.5/package.tgz
+29 silly publish uploading /Users/luwenh/.npm/fbw-platform-common/0.6.5/package.tgz
 30 verbose request uri https://registry.npmjs.org/fbw-platform-common
 31 verbose request sending authorization for write operation
-32 info attempt registry request try #1 at 12:39:17 PM
+32 info attempt registry request try #1 at 12:42:22 PM
 33 verbose request using bearer token for auth
-34 verbose request id ae5fb099bf783ca6
+34 verbose request id e4d9544da2408288
 35 http request PUT https://registry.npmjs.org/fbw-platform-common
 36 http 403 https://registry.npmjs.org/fbw-platform-common
 37 verbose headers { 'content-type': 'application/json',
 37 verbose headers   'cache-control': 'max-age=300',
 37 verbose headers   'content-length': '95',
 37 verbose headers   'accept-ranges': 'bytes',
-37 verbose headers   date: 'Sun, 18 Dec 2016 19:39:18 GMT',
+37 verbose headers   date: 'Sun, 18 Dec 2016 19:42:23 GMT',
 37 verbose headers   via: '1.1 varnish',
 37 verbose headers   connection: 'keep-alive',
-37 verbose headers   'x-served-by': 'cache-den6022-DEN',
+37 verbose headers   'x-served-by': 'cache-den6025-DEN',
 37 verbose headers   'x-cache': 'MISS',
 37 verbose headers   'x-cache-hits': '0',
-37 verbose headers   'x-timer': 'S1482089957.391244,VS0,VE1465',
+37 verbose headers   'x-timer': 'S1482090142.408911,VS0,VE1055',
 37 verbose headers   vary: 'Accept-Encoding' }
 38 verbose request invalidating /Users/luwenh/.npm/registry.npmjs.org/fbw-platform-common on PUT
 39 error publish Failed PUT 403
-40 verbose stack Error: "You cannot publish over the previously published version 0.4.5." : fbw-platform-common
+40 verbose stack Error: "You cannot publish over the previously published version 0.6.5." : fbw-platform-common
 40 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:302:12)
 40 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:290:14)
 40 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:210:14)
@@ -163,7 +163,7 @@
 46 error node v6.9.1
 47 error npm  v3.10.8
 48 error code E403
-49 error "You cannot publish over the previously published version 0.4.5." : fbw-platform-common
+49 error "You cannot publish over the previously published version 0.6.5." : fbw-platform-common
 50 error If you need help, you may report this error at:
 50 error     <https://github.com/npm/npm/issues>
 51 verbose exit [ 1, true ]
