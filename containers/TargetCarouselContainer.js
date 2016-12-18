@@ -13,8 +13,8 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     currentDirectiveIndex: state.mission.currentDirectiveIndex,  // used for tabIndex on web side
-    // currentTargetIndex: state.mission.currentTargetIndex,
     currentTarget: state.mission.currentTarget,
+    currentMissionSections: state.mission.currentMissionSections,
     targets: targets,
     outcomes: state.outcome.outcomes ? state.outcome.outcomes : []
   }

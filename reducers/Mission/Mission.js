@@ -2,7 +2,7 @@
 import _ from 'lodash'
 
 import { isTarget, targetKey } from '../../selectors'
-import { updateAssessmentSectionsWithResponse, updateTargetQuestion } from '../../utilities'
+import { updateAssessmentSectionsWithResponse, updateQuestionWithResponse } from '../../utilities'
 
 import { GET_MISSIONS_OPTIMISTIC, RECEIVE_MISSIONS } from './getMissions'
 import { CREATE_TAKE_MISSION_OPTIMISTIC, CREATE_TAKE_MISSION, RECEIVE_CREATE_TAKE_MISSION } from './selectOpenMission'
@@ -94,7 +94,7 @@ export default function missionReducer (state = initialState, action) {
       // and also the responded question's response state
       return _.assign({}, state, {
         isInProgressSubmitChoice: false,
-        currentTarget: updateTargetQuestion(state.currentTarget, action.response),
+        currentTarget: updateQuestionWithResponse(state.currentTarget, action.response),
         currentMissionSections: updateAssessmentSectionsWithResponse(state.currentMissionSections,
           action.response)
       })
@@ -104,7 +104,7 @@ export default function missionReducer (state = initialState, action) {
       // and also the responded question's response state
       return _.assign({}, state, {
         isInProgressShowAnswer: false,
-        currentTarget: updateTargetQuestion(state.currentTarget, action.response),
+        currentTarget: updateQuestionWithResponse(state.currentTarget, action.response),
         currentMissionSections: updateAssessmentSectionsWithResponse(state.currentMissionSections,
           action.response)
       })

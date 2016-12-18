@@ -18,10 +18,10 @@ export const targetKey = (target) => {
   return target ? target.displayName.text[0] : null;
 }
 
-export const targetStatus = (target) => {
+export const targetStatus = (target, sectionQuestions) => {
   var status = 'PRISTINE';
 
-  if (target.hasNavigated && !target.isCorrect) {
+  if (_isTargetRouteNavigated(target, sectionQuestions) && !target.isCorrect) {
     status = 'NAVIGATED';
 
   } else if (target.responded && target.isCorrect) {
@@ -31,6 +31,12 @@ export const targetStatus = (target) => {
   }
 
   return status;
+}
+
+export isTargetRouteNavigated = (target, sectionQuestions) => {
+  // a route is navigated only when all of the Targets waypoints have been responded correctly
+  console.log(sectionQuestions);
+  return _.every(sectionQuestions, response => response.isCorrect)
 }
 
 export const filterItemsByTarget = (items) => {

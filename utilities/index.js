@@ -140,27 +140,28 @@ export function convertImagePaths (itemObject) {
   }
 }
 
-export function updateTargetQuestion (target, response) {
-  return _.assign({}, target, {
+export function updateQuestionWithResponse(question, response) {
+  return _.assign({}, question, {
     responded: true,
     isCorrect: response.isCorrect,
     response: response
-  });
+  })
 }
+
 
 export function updateAssessmentSectionsWithResponse (sections, response) {
   let submittedQuestion
   let _assessmentSections = _.map(sections, (section) => {
-    if (_.find(section.questions, {id: response.questionId})) {
+    let submittedQuestion = _.find(section.questions, {id: response.questionId});
+
+    // find the section in which the submitted question belongs -- need to update it
+    if (submittedQuestion) {
       let routeFinished = false;
       let updatedSection = _.assign({}, section, {
         questions: _.map(section.questions, (question, idx) => {
-
-          // first we find the question that was just submitted (that generated this response)
+          // first we find and update the question that was just submitted (that generated this response)
           if (question.id === response.questionId) {
-            submittedQuestion = question;
-
-            return updateTargetQuestion(question, response)
+            return updateQuestionWithResponse(question, response);
           }
 
           return question;
@@ -176,8 +177,9 @@ export function updateAssessmentSectionsWithResponse (sections, response) {
       } else if (!response.nextQuestion) {
         // means you hit the end of the route / last target
         routeFinished = true;
-        //console.log('no next question', response);
       }
+
+      console.log('response.nextQuestion?', response.nextQuestion)
 
       // if there is a next question, but it's a target, we know the user has done the scaffold
       // or, it might be the last target in the directive, so we need to
