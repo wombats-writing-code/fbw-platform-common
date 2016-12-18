@@ -1,7 +1,7 @@
 
 import _ from 'lodash'
 
-import { BANK_TO_DOMAIN, DOMAIN_TO_LIBRARY, BANK_TO_LIBRARY } from './utilities'
+import { BANK_TO_DOMAIN, DOMAIN_TO_LIBRARY, BANK_TO_LIBRARY } from '../utilities'
 
 let moment = require('moment');
 require('moment-timezone');
@@ -134,6 +134,9 @@ export function findBankDomain (bankId, enrolledBanks) {
       case 'math':
       case 'collegealgebra':
       case 'college_algebra':
+        return 'algebra'
+
+      case 'sandbox':
         return 'algebra'
 
       default:

@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import axios from 'axios'
-import { getDomain } from '../../utilities'
+import Q from 'q'
+import { getDomain, convertImagePaths } from '../../utilities'
 import { targetStatus, filterItemsByTarget } from '../../selectors'
 
 // ----
@@ -34,11 +35,12 @@ export function selectOpenMission (data) {
         'x-fbw-username': data.username
       }
     }
+    let _assessmentSections
     return axios(options)
     .then((response) => {
       // console.log('received mission questions', response)
       // also need to update hasNavigated for the correct target status
-      let _assessmentSections = response.data;
+      _assessmentSections = response.data;
 
       _.each(_assessmentSections, (section) => {
         let sortedItems = filterItemsByTarget(section.questions);
@@ -62,6 +64,18 @@ export function selectOpenMission (data) {
           }
         })
       });
+      let flatQuestions = _.flatten(_.map(_assessmentSections, 'questions'))
+      return Q.all(_.map(flatQuestions, convertImagePaths))
+    })
+    .then((questionsWithImages) => {
+      _.each(_assessmentSections, (section) => {
+        section.questions = _.map(section.questions, (question) => {
+          if (_.find(questionsWithImages, {id: question.id})) {
+            return _.find(questionsWithImages, {id: question.id})
+          }
+          return question
+        })
+      })
       dispatch(receiveOpenMission(_assessmentSections))
     })
     .catch((error) => {
