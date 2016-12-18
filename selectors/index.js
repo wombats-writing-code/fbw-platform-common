@@ -30,7 +30,7 @@ export const isTargetRouteNavigated = (target, sectionQuestions) => {
 export const targetStatus = (target, sectionQuestions) => {
   var status = 'PRISTINE';
 
-  if (_isTargetRouteNavigated(target, sectionQuestions) && !target.isCorrect) {
+  if (isTargetRouteNavigated(target, sectionQuestions) && !target.isCorrect) {
     status = 'NAVIGATED';
 
   } else if (target.responded && target.isCorrect) {
