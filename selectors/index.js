@@ -33,7 +33,7 @@ export const targetStatus = (target, sectionQuestions) => {
   return status;
 }
 
-export isTargetRouteNavigated = (target, sectionQuestions) => {
+export const isTargetRouteNavigated = (target, sectionQuestions) => {
   // a route is navigated only when all of the Targets waypoints have been responded correctly
   console.log(sectionQuestions);
   return _.every(sectionQuestions, response => response.isCorrect)

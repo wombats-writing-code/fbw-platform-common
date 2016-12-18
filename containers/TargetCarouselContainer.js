@@ -5,6 +5,8 @@ import { isTarget } from '../selectors'
 import { selectTarget } from '../reducers/Mission/selectTarget'
 
 const mapStateToProps = (state, ownProps) => {
+  console.log('state in TargetCarouselContainer', state);
+  
   let targets;
   if (state.mission.currentMissionSections && typeof state.mission.currentDirectiveIndex !== 'undefined') {
     let allQuestions = state.mission.currentMissionSections[state.mission.currentDirectiveIndex].questions
