@@ -31,7 +31,7 @@ export function selectSubjectOptimistic (bankId) {
 // sure authz / hierarchy are correct
 export function selectSubject (data) {
   return function (dispatch) {
-    dispatch(selectSubjectOptimistic())
+    dispatch(selectSubjectOptimistic(data.bankId))
 
     let options = {
       url: `${getDomain()}/middleman/banks/${data.bankId}/privatebankid`,
@@ -44,7 +44,7 @@ export function selectSubject (data) {
     .then((privateBankId) => {
       console.log('got from middleman the selected subject\'s privateBankId of:', privateBankId);
 
-      // save('privateBankId', privateBankId.data)
+      save('privateBankId', privateBankId.data)
       // dispatch(receiveSelectSubject(privateBankId.data))
       // let's keep the termBankId in the state tree, since we can now
       //   calculate the privateBankId using fbwUtils

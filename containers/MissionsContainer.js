@@ -8,6 +8,8 @@ const mapStateToProps = (state, ownProps) => {
   // console.log('state', state);
   return {
     subjectBankId: state.subject.currentSubjectBankId,
+    privateBankId: state.subject.privateBankId ? state.subject.privateBankId : null,
+    isGetPrivateBankIdInProgress: state.subject.getPrivateBankIdInProgress ? state.subject.getPrivateBankIdInProgress : false,
     missions: state.mission ? state.mission.missions : null,
     isGetMissionsInProgress: state.mission ? state.mission.isGetMissionsInProgress : false,
     username: state.login ? state.login.user.username : null
