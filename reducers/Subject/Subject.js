@@ -32,6 +32,7 @@ export default function subjectReducer (state = initialState, action) {
     case RECEIVE_GET_SELECTED_SUBJECT:
       return _.assign({}, state, {
         privateBankId: action.privateBankId,
+        currentSubjectBankId: action.bankId
       })
 
     case SELECT_SUBJECT_OPTIMISTIC:
