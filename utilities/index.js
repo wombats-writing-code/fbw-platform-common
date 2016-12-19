@@ -7,12 +7,13 @@ let config = require('../configuration')
 
 let Lockr
 let store
-let isBrowser = false
+let isBrowser = false;
+isBrowser = true        //  because we're switching to the lib to save state, this isn't needed. putting this in here so my setup doesn't error out.
 if (process.env.BROWSER) {
   isBrowser = true
   Lockr = require('lockr')
 } else {
-  store = require('react-native-simple-store')
+  // store = require('react-native-simple-store')
 }
 
 import { isTarget, targetKey } from '../selectors'
@@ -134,27 +135,28 @@ export function convertImagePaths (itemObject) {
   }
 }
 
-export function updateTargetQuestion (target, response) {
-  return _.assign({}, target, {
+export function updateQuestionWithResponse(question, response) {
+  return _.assign({}, question, {
     responded: true,
     isCorrect: response.isCorrect,
     response: response
-  });
+  })
 }
+
 
 export function updateAssessmentSectionsWithResponse (sections, response) {
   let submittedQuestion
   let _assessmentSections = _.map(sections, (section) => {
-    if (_.find(section.questions, {id: response.questionId})) {
+    let submittedQuestion = _.find(section.questions, {id: response.questionId});
+
+    // find the section in which the submitted question belongs -- need to update it
+    if (submittedQuestion) {
       let routeFinished = false;
       let updatedSection = _.assign({}, section, {
         questions: _.map(section.questions, (question, idx) => {
-
-          // first we find the question that was just submitted (that generated this response)
+          // first we find and update the question that was just submitted (that generated this response)
           if (question.id === response.questionId) {
-            submittedQuestion = question;
-
-            return updateTargetQuestion(question, response)
+            return updateQuestionWithResponse(question, response);
           }
 
           return question;
@@ -170,8 +172,9 @@ export function updateAssessmentSectionsWithResponse (sections, response) {
       } else if (!response.nextQuestion) {
         // means you hit the end of the route / last target
         routeFinished = true;
-        //console.log('no next question', response);
       }
+
+      console.log('response.nextQuestion?', response.nextQuestion)
 
       // if there is a next question, but it's a target, we know the user has done the scaffold
       // or, it might be the last target in the directive, so we need to
@@ -180,25 +183,26 @@ export function updateAssessmentSectionsWithResponse (sections, response) {
         // console.log('next question is target', submittedQuestion);
 
         //  we find the Target question to which this question belongs
-        let key = targetKey(submittedQuestion);
-        let target = _.find(_.filter(updatedSection.questions, isTarget), (question) => {
-          return targetKey(question) === key;
-        });
+        // let key = targetKey(submittedQuestion);
+        // let target = _.find(_.filter(updatedSection.questions, isTarget), (question) => {
+        //   return targetKey(question) === key;
+        // });
 
         // and update the updated section to set a hasNavigated = Boolean flag on it
         // only set this flag if the route has been navigated, i.e. the last
         // question in the route has been responded to
-        updatedSection.questions = _.map(updatedSection.questions, (question, index) => {
-          //console.log('route finished?', routeFinished, 'response show answer', response.showAnswer)
-          if (question.id === target.id && routeFinished) {
-            return _.assign({}, question, {
-              hasNavigated: true
-            });
-          }
-          // console.log('key', key, 'updatedSection', updatedSection, 'target', target);
 
-          return question;
-        });
+        // updatedSection.questions = _.map(updatedSection.questions, (question, index) => {
+        //   //console.log('route finished?', routeFinished, 'response show answer', response.showAnswer)
+        //   if (question.id === target.id && routeFinished) {
+        //     return _.assign({}, question, {
+        //       hasNavigated: true
+        //     });
+        //   }
+        //   // console.log('key', key, 'updatedSection', updatedSection, 'target', target);
+        //
+        //   return question;
+        // });
       }
 
 

@@ -18,10 +18,22 @@ export const targetKey = (target) => {
   return target ? target.displayName.text[0] : null;
 }
 
-export const targetStatus = (target) => {
+export const isTargetRouteNavigated = (sectionQuestions) => {
+  if (!sectionQuestions || sectionQuestions.length === 0) return false;
+
+  // a route is navigated only when all of the Targets waypoints have been responded correctly
+  let hasNavigated = false;
+  if (sectionQuestions[0].response && !sectionQuestions[0].response.isCorrect) {
+    hasNavigated = _.every(_.tail(sectionQuestions), response => response && response.isCorrect);
+  }
+
+  return hasNavigated;
+}
+
+export const targetStatus = (target, sectionQuestions) => {
   var status = 'PRISTINE';
 
-  if (target.hasNavigated && !target.isCorrect) {
+  if (isTargetRouteNavigated(sectionQuestions) && !target.isCorrect) {
     status = 'NAVIGATED';
 
   } else if (target.responded && target.isCorrect) {
@@ -88,15 +100,20 @@ export function checkMissionStatus (mission) {
 };
 
 export function hasAchievedDirective (targets) {
-  if (!targets) return false;
+  if (!targets) return null;
 
   let min = Math.ceil(targets.length / 2);
+
+  let numResponded = 0;
   let numCorrect = _.reduce(targets, (result, question) => {
+    if (question.responded) numResponded++;
     if (question.isCorrect) result+=1;
     return result;
   }, 0)
 
-  return numCorrect >= min;
+  if (numResponded === targets.length && numCorrect < min) return false;
+
+  if (numCorrect >= min) return true;
 }
 
 export function getTargetQuestions (state) {

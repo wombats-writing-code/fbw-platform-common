@@ -2,7 +2,7 @@
 import _ from 'lodash'
 
 import { isTarget, targetKey, targetStatus, filterItemsByTarget } from '../../selectors'
-import { updateAssessmentSectionsWithResponse, updateTargetQuestion } from '../../utilities'
+import { updateAssessmentSectionsWithResponse, updateQuestionWithResponse } from '../../utilities'
 
 import { GET_MISSIONS_OPTIMISTIC, RECEIVE_MISSIONS } from './getMissions'
 import { GET_SECTION_QUESTIONS_OPTIMISTIC, RECEIVE_SECTION_QUESTIONS } from './getSectionQuestions'
@@ -87,7 +87,7 @@ export default function missionReducer (state = initialState, action) {
           // If the route ends in an unanswered question, route not finished.
           // If the route ends in a wrong response, route not finished.
           // Route only finished if the last question isCorrect.
-          if (targetStatus(questionsList[0]) !== 'PRISTINE') {
+          if (targetStatus(questionsList[0], section.questions) !== 'PRISTINE') {
             let lastRouteQuestion = questionsList[questionsList.length - 1];
             if (lastRouteQuestion.responded && lastRouteQuestion.isCorrect) {
               targetsNavigatedInSection.push(questionsList[0].id);
@@ -129,7 +129,7 @@ export default function missionReducer (state = initialState, action) {
       // and also the responded question's response state
       return _.assign({}, state, {
         isInProgressSubmitChoice: false,
-        currentTarget: updateTargetQuestion(state.currentTarget, action.response),
+        currentTarget: updateQuestionWithResponse(state.currentTarget, action.response),
         currentMissionSections: updateAssessmentSectionsWithResponse(state.currentMissionSections,
           action.response)
       })
@@ -139,7 +139,7 @@ export default function missionReducer (state = initialState, action) {
       // and also the responded question's response state
       return _.assign({}, state, {
         isInProgressShowAnswer: false,
-        currentTarget: updateTargetQuestion(state.currentTarget, action.response),
+        currentTarget: updateQuestionWithResponse(state.currentTarget, action.response),
         currentMissionSections: updateAssessmentSectionsWithResponse(state.currentMissionSections,
           action.response)
       })
