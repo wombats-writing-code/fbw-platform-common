@@ -182,25 +182,26 @@ export function updateAssessmentSectionsWithResponse (sections, response) {
         // console.log('next question is target', submittedQuestion);
 
         //  we find the Target question to which this question belongs
-        let key = targetKey(submittedQuestion);
-        let target = _.find(_.filter(updatedSection.questions, isTarget), (question) => {
-          return targetKey(question) === key;
-        });
+        // let key = targetKey(submittedQuestion);
+        // let target = _.find(_.filter(updatedSection.questions, isTarget), (question) => {
+        //   return targetKey(question) === key;
+        // });
 
         // and update the updated section to set a hasNavigated = Boolean flag on it
         // only set this flag if the route has been navigated, i.e. the last
         // question in the route has been responded to
-        updatedSection.questions = _.map(updatedSection.questions, (question, index) => {
-          //console.log('route finished?', routeFinished, 'response show answer', response.showAnswer)
-          if (question.id === target.id && routeFinished) {
-            return _.assign({}, question, {
-              hasNavigated: true
-            });
-          }
-          // console.log('key', key, 'updatedSection', updatedSection, 'target', target);
 
-          return question;
-        });
+        // updatedSection.questions = _.map(updatedSection.questions, (question, index) => {
+        //   //console.log('route finished?', routeFinished, 'response show answer', response.showAnswer)
+        //   if (question.id === target.id && routeFinished) {
+        //     return _.assign({}, question, {
+        //       hasNavigated: true
+        //     });
+        //   }
+        //   // console.log('key', key, 'updatedSection', updatedSection, 'target', target);
+        //
+        //   return question;
+        // });
       }
 
 
