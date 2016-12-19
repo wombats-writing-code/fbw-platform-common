@@ -29,32 +29,30 @@ export function getMissions (data) {
   return function (dispatch) {
     dispatch(getMissionsOptimistic())
 
-    return _getPrivateBankId(data)
-    .then( privateBankId => {
-      let options = {
-        url: `${getDomain()}/middleman/banks/${privateBankId}/missions`,
-        headers: {
-          'x-fbw-username': data.username
-        }
+    // let's change this to do the privateBankAlias calculation in the middleman
+    let options = {
+      url: `${getDomain()}/middleman/banks/${data.subjectBankId}/missions`,
+      headers: {
+        'x-fbw-username': data.username
       }
+    }
 
-      return axios(options)
-      .then((missions) => {
-        // console.log('received getting missions', missions)
-        // Python months run from 1-12, JavaScript months run from 0-11. We need to adjust the dates here.
-        missions = _.map(missions.data, (mission) => {
-          return _.assign({}, mission, {
-            startTime: convertPythonDateToJS(mission.startTime),
-            deadline: convertPythonDateToJS(mission.deadline)
-          })
+    return axios(options)
+    .then((missions) => {
+      // console.log('received getting missions', missions)
+      // Python months run from 1-12, JavaScript months run from 0-11. We need to adjust the dates here.
+      missions = _.map(missions.data, (mission) => {
+        return _.assign({}, mission, {
+          startTime: convertPythonDateToJS(mission.startTime),
+          deadline: convertPythonDateToJS(mission.deadline)
         })
+      })
 
-        dispatch(receiveMissions(missions))
-      })
-      .catch((error) => {
-        console.log('error getting missions data', error)
-      })
-    });
+      dispatch(receiveMissions(missions))
+    })
+    .catch((error) => {
+      console.log('error getting missions data', error)
+    })
 
   }
 }
