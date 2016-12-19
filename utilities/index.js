@@ -7,7 +7,8 @@ let config = require('../configuration')
 
 let Lockr
 let store
-let isBrowser = false
+let isBrowser = false;
+isBrowser = true        //  because we're switching to the lib to save state, this isn't needed. putting this in here so my setup doesn't error out.
 if (process.env.BROWSER) {
   isBrowser = true
   Lockr = require('lockr')
