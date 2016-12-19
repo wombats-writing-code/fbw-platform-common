@@ -247,27 +247,6 @@ export function flush () {
 }
 
 
-// utility method to generate the private bank alias. Needs to match
-// the method in the client-side apps as well...should be in a
-// shared library.
-export function privateBankAlias(termBankId, username) {
-  // should return something like "private-bank%3A1234567890abcdef12345678-S12345678.acc.edu%40ODL.MIT.EDU"
-  if (termBankId.indexOf('@') >= 0) {
-    termBankId = encodeURIComponent(termBankId)
-  }
-  return `private-bank%3A${termBankId.match(/%3A(.*)%40/)[1]}-${username.replace('@', '.')}%40ODL.MIT.EDU`
-}
-
-export function sharedBankAlias(termBankId) {
-  // should return something like "shared-bank%3Aassessment.Bank%253A1234567890abcdef12345678%2540ODL.MIT.EDU%40ODL.MIT.EDU"
-  if (termBankId.indexOf('@') >= 0) {
-    termBankId = encodeURIComponent(encodeURIComponent(termBankId))
-  } else {
-    termBankId = encodeURIComponent(termBankId)
-  }
-  return `shared-bank%3A${termBankId}%40ODL.MIT.EDU`
-}
-
 export const SCHOOL_TO_BANK = {"acc": "assessment.Bank%3A57279fc2e7dde08807231e61%40bazzim.MIT.EDU",
                                "qcc": "assessment.Bank%3A57279fcee7dde08832f93420%40bazzim.MIT.EDU"}
 
