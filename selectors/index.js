@@ -19,11 +19,11 @@ export const targetKey = (target) => {
 }
 
 export const isTargetRouteNavigated = (sectionQuestions) => {
-  if (!sectionQuestions) return false;
+  if (!sectionQuestions || sectionQuestions.length === 0) return false;
 
   // a route is navigated only when all of the Targets waypoints have been responded correctly
   let hasNavigated = false;
-  if (!sectionQuestions[0].response.isCorrect) {
+  if (sectionQuestions[0].response && !sectionQuestions[0].response.isCorrect) {
     hasNavigated = _.every(_.tail(sectionQuestions), response => response && response.isCorrect);
   }
 
