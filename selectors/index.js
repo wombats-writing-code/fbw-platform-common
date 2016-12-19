@@ -106,14 +106,14 @@ export function hasAchievedDirective (targets) {
 
   let numResponded = 0;
   let numCorrect = _.reduce(targets, (result, question) => {
-    if (question.response) numResponded++;
+    if (question.responded) numResponded++;
     if (question.isCorrect) result+=1;
     return result;
   }, 0)
 
   if (numResponded === targets.length && numCorrect < min) return false;
 
-  return numCorrect >= min;
+  if (numCorrect >= min) return true;
 }
 
 export function getTargetQuestions (state) {
