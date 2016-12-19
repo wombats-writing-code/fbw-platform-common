@@ -100,13 +100,18 @@ export function checkMissionStatus (mission) {
 };
 
 export function hasAchievedDirective (targets) {
-  if (!targets) return false;
+  if (!targets) return null;
 
   let min = Math.ceil(targets.length / 2);
+
+  let numResponded = 0;
   let numCorrect = _.reduce(targets, (result, question) => {
+    if (question.response) numResponded++;
     if (question.isCorrect) result+=1;
     return result;
   }, 0)
+
+  if (numResponded === targets.length && numCorrect < min) return false;
 
   return numCorrect >= min;
 }
