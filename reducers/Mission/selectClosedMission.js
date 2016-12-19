@@ -27,10 +27,12 @@ export function selectClosedMission (data) {
     // currentMission is needed to later on properly render the UI
     // in the QuestionCard -- to hide the Submit button, we need to be able to
     // calculate missionStatus
+    // For performance reasons, this needs to be passed in the privateBankId
+    //   of the student, not the missions's assignedBank
     dispatch(getUserMissionResultsOptimistic(data.mission))
 
     let options = {
-      url: `${getDomain()}/middleman/banks/${data.mission.assignedBankIds[0]}/offereds/${data.mission.assessmentOfferedId}/results`,
+      url: `${getDomain()}/middleman/banks/${data.bankId}/offereds/${data.mission.assessmentOfferedId}/results`,
       headers: {
         'x-fbw-username': data.username
       }
