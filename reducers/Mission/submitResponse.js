@@ -30,7 +30,7 @@ export function submitResponse(data) {
     dispatch(submitResponseOptimistic());
 
     let options = {
-      url: `${getDomain()}/middleman/banks/${data.section.assignedBankIds[0]}/takens/${data.section.id}/questions/${data.questionId}/submit`,
+      url: `${getDomain()}/middleman/banks/${data.bankId}/takens/${data.section.id}/questions/${data.questionId}/submit`,
       method: 'POST',
       data: {
         choiceIds: [data.choiceId],

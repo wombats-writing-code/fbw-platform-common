@@ -9,6 +9,7 @@ import { showAnswer } from '../reducers/Mission/showAnswer'
 const mapStateToProps = (state, ownProps) => {
   console.log('state in question container', state)
   return {
+    privateBankId: state.subject.privateBankId,
     mission: state.mission.currentMission ? state.mission.currentMission : null,
     selectedChoiceId: state.mission.selectedChoiceId ? state.mission.selectedChoiceId : null,
     outcome: state.outcome.outcomes ? _.find(state.outcome.outcomes, {id: ownProps.question.learningObjectiveIds[0]}) : null,

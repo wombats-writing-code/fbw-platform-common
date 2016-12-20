@@ -29,7 +29,7 @@ export function showAnswer(data) {
     dispatch(showAnswerOptimistic());
 
     let options = {
-      url: `${getDomain()}/middleman/banks/${data.section.assignedBankIds[0]}/takens/${data.section.id}/questions/${data.questionId}/surrender`,
+      url: `${getDomain()}/middleman/banks/${data.bankId}/takens/${data.section.id}/questions/${data.questionId}/surrender`,
       method: 'POST',
       headers: {
         'x-fbw-username': data.username
