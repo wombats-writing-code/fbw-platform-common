@@ -31,7 +31,7 @@ const noNameQuestion = {
   }
 }
 
-describe('is a Target', () => {
+describe('selectors', () => {
   it('should say this question is a Target', () => {
     let result = isTarget(targetQuestion);
     result.should.equal(true);

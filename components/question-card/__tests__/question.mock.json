@@ -1,0 +1,60 @@
+{
+  "itemId": "assessment.Item%3A5835d9ca71e4826f9bb1cea2%40bazzim.MIT.EDU",
+  "displayName": {
+    "text": "1",
+    "languageTypeId": "639-2%3AENG%40ISO",
+    "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+    "scriptTypeId": "15924%3ALATN%40ISO"
+  },
+  "description": {
+    "text": "",
+    "languageTypeId": "639-2%3AENG%40ISO",
+    "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+    "scriptTypeId": "15924%3ALATN%40ISO"
+  },
+  "recordTypeIds": [
+    "question-record-type%3Amulti-choice-randomized%40ODL.MIT.EDU"
+  ],
+  "text": {
+    "text": "<p>Find the midpoint of the segment that has the&nbsp;endpoints:&nbsp;</p>\n\n<p>(0, 1) (12, 2)</p>\n",
+    "languageTypeId": "639-2%3AENG%40ISO",
+    "scriptTypeId": "15924%3ALATN%40ISO",
+    "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+  },
+  "bankId": "assessment.Bank%3A57279fb9e7dde086d01b93ef%40bazzim.MIT.EDU",
+  "responded": false,
+  "learningObjectiveIds": [
+    "mc3-objective%3A15027%40MIT-OEIT"
+  ],
+  "choices": [
+    {
+      "text": "<p>\\( (\\frac{1}{2}, 7) \\)</p>\n",
+      "id": "5835d9ca71e4826f9bb1ceb1",
+      "name": "Choice 2"
+    },
+    {
+      "text": "<p>\\( (6, \\frac{3}{2}) \\)</p>\n",
+      "id": "5835d9ca71e4826f9bb1ceaf",
+      "name": "Choice 0"
+    },
+    {
+      "text": "<p>\\( (36, \\frac{1}{4}) \\)</p>\n",
+      "id": "5835d9ca71e4826f9bb1ceb2",
+      "name": "Choice 3"
+    },
+    {
+      "text": "<p>\\( (6, \\frac{1}{2}) \\)</p>\n",
+      "id": "5835d9ca71e4826f9bb1ceb0",
+      "name": "Choice 1"
+    }
+  ],
+  "genusTypeId": "question-type%3Amultiple-choice%40ODL.MIT.EDU",
+  "assignedBankIds": [
+    "assessment.Bank%3A57279fb9e7dde086d01b93ef%40bazzim.MIT.EDU"
+  ],
+  "response": null,
+  "type": "OsidObject",
+  "id": "assessment.Item%3A58572fc371e48299b397937f%40assessment-session",
+  "multiAnswer": false,
+  "fileIds": {}
+}

@@ -9,6 +9,7 @@ const mapStateToProps = (state, ownProps) => {
   let questions = getTargetQuestions(state)
 
   return {
+    mission: state.mission.currentMission,
     questions: questions,
     outcomes: state.outcome.outcomes ? state.outcome.outcomes : [],
     isInProgressSubmitChoice: state.mission.isInProgressSubmitChoice ? state.mission.isInProgressSubmitChoice : false,

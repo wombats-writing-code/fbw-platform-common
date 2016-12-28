@@ -1,0 +1,95 @@
+var path = require('path');
+
+module.exports = function(config) {
+  config.set({
+    basePath: '',
+    frameworks: ['mocha'],
+    files: [
+      'components/**/*.spec.js',
+    ],
+
+    preprocessors: {
+      // add webpack as preprocessor
+      './**/*.js': ['webpack', 'sourcemap'],
+      // 'components/**/*.spec.js': [ 'babel', 'browserify']
+    },
+
+    webpack: { //kind of a copy of your webpack config
+      devtool: 'inline-source-map', //just do inline source maps instead of the default
+      module: {
+        loaders: [
+          {
+            test: /\.js$/,
+            loader: 'babel',
+            exclude: path.resolve(__dirname, 'node_modules'),
+            query: {
+              presets: ['airbnb', "es2015", "react", "stage-0"]
+            }
+          },
+          {
+            test: /\.json$/,
+            loader: 'json',
+          },
+          {
+            test    : /\.css$/,
+            loaders : [
+              'style',
+              'css',
+            ]
+          },
+          {
+            test    : /\.scss$/,
+            loaders : [
+              'style',
+              'css',
+              'sass?sourceMap'
+            ]
+          },
+          { test: /\.(png|jpg)$/,    loader: 'url?limit=8192' }
+        ]
+      },
+      externals: {
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true
+      },
+      sassLoader : {
+        includePaths : ['./components/', './styles/']
+      }
+    },
+
+    webpackServer: {
+      noInfo: true //please don't spam the console when running in karma!
+    },
+
+    plugins: [
+      'karma-babel-preprocessor',
+      // 'karma-browserify',
+      'karma-webpack',
+      // 'karma-jasmine',
+      'karma-mocha',
+      'karma-sourcemap-loader',
+      'karma-chrome-launcher',
+      'karma-phantomjs-launcher'
+    ],
+    browserify: {
+      debug: true,
+      transform: [
+        'babelify',
+      ]
+    },
+    babelPreprocessor: {
+      options: {
+        // presets: ['es2015', 'react', 'stage-0']
+        presets: ['airbnb', "transform-class-properties"]
+      }
+    },
+    reporters: ['progress'],
+    port: 9876,
+    colors: true,
+    logLevel: config.LOG_INFO,
+    autoWatch: true,
+    browsers: ['Chrome'],
+    singleRun: false,
+  })
+};
