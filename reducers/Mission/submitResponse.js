@@ -27,6 +27,7 @@ export function submitResponseOptimistic(data) {
 export function submitResponse(data) {
 
   return function(dispatch) {
+    _validate(data);
     dispatch(submitResponseOptimistic());
 
     let options = {
@@ -56,5 +57,27 @@ export function submitResponse(data) {
     .catch((error) => {
       console.log('error submitting response', error);
     });
+  }
+}
+
+function _validate(data) {
+  if (!data.bankId) {
+    throw new TypeError('bankId must be non-null')
+  }
+
+  if (!data.section || !data.section.id) {
+    throw new TypeError('section must be an object with key "id"')
+  }
+
+  if (!data.questionId) {
+    throw new TypeError('questionId must be non-null')
+  }
+
+  if (!data.choiceId) {
+    throw new TypeError('choiceId must be non-null')
+  }
+
+  if (!data.username) {
+    throw new TypeError('username must be non-null')
   }
 }

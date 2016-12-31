@@ -35,7 +35,7 @@ class QuestionHeader extends Component {
     let toggleButton;
     if (this.props.isExpandable) {
       toggleButton = (
-        <button className="expand-question-button" onClick={this.props.onShowMorePress}>
+        <button className="expand-question-button" onClick={this.props.onToggleExpand}>
           {showMoreIcon}
         </button>
       )
@@ -52,7 +52,11 @@ class QuestionHeader extends Component {
       </div>
     )
   }
-
 }
 
-module.exports = QuestionHeader;
+QuestionHeader.PropTypes = {
+  questionTypeIcon: React.PropTypes.string.isRequired,
+  onToggleExpand: React.PropTypes.func
+}
+
+export default QuestionHeader

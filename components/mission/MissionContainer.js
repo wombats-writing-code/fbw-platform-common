@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
 import slug from 'slug'
 
-import { getMissions } from '../reducers/Mission/getMissions'
-import { selectOpenMission } from '../reducers/Mission/selectOpenMission'
-import { selectClosedMission } from '../reducers/Mission/selectClosedMission'
+import { getMissions } from '../../reducers/Mission/getMissions'
+import { selectOpenMission } from '../../reducers/Mission/selectOpenMission'
+import { selectClosedMission } from '../../reducers/Mission/selectClosedMission'
 
 const mapStateToProps = (state, ownProps) => {
   // console.log('ownProps of MissionContainer', ownProps)

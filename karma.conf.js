@@ -5,17 +5,21 @@ module.exports = function(config) {
     basePath: '',
     frameworks: ['mocha'],
     files: [
+      // './__tests__/index.js'
       'components/**/*.spec.js',
     ],
 
     preprocessors: {
       // add webpack as preprocessor
-      './**/*.js': ['webpack', 'sourcemap'],
+      // './**/*.js': ['webpack', 'sourcemap'],
+      // './!(node_modules)/**/*.js': ['webpack', 'sourcemap'],
+      './!(node_modules)/**/*.js': ['webpack']
       // 'components/**/*.spec.js': [ 'babel', 'browserify']
     },
 
     webpack: { //kind of a copy of your webpack config
-      devtool: 'inline-source-map', //just do inline source maps instead of the default
+      devtool: 'cheap-module-source-map',
+      // devtool: 'inline-source-map', //just do inline source maps instead of the default
       module: {
         loaders: [
           {
@@ -59,7 +63,7 @@ module.exports = function(config) {
     },
 
     webpackServer: {
-      noInfo: true //please don't spam the console when running in karma!
+      // noInfo: true //please don't spam the console when running in karma!
     },
 
     plugins: [
@@ -70,7 +74,7 @@ module.exports = function(config) {
       'karma-mocha',
       'karma-sourcemap-loader',
       'karma-chrome-launcher',
-      'karma-phantomjs-launcher'
+      // 'karma-phantomjs-launcher'
     ],
     browserify: {
       debug: true,
@@ -87,9 +91,10 @@ module.exports = function(config) {
     reporters: ['progress'],
     port: 9876,
     colors: true,
-    logLevel: config.LOG_INFO,
+    // logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
     singleRun: false,
+    browserDisconnectTolerance: 10
   })
 };

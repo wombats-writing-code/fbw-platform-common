@@ -1,8 +1,8 @@
 import _ from 'lodash'
 import { connect } from 'react-redux'
 
-import { isTarget } from '../selectors'
-import { selectTarget } from '../reducers/Mission/selectTarget'
+import { isTarget } from '../../selectors'
+import { selectTarget } from '../../reducers/Mission/selectTarget'
 
 const mapStateToProps = (state, ownProps) => {
   // console.log('state in TargetCarouselContainer', state);

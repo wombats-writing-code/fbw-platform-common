@@ -1,12 +1,14 @@
 import _ from 'lodash'
 import { connect } from 'react-redux'
 
-import { selectDirective } from '../reducers/Mission/selectDirective'
-import { getSectionQuestions } from '../reducers/Mission/getSectionQuestions'
+import { selectDirective } from '../../reducers/Mission/selectDirective'
+import { getSectionQuestions } from '../../reducers/Mission/getSectionQuestions'
 
-import { checkMissionStatus } from 'fbw-platform-common/selectors'
+import { checkMissionStatus } from '../../selectors'
 
 const mapStateToProps = (state, ownProps) => {
+  // console.log('state in DirectiveCarouselContainer', state);
+
   return {
     currentDirectiveIndex: typeof state.mission.currentDirectiveIndex !== 'undefined' ? state.mission.currentDirectiveIndex : null,
     directives: state.mission.currentMissionSections ? state.mission.currentMissionSections : [],

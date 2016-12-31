@@ -1,0 +1,97 @@
+{
+  "itemId": "assessment.Item%3A583f016c71e482974e516f38%40bazzim.MIT.EDU",
+  "isCorrect": false,
+  "displayName": {
+    "text": "3",
+    "languageTypeId": "639-2%3AENG%40ISO",
+    "scriptTypeId": "15924%3ALATN%40ISO",
+    "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+  },
+  "description": {
+    "text": "",
+    "languageTypeId": "639-2%3AENG%40ISO",
+    "scriptTypeId": "15924%3ALATN%40ISO",
+    "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+  },
+  "recordTypeIds": [
+    "question-record-type%3Amulti-choice-randomized%40ODL.MIT.EDU"
+  ],
+  "text": {
+    "text": "<p>What is the symmetry (if any) of the following graph?</p>\n\n<p><img alt=\"\" src=\"https://d3gllkdydocoif.cloudfront.net/57279fb9e7dde086d01b93ef/sym_1480524268.png?Expires=1482945376&Signature=hJqtj~~jkt7cc1gb0y5RUR~syctYKi2qH8~lvXXQOa-r3sdEj7yCw0qhneHzkYfI0YDJCmnWsp8ykuAFNwrIpUPQ61oPECnNur6Jl6uU9ESJOlJp7wxITwIsIJVl2DVSU-AP0fcujXRkn4cbHygFr47psQXyRyf80Ye1yRlTaX0Kypu1B0TMx18U886rOATYqT6SjpLs8bDaODECrrOKOrzarLD6w3qcDtx9-QDola10WKJLNT9ci5e0vKuChSTeR28Y~5Ag8Dw5XX9YWlxHej9AlKWJrHxEf9jpEluuGy9jd6pWKgLG5bOw0uYd0laX28ft3pG~Vf6vEJkI~Fi1gA__&Key-Pair-Id=APKAIGRK7FPIAJR675NA\" style=\"width: 320px; height: 272px;\" /></p>\n",
+    "languageTypeId": "639-2%3AENG%40ISO",
+    "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+    "scriptTypeId": "15924%3ALATN%40ISO"
+  },
+  "bankId": "assessment.Bank%3A57279fb9e7dde086d01b93ef%40bazzim.MIT.EDU",
+  "responded": true,
+  "learningObjectiveIds": [
+    "mc3-objective%3A15144%40MIT-OEIT"
+  ],
+  "choices": [
+    {
+      "text": "<p>none</p>\n",
+      "id": "583f016c71e482974e516f48",
+      "name": "Choice 3"
+    },
+    {
+      "text": "<p>origin</p>\n",
+      "id": "583f016c71e482974e516f45",
+      "name": "Choice 0"
+    },
+    {
+      "text": "<p>\\(y\\)-axis</p>\n",
+      "id": "583f016c71e482974e516f46",
+      "name": "Choice 1"
+    },
+    {
+      "text": "<p>\\(x\\)-axis</p>\n",
+      "id": "583f016c71e482974e516f47",
+      "name": "Choice 2"
+    }
+  ],
+  "genusTypeId": "question-type%3Amultiple-choice%40ODL.MIT.EDU",
+  "assignedBankIds": [
+    "assessment.Bank%3A57279fb9e7dde086d01b93ef%40bazzim.MIT.EDU"
+  ],
+  "response": {
+    "bankId": "assessment.Bank%3A5856e11371e48299b397934a%40bazzim.MIT.EDU",
+    "displayName": {
+      "text": "",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+      "scriptTypeId": "15924%3ALATN%40ISO"
+    },
+    "description": {
+      "text": "",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+      "scriptTypeId": "15924%3ALATN%40ISO"
+    },
+    "recordTypeIds": [
+      "answer-record-type%3Amulti-choice-with-files-and-feedback%40ODL.MIT.EDU"
+    ],
+    "isCorrect": false,
+    "choiceIds": [
+      "583f016c71e482974e516f46"
+    ],
+    "fileIds": {},
+    "confusedLearningObjectiveIds": [],
+    "genusTypeId": "GenusType%3ADEFAULT%40DLKIT.MIT.EDU",
+    "assignedBankIds": [
+      "assessment.Bank%3A5856e11371e48299b397934a%40bazzim.MIT.EDU"
+    ],
+    "submissionTime": "2016-12-28T16:15:04.918",
+    "type": "Answer",
+    "id": "assessment.Answer%3A5863e50871e48209105d35ff%40bazzim.MIT.EDU",
+    "feedback": {
+      "text": "The graph is the same when it is rotated about the origin by 180 degrees; therefore it has origin symmetry.\r\n",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "scriptTypeId": "15924%3ALATN%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+    }
+  },
+  "type": "OsidObject",
+  "id": "assessment.Item%3A58572fc471e48299b3979384%40assessment-session",
+  "multiAnswer": false,
+  "fileIds": {}
+}

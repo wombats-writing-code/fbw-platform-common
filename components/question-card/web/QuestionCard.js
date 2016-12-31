@@ -5,17 +5,18 @@ import { isTarget } from '../../../selectors';
 import _ from 'lodash';
 
 import Choices from './Choices'
-const QuestionHeader = require('./QuestionHeader');
+import QuestionHeader from './QuestionHeader'
 
 let styles = require('./QuestionCard.styles');
 import './QuestionCard.scss';
 
 
 class QuestionCard extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      selectedChoiceId: null
+      selectedChoiceId: null,
+      isExpanded: (props.isExpanded === false) ? false : true
     }
   }
   componentDidMount() {
@@ -44,16 +45,16 @@ class QuestionCard extends Component {
     }
 
     let submitButton;
-    if (!this.state.selectedChoiceId) {
+    if (!this.props.question.responded && !this.state.selectedChoiceId) {
       submitButton = (
         <button disabled
-                onClick={() => this._onSubmitChoice(this.props.selectedChoiceId, this.props.question.id)}
+                onClick={() => this._onSubmitChoice(this.state.selectedChoiceId, this.props.question.id)}
                 className="submit-button is-disabled">
                 {submitButtonText}
         </button>);
 
-    } else if (!this.props.isInProgressSubmitChoice) {
-      submitButton = (<button onClick={() => this._onSubmitChoice(this.props.selectedChoiceId, this.props.question.id)}
+    } else if (!this.props.question.responded && !this.props.isInProgressSubmitChoice) {
+      submitButton = (<button onClick={() => this._onSubmitChoice(this.state.selectedChoiceId, this.props.question.id)}
                               className="submit-button"
                               ref={(btn) => this.activeSubmitButton = btn}>
             {submitButtonText}
@@ -85,32 +86,62 @@ class QuestionCard extends Component {
 
     let questionTypeIcon;
     if (isTarget(this.props.question)) {
-      questionTypeIcon = <img className="question-type-icon" src={require('../../../assets/target-icon@2x.png')} />
+      if (this.props.question.responded && this.props.question.response.isCorrect) {
+        questionTypeIcon = <img className="question-type-icon" src={require('../../../assets/target-icon--correct@2x.png')} />
+
+      } else if (this.props.question.responded && !this.props.question.response.isCorrect) {
+        questionTypeIcon = <img className="question-type-icon" src={require('../../../assets/target-icon--incorrect@2x.png')} />
+
+      } else {
+        questionTypeIcon = <img className="question-type-icon" src={require('../../../assets/target-icon@2x.png')} />
+      }
     } else {
-      questionTypeIcon = <img className="question-type-icon" src={require('../../../assets/waypoint-icon@2x.png')} />
+      if (this.props.question.responded && this.props.question.response.isCorrect) {
+        questionTypeIcon = <img className="question-type-icon" src={require('../../../assets/waypoint-icon--correct@2x.png')} />
+
+      } else if (this.props.question.responded && !this.props.question.response.isCorrect) {
+        questionTypeIcon = <img className="question-type-icon" src={require('../../../assets/waypoint-icon--incorrect@2x.png')} />
+
+      } else {
+        questionTypeIcon = <img className="question-type-icon" src={require('../../../assets/waypoint-icon@2x.png')} />
+      }
     }
 
     // console.log('outcome:', this.props.outcome);
     // console.log('question', this.props.question)
 
+    let solution = (this.props.question.responded && this.state.isExpanded) ?
+                    (<div className="solution">
+                        <p className="bold">Solution</p>
+                        <div className="question-card__body"
+                          dangerouslySetInnerHTML={{__html: this.props.question.response.feedback.text}}>
+                        </div>
+                      </div>) : null;
+
+    let choices = this.state.isExpanded ?
+          (<Choices onSelectChoice={(choiceId) => this.setState({selectedChoiceId: choiceId})}
+                      selectedChoiceId={this.state.selectedChoiceId}
+                      choices={this.props.question.choices}
+                      responseId={this.props.question.responded ? this.props.question.response.choiceIds[0] : null}
+                      isResponseCorrect={this.props.question.isCorrect}/>) : null;
+
     return (
-    <div className="question-card clearfix">
-      <QuestionHeader questionTypeIcon={questionTypeIcon}
-                      headerText={this.props.outcome ? this.props.outcome.displayName.text : ''}
-                      onShowAnswer={() => this._onShowAnswer(this.props.question)}
-                      isExpandable={false}
-      />
+      <div className="question-card clearfix">
+        <QuestionHeader questionTypeIcon={questionTypeIcon}
+                        headerText={this.props.outcome ? this.props.outcome.displayName.text : ''}
+                        onShowAnswer={() => this._onShowAnswer(this.props.question)}
+                        isExpanded={this.state.isExpanded}
+                        isExpandable={this.props.question.responded}
+                        onToggleExpand={() => this.setState({isExpanded: !this.state.isExpanded})}
+        />
 
       {inProgressIndicator}
 
       <div className="question-card__body clearfix">
       <div dangerouslySetInnerHTML={{__html: this.props.question.text.text}}></div>
 
-        <Choices onSelectChoice={(choiceId) => this.setState({selectedChoiceId: choiceId})}
-                  selectedChoiceId={this.state.selectedChoiceId}
-                  choices={this.props.question.choices}
-                  responseId={this.props.question.responded ? this.props.question.response.choiceIds[0] : null}
-                  isResponseCorrect={this.props.question.isCorrect}/>
+      {choices}
+      {solution}
       </div>
 
       {submitButton}
@@ -148,6 +179,7 @@ class QuestionCard extends Component {
 QuestionCard.propTypes = {
   question: React.PropTypes.object.isRequired,
   outcome: React.PropTypes.object.isRequired,
+  isExpanded: React.PropTypes.bool
 }
 
 export default QuestionCard

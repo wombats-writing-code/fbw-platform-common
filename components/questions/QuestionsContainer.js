@@ -1,12 +1,11 @@
 import _ from 'lodash'
 import { connect } from 'react-redux'
 
-import { getTargetQuestions } from '../selectors'
-import { setQuestionListHeight } from '../reducers/Mission/setQuestionListHeight'
+import { getTargetQuestions } from '../../selectors'
+import { setQuestionListHeight } from '../../reducers/Mission/setQuestionListHeight'
 
 const mapStateToProps = (state, ownProps) => {
-
-  let questions = getTargetQuestions(state)
+  let questions = getTargetQuestions(state);
 
   return {
     mission: state.mission.currentMission,
