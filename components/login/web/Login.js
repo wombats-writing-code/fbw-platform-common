@@ -97,14 +97,9 @@ class Login extends Component {
     e.preventDefault();
     if (this.props.username !== '') {
       this.props.login('fbw-visitor', this.props.username)
-      this._goToSubjects(null)  // for default banks
+      this.props.onSetEnrolledSubjects(bankIds)
+      browserHistory.push('/subjects')
     }
-  }
-
-  _goToSubjects = (bankIds) => {
-    // leave bankIds null for default banks
-    this.props.onSetEnrolledSubjects(bankIds)
-    browserHistory.push('/subjects')
   }
 
   _onLogin(username, school) {
