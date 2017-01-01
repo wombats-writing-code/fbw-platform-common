@@ -9,7 +9,7 @@ import { UPDATE_USERNAME } from './updateUsername'
 import { LOGGED_IN_OPTIMISTIC, LOGGED_IN } from './logInUser'
 import { LOG_OUT } from './logOutUser'
 import { RECEIVE_SET_VISITOR_LOGIN } from './setVisitorLogin'
-import { RECEIVE_SET_D2L_AUTHENTICATED_URL, SET_D2L_AUTHENTICATED_URL_OPTIMISTIC } from './setD2LAuthenticatedUrl'
+import { SET_D2L_AUTHENTICATED_URL } from './setD2LAuthenticatedUrl'
 import { GET_USERNAME_OPTIMISTIC, RECEIVE_USERNAME } from './getUsername'
 
 // ------------------------------------
@@ -67,10 +67,7 @@ export default function loginReducer (state = initialState, action) {
         isVisitor: false
       })
 
-    case SET_D2L_AUTHENTICATED_URL_OPTIMISTIC:
-      return _.assign({}, state)
-
-    case RECEIVE_SET_D2L_AUTHENTICATED_URL:
+    case SET_D2L_AUTHENTICATED_URL:
       return _.assign({}, state, {
         d2l: {
           authenticatedUrl: action.url

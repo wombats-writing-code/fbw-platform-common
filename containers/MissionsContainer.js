@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
 
-import { getMissions } from '../reducers/Mission/getMissions'
-import { selectOpenMission } from '../reducers/Mission/selectOpenMission'
-import { selectClosedMission } from '../reducers/Mission/selectClosedMission'
+import { getMissions } from 'fbw-platform-common/reducers/Mission/getMissions'
+import { selectOpenMission } from 'fbw-platform-common/reducers/Mission/selectOpenMission'
+import { selectClosedMission } from 'fbw-platform-common/reducers/Mission/selectClosedMission'
 
 const mapStateToProps = (state, ownProps) => {
   // console.log('state', state);
