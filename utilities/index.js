@@ -5,20 +5,11 @@ import Q from 'q'
 let moment = require('moment')
 let config = require('../configuration')
 
-let Lockr
-let store
-let isBrowser = false;
-isBrowser = true        //  because we're switching to the lib to save state, this isn't needed. putting this in here so my setup doesn't error out.
-if (process.env.BROWSER) {
-  isBrowser = true
-  Lockr = require('lockr')
-} else {
-  // store = require('react-native-simple-store')
-}
-
 import { isTarget, targetKey } from '../selectors'
 
 export const isLocal = (conf) => conf === 'dev'
+
+export const isBrowser = () => return process.env.BROWSER
 
 export const getDomain = () => isLocal(config) ? 'http://localhost:8888' : 'https://fbw-web-backend.herokuapp.com'
 

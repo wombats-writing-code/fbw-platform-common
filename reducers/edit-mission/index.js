@@ -20,24 +20,6 @@ import {RECEIVE_DELETE_MISSION} from './deleteMission'
 const initialState = {newMission: stampNewMission()}
 export default function missionReducer (state = initialState, action) {
   switch (action.type) {
-    case SELECT_MISSION:
-      return _.assign({}, state, {
-        currentMission: action.mission,
-        isSpawnInProgress: false,
-        spawnDate: null,
-        spawnDateFocused: false,
-        editMission: action.mission ? {
-          id: action.mission.id,
-          assessmentOfferedId: action.mission.assessmentOfferedId,
-          displayName: action.mission.displayName.text,
-          genusTypeId: action.mission.genusTypeId,
-          focusedInput: null,
-          formError: false,
-          startTime: action.mission.startTime,
-          deadline: action.mission.deadline
-        } : null
-      })
-
     case CREATE_MISSION_OPTIMISTIC:
       return _.assign({}, state, {
         isCreateMissionInProgress: true,

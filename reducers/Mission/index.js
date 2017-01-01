@@ -11,8 +11,6 @@ import { GET_USER_MISSION_RESULTS_OPTIMISTIC, RECEIVE_GET_USER_MISSION_RESULTS }
 import { SUBMIT_RESPONSE, SUBMIT_RESPONSE_OPTIMISTIC, RECEIVE_SUBMIT_RESPONSE } from './submitResponse'
 import { SHOW_ANSWER_OPTIMISTIC, RECEIVE_SHOW_ANSWER } from './showAnswer'
 
-import { RECEIVE_RESET_MISSION_STATE } from './resetMissionState'
-
 import { SELECT_DIRECTIVE } from './selectDirective'
 import { SELECT_TARGET } from './selectTarget'
 import { SELECT_CHOICE } from './selectChoice'
@@ -27,9 +25,6 @@ import {SELECT_BANK} from '../Bank/selectBank'
 const initialState = {}
 export default function missionReducer (state = initialState, action) {
   switch (action.type) {
-    case RECEIVE_RESET_MISSION_STATE:
-      return {}
-
     case GET_MISSIONS_OPTIMISTIC:
       return _.assign({}, state, {
         missions: [],
@@ -45,6 +40,11 @@ export default function missionReducer (state = initialState, action) {
     case SELECT_BANK:
       return _.assign({}, state, {
         missions: null
+      })
+
+    case SELECT_MISSION:
+      return _.assign({}, state, {
+        currentMission: action.mission,
       })
 
     case SELECT_DIRECTIVE:
