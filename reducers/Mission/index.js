@@ -35,7 +35,8 @@ export default function missionReducer (state = initialState, action) {
     case RECEIVE_MISSIONS:
       return _.assign({}, state, {
         missions: action.missions,
-        isGetMissionsInProgress: false
+        isGetMissionsInProgress: false,
+        currentMission: null
       })
 
     case SELECT_BANK:

@@ -97,8 +97,8 @@ class Login extends Component {
     e.preventDefault();
     if (this.props.username !== '') {
       this.props.login('fbw-visitor', this.props.username)
-      this.props.onSetEnrolledSubjects(bankIds)
-      browserHistory.push('/subjects')
+      // this.props.onSetEnrolledSubjects(bankIds)
+      browserHistory.push('/')
     }
   }
 

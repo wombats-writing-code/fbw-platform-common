@@ -112,36 +112,6 @@ export function updateAssessmentSectionsWithResponse (sections, response) {
 
       console.log('response.nextQuestion?', response.nextQuestion)
 
-      // if there is a next question, but it's a target, we know the user has done the scaffold
-      // or, it might be the last target in the directive, so we need to
-      // also check for that
-      if (submittedQuestion) {
-        // console.log('next question is target', submittedQuestion);
-
-        //  we find the Target question to which this question belongs
-        // let key = targetKey(submittedQuestion);
-        // let target = _.find(_.filter(updatedSection.questions, isTarget), (question) => {
-        //   return targetKey(question) === key;
-        // });
-
-        // and update the updated section to set a hasNavigated = Boolean flag on it
-        // only set this flag if the route has been navigated, i.e. the last
-        // question in the route has been responded to
-
-        // updatedSection.questions = _.map(updatedSection.questions, (question, index) => {
-        //   //console.log('route finished?', routeFinished, 'response show answer', response.showAnswer)
-        //   if (question.id === target.id && routeFinished) {
-        //     return _.assign({}, question, {
-        //       hasNavigated: true
-        //     });
-        //   }
-        //   // console.log('key', key, 'updatedSection', updatedSection, 'target', target);
-        //
-        //   return question;
-        // });
-      }
-
-
       return updatedSection;
     }
 
@@ -150,6 +120,43 @@ export function updateAssessmentSectionsWithResponse (sections, response) {
 
   return _assessmentSections
 }
+
+
+export function findBankDomain (bankId, enrolledBanks) {
+  // handles both simple login (hardcoded bankIds) and D2L-linked banks
+  if (_.keys(BANK_TO_DOMAIN).indexOf(bankId) >= 0) {
+    return BANK_TO_DOMAIN[bankId]
+  } else {
+    console.log('bankId', bankId, 'enrolledBanks', enrolledBanks)
+    let department = _.find(enrolledBanks, {id: bankId}).department.toLowerCase()
+    console.log('department', department)
+    switch (department) {
+      case 'accounting':
+      case 'acc':
+        return 'accounting'
+
+      case 'algebra':
+      case 'alg':
+      case 'mat':
+      case 'math':
+      case 'collegealgebra':
+      case 'college_algebra':
+        return 'algebra'
+
+      case 'sandbox':
+        return 'algebra'
+
+      default:
+        return 'accounting'
+    }
+  }
+}
+
+export function findBankLibrary (bankId, enrolledBanks) {
+  let department = findBankDomain(bankId, enrolledBanks)
+  return DOMAIN_TO_LIBRARY[department]
+}
+
 
 export const SCHOOL_TO_BANK = {"acc": "assessment.Bank%3A57279fc2e7dde08807231e61%40bazzim.MIT.EDU",
                                "qcc": "assessment.Bank%3A57279fcee7dde08832f93420%40bazzim.MIT.EDU"}

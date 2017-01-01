@@ -20,7 +20,8 @@ export default function bankReducer (state = initialState, action) {
   switch (action.type) {
     case RECEIVE_BANKS:
       return _.assign({}, state, {
-        banks: action.banks
+        banks: action.banks,
+        enrolledBanks: action.banks
       });
 
     case SELECT_BANK_OPTIMISTIC:
