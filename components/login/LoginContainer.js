@@ -6,11 +6,13 @@ import { logInUser } from '../../reducers/Login/logInUser'
 import { updateUsername } from '../../reducers/Login/updateUsername'
 import { setVisitorLogin } from '../../reducers/Login/setVisitorLogin'
 import { setD2LAuthenticatedUrl } from '../../reducers/Login/setD2LAuthenticatedUrl'
-import { setEnrolledSubjects } from '../../reducers/Subject/setEnrolledSubjects'
-
 import { logOutUser } from '../../reducers/Login/logOutUser'
+import { setEnrolledSubjects } from '../../reducers/Subject/setEnrolledSubjects'
+import {getAuthenticationUrl} from '../../d2lutils'
 
 const mapStateToProps = (state, ownProps) => {
+  console.log('state in LoginContainer', state);
+  
   return {
     username: state.login.form ? state.login.form.username : null,
     isLoginInProgress: state.username ? state.login.isLoginInProgress : false,
@@ -36,8 +38,13 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-const provider = (component) => {
-  return connect(mapStateToProps, mapDispatchToProps)(component)
+const provider = (component, credentials) => {
+  let mergeProps = () => {
+    return {
+      authenticationUrl: getAuthenticationUrl(credentials)
+    }
+  }
+  return connect(mapStateToProps, mapDispatchToProps, mergeProps)(component)
 }
 
 export default provider

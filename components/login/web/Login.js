@@ -1,9 +1,6 @@
 import React, {Component} from 'react'
 import { browserHistory } from 'react-router'
 
-import { getAuthenticationUrl } from '../../../d2lutils'
-import credentials from '../../../d2lcredentials'
-
 import './Login.scss'
 
 class Login extends Component {
@@ -91,8 +88,7 @@ class Login extends Component {
   }
 
   _handleACCLogin = () => {
-    let authenticationUrl = getAuthenticationUrl(credentials)
-    window.open(authenticationUrl, '_self')
+    window.open(this.props.authenticationUrl, '_self')
   }
 
   _loginUserSimple = (e) => {
