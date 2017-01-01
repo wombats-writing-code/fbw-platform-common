@@ -1,8 +1,6 @@
 import axios from 'axios'
 
-import {
-  getDomain
-} from '../common'
+import { getDomain } from '../utilities'
 
 
 // action type

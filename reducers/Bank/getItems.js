@@ -2,7 +2,7 @@
 import 'lodash'
 import axios from 'axios'
 
-import {getDomain} from '../common'
+import {getDomain} from '../utilities'
 
 // ----
 // Action types

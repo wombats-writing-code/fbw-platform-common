@@ -19,6 +19,8 @@ import { SELECT_CHOICE } from './selectChoice'
 import { SET_QUESTION_LIST_HEIGHT } from './setQuestionListHeight'
 import { SET_CHOICE_HEIGHT } from './setChoiceHeight'
 
+import {SELECT_BANK} from '../Bank/selectBank'
+
 // ------------------------------------
 // Reducer
 // ------------------------------------
@@ -38,6 +40,11 @@ export default function missionReducer (state = initialState, action) {
       return _.assign({}, state, {
         missions: action.missions,
         isGetMissionsInProgress: false
+      })
+
+    case SELECT_BANK:
+      return _.assign({}, state, {
+        missions: null
       })
 
     case SELECT_DIRECTIVE:
