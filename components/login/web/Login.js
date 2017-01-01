@@ -26,6 +26,8 @@ class Login extends Component {
   render() {
     const props = this.props;
 
+    console.log('props of Login', props)
+
     let loginButtonText
     if (props.isLoginInProgress) {
       loginButtonText = (<div className="">Logging you in...</div>)
@@ -51,7 +53,7 @@ class Login extends Component {
           <form onSubmit={(e) => this._loginUserSimple(e)}>
             <input type="text"
               ref={(input) => {this.textInput = input;}}
-              onChange={(e) => props.updateUsername({ username: e.target.value.toUpperCase() })}
+              onChange={(e) => props.updateUsername(e.target.value.toUpperCase())}
               placeholder='Username'
               className="login-form__input"
               value={props.username} />

@@ -12,7 +12,7 @@ import {getAuthenticationUrl} from '../../d2lutils'
 
 const mapStateToProps = (state, ownProps) => {
   console.log('state in LoginContainer', state);
-  
+
   return {
     username: state.login.form ? state.login.form.username : null,
     isLoginInProgress: state.username ? state.login.isLoginInProgress : false,
@@ -39,10 +39,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 const provider = (component, credentials) => {
-  let mergeProps = () => {
-    return {
+  let mergeProps = (stateProps, dispatchProps, ownProps) => {
+    return _.assign({}, stateProps, dispatchProps, ownProps, {
       authenticationUrl: getAuthenticationUrl(credentials)
-    }
+    })
   }
   return connect(mapStateToProps, mapDispatchToProps, mergeProps)(component)
 }
