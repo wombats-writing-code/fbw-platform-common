@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { getSubjects } from '../reducers/Subject/getSubjects'
 import { selectSubject } from '../reducers/Subject/selectSubject'
-import { getOutcomes } from '../reducers/Outcome/getOutcomes'
+import { getMapping } from '../reducers/Mapping/getMapping'
 
 const mapStateToProps = (state, ownProps) => {
   // console.log('state', state);
@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
     isGetSubjectsInProgress: state.subject ? state.subject.isGetSubjectsInProgress : false,
     isSelectSubjectInProgress: state.subject ? state.subject.isSelectSubjectInProgress : false,
     username: state.login.user.username ? state.login.user.username : null,
-    outcomesLoaded: state.outcome.outcomes ? true : false
+    mapping: getMapping(state)
   }
 }
 
@@ -22,7 +22,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onSelectSubject: (data) => dispatch(selectSubject(data)),
     getSubjects: (bankIds) => dispatch(getSubjects(bankIds)),
-    getOutcomes: () => dispatch(getOutcomes())
   }
 }
 

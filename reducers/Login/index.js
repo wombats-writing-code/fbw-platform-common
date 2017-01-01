@@ -7,7 +7,7 @@ import { extractDisplayName } from '../../d2lutils'
 import { UPDATE_USERNAME } from './updateUsername'
 
 import { LOGGED_IN_OPTIMISTIC, LOGGED_IN } from './logInUser'
-import { RECEIVE_LOG_OUT } from './logOutUser'
+import { LOG_OUT } from './logOutUser'
 import { RECEIVE_SET_VISITOR_LOGIN } from './setVisitorLogin'
 import { RECEIVE_SET_D2L_AUTHENTICATED_URL, SET_D2L_AUTHENTICATED_URL_OPTIMISTIC } from './setD2LAuthenticatedUrl'
 import { GET_USERNAME_OPTIMISTIC, RECEIVE_USERNAME } from './getUsername'
@@ -51,7 +51,7 @@ export default function loginReducer (state = initialState, action) {
         isLoginInProgress: false
       })
 
-    case RECEIVE_LOG_OUT:
+    case LOG_OUT:
       return _.assign({}, state, {
         form: {
           username: '',
