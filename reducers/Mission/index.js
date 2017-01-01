@@ -1,7 +1,7 @@
 // mission reducer
 import _ from 'lodash'
 
-import { isTarget, targetKey, targetStatus, filterItemsByTarget } from '../../selectors'
+import {targetKey, targetStatus, filterItemsByTarget } from '../../selectors'
 import { updateAssessmentSectionsWithResponse, updateQuestionWithResponse } from '../../utilities'
 
 import { GET_MISSIONS_OPTIMISTIC, RECEIVE_MISSIONS } from './getMissions'

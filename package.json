@@ -8,7 +8,7 @@
     "npm": "^3.0.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --colors $(find . ! -path './node_modules/*' -name '*.spec.js')",
+    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --colors $(find . ! -path './node_modules/*' -name '*.unit-spec.js')",
     "karma": "karma start --browsers Chrome --log-level debug"
   },
   "dependencies": {
@@ -38,12 +38,14 @@
     "node-sass": "^3.7.0",
     "normalize.css": "^5.0.0",
     "postcss-loader": "^1.1.0",
+    "react-dates": "^4.3.0",
     "react-redux": "^4.4.5",
     "react-spinner": "^0.2.6",
     "redux": "^3.6.0",
     "redux-thunk": "^2.0.0",
     "rimraf": "^2.5.4",
     "sass-loader": "^4.0.0",
+    "should": "^11.1.2",
     "slug": "^0.9.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.6",

@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     mission: state.mission.currentMission,
     questions: questions,
-    outcomes: state.outcome.outcomes ? state.outcome.outcomes : [],
+    outcomes: state.mapping.outcomes ? state.mapping.outcomes : [],
     isInProgressSubmitChoice: state.mission.isInProgressSubmitChoice ? state.mission.isInProgressSubmitChoice : false,
     questionListHeight: state.mission.questionListHeight ? state.mission.questionListHeight : 0
   }
