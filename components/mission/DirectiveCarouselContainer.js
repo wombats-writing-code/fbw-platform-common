@@ -2,9 +2,7 @@ import _ from 'lodash'
 import { connect } from 'react-redux'
 
 import { selectDirective } from '../../reducers/Mission/selectDirective'
-import { getSectionQuestions } from '../../reducers/Mission/getSectionQuestions'
 
-import { checkMissionStatus } from '../../selectors'
 
 const mapStateToProps = (state, ownProps) => {
   // console.log('state in DirectiveCarouselContainer', state);
@@ -23,11 +21,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onSelectDirective: (directiveIndex) => {
       dispatch(selectDirective(directiveIndex));
-      // if (checkMissionStatus(data.mission) === "pending") {
-      //   // "over" mission results include all questions, so
-      //   //   don't have to get them dynamically
-      //   dispatch(getSectionQuestions(data));
-      // }
     }
   }
 }

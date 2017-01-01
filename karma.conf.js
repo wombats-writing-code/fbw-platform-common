@@ -84,7 +84,7 @@ module.exports = function(config) {
     },
     babelPreprocessor: {
       options: {
-        // presets: ['es2015', 'react', 'stage-0']
+        // presets: ['es2015', 'react', 'stage-0', 'transform-class-properties']
         presets: ['airbnb', "transform-class-properties"]
       }
     },
@@ -92,7 +92,7 @@ module.exports = function(config) {
     port: 9876,
     colors: true,
     // logLevel: config.LOG_INFO,
-    autoWatch: true,
+    autoWatch: false,
     browsers: ['Chrome'],
     singleRun: false,
     browserDisconnectTolerance: 10

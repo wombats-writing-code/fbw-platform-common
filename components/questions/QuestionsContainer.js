@@ -1,16 +1,17 @@
 import _ from 'lodash'
 import { connect } from 'react-redux'
 
-import { getTargetQuestions } from '../../selectors'
+import {getMapping} from '../../selectors'
+import { getTargetQuestions } from '../../selectors/mission'
 import { setQuestionListHeight } from '../../reducers/Mission/setQuestionListHeight'
 
 const mapStateToProps = (state, ownProps) => {
-  let questions = getTargetQuestions(state);
+  console.log('state in QuestionsContainer', state)
 
   return {
     mission: state.mission.currentMission,
-    questions: questions,
-    outcomes: state.mapping.outcomes ? state.mapping.outcomes : [],
+    questions: getTargetQuestions(state),
+    outcomes: getMapping(state).outcomes,
     isInProgressSubmitChoice: state.mission.isInProgressSubmitChoice ? state.mission.isInProgressSubmitChoice : false,
     questionListHeight: state.mission.questionListHeight ? state.mission.questionListHeight : 0
   }

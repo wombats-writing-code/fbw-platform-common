@@ -1,6 +1,6 @@
 import React, { Component, }  from 'react';
 import $ from 'jquery'
-import { isTarget } from '../../../selectors';
+import { isTarget } from '../../../selectors/mission';
 
 import _ from 'lodash';
 

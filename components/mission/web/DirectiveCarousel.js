@@ -3,7 +3,7 @@
 import React, {Component} from 'react'
 import _ from 'lodash'
 
-import { hasAchievedDirective } from '../../../selectors'
+import { hasAchievedDirective } from '../../../selectors/mission'
 import './DirectiveCarousel.scss'
 
 class DirectiveCarousel extends Component {

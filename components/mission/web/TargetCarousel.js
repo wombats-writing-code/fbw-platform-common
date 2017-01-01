@@ -1,7 +1,7 @@
 'use strict'
 
 import React, {Component} from 'react'
-import { targetStatus, targetKey } from '../../../selectors'
+import {targetStatus, targetKey } from '../../../selectors/mission'
 
 var _ = require('lodash');
 

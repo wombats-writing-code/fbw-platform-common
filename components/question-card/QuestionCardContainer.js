@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { connect } from 'react-redux'
 
-import { getTargetQuestions } from '../../selectors'
+import { getTargetQuestions } from '../../selectors/mission'
 import { selectChoice } from '../../reducers/Mission/selectChoice'
 import { submitResponse } from '../../reducers/Mission/submitResponse'
 import { showAnswer } from '../../reducers/Mission/showAnswer'
