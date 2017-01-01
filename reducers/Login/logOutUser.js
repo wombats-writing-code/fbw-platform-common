@@ -2,7 +2,7 @@
 const Lockr = require('lockr')
 // import store from 'react-native-simple-store';
 
-import {isBrowser} from '../utilities'
+import {isBrowser} from '../../utilities'
 // ----
 // Action types
 export const LOG_OUT = 'LOG_OUT'
@@ -22,7 +22,7 @@ export function logOutUser () {
   return function (dispatch) {
     if (isBrowser()) {
       Lockr.flush()
-      
+
     } else {
       store.keys()
       .then((keys) => {

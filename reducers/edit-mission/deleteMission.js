@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import {
   getDomain
-} from '../utilities'
+} from '../../utilities'
 
 export const DELETE_MISSION = 'DELETE_MISSION'
 export const RECEIVE_DELETE_MISSION = 'RECEIVE_DELETE_MISSION'

@@ -1,17 +1,10 @@
 
 import 'lodash'
 import axios from 'axios'
-let moment = require('moment')
 
-import {
-  getDomain,
-  momentToQBank,
-  afterMidnight,
-  beforeMidnight,
-  LO_SCAFFOLD_MISSION_GENUS_TYPE,
-  TEST_FLIGHT_MISSION,
-  PHASE_II_MISSION_RECORD_TYPE
-} from '../utilities'
+import { getDomain, LO_SCAFFOLD_MISSION_GENUS_TYPE, TEST_FLIGHT_MISSION, PHASE_II_MISSION_RECORD_TYPE } from '../../utilities'
+import {  momentToQBank, convertPythonDateToJS, afterMidnight, beforeMidnight} from '../../utilities/time'
+
 
 // ------------------------------------
 // Actions

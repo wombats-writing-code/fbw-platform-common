@@ -4,14 +4,8 @@ import axios from 'axios'
 import moment from 'moment'
 let Q = require('q')
 
-import {
-  getDomain,
-  getSchoolQBankId,
-  momentToQBank,
-  save,
-  BASE_BANKS,
-  STUDENT_AUTHORIZATION_FUNCTIONS
-} from '../../utilities'
+import { getDomain, getSchoolQBankId, BASE_BANKS, STUDENT_AUTHORIZATION_FUNCTIONS } from '../../utilities'
+import {momentToQBank} from '../../utilities/time'
 // ----
 // Action types
 export const LOGGED_IN_OPTIMISTIC = 'LOGGED_IN_OPTIMISTIC'
@@ -81,10 +75,10 @@ export function logInUser (school, username) { // , token? Will we need this for
     username = `${username}@${school}.edu`
     // console.log(params)
     // just always create authz....checking is getting caught by Memcached
+
     return createBaseQBankStudentAuthorizations(username)
     .then((result) => {
       // save the username in local storage
-      save('username', username)
       dispatch(loggedIn({ username: username}))
     })
     .catch((error) => {

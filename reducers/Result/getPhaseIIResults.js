@@ -1,7 +1,7 @@
 // Phase II results (for all students)
 import axios from 'axios'
 
-import {getDomain} from '../utilities'
+import {getDomain} from '../../utilities'
 
 // ------------------------------------
 // Actions

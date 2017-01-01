@@ -2,9 +2,7 @@ import _ from 'lodash'
 import axios from 'axios'
 import Q from 'q'
 
-let moment = require('moment')
 let config = require('../configuration')
-
 import { isTarget, targetKey } from '../selectors'
 
 export const isLocal = (conf) => conf === 'dev'
@@ -13,74 +11,21 @@ export const isBrowser = () => process.env.BROWSER ? true : false
 
 export const getDomain = () => isLocal(config) ? 'http://localhost:8888' : 'https://fbw-web-backend.herokuapp.com'
 
-export function momentToQBank (momentObject) {
-  let timeUTC = momentObject.utc().toObject()
-
-  return {
-    year: timeUTC.years,
-    month: timeUTC.months + 1,
-    day: timeUTC.date,
-    hour: timeUTC.hours,
-    minute: timeUTC.minutes,
-    second: timeUTC.seconds
+export const matches = (needle, haystack) => {
+  let parts = needle.split(' ');
+  let partQ = '';
+  for (let i=0; i<parts.length; i++) {
+    if (i==0) {
+      partQ = '(?=.*\\b' + parts[i] + ')';
+    } else {
+      partQ = partQ + '(?=.*\\b' +  parts[i] + ')';
+    }
   }
-}
 
-export function afterMidnight (timeObject) {
-  return {
-    year: timeObject.year,
-    month: timeObject.month,
-    day: timeObject.day,
-    hour: 0,
-    minute: 0,
-    second: 1
-  }
-}
+  let re = new RegExp(partQ, 'gi')
+  let matching = re.test(haystack);
 
-export function beforeMidnight (timeObject) {
-  return {
-    year: timeObject.year,
-    month: timeObject.month,
-    day: timeObject.day,
-    hour: 23,
-    minute: 59,
-    second: 59
-  }
-}
-
-export function qbankToMoment(timeObject) {
-  return moment.utc({
-    years: timeObject.year,
-    months: timeObject.month - 1,
-    days: timeObject.day,
-    hours: timeObject.hour,
-    minutes: timeObject.minute,
-    second: timeObject.second
-  })
-}
-
-export function adjustedQBankToMomentObj(timeObject) {
-  // for mission times that were already adjusted in stores,
-  // and moment.js takes months as 1-12
-  return {
-    years: timeObject.year,
-    months: timeObject.month + 1,
-    days: timeObject.day,
-    hours: timeObject.hour,
-    minutes: timeObject.minute,
-    second: timeObject.second
-  }
-}
-
-export function convertPythonDateToJS (pythonTime) {
-  return {
-    year: pythonTime.year,
-    month: pythonTime.month - 1,
-    day: pythonTime.day,
-    hour: pythonTime.hour,
-    minute: pythonTime.minute,
-    second: pythonTime.second
-  }
+  return matching;
 }
 
 export function getSchoolQBankId (school) {
@@ -205,38 +150,6 @@ export function updateAssessmentSectionsWithResponse (sections, response) {
 
   return _assessmentSections
 }
-
-export function get (key) {
-  if (isBrowser) {
-    return Q.when(Lockr.get(key))
-  } else {
-    return store.get(key)
-  }
-
-}
-
-export function save (key, value) {
-  if (isBrowser) {
-    Lockr.set(key, value)
-  } else {
-    store.save(key, value)
-  }
-
-}
-
-export function flush () {
-  if (isBrowser) {
-    Lockr.flush()
-  } else {
-    store.keys()
-    .then((keys) => {
-      _.each(keys, (key) => {
-        store.delete(key)
-      })
-    })
-  }
-}
-
 
 export const SCHOOL_TO_BANK = {"acc": "assessment.Bank%3A57279fc2e7dde08807231e61%40bazzim.MIT.EDU",
                                "qcc": "assessment.Bank%3A57279fcee7dde08832f93420%40bazzim.MIT.EDU"}

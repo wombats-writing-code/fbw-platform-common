@@ -2,8 +2,6 @@
 import thunk from 'redux-thunk';
 import 'lodash'
 
-var Q = require('q');
-
 
 export function deleteAssessmentPartOptimistic(data) {
   return {type: DELETE_ASSESSMENT_PART, data };

@@ -3,7 +3,8 @@ import thunk from 'redux-thunk';
 import 'lodash'
 import axios from 'axios'
 
-import {getDomain, momentToQBank} from '../utilities'
+import {getDomain} from '../../utilities'
+import {momentToQBank} from '../../utilities/time'
 
 export const UPDATE_MISSION = 'UPDATE_MISSION'
 export const RECEIVE_UPDATE_MISSION = 'RECEIVE_UPDATE_MISSION'

@@ -26,8 +26,6 @@ class Login extends Component {
   render() {
     const props = this.props;
 
-    console.log('props of Login', props)
-
     let loginButtonText
     if (props.isLoginInProgress) {
       loginButtonText = (<div className="">Logging you in...</div>)
@@ -94,7 +92,7 @@ class Login extends Component {
   }
 
   _loginUserSimple = (e) => {
-    console.log(this.props.username)
+    console.log('logging in with visitor username:', this.props.username)
 
     e.preventDefault();
     if (this.props.username !== '') {

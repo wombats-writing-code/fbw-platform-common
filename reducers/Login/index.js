@@ -28,8 +28,6 @@ const initialState = {
   }
 }
 export default function loginReducer (state = initialState, action) {
-  console.log('action', action)
-
   switch (action.type) {
     case UPDATE_USERNAME:
       return _.assign({}, state, {

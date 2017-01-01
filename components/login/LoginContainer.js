@@ -27,9 +27,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     onSetEnrolledSubjects: (bankIds) => dispatch(setEnrolledSubjects(bankIds)),
     updateUsername: (username) => dispatch(updateUsername(username)),
     onSetVisitorLogin: (data) => dispatch(setVisitorLogin(data)),
-    login: (school, username) => {
-      dispatch(logInUser(school, username))
-    },
+    login: (school, username) => dispatch(logInUser(school, username)),
     logout: () => {
       dispatch(logOutUser())
       dispatch(resetMissionState())
