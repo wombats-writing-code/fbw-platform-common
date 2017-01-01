@@ -1,5 +1,4 @@
 
-import adapter from 'redux-localstorage/lib/adapters/localStorage';
 import {isBrowser} from '../../utilities'
 
 
