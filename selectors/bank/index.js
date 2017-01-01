@@ -1,6 +1,6 @@
 import _ from 'lodash'
 
-import { BANK_TO_DOMAIN, DOMAIN_TO_LIBRARY, BANK_TO_LIBRARY } from './common'
+import { BANK_TO_DOMAIN, DOMAIN_TO_LIBRARY, BANK_TO_LIBRARY } from '../utilities'
 
 export function findBankDomain (bankId, enrolledBanks) {
   // handles both simple login (hardcoded bankIds) and D2L-linked banks

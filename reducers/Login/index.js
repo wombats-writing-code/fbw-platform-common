@@ -22,7 +22,8 @@ const initialState = {
   user: {               // TODO: @Cole, please resolve with what you're doing for d2l and simpleLogin.
     displayName: 'Darth Vader',
     isVisitor: true,
-    username: ''
+    username: '',
+    d2l: null
   }
 }
 export default function loginReducer (state = initialState, action) {
