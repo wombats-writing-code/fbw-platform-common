@@ -1,4 +1,5 @@
 import _ from 'lodash'
+let moment = require('moment')
 
 export const matches = (needle, haystack) => {
   let parts = needle.split(' ');
@@ -38,8 +39,6 @@ export function convertPythonDateToJS (pythonTime) {
     second: pythonTime.second
   }
 }
-
-let moment = require('moment')
 
 export const isLocal = () => location.host.indexOf('localhost') > -1
 

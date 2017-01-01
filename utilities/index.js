@@ -9,7 +9,7 @@ import { isTarget, targetKey } from '../selectors'
 
 export const isLocal = (conf) => conf === 'dev'
 
-export const isBrowser = () => return process.env.BROWSER
+export const isBrowser = () => process.env.BROWSER ? true : false
 
 export const getDomain = () => isLocal(config) ? 'http://localhost:8888' : 'https://fbw-web-backend.herokuapp.com'
 
