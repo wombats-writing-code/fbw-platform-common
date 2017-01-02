@@ -1,10 +1,11 @@
 // mission reducer
 
 import thunk from 'redux-thunk';
-import 'lodash'
+import _ from 'lodash'
 
 import {END_DATE} from 'react-dates/constants'
 
+import {ADD_MISSION} from './addMission'
 import {CREATE_TEST_FLIGHT_MISSIONS_OPTIMISTIC, RECEIVE_CREATE_TEST_FLIGHT_MISSIONS} from './createTestFlightMissions'
 import {CREATE_MISSION_OPTIMISTIC, RECEIVE_CREATE_MISSION} from './createMission'
 import {RECEIVE_UPDATE_MISSION} from './updateMission'
@@ -20,6 +21,11 @@ import {RECEIVE_DELETE_MISSION} from './deleteMission'
 const initialState = {newMission: stampNewMission()}
 export default function missionReducer (state = initialState, action) {
   switch (action.type) {
+    case ADD_MISSION:
+      return _.assign({}, state, {
+        newMission: stampNewMission()
+      });
+
     case CREATE_MISSION_OPTIMISTIC:
       return _.assign({}, state, {
         isCreateMissionInProgress: true,
