@@ -66,7 +66,7 @@ export function createMission(data, bankId, directivesItemsMap, itemBankId) {
 
     return axios(options)
     .then((response) => {
-      // console.log('created mission', response.data);
+      console.log('created mission', response.data);
       let mission = _.assign({}, response.data)
       mission.startTime = convertPythonDateToJS(mission.startTime)
       mission.deadline = convertPythonDateToJS(mission.deadline)

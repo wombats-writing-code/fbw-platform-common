@@ -3,10 +3,9 @@ import React from 'react';
 import {Provider} from 'react-redux'
 import configureStore from 'redux-mock-store'
 
-import credentials from '../../../d2lcredentials'
-import LoginComponent from '../web/Login';
-import LoginContainer from '../LoginContainer'
-const Login = LoginContainer(LoginComponent, credentials)
+import D2LCallbackComponent from '../web/D2LCallback';
+import D2LCallbackContainer from '../D2LCallbackContainer'
+const D2LCallback = D2LCallbackContainer(D2LCallbackComponent)
 
 import {mount, shallow} from 'enzyme';
 
@@ -20,7 +19,7 @@ const STATE = require('./state.mock.json')
 let chai = require('chai')
 chai.should()
 
-describe('Login', () => {
+describe('D2LCallback', () => {
 
   let mockStore = configureStore([]);
   let connectedComponent, store;
@@ -32,20 +31,15 @@ describe('Login', () => {
     store = mockStore(STATE);
     connectedComponent = mount(
       <Provider store={store}>
-        <Login  />
+        <D2LCallback  />
       </Provider>,
       {attachTo: div}
     );
   });
 
-  it('should render the login page', () => {
-    const login = connectedComponent.find(Login)
+  it('should render a mission', () => {
+    const callback = connectedComponent.find(D2LCallback)
 
-    login.find('.login-form-button--d2l').length.should.be.eql(2);
-    // STATE.should.be.eql('bar')
+    callback.find('.callback-text').text().should.be.eql("Redirecting you to your dashboard...");
   });
-
-  after( () => {
-    connectedComponent.detach()
-  })
 });

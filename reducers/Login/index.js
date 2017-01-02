@@ -4,8 +4,9 @@ import _ from 'lodash'
 
 import { extractDisplayName } from '../../d2lutils'
 
-import { UPDATE_USERNAME } from './updateUsername'
+import {RECEIVE_AUTHENTICATE_D2L} from './authenticateD2L'
 
+import { UPDATE_USERNAME } from './updateUsername'
 import { LOGGED_IN_OPTIMISTIC, LOGGED_IN } from './logInUser'
 import { LOG_OUT } from './logOutUser'
 import { RECEIVE_SET_VISITOR_LOGIN } from './setVisitorLogin'
@@ -20,7 +21,6 @@ const initialState = {
     username: '',
   },
   user: {               // TODO: @Cole, please resolve with what you're doing for d2l and simpleLogin.
-    displayName: 'Darth Vader',
     isVisitor: true,
     username: null,
     d2l: null
@@ -28,6 +28,15 @@ const initialState = {
 }
 export default function loginReducer (state = initialState, action) {
   switch (action.type) {
+    case RECEIVE_AUTHENTICATE_D2L:
+      return _.assign({}, state, {
+        user: _.assign({}, state.user, {
+          d2l: {
+            authenticatedUrl: action.url
+          }
+        })
+      })
+
     case UPDATE_USERNAME:
       return _.assign({}, state, {
         form: {
@@ -44,7 +53,6 @@ export default function loginReducer (state = initialState, action) {
       return _.assign({}, state, {
         user: {
           username: action.data.username,
-          displayName: extractDisplayName(action.data.username),
           isVisitor: state.user.isVisitor
         },
         isLoginInProgress: false
@@ -58,7 +66,6 @@ export default function loginReducer (state = initialState, action) {
         },
         d2l: {},
         user: {
-          displayName: 'Darth Vader',
           isVisitor: true,
           username: ''
         },
@@ -77,7 +84,6 @@ export default function loginReducer (state = initialState, action) {
       return _.assign({}, state, {
         user: {
           username: state.user.username,
-          displayName: state.user.displayName,
           isVisitor: action.visitor
         }
       })
