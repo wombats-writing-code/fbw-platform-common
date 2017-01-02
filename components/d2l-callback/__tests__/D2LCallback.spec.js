@@ -3,9 +3,10 @@ import React from 'react';
 import {Provider} from 'react-redux'
 import configureStore from 'redux-mock-store'
 
+const credentials = require('../../../d2lcredentials')
 import D2LCallbackComponent from '../web/D2LCallback';
 import D2LCallbackContainer from '../D2LCallbackContainer'
-const D2LCallback = D2LCallbackContainer(D2LCallbackComponent)
+const D2LCallback = D2LCallbackContainer(D2LCallbackComponent, credentials)
 
 import {mount, shallow} from 'enzyme';
 
@@ -37,7 +38,7 @@ describe('D2LCallback', () => {
     );
   });
 
-  it('should render a mission', () => {
+  it('should the callback screen', () => {
     const callback = connectedComponent.find(D2LCallback)
 
     callback.find('.callback-text').text().should.be.eql("Redirecting you to your dashboard...");

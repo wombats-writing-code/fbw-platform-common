@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import { isTarget } from '../../selectors/mission'
 import { selectTarget } from '../../reducers/Mission/selectTarget'
+import {getMapping} from '../../selectors'
+
 
 const mapStateToProps = (state, ownProps) => {
   // console.log('state in TargetCarouselContainer', state);
@@ -18,7 +20,7 @@ const mapStateToProps = (state, ownProps) => {
     currentTarget: state.mission.currentTarget,
     currentMissionSections: state.mission.currentMissionSections,
     targets: targets,
-    outcomes: state.outcome.outcomes ? state.outcome.outcomes : []
+    outcomes: getMapping(state).outcomes ? getMapping(state).outcomes : []
   }
 }
 
