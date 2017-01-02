@@ -7,7 +7,7 @@ chai.should();
 
 describe('login reducer', () => {
 
-  it('should login with a d2l user')
+  it('should process a d2l authentication')
 
   it('should login with a visitor user')
 
