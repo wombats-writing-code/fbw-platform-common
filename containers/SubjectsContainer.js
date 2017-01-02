@@ -5,6 +5,7 @@ import { getSubjects } from '../reducers/Subject/getSubjects'
 import { selectSubject } from '../reducers/Subject/selectSubject'
 import { getMapping } from '../reducers/Mapping/getMapping'
 
+
 const mapStateToProps = (state, ownProps) => {
   // console.log('state', state);
   return {
@@ -14,7 +15,6 @@ const mapStateToProps = (state, ownProps) => {
     isGetSubjectsInProgress: state.subject ? state.subject.isGetSubjectsInProgress : false,
     isSelectSubjectInProgress: state.subject ? state.subject.isSelectSubjectInProgress : false,
     username: state.login.user.username ? state.login.user.username : null,
-    mapping: getMapping(state)
   }
 }
 
@@ -22,6 +22,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onSelectSubject: (data) => dispatch(selectSubject(data)),
     getSubjects: (bankIds) => dispatch(getSubjects(bankIds)),
+    getMapping: () => dispatch(getMapping())
   }
 }
 
