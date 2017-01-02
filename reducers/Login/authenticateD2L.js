@@ -36,7 +36,7 @@ export function authenticateD2LInstructor(credentials) {
       console.log('got whoami', response)
       username = stringifyUsername(response);
 
-      dispatch(receiveAuthenticateUrl({url, userBankIds, user}));
+      dispatch(receiveAuthenticateUrl({url, userBankIds, username}));
     })
   }
 }
@@ -60,7 +60,7 @@ export function authenticateD2LStudent(credentials) {
       // this.props.login('acc', stringifyUsername(response))
       // browserHistory.push('/subjects')
 
-      dispatch(receiveAuthenticateUrl({url, userBankIds, user}));
+      dispatch(receiveAuthenticateUrl({url, userBankIds, username}));
     })
   }
 }

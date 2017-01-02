@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
 import D2LCallback from './web/D2LCallback'
 
-import { authenticateD2LInstructor } from '../../reducers/Login/setD2LAuthenticatedUrl'
-import { authenticateD2LStudent } from '../../reducers/Bank/getBanks'
-import { logInUser } from '../../reducers/Login/logInUser'
+import { authenticateD2LInstructor } from '../../reducers/Login/authenticateD2L'
+import { authenticateD2LStudent } from '../../reducers/Login/authenticateD2L'
+
 
 const mapStateToProps = (state, ownProps) => {
   return {
