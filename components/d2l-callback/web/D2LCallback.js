@@ -6,7 +6,8 @@ class D2LCallback extends Component {
 
   componentDidMount () {
 
-    this.props.authenticateD2L();
+    console.log(this.props)
+    this.props.authenticateD2L(this.props.credentials);
 
 
     // // console.log(this.props)
