@@ -92,12 +92,12 @@ export function instructorCourses (credentials, url) {
     url: userContext.createAuthenticatedUrl(urlWithFilters, 'GET') + _appendDevRole(credentials)
   }
 
-  console.log('enrollments options', options)
+  // console.log('enrollments options', options)
 
   let instructorCourseBanks = []
   return axios(options)
   .then((response) => {
-    console.log('instructor enrollments', response)
+    console.log('got d2l instructor enrollments', response)
     let enrollments = response.data.Items
     enrollments = _.filter(enrollments, function (enrollment) {
       return enrollment.OrgUnit.Type.Code == 'Course Offering' &&
