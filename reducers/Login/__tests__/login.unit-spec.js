@@ -35,7 +35,7 @@ describe('login reducer', () => {
   it('should create an action for authenticateD2LInstructor', () => {
     let credentials = require('../../../d2lcredentials')
     credentials.role = 'instructor';
-    
+
     const expectedAction = {
       type: RECEIVE_AUTHENTICATE_D2L,
       credentials
@@ -43,9 +43,9 @@ describe('login reducer', () => {
     const store = mockStore({})
 
     store.dispatch(authenticateD2LInstructor(credentials))
-      .then( () => {
-        store.getActions().should.be.eql(expectedAction)
-      })
+    .then( () => {
+      store.getActions().should.be.eql(expectedAction)
+    })
   })
 
 })

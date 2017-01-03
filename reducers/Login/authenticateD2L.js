@@ -34,7 +34,7 @@ export function authenticateD2LInstructor(credentials) {
     console.log('mounted d2l callback!', url)
 
     // now get the user enrollments and set them in the global state
-    instructorCourses(credentials, url)
+    return instructorCourses(credentials, url)
     .then((banks) => {
       console.log("got banks", banks)
 
@@ -60,7 +60,7 @@ export function authenticateD2LStudent(credentials) {
     let banks, username;
     console.log('mounted d2l callback!', url)
 
-    enrollments(credentials, url)
+    return enrollments(credentials, url)
     .then((banks) => {
       console.log("got bank ids", banks)
 
@@ -90,11 +90,7 @@ export function instructorCourses (credentials, url) {
   //   http://docs.valence.desire2learn.com/res/enroll.html
   let urlWithFilters = `${enrollmentsUrl}?isActive=true&canAccess=true&orgUnitTypeId=3`
   let options = {
-    url: userContext.createAuthenticatedUrl(urlWithFilters, 'GET')
-  }
-
-  if (process.env.NODE_ENV !== 'production') {
-    options.data = {role: credentials.role};
+    url: userContext.createAuthenticatedUrl(urlWithFilters, 'GET') + _appendDevRole(credentials)
   }
 
   console.log('enrollments options', options)
@@ -119,11 +115,7 @@ export function instructorCourses (credentials, url) {
       })
       let url = `/d2l/api/lp/1.5/courses/${course.OrgUnit.Id}`
       let options = {
-        url: userContext.createAuthenticatedUrl(url, 'GET')
-      }
-
-      if (process.env.NODE_ENV === 'development') {
-        options.data = {role: credentials.role};
+        url: userContext.createAuthenticatedUrl(url, 'GET') + _appendDevRole(credentials)
       }
 
       offeringPromises.push(axios(options))
@@ -195,11 +187,7 @@ export function whoami (credentials, url) {
     url)
   let whoamiUrl = '/d2l/api/lp/1.5/users/whoami'
   let options = {
-    url: userContext.createAuthenticatedUrl(whoamiUrl, 'GET')
-  }
-
-  if (process.env.NODE_ENV === 'development') {
-    options.data = {role: credentials.role};
+    url: userContext.createAuthenticatedUrl(whoamiUrl, 'GET') + _appendDevRole(credentials)
   }
 
   return axios(options)
@@ -221,14 +209,8 @@ export function enrollments (credentials, url) {
   // 3 = Course Offering, I think
   let urlWithFilters = `${enrollmentsUrl}?isActive=true&canAccess=true&orgUnitTypeId=3`
   let options = {
-    url: userContext.createAuthenticatedUrl(urlWithFilters, 'GET')
+    url: userContext.createAuthenticatedUrl(urlWithFilters, 'GET') + _appendDevRole(credentials)
   }
-
-  if (process.env.NODE_ENV === 'development') {
-    options.data = {role: credentials.role};
-  }
-
-  console.log('enrollments options', options)
 
   return axios(options)
   .then((response) => {
@@ -273,6 +255,13 @@ export function enrollments (credentials, url) {
   })
 }
 
+function _appendDevRole(credentials) {
+  if (process.env.NODE_ENV !== 'production') {
+    return '?role=' + credentials.role
+  }
+
+  return '';
+}
 
 export function stringifyUsername (whoami) {
   return `${whoami.FirstName}-${whoami.LastName}-${whoami.Identifier}`
