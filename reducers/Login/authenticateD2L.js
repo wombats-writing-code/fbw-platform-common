@@ -93,12 +93,13 @@ export function instructorCourses (credentials, url) {
     url: userContext.createAuthenticatedUrl(urlWithFilters, 'GET')
   }
 
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV !== 'production') {
     options.data = {role: credentials.role};
   }
 
+  console.log('enrollments options', options)
+
   let instructorCourseBanks = []
-  // console.log(options)
   return axios(options)
   .then((response) => {
     console.log('instructor enrollments', response)
@@ -226,8 +227,9 @@ export function enrollments (credentials, url) {
   if (process.env.NODE_ENV === 'development') {
     options.data = {role: credentials.role};
   }
-  
-  // console.log(options)
+
+  console.log('enrollments options', options)
+
   return axios(options)
   .then((response) => {
     let enrollments = response.data.Items

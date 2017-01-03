@@ -33,7 +33,9 @@ describe('login reducer', () => {
   })
 
   it('should create an action for authenticateD2LInstructor', () => {
-    const credentials = require('../../../d2lcredentials')
+    let credentials = require('../../../d2lcredentials')
+    credentials.role = 'instructor';
+    
     const expectedAction = {
       type: RECEIVE_AUTHENTICATE_D2L,
       credentials
