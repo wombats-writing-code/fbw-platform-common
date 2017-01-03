@@ -25,6 +25,8 @@ const provider = (component, credentials) => {
   let mergeProps = (stateProps, dispatchProps, ownProps) => {
     return _.assign({}, stateProps, dispatchProps, ownProps, {
       authenticateD2L: () => {
+        console.log('authenticateD2L() called', credentials)
+        
         if (credentials.role === 'instructor') {
          authenticateD2LInstructor(credentials)
         } else {
