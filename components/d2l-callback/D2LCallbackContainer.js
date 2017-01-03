@@ -14,10 +14,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     authenticateD2L: (credentials) => {
       if (credentials.role === 'instructor') {
-        console.log('authenticateD2LInstructor');
        dispatch(authenticateD2LInstructor(credentials))
       } else {
-        console.log('authenticateD2LStudent');
        dispatch(authenticateD2LStudent(credentials));
       }
     }

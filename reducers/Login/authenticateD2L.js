@@ -93,6 +93,10 @@ export function instructorCourses (credentials, url) {
     url: userContext.createAuthenticatedUrl(urlWithFilters, 'GET')
   }
 
+  if (process.env.NODE_ENV === 'development') {
+    options.data = {role: credentials.role};
+  }
+
   let instructorCourseBanks = []
   // console.log(options)
   return axios(options)
@@ -116,6 +120,11 @@ export function instructorCourses (credentials, url) {
       let options = {
         url: userContext.createAuthenticatedUrl(url, 'GET')
       }
+
+      if (process.env.NODE_ENV === 'development') {
+        options.data = {role: credentials.role};
+      }
+
       offeringPromises.push(axios(options))
     })
     return axios.all(offeringPromises)
@@ -188,6 +197,10 @@ export function whoami (credentials, url) {
     url: userContext.createAuthenticatedUrl(whoamiUrl, 'GET')
   }
 
+  if (process.env.NODE_ENV === 'development') {
+    options.data = {role: credentials.role};
+  }
+
   return axios(options)
   .then((response) => {
     return Q.when(response.data)
@@ -209,6 +222,11 @@ export function enrollments (credentials, url) {
   let options = {
     url: userContext.createAuthenticatedUrl(urlWithFilters, 'GET')
   }
+
+  if (process.env.NODE_ENV === 'development') {
+    options.data = {role: credentials.role};
+  }
+  
   // console.log(options)
   return axios(options)
   .then((response) => {
