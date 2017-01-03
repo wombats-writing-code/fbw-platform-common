@@ -12,18 +12,17 @@ import {RECEIVE_AUTHENTICATE_D2L} from '../Login/authenticateD2L'
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const VISITOR_BANKS = [{id:'assessment.Bank%3A57d70ed471e482a74879349a%40bazzim.MIT.EDU'},
-  {id:'assessment.Bank%3A576d6d3271e4828c441d721a%40bazzim.MIT.EDU'}]
+
+import VISITOR_BANKS from './visitor-banks'
 
 const initialState = {
-  enrolledBanks: VISITOR_BANKS
+  banks: VISITOR_BANKS
 }
 export default function bankReducer (state = initialState, action) {
   switch (action.type) {
     case RECEIVE_BANKS:
       return _.assign({}, state, {
         banks: action.banks,
-        enrolledBanks: action.banks
       });
 
     case SELECT_BANK_OPTIMISTIC:
@@ -45,8 +44,9 @@ export default function bankReducer (state = initialState, action) {
       });
 
     case RECEIVE_AUTHENTICATE_D2L:
+      console.log('RECEIVE_AUTHENTICATE_D2L in bank reducer', action)
       return _.assign({}, state, {
-        enrolledBanks: action.data.banks
+        banks: action.data.banks
       })
 
     default:

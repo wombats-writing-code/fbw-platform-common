@@ -26,21 +26,22 @@ export function authenticateD2LInstructor(credentials) {
   return function (dispatch) {
     dispatch(authenticateD2LOptimistic());
 
-    console.log('authenticateD2LInstructor', credentials)
+    // console.log('authenticateD2LInstructor', credentials)
 
     let url = `${window.location.pathname}${window.location.search}`;
     let banks, username;
-    console.log('mounted d2l callback!', url)
+    if (process.env.NODE_ENV !== 'test') console.log('mounted d2l callback!', url);
 
     // now get the user enrollments and set them in the global state
     return instructorCourses(credentials, url)
     .then((banks) => {
-      console.log("got banks", banks)
+      if (process.env.NODE_ENV !== 'test') console.log("got banks", banks);
 
       return whoami(credentials, url)
     })
     .then((response) => {
-      console.log('got whoami', response)
+      if (process.env.NODE_ENV !== 'test') console.log('got whoami', response);
+
       username = stringifyUsername(response);
 
       dispatch(receiveAuthenticateUrl({url, banks, username}));
@@ -61,13 +62,13 @@ export function authenticateD2LStudent(credentials) {
 
     return enrollments(credentials, url)
     .then((banks) => {
-      console.log("got banks", banks)
+      if (process.env.NODE_ENV !== 'test') console.log("got banks", banks);
 
       // this.props.onSetEnrolledSubjects(studentBankIds)
       return whoami(credentials, url)
     })
     .then((response) => {
-      console.log('got whoami', response)
+      if (process.env.NODE_ENV !== 'test') console.log('got whoami', response);
       // this.props.login('acc', stringifyUsername(response))
       // browserHistory.push('/subjects')
 
@@ -97,7 +98,8 @@ export function instructorCourses (credentials, url) {
   let instructorCourseBanks = []
   return axios(options)
   .then((response) => {
-    console.log('got d2l instructor enrollments', response)
+    if (process.env.NODE_ENV !== 'test') console.log('got d2l instructor enrollments', response);
+
     let enrollments = response.data.Items
     enrollments = _.filter(enrollments, function (enrollment) {
       return enrollment.OrgUnit.Type.Code == 'Course Offering' &&
@@ -124,7 +126,8 @@ export function instructorCourses (credentials, url) {
   .then((offerings) => {
     // we also need to replace the D2L ID here with the QBank ID
     // And create the QBank banks / aliases?
-    console.log('offerings', offerings)
+    if (process.env.NODE_ENV !== 'test') console.log('offerings', offerings);
+
     let bankTestPromises = []
     _.each(offerings, (offering, index) => {
       instructorCourseBanks[index].term = offering.data.Semester.Name.trim()

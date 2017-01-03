@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'test'
+
 import reducer from '../index'
 import {
   authenticateD2LStudent, authenticateD2LInstructor,
@@ -25,7 +27,7 @@ describe('login reducer', () => {
       data: {
         url: mockUrl,
         username: 'Butter-Scotch-1145648@acc.edu',
-        banks: [{department: 'Sandbox', id: "assessment.Bank%3A58498ccb71e482e47e0ed8ce%40bazzim.MIT.EDU"}]        
+        banks: [{department: 'Sandbox', id: "assessment.Bank%3A58498ccb71e482e47e0ed8ce%40bazzim.MIT.EDU"}]
       }
     });
 
