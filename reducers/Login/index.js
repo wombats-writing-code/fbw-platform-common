@@ -13,17 +13,8 @@ import { LOG_OUT } from './logOutUser'
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = {
-  isLoginInProgress: false,
-  form: {
-    username: '',
-  },
-  user: {               // TODO: @Cole, please resolve with what you're doing for d2l and simpleLogin.
-    isVisitor: true,
-    username: null,
-    d2l: null
-  }
-}
+const initialState = stampNullUser();
+
 export default function loginReducer (state = initialState, action) {
   switch (action.type) {
     case RECEIVE_AUTHENTICATE_D2L:
@@ -33,7 +24,8 @@ export default function loginReducer (state = initialState, action) {
           d2l: {
             authenticatedUrl: action.url
           }
-        })
+        }),
+        isLoggedIn: true
       })
 
     case UPDATE_USERNAME:
@@ -52,28 +44,33 @@ export default function loginReducer (state = initialState, action) {
       return _.assign({}, state, {
         user: {
           username: action.data.username,
-          isVisitor: state.user.isVisitor
         },
-        isLoginInProgress: false
+        isVisitor: state.user.isVisitor,
+        isLoginInProgress: false,
+        isLoggedIn: true
       })
 
     case LOG_OUT:
-      return _.assign({}, state, {
-        form: {
-          username: '',
-          school: 'acc'
-        },
-        d2l: {},
-        user: {
-          isVisitor: true,
-          username: ''
-        },
-        isLoginInProgress: false,
-        isVisitor: false
-      })
+      return _.assign({}, state, stampNullUser())
 
 
     default:
       return state
+  }
+}
+
+function stampNullUser() {
+  return {
+    form: {
+      username: '',
+      school: 'acc'
+    },
+    user: {
+      d2l: null,
+      username: ''
+    },
+    isLoggedIn: false,
+    isLoginInProgress: false,
+    isVisitor: true
   }
 }

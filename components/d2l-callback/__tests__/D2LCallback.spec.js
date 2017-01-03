@@ -38,9 +38,10 @@ describe('D2LCallback', () => {
     );
   });
 
-  it('should the callback screen', () => {
+  it('should mount the callback screen', () => {
     const callback = connectedComponent.find(D2LCallback)
 
     callback.find('.callback-text').text().should.be.eql("Redirecting you to your dashboard...");
+    // callback.props().should.contain
   });
 });

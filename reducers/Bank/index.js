@@ -7,6 +7,8 @@ import {RECEIVE_BANKS} from './getBanks'
 import {RECEIVE_SELECT_BANK, SELECT_BANK_OPTIMISTIC} from './selectBank'
 import {RECEIVE_ITEMS} from './getItems'
 
+import {RECEIVE_AUTHENTICATE_D2L} from '../Login/authenticateD2L'
+
 // ------------------------------------
 // Reducer
 // ------------------------------------
@@ -41,6 +43,11 @@ export default function bankReducer (state = initialState, action) {
       return _.assign({}, state, {
         items: action.items
       });
+
+    case RECEIVE_AUTHENTICATE_D2L:
+      return _.assign({}, state, {
+        enrolledBanks: action.banks
+      })
 
     default:
       return state

@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import { logInUser } from '../../reducers/Login/logInUser'
 import { updateUsername } from '../../reducers/Login/updateUsername'
 import { logOutUser } from '../../reducers/Login/logOutUser'
-import { setEnrolledSubjects } from '../../reducers/Subject/setEnrolledSubjects'
 import {getAuthenticationUrl} from '../../d2lutils'
 
 const mapStateToProps = (state, ownProps) => {
@@ -21,13 +20,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onSetEnrolledSubjects: (bankIds) => dispatch(setEnrolledSubjects(bankIds)),
     updateUsername: (username) => dispatch(updateUsername(username)),
     login: (school, username) => dispatch(logInUser(school, username)),
     logout: () => {
       dispatch(logOutUser())
-      dispatch(resetMissionState())
-      dispatch(resetSubjectState())
     }
   }
 }

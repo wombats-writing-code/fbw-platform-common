@@ -21,14 +21,18 @@ export function authenticateD2LOptimistic () {
 export function authenticateD2LInstructor(credentials) {
 
   return function (dispatch) {
+    dispatch(authenticateD2LOptimistic());
+
+    console.log('authenticateD2LInstructor', credentials)
+
     let url = `${this.props.location.pathname}${this.props.location.search}`;
-    let userBankIds, username;
+    let banks, username;
     console.log('mounted d2l callback!', url)
 
     // now get the user enrollments and set them in the global state
     instructorCourses(credentials, url)
-    .then((userBankIds) => {
-      console.log("got banks", userBankIds)
+    .then((banks) => {
+      console.log("got banks", banks)
 
       return whoami(credentials, url)
     })
@@ -36,7 +40,7 @@ export function authenticateD2LInstructor(credentials) {
       console.log('got whoami', response)
       username = stringifyUsername(response);
 
-      dispatch(receiveAuthenticateUrl({url, userBankIds, username}));
+      dispatch(receiveAuthenticateUrl({url, banks, username}));
     })
   }
 }
@@ -44,23 +48,25 @@ export function authenticateD2LInstructor(credentials) {
 export function authenticateD2LStudent(credentials) {
 
   return function (dispatch) {
+    console.log('authenticateD2LStudent', credentials)
+
     let url = `${this.props.location.pathname}${this.props.location.search}`;
-    let userBankIds, username;
+    let banks, username;
     console.log('mounted d2l callback!', url)
 
     enrollments(credentials, url)
-    .then((userBankIds) => {
-      console.log("got bank ids", userBankIds)
+    .then((banks) => {
+      console.log("got bank ids", banks)
 
       // this.props.onSetEnrolledSubjects(studentBankIds)
       return whoami(credentials, url)
     })
     .then((response) => {
-      // console.log('logging in', response)
+      console.log('got whoami', response)
       // this.props.login('acc', stringifyUsername(response))
       // browserHistory.push('/subjects')
 
-      dispatch(receiveAuthenticateUrl({url, userBankIds, username}));
+      dispatch(receiveAuthenticateUrl({url, banks, username}));
     })
   }
 }
