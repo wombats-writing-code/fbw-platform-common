@@ -257,7 +257,7 @@ export function enrollments (credentials, url) {
 
 function _appendDevRole(credentials) {
   if (process.env.NODE_ENV !== 'production') {
-    return '?role=' + credentials.role
+    return '&role=' + credentials.role
   }
 
   return '';
