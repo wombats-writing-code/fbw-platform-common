@@ -71,6 +71,8 @@ export function authenticateD2LStudent(credentials) {
     })
     .then((response) => {
       if (process.env.NODE_ENV !== 'test') console.log('got whoami', response);
+
+      username = stringifyUsername(response);
       // this.props.login('acc', stringifyUsername(response))
       // browserHistory.push('/subjects')
 
@@ -268,7 +270,7 @@ function _appendDevRole(credentials) {
 }
 
 export function stringifyUsername (whoami) {
-  return `${whoami.FirstName}-${whoami.LastName}-${whoami.Identifier}`
+  return `${whoami.FirstName}-${whoami.LastName}-${whoami.Identifier}@acc.edu`
 }
 
 export function extractDisplayName (username) {
