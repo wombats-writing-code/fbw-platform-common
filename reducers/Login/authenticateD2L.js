@@ -34,8 +34,9 @@ export function authenticateD2LInstructor(credentials) {
 
     // now get the user enrollments and set them in the global state
     return instructorCourses(credentials, url)
-    .then((banks) => {
-      if (process.env.NODE_ENV !== 'test') console.log("got banks", banks);
+    .then((enrolled) => {
+      if (process.env.NODE_ENV !== 'test') console.log("got banks", enrolled);
+      banks = enrolled;
 
       return whoami(credentials, url)
     })
@@ -61,8 +62,9 @@ export function authenticateD2LStudent(credentials) {
     console.log('mounted d2l callback!', url)
 
     return enrollments(credentials, url)
-    .then((banks) => {
-      if (process.env.NODE_ENV !== 'test') console.log("got banks", banks);
+    .then((enrolled) => {
+      if (process.env.NODE_ENV !== 'test') console.log("got banks", enrolled);
+      banks = enrolled;
 
       // this.props.onSetEnrolledSubjects(studentBankIds)
       return whoami(credentials, url)
