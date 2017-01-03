@@ -5,8 +5,7 @@ import moment from 'moment'
 let Q = require('q')
 import D2L from 'valence'
 
-// import { getDomain, getSchoolQBankId, BASE_BANKS, STUDENT_AUTHORIZATION_FUNCTIONS } from '../../utilities'
-// import {momentToQBank} from '../../utilities/time'
+import { getDomain } from '../../utilities'
 
 export const RECEIVE_AUTHENTICATE_D2L = 'RECEIVE_AUTHENTICATE_D2L'
 export const AUTHENTICATE_D2L_OPTIMISTIC = 'AUTHENTICATE_D2L_OPTIMISTIC'
