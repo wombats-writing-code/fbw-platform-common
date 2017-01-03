@@ -46,7 +46,7 @@ export default function bankReducer (state = initialState, action) {
 
     case RECEIVE_AUTHENTICATE_D2L:
       return _.assign({}, state, {
-        enrolledBanks: action.banks
+        enrolledBanks: action.data.banks
       })
 
     default:

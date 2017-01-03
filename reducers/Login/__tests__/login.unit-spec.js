@@ -22,9 +22,11 @@ describe('login reducer', () => {
 
     let newState = reducer({}, {
       type: RECEIVE_AUTHENTICATE_D2L,
-      url: mockUrl,
-      username: 'Butter-Scotch-1145648@acc.edu',
-      banks: [{department: 'Sandbox', id: "assessment.Bank%3A58498ccb71e482e47e0ed8ce%40bazzim.MIT.EDU"}]
+      data: {
+        url: mockUrl,
+        username: 'Butter-Scotch-1145648@acc.edu',
+        banks: [{department: 'Sandbox', id: "assessment.Bank%3A58498ccb71e482e47e0ed8ce%40bazzim.MIT.EDU"}]        
+      }
     });
 
     newState.user.username.should.be.eql('Butter-Scotch-1145648@acc.edu');

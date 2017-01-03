@@ -61,7 +61,7 @@ export function authenticateD2LStudent(credentials) {
 
     return enrollments(credentials, url)
     .then((banks) => {
-      console.log("got bank ids", banks)
+      console.log("got banks", banks)
 
       // this.props.onSetEnrolledSubjects(studentBankIds)
       return whoami(credentials, url)

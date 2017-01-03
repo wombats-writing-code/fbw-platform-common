@@ -20,9 +20,9 @@ export default function loginReducer (state = initialState, action) {
     case RECEIVE_AUTHENTICATE_D2L:
       return _.assign({}, state, {
         user: _.assign({}, state.user, {
-          username: action.username,
+          username: action.data.username,
           d2l: {
-            authenticatedUrl: action.url
+            authenticatedUrl: action.data.url
           }
         }),
         isLoggedIn: true

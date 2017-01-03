@@ -24,11 +24,12 @@ describe('Bank reducer', () => {
     let mockBank = {department: 'Sandbox', id: "assessment.Bank%3A58498ccb71e482e47e0ed8ce%40bazzim.MIT.EDU"};
     let newState = reducer({}, {
       type: RECEIVE_AUTHENTICATE_D2L,
-      banks: [mockBank]
+      data: {
+        banks: [mockBank]
+      }
     });
 
     newState.enrolledBanks.should.be.eql([mockBank]);
-
   })
 
 })

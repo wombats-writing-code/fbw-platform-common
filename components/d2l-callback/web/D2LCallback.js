@@ -8,7 +8,6 @@ class D2LCallback extends Component {
 
     this.props.authenticateD2L(this.props.credentials);
 
-
     // // console.log(this.props)
     // let url = `${this.props.location.pathname}${this.props.location.search}`
     // console.log('mounted d2l callback!', url)
