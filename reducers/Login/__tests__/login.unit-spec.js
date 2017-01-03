@@ -1,14 +1,23 @@
 import reducer from '../index'
-import {RECEIVE_AUTHENTICATE_D2L} from '../authenticateD2L'
+import {
+  authenticateD2LStudent, authenticateD2LInstructor,
+  RECEIVE_AUTHENTICATE_D2L
+} from '../authenticateD2L'
 
+import thunk from 'redux-thunk'
 let chai = require('chai');
 let should = require('should');
 chai.should();
 
 
+import configureMockStore from 'redux-mock-store'
+const middlewares = [ thunk ]
+const mockStore = configureMockStore(middlewares)
+
+
 describe('login reducer', () => {
 
-  it('should authenticate d2l for an instructor', () => {
+  it('should set the username and authenticatedUrl upon RECEIVE_AUTHENTICATE_D2L', () => {
     const mockUrl = 'd2l-callback?x_a=94Uf24iaW4SWpQMzFvsMrH&x_b=uq9naj95YZ2bOzgZ8se69m&x_c=66IANU-TLdAJDIOmfvygR1tA110eoQe-bYdMFldm5rA';
 
     let newState = reducer({}, {
@@ -23,6 +32,18 @@ describe('login reducer', () => {
     newState.isLoggedIn.should.be.eql(true);
   })
 
-  it('should login with a visitor user')
+  it('should create an action for authenticateD2LInstructor', () => {
+    const credentials = require('../../../d2lcredentials')
+    const expectedAction = {
+      type: RECEIVE_AUTHENTICATE_D2L,
+      credentials
+    }
+    const store = mockStore({})
+
+    store.dispatch(authenticateD2LInstructor(credentials))
+      .then( () => {
+        store.getActions().should.be.eql(expectedAction)
+      })
+  })
 
 })

@@ -8,7 +8,7 @@
     "npm": "^3.0.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --colors $(find . ! -path './node_modules/*' -name '*.unit-spec.js')",
+    "test": "./node_modules/.bin/mocha -r jsdom-global/register --compilers js:babel-core/register --colors  $(find . ! -path './node_modules/*' -name '*.unit-spec.js')",
     "karma": "karma start --browsers Chrome --log-level debug"
   },
   "dependencies": {

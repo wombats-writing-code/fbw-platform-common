@@ -3,6 +3,7 @@ import _ from 'lodash'
 import axios from 'axios'
 import moment from 'moment'
 let Q = require('q')
+import D2L from 'valence'
 
 // import { getDomain, getSchoolQBankId, BASE_BANKS, STUDENT_AUTHORIZATION_FUNCTIONS } from '../../utilities'
 // import {momentToQBank} from '../../utilities/time'
@@ -28,7 +29,7 @@ export function authenticateD2LInstructor(credentials) {
 
     console.log('authenticateD2LInstructor', credentials)
 
-    let url = `${this.props.location.pathname}${this.props.location.search}`;
+    let url = `${window.location.pathname}${window.location.search}`;
     let banks, username;
     console.log('mounted d2l callback!', url)
 
@@ -44,6 +45,8 @@ export function authenticateD2LInstructor(credentials) {
       username = stringifyUsername(response);
 
       dispatch(receiveAuthenticateUrl({url, banks, username}));
+
+      return username;
     })
   }
 }
@@ -53,7 +56,7 @@ export function authenticateD2LStudent(credentials) {
   return function (dispatch) {
     console.log('authenticateD2LStudent', credentials)
 
-    let url = `${this.props.location.pathname}${this.props.location.search}`;
+    let url = `${window.location.pathname}${window.location.search}`;
     let banks, username;
     console.log('mounted d2l callback!', url)
 
@@ -70,6 +73,8 @@ export function authenticateD2LStudent(credentials) {
       // browserHistory.push('/subjects')
 
       dispatch(receiveAuthenticateUrl({url, banks, username}));
+
+      return response;
     })
   }
 }
