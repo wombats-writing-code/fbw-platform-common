@@ -1,5 +1,6 @@
 process.env.NODE_ENV = 'test'
 
+import _ from 'lodash'
 import reducer from '../index'
 import {
   authenticateD2LStudent, authenticateD2LInstructor,
@@ -37,8 +38,9 @@ describe('login reducer', () => {
   })
 
   it('should create an action for authenticateD2LInstructor', () => {
-    let credentials = require('../../../d2lcredentials')
-    credentials.role = 'instructor';
+    let credentials = _.assign({}, require('../../../d2lcredentials'), {
+      role: 'instructor'
+    })
 
     const expectedAction = {
       type: RECEIVE_AUTHENTICATE_D2L,
@@ -47,6 +49,23 @@ describe('login reducer', () => {
     const store = mockStore({})
 
     store.dispatch(authenticateD2LInstructor(credentials))
+    .then( () => {
+      store.getActions().should.be.eql(expectedAction)
+    })
+  })
+
+  it('should create an action for authenticateD2LStudent', () => {
+    let credentials = _.assign({}, require('../../../d2lcredentials'), {
+      role: 'student'
+    })
+
+    const expectedAction = {
+      type: RECEIVE_AUTHENTICATE_D2L,
+      credentials
+    }
+    const store = mockStore({})
+
+    store.dispatch(authenticateD2LStudent(credentials))
     .then( () => {
       store.getActions().should.be.eql(expectedAction)
     })
