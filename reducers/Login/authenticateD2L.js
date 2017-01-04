@@ -85,11 +85,3 @@ export function authenticateD2LStudent(credentials) {
 export function stringifyUsername (whoami) {
   return `${whoami.FirstName}-${whoami.LastName}-${whoami.Identifier}@acc.edu`
 }
-
-export function extractDisplayName (username) {
-  if (username.indexOf('-') >= 0) {
-    return `${username.split('-')[0]} ${username.split('-')[1]}`
-  } else {
-    return username
-  }
-}

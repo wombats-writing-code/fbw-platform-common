@@ -18,7 +18,7 @@ class Login extends Component {
   }
 
   componentDidUpdate () {
-    if (this.props.isVisitor) {
+    if (this.props.isVisitor && this.textInput) {
       this.textInput.focus()
     }
   }

@@ -35,6 +35,8 @@ describe('login reducer', () => {
     newState.user.username.should.be.eql('Butter-Scotch-1145648@acc.edu');
     newState.user.d2l.authenticatedUrl.should.be.eql(mockUrl)
     newState.isLoggedIn.should.be.eql(true);
+    newState.isVisitor.should.be.eql(false);
+
   })
 
   it('should create an action for authenticateD2LInstructor', () => {

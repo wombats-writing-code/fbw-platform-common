@@ -25,6 +25,7 @@ export default function loginReducer (state = initialState, action) {
             authenticatedUrl: action.data.url
           }
         }),
+        isVisitor: false,
         isLoggedIn: true
       })
 
@@ -37,7 +38,8 @@ export default function loginReducer (state = initialState, action) {
 
     case LOGGED_IN_OPTIMISTIC:
       return _.assign({}, state, {
-        isLoginInProgress: true
+        isLoginInProgress: true,
+        isVisitor: true
       })
 
     case LOGGED_IN:
@@ -45,7 +47,7 @@ export default function loginReducer (state = initialState, action) {
         user: {
           username: action.data.username,
         },
-        isVisitor: state.user.isVisitor,
+        isVisitor: true,
         isLoginInProgress: false,
         isLoggedIn: true
       })

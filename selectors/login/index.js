@@ -1,4 +1,11 @@
 
+export const usernameToDisplayName = () => {
+  if (username.indexOf('-') >= 0) {
+    return `${username.split('-')[0]} ${username.split('-')[1]}`
+  }
+
+  return username
+}
 
 export const agentDisplayName = (agentId) => {
   if (!agentId) return '';
