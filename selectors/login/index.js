@@ -1,5 +1,5 @@
 
-export const usernameToDisplayName = () => {
+export const usernameToDisplayName = (username) => {
   if (username.indexOf('-') >= 0) {
     return `${username.split('-')[0]} ${username.split('-')[1]}`
   }

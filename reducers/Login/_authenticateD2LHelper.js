@@ -155,9 +155,12 @@ export function enrollments (credentials, url) {
   })
   .then((responses) => {
     let courseResponses = _.filter(responses, (res) => {return res.status == 200})
-    let courseIds
+    let courseIds, courseResponsesData;
+
+    // console.log('courseResponses')
+
     if (_.isArray(courseResponses) && courseResponses.length > 0) {
-      let courseResponsesData = _.map(courseResponses, 'data')
+      courseResponsesData = _.map(courseResponses, 'data')
       courseIds = _.map(courseResponsesData, 'id')
     }
 
