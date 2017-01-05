@@ -2,9 +2,23 @@ let chai = require('chai');
 let path = require('path')
 chai.should();
 
-import {checkMissionStatus} from '../time/index'
+import {checkMissionStatus, localDateTime} from '../time/index'
 
 describe('time utilities', () => {
+
+  it('should convert a JS date object to local timezone', () => {
+    let date = {
+      "year": 2017,
+      "month": 6,
+      "day": 3,
+      "hour": 0,
+      "minute": 0,
+      "second": 1
+    };
+    let result = localDateTime(date);
+
+    result.should.be.a('object')
+  })
 
   it('should give the pending status for a pending mission', () => {
     let mission = {

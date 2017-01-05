@@ -1,5 +1,6 @@
 import _ from 'lodash'
-let moment = require('moment')
+const moment = require('moment-timezone')
+
 
 export function checkMissionStatus (mission) {
   let st = mission.startTime
