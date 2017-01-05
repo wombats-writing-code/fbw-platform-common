@@ -4,7 +4,7 @@ import { getMissions } from 'fbw-platform-common/reducers/Mission/getMissions'
 import { selectOpenMission } from 'fbw-platform-common/reducers/Mission/selectOpenMission'
 import { selectClosedMission } from 'fbw-platform-common/reducers/Mission/selectClosedMission'
 import {getEnrolledSubject} from 'fbw-platform-common/selectors/bank'
-import {getUser} fro 'fbw-platform-common/selectors'
+import {getUser} from 'fbw-platform-common/selectors'
 
 const mapStateToProps = (state, ownProps) => {
   // console.log('state', state);
