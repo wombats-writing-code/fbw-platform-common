@@ -1,5 +1,7 @@
 import _ from 'lodash'
 
+
+
 export const isTarget = (question) => {
   if (question && question.displayName) {
     return question.displayName.text.indexOf('.') < 0;
@@ -85,7 +87,7 @@ export function hasAchievedDirective (targets) {
   if (numCorrect >= min) return true;
 }
 
-export function SortItemsByModules(modules, items) {
+export function sortItemsByModules(modules, items) {
   var moduleItems = {};
   _.each(modules, function (module) {
     moduleItems[module.id] = {
@@ -102,6 +104,6 @@ export function SortItemsByModules(modules, items) {
       }
     });
   });
-  
+
   return moduleItems
 };

@@ -12,9 +12,9 @@ export function findBankDomain (bankId, enrolledBanks) {
   if (_.keys(BANK_TO_DOMAIN).indexOf(bankId) >= 0) {
     return BANK_TO_DOMAIN[bankId]
   } else {
-    console.log('bankId', bankId, 'enrolledBanks', enrolledBanks)
+    // console.log('bankId', bankId, 'enrolledBanks', enrolledBanks)
     let department = _.find(enrolledBanks, {id: bankId}).department.toLowerCase()
-    console.log('department', department)
+    // console.log('department', department)
     switch (department) {
       case 'accounting':
       case 'acc':

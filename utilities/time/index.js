@@ -1,6 +1,32 @@
 import _ from 'lodash'
 let moment = require('moment')
 
+export function checkMissionStatus (mission) {
+  let st = mission.startTime
+  let dl = mission.deadline
+    // need to subtract one because when you construct a Date object here,
+    // it assumes 0 index....but the native input and server-side use 1 index
+  let startTime = moment.utc(st)
+  let deadline = moment.utc(dl)
+  let now = moment.utc()
+
+  if (deadline < now) {
+    return 'over'
+  } else if (startTime <= now && now <= deadline) {
+    return 'pending'
+  } else {
+    return 'future'
+  }
+};
+
+export const localDateTime = (utcDateObject) => {
+  // convert our UTC date / time (already converted to JS format from python
+  // format by our reducer) to local timezone
+  let timezone = moment.tz.guess()
+
+  return moment.utc(utcDateObject).clone().tz(timezone)
+}
+
 export function momentToQBank (momentObject) {
   let timeUTC = momentObject.utc().toObject()
 
