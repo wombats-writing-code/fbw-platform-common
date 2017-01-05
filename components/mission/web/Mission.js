@@ -38,6 +38,7 @@ class Mission extends Component {
         username: this.props.user.username
       })
     }
+    
     if (!this.props.isGetMissionsInProgress && this.props.missions && this.props.mission) {
       let missionState = checkMissionStatus(this.props.mission)
       let data = {
