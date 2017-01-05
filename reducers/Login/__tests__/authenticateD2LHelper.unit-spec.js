@@ -10,7 +10,6 @@ chai.should();
 chai.use(chaiHttp);
 
 import { instructorCourses, enrollments, whoami } from '../_authenticateD2LHelper'
-const server = require('../../index');
 
 const _ = require('lodash')
 const Q = require('q')
