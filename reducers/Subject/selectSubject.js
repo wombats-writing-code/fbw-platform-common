@@ -1,12 +1,7 @@
 import axios from 'axios'
-import moment from 'moment'
 
-import {
-  getDomain,
-  momentToQBank,
-  save,
-  STUDENT_AUTHORIZATION_FUNCTIONS
-} from '../../utilities'
+import { getDomain, STUDENT_AUTHORIZATION_FUNCTIONS } from '../../utilities'
+import {momentToQBank} from '../../utilities/time'
 // ----
 // Action types
 export const RECEIVE_SELECT_SUBJECT = 'RECEIVE_SELECT_SUBJECT'
@@ -44,7 +39,6 @@ export function selectSubject (data) {
     .then((privateBankId) => {
       console.log('got from middleman the selected subject\'s privateBankId of:', privateBankId);
 
-      save('privateBankId', privateBankId.data)
       // dispatch(receiveSelectSubject(privateBankId.data))
       // let's keep the termBankId in the state tree, since we can now
       //   calculate the privateBankId using fbwUtils

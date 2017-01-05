@@ -2,138 +2,36 @@ import _ from 'lodash'
 import axios from 'axios'
 import Q from 'q'
 
-let moment = require('moment')
 let config = require('../configuration')
-
-let Lockr
-let store
-let isBrowser = false;
-isBrowser = true        //  because we're switching to the lib to save state, this isn't needed. putting this in here so my setup doesn't error out.
-if (process.env.BROWSER) {
-  isBrowser = true
-  Lockr = require('lockr')
-} else {
-  // store = require('react-native-simple-store')
-}
-
 import { isTarget, targetKey } from '../selectors'
 
 export const isLocal = (conf) => conf === 'dev'
 
+export const isBrowser = () => process.env.BROWSER ? true : false
+
 export const getDomain = () => isLocal(config) ? 'http://localhost:8888' : 'https://fbw-web-backend.herokuapp.com'
 
-export function momentToQBank (momentObject) {
-  let timeUTC = momentObject.utc().toObject()
-
-  return {
-    year: timeUTC.years,
-    month: timeUTC.months + 1,
-    day: timeUTC.date,
-    hour: timeUTC.hours,
-    minute: timeUTC.minutes,
-    second: timeUTC.seconds
+export const matches = (needle, haystack) => {
+  let parts = needle.split(' ');
+  let partQ = '';
+  for (let i=0; i<parts.length; i++) {
+    if (i==0) {
+      partQ = '(?=.*\\b' + parts[i] + ')';
+    } else {
+      partQ = partQ + '(?=.*\\b' +  parts[i] + ')';
+    }
   }
-}
 
-export function afterMidnight (timeObject) {
-  return {
-    year: timeObject.year,
-    month: timeObject.month,
-    day: timeObject.day,
-    hour: 0,
-    minute: 0,
-    second: 1
-  }
-}
+  let re = new RegExp(partQ, 'gi')
+  let matching = re.test(haystack);
 
-export function beforeMidnight (timeObject) {
-  return {
-    year: timeObject.year,
-    month: timeObject.month,
-    day: timeObject.day,
-    hour: 23,
-    minute: 59,
-    second: 59
-  }
-}
-
-export function qbankToMoment(timeObject) {
-  return moment.utc({
-    years: timeObject.year,
-    months: timeObject.month - 1,
-    days: timeObject.day,
-    hours: timeObject.hour,
-    minutes: timeObject.minute,
-    second: timeObject.second
-  })
-}
-
-export function adjustedQBankToMomentObj(timeObject) {
-  // for mission times that were already adjusted in stores,
-  // and moment.js takes months as 1-12
-  return {
-    years: timeObject.year,
-    months: timeObject.month + 1,
-    days: timeObject.day,
-    hours: timeObject.hour,
-    minutes: timeObject.minute,
-    second: timeObject.second
-  }
-}
-
-export function convertPythonDateToJS (pythonTime) {
-  return {
-    year: pythonTime.year,
-    month: pythonTime.month - 1,
-    day: pythonTime.day,
-    hour: pythonTime.hour,
-    minute: pythonTime.minute,
-    second: pythonTime.second
-  }
+  return matching;
 }
 
 export function getSchoolQBankId (school) {
   return `fbw-school%3A${school}%40FBW.MIT.EDU`
 }
 
-
-export function convertImagePaths (itemObject) {
-  // Grabs the 302 CloudFront URL from the middleman and replaces it in the
-  // question / choice / feedback text.
-  var itemString = JSON.stringify(itemObject),
-    mc3RegEx = /https:\/\/mc3.mit.edu\/fbw-author.*?\/url/g,
-    matches = itemString.match(mc3RegEx),
-    cloudFrontPromises = [],
-    originalURLs = [];
-  // console.log('matches', matches)
-  if (matches) {
-    _.each(matches, (match) => {
-      let params = {
-          url: match.replace('https://mc3.mit.edu/fbw-author/api/v2/repository', `${getDomain()}/middleman`)
-        };
-      originalURLs.push(match);
-      // console.log('params', params)
-      cloudFrontPromises.push(axios(params));
-    })
-
-    return axios.all(cloudFrontPromises)
-    .then((responses) => {  // each res should have the CloudFront URL
-      // console.log('axios responses', responses)
-      _.each(responses, (response, index) => {
-        let mc3URL = originalURLs[index];
-        itemString = itemString.replace(mc3URL, response.data);
-      });
-      // console.log('modified item', itemString)
-      return Q.when(JSON.parse(itemString));
-    })
-    .catch((error) => {
-      console.log('error getting cloudfront urls!');
-    });
-  } else {
-    // console.log("no promises")
-    return Q.when(JSON.parse(itemString));
-  }
-}
 
 export function updateQuestionWithResponse(question, response) {
   return _.assign({}, question, {
@@ -176,36 +74,6 @@ export function updateAssessmentSectionsWithResponse (sections, response) {
 
       console.log('response.nextQuestion?', response.nextQuestion)
 
-      // if there is a next question, but it's a target, we know the user has done the scaffold
-      // or, it might be the last target in the directive, so we need to
-      // also check for that
-      if (submittedQuestion) {
-        // console.log('next question is target', submittedQuestion);
-
-        //  we find the Target question to which this question belongs
-        // let key = targetKey(submittedQuestion);
-        // let target = _.find(_.filter(updatedSection.questions, isTarget), (question) => {
-        //   return targetKey(question) === key;
-        // });
-
-        // and update the updated section to set a hasNavigated = Boolean flag on it
-        // only set this flag if the route has been navigated, i.e. the last
-        // question in the route has been responded to
-
-        // updatedSection.questions = _.map(updatedSection.questions, (question, index) => {
-        //   //console.log('route finished?', routeFinished, 'response show answer', response.showAnswer)
-        //   if (question.id === target.id && routeFinished) {
-        //     return _.assign({}, question, {
-        //       hasNavigated: true
-        //     });
-        //   }
-        //   // console.log('key', key, 'updatedSection', updatedSection, 'target', target);
-        //
-        //   return question;
-        // });
-      }
-
-
       return updatedSection;
     }
 
@@ -215,35 +83,40 @@ export function updateAssessmentSectionsWithResponse (sections, response) {
   return _assessmentSections
 }
 
-export function get (key) {
-  if (isBrowser) {
-    return Q.when(Lockr.get(key))
-  } else {
-    return store.get(key)
-  }
 
+export function findBankDomain (bankId, enrolledBanks) {
+  // handles both simple login (hardcoded bankIds) and D2L-linked banks
+  if (_.keys(BANK_TO_DOMAIN).indexOf(bankId) >= 0) {
+    return BANK_TO_DOMAIN[bankId]
+  } else {
+    console.log('bankId', bankId, 'enrolledBanks', enrolledBanks)
+    let department = _.find(enrolledBanks, {id: bankId}).department.toLowerCase()
+    console.log('department', department)
+    switch (department) {
+      case 'accounting':
+      case 'acc':
+        return 'accounting'
+
+      case 'algebra':
+      case 'alg':
+      case 'mat':
+      case 'math':
+      case 'collegealgebra':
+      case 'college_algebra':
+        return 'algebra'
+
+      case 'sandbox':
+        return 'algebra'
+
+      default:
+        return 'accounting'
+    }
+  }
 }
 
-export function save (key, value) {
-  if (isBrowser) {
-    Lockr.set(key, value)
-  } else {
-    store.save(key, value)
-  }
-
-}
-
-export function flush () {
-  if (isBrowser) {
-    Lockr.flush()
-  } else {
-    store.keys()
-    .then((keys) => {
-      _.each(keys, (key) => {
-        store.delete(key)
-      })
-    })
-  }
+export function findBankLibrary (bankId, enrolledBanks) {
+  let department = findBankDomain(bankId, enrolledBanks)
+  return DOMAIN_TO_LIBRARY[department]
 }
 
 

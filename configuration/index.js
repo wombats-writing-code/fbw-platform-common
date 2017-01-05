@@ -1,2 +1,2 @@
-// module.exports = 'dev'
-module.exports = 'prod'
+module.exports = 'dev'
+// module.exports = 'prod'

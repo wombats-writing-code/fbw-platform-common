@@ -1,15 +1,22 @@
-// reducers/index.js
 
-import missionReducer from './Mission/Mission'
-import loginReducer from './Login/Login'
-import subjectReducer from './Subject/Subject'
-import outcomeReducer from './Outcome/Outcome'
+import bankReducer from './Bank'
+import subjectReducer from './Subject'
+import missionReducer from './Mission'
+import editMissionReducer from './edit-mission'
+import loginReducer from './Login'
+import mappingReducer from './Mapping'
+import resultReducer from './Result'
+
 // ... other reducers
 
 export default {
-  mission: missionReducer,
   login: loginReducer,
+  bank: bankReducer,
   subject: subjectReducer,
-  outcome: outcomeReducer,
+  mission: missionReducer,
+  editMission: editMissionReducer,
+  mapping: mappingReducer,
+  result: resultReducer
+
   // ... other reducers
 };

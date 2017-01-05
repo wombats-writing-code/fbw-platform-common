@@ -2,7 +2,8 @@
 import _ from 'lodash'
 import axios from 'axios'
 
-import { getDomain, convertPythonDateToJS, save } from '../../utilities'
+import { getDomain } from '../../utilities'
+import {convertPythonDateToJS } from '../../utilities/time'
 
 // ----
 // Action types
@@ -68,8 +69,6 @@ function _getPrivateBankId(data) {
   return axios(options)
   .then((privateBankId) => {
     // console.log('got from middleman the selected subject\'s privateBankId of:', privateBankId);
-
-    save('privateBankId', privateBankId.data)
 
     return privateBankId.data;
   })
