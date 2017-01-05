@@ -5,7 +5,7 @@ import { getMissions } from '../../reducers/Mission/getMissions'
 import { selectOpenMission } from '../../reducers/Mission/selectOpenMission'
 import { selectClosedMission } from '../../reducers/Mission/selectClosedMission'
 import {getUser} from '../../selectors/'
-import {getEnrolledSubject} from '../../../selectors/bank'
+import {getEnrolledSubject} from '../../selectors/bank'
 
 const mapStateToProps = (state, ownProps) => {
   // console.log('ownProps of MissionContainer', ownProps)
