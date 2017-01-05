@@ -52,12 +52,14 @@ describe('time utilities', () => {
         "minute": 0,
         "second": 1
       },
-      "year": 2017,
-      "month": 0,
-      "day": 1,
-      "hour": 0,
-      "minute": 0,
-      "second": 1
+      deadline: {
+        "year": 2017,
+        "month": 0,
+        "day": 1,
+        "hour": 0,
+        "minute": 0,
+        "second": 1
+      }
     };
     let result = checkMissionStatus(mission);
 
