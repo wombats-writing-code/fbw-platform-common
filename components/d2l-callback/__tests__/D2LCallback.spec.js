@@ -44,4 +44,8 @@ describe('D2LCallback', () => {
     callback.find('.callback-text').text().should.be.eql("Redirecting you to your dashboard...");
     // callback.props().should.contain
   });
+
+  after(() => {
+    connectedComponent.detach();
+  });
 });

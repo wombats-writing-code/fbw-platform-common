@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
     mission: ownProps.params && state.mission.missions ?
               _.find(state.mission.missions, m => slug(m.displayName.text) === slug(ownProps.params.missionName)) :
               null,
-    hasQuestions: state.mission.currentMissionSections ? true : false,
+    currentMissionSections: state.mission.currentMissionSections,
     hasResults: typeof state.mission.resultsExistForUser !== 'undefined' ? state.mission.resultsExistForUser : null,
     bankId: state.subject.privateBankId ? state.subject.privateBankId : null,
     missions: state.mission ? state.mission.missions : null,

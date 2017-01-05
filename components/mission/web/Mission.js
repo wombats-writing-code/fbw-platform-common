@@ -14,7 +14,7 @@ import QuestionsContainer from '../../questions/QuestionsContainer'
 import QuestionsComponent from '../../questions/web/Questions'
 const Questions = QuestionsContainer(QuestionsComponent)
 
-import {checkMissionStatus } from '../../../selectors/'
+import {checkMissionStatus } from '../../../utilities/time'
 
 import './Mission.scss'
 const styles = {
@@ -29,13 +29,13 @@ class Mission extends Component {
 
   componentDidUpdate() {
     // someone just pastes in /missions/MISSION-NAME
-    if (this.props.bankId &&
+    if (this.props.bank &&
         !this.props.mission &&
         !this.props.missions &&
         !this.props.isGetMissionsInProgress) {
       this.props.getMissions({
-        bankId: this.props.bankId,
-        username: this.props.username
+        bankId: this.props.bank.id,
+        username: this.props.user.username
       })
     }
     if (!this.props.isGetMissionsInProgress && this.props.missions && this.props.mission) {
@@ -45,10 +45,11 @@ class Mission extends Component {
         username: this.props.username
       }
       if (!this.props.isSubmitTakeMissionInProgress &&
-          !this.props.hasQuestions &&
+          !this.props.currentMissionSections &&
           missionState !== "over") {
         console.log('getting an open mission')
-        this.props.onSelectOpenMission(data)
+        this.props.onSelectOpenMission(data);
+
       } else if (!this.props.isSubmitTakeMissionInProgress &&
           missionState === "over" &&
           typeof this.props.hasResults === "undefined") {

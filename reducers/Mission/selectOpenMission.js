@@ -42,28 +42,28 @@ export function selectOpenMission (data) {
       // also need to update hasNavigated for the correct target status
       _assessmentSections = response.data;
 
-      _.each(_assessmentSections, (section) => {
-        let sortedItems = filterItemsByTarget(section.questions);
-        let targetsNavigatedInSection = [];
-        _.each(sortedItems, (questionsList, targetKey) => {
-          // Now go through each of the non-pristine target questions and figure out
-          //   if the route has been finished.
-          // If the route ends in an unanswered question, route not finished.
-          // If the route ends in a wrong response, route not finished.
-          // Route only finished if the last question isCorrect.
-          if (targetStatus(questionsList[0]) !== 'PRISTINE') {
-            let lastRouteQuestion = questionsList[questionsList.length - 1];
-            if (lastRouteQuestion.responded && lastRouteQuestion.isCorrect) {
-              targetsNavigatedInSection.push(questionsList[0].id);
-            }
-          }
-        });
-        _.each(section.questions, (question) => {
-          if (targetsNavigatedInSection.indexOf(question.id) >= 0) {
-            question.hasNavigated = true;
-          }
-        })
-      });
+      // _.each(_assessmentSections, (section) => {
+      //   let sortedItems = filterItemsByTarget(section.questions);
+      //   let targetsNavigatedInSection = [];
+      //   _.each(sortedItems, (questionsList, targetKey) => {
+      //     // Now go through each of the non-pristine target questions and figure out
+      //     //   if the route has been finished.
+      //     // If the route ends in an unanswered question, route not finished.
+      //     // If the route ends in a wrong response, route not finished.
+      //     // Route only finished if the last question isCorrect.
+      //     if (targetStatus(questionsList[0]) !== 'PRISTINE') {
+      //       let lastRouteQuestion = questionsList[questionsList.length - 1];
+      //       if (lastRouteQuestion.responded && lastRouteQuestion.isCorrect) {
+      //         targetsNavigatedInSection.push(questionsList[0].id);
+      //       }
+      //     }
+      //   });
+      //   _.each(section.questions, (question) => {
+      //     if (targetsNavigatedInSection.indexOf(question.id) >= 0) {
+      //       question.hasNavigated = true;
+      //     }
+      //   })
+      // });
       let flatQuestions = _.flatten(_.map(_assessmentSections, 'questions'))
       return Q.all(_.map(flatQuestions, convertImagePaths))
     })
