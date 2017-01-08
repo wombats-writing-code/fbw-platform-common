@@ -12,7 +12,7 @@ import {RECEIVE_UPDATE_MISSION} from './updateMission'
 import {UPDATE_MISSION_FORM} from './updateMissionForm'
 import {UPDATE_EDIT_MISSION_FORM} from './updateEditMissionForm'
 import {UPDATE_SPAWN_DATE} from './updateSpawnDate'
-import {RECEIVE_DELETE_MISSION} from './deleteMission'
+import {DELETE_MISSION_OPTIMISTIC, RECEIVE_DELETE_MISSION} from './deleteMission'
 
 
 // ------------------------------------
@@ -174,8 +174,14 @@ export default function missionReducer (state = initialState, action) {
         })
       })
 
+    case DELETE_MISSION_OPTIMISTIC:
+      return _.assign({}, state, {
+        isDeleteMissionInProgress: true
+      })
+
     case RECEIVE_DELETE_MISSION:
       return _.assign({}, state, {
+        isDeleteMissionInProgress: false,
         missions: _.filter(state.missions, (m) => {
           return m.id !== action.mission.id
         })

@@ -6,7 +6,6 @@ import {
   getDomain
 } from '../../utilities'
 
-export const DELETE_MISSION = 'DELETE_MISSION'
 export const RECEIVE_DELETE_MISSION = 'RECEIVE_DELETE_MISSION'
 export const DELETE_MISSION_OPTIMISTIC = 'DELETE_MISSION_OPTIMISTIC'
 
@@ -15,7 +14,7 @@ export function receiveDeleteMission(mission) {
 }
 
 export function deleteMissionOptimistic(data) {
-  return { type: DELETE_MISSION, data };
+  return { type: DELETE_MISSION_OPTIMISTIC, data };
 }
 
 export function deleteMission(mission) {
@@ -28,7 +27,7 @@ export function deleteMission(mission) {
   }
 
   return function(dispatch) {
-    //dispatch(deleteMissionOptimistic(data));
+    dispatch(deleteMissionOptimistic(data));
 
     return axios(options)
     .then((results) => {

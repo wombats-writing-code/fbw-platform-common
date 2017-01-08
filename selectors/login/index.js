@@ -7,10 +7,12 @@ export const usernameToDisplayName = (username) => {
   return username
 }
 
-export const agentDisplayName = (agentId) => {
+export const osidToDisplayName = (agentId) => {
   if (!agentId) return '';
 
-  return agentId.split('%3A')[1].split('%25')[0];
+  let username = agentId.split('%3A')[1].split('%25')[0];
+
+  return usernameToDisplayName(username)
 }
 
 export const agentIdFromTakingAgentId = (agentId) => {
