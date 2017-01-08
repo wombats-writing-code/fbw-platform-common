@@ -35,7 +35,7 @@ export default function missionReducer (state = initialState, action) {
 
     case RECEIVE_CREATE_MISSION:
       return _.assign({}, state, {
-        missions: [...state.missions, action.mission],      // creates a new array of existing missions with the new mission appended
+        missions: _.compact(_.concat(state.missions, action.mission)),      // creates a new array of existing missions with the new mission appended
         newMission: stampNewMission(),
         currentMission: action.mission,
         isCreateMissionInProgress: false
