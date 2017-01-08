@@ -23,7 +23,7 @@ export default function missionReducer (state = initialState, action) {
   switch (action.type) {
     case ADD_MISSION:
       return _.assign({}, state, {
-        newMission: stampNewMission()
+        newMission: stampNewMission(),
       });
 
     case CREATE_MISSION_OPTIMISTIC:

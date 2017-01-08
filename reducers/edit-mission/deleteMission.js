@@ -27,7 +27,7 @@ export function deleteMission(mission) {
   }
 
   return function(dispatch) {
-    dispatch(deleteMissionOptimistic(data));
+    dispatch(deleteMissionOptimistic(mission));
 
     return axios(options)
     .then((results) => {
