@@ -20,6 +20,8 @@ import { SET_CHOICE_HEIGHT } from './setChoiceHeight'
 
 import {SELECT_BANK} from '../Bank/selectBank'
 
+import {RECEIVE_CREATE_MISSION} from '../edit-mission/createMission'
+
 // ------------------------------------
 // Reducer
 // ------------------------------------
@@ -47,6 +49,12 @@ export default function missionReducer (state = initialState, action) {
     case SELECT_MISSION:
       return _.assign({}, state, {
         currentMission: action.mission,
+      })
+
+    case RECEIVE_CREATE_MISSION:
+      return _.assign({}, state, {
+        currentMission: action.mission,
+        missions: _.compact(_.concat(state.missions, action.mission)),      // creates a new array of existing missions with the new mission appended
       })
 
     case SELECT_DIRECTIVE:

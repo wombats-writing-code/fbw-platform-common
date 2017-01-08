@@ -35,12 +35,44 @@ export default function missionReducer (state = initialState, action) {
 
     case RECEIVE_CREATE_MISSION:
       return _.assign({}, state, {
-        missions: _.compact(_.concat(state.missions, action.mission)),      // creates a new array of existing missions with the new mission appended
         newMission: stampNewMission(),
-        currentMission: action.mission,
         isCreateMissionInProgress: false
       })
 
+    case CREATE_TEST_FLIGHT_MISSIONS_OPTIMISTIC:
+      return _.assign({}, state, {
+        isSpawnInProgress: true
+      })
+
+    case UPDATE_SPAWN_DATE:
+      let newSpawnDate = _.has(action.data, "date") ? action.data.date : state.spawnDate
+      return _.assign({}, state, {
+        spawnDate: newSpawnDate,
+        spawnDateFocused: action.data.focused ? action.data.focused : false
+      })
+
+    case RECEIVE_CREATE_TEST_FLIGHT_MISSIONS:
+      return _.assign({}, state, {
+        isSpawnInProgress: false,
+        spawnedMissionsByMission: _.assign({}, state.spawnedMissionsByMission, {
+          [action.originalMission.id]: action.missions
+        })
+      })
+
+    case DELETE_MISSION_OPTIMISTIC:
+      return _.assign({}, state, {
+        isDeleteMissionInProgress: true
+      })
+
+    case RECEIVE_DELETE_MISSION:
+      return _.assign({}, state, {
+        isDeleteMissionInProgress: false,
+        missions: _.filter(state.missions, (m) => {
+          return m.id !== action.mission.id
+        })
+      })
+
+    // the following code is all unused right now
     case RECEIVE_UPDATE_MISSION:
       return _.assign({}, state, {
         missions: _.map(state.missions, (m) => {
@@ -152,39 +184,6 @@ export default function missionReducer (state = initialState, action) {
           focusedInput: nextFocusedInputEdit,
           formError: formErrorEdit
         }
-      })
-
-    case CREATE_TEST_FLIGHT_MISSIONS_OPTIMISTIC:
-      return _.assign({}, state, {
-        isSpawnInProgress: true
-      })
-
-    case UPDATE_SPAWN_DATE:
-      let newSpawnDate = _.has(action.data, "date") ? action.data.date : state.spawnDate
-      return _.assign({}, state, {
-        spawnDate: newSpawnDate,
-        spawnDateFocused: action.data.focused ? action.data.focused : false
-      })
-
-    case RECEIVE_CREATE_TEST_FLIGHT_MISSIONS:
-      return _.assign({}, state, {
-        isSpawnInProgress: false,
-        spawnedMissionsByMission: _.assign({}, state.spawnedMissionsByMission, {
-          [action.originalMission.id]: action.missions
-        })
-      })
-
-    case DELETE_MISSION_OPTIMISTIC:
-      return _.assign({}, state, {
-        isDeleteMissionInProgress: true
-      })
-
-    case RECEIVE_DELETE_MISSION:
-      return _.assign({}, state, {
-        isDeleteMissionInProgress: false,
-        missions: _.filter(state.missions, (m) => {
-          return m.id !== action.mission.id
-        })
       })
 
     default:

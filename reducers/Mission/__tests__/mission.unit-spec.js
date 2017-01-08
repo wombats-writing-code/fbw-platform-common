@@ -20,6 +20,8 @@ import {SELECT_DIRECTIVE} from '../selectDirective'
 import {SELECT_TARGET} from '../selectTarget'
 import {RECEIVE_CREATE_TAKE_MISSION, CREATE_TAKE_MISSION_OPTIMISTIC, selectOpenMission} from '../selectOpenMission'
 
+import {RECEIVE_CREATE_MISSION} from '../../edit-mission/createMission'
+
 const mockMissions = require('./missions.mock.json')
 const mockTarget = require('./target.mock.json')
 const mockTakeMission = require('./take-mission.mock.json')
@@ -96,5 +98,17 @@ describe('mission reducer', () => {
 
       done();
     });
+  })
+
+  it('should reduce the RECEIVE_CREATE_MISSION action', () => {
+    let newState = reducer({}, {
+      type: RECEIVE_CREATE_MISSION,
+      mission: {
+        name: 'foo'
+      }
+    });
+
+    newState.missions.length.should.eql(1);
+    newState.currentMission.name.should.be.eql('foo')
   })
 })
