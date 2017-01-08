@@ -8,6 +8,7 @@ import {RECEIVE_SELECT_BANK, SELECT_BANK_OPTIMISTIC} from './selectBank'
 import {RECEIVE_ITEMS} from './getItems'
 
 import {RECEIVE_AUTHENTICATE_D2L} from '../Login/authenticateD2L'
+import {LOG_OUT} from '../Login/logOutUser'
 
 // ------------------------------------
 // Reducer
@@ -44,9 +45,16 @@ export default function bankReducer (state = initialState, action) {
       });
 
     case RECEIVE_AUTHENTICATE_D2L:
-      console.log('RECEIVE_AUTHENTICATE_D2L in bank reducer', action)
+      // console.log('RECEIVE_AUTHENTICATE_D2L in bank reducer', action)
       return _.assign({}, state, {
         banks: action.data.banks
+      })
+
+    case LOG_OUT:
+      return _.assign({}, state, {
+        banks: null,
+        privateBankId: null,
+        getPrivateBankIdInProgress: false,
       })
 
     default:

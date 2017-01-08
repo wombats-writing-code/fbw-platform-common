@@ -22,6 +22,7 @@ import {RECEIVE_CREATE_TAKE_MISSION, CREATE_TAKE_MISSION_OPTIMISTIC, selectOpenM
 
 import {RECEIVE_CREATE_MISSION} from '../../edit-mission/createMission'
 import {RECEIVE_DELETE_MISSION} from '../../edit-mission/deleteMission'
+import {LOG_OUT} from '../../Login/logOutUser'
 
 const mockMissions = require('./missions.mock.json')
 const mockTarget = require('./target.mock.json')
@@ -127,6 +128,20 @@ describe('mission reducer', () => {
     });
 
     newState.missions.length.should.eql(1);
-    newState.missions[0].should.be.eql('bar')
+    newState.missions[0].id.should.be.eql('bar')
+  });
+
+  it('should clear everything in this part of mission state upon LOG_OUT', () => {
+    let newState = reducer({
+      missions: [],
+      currentMission: {name: 'foo'},
+      isGetMissionsInProgress: true
+    }, {
+      type: LOG_OUT
+    });
+
+    should.not.exist(newState.missions);
+    should.not.exist(newState.currentMission);
+    newState.isGetMissionsInProgress.should.eql(false);
   })
 })

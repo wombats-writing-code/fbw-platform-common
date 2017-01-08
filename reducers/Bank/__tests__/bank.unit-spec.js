@@ -6,6 +6,7 @@ chai.should();
 
 import {RECEIVE_BANKS} from '../getBanks'
 import {RECEIVE_AUTHENTICATE_D2L} from '../../Login/authenticateD2L'
+import {LOG_OUT} from '../../Login/logOutUser'
 
 const mockBanks = require('./banks.mock.json')
 
@@ -21,6 +22,20 @@ describe('Bank reducer', () => {
     });
 
     newState.banks.should.be.eql([mockBank]);
+  });
+
+  it('should clear everything in bank state upon LOG_OUT', () => {
+    let newState = reducer({
+      banks: ['superman'],
+      privateBankId: 'lexluther',
+      getPrivateBankIdInProgress: false
+    }, {
+      type: LOG_OUT
+    });
+
+    should.not.exist(newState.banks);
+    should.not.exist(newState.privateBankId);
+    newState.getPrivateBankIdInProgress.should.eql(false);
   })
 
 })

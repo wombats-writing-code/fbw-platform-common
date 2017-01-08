@@ -22,6 +22,7 @@ import {SELECT_BANK} from '../Bank/selectBank'
 
 import {RECEIVE_CREATE_MISSION} from '../edit-mission/createMission'
 import {RECEIVE_DELETE_MISSION} from '../edit-mission/deleteMission'
+import {LOG_OUT} from '../login/logOutUser'
 
 // ------------------------------------
 // Reducer
@@ -66,7 +67,6 @@ export default function missionReducer (state = initialState, action) {
           return m.id !== action.mission.id
         })
       })
-
     // =========
 
     case SELECT_DIRECTIVE:
@@ -187,6 +187,13 @@ export default function missionReducer (state = initialState, action) {
       let updatedHeightMap = _.assign({}, state.heightByChoice, action.height)
       return _.assign({}, state, {
         heightByChoice: updatedHeightMap
+      })
+
+    case LOG_OUT:
+      return _.assign({}, state, {
+        currentMission: null,
+        missions: null,
+        isGetMissionsInProgress: false
       })
 
     default:
