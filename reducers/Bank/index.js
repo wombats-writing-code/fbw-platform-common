@@ -7,7 +7,7 @@ import {RECEIVE_BANKS} from './getBanks'
 import {RECEIVE_SELECT_BANK, SELECT_BANK_OPTIMISTIC} from './selectBank'
 import {RECEIVE_ITEMS} from './getItems'
 
-import {RECEIVE_AUTHENTICATE_D2L} from '../Login/authenticateD2L'
+import {RECEIVE_AUTHENTICATE_D2L} from '../Login/authenticateD2L'   // updates banks with d2l bank info
 import {LOG_OUT} from '../Login/logOutUser'
 
 // ------------------------------------
@@ -52,7 +52,9 @@ export default function bankReducer (state = initialState, action) {
 
     case LOG_OUT:
       return _.assign({}, state, {
-        banks: null,
+        banks: VISITOR_BANKS,
+        currentBank: null,
+        items: null,
         privateBankId: null,
         getPrivateBankIdInProgress: false,
       })

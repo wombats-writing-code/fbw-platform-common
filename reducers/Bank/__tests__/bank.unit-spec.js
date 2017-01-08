@@ -33,7 +33,7 @@ describe('Bank reducer', () => {
       type: LOG_OUT
     });
 
-    should.not.exist(newState.banks);
+    newState.banks.length.should.eql(2);
     should.not.exist(newState.privateBankId);
     newState.getPrivateBankIdInProgress.should.eql(false);
   })
