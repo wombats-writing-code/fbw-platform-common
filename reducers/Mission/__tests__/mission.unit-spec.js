@@ -21,6 +21,7 @@ import {SELECT_TARGET} from '../selectTarget'
 import {RECEIVE_CREATE_TAKE_MISSION, CREATE_TAKE_MISSION_OPTIMISTIC, selectOpenMission} from '../selectOpenMission'
 
 import {RECEIVE_CREATE_MISSION} from '../../edit-mission/createMission'
+import {RECEIVE_DELETE_MISSION} from '../../edit-mission/deleteMission'
 
 const mockMissions = require('./missions.mock.json')
 const mockTarget = require('./target.mock.json')
@@ -110,5 +111,22 @@ describe('mission reducer', () => {
 
     newState.missions.length.should.eql(1);
     newState.currentMission.name.should.be.eql('foo')
+  })
+
+  it('should reduce the RECEIVE_DELETE_MISSION action', () => {
+    let newState = reducer({
+      missions: [
+        {id: 'foo'},
+        {id: 'bar'}
+      ]
+    }, {
+      type: RECEIVE_DELETE_MISSION,
+      mission: {
+        id: 'foo'
+      }
+    });
+
+    newState.missions.length.should.eql(1);
+    newState.missions[0].should.be.eql('bar')
   })
 })

@@ -67,9 +67,6 @@ export default function missionReducer (state = initialState, action) {
     case RECEIVE_DELETE_MISSION:
       return _.assign({}, state, {
         isDeleteMissionInProgress: false,
-        missions: _.filter(state.missions, (m) => {
-          return m.id !== action.mission.id
-        })
       })
 
     // the following code is all unused right now
