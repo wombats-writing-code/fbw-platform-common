@@ -22,14 +22,14 @@ export function authenticateD2LOptimistic () {
   return { type: AUTHENTICATE_D2L_OPTIMISTIC }
 }
 
-export function authenticateD2LInstructor(credentials) {
+export function authenticateD2LInstructor(credentials, optionalUrl) {
 
   return function (dispatch) {
     dispatch(authenticateD2LOptimistic());
 
     // console.log('authenticateD2LInstructor', credentials)
 
-    let url = `${window.location.pathname}${window.location.search}`;
+    let url = optionalUrl || `${window.location.pathname}${window.location.search}`;
     let banks, username;
     if (process.env.NODE_ENV !== 'test') console.log('mounted d2l callback!', url);
 

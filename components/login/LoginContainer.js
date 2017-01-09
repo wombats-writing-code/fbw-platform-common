@@ -31,7 +31,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 const provider = (component, credentials) => {
   let mergeProps = (stateProps, dispatchProps, ownProps) => {
     return _.assign({}, stateProps, dispatchProps, ownProps, {
-      authenticationUrl: getAuthenticationUrl(credentials)
+      authenticationUrl: getAuthenticationUrl(credentials),
+      credentials
     })
   }
   return connect(mapStateToProps, mapDispatchToProps, mergeProps)(component)

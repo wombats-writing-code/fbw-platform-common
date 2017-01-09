@@ -1,6 +1,6 @@
 {
   "name": "fbw-platform-common",
-  "version": "1.5.7",
+  "version": "1.5.8",
   "description": "Common stuff to the FbW apps",
   "main": "index.js",
   "engines": {
@@ -9,7 +9,11 @@
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha -r jsdom-global/register --compilers js:babel-core/register --colors  $(find . ! -path './node_modules/*' -name '*.unit-spec.js')",
-    "karma": "karma start --browsers Chrome --log-level debug"
+    "karma": "karma start --browsers Chrome --log-level debug",
+    "jest": "jest"
+  },
+  "jest": {
+    "preset": "react-native"
   },
   "dependencies": {
     "axios": "^0.15.2",
