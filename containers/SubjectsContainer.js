@@ -1,27 +1,27 @@
 // Subjects container
 import { connect } from 'react-redux'
 
-import { getSubjects } from '../reducers/Subject/getSubjects'
-import { selectSubject } from '../reducers/Subject/selectSubject'
+import { getBanks } from '../reducers/Bank/getBanks'
+import { selectBank } from '../reducers/Bank/selectBank'
 import { getMapping } from '../reducers/Mapping/getMapping'
-
+import {getUser} from '../selectors/'
 
 const mapStateToProps = (state, ownProps) => {
-  // console.log('state', state);
+  // console.log('state in subjects container', state);
   return {
-    privateBankId: state.subject.privateBankId,
-    bankIds: state.subject.enrolledBankIds ? state.subject.enrolledBankIds : null,
-    subjects: state.subject ? state.subject.subjects : null,
+    // privateBankId: state.subject.privateBankId,
+    // bankIds: state.bank.banks ? _.map(state.bank.banks, 'id') : null,
+    subjects: state.bank.banks ? state.bank.banks : null,
     isGetSubjectsInProgress: state.subject ? state.subject.isGetSubjectsInProgress : false,
     isSelectSubjectInProgress: state.subject ? state.subject.isSelectSubjectInProgress : false,
-    username: state.login.user.username ? state.login.user.username : null,
+    user: getUser(state)
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onSelectSubject: (data) => dispatch(selectSubject(data)),
-    getSubjects: (bankIds) => dispatch(getSubjects(bankIds)),
+    onSelectSubject: (bank, username) => dispatch(selectBank(bank, username)),
+    // getSubjects: (bankIds) => dispatch(getBanks(bankIds)),
     getMapping: () => dispatch(getMapping())
   }
 }
