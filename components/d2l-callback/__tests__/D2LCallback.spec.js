@@ -2,6 +2,7 @@ import React from 'react';
 
 import {Provider} from 'react-redux'
 import configureStore from 'redux-mock-store'
+import thunk from 'redux-thunk';
 
 const credentials = require('../../../d2lcredentials')
 import D2LCallbackComponent from '../web/D2LCallback';
@@ -22,7 +23,8 @@ chai.should()
 
 describe('D2LCallback', () => {
 
-  let mockStore = configureStore([]);
+  const middlewares = [thunk]; // add your middlewares like `redux-thunk`
+  let mockStore = configureStore(middlewares);
   let connectedComponent, store;
 
   before(function() {

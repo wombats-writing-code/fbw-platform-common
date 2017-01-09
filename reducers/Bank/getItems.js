@@ -31,8 +31,10 @@ export function getItems(bankId) {
 
     return axios(url)
     .then((response) => {
-      // console.log('items', items);
-      dispatch(receiveItems(response.data))
+      let items = response.data;
+      dispatch(receiveItems(items));
+
+      return items;
     })
     .catch((error) => {
       console.log('error getting items data', error);

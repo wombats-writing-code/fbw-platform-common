@@ -9,13 +9,12 @@ describe('bank selectors', () => {
   it('should select the enrolled subject from the banks', () => {
     let result = getEnrolledSubject({
       bank: {
+        currentBank: {id: 'my bank'},
         banks: [{id: 'foo', displayName: 'bar'}]
       }
     });
 
-    result.should.be.eql({id: 'foo', displayName: 'bar'});
+    result.should.be.eql({id: 'my bank'});
   })
-
-  it('should find the bank libarary');
 
 })
