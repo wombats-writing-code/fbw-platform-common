@@ -5,16 +5,19 @@ import { getTargetQuestions } from '../../selectors/mission'
 import { selectChoice } from '../../reducers/Mission/selectChoice'
 import { submitResponse } from '../../reducers/Mission/submitResponse'
 import { showAnswer } from '../../reducers/Mission/showAnswer'
+import {getUser} from '../../selectors/'
+import {getEnrolledSubject} from '../../selectors/bank'
 
 const mapStateToProps = (state, ownProps) => {
   // console.log('state in question container', state)
   return {
-    privateBankId: state.subject.privateBankId,
+    bank: getEnrolledSubject(state),
+    privateBankId: state.bank.privateBankId, // @luwenh, deprecated?
     mission: state.mission.currentMission ? state.mission.currentMission : null,
     isInProgressSubmitChoice: state.mission.isInProgressSubmitChoice ? state.mission.isInProgressSubmitChoice : false,
     isInProgressShowAnswer: state.mission.isInProgressShowAnswer ? state.mission.isInProgressShowAnswer : false,
     section: typeof state.mission.currentDirectiveIndex !== 'undefined' ? state.mission.currentMissionSections[state.mission.currentDirectiveIndex] : null,
-    username: state.login.user.username
+    user: getUser(state)
   }
 }
 

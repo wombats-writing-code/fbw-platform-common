@@ -17,17 +17,21 @@ export function selectBankOptimistic (bank) {
 
 // do this for instructors, too, so that there is
 //   a faster path to get missions
-export function selectBank(bank) {
+export function selectBank(bank, username) {
   return function (dispatch) {
     dispatch(selectBankOptimistic(bank))
 
+    if (!username) {
+      // if username is not passed in, assume instructor
+      username = 'instructor'
+    }
     let options = {
       url: `${getDomain()}/middleman/banks/${bank.id}/privatebankid`,
       headers: {
-        'x-fbw-username': 'instructor'
+        'x-fbw-username': username
       }
     }
-    // we need to make sure this is set-up at least one-time...
+    // we need to make sure this is set-up at least one-time for each user / termBank...
     return axios(options)
     .then((privateBankId) => {
       console.log('got from middleman the selected subject\'s privateBankId of:', privateBankId);

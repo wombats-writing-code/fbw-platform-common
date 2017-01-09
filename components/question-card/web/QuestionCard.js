@@ -156,11 +156,13 @@ class QuestionCard extends Component {
       }, 1000);
 
       this.props.onSubmitResponse({
-        bankId: this.props.privateBankId,
+        bankId: this.props.bank.id,
+        // bankId: this.props.privateBankId,
         choiceId: choiceId,
         questionId: questionId,
         section: this.props.section,
-        username: this.props.username
+        username: this.props.user.username
+        // username: this.props.username
       });
     }
   }
@@ -168,9 +170,11 @@ class QuestionCard extends Component {
   _onShowAnswer = (questionItem) => {
     if (!this.props.isInProgressShowAnswer) {
       this.props.onShowAnswer({
-        bankId: this.props.privateBankId,
+        // bankId: this.props.privateBankId,
+        bankId: this.props.bank.id,
         questionId: this.props.question.id,
-        section: this.props.section
+        section: this.props.section,
+        username: this.props.user.username
       });
     }
   }

@@ -17,13 +17,13 @@ export function deleteMissionOptimistic(data) {
   return { type: DELETE_MISSION_OPTIMISTIC, data };
 }
 
-export function deleteMission(mission) {
+export function deleteMission(mission, bankId) {
   let options = {
     data: {
       assessmentOfferedId: mission.assessmentOfferedId
     },
     method: 'DELETE',
-    url: `${getDomain()}/middleman/banks/${mission.bankId}/missions/${mission.id}`
+    url: `${getDomain()}/middleman/banks/${bankId}/missions/${mission.id}`
   }
 
   return function(dispatch) {
