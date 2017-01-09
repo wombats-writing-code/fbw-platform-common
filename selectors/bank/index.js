@@ -3,7 +3,8 @@ import _ from 'lodash'
 import { BANK_TO_DOMAIN, DOMAIN_TO_LIBRARY, BANK_TO_LIBRARY } from '../../utilities'
 
 export function getEnrolledSubject(state) {
-  return state.bank.banks && state.bank.banks.length > 0 ? state.bank.banks[0] : null;
+  // return state.bank.banks && state.bank.banks.length > 0 ? state.bank.banks[0] : null;
+  return state.bank.currentBank ? state.bank.currentBank : null;
 }
 
 
