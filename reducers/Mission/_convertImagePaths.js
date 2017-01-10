@@ -1,4 +1,5 @@
-
+import axios from 'axios'
+import Q from 'q'
 
 export function convertImagePaths (itemObject) {
   // Grabs the 302 CloudFront URL from the middleman and replaces it in the
