@@ -23,7 +23,7 @@ const mockTakeMission = require('./take-mission.mock.json')
 const mockReceiveTakeMission = require('./receive-take-mission.mock.json')
 
 describe('mission reducer', () => {
-  it('should RECEIVE_MISSIONS', () => {
+  it('should update the missions in state upon RECEIVE_MISSIONS', () => {
     let newState = reducer([], {
       type: RECEIVE_MISSIONS,
       missions: mockMissions
@@ -33,7 +33,7 @@ describe('mission reducer', () => {
     newState.isGetMissionsInProgress.should.eql(false);
   });
 
-  it('should SELECT_DIRECTIVE', () => {
+  it('should update the selected currentDirectiveIndex in state upon SELECT_DIRECTIVE', () => {
     let newState = reducer([], {
       type: SELECT_DIRECTIVE,
       directiveIndex: 3
@@ -44,7 +44,7 @@ describe('mission reducer', () => {
     should.not.exist(newState.selectedChoiceId);
   });
 
-  it('should SELECT_TARGET', () => {
+  it('should update the selected currentTarget in state upon SELECT_TARGET', () => {
     let newState = reducer([], {
       type: SELECT_TARGET,
       target: mockTarget
@@ -56,7 +56,7 @@ describe('mission reducer', () => {
     should.not.exist(newState.selectedChoiceId);
   })
 
-  it('should RECEIVE_CREATE_TAKE_MISSION_OPTIMISTIC with an open mission', () => {
+  it('should optimistically update state upon RECEIVE_CREATE_TAKE_MISSION_OPTIMISTIC', () => {
     let newState = reducer([], {
       type: CREATE_TAKE_MISSION_OPTIMISTIC,
       mission: mockTakeMission
@@ -68,7 +68,7 @@ describe('mission reducer', () => {
     should.not.exist(newState.currentMissionSections);
   });
 
-  it('should RECEIVE_CREATE_TAKE with an open mission of 14 sections', () => {
+  it('should update currentMissionSections in state upon RECEIVE_CREATE_TAKE', () => {
     let newState = reducer([], {
       type: RECEIVE_CREATE_TAKE_MISSION,
       mission: mockReceiveTakeMission
@@ -90,7 +90,7 @@ describe('mission reducer', () => {
     newState.currentMission.name.should.be.eql('foo')
   })
 
-  it('should reduce the RECEIVE_DELETE_MISSION action', () => {
+  it('should update missions in state upon RECEIVE_DELETE_MISSION', () => {
     let newState = reducer({
       missions: [
         {id: 'foo'},
