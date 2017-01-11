@@ -3,7 +3,7 @@ import axios from 'axios'
 import Q from 'q'
 
 let config = require('../configuration')
-import { isTarget, targetKey } from '../selectors'
+import { isTarget, targetKey } from '../selectors/mission'
 
 export const isLocal = (conf) => conf === 'dev'
 
