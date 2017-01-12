@@ -6,6 +6,10 @@ import { selectClosedMission } from 'fbw-platform-common/reducers/Mission/select
 import {getEnrolledSubject} from 'fbw-platform-common/selectors/bank'
 import {getUser} from 'fbw-platform-common/selectors'
 
+// need to getMapping here, instead of SubjectsContainer,
+//   because D2L users never see SubjectsContainer
+import { getMapping } from '../reducers/Mapping/getMapping'
+
 const mapStateToProps = (state, ownProps) => {
   // console.log('state', state);
   return {
@@ -14,6 +18,7 @@ const mapStateToProps = (state, ownProps) => {
     missions: state.mission ? state.mission.missions : null,
     isGetMissionsInProgress: state.mission ? state.mission.isGetMissionsInProgress : false,
     user: getUser(state),
+    mapping: state.mapping ? state.mapping : null
   }
 }
 
@@ -21,7 +26,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onSelectOpenMission: data => dispatch(selectOpenMission(data)),
     onSelectClosedMission: data => dispatch(selectClosedMission(data)),
-    getMissions: data => dispatch(getMissions(data))
+    getMissions: data => dispatch(getMissions(data)),
+    getMapping: data => dispatch(getMapping(data))
   }
 }
 
