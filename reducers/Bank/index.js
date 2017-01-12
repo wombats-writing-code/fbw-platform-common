@@ -6,6 +6,7 @@ import _ from 'lodash'
 import {RECEIVE_BANKS} from './getBanks'
 import {RECEIVE_SELECT_BANK, SELECT_BANK_OPTIMISTIC} from './selectBank'
 import {RECEIVE_ITEMS} from './getItems'
+import {RECEIVE_D2L_CLASS_ROSTER, GET_D2L_CLASS_ROSTER_OPTIMISTIC} from './getD2LClassRoster'
 
 import {RECEIVE_AUTHENTICATE_D2L} from '../Login/authenticateD2L'
 import { LOG_OUT } from '../Login/logOutUser'
@@ -53,6 +54,16 @@ export default function bankReducer (state = initialState, action) {
       console.log('RECEIVE_AUTHENTICATE_D2L in bank reducer', action)
       return _.assign({}, state, {
         banks: action.data.banks
+      })
+
+    case GET_D2L_CLASS_ROSTER_OPTIMISTIC:
+      return _.assign({}, state, {
+        roster: []
+      })
+
+    case RECEIVE_D2L_CLASS_ROSTER:
+      return _.assign({}, state, {
+        roster: action.roster
       })
 
     default:
