@@ -21,18 +21,48 @@ export function receiveMapping(mapping) {
 export function getMapping(departmentName) {
 
   return function(dispatch) {
-    let modulesUrl = `${getDomain()}/middleman/departments/${departmentName}/modules`;
-    let outcomesUrl = `${getDomain()}/middleman/departments/${departmentName}/outcomes`;
-    let relationshipsUrl = `${getDomain()}/middleman/departments/${departmentName}/relationships`;
+    // It's impossible to know, for a D2L student what department
+    //   their subject is in (403 on the term endpoint)
+    // So we need to just get all departments here, if departmentName is null
+    if (departmentName) {
+      let modulesUrl = `${getDomain()}/middleman/departments/${departmentName}/modules`;
+      let outcomesUrl = `${getDomain()}/middleman/departments/${departmentName}/outcomes`;
+      let relationshipsUrl = `${getDomain()}/middleman/departments/${departmentName}/relationships`;
 
-    return axios.all([axios.get(modulesUrl), axios.get(outcomesUrl), axios.get(relationshipsUrl)])
-    .then(axios.spread((modules, outcomes, relationships) => {
-      // console.log('received getting mapping', modules, outcomes, relationships);
+      return axios.all([axios.get(modulesUrl), axios.get(outcomesUrl), axios.get(relationshipsUrl)])
+      .then(axios.spread((modules, outcomes, relationships) => {
+        // console.log('received getting mapping', modules, outcomes, relationships);
 
-      dispatch(receiveMapping({modules: modules.data, outcomes: outcomes.data, relationships: relationships.data}));
-    }))
-    .catch((error) => {
-      console.log('error getting mapping', error);
-    });
+        dispatch(receiveMapping({modules: modules.data, outcomes: outcomes.data, relationships: relationships.data}));
+      }))
+      .catch((error) => {
+        console.log('error getting mapping', error);
+      });
+    } else {
+      let departments = ['accounting', 'algebra']
+      let promises = []
+      _.each(departments, (department) => {
+        let modulesUrl = `${getDomain()}/middleman/departments/${department}/modules`;
+        let outcomesUrl = `${getDomain()}/middleman/departments/${department}/outcomes`;
+        let relationshipsUrl = `${getDomain()}/middleman/departments/${department}/relationships`;
+
+        promises.push(axios.get(modulesUrl))
+        promises.push(axios.get(outcomesUrl))
+        promises.push(axios.get(relationshipsUrl))
+      })
+
+      return axios.all(promises)
+      .then(axios.spread((accModules, accOutcomes, accRelationships,
+                          algModules, algOutcomes, algRelationships) => {
+        // console.log('received getting mapping', modules, outcomes, relationships);
+
+        dispatch(receiveMapping({modules: _.assign({}, accModules.data, algModules.data),
+          outcomes: _.assign({}, accOutcomes.data, algOutcomes.data),
+          relationships: _.assign({}, accRelationships.data, algRelationships.data)}));
+      }))
+      .catch((error) => {
+        console.log('error getting mapping', error);
+      });
+    }
   }
 }

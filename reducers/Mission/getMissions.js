@@ -49,7 +49,9 @@ export function getMissions (data) {
         })
       })
 
-      dispatch(receiveMissions(missions))
+      dispatch(receiveMissions(missions));
+
+      return missions;
     })
     .catch((error) => {
       console.log('error getting missions data', error)

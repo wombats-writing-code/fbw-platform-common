@@ -18,7 +18,7 @@ const mockStore = configureMockStore(middlewares)
 import {submitResponse} from '../submitResponse'
 
 describe('submitResponse', () => {
-  it('should call submitResponse and submit a response from Shea Butter', function(done) {
+  it('should call submitResponse and submit a response from Nutter Butter', function(done) {
     this.timeout(15000);
 
     const store = mockStore({})
@@ -28,7 +28,7 @@ describe('submitResponse', () => {
       section: '',
       questionId: '',
       choiceId: '',
-      username: 'Shea-Butter-1145645@acc.edu'
+      username: 'Nutter-Butter-1145644@acc.edu'
     }))
     .then(res => {
       // console.log(' res', res);

@@ -1,5 +1,5 @@
 import thunk from 'redux-thunk';
-import 'lodash'
+import _ from 'lodash'
 
 import {GET_PHASE_I_RESULTS_OPTIMISTIC, RECEIVE_PHASE_I_RESULTS} from './getPhaseIResults'
 import {GET_PHASE_II_RESULTS_OPTIMISTIC, RECEIVE_PHASE_II_RESULTS} from './getPhaseIIResults'
