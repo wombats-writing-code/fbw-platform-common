@@ -47,7 +47,7 @@ class Questions extends Component {
     return (
       <li key={questionItem.id} className="questions-list__item">
         <div className="row">
-          <div className="medium-8 medium-centered large-6 large-centered columns">
+          <div className="medium-8 medium-centered large-8 large-centered columns">
             <QuestionCard question={questionItem} outcome={outcome} isExpanded={!questionItem.responded} />
           </div>
         </div>

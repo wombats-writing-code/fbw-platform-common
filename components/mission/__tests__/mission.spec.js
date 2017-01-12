@@ -37,10 +37,10 @@ describe('Mission', () => {
     );
   });
 
-  it('should render a mission', () => {
+  it('should render a mission with a current target route displayed', () => {
     const mission = connectedComponent.find(Mission)
 
-    mission.find('.question-card').length.should.be.eql(3);
+    mission.find('.question-card').length.should.be.eql(2);   // 2 questions in this target route
     // STATE.should.be.eql('bar')
 
   });
