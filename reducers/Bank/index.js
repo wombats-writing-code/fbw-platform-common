@@ -8,6 +8,7 @@ import {RECEIVE_SELECT_BANK, SELECT_BANK_OPTIMISTIC} from './selectBank'
 import {RECEIVE_ITEMS} from './getItems'
 
 import {RECEIVE_AUTHENTICATE_D2L} from '../Login/authenticateD2L'
+import { LOG_OUT } from '../Login/logOutUser'
 
 // ------------------------------------
 // Reducer
@@ -20,6 +21,11 @@ const initialState = {
 }
 export default function bankReducer (state = initialState, action) {
   switch (action.type) {
+    case LOG_OUT:
+      return _.assign({}, {
+        banks: VISITOR_BANKS
+      })
+
     case RECEIVE_BANKS:
       return _.assign({}, state, {
         banks: action.banks,
