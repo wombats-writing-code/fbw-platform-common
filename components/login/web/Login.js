@@ -102,11 +102,6 @@ class Login extends Component {
     }
   }
 
-  _onLogin(username, school) {
-    this.props.login(username, school);
-    browserHistory.push('/')
-  }
-
 }
 
 export default Login
