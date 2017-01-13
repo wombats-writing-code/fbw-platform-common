@@ -18,8 +18,9 @@ import './Questions.scss'
 class Questions extends Component {
 
   componentDidUpdate(prevProps) {
-    if (!prevProps.isInProgressSubmitChoice && this.props.isInProgressSubmitChoice) {
-      $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+    let nextCueTop = $('.answered-question-cue').last();
+    if (prevProps.isInProgressSubmitChoice && !this.props.isInProgressSubmitChoice) {
+      $("html, body").animate({ scrollTop: nextCueTop.offset.top }, 1000);
     }
   }
 
