@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {isTarget, filterItemsByTarget, targetKey, directiveIdsFromQuestions} from '../../../selectors/'
 
 import _ from 'lodash';
+import $ from 'jquery';
 import Spinner from 'react-spinner'
 
 import QuestionCardContainer from '../../question-card/QuestionCardContainer'
@@ -15,6 +16,12 @@ import NextCue from './NextCue'
 import './Questions.scss'
 
 class Questions extends Component {
+
+  componentDidUpdate(prevProps) {
+    if (!prevProps.isInProgressSubmitChoice && this.props.isInProgressSubmitChoice) {
+      $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+    }
+  }
 
   renderListRow = (questionItem, sectionId, rowId) => {
     let outcome = _.find(this.props.outcomes, {id: questionItem.learningObjectiveIds[0]});

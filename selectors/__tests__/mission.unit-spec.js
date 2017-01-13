@@ -12,6 +12,6 @@ describe('mission selectors', () => {
 
     result.should.be.eql(true);
 
-    done()
+    done();
   })
 })
