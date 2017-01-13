@@ -27,6 +27,7 @@ describe('QuestionCard', () => {
     const questionCard = mount(
       <QuestionCard question={QUESTION}
                     outcome={OUTCOME}
+                    isExpanded={true}
                     />,
       {attachTo: div}
     );
@@ -45,6 +46,7 @@ describe('QuestionCard', () => {
     const questionCard = mount(
       <QuestionCard question={QUESTION_WRONG}
                     outcome={OUTCOME}
+                    isExpanded={true}
                     />,
       {attachTo: div}
     );

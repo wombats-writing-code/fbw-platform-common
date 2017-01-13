@@ -20,6 +20,7 @@ class Questions extends Component {
   componentDidUpdate(prevProps) {
     let nextCueTop = $('.answered-question-cue').last();
     if (prevProps.isInProgressSubmitChoice && !this.props.isInProgressSubmitChoice) {
+      console.log('scroll to', nextCueTop);
       $("html, body").animate({ scrollTop: nextCueTop.offset.top }, 1000);
     }
   }
@@ -52,11 +53,21 @@ class Questions extends Component {
       )
     }
 
+    let isExpanded;
+    // console.log('questionItem', questionItem)
+    if (!questionItem.responded) {
+      isExpanded = true;
+    } else {
+      if (questionItem === _.last(this.props.questions)) {
+        isExpanded = true;
+      }
+    }
+
     return (
       <li key={questionItem.id} className="questions-list__item">
         <div className="row">
           <div className="medium-8 medium-centered large-8 large-centered columns">
-            <QuestionCard question={questionItem} outcome={outcome} isExpanded={!questionItem.responded} />
+            <QuestionCard question={questionItem} outcome={outcome} isExpanded={isExpanded} />
           </div>
         </div>
 

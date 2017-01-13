@@ -44,4 +44,8 @@ describe('Mission', () => {
     // STATE.should.be.eql('bar')
 
   });
+
+  after( function() {
+    connectedComponent.detach();
+  });
 });
