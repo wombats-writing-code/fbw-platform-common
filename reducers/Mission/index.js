@@ -24,8 +24,6 @@ import {RECEIVE_CREATE_MISSION} from '../edit-mission/createMission'
 import {RECEIVE_DELETE_MISSION} from '../edit-mission/deleteMission'
 import {LOG_OUT} from '../login/logOutUser'
 
-import { LOG_OUT } from '../Login/logOutUser'
-
 // ------------------------------------
 // Reducer
 // ------------------------------------
@@ -34,7 +32,7 @@ export default function missionReducer (state = initialState, action) {
   switch (action.type) {
     case LOG_OUT:
       return _.assign({})
-      
+
     case GET_MISSIONS_OPTIMISTIC:
       return _.assign({}, state, {
         missions: [],

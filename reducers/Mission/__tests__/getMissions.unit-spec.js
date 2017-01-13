@@ -24,7 +24,7 @@ describe('getMissions', () => {
     const store = mockStore({})
 
     store.dispatch(getMissions({
-      subjectBankId: 'assessment.Bank%3A576d6d3271e4828c441d721a%40bazzim.MIT.EDU',     // this is from currentBank.id
+      subjectBankId: 'assessment.Bank%3A58498ccb71e482e47e0ed8ce%40bazzim.MIT.EDU',     // this is from currentBank.id
       username: 'Nutter-Butter-1145644@acc.edu'
     }))
     .then(res => {

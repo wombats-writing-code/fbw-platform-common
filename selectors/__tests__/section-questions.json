@@ -1,0 +1,645 @@
+[
+  {
+    "itemId": "assessment.Item%3A574dde9de7dde0b3c6c66514%40bazzim.MIT.EDU",
+    "isCorrect": false,
+    "displayName": {
+      "text": "1",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+      "scriptTypeId": "15924%3ALATN%40ISO"
+    },
+    "description": {
+      "text": "TARGET",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+      "scriptTypeId": "15924%3ALATN%40ISO"
+    },
+    "recordTypeIds": [
+      "question-record-type%3Amulti-choice-randomized%40ODL.MIT.EDU"
+    ],
+    "text": {
+      "text": "<p>Consider the circle given by the equation \\( (x+4)^2 + (y-4)^2 = 4 \\). What is the location of the center of the circle? What is the circle&#39;s radius?</p>\n",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "scriptTypeId": "15924%3ALATN%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+    },
+    "bankId": "assessment.Bank%3A57279fb9e7dde086d01b93ef%40bazzim.MIT.EDU",
+    "responded": true,
+    "learningObjectiveIds": [
+      "mc3-objective%3A14229%40MIT-OEIT"
+    ],
+    "choices": [
+      {
+        "text": "<p>Center: \\( ( -4, 4) \\); Radius: 4</p>\n",
+        "id": "574dde9ee7dde0b3c6c66524",
+        "name": "Choice 3"
+      },
+      {
+        "text": "<p>Center: \\( ( -4, 4) \\); Radius: 2</p>\n",
+        "id": "574dde9ee7dde0b3c6c66521",
+        "name": "Choice 0"
+      },
+      {
+        "text": "<p>Center: \\( ( 4, -4) \\); Radius: 4</p>\n",
+        "id": "574dde9ee7dde0b3c6c66523",
+        "name": "Choice 2"
+      },
+      {
+        "text": "<p>Center: \\( ( 4, -4) \\); Radius: 2</p>\n",
+        "id": "574dde9ee7dde0b3c6c66522",
+        "name": "Choice 1"
+      }
+    ],
+    "genusTypeId": "question-type%3Amultiple-choice%40ODL.MIT.EDU",
+    "assignedBankIds": [
+      "assessment.Bank%3A57279fb9e7dde086d01b93ef%40bazzim.MIT.EDU"
+    ],
+    "response": {
+      "bankId": "assessment.Bank%3A584ae7ab71e4824abe47154e%40bazzim.MIT.EDU",
+      "displayName": {
+        "text": "",
+        "languageTypeId": "639-2%3AENG%40ISO",
+        "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+        "scriptTypeId": "15924%3ALATN%40ISO"
+      },
+      "description": {
+        "text": "",
+        "languageTypeId": "639-2%3AENG%40ISO",
+        "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+        "scriptTypeId": "15924%3ALATN%40ISO"
+      },
+      "recordTypeIds": [
+        "answer-record-type%3Amulti-choice-with-files-and-feedback%40ODL.MIT.EDU"
+      ],
+      "isCorrect": false,
+      "choiceIds": [
+        "574dde9ee7dde0b3c6c66523"
+      ],
+      "fileIds": {},
+      "confusedLearningObjectiveIds": [
+        "mc3-objective%3A15071%40MIT-OEIT"
+      ],
+      "genusTypeId": "GenusType%3ADEFAULT%40DLKIT.MIT.EDU",
+      "assignedBankIds": [
+        "assessment.Bank%3A584ae7ab71e4824abe47154e%40bazzim.MIT.EDU"
+      ],
+      "submissionTime": "2017-01-12T21:12:08.825",
+      "type": "Answer",
+      "id": "assessment.Answer%3A5877f12871e4826636dbf99d%40bazzim.MIT.EDU",
+      "feedback": {
+        "text": "<div class=\"collapsible solution__step\">\r\n<div class=\"collapsible__header\"><strong>Step 1: Recall the general form of a circle</strong></div>\r\n\r\n<div class=\"collapsible__body\">\\( (x-h)^2 + (y-k)^2 = r^2 \\) where the center is at \\( (h,k) \\) and the radius is \\( r&nbsp;\\)</div>\r\n</div>\r\n\r\n<div class=\"collapsible solution__step\">\r\n<div class=\"collapsible__header\"><strong>Step 2: Compare the given equation to the general form</strong></div>\r\n\r\n<div class=\"collapsible__body\">Substituting \\( h = -4\\), \\( k&nbsp;= 4 \\), and \\( r&nbsp;= 2 \\) into the general form reproduces the equation \\( (x+4)^2 + (y-4)^2 = 4 \\)</div>\r\n</div>\r\n\r\n<div class=\"collapsible solution__step\">\r\n<div class=\"collapsible__header\"><strong>Step 3: Final answer</strong></div>\r\n\r\n<div class=\"collapsible__body\">Center: \\( (-4,4) \\); Radius: \\( r = 2 \\)</div>\r\n</div>\r\n",
+        "languageTypeId": "639-2%3AENG%40ISO",
+        "scriptTypeId": "15924%3ALATN%40ISO",
+        "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+      }
+    },
+    "type": "OsidObject",
+    "id": "assessment.Item%3A58779aa971e482361c77ab9b%40assessment-session",
+    "multiAnswer": false,
+    "fileIds": {}
+  },
+  {
+    "itemId": "assessment.Item%3A58178aff71e482443ad79375%40bazzim.MIT.EDU",
+    "isCorrect": false,
+    "displayName": {
+      "text": "1.1",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+      "scriptTypeId": "15924%3ALATN%40ISO"
+    },
+    "description": {
+      "text": "",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+      "scriptTypeId": "15924%3ALATN%40ISO"
+    },
+    "recordTypeIds": [
+      "question-record-type%3Amulti-choice-randomized%40ODL.MIT.EDU"
+    ],
+    "text": {
+      "text": "<p>Which of the following is the standard form for the equation of a circle?</p>\n",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "scriptTypeId": "15924%3ALATN%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+    },
+    "bankId": "assessment.Bank%3A57279fb9e7dde086d01b93ef%40bazzim.MIT.EDU",
+    "responded": true,
+    "learningObjectiveIds": [
+      "mc3-objective%3A15071%40MIT-OEIT"
+    ],
+    "choices": [
+      {
+        "text": "<p>\\( (x-h)^2 + (y-k)^2 = r^2\\)</p>\n",
+        "id": "58178aff71e482443ad79382",
+        "name": "Choice 0"
+      },
+      {
+        "text": "<p>\\((\\frac{x_1+x_2}{2},\\frac{y_1+y_2}{2})\\)</p>\n",
+        "id": "58178aff71e482443ad79384",
+        "name": "Choice 2"
+      },
+      {
+        "text": "<p>\\(d=\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}\\)</p>\n",
+        "id": "58178aff71e482443ad79383",
+        "name": "Choice 1"
+      }
+    ],
+    "genusTypeId": "question-type%3Amultiple-choice%40ODL.MIT.EDU",
+    "assignedBankIds": [
+      "assessment.Bank%3A57279fb9e7dde086d01b93ef%40bazzim.MIT.EDU"
+    ],
+    "response": {
+      "bankId": "assessment.Bank%3A584ae7ab71e4824abe47154e%40bazzim.MIT.EDU",
+      "displayName": {
+        "text": "",
+        "languageTypeId": "639-2%3AENG%40ISO",
+        "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+        "scriptTypeId": "15924%3ALATN%40ISO"
+      },
+      "description": {
+        "text": "",
+        "languageTypeId": "639-2%3AENG%40ISO",
+        "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+        "scriptTypeId": "15924%3ALATN%40ISO"
+      },
+      "recordTypeIds": [
+        "answer-record-type%3Amulti-choice-with-files-and-feedback%40ODL.MIT.EDU"
+      ],
+      "isCorrect": false,
+      "choiceIds": [
+        "58178aff71e482443ad79383"
+      ],
+      "fileIds": {},
+      "confusedLearningObjectiveIds": [],
+      "genusTypeId": "GenusType%3ADEFAULT%40DLKIT.MIT.EDU",
+      "assignedBankIds": [
+        "assessment.Bank%3A584ae7ab71e4824abe47154e%40bazzim.MIT.EDU"
+      ],
+      "submissionTime": "2017-01-12T21:15:12.054",
+      "type": "Answer",
+      "id": "assessment.Answer%3A5877f1e071e48266377ae7e0%40bazzim.MIT.EDU",
+      "feedback": {
+        "text": "<p>The general form of a circle is \\( (x-h)^2 + (y-k)^2 = r^2 \\), where the center is at \\( (h,k) \\) and the radius is \\( r \\).</p>\r\n",
+        "languageTypeId": "639-2%3AENG%40ISO",
+        "scriptTypeId": "15924%3ALATN%40ISO",
+        "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+      }
+    },
+    "type": "OsidObject",
+    "id": "assessment.Item%3A5877f12971e4826636dbf99e%40assessment-session",
+    "multiAnswer": false,
+    "fileIds": {}
+  },
+  {
+    "itemId": "assessment.Item%3A5835b02371e4826f9bb1ca64%40bazzim.MIT.EDU",
+    "isCorrect": true,
+    "displayName": {
+      "text": "1.2",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+      "scriptTypeId": "15924%3ALATN%40ISO"
+    },
+    "description": {
+      "text": "",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+      "scriptTypeId": "15924%3ALATN%40ISO"
+    },
+    "recordTypeIds": [
+      "question-record-type%3Amulti-choice-randomized%40ODL.MIT.EDU"
+    ],
+    "text": {
+      "text": "<p>Which of the following is the standard form for the equation of a circle?</p>\n",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "scriptTypeId": "15924%3ALATN%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+    },
+    "bankId": "assessment.Bank%3A57279fb9e7dde086d01b93ef%40bazzim.MIT.EDU",
+    "responded": true,
+    "learningObjectiveIds": [
+      "mc3-objective%3A15071%40MIT-OEIT"
+    ],
+    "choices": [
+      {
+        "text": "<p>\\( (x-h)^2 + (y-k)^2 = r^2\\)</p>\n",
+        "id": "5835b02371e4826f9bb1ca71",
+        "name": "Choice 0"
+      },
+      {
+        "text": "<p>\\( (x+h)^2 + (y+k)^2 = r^2\\)</p>\n",
+        "id": "5835b02371e4826f9bb1ca72",
+        "name": "Choice 1"
+      },
+      {
+        "text": "<p>\\( (x-h)^2 + (y-k)^2 = \\sqrt {r} \\)</p>\n",
+        "id": "5835b02371e4826f9bb1ca73",
+        "name": "Choice 2"
+      },
+      {
+        "text": "<p>\\( (x+h)^2 + (y+k)^2 = \\sqrt {r} \\)</p>\n",
+        "id": "5835b02371e4826f9bb1ca74",
+        "name": "Choice 3"
+      }
+    ],
+    "genusTypeId": "question-type%3Amultiple-choice%40ODL.MIT.EDU",
+    "assignedBankIds": [
+      "assessment.Bank%3A57279fb9e7dde086d01b93ef%40bazzim.MIT.EDU"
+    ],
+    "response": {
+      "bankId": "assessment.Bank%3A584ae7ab71e4824abe47154e%40bazzim.MIT.EDU",
+      "displayName": {
+        "text": "",
+        "languageTypeId": "639-2%3AENG%40ISO",
+        "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+        "scriptTypeId": "15924%3ALATN%40ISO"
+      },
+      "description": {
+        "text": "",
+        "languageTypeId": "639-2%3AENG%40ISO",
+        "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+        "scriptTypeId": "15924%3ALATN%40ISO"
+      },
+      "recordTypeIds": [
+        "answer-record-type%3Amulti-choice-with-files-and-feedback%40ODL.MIT.EDU"
+      ],
+      "isCorrect": true,
+      "choiceIds": [
+        "5835b02371e4826f9bb1ca71"
+      ],
+      "fileIds": {},
+      "confusedLearningObjectiveIds": [],
+      "genusTypeId": "GenusType%3ADEFAULT%40DLKIT.MIT.EDU",
+      "assignedBankIds": [
+        "assessment.Bank%3A584ae7ab71e4824abe47154e%40bazzim.MIT.EDU"
+      ],
+      "submissionTime": "2017-01-12T21:20:42.213",
+      "type": "Answer",
+      "id": "assessment.Answer%3A5877f32a71e482663913ef24%40bazzim.MIT.EDU",
+      "feedback": {
+        "text": "<p>The general form of a circle is \\( (x-h)^2 + (y-k)^2 = r^2 \\), where the center is at \\( (h,k) \\) and the radius is \\( r \\).</p>\r\n",
+        "languageTypeId": "639-2%3AENG%40ISO",
+        "scriptTypeId": "15924%3ALATN%40ISO",
+        "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+      }
+    },
+    "type": "OsidObject",
+    "id": "assessment.Item%3A5877f1e071e48266377ae7e1%40assessment-session",
+    "multiAnswer": false,
+    "fileIds": {}
+  },
+  {
+    "itemId": "assessment.Item%3A5835ad6c71e4826f9bb1c9ce%40bazzim.MIT.EDU",
+    "isCorrect": false,
+    "displayName": {
+      "text": "2",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "scriptTypeId": "15924%3ALATN%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+    },
+    "description": {
+      "text": "",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "scriptTypeId": "15924%3ALATN%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+    },
+    "recordTypeIds": [
+      "question-record-type%3Amulti-choice-randomized%40ODL.MIT.EDU"
+    ],
+    "text": {
+      "text": "<p>What is the center and radius of the circle given by \\( (x+2)^2 + (y-6)^2 = 5 \\)?</p>\n",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+      "scriptTypeId": "15924%3ALATN%40ISO"
+    },
+    "bankId": "assessment.Bank%3A57279fb9e7dde086d01b93ef%40bazzim.MIT.EDU",
+    "responded": true,
+    "learningObjectiveIds": [
+      "mc3-objective%3A14229%40MIT-OEIT"
+    ],
+    "choices": [
+      {
+        "text": "<p>center: (-2, 6), r = \\( \\sqrt{5} \\)</p>\n",
+        "id": "5835ad6c71e4826f9bb1c9db",
+        "name": "Choice 0"
+      },
+      {
+        "text": "<p>center: (-2, 6), r = 25</p>\n",
+        "id": "5835ad6c71e4826f9bb1c9de",
+        "name": "Choice 3"
+      },
+      {
+        "text": "<p>center: (2, -6), r = 25</p>\n",
+        "id": "5835ad6c71e4826f9bb1c9dd",
+        "name": "Choice 2"
+      },
+      {
+        "text": "<p>center: (2, -6), r = \\( \\sqrt{5} \\)</p>\n",
+        "id": "5835ad6c71e4826f9bb1c9dc",
+        "name": "Choice 1"
+      }
+    ],
+    "genusTypeId": "question-type%3Amultiple-choice%40ODL.MIT.EDU",
+    "assignedBankIds": [
+      "assessment.Bank%3A57279fb9e7dde086d01b93ef%40bazzim.MIT.EDU"
+    ],
+    "response": {
+      "bankId": "assessment.Bank%3A584ae7ab71e4824abe47154e%40bazzim.MIT.EDU",
+      "displayName": {
+        "text": "",
+        "languageTypeId": "639-2%3AENG%40ISO",
+        "scriptTypeId": "15924%3ALATN%40ISO",
+        "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+      },
+      "description": {
+        "text": "",
+        "languageTypeId": "639-2%3AENG%40ISO",
+        "scriptTypeId": "15924%3ALATN%40ISO",
+        "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+      },
+      "recordTypeIds": [
+        "answer-record-type%3Amulti-choice-with-files-and-feedback%40ODL.MIT.EDU"
+      ],
+      "isCorrect": false,
+      "choiceIds": [
+        "5835ad6c71e4826f9bb1c9dd"
+      ],
+      "id": "assessment.Answer%3A5877f57e71e48266357835ab%40bazzim.MIT.EDU",
+      "confusedLearningObjectiveIds": [
+        "mc3-objective%3A15071%40MIT-OEIT"
+      ],
+      "genusTypeId": "GenusType%3ADEFAULT%40DLKIT.MIT.EDU",
+      "assignedBankIds": [
+        "assessment.Bank%3A584ae7ab71e4824abe47154e%40bazzim.MIT.EDU"
+      ],
+      "submissionTime": "2017-01-12T21:30:38.688",
+      "type": "Answer",
+      "feedback": {
+        "text": "<div class=\"collapsible solution__step\">\r\n<div class=\"collapsible__header\"><strong>Step 1: Recall the general form of a circle</strong></div>\r\n\r\n<div class=\"collapsible__body\">\\( (x-h)^2 + (y-k)^2 = r^2 \\) where the center is at \\( (h,k) \\) and the radius is \\( r \\)</div>\r\n</div>\r\n\r\n<div class=\"collapsible solution__step\">\r\n<div class=\"collapsible__header\"><strong>Step 2: Compare the given equation to the general form</strong></div>\r\n\r\n<div class=\"collapsible__body\">Substituting \\( h = -2\\), \\( k = 6 \\), and \\( r = \\sqrt{5} \\) into the general form reproduces the equation \\( (x+2)^2 + (y-6)^2 = 5 \\)</div>\r\n</div>\r\n\r\n<div class=\"collapsible solution__step\">\r\n<div class=\"collapsible__header\"><strong>Step 3: Final answer</strong></div>\r\n\r\n<div class=\"collapsible__body\">Center: \\( (-2, 6) \\); Radius: \\( r = \\sqrt{5} \\)</div>\r\n</div>\r\n",
+        "languageTypeId": "639-2%3AENG%40ISO",
+        "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+        "scriptTypeId": "15924%3ALATN%40ISO"
+      },
+      "fileIds": {}
+    },
+    "type": "OsidObject",
+    "id": "assessment.Item%3A58779aa971e482361c77ab9c%40assessment-session",
+    "multiAnswer": false,
+    "fileIds": {}
+  },
+  {
+    "itemId": "assessment.Item%3A5835aec171e4826f9bb1ca0f%40bazzim.MIT.EDU",
+    "displayName": {
+      "text": "2.1",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "scriptTypeId": "15924%3ALATN%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+    },
+    "description": {
+      "text": "",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "scriptTypeId": "15924%3ALATN%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+    },
+    "recordTypeIds": [
+      "question-record-type%3Amulti-choice-randomized%40ODL.MIT.EDU"
+    ],
+    "text": {
+      "text": "<p>Which of the following is the standard form for the equation of a circle?</p>\n",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+      "scriptTypeId": "15924%3ALATN%40ISO"
+    },
+    "bankId": "assessment.Bank%3A57279fb9e7dde086d01b93ef%40bazzim.MIT.EDU",
+    "responded": false,
+    "learningObjectiveIds": [
+      "mc3-objective%3A15071%40MIT-OEIT"
+    ],
+    "choices": [
+      {
+        "text": "<p>\\( (x+h)^2 + (y+k)^2 = r \\)</p>\n",
+        "id": "5835af9b71e4826f9bb1ca3a",
+        "name": "Choice 3"
+      },
+      {
+        "text": "<p>\\( (x-h)^2 + (y-k)^2 = r \\)</p>\n",
+        "id": "5835aec171e4826f9bb1ca1e",
+        "name": "Choice 2"
+      },
+      {
+        "text": "<p>\\( (x+h)^2 + (y+k)^2 = r^2\\)</p>\n",
+        "id": "5835aec171e4826f9bb1ca1d",
+        "name": "Choice 1"
+      },
+      {
+        "text": "<p>\\( (x-h)^2 + (y-k)^2 = r^2\\)</p>\n",
+        "id": "5835aec171e4826f9bb1ca1c",
+        "name": "Choice 0"
+      }
+    ],
+    "genusTypeId": "question-type%3Amultiple-choice%40ODL.MIT.EDU",
+    "assignedBankIds": [
+      "assessment.Bank%3A57279fb9e7dde086d01b93ef%40bazzim.MIT.EDU"
+    ],
+    "response": null,
+    "type": "OsidObject",
+    "id": "assessment.Item%3A5877f57f71e48266357835ac%40assessment-session",
+    "multiAnswer": false,
+    "fileIds": {}
+  },
+  {
+    "itemId": "assessment.Item%3A5820d2a171e48238c70dfe9c%40bazzim.MIT.EDU",
+    "isCorrect": false,
+    "displayName": {
+      "text": "3",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "scriptTypeId": "15924%3ALATN%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+    },
+    "description": {
+      "text": "",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "scriptTypeId": "15924%3ALATN%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+    },
+    "recordTypeIds": [
+      "question-record-type%3Amulti-choice-randomized%40ODL.MIT.EDU"
+    ],
+    "text": {
+      "text": "<p>What is the center and radius of the circle given by \\( (x-2)^2 + (y+9)^2 = 9 \\)?</p>\n",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+      "scriptTypeId": "15924%3ALATN%40ISO"
+    },
+    "bankId": "assessment.Bank%3A57279fb9e7dde086d01b93ef%40bazzim.MIT.EDU",
+    "responded": true,
+    "learningObjectiveIds": [
+      "mc3-objective%3A14229%40MIT-OEIT"
+    ],
+    "choices": [
+      {
+        "text": "<p>center: (2, -9), r = 81</p>\n",
+        "id": "5820d2a171e48238c70dfeaa",
+        "name": "Choice 1"
+      },
+      {
+        "text": "<p>center: (2, -9), r = 3</p>\n",
+        "id": "5820d2a171e48238c70dfea9",
+        "name": "Choice 0"
+      },
+      {
+        "text": "<p>center: (-2, 9), r = 3</p>\n",
+        "id": "5820d2a171e48238c70dfeab",
+        "name": "Choice 2"
+      },
+      {
+        "text": "<p>center: (-2, 9), r = 81</p>\n",
+        "id": "5820d2a171e48238c70dfeac",
+        "name": "Choice 3"
+      }
+    ],
+    "genusTypeId": "question-type%3Amultiple-choice%40ODL.MIT.EDU",
+    "assignedBankIds": [
+      "assessment.Bank%3A57279fb9e7dde086d01b93ef%40bazzim.MIT.EDU"
+    ],
+    "response": {
+      "bankId": "assessment.Bank%3A584ae7ab71e4824abe47154e%40bazzim.MIT.EDU",
+      "displayName": {
+        "text": "",
+        "languageTypeId": "639-2%3AENG%40ISO",
+        "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+        "scriptTypeId": "15924%3ALATN%40ISO"
+      },
+      "description": {
+        "text": "",
+        "languageTypeId": "639-2%3AENG%40ISO",
+        "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+        "scriptTypeId": "15924%3ALATN%40ISO"
+      },
+      "recordTypeIds": [
+        "answer-record-type%3Amulti-choice-with-files-and-feedback%40ODL.MIT.EDU"
+      ],
+      "isCorrect": false,
+      "choiceIds": [
+        "5820d2a171e48238c70dfeaa"
+      ],
+      "fileIds": {},
+      "confusedLearningObjectiveIds": [
+        "mc3-objective%3A15071%40MIT-OEIT"
+      ],
+      "genusTypeId": "GenusType%3ADEFAULT%40DLKIT.MIT.EDU",
+      "assignedBankIds": [
+        "assessment.Bank%3A584ae7ab71e4824abe47154e%40bazzim.MIT.EDU"
+      ],
+      "submissionTime": "2017-01-12T21:29:13.492",
+      "type": "Answer",
+      "id": "assessment.Answer%3A5877f52971e482663857ac9f%40bazzim.MIT.EDU",
+      "feedback": {
+        "text": "<div class=\"collapsible solution__step\">\r\n<div class=\"collapsible__header\"><strong>Step 1: Recall the general form of a circle</strong></div>\r\n\r\n<div class=\"collapsible__body\">\\( (x-h)^2 + (y-k)^2 = r^2 \\) where the center is at \\( (h,k) \\) and the radius is \\( r \\)</div>\r\n</div>\r\n\r\n<div class=\"collapsible solution__step\">\r\n<div class=\"collapsible__header\"><strong>Step 2: Compare the given equation to the general form</strong></div>\r\n\r\n<div class=\"collapsible__body\">Substituting \\( h = 2\\), \\( k = -9 \\), and \\( r = 3 \\) into the general form reproduces the equation \\( (x-2)^2 + (y+9)^2 = 9 \\)</div>\r\n</div>\r\n\r\n<div class=\"collapsible solution__step\">\r\n<div class=\"collapsible__header\"><strong>Step 3: Final answer</strong></div>\r\n\r\n<div class=\"collapsible__body\">Center: \\( (2, -9) \\); Radius: \\( r = 3 \\)</div>\r\n</div>\r\n",
+        "languageTypeId": "639-2%3AENG%40ISO",
+        "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+        "scriptTypeId": "15924%3ALATN%40ISO"
+      }
+    },
+    "type": "OsidObject",
+    "id": "assessment.Item%3A58779aa971e482361c77ab9d%40assessment-session",
+    "multiAnswer": false,
+    "fileIds": {}
+  },
+  {
+    "itemId": "assessment.Item%3A5835aec171e4826f9bb1ca0f%40bazzim.MIT.EDU",
+    "isCorrect": true,
+    "displayName": {
+      "text": "3.1",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "scriptTypeId": "15924%3ALATN%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+    },
+    "description": {
+      "text": "",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "scriptTypeId": "15924%3ALATN%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+    },
+    "recordTypeIds": [
+      "question-record-type%3Amulti-choice-randomized%40ODL.MIT.EDU"
+    ],
+    "text": {
+      "text": "<p>Which of the following is the standard form for the equation of a circle?</p>\n",
+      "languageTypeId": "639-2%3AENG%40ISO",
+      "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+      "scriptTypeId": "15924%3ALATN%40ISO"
+    },
+    "bankId": "assessment.Bank%3A57279fb9e7dde086d01b93ef%40bazzim.MIT.EDU",
+    "responded": true,
+    "learningObjectiveIds": [
+      "mc3-objective%3A15071%40MIT-OEIT"
+    ],
+    "choices": [
+      {
+        "text": "<p>\\( (x-h)^2 + (y-k)^2 = r^2\\)</p>\n",
+        "id": "5835aec171e4826f9bb1ca1c",
+        "name": "Choice 0"
+      },
+      {
+        "text": "<p>\\( (x-h)^2 + (y-k)^2 = r \\)</p>\n",
+        "id": "5835aec171e4826f9bb1ca1e",
+        "name": "Choice 2"
+      },
+      {
+        "text": "<p>\\( (x+h)^2 + (y+k)^2 = r^2\\)</p>\n",
+        "id": "5835aec171e4826f9bb1ca1d",
+        "name": "Choice 1"
+      },
+      {
+        "text": "<p>\\( (x+h)^2 + (y+k)^2 = r \\)</p>\n",
+        "id": "5835af9b71e4826f9bb1ca3a",
+        "name": "Choice 3"
+      }
+    ],
+    "genusTypeId": "question-type%3Amultiple-choice%40ODL.MIT.EDU",
+    "assignedBankIds": [
+      "assessment.Bank%3A57279fb9e7dde086d01b93ef%40bazzim.MIT.EDU"
+    ],
+    "response": {
+      "bankId": "assessment.Bank%3A584ae7ab71e4824abe47154e%40bazzim.MIT.EDU",
+      "displayName": {
+        "text": "",
+        "languageTypeId": "639-2%3AENG%40ISO",
+        "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+        "scriptTypeId": "15924%3ALATN%40ISO"
+      },
+      "description": {
+        "text": "",
+        "languageTypeId": "639-2%3AENG%40ISO",
+        "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+        "scriptTypeId": "15924%3ALATN%40ISO"
+      },
+      "recordTypeIds": [
+        "answer-record-type%3Amulti-choice-with-files-and-feedback%40ODL.MIT.EDU"
+      ],
+      "isCorrect": true,
+      "choiceIds": [
+        "5835aec171e4826f9bb1ca1c"
+      ],
+      "fileIds": {},
+      "confusedLearningObjectiveIds": [],
+      "genusTypeId": "GenusType%3ADEFAULT%40DLKIT.MIT.EDU",
+      "assignedBankIds": [
+        "assessment.Bank%3A584ae7ab71e4824abe47154e%40bazzim.MIT.EDU"
+      ],
+      "submissionTime": "2017-01-12T21:29:43.732",
+      "type": "Answer",
+      "id": "assessment.Answer%3A5877f54771e48266377ae7f2%40bazzim.MIT.EDU",
+      "feedback": {
+        "text": "<p>The general form of a circle is \\( (x-h)^2 + (y-k)^2 = r^2 \\), where the center is at \\( (h,k) \\) and the radius is \\( r \\).</p>\r\n",
+        "languageTypeId": "639-2%3AENG%40ISO",
+        "scriptTypeId": "15924%3ALATN%40ISO",
+        "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+      }
+    },
+    "type": "OsidObject",
+    "id": "assessment.Item%3A5877f52a71e482663857aca0%40assessment-session",
+    "multiAnswer": false,
+    "fileIds": {}
+  }
+]

@@ -14,22 +14,35 @@ export const targetKey = (target) => {
   return target ? target.displayName.text[0] : null;
 }
 
-export const isTargetRouteNavigated = (sectionQuestions) => {
-  if (!sectionQuestions || sectionQuestions.length === 0) return false;
+export const isTargetRouteNavigated = (target, questions) => {
+  if (!questions || questions.length === 0) {
+    throw new Error('No questions of the route were provided')
+    return false;
+  }
+
+  if (!target) {
+    throw new Error('No target question provided');
+    return false;
+  }
+
+  let key = targetKey(target);
+  let questionsInRoute = _.filter(questions, question => question.displayName.text.startsWith(key));  // in case
 
   // a route is navigated only when all of the Targets waypoints have been responded correctly
+
   let hasNavigated = false;
-  if (sectionQuestions[0].response && !sectionQuestions[0].response.isCorrect) {
-    hasNavigated = _.every(_.tail(sectionQuestions), response => response && response.isCorrect);
+  if (questionsInRoute[0].response && !questionsInRoute[0].response.isCorrect) {
+    let lastQuestion = _.takeRight(questionsInRoute)[0];
+    hasNavigated = lastQuestion.response && lastQuestion.response.isCorrect;
   }
 
   return hasNavigated;
 }
 
-export const targetStatus = (target, sectionQuestions) => {
+export const targetStatus = (target, questionsInRoute) => {
   var status = 'PRISTINE';
 
-  if (isTargetRouteNavigated(sectionQuestions) && !target.isCorrect) {
+  if (isTargetRouteNavigated(target, questionsInRoute) && !target.isCorrect) {
     status = 'NAVIGATED';
 
   } else if (target.responded && target.isCorrect) {

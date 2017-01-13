@@ -54,6 +54,8 @@ export function submitResponse(data) {
     })
     .then((convertedResponse) => {
       dispatch(receiveSubmitResponse(convertedResponse));
+
+      return convertedResponse;
     })
     .catch((error) => {
       console.log('error submitting response', error);

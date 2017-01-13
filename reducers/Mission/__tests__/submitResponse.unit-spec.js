@@ -19,21 +19,21 @@ import {submitResponse} from '../submitResponse'
 
 describe('submitResponse', () => {
   it('should call submitResponse and submit a response from Nutter Butter', function(done) {
-    this.timeout(15000);
+    this.timeout(30000);
 
     const store = mockStore({})
 
     store.dispatch(submitResponse({
       bankId: 'assessment.Bank%3A58498ccb71e482e47e0ed8ce%40bazzim.MIT.EDU',
-      section: '',
-      questionId: '',
-      choiceId: '',
+      section: {id: "assessment.AssessmentSection%3A58779aa871e482361c77ab83%40bazzim.MIT.EDU"},
+      questionId: 'assessment.Item%3A58779aa971e482361c77ab9b%40assessment-session',
+      choiceId: "574dde9ee7dde0b3c6c66523",
       username: 'Nutter-Butter-1145644@acc.edu'
     }))
     .then(res => {
       // console.log(' res', res);
-      res.should.be.a('array');
-      res.length.should.be.at.least(10);    // as of Jan 10, 2017
+      res.isCorrect.should.eql(false);
+      res.confusedLearningObjectiveIds[0].should.be.a('string');
 
       done();
     });
