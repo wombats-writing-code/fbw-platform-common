@@ -52,7 +52,6 @@ export default function missionReducer (state = initialState, action) {
       })
 
     case UPDATE_SPAWN_DATE:
-      console.log('updateSpawnDate', action)
       let newSpawnDate = _.has(action.data, "date") ? action.data.date : state.spawnDate
       return _.assign({}, state, {
         spawnDate: newSpawnDate,
