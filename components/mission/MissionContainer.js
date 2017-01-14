@@ -30,11 +30,11 @@ const mapStateToProps = (state, ownProps) => {
     directiveIndicators: _.map(directives, (d, idx) => {
       let section = state.mission.currentMissionSections[idx];
       let targetsForDirective = _.filter(section.questions, isTarget);
-      let navigatedTargets = _.filter(targetsForDirective, question => isTargetRouteNavigated(question, section.questions));
+      let navigatedTargets = _.filter(targetsForDirective, question => isTargetRouteNavigated(question, section.questions) || question.isCorrect);
 
-      console.log('section', section);
-      console.log('targetsForDirective', targetsForDirective);
-      console.log('navigatedTargets', navigatedTargets);
+      // console.log('section', section);
+      // console.log('targetsForDirective', targetsForDirective);
+      // console.log('navigatedTargets', navigatedTargets);
 
       return {
         numerator: navigatedTargets.length,
