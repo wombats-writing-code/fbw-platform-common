@@ -2,6 +2,7 @@
 
 import thunk from 'redux-thunk';
 import _ from 'lodash'
+import moment from 'moment'
 
 import {END_DATE} from 'react-dates/constants'
 
@@ -18,7 +19,13 @@ import {DELETE_MISSION_OPTIMISTIC, RECEIVE_DELETE_MISSION} from './deleteMission
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = {newMission: stampNewMission()}
+const initialState = {
+  newMission: stampNewMission(),
+  spawnDate: {
+    startTime: moment.now(),
+    deadline: moment().add(7, 'd')
+  }
+}
 export default function missionReducer (state = initialState, action) {
   switch (action.type) {
     case ADD_MISSION:
@@ -45,6 +52,7 @@ export default function missionReducer (state = initialState, action) {
       })
 
     case UPDATE_SPAWN_DATE:
+      console.log('updateSpawnDate', action)
       let newSpawnDate = _.has(action.data, "date") ? action.data.date : state.spawnDate
       return _.assign({}, state, {
         spawnDate: newSpawnDate,
