@@ -38,7 +38,7 @@ class Mission extends Component {
         username: this.props.user.username
       })
     }
-    
+
     if (!this.props.isGetMissionsInProgress && this.props.missions && this.props.mission) {
       let missionState = checkMissionStatus(this.props.mission)
       let data = {
@@ -81,7 +81,10 @@ class Mission extends Component {
     return (
       <div>
         <nav role="navigation" aria-label="Directives Menu">
-          <DirectiveCarousel />
+          <DirectiveCarousel directives={this.props.directives}
+                            currentDirectiveIndex={this.props.currentDirectiveIndex}
+                            directiveIndicators={this.props.directiveIndicators}
+                              onSelectDirective={this.props.onSelectDirective}/>
         </nav>
         <nav className="nav-target-carousel" role="navigation" aria-label="Target Questions Menu">
           <TargetCarousel />

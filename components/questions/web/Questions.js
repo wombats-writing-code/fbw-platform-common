@@ -20,7 +20,7 @@ class Questions extends Component {
   componentDidUpdate(prevProps) {
     let nextCueTop = $('.answered-question-cue').last();
     if (prevProps.isInProgressSubmitChoice && !this.props.isInProgressSubmitChoice) {
-      console.log('scroll to', nextCueTop);
+      // console.log('scroll to', nextCueTop);
       $("html, body").animate({ scrollTop: nextCueTop.offset.top }, 1000);
     }
   }

@@ -1,5 +1,10 @@
 import _ from 'lodash'
 
+export const directivesFromSections = (sections, outcomes) => {
+  let objectiveIds = _.map(sections, 'learningObjectiveId');
+
+  return _.map(objectiveIds, lo => _.find(outcomes, o => o.id == lo));
+}
 
 
 export const isTarget = (question) => {
@@ -83,22 +88,22 @@ export const directiveIdsFromQuestions = (questionsData) => {
 }
 
 
-export function hasAchievedDirective (targets) {
-  if (!targets) return null;
-
-  let min = Math.ceil(targets.length / 2);
-
-  let numResponded = 0;
-  let numCorrect = _.reduce(targets, (result, question) => {
-    if (question.responded) numResponded++;
-    if (question.isCorrect) result+=1;
-    return result;
-  }, 0)
-
-  if (numResponded === targets.length && numCorrect < min) return false;
-
-  if (numCorrect >= min) return true;
-}
+// export function hasAchievedDirective (targets) {
+//   if (!targets) return null;
+//
+//   let min = Math.ceil(targets.length / 2);
+//
+//   let numResponded = 0;
+//   let numCorrect = _.reduce(targets, (result, question) => {
+//     if (question.responded) numResponded++;
+//     if (question.isCorrect) result+=1;
+//     return result;
+//   }, 0)
+//
+//   if (numResponded === targets.length && numCorrect < min) return false;
+//
+//   if (numCorrect >= min) return true;
+// }
 
 export function sortItemsByModules(modules, items) {
   var moduleItems = {};
