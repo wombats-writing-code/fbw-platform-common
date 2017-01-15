@@ -12,6 +12,7 @@ import { GET_USER_MISSION_RESULTS_OPTIMISTIC, RECEIVE_GET_USER_MISSION_RESULTS }
 import { SUBMIT_RESPONSE, SUBMIT_RESPONSE_OPTIMISTIC, RECEIVE_SUBMIT_RESPONSE } from './submitResponse'
 import { SHOW_ANSWER_OPTIMISTIC, RECEIVE_SHOW_ANSWER } from './showAnswer'
 
+import {SELECT_MISSION_RESULT} from './selectMissionResult'
 import { SELECT_DIRECTIVE } from './selectDirective'
 import { SELECT_TARGET } from './selectTarget'
 import { SELECT_CHOICE } from './selectChoice'
@@ -142,6 +143,18 @@ export default function missionReducer (state = initialState, action) {
         resultsExistForUser: action.resultsExistForUser,
         currentMissionSections: action.mission,
         isSubmitTakeMissionInProgress: false
+      });
+
+    case SELECT_MISSION_RESULT:
+      console.log('action SELECT_MISSION_RESULT', action);
+
+      let questions = _.flatMap(action.missionResult.sections, 'questions');
+      let currentTarget = _.find(questions, q => q.itemId === action.question.itemId)
+
+      return _.assign({}, state, {
+        currentMissionSections: action.missionResult.sections,
+        currentDirectiveIndex: action.currentDirectiveIndex,
+        currentTarget: currentTarget
       });
 
     case SUBMIT_RESPONSE_OPTIMISTIC:

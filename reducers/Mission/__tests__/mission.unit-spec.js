@@ -11,6 +11,7 @@ const _ = require('lodash')
 import {RECEIVE_MISSIONS} from '../getMissions'
 import {SELECT_DIRECTIVE} from '../selectDirective'
 import {SELECT_TARGET} from '../selectTarget'
+import {SELECT_MISSION_RESULT} from '../selectMissionResult'
 import {RECEIVE_CREATE_TAKE_MISSION, CREATE_TAKE_MISSION_OPTIMISTIC} from '../selectOpenMission'
 
 import {RECEIVE_CREATE_MISSION} from '../../edit-mission/createMission'
@@ -106,6 +107,26 @@ describe('mission reducer', () => {
     newState.missions.length.should.eql(1);
     newState.missions[0].id.should.be.eql('bar')
   });
+
+  it('should update state upon SELECT_MISSION_RESULT', () => {
+    let newState = reducer({}, {
+      type: SELECT_MISSION_RESULT,
+      missionResult: {
+        sections: [
+          {name: 'foo', questions: [
+            {id: 'superman'}
+          ]},
+          {name: 'bar'}
+        ]
+      },
+      currentDirectiveIndex: 1,
+      question: {id: 'superman'}
+    });
+
+    newState.currentMissionSections.length.should.eql(2);
+    newState.currentDirectiveIndex.should.eql(1);
+    newState.currentTarget.id.should.eql('superman')
+  })
 
   it('should clear everything in this part of mission state upon LOG_OUT', () => {
     let newState = reducer({

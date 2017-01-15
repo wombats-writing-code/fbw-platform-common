@@ -56,11 +56,11 @@ export function authenticateD2LInstructor(credentials, optionalUrl) {
 export function authenticateD2LStudent(credentials) {
 
   return function (dispatch) {
-    console.log('authenticateD2LStudent', credentials)
+    // console.log('authenticateD2LStudent', credentials)
 
     let url = `${window.location.pathname}${window.location.search}`;
     let banks, username;
-    console.log('mounted d2l callback!', url)
+    // console.log('mounted d2l callback!', url)
 
     return enrollments(credentials, url)
     .then((enrolled) => {
