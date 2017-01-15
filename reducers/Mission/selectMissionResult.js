@@ -8,10 +8,6 @@ export function selectMissionResult(missionResult, currentDirectiveIndex, questi
     throw new Error('A result of a student mission must be provided.')
   }
 
-  if (!currentDirectiveIndex) {
-    throw new Error('The currentDirectiveIndex must be provided.')
-  }
-
   if (!question) {
     throw new Error('The question on which to focus must be provided.')
   }
