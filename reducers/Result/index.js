@@ -3,6 +3,7 @@ import _ from 'lodash'
 
 import {GET_PHASE_I_RESULTS_OPTIMISTIC, RECEIVE_PHASE_I_RESULTS} from './getPhaseIResults'
 import {GET_PHASE_II_RESULTS_OPTIMISTIC, RECEIVE_PHASE_II_RESULTS} from './getPhaseIIResults'
+import {SELECT_MISSION_RESULT} from '../Mission/selectMissionResult'
 
 // import {createMissionPart, createMissionPartOptimistic} from './createMissionPart'
 // import {updateMissionPart, updateMissionPartOptimistic} from './updateMissionPart'
@@ -37,6 +38,11 @@ export default function resultReducer (state = initialState, action) {
         phaseIIResults: action.results,
         isGetPhaseIIResultsInProgress: false
       });
+
+    case SELECT_MISSION_RESULT:
+    return _.assign({}, state, {
+      currentResult: action.missionResult,
+    });
 
     default:
       return state

@@ -6,6 +6,7 @@ chai.should();
 
 import {RECEIVE_PHASE_I_RESULTS} from '../getPhaseIResults'
 import {RECEIVE_PHASE_II_RESULTS} from '../getPhaseIIResults'
+import {SELECT_MISSION_RESULT} from '../../Mission/selectMissionResult'
 
 describe('result reducer', () => {
 
@@ -27,6 +28,25 @@ describe('result reducer', () => {
 
     newState.phaseIIResults.should.be.eql(['superman', 'batman']);
     newState.isGetPhaseIIResultsInProgress.should.be.eql(false);
-  })
+  });
+
+  it('should update the current result state upon SELECT_MISSION_RESULT', () => {
+    let newState = reducer({}, {
+      type: SELECT_MISSION_RESULT,
+      missionResult: {
+        takingAgentId: 'batman',
+        sections: [
+          {name: 'foo', questions: [
+            {id: 'superman'}
+          ]},
+          {name: 'bar'}
+        ]
+      },
+      currentDirectiveIndex: 1,
+      question: {id: 'superman'}
+    });
+
+    newState.currentResult.takingAgentId.should.eql('batman');
+  });
 
 })

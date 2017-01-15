@@ -126,7 +126,7 @@ describe('mission reducer', () => {
     newState.currentMissionSections.length.should.eql(2);
     newState.currentDirectiveIndex.should.eql(1);
     newState.currentTarget.id.should.eql('superman')
-  })
+  });
 
   it('should clear everything in this part of mission state upon LOG_OUT', () => {
     let newState = reducer({
