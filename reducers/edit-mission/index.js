@@ -22,7 +22,7 @@ import {DELETE_MISSION_OPTIMISTIC, RECEIVE_DELETE_MISSION} from './deleteMission
 const initialState = {
   newMission: stampNewMission(),
   spawnDate: {
-    startTime: moment.now(),
+    startTime: moment(),
     deadline: moment().add(7, 'd')
   }
 }
