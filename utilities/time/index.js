@@ -48,7 +48,7 @@ export function afterMidnight (timeObject) {
   //   local "afterMidnight" to UTC equivalent
   let midnight = moment({
     year: timeObject.year,
-    month: timeObject.month,
+    month: timeObject.month - 1,  // 0-indexed
     day: timeObject.day,
     hour: 0,
     minute: 0,
@@ -56,10 +56,10 @@ export function afterMidnight (timeObject) {
   })
   midnight.utc()
   return {
-    year: midnight.year,
-    month: midnight.month,
-    day: midnight.day,
-    hour: midnight.hour,
+    year: midnight.year(),
+    month: midnight.month() + 1,  // 0-indexed
+    day: midnight.date(),
+    hour: midnight.hour(),
     minute: 0,
     second: 1
   }
@@ -70,20 +70,21 @@ export function beforeMidnight (timeObject) {
   // UTC time (what the server expects).
   // Input timeObject is local...needs to convert from
   //   local "beforeMidnight" to UTC equivalent
-  let midnight = moment({
+  let almostMidnight = moment({
     year: timeObject.year,
-    month: timeObject.month,
+    month: timeObject.month - 1,   // 0-indexed
     day: timeObject.day,
-    hour: 0,
-    minute: 0,
-    second: 1
+    hour: 23,
+    minute: 59,
+    second: 59
   })
-  midnight.utc()
+  almostMidnight.utc()
+
   return {
-    year: midnight.year,
-    month: midnight.month,
-    day: midnight.day,
-    hour: midnight.hour,
+    year: almostMidnight.year(),
+    month: almostMidnight.month() + 1,  // 0-indexed
+    day: almostMidnight.date(),
+    hour: almostMidnight.hour(),
     minute: 59,
     second: 59
   }
