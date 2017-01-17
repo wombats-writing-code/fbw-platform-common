@@ -22,7 +22,7 @@ export function getD2LClassRosterOptimistic () {
 export function getD2LClassRoster(data) {
 
   return function (dispatch) {
-    dispatch(receiveD2LClassRosterOptimistic());
+    dispatch(getD2LClassRosterOptimistic());
 
     // now get the user enrollments and set them in the global state
     return instructorCourses(data.credentials, data.url, data.orgUnitId)
