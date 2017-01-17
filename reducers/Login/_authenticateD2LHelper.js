@@ -38,7 +38,8 @@ export function instructorCourses (credentials, url) {
     _.each(enrollments, (course) => {
       instructorCourseBanks.push({
         id: course.OrgUnit.Id,
-        name: course.OrgUnit.Name.trim()
+        name: course.OrgUnit.Name.trim(),
+        orgUnitId: course.OrgUnit.Id
       })
       let url = `/d2l/api/lp/1.5/courses/${course.OrgUnit.Id}`
       let options = {
