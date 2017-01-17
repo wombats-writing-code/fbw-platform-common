@@ -40,8 +40,8 @@ export function createTestFlightMissions(data, bankId, originalMission, spawnDat
         directive.type = LO_SCAFFOLD_MISSION_GENUS_TYPE
         return directive
       }),
-      startTime: afterMidnight(momentToQBank(spawnDate)),
-      deadline: beforeMidnight(momentToQBank(spawnDate))
+      startTime: afterMidnight(momentToQBank(spawnDate.startTime)),
+      deadline: beforeMidnight(momentToQBank(spawnDate.deadline))
     }
     testFlightParameters.push(studentParams)
   })
