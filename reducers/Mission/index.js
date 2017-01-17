@@ -31,9 +31,6 @@ import {LOG_OUT} from '../login/logOutUser'
 const initialState = {}
 export default function missionReducer (state = initialState, action) {
   switch (action.type) {
-    case LOG_OUT:
-      return _.assign({})
-
     case GET_MISSIONS_OPTIMISTIC:
       return _.assign({}, state, {
         missions: [],

@@ -22,11 +22,6 @@ const initialState = {
 }
 export default function bankReducer (state = initialState, action) {
   switch (action.type) {
-    case LOG_OUT:
-      return _.assign({}, {
-        banks: VISITOR_BANKS
-      })
-
     case RECEIVE_BANKS:
       return _.assign({}, state, {
         banks: action.banks,

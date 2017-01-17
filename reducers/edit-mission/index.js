@@ -52,10 +52,21 @@ export default function missionReducer (state = initialState, action) {
       })
 
     case UPDATE_SPAWN_DATE:
-      let newSpawnDate = _.has(action.data, "date") ? action.data.date : state.spawnDate
+      let nextSpawnFocusedInputEdit = null;
+      if (_.has(action.data, "startDate") && state.spawnStartDate != action.data.startDate) {
+        nextSpawnFocusedInputEdit = END_DATE
+      } else if (_.has(action.data, "focusedInput")) {
+        nextSpawnFocusedInputEdit = action.data.focusedInput
+      }
+
+      let newSpawnStartDate = _.has(action.data, "startDate") ? action.data.startDate : state.spawnDate
+      let newSpawnDeadline = _.has(action.data, "endDate") ? action.data.endDate : state.spawnDate
       return _.assign({}, state, {
-        spawnDate: newSpawnDate,
-        spawnDateFocused: action.data.focused ? action.data.focused : false
+        spawnDate: {
+          startTime: newSpawnStartDate,
+          deadline: newSpawnDeadline
+        },
+        spawnDateFocused: nextSpawnFocusedInputEdit
       })
 
     case RECEIVE_CREATE_TEST_FLIGHT_MISSIONS:

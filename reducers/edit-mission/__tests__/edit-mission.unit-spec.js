@@ -24,8 +24,8 @@ describe('edit-mission reducer', () => {
     let newState = reducer({}, {
       type: UPDATE_SPAWN_DATE,
       data: {
-        startDate: moment.now(),
-        endDate: moment().add(7, 'd')
+        startDate: moment().toObject(),
+        endDate: moment().add(7, 'd').toObject()
       }
     });
 
