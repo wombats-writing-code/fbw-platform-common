@@ -2,7 +2,7 @@
 import _ from 'lodash'
 import axios from 'axios'
 
-import {classRoster} from './_authenticateD2LHelper'
+import {classRoster} from './_getD2LClassRosterHelper'
 
 
 export const RECEIVE_D2L_CLASS_ROSTER = 'RECEIVE_D2L_CLASS_ROSTER'

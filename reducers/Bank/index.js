@@ -60,6 +60,7 @@ export default function bankReducer (state = initialState, action) {
     case RECEIVE_D2L_CLASS_ROSTER:
       return _.assign({}, state, {
         roster: action.roster
+      })
 
     case LOG_OUT:
       return _.assign({}, state, {
