@@ -73,18 +73,22 @@ export function authenticateD2LStudent(credentials) {
       if (process.env.NODE_ENV !== 'test') console.log('got whoami', response);
 
       username = stringifyUsername(response);
-      
+
       // Only have to do this for D2L students, because we skip the "Subjects"
       // route for them. Instructors still select their subject, so this
       // action is handled in selectBank.js
-      let options = {
-        url: `${getDomain()}/middleman/banks/${banks[0].id}/privatebankid`,
-        headers: {
-          'x-fbw-username': username
+      let promises = []
+      _.each(banks, (bank) => {
+        let options = {
+          url: `${getDomain()}/middleman/banks/${bank.id}/privatebankid`,
+          headers: {
+            'x-fbw-username': username
+          }
         }
-      }
+        promises.push(axios(options))
+      })
 
-      return axios(options)
+      return axios.all(promises)
     })
     .then((response) => {
       dispatch(receiveAuthenticateUrl({url, banks, username}));
