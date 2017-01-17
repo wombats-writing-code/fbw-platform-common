@@ -6,7 +6,8 @@ import {
   checkMissionStatus,
   localDateTime,
   afterMidnight,
-  beforeMidnight} from '../time/index'
+  beforeMidnight,
+  convertPythonDateToJS} from '../time/index'
 
 describe('time utilities', () => {
 
@@ -122,5 +123,19 @@ describe('time utilities', () => {
     let result = beforeMidnight(localTimeObject);
 
     result.hour.should.not.be.eql(23)
+  })
+
+  it('should convert a UTC datetime to local datetime for convertPythonDateToJS', () => {
+    let utcTimeObject = {
+      "year": 2020,
+      "month": 1,
+      "day": 3,
+      "hour": 0,
+      "minute": 0,
+      "second": 1
+    };
+    let result = convertPythonDateToJS(utcTimeObject);
+
+    result.day.should.be.eql(2)
   })
 })

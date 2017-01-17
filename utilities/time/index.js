@@ -115,12 +115,23 @@ export function adjustedQBankToMomentObj(timeObject) {
 }
 
 export function convertPythonDateToJS (pythonTime) {
-  return {
+  // also need to convert the server-side UTC time to
+  // local time
+  let localTime = moment.utc({
     year: pythonTime.year,
     month: pythonTime.month - 1,
     day: pythonTime.day,
     hour: pythonTime.hour,
     minute: pythonTime.minute,
     second: pythonTime.second
+  })
+  localTime.local()
+  return {
+    year: localTime.year(),
+    month: localTime.month(),
+    day: localTime.date(),
+    hour: localTime.hour(),
+    minute: localTime.minute(),
+    second: localTime.second()
   }
 }
