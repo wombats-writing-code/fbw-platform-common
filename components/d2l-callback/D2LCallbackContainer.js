@@ -12,11 +12,11 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    authenticateD2L: (credentials) => {
+    authenticateD2L: (credentials, optionalUrl) => {
       if (credentials.role === 'instructor') {
-       dispatch(authenticateD2LInstructor(credentials))
+       dispatch(authenticateD2LInstructor(credentials, optionalUrl))
       } else {
-       dispatch(authenticateD2LStudent(credentials));
+       dispatch(authenticateD2LStudent(credentials, optionalUrl));
       }
     }
     // onSetD2LAuthenticatedUrl: url => dispatch(setD2LAuthenticatedUrl(url)),

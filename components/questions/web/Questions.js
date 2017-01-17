@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {isTarget, filterItemsByTarget, targetKey, directiveIdsFromQuestions} from '../../../selectors/'
 
 import _ from 'lodash';
+import $ from 'jquery';
 import Spinner from 'react-spinner'
 
 import QuestionCardContainer from '../../question-card/QuestionCardContainer'
@@ -15,6 +16,14 @@ import NextCue from './NextCue'
 import './Questions.scss'
 
 class Questions extends Component {
+
+  componentDidUpdate(prevProps) {
+    let nextCueTop = $('.answered-question-cue').last();
+    if (prevProps.isInProgressSubmitChoice && !this.props.isInProgressSubmitChoice) {
+      // console.log('scroll to', nextCueTop);
+      $("html, body").animate({ scrollTop: nextCueTop.offset.top }, 1000);
+    }
+  }
 
   renderListRow = (questionItem, sectionId, rowId) => {
     let outcome = _.find(this.props.outcomes, {id: questionItem.learningObjectiveIds[0]});
@@ -44,11 +53,21 @@ class Questions extends Component {
       )
     }
 
+    let isExpanded;
+    // console.log('questionItem', questionItem)
+    if (!questionItem.responded) {
+      isExpanded = true;
+    } else {
+      if (questionItem === _.last(this.props.questions)) {
+        isExpanded = true;
+      }
+    }
+
     return (
       <li key={questionItem.id} className="questions-list__item">
         <div className="row">
-          <div className="medium-8 medium-centered large-6 large-centered columns">
-            <QuestionCard question={questionItem} outcome={outcome} isExpanded={!questionItem.responded} />
+          <div className="medium-8 medium-centered large-8 large-centered columns">
+            <QuestionCard question={questionItem} outcome={outcome} isExpanded={isExpanded} />
           </div>
         </div>
 

@@ -16,7 +16,7 @@ class QuestionCard extends Component {
     super(props);
     this.state = {
       selectedChoiceId: null,
-      isExpanded: (props.isExpanded === false) ? false : true
+      isExpanded: props.isExpanded
     }
   }
   componentDidMount() {

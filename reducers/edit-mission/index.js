@@ -2,6 +2,7 @@
 
 import thunk from 'redux-thunk';
 import _ from 'lodash'
+import moment from 'moment'
 
 import {END_DATE} from 'react-dates/constants'
 
@@ -18,7 +19,13 @@ import {DELETE_MISSION_OPTIMISTIC, RECEIVE_DELETE_MISSION} from './deleteMission
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = {newMission: stampNewMission()}
+const initialState = {
+  newMission: stampNewMission(),
+  spawnDate: {
+    startTime: moment.now(),
+    deadline: moment().add(7, 'd')
+  }
+}
 export default function missionReducer (state = initialState, action) {
   switch (action.type) {
     case ADD_MISSION:
@@ -45,10 +52,21 @@ export default function missionReducer (state = initialState, action) {
       })
 
     case UPDATE_SPAWN_DATE:
-      let newSpawnDate = _.has(action.data, "date") ? action.data.date : state.spawnDate
+      let nextSpawnFocusedInputEdit = null;
+      if (_.has(action.data, "startDate") && state.spawnStartDate != action.data.startDate) {
+        nextSpawnFocusedInputEdit = END_DATE
+      } else if (_.has(action.data, "focusedInput")) {
+        nextSpawnFocusedInputEdit = action.data.focusedInput
+      }
+
+      let newSpawnStartDate = _.has(action.data, "startDate") ? action.data.startDate : state.spawnDate
+      let newSpawnDeadline = _.has(action.data, "endDate") ? action.data.endDate : state.spawnDate
       return _.assign({}, state, {
-        spawnDate: newSpawnDate,
-        spawnDateFocused: action.data.focused ? action.data.focused : false
+        spawnDate: {
+          startTime: newSpawnStartDate,
+          deadline: newSpawnDeadline
+        },
+        spawnDateFocused: nextSpawnFocusedInputEdit
       })
 
     case RECEIVE_CREATE_TEST_FLIGHT_MISSIONS:

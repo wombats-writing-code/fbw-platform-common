@@ -12,6 +12,7 @@ import { GET_USER_MISSION_RESULTS_OPTIMISTIC, RECEIVE_GET_USER_MISSION_RESULTS }
 import { SUBMIT_RESPONSE, SUBMIT_RESPONSE_OPTIMISTIC, RECEIVE_SUBMIT_RESPONSE } from './submitResponse'
 import { SHOW_ANSWER_OPTIMISTIC, RECEIVE_SHOW_ANSWER } from './showAnswer'
 
+import {SELECT_MISSION_RESULT} from './selectMissionResult'
 import { SELECT_DIRECTIVE } from './selectDirective'
 import { SELECT_TARGET } from './selectTarget'
 import { SELECT_CHOICE } from './selectChoice'
@@ -22,8 +23,7 @@ import {RECEIVE_SELECT_BANK} from '../Bank/selectBank'
 
 import {RECEIVE_CREATE_MISSION} from '../edit-mission/createMission'
 import {RECEIVE_DELETE_MISSION} from '../edit-mission/deleteMission'
-
-import { LOG_OUT } from '../Login/logOutUser'
+import {LOG_OUT} from '../login/logOutUser'
 
 // ------------------------------------
 // Reducer
@@ -31,9 +31,6 @@ import { LOG_OUT } from '../Login/logOutUser'
 const initialState = {}
 export default function missionReducer (state = initialState, action) {
   switch (action.type) {
-    case LOG_OUT:
-      return _.assign({})
-      
     case GET_MISSIONS_OPTIMISTIC:
       return _.assign({}, state, {
         missions: [],
@@ -71,7 +68,6 @@ export default function missionReducer (state = initialState, action) {
           return m.id !== action.mission.id
         })
       })
-
     // =========
 
     case SELECT_DIRECTIVE:
@@ -146,6 +142,18 @@ export default function missionReducer (state = initialState, action) {
         isSubmitTakeMissionInProgress: false
       });
 
+    case SELECT_MISSION_RESULT:
+      console.log('action SELECT_MISSION_RESULT', action);
+
+      let questions = _.flatMap(action.missionResult.sections, 'questions');
+      let currentTarget = _.find(questions, q => q.itemId === action.question.itemId)
+
+      return _.assign({}, state, {
+        currentMissionSections: action.missionResult.sections,
+        currentDirectiveIndex: action.currentDirectiveIndex,
+        currentTarget: currentTarget
+      });
+
     case SUBMIT_RESPONSE_OPTIMISTIC:
       return _.assign({}, state, {
         isInProgressSubmitChoice: true,
@@ -192,6 +200,13 @@ export default function missionReducer (state = initialState, action) {
       let updatedHeightMap = _.assign({}, state.heightByChoice, action.height)
       return _.assign({}, state, {
         heightByChoice: updatedHeightMap
+      })
+
+    case LOG_OUT:
+      return _.assign({}, state, {
+        currentMission: null,
+        missions: null,
+        isGetMissionsInProgress: false
       })
 
     default:

@@ -42,22 +42,49 @@ export function momentToQBank (momentObject) {
 }
 
 export function afterMidnight (timeObject) {
-  return {
+  // This needs to account for local time (on client-side) versus
+  // UTC time (what the server expects).
+  // Input timeObject is local...needs to convert from
+  //   local "afterMidnight" to UTC equivalent
+  let midnight = moment({
     year: timeObject.year,
-    month: timeObject.month,
+    month: timeObject.month - 1,  // 0-indexed
     day: timeObject.day,
     hour: 0,
+    minute: 0,
+    second: 1
+  })
+  midnight.utc()
+  return {
+    year: midnight.year(),
+    month: midnight.month() + 1,  // 0-indexed
+    day: midnight.date(),
+    hour: midnight.hour(),
     minute: 0,
     second: 1
   }
 }
 
 export function beforeMidnight (timeObject) {
-  return {
+  // This needs to account for local time (on client-side) versus
+  // UTC time (what the server expects).
+  // Input timeObject is local...needs to convert from
+  //   local "beforeMidnight" to UTC equivalent
+  let almostMidnight = moment({
     year: timeObject.year,
-    month: timeObject.month,
+    month: timeObject.month - 1,   // 0-indexed
     day: timeObject.day,
     hour: 23,
+    minute: 59,
+    second: 59
+  })
+  almostMidnight.utc()
+
+  return {
+    year: almostMidnight.year(),
+    month: almostMidnight.month() + 1,  // 0-indexed
+    day: almostMidnight.date(),
+    hour: almostMidnight.hour(),
     minute: 59,
     second: 59
   }

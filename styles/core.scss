@@ -49,6 +49,10 @@ button:disabled, button:disabled:hover {
   align-items: flex-start;;
 }
 
+.flex-container.align-bottom {
+  align-items: flex-end;
+}
+
 .flex-container.justify-center {
   justify-content: center;
 }

@@ -2,7 +2,11 @@ let chai = require('chai');
 let path = require('path')
 chai.should();
 
-import {checkMissionStatus, localDateTime} from '../time/index'
+import {
+  checkMissionStatus,
+  localDateTime,
+  afterMidnight,
+  beforeMidnight} from '../time/index'
 
 describe('time utilities', () => {
 
@@ -92,4 +96,31 @@ describe('time utilities', () => {
     result.should.be.eql('future')
   })
 
+  it('should convert a local datetime to UTC datetime for afterMidnight', () => {
+    let localTimeObject = {
+      "year": 2020,
+      "month": 0,
+      "day": 3,
+      "hour": 0,
+      "minute": 0,
+      "second": 1
+    };
+    let result = afterMidnight(localTimeObject);
+
+    result.hour.should.not.be.eql(0)
+  })
+
+  it('should convert a local datetime to UTC datetime for beforeMidnight', () => {
+    let localTimeObject = {
+      "year": 2020,
+      "month": 0,
+      "day": 3,
+      "hour": 23,
+      "minute": 59,
+      "second": 59
+    };
+    let result = beforeMidnight(localTimeObject);
+
+    result.hour.should.not.be.eql(23)
+  })
 })
