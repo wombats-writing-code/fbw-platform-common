@@ -6,7 +6,7 @@ let Q = require('q')
 import D2L from 'valence'
 
 import {instructorCourses, enrollments, whoami} from './_authenticateD2LHelper'
-
+import { getDomain } from '../../utilities'
 
 export const RECEIVE_AUTHENTICATE_D2L = 'RECEIVE_AUTHENTICATE_D2L'
 export const AUTHENTICATE_D2L_OPTIMISTIC = 'AUTHENTICATE_D2L_OPTIMISTIC'
@@ -73,7 +73,20 @@ export function authenticateD2LStudent(credentials) {
       if (process.env.NODE_ENV !== 'test') console.log('got whoami', response);
 
       username = stringifyUsername(response);
+      
+      // Only have to do this for D2L students, because we skip the "Subjects"
+      // route for them. Instructors still select their subject, so this
+      // action is handled in selectBank.js
+      let options = {
+        url: `${getDomain()}/middleman/banks/${banks[0].id}/privatebankid`,
+        headers: {
+          'x-fbw-username': username
+        }
+      }
 
+      return axios(options)
+    })
+    .then((response) => {
       dispatch(receiveAuthenticateUrl({url, banks, username}));
 
       return response;
