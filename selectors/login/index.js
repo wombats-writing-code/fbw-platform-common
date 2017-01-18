@@ -27,3 +27,11 @@ export const agentIdFromTakingAgentId = (agentId) => {
 
   return decodeURIComponent(decodeURIComponent(agentId.split('%3A')[1].split('%40')[0]));
 }
+
+export const agentIdFromD2LRoster = (rosterObject) => {
+  if (rosterObject && rosterObject.DisplayName.indexOf(', ') > -1) {
+    let parts = rosterObject.DisplayName.split(', ');
+    return parts[1] + '-' + parts[0] + '-' + rosterObject.ProfileIdentifier + '@acc.edu';
+  }
+
+}

@@ -3,7 +3,7 @@ let path = require('path')
 chai.should();
 
 import {osidToDisplayName, agentIdFromTakingAgentId, usernameToDisplayName,
-  d2LDisplayNameToDisplayName
+  d2LDisplayNameToDisplayName, agentIdFromD2LRoster
 } from '../login/index'
 
 describe('login selectors', () => {
@@ -31,6 +31,18 @@ describe('login selectors', () => {
   it('should output a displayName given the d2l displayName', () => {
     let result = d2LDisplayNameToDisplayName("Scotch, Butter");
     result.should.be.eql('Butter Scotch')
+  })
+
+  it('should output a username given a d2l roster object', () => {
+    let result = agentIdFromD2LRoster({
+      "Identifier": "192051",
+      "ProfileIdentifier": "QKGjIK9TtN",
+      "DisplayName": "Butter, Peanut",
+      "Username": null,
+      "OrgDefinedId": "S00091797",
+      "Email": null
+    });
+    result.should.be.eql('Peanut-Butter-QKGjIK9TtN@acc.edu');
   })
 
 })
