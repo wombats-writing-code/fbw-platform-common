@@ -135,7 +135,7 @@ class QuestionCard extends Component {
                         headerText={this.props.outcome ? this.props.outcome.displayName.text : ''}
                         onShowAnswer={() => this._onShowAnswer(this.props.question)}
                         isExpanded={this.state.isExpanded}
-                        isExpandable={this.props.question.responded}
+                        isExpandable={this.props.question.responded || this.props.isExpandable}
                         onToggleExpand={() => this.setState({isExpanded: !this.state.isExpanded})}
         />
 
@@ -187,7 +187,9 @@ class QuestionCard extends Component {
 QuestionCard.propTypes = {
   question: React.PropTypes.object.isRequired,
   outcome: React.PropTypes.object.isRequired,
-  isExpanded: React.PropTypes.bool
+  isExpanded: React.PropTypes.bool,
+  isExpandable: React.PropTypes.bool,
+  isSubmitEnabled: React.PropTypes.bool
 }
 
 export default QuestionCard
