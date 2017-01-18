@@ -2,19 +2,8 @@ import _ from 'lodash'
 
 import { BANK_TO_DOMAIN, DOMAIN_TO_LIBRARY, BANK_TO_LIBRARY } from '../../utilities'
 
-function isFBW(name) {
-  return name.indexOf('fly-by-wire') >= 0 || name.indexOf('fbw') >= 0
-}
-
-function isMAT121(name) {
-  return name.indexOf('mat') >= 0 &&
-    name.indexOf('121') >= 0 &&
-    (name.indexOf('142') >= 0 || name.indexOf('103') >= 0)
-}
-
-function isACC(name) {
-  return name.indexOf('acc') >= 0 &&
-    name.indexOf('202') >= 0
+export function getRoster(state) {
+  return state.bank.roster;
 }
 
 export function getEnrolledSubject(state) {
@@ -65,4 +54,19 @@ export function findBankDomain (bankId, enrolledBanks) {
 export function findBankLibrary (bankId, enrolledBanks) {
   let department = findBankDomain(bankId, enrolledBanks)
   return DOMAIN_TO_LIBRARY[department]
+}
+
+function isFBW(name) {
+  return name.indexOf('fly-by-wire') >= 0 || name.indexOf('fbw') >= 0
+}
+
+function isMAT121(name) {
+  return name.indexOf('mat') >= 0 &&
+    name.indexOf('121') >= 0 &&
+    (name.indexOf('142') >= 0 || name.indexOf('103') >= 0)
+}
+
+function isACC(name) {
+  return name.indexOf('acc') >= 0 &&
+    name.indexOf('202') >= 0
 }

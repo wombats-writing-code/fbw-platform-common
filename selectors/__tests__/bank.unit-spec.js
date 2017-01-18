@@ -2,7 +2,7 @@ let chai = require('chai');
 let path = require('path')
 chai.should();
 
-import {getEnrolledSubject, findBankDomain, findBankLibrary} from '../bank/index'
+import {getEnrolledSubject, getRoster, findBankDomain, findBankLibrary} from '../bank/index'
 
 describe('bank selectors', () => {
 
@@ -33,6 +33,15 @@ describe('bank selectors', () => {
       }
     });
     result.id.should.be.eql('foo');
+  });
+
+  it('should get the class roster', () => {
+    let result = getRoster({
+      bank: {
+        roster: [{name: 'foo'}]
+      }
+    });
+    result.length.should.be.eql(1);
   })
 
 })
