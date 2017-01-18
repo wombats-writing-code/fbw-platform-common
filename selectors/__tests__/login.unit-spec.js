@@ -2,7 +2,9 @@ let chai = require('chai');
 let path = require('path')
 chai.should();
 
-import {osidToDisplayName, agentIdFromTakingAgentId, usernameToDisplayName} from '../login/index'
+import {osidToDisplayName, agentIdFromTakingAgentId, usernameToDisplayName,
+  d2LDisplayNameToDisplayName
+} from '../login/index'
 
 describe('login selectors', () => {
 
@@ -24,6 +26,11 @@ describe('login selectors', () => {
   it('should output a displayName given the username', () => {
     let result = usernameToDisplayName("Nutter-Butter-1145644@acc.edu");
     result.should.be.eql('Nutter Butter')
+  })
+
+  it('should output a displayName given the d2l displayName', () => {
+    let result = d2LDisplayNameToDisplayName("Scotch, Butter");
+    result.should.be.eql('Butter Scotch')
   })
 
 })

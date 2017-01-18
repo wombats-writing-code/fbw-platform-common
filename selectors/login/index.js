@@ -7,6 +7,13 @@ export const usernameToDisplayName = (username) => {
   return username
 }
 
+export const d2LDisplayNameToDisplayName = (d2LDisplayName) => {
+  if (d2LDisplayName && d2LDisplayName.indexOf(', ') > -1) {
+    let parts = d2LDisplayName.split(', ');
+    return parts[1] + ' ' + parts[0];
+  }
+}
+
 export const osidToDisplayName = (agentId) => {
   if (!agentId) return '';
 
