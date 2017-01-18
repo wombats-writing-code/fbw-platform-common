@@ -44,22 +44,26 @@ class QuestionCard extends Component {
       submitButtonText = 'Working...';
     }
 
+    // submit button is NOT available if the props is *explicitly* set to false. if it's not set, it's available by default.
     let submitButton;
-    if (!this.props.question.responded && !this.state.selectedChoiceId) {
-      submitButton = (
-        <button disabled
-                onClick={() => this._onSubmitChoice(this.state.selectedChoiceId, this.props.question.id)}
-                className="submit-button is-disabled">
-                {submitButtonText}
-        </button>);
+    if (this.props.isSubmitEnabled !== false) {
+      if (!this.props.question.responded && !this.state.selectedChoiceId) {
+        submitButton = (
+          <button disabled
+                  onClick={() => this._onSubmitChoice(this.state.selectedChoiceId, this.props.question.id)}
+                  className="submit-button is-disabled">
+                  {submitButtonText}
+          </button>);
 
-    } else if (!this.props.question.responded && !this.props.isInProgressSubmitChoice) {
-      submitButton = (<button onClick={() => this._onSubmitChoice(this.state.selectedChoiceId, this.props.question.id)}
-                              className="submit-button"
-                              ref={(btn) => this.activeSubmitButton = btn}>
-            {submitButtonText}
-      </button>);
+      } else if (!this.props.question.responded && !this.props.isInProgressSubmitChoice) {
+        submitButton = (<button onClick={() => this._onSubmitChoice(this.state.selectedChoiceId, this.props.question.id)}
+                                className="submit-button"
+                                ref={(btn) => this.activeSubmitButton = btn}>
+              {submitButtonText}
+        </button>);
+      }
     }
+
 
 
     // console.log('question', this.props.question)
