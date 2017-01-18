@@ -1,6 +1,7 @@
 import axios from 'axios'
 import Q from 'q'
-import { getDomain, convertImagePaths } from '../../utilities'
+import { getDomain } from '../../utilities'
+import {convertImagePaths} from './_convertImagePaths'
 
 // ----
 // Action types
