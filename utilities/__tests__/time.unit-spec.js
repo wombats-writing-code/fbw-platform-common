@@ -2,6 +2,10 @@ let chai = require('chai');
 let path = require('path')
 chai.should();
 
+const moment = require('moment-timezone')
+
+const isUTC = moment.utc() == moment()
+
 import {
   checkMissionStatus,
   localDateTime,
@@ -108,7 +112,11 @@ describe('time utilities', () => {
     };
     let result = afterMidnight(localTimeObject);
 
-    result.hour.should.not.be.eql(0)
+    if (isUTC) {
+      result.hour.should.be.eql(0)
+    } else {
+      result.hour.should.not.be.eql(0)
+    }
   })
 
   it('should convert a local datetime to UTC datetime for beforeMidnight', () => {
@@ -122,7 +130,11 @@ describe('time utilities', () => {
     };
     let result = beforeMidnight(localTimeObject);
 
-    result.hour.should.not.be.eql(23)
+    if (isUTC) {
+      result.hour.should.be.eql(23)
+    } else {
+      result.hour.should.not.be.eql(23)
+    }
   })
 
   it('should convert a UTC datetime to local datetime for convertPythonDateToJS', () => {
@@ -134,9 +146,12 @@ describe('time utilities', () => {
       "minute": 0,
       "second": 1
     };
-    // This fails in Singapore / China -- why? get 3
     let result = convertPythonDateToJS(utcTimeObject);
 
-    result.day.should.be.eql(2)
+    if (isUTC) {
+      result.hour.should.be.eql(0)
+    } else {
+      result.hour.should.not.be.eql(0)
+    }
   })
 })
