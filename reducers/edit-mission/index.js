@@ -26,7 +26,7 @@ const initialState = {
     deadline: moment().add(7, 'd')
   }
 }
-export default function missionReducer (state = initialState, action) {
+export default function editMissionReducer (state = initialState, action) {
   switch (action.type) {
     case ADD_MISSION:
       return _.assign({}, state, {

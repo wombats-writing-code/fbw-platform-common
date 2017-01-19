@@ -1,7 +1,9 @@
 // Phase II results (for all students)
 import axios from 'axios'
+import Q from 'q'
 
 import {getDomain} from '../../utilities'
+import {convertImagePaths} from '../Mission/_convertImagePaths'
 
 // ------------------------------------
 // Actions
@@ -37,8 +39,10 @@ export function getPhaseIIResults(mission, bankId) {
     return axios(url)
     .then( (results) => {
       console.log('got phase 2 results', results.data);
-
-      dispatch(receivePhaseIIResults(results.data));
+      return Q.when(convertImagePaths(results.data))
+    })
+    .then((convertedResults) => {
+      dispatch(receivePhaseIIResults(convertedResults));
     })
     .catch((error) => {
       console.log('error getting all phase 2 mission results', error);
