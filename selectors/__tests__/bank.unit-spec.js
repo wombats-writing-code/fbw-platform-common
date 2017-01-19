@@ -21,11 +21,25 @@ describe('bank selectors', () => {
     result.should.be.eql({id: 'my bank'});
   })
 
-  it('should select the enrolled subject from the banks for D2L', () => {
+  it('should select the enrolled subject from the banks for D2L real instructor', () => {
     let result = getEnrolledSubject({
       bank: {
         currentBank: {id: 'my bank'},
         banks: [{id: 'foo', displayName: {text: 'fbw bar sp17'}}] // note that this term must match the expected values in index.js
+      },
+      login: {
+        isVisitor: false,
+        isLoggedIn: true
+      }
+    });
+    result.id.should.be.eql('foo');
+  });
+
+  it('should select the enrolled subject from the banks for D2L test instructor', () => {
+    let result = getEnrolledSubject({
+      bank: {
+        currentBank: {id: 'my bank'},
+        banks: [{id: 'foo', displayName: {text: 'fbw bar'}}] // note that this term must match the expected values in index.js
       },
       login: {
         isVisitor: false,

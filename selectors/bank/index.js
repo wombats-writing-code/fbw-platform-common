@@ -56,8 +56,9 @@ export function findBankLibrary (bankId, enrolledBanks) {
 
 export function isFBWSpring2017(name) {
   name = name.toLowerCase()
-  return name.indexOf('sp17') >= 0 &&
-    (isFBW(name) || isMAT121(name) || isACC(name))
+  return isFBW(name) ||
+    (name.indexOf('sp17') >= 0 &&
+    (isMAT121(name) || isACC(name)))
 }
 
 function isFBW(name) {

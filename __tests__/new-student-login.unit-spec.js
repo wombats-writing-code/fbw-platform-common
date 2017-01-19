@@ -9,6 +9,10 @@ import {
 import {LOGGED_IN, logInUser} from '../reducers/Login/logInUser'
 
 import thunk from 'redux-thunk'
+import configureMockStore from 'redux-mock-store'
+const middlewares = [ thunk ]
+const mockStore = configureMockStore(middlewares)
+
 let chai = require('chai');
 const chaiHttp = require('chai-http');
 
@@ -22,67 +26,60 @@ const TEST_MISSION_ID = 'assessment.AssessmentOffered%3A58768d4271e48263fb04feb8
 const BASE_URL = 'https://fbw-web-backend.herokuapp.com'
 
 const UNIQUE_USERNAME = Math.floor(new Date().getTime()).toString()
+const FAKE_SCHOOL = "testing"
+const LOGGED_IN_USERNAME = `${UNIQUE_USERNAME}@${FAKE_SCHOOL}.edu`
 
 describe('student web app', () => {
-  // it('should not allow unauthorized students to make qbank calls', function (done) {
-  //   // just verify that students without qbank authz cannot
-  //   // getMissions, as a contrast against the next `it` block
-  //   chai.request(BASE_URL)
-  //   .get(`/middleman/banks/${MAT_BANK_ID}/missions`)
-  //   .set('x-fbw-username', UNIQUE_USERNAME)
-  //   .end((err, res) => {
-  //     res.should.have.status(500);
-  //     //  console.log(result);
-  //
-  //     done();
+  it('should not allow unauthorized students to make qbank calls', function (done) {
+    // just verify that students without qbank authz cannot
+    // hasBasicAuthz, as a contrast against the next `it` block
+    chai.request(BASE_URL)
+    .get(`/middleman/hasBasicAuthz`)
+    .set('x-fbw-username', LOGGED_IN_USERNAME)
+    .end((err, res) => {
+      res.should.have.status(403);
+      done();
+    })
+  })
+
+  it('should create basic qbank authorizations upon LOGIN', function (done) {
+    // which means that you should be able to make calls
+    // under that proxyname to something like, hasBasicAuthz
+    const store = mockStore({})
+
+    store.dispatch(logInUser(FAKE_SCHOOL, UNIQUE_USERNAME))
+    .then( () => {
+      return chai.request(BASE_URL)
+      .get(`/middleman/hasBasicAuthz`)
+      .set('x-fbw-username', LOGGED_IN_USERNAME)
+    })
+    .then((res) => {
+      res.should.have.status(200)
+      done()
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  })
+
+  // it('should create / retrieve the private bank when calling authenticateD2LStudent and create authz', done => {
+  //   // You can now make middleman calls to getMission (which
+  //   //   calculates the privateBankId for you)
+  //   let credentials = _.assign({}, require('../../../d2lcredentials'), {
+  //     role: 'student'
   //   })
-  // })
   //
-  // it('should create qbank authorizations upon LOGIN', function (done) {
-  //   // which means that you should be able to make calls
-  //   // under that proxyname to something like, getMissions or getBanks
   //   const store = mockStore({})
   //
-  //   store.dispatch(logInUser('testing', UNIQUE_USERNAME))
-  //   .then( () => {
-  //
+  //   store.dispatch(authenticateD2LStudent(credentials))
+  //   .then( (data) => {
+  //     // data = {url, banks, username} but we shouldn't care what it is...
+  //     return chai.request(BASE_URL)
+  //     .get(`/middleman/banks/${MAT_BANK_ID}`)
+  //     .set('x-fbw-username', LOGGED_IN_USERNAME)
+  //     store.getActions().should.be.eql(expectedAction)
   //   })
-  //
-  //   let newState = loginReducer({}, {
-  //     type: LOGGED_IN,
-  //     data: {
-  //       url: mockUrl,
-  //       username: 'Butter-Scotch-1145648@acc.edu',
-  //       banks: [{department: 'Sandbox', id: "assessment.Bank%3A58498ccb71e482e47e0ed8ce%40bazzim.MIT.EDU"}]
-  //     }
-  //   });
-  // //
-  // //   newState.user.username.should.be.eql('Butter-Scotch-1145648@acc.edu');
-  // //   newState.user.d2l.authenticatedUrl.should.be.eql(mockUrl)
-  // //   newState.isLoggedIn.should.be.eql(true);
-  // //   newState.isVisitor.should.be.eql(false);
-  // //
-  // // })
-  // //
-  // // it('should create or retrieve the student\'s private bank when calling authenticateD2LStudent', done => {
-  // //   // means you can make a getBank call with privateAliasId and the username
-  // //   // or, alternatively, you can make middleman calls to getMission (which
-  // //   //   calculates the privateBankId for you)
-  // //   let credentials = _.assign({}, require('../../../d2lcredentials'), {
-  // //     role: 'instructor'
-  // //   })
-  // //
-  // //   const expectedAction = {
-  // //     type: RECEIVE_AUTHENTICATE_D2L,
-  // //     credentials
-  // //   }
-  // //   const store = mockStore({})
-  // //
-  // //   store.dispatch(authenticateD2LInstructor(credentials))
-  // //   .then( () => {
-  // //     store.getActions().should.be.eql(expectedAction)
-  // //   })
-  // // })
+  // })
   // //
   // // it('should be able to get a list of D2L shared missions', done => {
   // //   // this verifies that the private bank was inserted into the hierarchy
