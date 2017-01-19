@@ -4,7 +4,8 @@ import moment from 'moment'
 let Q = require('q')
 import D2L from 'valence'
 
-import { getDomain } from '../../utilities'
+import { getDomain, SCHOOL_TO_BANK } from '../../utilities'
+import {isFBWSpring2017} from '../../selectors/bank'
 
 export function instructorCourses (credentials, url) {
   // need to get all of these, because paginated
@@ -25,12 +26,14 @@ export function instructorCourses (credentials, url) {
   return axios(options)
   .then((response) => {
     if (process.env.NODE_ENV !== 'test') console.log('got d2l instructor enrollments', response);
-
+    console.log('d2l enrollments', response.data)
     let enrollments = response.data.Items
     enrollments = _.filter(enrollments, function (enrollment) {
+      let subjectName = enrollment.OrgUnit.Name
       return enrollment.OrgUnit.Type.Code == 'Course Offering' &&
         enrollment.Access.IsActive &&
-        enrollment.Access.CanAccess;
+        enrollment.Access.CanAccess &&
+        isFBWSpring2017(subjectName);
     });
 
     // instructors can get course terms
@@ -77,6 +80,7 @@ export function instructorCourses (credentials, url) {
       let offering = instructorCourseBanks[index]
       if (response.status !== 200) {
         // create the bank
+
         let options = {
           url: `${getDomain()}/middleman/banks`,
           method: 'post',

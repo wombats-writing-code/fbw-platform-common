@@ -12,10 +12,8 @@ export function getEnrolledSubject(state) {
     // D2L login, (assuming no QCC yet), so pull enrolled subject from banks
     // via section name
     return _.find(state.bank.banks, (bank) => {
-      let sectionName = bank.displayName.text ? bank.displayName.text.toLowerCase() : bank.displayName.toLowerCase()
-      if (isFBW(sectionName) ||
-          isMAT121(sectionName) ||
-          isACC(sectionName)) {
+      let sectionName = bank.displayName.text ? bank.displayName.text : bank.displayName
+      if (isFBWSpring2017(sectionName)) {
         return true
       }
       return false
@@ -54,6 +52,12 @@ export function findBankDomain (bankId, enrolledBanks) {
 export function findBankLibrary (bankId, enrolledBanks) {
   let department = findBankDomain(bankId, enrolledBanks)
   return DOMAIN_TO_LIBRARY[department]
+}
+
+export function isFBWSpring2017(name) {
+  name = name.toLowerCase()
+  return name.indexOf('sp17') >= 0 &&
+    (isFBW(name) || isMAT121(name) || isACC(name))
 }
 
 function isFBW(name) {
