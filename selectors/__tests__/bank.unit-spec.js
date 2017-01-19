@@ -25,7 +25,7 @@ describe('bank selectors', () => {
     let result = getEnrolledSubject({
       bank: {
         currentBank: {id: 'my bank'},
-        banks: [{id: 'foo', displayName: {text: 'fbw bar'}}]
+        banks: [{id: 'foo', displayName: {text: 'fbw bar sp17'}}] // note that this term must match the expected values in index.js
       },
       login: {
         isVisitor: false,
