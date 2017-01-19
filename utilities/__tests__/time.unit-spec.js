@@ -134,6 +134,7 @@ describe('time utilities', () => {
       "minute": 0,
       "second": 1
     };
+    // This fails in Singapore / China -- why? get 3
     let result = convertPythonDateToJS(utcTimeObject);
 
     result.day.should.be.eql(2)
