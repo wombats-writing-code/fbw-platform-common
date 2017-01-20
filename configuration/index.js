@@ -1,2 +1,3 @@
 // module.exports = 'dev'
-module.exports = 'prod'
+module.exports = 'test'
+// module.exports = 'prod'

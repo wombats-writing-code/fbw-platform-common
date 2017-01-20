@@ -33,7 +33,11 @@ const LOGGED_IN_USERNAME = `${UNIQUE_USERNAME}@${FAKE_SCHOOL}.edu`
 
 let privateBankId
 
-describe('student web app', () => {
+
+// describe statements should state the intent of this whole spec file
+describe('student web app', function() {
+  this.timeout(1000*10);
+
   it('should not allow unauthorized students to make qbank calls', function (done) {
     // just verify that students without qbank authz cannot
     // hasBasicAuthz, as a contrast against the next `it` block
@@ -68,58 +72,80 @@ describe('student web app', () => {
 
   // @luwenh -- help here, getting a 400 error about http vs. https when I run
   // this block??
-  // it('should create / retrieve the private bank when calling authenticateD2LStudent and create authz', done => {
-  //   // You can now make middleman calls to getMission (which
-  //   //   calculates the privateBankId for you)
-  //   let credentials = _.assign({}, require('../d2lcredentials'), {
-  //     role: 'student'
-  //   })
-  //
-  //   const store = mockStore({
-  //     login: {
-  //       user: {
-  //         username: LOGGED_IN_USERNAME
-  //       },
-  //       isLoggedIn: true,
-  //       isVisitor: false
-  //     }
-  //   })
-  //
-  //   let expectedAction = {
-  //     type: RECEIVE_MISSIONS,
-  //
-  //   }
-  //
-  //   store.dispatch(authenticateD2LStudent(credentials))
-  //   .then( () => {
-  //     // Here I want to check that I can getMissions for the MAT_BANK_ID
-  //     // assuming that the mocked student is enrolled in that course??
-  //   //   return store.dispatch(getMissions({
-  //   //     subjectBankId: MAT_BANK_ID,
-  //   //     username: LOGGED_IN_USERNAME
-  //   //   }))
-  //   // })
-  //   // .then( () => {
-  //     // privateBankId = state.bank.privateBankId -- need this for cleanup
-  //     console.log(store.getActions())
-  //     // store.getActions().should.be.eql(expectedAction)
-  //     // list of missions should be > 0
-  //   })
-  // })
+  it('should create / retrieve the private bank when calling authenticateD2LStudent and create authz', function(done) {
+    // You can now make middleman calls to getMission (which
+    //   calculates the privateBankId for you)
+    let credentials = _.assign({}, require('../d2lcredentials'), {
+      role: 'student'
+    })
 
-  //   it('should be able to get and respond to questions for a mission', done => {
-  //     const expectedAction = {
-  //       type: RECEIVE_CREATE_TAKE_MISSION,
-  //       credentials
-  //     }
-  //     const store = mockStore({})
-  //
-  //     store.dispatch(selectOpenMission())
-  //     .then( () => {
-  //       // Submit to a question here???
-  //     })
-  //   })
-  //
+    const store = mockStore({
+      login: {
+        user: {
+          username: LOGGED_IN_USERNAME
+        },
+        isLoggedIn: true,
+        isVisitor: false
+      }
+    })
+
+    let expectedAction = {
+      type: RECEIVE_MISSIONS,
+
+    }
+
+    store.dispatch(authenticateD2LStudent(credentials))
+    .then( () => {
+      done();
+      // Here I want to check that I can getMissions for the MAT_BANK_ID
+      // assuming that the mocked student is enrolled in that course??
+      return store.dispatch(getMissions({
+        subjectBankId: MAT_BANK_ID,
+        username: LOGGED_IN_USERNAME
+      }))
+    })
+    .then( (res) => {
+      // privateBankId = state.bank.privateBankId -- need this for cleanup
+      // console.log('dispatch getMissions returned:', res, store.getActions())
+      let missions = res.data;
+      missions.should.be.a('array');
+      missions.length.should.be.at.least(1);
+      // store.getActions().should.be.eql(expectedAction)
+      // list of missions should be > 0
+    })
+  })
+
+  it('should be able to select an open mission, i.e. get a taken with questions', done => {
+    const expectedAction = {
+      type: RECEIVE_CREATE_TAKE_MISSION,
+      credentials
+    }
+    const store = mockStore({});
+
+    // so here, you'll manually mock in the data that's required, e.g.
+    let data = {
+      bankId: 'foo',
+      mission: {
+        assessmentOfferedId: 'bar'
+      },
+      username: 'baz',
+
+    }
+
+    store.dispatch(selectOpenMission(data))
+    .then( (res) => {
+      // Submit to a question here???
+      let assessmentSections = res.data;
+      // assessmentSections.length.should.be(some number you know to be true, because you picked the mission)
+      _.every(assessmentSections, section => {
+        section.questions.should.be.a('array');
+        section.questions.length.should.be.at.least(1);
+      })
+    });
+  });
+
+  it('should be able to submit a response to an open mission')
+
 
   function cleanUpPromise(student) {
     console.log('cleaning up for', student);

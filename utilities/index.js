@@ -9,7 +9,13 @@ export const isLocal = (conf) => conf === 'dev'
 
 export const isBrowser = () => process.env.BROWSER ? true : false
 
-export const getDomain = () => isLocal(config) ? 'http://localhost:8888' : 'https://fbw-web-backend.herokuapp.com'
+export const getDomain = () => {
+  if (process.env.NODE_ENV === 'production') {
+    return 'https://fbw-web-backend.herokuapp.com';
+  }
+
+  return 'http://localhost:8888';
+}
 
 export const matches = (needle, haystack) => {
   let parts = needle.split(' ');

@@ -38,7 +38,7 @@ export function selectOpenMission (data) {
     };
 
     let _assessmentSections;
-    
+
     return axios(options)
     .then((response) => {
       _assessmentSections = response.data;
