@@ -42,7 +42,8 @@ describe('login selectors', () => {
       "OrgDefinedId": "S00091797",
       "Email": null
     });
-    result.should.be.eql('Peanut-Butter-QKGjIK9TtN@acc.edu');
+    // result.should.be.eql('Peanut-Butter-QKGjIK9TtN@acc.edu');
+    result.should.be.eql('Peanut-Butter-192051@acc.edu');
   })
 
 })

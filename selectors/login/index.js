@@ -31,7 +31,8 @@ export const agentIdFromTakingAgentId = (agentId) => {
 export const agentIdFromD2LRoster = (rosterObject) => {
   if (rosterObject && rosterObject.DisplayName.indexOf(', ') > -1) {
     let parts = rosterObject.DisplayName.split(', ');
-    return parts[1] + '-' + parts[0] + '-' + rosterObject.ProfileIdentifier + '@acc.edu';
+    // return parts[1] + '-' + parts[0] + '-' + rosterObject.ProfileIdentifier + '@acc.edu';
+    return parts[1] + '-' + parts[0] + '-' + rosterObject.Identifier + '@acc.edu';
   }
 
 }
