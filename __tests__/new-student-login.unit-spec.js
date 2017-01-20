@@ -158,7 +158,7 @@ describe('student web app', function() {
   });
 
   it('should be able to submit a response to an open mission')
-
+// does this need to be populated?
 
   function cleanUpPromise(student) {
     console.log('cleaning up for', student);
