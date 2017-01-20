@@ -1,11 +1,8 @@
 process.env.NODE_ENV = 'test'
 
 import _ from 'lodash'
-import axios from 'axios'
 
-import {
-  authenticateD2LStudent
-} from '../reducers/Login/authenticateD2L'
+import { authenticateD2LStudent } from '../reducers/Login/authenticateD2L'
 import {logInUser} from '../reducers/Login/logInUser'
 import {RECEIVE_MISSIONS, getMissions} from '../reducers/Mission/getMissions'
 import {RECEIVE_CREATE_TAKE_MISSION, selectOpenMission} from '../reducers/Mission/selectOpenMission'
@@ -42,7 +39,7 @@ let QUESTION_ID
 
 // describe statements should state the intent of this whole spec file
 describe('student web app', function() {
-  this.timeout(1000*10);
+  this.timeout(1000*20);
 
   it('should not allow unauthorized students to make qbank calls', function (done) {
     // just verify that students without qbank authz cannot
@@ -94,11 +91,6 @@ describe('student web app', function() {
       }
     })
 
-    let expectedAction = {
-      type: RECEIVE_MISSIONS,
-
-    }
-
     store.dispatch(authenticateD2LStudent(credentials, mockUrl, LOGGED_IN_USERNAME))
     .then( () => {
       // this action should set up the private bank
@@ -143,7 +135,7 @@ describe('student web app', function() {
         section.questions.should.be.a('array');
         section.questions.length.should.be.at.least(1);
       });
-      
+
       SECTION_ID = assessmentSections[0].id
       QUESTION_ID = assessmentSections[0].questions[0].id
       // don't know if this is right or wrong
@@ -193,7 +185,7 @@ describe('student web app', function() {
     .then((res) => {
       res.should.have.status(200);
       let privateBank = JSON.parse(res.text)
-      return chai.requst(BASE_URL)
+      return chai.request(BASE_URL)
       .get(`/middleman/banks/${privateBank.id}/missions`)
       .set('x-fbw-username', LOGGED_IN_USERNAME)
     })
