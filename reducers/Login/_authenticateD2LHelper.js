@@ -133,9 +133,11 @@ export function enrollments (credentials, url) {
   .then((response) => {
     let enrollments = response.data.Items
     enrollments = _.filter(enrollments, function (enrollment) {
+      let subjectName = enrollment.OrgUnit.Name
       return enrollment.OrgUnit.Type.Code == 'Course Offering' &&
         enrollment.Access.IsActive &&
-        enrollment.Access.CanAccess;
+        enrollment.Access.CanAccess &&
+        isFBWSpring2017(subjectName);
     });
 
     // students cannot view terms
