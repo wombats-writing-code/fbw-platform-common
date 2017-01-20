@@ -28,10 +28,10 @@ describe('authenticateD2LHelper', () => {
 
     instructorCourses(credentials, '/')
     .then( (res) => {
-
       res.should.be.eql([
           { id: 'assessment.Bank%3A58498ccb71e482e47e0ed8ce%40bazzim.MIT.EDU',
           name: 'Fly-by-wire MAT121',
+          orgUnitId: 1744153,
           term: 'Sandbox',
           department: 'Sandbox',
           displayName: 'Fly-by-wire MAT121 -- Sandbox' }
