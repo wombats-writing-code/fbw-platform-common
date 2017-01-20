@@ -133,14 +133,6 @@ describe('student web app', function() {
       username: 'baz',
     };
 
-    // =====
-    // === this part
-    // ====
-    // nock('http://localhost:8888/posts/1') //nock let you mock http requests
-    //  .get('/todos')
-    //  .reply(200, { id: 1, title: 'Post Title' } )
-
-
     // ======
     //  so this part asserts that the real middleman gave back correct data
     // ======
@@ -156,7 +148,7 @@ describe('student web app', function() {
       });
 
       // ======
-      //   this part asserts that the receive action was called. 
+      //   this part asserts that the receive action was called.
       // ======
       dispatch.calledWith(expectedAction)
     });
