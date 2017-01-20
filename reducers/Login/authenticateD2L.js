@@ -53,12 +53,12 @@ export function authenticateD2LInstructor(credentials, optionalUrl) {
   }
 }
 
-export function authenticateD2LStudent(credentials) {
+export function authenticateD2LStudent(credentials, optionalUrl, testUsername) {
 
   return function (dispatch) {
     // console.log('authenticateD2LStudent', credentials)
 
-    let url = `${window.location.pathname}${window.location.search}`;
+    let url = optionalUrl || `${window.location.pathname}${window.location.search}`;
     let banks, username;
     // console.log('mounted d2l callback!', url)
 
@@ -72,7 +72,11 @@ export function authenticateD2LStudent(credentials) {
     .then((response) => {
       if (process.env.NODE_ENV !== 'test') console.log('got whoami', response);
 
-      username = stringifyUsername(response);
+      if (process.env.NODE_ENV === 'test') {
+        username = testUsername
+      } else {
+        username = stringifyUsername(response);
+      }
 
       // Only have to do this for D2L students, because we skip the "Subjects"
       // route for them. Instructors still select their subject, so this
@@ -94,6 +98,9 @@ export function authenticateD2LStudent(credentials) {
       dispatch(receiveAuthenticateUrl({url, banks, username}));
 
       return response;
+    })
+    .catch((err) => {
+      console.log(err)
     })
   }
 }

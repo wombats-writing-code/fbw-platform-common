@@ -43,19 +43,12 @@ export function selectOpenMission (data) {
     .then((response) => {
       _assessmentSections = response.data;
 
-      let flatQuestions = _.flatten(_.map(_assessmentSections, 'questions'))
-      return Q.all(_.map(flatQuestions, convertImagePaths))
+      return Q.when(convertImagePaths(_assessmentSections))
     })
     .then((questionsWithImages) => {
-      _.each(_assessmentSections, (section) => {
-        section.questions = _.map(section.questions, (question) => {
-          let questionWithImage = _.find(questionsWithImages, {id: question.id});
-          return questionWithImage || question;
-        })
-      })
-      dispatch(receiveOpenMission(_assessmentSections));
+      dispatch(receiveOpenMission(questionsWithImages));
 
-      return _assessmentSections;
+      return questionsWithImages;
     })
     .catch((error) => {
       console.log('error getting mission data', error)

@@ -48,8 +48,9 @@ export function showAnswer(data) {
       return convertImagePaths(response)
     })
     .then((convertedResponse) => {
-      console.log(convertedResponse)
+      // console.log(convertedResponse)
       dispatch(receiveShowAnswer(convertedResponse));
+      return convertedResponse
     })
     .catch((error) => {
       console.log('error submitting show answer', error);

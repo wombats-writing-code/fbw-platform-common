@@ -123,10 +123,17 @@ export function enrollments (credentials, url) {
     credentials.port,
     url)
   let enrollmentsUrl = '/d2l/api/lp/1.14/enrollments/myenrollments/'
-  // 3 = Course Offering, I think
-  let urlWithFilters = `${enrollmentsUrl}?isActive=true&canAccess=true&orgUnitTypeId=3`
-  let options = {
-    url: userContext.createAuthenticatedUrl(urlWithFilters, 'GET') + _appendDevRole(credentials)
+  let options
+  if (process.env.NODE_ENV === 'test') {
+    options = {
+      url: `http://localhost:8888/mock-d2l${enrollmentsUrl}?${_appendDevRole(credentials)}`
+    }
+  } else {
+    // 3 = Course Offering, I think
+    let urlWithFilters = `${enrollmentsUrl}?isActive=true&canAccess=true&orgUnitTypeId=3`
+    options = {
+      url: userContext.createAuthenticatedUrl(urlWithFilters, 'GET') + _appendDevRole(credentials)
+    }
   }
 
   return axios(options)
@@ -188,8 +195,16 @@ export function whoami(credentials, url) {
     credentials.port,
     url)
   let whoamiUrl = '/d2l/api/lp/1.5/users/whoami'
-  let options = {
-    url: userContext.createAuthenticatedUrl(whoamiUrl, 'GET') + _appendDevRole(credentials)
+  let options
+
+  if (process.env.NODE_ENV === 'test') {
+    options = {
+      url: `http://localhost:8888/mock-d2l${whoamiUrl}?${_appendDevRole(credentials)}`
+    }
+  } else {
+    options = {
+      url: userContext.createAuthenticatedUrl(whoamiUrl, 'GET') + _appendDevRole(credentials)
+    }
   }
 
   return axios(options)

@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import axios from 'axios'
 import Q from 'q'
 import { getDomain } from '../../utilities'
@@ -43,22 +44,20 @@ export function selectClosedMission (data) {
     return axios(options)
     .then((response) => {
       resultSections = response.data
-      //console.log('received mission results', response)
-      let flatQuestions = _.flatten(_.map(resultSections, 'questions'))
-      return Q.all(_.map(flatQuestions, convertImagePaths))
+      //console.log('received mission results', response)\
+      return Q.when(convertImagePaths(resultSections))
     })
     .then((questionsWithImages) => {
-      _.each(resultSections, (section) => {
-        _.each(section.questions, (question) => {
-          question = _.find(questionsWithImages, {id: question.id})
-        })
-      })
-      dispatch(receiveGetUserMissionResults(response.data, true))
+
+      // console.log('result sections', resultSections)
+      dispatch(receiveGetUserMissionResults(questionsWithImages, true))
+
+      return questionsWithImages
     })
     .catch((error) => {
       // this will get hit by a 500 when the user has no results
-      dispatch(receiveGetUserMissionResults(null, false))
       // console.log('error getting mission results for user', error)
+      dispatch(receiveGetUserMissionResults(null, false))
     })
   }
 }

@@ -9,6 +9,7 @@ import {
 import {logInUser} from '../reducers/Login/logInUser'
 import {RECEIVE_MISSIONS, getMissions} from '../reducers/Mission/getMissions'
 import {RECEIVE_CREATE_TAKE_MISSION, selectOpenMission} from '../reducers/Mission/selectOpenMission'
+import {submitResponse} from '../reducers/Mission/submitResponse'
 
 import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store'
@@ -24,7 +25,7 @@ chai.should();
 chai.use(chaiHttp);
 
 const MAT_BANK_ID = 'assessment.Bank%3A58498ccb71e482e47e0ed8ce%40bazzim.MIT.EDU';
-const TEST_MISSION_ID = 'assessment.AssessmentOffered%3A58768d4271e48263fb04feb8%40bazzim.MIT.EDU'
+const TEST_MISSION_OFFERED_ID = 'assessment.AssessmentOffered%3A587da23b71e48213e63ba8c5%40bazzim.MIT.EDU'  // DEMO_TUTORIAL_MISSION
 
 const BASE_URL = 'https://fbw-web-backend.herokuapp.com'
 
@@ -32,8 +33,12 @@ const UNIQUE_USERNAME = Math.floor(new Date().getTime()).toString()
 const FAKE_SCHOOL = "testing"
 const LOGGED_IN_USERNAME = `${UNIQUE_USERNAME}@${FAKE_SCHOOL}.edu`
 
-let privateBankId
+const PRIVATE_BANK_ALIAS = `assessment.Bank%3A58498ccb71e482e47e0ed8ce-${UNIQUE_USERNAME}.${FAKE_SCHOOL}.edu%40ODL.MIT.EDU`
 
+let PRIVATE_BANK
+let SECTION_ID
+let CHOICE_ID
+let QUESTION_ID
 
 // describe statements should state the intent of this whole spec file
 describe('student web app', function() {
@@ -71,11 +76,10 @@ describe('student web app', function() {
     })
   })
 
-  // @luwenh -- help here, getting a 400 error about http vs. https when I run
-  // this block??
   it('should create / retrieve the private bank when calling authenticateD2LStudent and create authz', function(done) {
     // You can now make middleman calls to getMission (which
     //   calculates the privateBankId for you)
+    const mockUrl = 'd2l-callback?x_a=94Uf24iaW4SWpQMzFvsMrH&x_b=uq9naj95YZ2bOzgZ8se69m&x_c=66IANU-TLdAJDIOmfvygR1tA110eoQe-bYdMFldm5rA';
     let credentials = _.assign({}, require('../d2lcredentials'), {
       role: 'student'
     })
@@ -95,24 +99,19 @@ describe('student web app', function() {
 
     }
 
-    store.dispatch(authenticateD2LStudent(credentials))
+    store.dispatch(authenticateD2LStudent(credentials, mockUrl, LOGGED_IN_USERNAME))
     .then( () => {
-      done();
-      // Here I want to check that I can getMissions for the MAT_BANK_ID
-      // assuming that the mocked student is enrolled in that course??
-      return store.dispatch(getMissions({
-        subjectBankId: MAT_BANK_ID,
-        username: LOGGED_IN_USERNAME
-      }))
+      // this action should set up the private bank
+      return chai.request(BASE_URL)
+      .get(`/middleman/banks/${PRIVATE_BANK_ALIAS}`)
     })
-    .then( (res) => {
-      // privateBankId = state.bank.privateBankId -- need this for cleanup
-      // console.log('dispatch getMissions returned:', res, store.getActions())
-      let missions = res.data;
-      missions.should.be.a('array');
-      missions.length.should.be.at.least(1);
-      // store.getActions().should.be.eql(expectedAction)
-      // list of missions should be > 0
+    .then((res) => {
+      res.should.have.status(200);
+      PRIVATE_BANK = JSON.parse(res.text)
+      done();
+    })
+    .catch((err) => {
+      console.log(err)
     })
   })
 
@@ -126,11 +125,11 @@ describe('student web app', function() {
 
     // so here, you'll manually mock in the data that's required, e.g.
     let data = {
-      bankId: 'foo',
+      bankId: MAT_BANK_ID,
       mission: {
-        assessmentOfferedId: 'bar'
+        assessmentOfferedId: TEST_MISSION_OFFERED_ID
       },
-      username: 'baz',
+      username: LOGGED_IN_USERNAME,
     };
 
     // ======
@@ -138,35 +137,79 @@ describe('student web app', function() {
     // ======
     store.dispatch(selectOpenMission(data))
     .then( (res) => {
-      // Submit to a question here???
-      let assessmentSections = res.data;
+      let assessmentSections = res;
 
-      // assessmentSections.length.should.be(some number you know to be true, because you picked the mission)
       _.every(assessmentSections, section => {
         section.questions.should.be.a('array');
         section.questions.length.should.be.at.least(1);
       });
+      
+      SECTION_ID = assessmentSections[0].id
+      QUESTION_ID = assessmentSections[0].questions[0].id
+      // don't know if this is right or wrong
+      CHOICE_ID = assessmentSections[0].questions[0].choices[0].id
 
       // ======
       //   this part asserts that the receive action was called.
       // ======
       dispatch.calledWith(expectedAction)
+
+      done()
     });
+  })
 
+  it('should be able to submit a response to an open mission', done => {
+    const store = mockStore({});
+    // so here, you'll manually mock in the data that's required, e.g.
+    let data = {
+      bankId: MAT_BANK_ID,
+      section: {
+        id: SECTION_ID
+      },
+      questionId: QUESTION_ID,
+      choiceId: CHOICE_ID,
+      username: LOGGED_IN_USERNAME,
+    };
 
-
-  });
-
-  it('should be able to submit a response to an open mission')
-// does this need to be populated?
+    // ======
+    //  so this part asserts that the real middleman gave back correct data
+    // ======
+    store.dispatch(submitResponse(data))
+    .then( (res) => {
+      let response = res;
+      response.should.have.property('isCorrect')
+      response.should.have.property('confusedLearningObjectiveIds')
+      response.should.have.property('feedback')
+      response.should.have.property('choiceIds')
+      done()
+    })
+  })
 
   function cleanUpPromise(student) {
     console.log('cleaning up for', student);
-
+    // to clean up, need to grab the actual private bank id
     return chai.request(BASE_URL)
-    .delete(`/middleman/banks/${privateBankId}`)
+    .get(`/middleman/banks/${PRIVATE_BANK_ALIAS}`)
+    .then((res) => {
+      res.should.have.status(200);
+      let privateBank = JSON.parse(res.text)
+      return chai.requst(BASE_URL)
+      .get(`/middleman/banks/${privateBank.id}/missions`)
+      .set('x-fbw-username', LOGGED_IN_USERNAME)
+    })
+    .then((res) => {
+      res.should.have.status(200)
+      let missions = JSON.parse(res.text)
+      return chai.request(BASE_URL)
+      .delete(`/middleman/banks/${MAT_BANK_ID}/missions/${missions[0].id}`)
+    })
+    .then((res) => {
+      return chai.request(BASE_URL)
+      .delete(`/middleman/banks/${privateBank.id}`)
+    })
     .then( (res) => {
       res.should.have.status(200);
+
       return chai.request(BASE_URL)
       .delete(`/middleman/authorizations`)
       .set('x-fbw-username', LOGGED_IN_USERNAME)
@@ -184,7 +227,7 @@ describe('student web app', function() {
 
     cleanUpPromise(LOGGED_IN_USERNAME)
     .then( res => {
-      console.log('cleaned up for all newly created students', res.text);
+      console.log('cleaned up for all newly created students');
 
       done();
     })
