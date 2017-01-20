@@ -14,6 +14,7 @@ import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store'
 const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
+import sinon from 'sinon'
 
 let chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -116,11 +117,12 @@ describe('student web app', function() {
   })
 
   it('should be able to select an open mission, i.e. get a taken with questions', done => {
+    const store = mockStore({});
+    const dispatch = sinon.spy(store, 'dispatch');
     const expectedAction = {
       type: RECEIVE_CREATE_TAKE_MISSION,
-      credentials
+      mission: 'foobaz'
     }
-    const store = mockStore({});
 
     // so here, you'll manually mock in the data that's required, e.g.
     let data = {
@@ -129,19 +131,38 @@ describe('student web app', function() {
         assessmentOfferedId: 'bar'
       },
       username: 'baz',
+    };
 
-    }
+    // =====
+    // === this part
+    // ====
+    // nock('http://localhost:8888/posts/1') //nock let you mock http requests
+    //  .get('/todos')
+    //  .reply(200, { id: 1, title: 'Post Title' } )
 
+
+    // ======
+    //  so this part asserts that the real middleman gave back correct data
+    // ======
     store.dispatch(selectOpenMission(data))
     .then( (res) => {
       // Submit to a question here???
       let assessmentSections = res.data;
+
       // assessmentSections.length.should.be(some number you know to be true, because you picked the mission)
       _.every(assessmentSections, section => {
         section.questions.should.be.a('array');
         section.questions.length.should.be.at.least(1);
-      })
+      });
+
+      // ======
+      //   this part asserts that the receive action was called. 
+      // ======
+      dispatch.calledWith(expectedAction)
     });
+
+
+
   });
 
   it('should be able to submit a response to an open mission')

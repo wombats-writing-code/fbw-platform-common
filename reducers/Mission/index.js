@@ -143,8 +143,6 @@ export default function missionReducer (state = initialState, action) {
       });
 
     case SELECT_MISSION_RESULT:
-      console.log('action SELECT_MISSION_RESULT', action);
-
       let questions = _.flatMap(action.missionResult.sections, 'questions');
       let currentTarget = _.find(questions, q => q.itemId === action.question.itemId)
 
