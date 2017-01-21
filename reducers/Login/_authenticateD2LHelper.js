@@ -26,8 +26,8 @@ export function instructorCourses (credentials, url) {
   return axios(options)
   .then((response) => {
     if (process.env.NODE_ENV !== 'test') console.log('got d2l instructor enrollments', response);
-    console.log('d2l enrollments', response.data)
-    let enrollments = response.data.Items
+
+    let enrollments = response.data.Items;
     enrollments = _.filter(enrollments, function (enrollment) {
       let subjectName = enrollment.OrgUnit.Name
       return enrollment.OrgUnit.Type.Code == 'Course Offering' &&
@@ -35,6 +35,8 @@ export function instructorCourses (credentials, url) {
         enrollment.Access.CanAccess &&
         isFBWSpring2017(subjectName);
     });
+
+    if (process.env.NODE_ENV !== 'test') console.log('filtered enrollments', enrollments)
 
     // instructors can get course terms
     let offeringPromises = []
@@ -46,7 +48,8 @@ export function instructorCourses (credentials, url) {
       })
       let url = `/d2l/api/lp/1.5/courses/${course.OrgUnit.Id}`
       let options = {
-        url: userContext.createAuthenticatedUrl(url, 'GET') + _appendDevRole(credentials)
+        url: userContext.createAuthenticatedUrl(url, 'GET') + _appendDevRole(credentials),
+        validateStatus: () => {return true}  // evaluate this later, in case of 403s
       }
 
       offeringPromises.push(axios(options))
@@ -60,15 +63,17 @@ export function instructorCourses (credentials, url) {
 
     let bankTestPromises = []
     _.each(offerings, (offering, index) => {
-      instructorCourseBanks[index].term = offering.data.Semester.Name.trim()
-      instructorCourseBanks[index].department = offering.data.Department.Name.trim()
-      instructorCourseBanks[index].displayName = `${instructorCourseBanks[index].name} -- ${offering.data.Semester.Name.trim()}`
+      if (offering.status !== 403) {
+        instructorCourseBanks[index].term = offering.data.Semester.Name.trim()
+        instructorCourseBanks[index].department = offering.data.Department.Name.trim()
+        instructorCourseBanks[index].displayName = `${instructorCourseBanks[index].name} -- ${offering.data.Semester.Name.trim()}`
 
-      let options = {
-        url: `${getDomain()}/middleman/banks/${bankAliasId(instructorCourseBanks[index].id)}`,
-        validateStatus: (status) => {return true}  // let's filter the non-existent ones out later
+        let options = {
+          url: `${getDomain()}/middleman/banks/${bankAliasId(instructorCourseBanks[index].id)}`,
+          validateStatus: (status) => {return true}  // let's filter the non-existent ones out later
+        }
+        bankTestPromises.push(axios(options))
       }
-      bankTestPromises.push(axios(options))
     })
     return axios.all(bankTestPromises)
   })
@@ -138,7 +143,7 @@ export function enrollments (credentials, url) {
 
   return axios(options)
   .then((response) => {
-    let enrollments = response.data.Items
+    let enrollments = response.data.Items;
     enrollments = _.filter(enrollments, function (enrollment) {
       let subjectName = enrollment.OrgUnit.Name
       return enrollment.OrgUnit.Type.Code == 'Course Offering' &&
