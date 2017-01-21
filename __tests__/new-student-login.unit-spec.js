@@ -1,11 +1,8 @@
 process.env.NODE_ENV = 'test'
 
 import _ from 'lodash'
-import axios from 'axios'
 
-import {
-  authenticateD2LStudent
-} from '../reducers/Login/authenticateD2L'
+import { authenticateD2LStudent } from '../reducers/Login/authenticateD2L'
 import {logInUser} from '../reducers/Login/logInUser'
 import {RECEIVE_MISSIONS, getMissions} from '../reducers/Mission/getMissions'
 import {RECEIVE_CREATE_TAKE_MISSION, selectOpenMission} from '../reducers/Mission/selectOpenMission'
@@ -42,7 +39,7 @@ let QUESTION_ID
 
 // describe statements should state the intent of this whole spec file
 describe('student web app', function() {
-  this.timeout(1000*10);
+  this.timeout(1000*20);
 
   it('should not allow unauthorized students to make qbank calls', function (done) {
     // just verify that students without qbank authz cannot
@@ -93,11 +90,6 @@ describe('student web app', function() {
         isVisitor: false
       }
     })
-
-    let expectedAction = {
-      type: RECEIVE_MISSIONS,
-
-    }
 
     store.dispatch(authenticateD2LStudent(credentials, mockUrl, LOGGED_IN_USERNAME))
     .then( () => {
