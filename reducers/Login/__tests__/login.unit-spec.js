@@ -105,7 +105,7 @@ describe('login reducer', () => {
       data: {
         url: 'blank',
         banks: [EXPECTED_MAT_121_BANK],
-        username: 'Nutter-Butter-1145644@acc.edu' }
+        username: 'Shea-Butter-1145645@acc.edu' }
     }]
     const store = mockStore({})
 
