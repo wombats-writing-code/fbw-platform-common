@@ -26,8 +26,8 @@ export function instructorCourses (credentials, url) {
   return axios(options)
   .then((response) => {
     if (process.env.NODE_ENV !== 'test') console.log('got d2l instructor enrollments', response);
-    console.log('d2l enrollments', response.data)
-    let enrollments = response.data.Items
+
+    let enrollments = response.data.Items;
     enrollments = _.filter(enrollments, function (enrollment) {
       let subjectName = enrollment.OrgUnit.Name
       return enrollment.OrgUnit.Type.Code == 'Course Offering' &&
@@ -35,6 +35,8 @@ export function instructorCourses (credentials, url) {
         enrollment.Access.CanAccess &&
         isFBWSpring2017(subjectName);
     });
+
+    if (process.env.NODE_ENV !== 'test') console.log('filtered enrollments', enrollments)
 
     // instructors can get course terms
     let offeringPromises = []
@@ -138,7 +140,7 @@ export function enrollments (credentials, url) {
 
   return axios(options)
   .then((response) => {
-    let enrollments = response.data.Items
+    let enrollments = response.data.Items;
     enrollments = _.filter(enrollments, function (enrollment) {
       let subjectName = enrollment.OrgUnit.Name
       return enrollment.OrgUnit.Type.Code == 'Course Offering' &&

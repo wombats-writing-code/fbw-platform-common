@@ -143,7 +143,7 @@ describe('student web app', function() {
         section.questions.should.be.a('array');
         section.questions.length.should.be.at.least(1);
       });
-      
+
       SECTION_ID = assessmentSections[0].id
       QUESTION_ID = assessmentSections[0].questions[0].id
       // don't know if this is right or wrong
@@ -193,7 +193,7 @@ describe('student web app', function() {
     .then((res) => {
       res.should.have.status(200);
       let privateBank = JSON.parse(res.text)
-      return chai.requst(BASE_URL)
+      return chai.request(BASE_URL)
       .get(`/middleman/banks/${privateBank.id}/missions`)
       .set('x-fbw-username', LOGGED_IN_USERNAME)
     })

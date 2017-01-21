@@ -73,7 +73,11 @@ export function authenticateD2LStudent(credentials, optionalUrl, testUsername) {
       if (process.env.NODE_ENV !== 'test') console.log('got whoami', response);
 
       if (process.env.NODE_ENV === 'test') {
-        username = testUsername
+        if (testUsername) {
+          username = testUsername
+        } else {
+          username = stringifyUsername(response)
+        }
       } else {
         username = stringifyUsername(response);
       }
