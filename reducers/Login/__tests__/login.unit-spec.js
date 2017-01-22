@@ -45,8 +45,9 @@ const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
 
 
-describe('login reducer', () => {
-
+describe('login reducer', function() {
+  this.timeout(1000* 10);
+  
   it('should set the username and authenticatedUrl upon RECEIVE_AUTHENTICATE_D2L', () => {
     const mockUrl = 'd2l-callback?x_a=94Uf24iaW4SWpQMzFvsMrH&x_b=uq9naj95YZ2bOzgZ8se69m&x_c=66IANU-TLdAJDIOmfvygR1tA110eoQe-bYdMFldm5rA';
 

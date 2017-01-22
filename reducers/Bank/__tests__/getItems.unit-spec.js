@@ -17,9 +17,10 @@ const mockStore = configureMockStore(middlewares)
 
 import {getItems} from '../getItems'
 
-describe('getItems', () => {
+describe('getItems', function() {
+
   it('should call getItems and receive items for the Accounting bank', function(done) {
-    this.timeout(15000);
+    this.timeout(1000*40);
 
     const store = mockStore({})
 

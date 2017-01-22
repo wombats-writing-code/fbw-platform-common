@@ -13,7 +13,8 @@ import {directivesFromSections, isTarget, isTargetRouteNavigated} from '../../se
 
 const mapStateToProps = (state, ownProps) => {
   // console.log('ownProps of MissionContainer', ownProps)
-  // console.log('state in MissionContainer', state);
+  console.log('state in MissionContainer', state);
+  
   let outcomes = getMapping(state) ? getMapping(state).outcomes : [];
   let directives = directivesFromSections(state.mission.currentMissionSections, outcomes);
 

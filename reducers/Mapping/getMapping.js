@@ -1,5 +1,5 @@
 
-import 'lodash'
+import _ from 'lodash'
 import axios from 'axios'
 
 import {getDomain} from '../../utilities'
@@ -32,12 +32,20 @@ export function getMapping(departmentName) {
       return axios.all([axios.get(modulesUrl), axios.get(outcomesUrl), axios.get(relationshipsUrl)])
       .then(axios.spread((modules, outcomes, relationships) => {
         // console.log('received getting mapping', modules, outcomes, relationships);
+        let mapping = {
+          modules: modules.data,
+          outcomes: outcomes.data,
+          relationships: relationships.data
+        };
 
         dispatch(receiveMapping({modules: modules.data, outcomes: outcomes.data, relationships: relationships.data}));
+
+        return mapping;
       }))
       .catch((error) => {
         console.log('error getting mapping', error);
       });
+
     } else {
       let departments = ['accounting', 'algebra']
       let promises = []
@@ -52,13 +60,17 @@ export function getMapping(departmentName) {
       })
 
       return axios.all(promises)
-      .then(axios.spread((accModules, accOutcomes, accRelationships,
-                          algModules, algOutcomes, algRelationships) => {
+      .then(axios.spread((accModules, accOutcomes, accRelationships, algModules, algOutcomes, algRelationships) => {
         // console.log('received getting mapping', modules, outcomes, relationships);
+        let mapping = {
+          modules: _.concat( accModules.data, algModules.data),
+          outcomes: _.concat(accOutcomes.data, algOutcomes.data),
+          relationships: _.concat(accRelationships.data, algRelationships.data)
+        };
 
-        dispatch(receiveMapping({modules: _.assign({}, accModules.data, algModules.data),
-          outcomes: _.assign({}, accOutcomes.data, algOutcomes.data),
-          relationships: _.assign({}, accRelationships.data, algRelationships.data)}));
+        dispatch(receiveMapping(mapping));
+
+        return mapping;
       }))
       .catch((error) => {
         console.log('error getting mapping', error);
