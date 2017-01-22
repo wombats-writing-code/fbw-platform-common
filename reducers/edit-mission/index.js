@@ -36,8 +36,6 @@ export default function editMissionReducer (state = initialState, action) {
     case CREATE_MISSION_OPTIMISTIC:
       return _.assign({}, state, {
         isCreateMissionInProgress: true,
-        phaseIResults: null,
-        phaseIIResults: null
       })
 
     case RECEIVE_CREATE_MISSION:

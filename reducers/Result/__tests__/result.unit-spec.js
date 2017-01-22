@@ -7,6 +7,7 @@ chai.should();
 import {RECEIVE_PHASE_I_RESULTS} from '../getPhaseIResults'
 import {RECEIVE_PHASE_II_RESULTS} from '../getPhaseIIResults'
 import {SELECT_MISSION_RESULT} from '../../Mission/selectMissionResult'
+import {CREATE_MISSION_OPTIMISTIC} from '../../edit-mission/createMission'
 
 describe('result reducer', () => {
 
@@ -47,6 +48,16 @@ describe('result reducer', () => {
     });
 
     newState.currentResult.takingAgentId.should.eql('batman');
+  });
+
+  it('should update the current result state upon CREATE_MISSION_OPTIMISTIC', () => {
+    let newState = reducer({}, {
+      type: CREATE_MISSION_OPTIMISTIC,
+      newMission: 'foo'
+    });
+
+    should.not.exist(newState.phaseIResults);
+    should.not.exist(newState.phaseIIResults);
   });
 
 })
