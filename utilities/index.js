@@ -11,7 +11,12 @@ export const isBrowser = () => process.env.BROWSER ? true : false
 
 export const getDomain = () => {
   if (process.env.NODE_ENV === 'production') {
-    return 'https://fbw-web-backend.herokuapp.com';
+    let host = window.location.host
+    if (host === 'fbw-instructor.mit.edu' || host === 'fbw-student.mit.edu') {
+      return 'https://fbw-web-backend.herokuapp.com';
+    } else {
+      return 'https://fbw-web-backend-dev.herokuapp.com';
+    }
   }
 
   return 'http://localhost:8888';

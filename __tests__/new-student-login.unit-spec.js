@@ -24,7 +24,7 @@ chai.use(chaiHttp);
 const MAT_BANK_ID = 'assessment.Bank%3A58498ccb71e482e47e0ed8ce%40bazzim.MIT.EDU';
 const TEST_MISSION_OFFERED_ID = 'assessment.AssessmentOffered%3A587da23b71e48213e63ba8c5%40bazzim.MIT.EDU'  // DEMO_TUTORIAL_MISSION
 
-const BASE_URL = 'https://fbw-web-backend.herokuapp.com'
+const BASE_URL = 'https://fbw-web-backend-dev.herokuapp.com'
 
 const UNIQUE_USERNAME = Math.floor(new Date().getTime()).toString()
 const FAKE_SCHOOL = "testing"
@@ -179,12 +179,13 @@ describe('student web app', function() {
 
   function cleanUpPromise(student) {
     console.log('cleaning up for', student);
+    let privateBank
     // to clean up, need to grab the actual private bank id
     return chai.request(BASE_URL)
     .get(`/middleman/banks/${PRIVATE_BANK_ALIAS}`)
     .then((res) => {
       res.should.have.status(200);
-      let privateBank = JSON.parse(res.text)
+      privateBank = JSON.parse(res.text)
       return chai.request(BASE_URL)
       .get(`/middleman/banks/${privateBank.id}/missions`)
       .set('x-fbw-username', LOGGED_IN_USERNAME)

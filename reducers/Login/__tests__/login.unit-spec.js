@@ -47,7 +47,7 @@ const mockStore = configureMockStore(middlewares)
 
 describe('login reducer', function() {
   this.timeout(1000* 10);
-  
+
   it('should set the username and authenticatedUrl upon RECEIVE_AUTHENTICATE_D2L', () => {
     const mockUrl = 'd2l-callback?x_a=94Uf24iaW4SWpQMzFvsMrH&x_b=uq9naj95YZ2bOzgZ8se69m&x_c=66IANU-TLdAJDIOmfvygR1tA110eoQe-bYdMFldm5rA';
 
@@ -106,7 +106,7 @@ describe('login reducer', function() {
       data: {
         url: 'blank',
         banks: [EXPECTED_MAT_121_BANK],
-        username: 'Shea-Butter-1145645@acc.edu' }
+        username: 'Nutter-Butter-1145644@acc.edu' }
     }]
     const store = mockStore({})
 

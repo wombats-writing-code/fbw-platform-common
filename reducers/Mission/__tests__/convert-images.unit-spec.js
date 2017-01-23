@@ -21,8 +21,6 @@ let should = require('should');
 chai.should();
 chai.use(chaiHttp);
 
-const BASE_URL = 'https://fbw-web-backend.herokuapp.com'
-
 const ALGEBRA_BANK_ID = 'assessment.Bank%3A576d6d3271e4828c441d721a%40bazzim.MIT.EDU';
 const ACCOUNTING_BANK_ID = 'assessment.Bank%3A57d70ed471e482a74879349a%40bazzim.MIT.EDU';
 
