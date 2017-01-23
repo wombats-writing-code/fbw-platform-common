@@ -51,4 +51,5 @@ Two separate repos are maintained (look at `.git/config` file) to power the deve
 
 To inspect the environment variables in each app, do:
 ```
-heroku:config 
+heroku config --remote [dev or production]
+```
