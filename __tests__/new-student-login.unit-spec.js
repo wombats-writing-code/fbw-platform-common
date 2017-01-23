@@ -1,6 +1,7 @@
 process.env.NODE_ENV = 'test'
 
 import _ from 'lodash'
+import Q from 'q'
 
 import { authenticateD2LStudent } from '../reducers/Login/authenticateD2L'
 import {logInUser} from '../reducers/Login/logInUser'
@@ -22,6 +23,7 @@ chai.should();
 chai.use(chaiHttp);
 
 const MAT_BANK_ID = 'assessment.Bank%3A58498ccb71e482e47e0ed8ce%40bazzim.MIT.EDU';
+const TEST_MISSION_ID = 'assessment.Assessment%3A587da23a71e48213e43f97b2%40bazzim.MIT.EDU'  // DEMO_TUTORIAL_MISSION
 const TEST_MISSION_OFFERED_ID = 'assessment.AssessmentOffered%3A587da23b71e48213e63ba8c5%40bazzim.MIT.EDU'  // DEMO_TUTORIAL_MISSION
 
 const BASE_URL = 'https://fbw-web-backend-dev.herokuapp.com'
@@ -36,6 +38,11 @@ let PRIVATE_BANK
 let SECTION_ID
 let CHOICE_ID
 let QUESTION_ID
+
+function dblEncodedUsername(username) {
+  return encodeURIComponent(encodeURIComponent(username))
+}
+
 
 // describe statements should state the intent of this whole spec file
 describe('student web app', function() {
@@ -186,15 +193,18 @@ describe('student web app', function() {
     .then((res) => {
       res.should.have.status(200);
       privateBank = JSON.parse(res.text)
+      // then delete just this user's taken...
       return chai.request(BASE_URL)
-      .get(`/middleman/banks/${privateBank.id}/missions`)
-      .set('x-fbw-username', LOGGED_IN_USERNAME)
+      .get(`/middleman/banks/${privateBank.id}/missions/${TEST_MISSION_ID}/takens`)
     })
     .then((res) => {
       res.should.have.status(200)
-      let missions = JSON.parse(res.text)
+      let takens = JSON.parse(res.text)
+      let myTaken = _.find(takens, (taken) => {
+        return taken.takingAgentId.indexOf(dblEncodedUsername(student)) >= 0;
+      })
       return chai.request(BASE_URL)
-      .delete(`/middleman/banks/${MAT_BANK_ID}/missions/${missions[0].id}`)
+      .delete(`/middleman/banks/${MAT_BANK_ID}/missions/${TEST_MISSION_ID}/takens/${myTaken.id}`)
     })
     .then((res) => {
       return chai.request(BASE_URL)
@@ -211,7 +221,9 @@ describe('student web app', function() {
       res.should.have.status(200)
       return Q.when('')
     })
-    .catch( err => err);
+    .catch( (err) => {
+      console.log(err);
+    })
   }
 
   // clean up all the newly-created authorizations, banks, and missions
