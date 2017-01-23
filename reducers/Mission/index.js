@@ -23,7 +23,7 @@ import {RECEIVE_SELECT_BANK} from '../Bank/selectBank'
 
 import {RECEIVE_CREATE_MISSION} from '../edit-mission/createMission'
 import {RECEIVE_DELETE_MISSION} from '../edit-mission/deleteMission'
-import {LOG_OUT} from '../login/logOutUser'
+import {LOG_OUT} from '../Login/logOutUser'
 
 // ------------------------------------
 // Reducer
