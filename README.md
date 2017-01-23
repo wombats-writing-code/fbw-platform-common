@@ -27,3 +27,28 @@ npm run karma
 The karma runner will run all files named `*.spec.js`, compile them using webpack and launch the Chrome window. Each test has automatic cleanup but if you want to see the component visually in the browser, just comment out the `after()` block.
 
 *Run both suites after making a change!* because changes impact both apps.
+
+# Fly-by-Wire middleman
+
+The FbW middleman is currently housed in a private Heroku repo. There are development and production versions, at https://fbw-web-backend.herokuapp.com and https://fbw-web-backend-dev.herokuapp.com.
+
+To pull from and push to development:
+```
+git pull dev master
+git push dev master
+```
+
+To pull from and push to production:
+```
+git pull production master
+git push production master
+```
+
+**Code should always be pushed to dev first, and then production** because people will fork and pull from production.
+
+## How it works
+Two separate repos are maintained (look at `.git/config` file) to power the development and production versions. In the Heroku CLI, you set environment variables to the dev and production versions separately, e.g. only the production version will have the environment variable `PROD_QBANK_HOST`. This way, when the middleman code is running, it knows whether it's in dev or prod.
+
+To inspect the environment variables in each app, do:
+```
+heroku:config 
