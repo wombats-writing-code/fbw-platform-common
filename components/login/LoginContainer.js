@@ -6,6 +6,7 @@ import { logInUser } from '../../reducers/Login/logInUser'
 import { updateUsername } from '../../reducers/Login/updateUsername'
 import { logOutUser } from '../../reducers/Login/logOutUser'
 import {getAuthenticationUrl} from '../../d2lutils'
+import {authenticateD2LStudent} from '../../reducers/Login/authenticateD2L'
 
 const mapStateToProps = (state, ownProps) => {
   console.log('state in LoginContainer', state);
@@ -24,7 +25,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     login: (school, username) => dispatch(logInUser(school, username)),
     logout: () => {
       dispatch(logOutUser())
-    }
+    },
+    authenticateD2L: (credentials, url) => dispatch(authenticateD2LStudent(credentials, url)) // this should only be needed in the iOS case
   }
 }
 

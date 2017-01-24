@@ -19,7 +19,13 @@ export const getDomain = () => {
     }
   }
 
-  return 'http://localhost:8888';
+  // this is a horrible hack...
+  if (window.location) {
+    return 'http://localhost:8888';
+  } else {
+    // RN
+    return 'https://fbw-web-backend.herokuapp.com';
+  }
 }
 
 export const matches = (needle, haystack) => {
