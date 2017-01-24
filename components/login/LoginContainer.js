@@ -1,5 +1,5 @@
 // Login Container
-
+import _ from 'lodash'
 import { connect } from 'react-redux'
 
 import { logInUser } from '../../reducers/Login/logInUser'
