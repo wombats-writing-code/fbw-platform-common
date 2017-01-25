@@ -52,6 +52,7 @@ export default function missionReducer (state = initialState, action) {
     case SELECT_MISSION:
       return _.assign({}, state, {
         currentMission: action.mission,
+        currentDirectiveIndex: 0
       })
 
     // ==== from edit-mission ====
@@ -98,6 +99,7 @@ export default function missionReducer (state = initialState, action) {
       return _.assign({}, state, {
         resultsExistForUser: true,
         currentMissionSections: action.mission,
+        currentDirectiveIndex: 0,
         isSubmitTakeMissionInProgress: false
       });
 
