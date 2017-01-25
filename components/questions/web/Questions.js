@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {isTarget, filterItemsByTarget, targetKey, directiveIdsFromQuestions} from '../../../selectors/'
+import {checkMissionStatus} from '../../../utilities/time'
 
 import _ from 'lodash';
 import $ from 'jquery';
@@ -53,6 +53,7 @@ class Questions extends Component {
       )
     }
 
+    // ==== determines if question card should be expanded
     let isExpanded;
     // console.log('questionItem', questionItem)
     if (!questionItem.responded) {
@@ -63,11 +64,13 @@ class Questions extends Component {
       }
     }
 
+    let isSubmitEnabled = checkMissionStatus(this.props.mission) === 'over' ? false : true;
+
     return (
       <li key={questionItem.id} className="questions-list__item">
         <div className="row">
           <div className="medium-8 medium-centered large-8 large-centered columns">
-            <QuestionCard question={questionItem} outcome={outcome} isExpanded={isExpanded} />
+            <QuestionCard question={questionItem} outcome={outcome} isExpanded={isExpanded} isSubmitEnabled={isSubmitEnabled}/>
           </div>
         </div>
 

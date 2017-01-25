@@ -37,7 +37,7 @@ describe('Questions', () => {
     );
   });
 
-  it('should render a list of 2 answered question cards and 1 pristine card', () => {
+  it('should render a list of 2 answered question cards and 1 pristine card for an over mission', () => {
     const questions = connectedQuestions.find(Questions)
 
     // questions.props().questions.length.should.be.eql(3);
@@ -45,10 +45,12 @@ describe('Questions', () => {
     questions.find('.choice').length.should.be.eql(4);          // only 1 question is expanded
     questions.find('.is-selected').length.should.be.eql(0);     // no choices are expanded except for last one
     questions.find('.answered-question-cue').length.should.be.eql(2);     // no choices are expanded except for last one
-
+    questions.find('.submit-button').length.should.be.eql(0);
   });
 
+
+
   after( () => {
-    connectedQuestions.detach();
+    // connectedQuestions.detach();
   })
 });
