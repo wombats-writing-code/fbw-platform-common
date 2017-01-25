@@ -1,6 +1,8 @@
 import { connect } from 'react-redux'
 import slug from 'slug'
 
+import _ from 'lodash'
+
 import { getMissions } from '../../reducers/Mission/getMissions'
 import { selectOpenMission } from '../../reducers/Mission/selectOpenMission'
 import { selectClosedMission } from '../../reducers/Mission/selectClosedMission'
@@ -14,7 +16,7 @@ import {directivesFromSections, isTarget, isTargetRouteNavigated} from '../../se
 const mapStateToProps = (state, ownProps) => {
   // console.log('ownProps of MissionContainer', ownProps)
   console.log('state in MissionContainer', state);
-  
+
   let outcomes = getMapping(state) ? getMapping(state).outcomes : [];
   let directives = directivesFromSections(state.mission.currentMissionSections, outcomes);
 
