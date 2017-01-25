@@ -3,29 +3,39 @@ import axios from 'axios'
 import Q from 'q'
 
 let config = require('../configuration')
-import { isTarget, targetKey } from '../selectors/mission'
+import { isTarget } from '../selectors/mission'
 
 export const isLocal = (conf) => conf === 'dev'
 
-export const isBrowser = () => process.env.BROWSER ? true : false
+// this is a horrible hack...
+export const isBrowser = () => {
+  if (window.location) {
+    return true;
+  }
+
+  return false;
+}
 
 export const getDomain = () => {
   if (process.env.NODE_ENV === 'production') {
-    let host = window.location.host
-    if (host === 'fbw-instructor.mit.edu' || host === 'fbw-student.mit.edu') {
-      return 'https://fbw-web-backend.herokuapp.com';
+    if (isBrowser()) {
+      let host = window.location.host;
+
+      // if webapp is running on *-dev, route to -dev middleman
+      if (host === 'fbw-instructor.mit.edu' || host === 'fbw-student.mit.edu') {
+        return 'https://fbw-web-backend.herokuapp.com';
+      } else {
+        return 'https://fbw-web-backend-dev.herokuapp.com';
+      }
+
+    // if it's in production and it's on mobile, always call against production middleman
     } else {
-      return 'https://fbw-web-backend-dev.herokuapp.com';
+      return 'https://fbw-web-backend.herokuapp.com';
     }
   }
 
-  // this is a horrible hack...
-  if (window.location) {
-    return 'http://localhost:8888';
-  } else {
-    // RN
-    return 'https://fbw-web-backend.herokuapp.com';
-  }
+  // if it's not in production (e.g. in 'test' or 'dev'), always call against localhost middleman
+  return 'http://localhost:8888';
 }
 
 export const matches = (needle, haystack) => {
