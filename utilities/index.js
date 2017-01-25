@@ -34,8 +34,14 @@ export const getDomain = () => {
     }
   }
 
-  // if it's not in production (e.g. in 'test' or 'dev'), always call against localhost middleman
-  return 'http://localhost:8888';
+  // if it's not in production (e.g. in 'test' or 'dev'),
+  // for web, call against localhost middleman
+  // if (isBrowser()) {
+    return 'http://localhost:8888';
+  // }
+
+  // call against production for mobile
+  // return 'https://fbw-web-backend.herokuapp.com';
 }
 
 export const matches = (needle, haystack) => {

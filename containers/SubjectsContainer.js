@@ -22,8 +22,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onSelectSubject: (bank, username) => dispatch(selectBank(bank, username)),
-    // getSubjects: (bankIds) => dispatch(getBanks(bankIds)),
-    getMapping: (bankId, banks) => dispatch(getMapping(findBankDomain(bankId, banks)))
+    getMapping: data => dispatch(getMapping(data))
   }
 }
 
