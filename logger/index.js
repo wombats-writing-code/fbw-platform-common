@@ -1,5 +1,6 @@
 
 import {LOGGED_IN} from '../reducers/Login/logInUser'
+import {RECEIVE_MISSIONS} from '../reducers/Mission/getMissions'
 import {RECEIVE_CREATE_TAKE_MISSION} from '../reducers/Mission/selectOpenMission'
 import {SELECT_DIRECTIVE} from '../reducers/Mission/selectDirective'
 import {SELECT_TARGET} from '../reducers/Mission/selectTarget'
