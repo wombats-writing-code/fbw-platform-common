@@ -21,6 +21,7 @@ const logger = store => next => action => {
     switch(action.type) {
       case LOGGED_IN:
         ga('set', 'userId', action.data.username);  // Set the user ID using signed-in user_id.
+        break;
 
       case RECEIVE_MISSIONS:
         try {
@@ -33,6 +34,7 @@ const logger = store => next => action => {
         } catch (e) {
           console.log(e);
         }
+        break;
 
       case RECEIVE_CREATE_TAKE_MISSION:
         try {
@@ -45,6 +47,7 @@ const logger = store => next => action => {
         } catch(e) {
           console.log(e);
         }
+        break;
 
       case SELECT_DIRECTIVE:
         try {
@@ -57,6 +60,7 @@ const logger = store => next => action => {
         } catch(e) {
           console.log(e);
         }
+        break;
 
       case SELECT_TARGET:
         try {
@@ -69,6 +73,7 @@ const logger = store => next => action => {
         } catch(e) {
           console.log(e);
         }
+        break;
 
       case LOG_OUT:
         try {
@@ -81,6 +86,7 @@ const logger = store => next => action => {
         } catch(e) {
           console.log(e);
         }
+        break;
     }
   }
 
