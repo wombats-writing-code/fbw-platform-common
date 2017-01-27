@@ -7,6 +7,7 @@ import D2L from 'valence'
 
 import {instructorCourses, enrollments, whoami} from './_authenticateD2LHelper'
 import { getDomain } from '../../utilities'
+import {createBaseQBankStudentAuthorizations} from './logInUser'
 
 export const RECEIVE_AUTHENTICATE_D2L = 'RECEIVE_AUTHENTICATE_D2L'
 export const AUTHENTICATE_D2L_OPTIMISTIC = 'AUTHENTICATE_D2L_OPTIMISTIC'
@@ -82,6 +83,9 @@ export function authenticateD2LStudent(credentials, optionalUrl, testUsername) {
         username = stringifyUsername(response);
       }
 
+      return createBaseQBankStudentAuthorizations(username)
+    })
+    .then((response) => {
       // Only have to do this for D2L students, because we skip the "Subjects"
       // route for them. Instructors still select their subject, so this
       // action is handled in selectBank.js
