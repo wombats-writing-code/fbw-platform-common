@@ -4,7 +4,8 @@ import 'lodash'
 import axios from 'axios'
 
 import {getDomain} from '../../utilities'
-import {momentToQBank} from '../../utilities/time'
+import {convertPythonDateToJS} from '../../utilities/time'
+import {convertMissionForm} from './_convertMissionFormHelper'
 
 export const UPDATE_MISSION = 'UPDATE_MISSION'
 export const RECEIVE_UPDATE_MISSION = 'RECEIVE_UPDATE_MISSION'
@@ -13,19 +14,12 @@ export function receiveUpdateMission(mission) {
   return {type: RECEIVE_UPDATE_MISSION, mission };
 }
 
-
 export function updateMissionOptimistic(mission) {
    return {type: UPDATE_MISSION, mission };
 }
 
-export function updateMission(data, bankId) {
-  let missionParams = {
-      assessmentOfferedId: data.assessmentOfferedId,
-      displayName: data.displayName,
-      genusTypeId: data.genusTypeId,
-      startTime: momentToQBank(data.startTime),
-      deadline: momentToQBank(data.deadline)
-    },
+export function updateMission(data, bankId, directivesItemsMap, itemBankId) {
+  let missionParams = convertMissionForm(data, directivesItemsMap, itemBankId),
   options = {
     data: missionParams,
     method: 'PUT',
@@ -37,31 +31,14 @@ export function updateMission(data, bankId) {
 
     return axios(options)
     .then(({data: mission}) => {
-      console.log('updated mission', mission);
-
+      // console.log('updated mission', mission);
+      mission.startTime = convertPythonDateToJS(mission.startTime)
+      mission.deadline = convertPythonDateToJS(mission.deadline)
       dispatch(receiveUpdateMission(mission));
+      return mission
     })
     .catch((error) => {
       console.log('error updating mission', error);
     });
-
-    // var updateSectionParams = {
-    //   data: {
-    //   },
-    //   method: 'PUT',
-    //   path: `assessment/banks/${bankId}/assessments/${data.assessmentId}`
-    // };
-    // _.assign(updateSectionParams.data, data.params);
-    //
-    // return qbankFetch(updateSectionParams)
-    // .then((res) => res.json())
-    // .then((updatedMission) => {
-    //   // return the newly updated assessment
-    //   data.callback(updatedMission);
-    // })
-    // .catch((error) => {
-    //   console.log('error updating assessment');
-    // })
-    // .done();
   }
 }

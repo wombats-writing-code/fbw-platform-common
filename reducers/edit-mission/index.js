@@ -12,7 +12,7 @@ import {CREATE_TEST_FLIGHT_MISSIONS_OPTIMISTIC, RECEIVE_CREATE_TEST_FLIGHT_MISSI
 import {CREATE_MISSION_OPTIMISTIC, RECEIVE_CREATE_MISSION} from './createMission'
 import {RECEIVE_UPDATE_MISSION} from './updateMission'
 import {UPDATE_MISSION_FORM} from './updateMissionForm'
-import {UPDATE_EDIT_MISSION_FORM} from './updateEditMissionForm'
+// import {UPDATE_EDIT_MISSION_FORM} from './updateEditMissionForm'
 import {UPDATE_SPAWN_DATE} from './updateSpawnDate'
 import {DELETE_MISSION_OPTIMISTIC, RECEIVE_DELETE_MISSION} from './deleteMission'
 
@@ -94,7 +94,6 @@ export default function editMissionReducer (state = initialState, action) {
         isDeleteMissionInProgress: false,
       })
 
-    // the following code is all unused right now
     case RECEIVE_UPDATE_MISSION:
       return _.assign({}, state, {
         missions: _.map(state.missions, (m) => {
@@ -170,43 +169,43 @@ export default function editMissionReducer (state = initialState, action) {
         }
       })
 
-    case UPDATE_EDIT_MISSION_FORM:
-      // let's add some logic to the datepicker interactions ...
-      // Probably shouldn't go here, but I'm not sure where it should really go
-      let nextFocusedInputEdit = null;
-      if (_.has(action.data, "startDate") && state.editMission.startTime != action.data.startDate) {
-        nextFocusedInputEdit = END_DATE
-      } else if (_.has(action.data, "focusedInput")) {
-        nextFocusedInputEdit = action.data.focusedInput
-      }
-
-      let newStartTimeEdit = _.has(action.data, "startDate") ? action.data.startDate : state.editMission.startTime,
-        newDeadlineEdit = _.has(action.data, "endDate") ? action.data.endDate : state.editMission.deadline,
-        newDisplayNameEdit = _.has(action.data, "displayName") ? action.data.displayName : state.editMission.displayName,
-        // newGenusTypeIdEdit = _.has(action.data, "genusTypeId") ? action.data.genusTypeId : state.editMission.genusTypeId;
-        newGenusTypeIdEdit = 'assessment-genus%3Afbw-homework-mission%40ODL.MIT.EDU';
-
-      // lets do form validation
-      let formErrorEdit = false;
-      if (newStartTimeEdit === null ||
-          newDeadlineEdit === null ||
-          newGenusTypeIdEdit === '' ||
-          newDisplayNameEdit === '') {
-        formErrorEdit = true;
-      }
-
-      return _.assign({}, state, {
-        editMission: {
-          id: state.editMission.id,
-          assessmentOfferedId: state.editMission.assessmentOfferedId,
-          startTime: newStartTimeEdit,
-          deadline: newDeadlineEdit,
-          displayName: newDisplayNameEdit,
-          genusTypeId: newGenusTypeIdEdit,
-          focusedInput: nextFocusedInputEdit,
-          formError: formErrorEdit
-        }
-      })
+    // case UPDATE_EDIT_MISSION_FORM:
+    //   // let's add some logic to the datepicker interactions ...
+    //   // Probably shouldn't go here, but I'm not sure where it should really go
+    //   let nextFocusedInputEdit = null;
+    //   if (_.has(action.data, "startDate") && state.editMission.startTime != action.data.startDate) {
+    //     nextFocusedInputEdit = END_DATE
+    //   } else if (_.has(action.data, "focusedInput")) {
+    //     nextFocusedInputEdit = action.data.focusedInput
+    //   }
+    //
+    //   let newStartTimeEdit = _.has(action.data, "startDate") ? action.data.startDate : state.editMission.startTime,
+    //     newDeadlineEdit = _.has(action.data, "endDate") ? action.data.endDate : state.editMission.deadline,
+    //     newDisplayNameEdit = _.has(action.data, "displayName") ? action.data.displayName : state.editMission.displayName,
+    //     // newGenusTypeIdEdit = _.has(action.data, "genusTypeId") ? action.data.genusTypeId : state.editMission.genusTypeId;
+    //     newGenusTypeIdEdit = 'assessment-genus%3Afbw-homework-mission%40ODL.MIT.EDU';
+    //
+    //   // lets do form validation
+    //   let formErrorEdit = false;
+    //   if (newStartTimeEdit === null ||
+    //       newDeadlineEdit === null ||
+    //       newGenusTypeIdEdit === '' ||
+    //       newDisplayNameEdit === '') {
+    //     formErrorEdit = true;
+    //   }
+    //
+    //   return _.assign({}, state, {
+    //     editMission: {
+    //       id: state.editMission.id,
+    //       assessmentOfferedId: state.editMission.assessmentOfferedId,
+    //       startTime: newStartTimeEdit,
+    //       deadline: newDeadlineEdit,
+    //       displayName: newDisplayNameEdit,
+    //       genusTypeId: newGenusTypeIdEdit,
+    //       focusedInput: nextFocusedInputEdit,
+    //       formError: formErrorEdit
+    //     }
+    //   })
 
     default:
       return state

@@ -1,10 +1,10 @@
 
-import 'lodash'
+import _ from 'lodash'
 import axios from 'axios'
 
-import { getDomain, LO_SCAFFOLD_MISSION_GENUS_TYPE, PHASE_I_MISSION_RECORD_TYPE } from '../../utilities'
-import {  momentToQBank, convertPythonDateToJS, afterMidnight, beforeMidnight} from '../../utilities/time'
-
+import { getDomain } from '../../utilities'
+import { convertPythonDateToJS } from '../../utilities/time'
+import { convertMissionForm } from './_convertMissionFormHelper'
 // ------------------------------------
 // Actions
 // ------------------------------------
@@ -37,26 +37,7 @@ export function createMission(data, bankId, directivesItemsMap, itemBankId) {
     // here starts the code that actually gets executed when the
     // createMission action creator is dispatched
     // take the data in the "newMission" form in state, and send that to the server
-    let missionParams = {
-      displayName: data.displayName,
-      genusTypeId: data.genusTypeId,
-      startTime: afterMidnight(momentToQBank(data.startTime)),
-      deadline: beforeMidnight(momentToQBank(data.deadline)),
-      recordTypeIds: [PHASE_I_MISSION_RECORD_TYPE],
-      sections: _.map(data.selectedDirectives, (directive) => {
-        let outcomeId = directive.id,
-          numItems = directivesItemsMap[outcomeId];
-
-        return {
-          type: LO_SCAFFOLD_MISSION_GENUS_TYPE,
-          learningObjectiveId: outcomeId,
-          quota: Math.floor(numItems / 2) || 1,
-          waypointQuota: 1,
-          itemBankId: itemBankId,
-          minimumProficiency: (Math.floor(numItems / 4) || 1).toString()
-        }
-      })
-    },
+    let missionParams = convertMissionForm(data, directivesItemsMap, itemBankId),
     options = {
       data: missionParams,
       method: 'POST',
@@ -66,11 +47,12 @@ export function createMission(data, bankId, directivesItemsMap, itemBankId) {
 
     return axios(options)
     .then((response) => {
-      console.log('created mission', response.data);
+      // console.log('created mission', response.data);
       let mission = _.assign({}, response.data)
       mission.startTime = convertPythonDateToJS(mission.startTime)
       mission.deadline = convertPythonDateToJS(mission.deadline)
       dispatch(receiveCreateMission(mission));
+      return mission
     })
     .catch((error) => {
       console.log('error creating mission', error);

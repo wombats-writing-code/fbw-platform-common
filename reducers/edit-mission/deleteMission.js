@@ -31,7 +31,7 @@ export function deleteMission(mission, bankId) {
 
     return axios(options)
     .then((results) => {
-      console.log('deleted mission', mission);
+      // console.log('deleted mission', mission);
 
       dispatch(receiveDeleteMission(mission));
     })
