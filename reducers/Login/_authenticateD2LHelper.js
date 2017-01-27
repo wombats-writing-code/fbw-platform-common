@@ -204,7 +204,7 @@ export function whoami(credentials, url) {
 
   if (process.env.NODE_ENV === 'test') {
     options = {
-      url: `http://localhost:8888/mock-d2l${whoamiUrl}?${_appendDevRole(credentials)}&sNumber=99999991`
+      url: `http://localhost:8888/mock-d2l${whoamiUrl}?${_appendDevRole(credentials)}&sNumber=S99999991`
     }
   } else {
     options = {
