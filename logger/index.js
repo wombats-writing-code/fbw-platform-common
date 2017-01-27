@@ -16,7 +16,7 @@ const logger = store => next => action => {
     let subject = getEnrolledSubject(state);
     let username = getUser(state).username;
 
-    console.log('state in logger', state);
+    // console.log('state in logger', state);
 
     switch(action.type) {
       case LOGGED_IN:
@@ -90,7 +90,7 @@ const logger = store => next => action => {
     }
   }
 
-  console.log('continuing this action', action)
+  // console.log('continuing this action', action)
   next(action);
 }
 

@@ -25,13 +25,13 @@ class NextCue extends Component {
         )
 
       } else if (this.props.nextQuestion && !this.props.nextOutcome) {
-        cueText = <p className="cue-text">No outcome authored. Notify course authors.</p>
+        cueText = <p className="cue-text">No outcome bug. Please notify your instructors.</p>
 
       } else if (!this.props.nextQuestion && !this.props.isLastTarget) {
         cueText = <p className="cue-text">Good job! You've reached the end of the route. Please try another Target question.</p>
 
       } else if (this.props.isLastTarget) {
-        cueText = <p className="cue-text">Good job! You've finished all the questions in this directive.</p>
+        cueText = <p className="cue-text">Good job! You've finished all the questions in this goal.</p>
       }
 
     } else {

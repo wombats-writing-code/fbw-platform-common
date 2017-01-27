@@ -7,6 +7,7 @@ import moment from 'moment'
 import {END_DATE} from 'react-dates/constants'
 
 import {ADD_MISSION} from './addMission'
+import {EDIT_MISSION} from './editMission'
 import {CREATE_TEST_FLIGHT_MISSIONS_OPTIMISTIC, RECEIVE_CREATE_TEST_FLIGHT_MISSIONS} from './createTestFlightMissions'
 import {CREATE_MISSION_OPTIMISTIC, RECEIVE_CREATE_MISSION} from './createMission'
 import {RECEIVE_UPDATE_MISSION} from './updateMission'
@@ -31,6 +32,11 @@ export default function editMissionReducer (state = initialState, action) {
     case ADD_MISSION:
       return _.assign({}, state, {
         newMission: stampNewMission(),
+      });
+
+    case EDIT_MISSION:
+      return _.assign({}, state, {
+        newMission: action.mission,
       });
 
     case CREATE_MISSION_OPTIMISTIC:

@@ -2,6 +2,7 @@ import _ from 'lodash'
 import moment from 'moment'
 import reducer from '../index'
 import {ADD_MISSION} from '../addMission'
+import {EDIT_MISSION} from '../editMission'
 import {RECEIVE_CREATE_MISSION} from '../createMission'
 
 import {UPDATE_SPAWN_DATE} from '../updateSpawnDate'
@@ -18,6 +19,17 @@ describe('edit-mission reducer', () => {
     });
 
     newState.newMission.selectedDirectives.should.eql([]);
+  });
+
+  it('should update the state upon the EDIT_MISSION action', () => {
+    let newState = reducer({}, {
+      type: EDIT_MISSION,
+      mission: {
+        name: 'foo'
+      }
+    });
+
+    newState.newMission.name.should.eql('foo');
   });
 
   it('should update the state upon the UPDATE_SPAWN_DATE action', () => {
