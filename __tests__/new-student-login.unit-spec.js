@@ -76,7 +76,7 @@ describe('student web app', function() {
       done()
     })
     .catch((err) => {
-      console.log(err)
+      // console.log(err)
     })
   })
 
@@ -110,7 +110,7 @@ describe('student web app', function() {
       done();
     })
     .catch((err) => {
-      console.log(err)
+      // console.log(err)
     })
   })
 
@@ -222,7 +222,7 @@ describe('student web app', function() {
       return Q.when('')
     })
     .catch( (err) => {
-      console.log(err);
+      // console.log(err);
     })
   }
 
