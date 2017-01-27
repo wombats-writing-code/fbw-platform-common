@@ -136,7 +136,18 @@ export default function editMissionReducer (state = initialState, action) {
       //   selectedModule = action.data.selectedModule;
       // }
 
-      let selectedDirectives = _.clone(state.newMission.selectedDirectives) || [];
+      // for update forms, these are located in state.newMission.sections
+      let selectedDirectives = [];
+      if (state.newMission.sections) {
+        selectedDirectives = _.map(_.clone(state.newMission.sections), (section) => {
+          return {
+            id: section.learningObjectiveId
+          }
+        });
+      } else {
+        selectedDirectives = _.clone(state.newMission.selectedDirectives);
+      }
+
       if (action.data.toggledDirective) {
         let isAlreadySelected = _.find(state.newMission.selectedDirectives, (outcome) => outcome.id === action.data.toggledDirective.id);
 
@@ -155,8 +166,11 @@ export default function editMissionReducer (state = initialState, action) {
                                   _.clone(state.newMission.directiveSearchQuery) :
                                   action.data.directiveSearchQuery;
 
+      // for update forms, we need to keep at least the id, assessmentOfferedId,
       return _.assign({}, state, {
         newMission: {
+          id: state.newMission.id || null,
+          assessmentOfferedId: state.newMission.assessmentOfferedId || null,
           startTime: newStartTime,
           deadline: newDeadline,
           displayName: newDisplayName,
