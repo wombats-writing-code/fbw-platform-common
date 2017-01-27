@@ -36,7 +36,10 @@ export default function editMissionReducer (state = initialState, action) {
 
     case EDIT_MISSION:
       return _.assign({}, state, {
-        newMission: action.mission,
+        newMission: _.assign({}, action.mission, {
+          startTime: moment(action.mission.startTime),
+          deadline: moment(action.mission.deadline)
+        }),
       });
 
     case CREATE_MISSION_OPTIMISTIC:
