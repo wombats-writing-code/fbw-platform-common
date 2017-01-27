@@ -25,7 +25,7 @@ export function loggedInOptimistic () {
   return { type: LOGGED_IN_OPTIMISTIC }
 }
 
-function createBaseQBankStudentAuthorizations (username) {
+export function createBaseQBankStudentAuthorizations (username) {
   let qualifierIds = BASE_BANKS
   let now = moment.utc()
   let endDate = momentToQBank(now)
