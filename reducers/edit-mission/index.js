@@ -35,10 +35,14 @@ export default function editMissionReducer (state = initialState, action) {
       });
 
     case EDIT_MISSION:
+      let directives = _.filter(action.directives, (directive) => {
+        return _.map(action.mission.sections, 'learningObjectiveId').indexOf(directive.id) >= 0
+      })
       return _.assign({}, state, {
         newMission: _.assign({}, action.mission, {
           startTime: moment(action.mission.startTime),
-          deadline: moment(action.mission.deadline)
+          deadline: moment(action.mission.deadline),
+          selectedDirectives: directives
         }),
       });
 
@@ -136,17 +140,7 @@ export default function editMissionReducer (state = initialState, action) {
       //   selectedModule = action.data.selectedModule;
       // }
 
-      // for update forms, these are located in state.newMission.sections
-      let selectedDirectives = [];
-      if (state.newMission.sections) {
-        selectedDirectives = _.map(_.clone(state.newMission.sections), (section) => {
-          return {
-            id: section.learningObjectiveId
-          }
-        });
-      } else {
-        selectedDirectives = _.clone(state.newMission.selectedDirectives);
-      }
+      let selectedDirectives = _.clone(state.newMission.selectedDirectives) || [];
 
       if (action.data.toggledDirective) {
         let isAlreadySelected = _.find(state.newMission.selectedDirectives, (outcome) => outcome.id === action.data.toggledDirective.id);
