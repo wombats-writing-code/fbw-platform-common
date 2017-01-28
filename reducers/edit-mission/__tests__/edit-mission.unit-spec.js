@@ -16,6 +16,12 @@ import configureMockStore from 'redux-mock-store'
 const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
 
+let chai = require('chai');
+const chaiHttp = require('chai-http');
+
+let should = require('should');
+chai.should();
+chai.use(chaiHttp);
 const BASE_URL = 'https://fbw-web-backend-dev.herokuapp.com' // for verifying some stuff...
 
 const directives = [
@@ -70,9 +76,6 @@ const TEST_MISSION = {
 
 let newMission
 
-let chai = require('chai');
-let should = require('should');
-chai.should();
 
 describe('edit-mission reducer', () => {
 
@@ -158,14 +161,18 @@ describe('edit-mission reducer', () => {
 
   it('should delete a mission upon calling deleteMission', done => {
     const store = mockStore({})
-
+    // console.log("new mission", newMission)
     store.dispatch(deleteMission(newMission, MAT_BANK_ID))
     .then((res) => {
       return chai.request(BASE_URL)
       .get(`/middleman/banks/${MAT_BANK_ID}/missions/${newMission.id}`)
     })
+    .then((res) => {
+      res.should.have.status(500)
+      done()
+    })
     .catch((err) => {
-      // this should error out
+      err.should.have.status(500)
       done()
     })
   })
