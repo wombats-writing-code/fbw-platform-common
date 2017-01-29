@@ -35,9 +35,10 @@ export default function editMissionReducer (state = initialState, action) {
       });
 
     case EDIT_MISSION:
-      let directives = _.filter(action.directives, (directive) => {
-        return _.map(action.mission.sections, 'learningObjectiveId').indexOf(directive.id) >= 0
-      })
+      let directives = _.map(action.mission.sections, section => {
+        return _.find(outcomes, {id: section.learningObjectiveId});
+      });
+
       return _.assign({}, state, {
         newMission: _.assign({}, action.mission, {
           startTime: moment(action.mission.startTime),

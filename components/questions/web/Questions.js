@@ -18,8 +18,8 @@ import './Questions.scss'
 class Questions extends Component {
 
   componentDidUpdate(prevProps) {
-    let nextCueTop = $('.answered-question-cue').last();
     if (prevProps.isInProgressSubmitChoice && !this.props.isInProgressSubmitChoice) {
+      let nextCueTop = $('.answered-question-cue').last();
       // console.log('scroll to', nextCueTop);
       $("html, body").animate({ scrollTop: nextCueTop.offset.top }, 1000);
     }

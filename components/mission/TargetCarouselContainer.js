@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
 
   let targets;
   if (state.mission.currentMissionSections && typeof state.mission.currentDirectiveIndex !== 'undefined') {
-    console.log('state in TargetCarouselContainer', state);
+    // console.log('state in TargetCarouselContainer', state);
 
     let allQuestions = state.mission.currentMissionSections[state.mission.currentDirectiveIndex].questions
     targets = _.filter(allQuestions, isTarget)

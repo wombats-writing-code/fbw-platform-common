@@ -17,31 +17,27 @@ export const isBrowser = () => {
 }
 
 export const getDomain = () => {
-  if (process.env.NODE_ENV === 'production') {
-    if (isBrowser()) {
+  // if it's browser or someone is running a headless test without window var
+  if (isBrowser() || process.env.NODE_ENV === 'test') {
+    if (process.env.NODE_ENV === 'production') {
       let host = window.location.host;
 
-      // if webapp is running on *-dev, route to -dev middleman
       if (host === 'fbw-instructor.mit.edu' || host === 'fbw-student.mit.edu') {
         return 'https://fbw-web-backend.herokuapp.com';
+
+      // if webapp is running on *-dev, route to -dev middleman
       } else {
         return 'https://fbw-web-backend-dev.herokuapp.com';
       }
-
-    // if it's in production and it's on mobile, always call against production middleman
-    } else {
-      return 'https://fbw-web-backend.herokuapp.com';
     }
+
+    // call against the local middleman in 'test' and 'dev' environments
+    return 'http://localhost:8888';
   }
 
-  // if it's not in production (e.g. in 'test' or 'dev'),
-  // for web, call against localhost middleman
-  // if (isBrowser()) {
-    return 'http://localhost:8888';
-  // }
-
-  // call against production for mobile
-  // return 'https://fbw-web-backend.herokuapp.com';
+  // call against production for mobile because I don't know how to detect if something is running
+  // on simulator or device in a piece of common code
+  return 'https://fbw-web-backend.herokuapp.com';
 }
 
 export const matches = (needle, haystack) => {
