@@ -6,7 +6,7 @@ import {  momentToQBank, afterMidnight, beforeMidnight} from '../../utilities/ti
 
 export function convertMissionForm (data, directivesItemsMap, itemBankId) {
   return {
-    displayName: data.displayName,
+    displayName: data.displayName.text ? data.displayName.text : data.displayName,
     genusTypeId: data.genusTypeId,
     startTime: afterMidnight(momentToQBank(data.startTime)),
     deadline: beforeMidnight(momentToQBank(data.deadline)),
