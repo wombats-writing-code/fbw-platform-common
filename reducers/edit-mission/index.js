@@ -36,7 +36,7 @@ export default function editMissionReducer (state = initialState, action) {
 
     case EDIT_MISSION:
       console.log('EDIT_MISSION', action)
-      
+
       let directives = _.compact(_.map(action.mission.sections, section => {
         return _.find(action.outcomes, {id: section.learningObjectiveId});
       }));
@@ -65,23 +65,23 @@ export default function editMissionReducer (state = initialState, action) {
         isSpawnInProgress: true
       })
 
-    // case UPDATE_SPAWN_DATE:
-    //   let nextSpawnFocusedInputEdit = null;
-    //   if (_.has(action.data, "startDate") && state.spawnStartDate != action.data.startDate) {
-    //     nextSpawnFocusedInputEdit = END_DATE
-    //   } else if (_.has(action.data, "focusedInput")) {
-    //     nextSpawnFocusedInputEdit = action.data.focusedInput
-    //   }
-    //
-    //   let newSpawnStartDate = _.has(action.data, "startDate") ? action.data.startDate : state.spawnDate
-    //   let newSpawnDeadline = _.has(action.data, "endDate") ? action.data.endDate : state.spawnDate
-    //   return _.assign({}, state, {
-    //     spawnDate: {
-    //       startTime: newSpawnStartDate,
-    //       deadline: newSpawnDeadline
-    //     },
-    //     spawnDateFocused: nextSpawnFocusedInputEdit
-    //   })
+    case UPDATE_SPAWN_DATE:
+      let nextSpawnFocusedInputEdit = null;
+      if (_.has(action.data, "startDate") && state.spawnStartDate != action.data.startDate) {
+        nextSpawnFocusedInputEdit = END_DATE
+      } else if (_.has(action.data, "focusedInput")) {
+        nextSpawnFocusedInputEdit = action.data.focusedInput
+      }
+
+      let newSpawnStartDate = _.has(action.data, "startDate") ? action.data.startDate : state.spawnDate
+      let newSpawnDeadline = _.has(action.data, "endDate") ? action.data.endDate : state.spawnDate
+      return _.assign({}, state, {
+        spawnDate: {
+          startTime: newSpawnStartDate,
+          deadline: newSpawnDeadline
+        },
+        spawnDateFocused: nextSpawnFocusedInputEdit
+      })
 
     case RECEIVE_CREATE_TEST_FLIGHT_MISSIONS:
       return _.assign({}, state, {
