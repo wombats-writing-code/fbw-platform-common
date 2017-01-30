@@ -36,7 +36,7 @@ export default function editMissionReducer (state = initialState, action) {
 
     case EDIT_MISSION:
       let directives = _.map(action.mission.sections, section => {
-        return _.find(outcomes, {id: section.learningObjectiveId});
+        return _.find(action.outcomes, {id: section.learningObjectiveId});
       });
 
       return _.assign({}, state, {
