@@ -1,11 +1,14 @@
 import _ from 'lodash'
 import moment from 'moment'
+require('moment-timezone')
 import reducer from '../index'
 import {ADD_MISSION} from '../addMission'
 import {EDIT_MISSION} from '../editMission'
 import {RECEIVE_CREATE_MISSION} from '../createMission'
 
 import {UPDATE_SPAWN_DATE} from '../updateSpawnDate'
+
+import {beforeMidnight, afterMidnight} from '../../../utilities/time'
 
 import {createMission} from '../createMission'
 import {deleteMission} from '../deleteMission'
@@ -76,6 +79,8 @@ const TEST_MISSION = {
 
 let newMission
 
+const isUTC = moment.utc() == moment()
+
 
 describe('edit-mission reducer', () => {
 
@@ -96,6 +101,43 @@ describe('edit-mission reducer', () => {
     });
 
     newState.newMission.name.should.eql('foo');
+  });
+
+  it('should convert the mission time to localtime in the EDIT_MISSION action', () => {
+    // unclear if this test will be effective at preventing bugs, but
+    // it is here to make sure that when editing a mission, the original
+    // UTC times are not passed in to the newMission form...otherwise
+    // if you edit a mission name (and not the dates), the deadline
+    // can get automagically pushed back by a day, because of the confusion
+    // between local time vs. UTC, and the effects of "beforeMidnight"
+    let utcNow = moment.utc()
+    let utcFuture = moment.utc().add(7, 'days')
+
+    let startTime = {
+      year: utcNow.year(),
+      month: utcNow.month(),
+      day: utcNow.date(),
+      hour: 0,
+      minute: 0,
+      second: 1
+    };
+    let deadline = {
+      year: utcFuture.year(),
+      month: utcFuture.month(),
+      day: utcFuture.date(),
+      hour: 3,
+      minute: 59,
+      second: 59
+    }
+    let newState = reducer({}, {
+      type: EDIT_MISSION,
+      mission: {
+        startTime: startTime,
+        deadline: deadline
+      }
+    });
+    newState.newMission.startTime.tz().should.eql(moment.tz.guess());
+    newState.newMission.deadline.tz().should.eql(moment.tz.guess());
   });
 
   it('should update the state upon the UPDATE_SPAWN_DATE action', () => {
