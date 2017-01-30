@@ -35,9 +35,11 @@ export default function editMissionReducer (state = initialState, action) {
       });
 
     case EDIT_MISSION:
-      let directives = _.map(action.mission.sections, section => {
+      console.log('EDIT_MISSION', action)
+      
+      let directives = _.compact(_.map(action.mission.sections, section => {
         return _.find(action.outcomes, {id: section.learningObjectiveId});
-      });
+      }));
 
       return _.assign({}, state, {
         newMission: _.assign({}, action.mission, {
