@@ -5,7 +5,16 @@ import {  momentToQBank, afterMidnight, beforeMidnight, utcNoon} from '../../uti
 
 
 export function convertMissionForm (data, directivesItemsMap, itemBankId) {
-
+  // Note, need to use utcNoon here, or in the editMission reducer
+  //   for the edit mission form, because the rest of the code
+  //   assumes the dates passed in from the datepicker are UTC noon times.
+  //   If they are not forced to UTC noon, we get into weird corner case
+  //   states where they can "jump" days because they are "set" to
+  //   UTC again. i.e. when the editMission form is given a deadline
+  //   of 1/1/2017 23:59:59, and that is passed into beforeMidnight(momentToQBank),
+  //   that becomes 1/2/2017 23:59:59. Using utcNoon insures that the input
+  //   to the server only uses the "date" the user picked, and disregards
+  //   any crufty hours / minutes / seconds.
   return {
     displayName: data.displayName.text ? data.displayName.text : data.displayName,
     genusTypeId: data.genusTypeId,
