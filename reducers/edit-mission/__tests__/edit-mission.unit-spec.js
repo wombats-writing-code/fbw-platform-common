@@ -110,25 +110,42 @@ describe('edit-mission reducer', () => {
     // if you edit a mission name (and not the dates), the deadline
     // can get automagically pushed back by a day, because of the confusion
     // between local time vs. UTC, and the effects of "beforeMidnight"
-    let utcNow = moment.utc()
-    let utcFuture = moment.utc().add(7, 'days')
-
-    let startTime = {
-      year: utcNow.year(),
-      month: utcNow.month(),
-      day: utcNow.date(),
+    let localStartTime = moment({
+      year: 2017,
+      month: 1,
+      day: 1,
       hour: 0,
       minute: 0,
       second: 1
-    };
-    let deadline = {
-      year: utcFuture.year(),
-      month: utcFuture.month(),
-      day: utcFuture.date(),
-      hour: 3,
+    })
+    let utcStartTime = localStartTime.utc()
+    let localDeadline = moment({
+      year: 2017,
+      month: 1,
+      day: 5,
+      hour: 23,
       minute: 59,
       second: 59
+    })
+    let utcDeadline = localDeadline.utc()
+
+    let startTime = {
+      year: utcStartTime.year(),
+      month: utcStartTime.month(),
+      day: utcStartTime.date(),
+      hour: utcStartTime.hour(),
+      minute: utcStartTime.minute(),
+      second: utcStartTime.second()
+    };
+    let deadline = {
+      year: utcDeadline.year(),
+      month: utcDeadline.month(),
+      day: utcDeadline.date(),
+      hour: utcDeadline.hour(),
+      minute: utcDeadline.minute(),
+      second: utcDeadline.second()
     }
+
     let newState = reducer({}, {
       type: EDIT_MISSION,
       mission: {
@@ -138,6 +155,9 @@ describe('edit-mission reducer', () => {
     });
     newState.newMission.startTime.tz().should.eql(moment.tz.guess());
     newState.newMission.deadline.tz().should.eql(moment.tz.guess());
+
+    newState.newMission.startTime.hour().should.eql(0)
+    newState.newMission.deadline.hour().should.eql(23)
   });
 
   it('should update the state upon the UPDATE_SPAWN_DATE action', () => {
