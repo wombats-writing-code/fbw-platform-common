@@ -103,13 +103,7 @@ describe('edit-mission reducer', () => {
     newState.newMission.name.should.eql('foo');
   });
 
-  it('should convert the mission time to localtime in the EDIT_MISSION action', () => {
-    // unclear if this test will be effective at preventing bugs, but
-    // it is here to make sure that when editing a mission, the original
-    // UTC times are not passed in to the newMission form...otherwise
-    // if you edit a mission name (and not the dates), the deadline
-    // can get automagically pushed back by a day, because of the confusion
-    // between local time vs. UTC, and the effects of "beforeMidnight"
+  it('should set startTime and deadline to moment objects in the EDIT_MISSION action', () => {
     let localStartTime = moment({
       year: 2017,
       month: 1,
@@ -153,11 +147,8 @@ describe('edit-mission reducer', () => {
         deadline: deadline
       }
     });
-    newState.newMission.startTime.tz().should.eql(moment.tz.guess());
-    newState.newMission.deadline.tz().should.eql(moment.tz.guess());
-
-    newState.newMission.startTime.hour().should.eql(0)
-    newState.newMission.deadline.hour().should.eql(23)
+    newState.newMission.startTime.hour().should.eql(utcStartTime.hour())
+    newState.newMission.deadline.hour().should.eql(utcDeadline.hour())
   });
 
   it('should update the state upon the UPDATE_SPAWN_DATE action', () => {

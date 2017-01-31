@@ -11,6 +11,7 @@ import {
   localDateTime,
   afterMidnight,
   beforeMidnight,
+  utcNoon,
   convertPythonDateToJS} from '../time/index'
 
 describe('time utilities', () => {
@@ -104,7 +105,7 @@ describe('time utilities', () => {
   it('should convert a local datetime to UTC datetime for afterMidnight', () => {
     let localTimeObject = {
       "year": 2020,
-      "month": 0,
+      "month": 1,
       "day": 3,
       "hour": 0,
       "minute": 0,
@@ -119,10 +120,25 @@ describe('time utilities', () => {
     }
   })
 
+  it('should convert a local datetime to UTC noon for utcNoon', () => {
+    let localTime = moment({
+      year: 2020,
+      month: 1,
+      day: 3,
+      hour: 0,
+      minute: 0,
+      second: 1
+    });
+    let result = utcNoon(localTime);
+
+    result.hour().should.be.eql(12)
+    result.date().should.be.eql(3)
+  })
+
   it('should convert a local datetime to UTC datetime for beforeMidnight', () => {
     let localTimeObject = {
       "year": 2020,
-      "month": 0,
+      "month": 1,
       "day": 3,
       "hour": 23,
       "minute": 59,

@@ -41,13 +41,10 @@ export default function editMissionReducer (state = initialState, action) {
       let directives = _.compact(_.map(action.mission.sections, section => {
         return _.find(action.outcomes, {id: section.learningObjectiveId});
       }));
-      // need to convert these times to "local" dates, otherwise
-      // they are UTC and beforeMidnight and afterMidnight
-      // will return incorrect values, when saving to the server
       return _.assign({}, state, {
         newMission: _.assign({}, action.mission, {
-          startTime: localDateTime(action.mission.startTime),
-          deadline: localDateTime(action.mission.deadline),
+          startTime: moment(action.mission.startTime),
+          deadline: moment(action.mission.deadline),
           selectedDirectives: directives
         }),
       });

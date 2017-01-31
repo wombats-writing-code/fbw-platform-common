@@ -28,6 +28,17 @@ export const localDateTime = (utcDateObject) => {
   return moment.utc(utcDateObject).clone().tz(timezone)
 }
 
+export const utcNoon = (localDateMoment) => {
+  return moment.utc({
+    year: localDateMoment.year(),
+    month: localDateMoment.month(),
+    day: localDateMoment.date(),
+    hour: 12,
+    minute: 0,
+    second: 0
+  })
+}
+
 export function momentToQBank (momentObject) {
   let timeUTC = momentObject.utc().toObject()
 
@@ -79,7 +90,6 @@ export function beforeMidnight (timeObject) {
     second: 59
   })
   almostMidnight.utc()
-
   return {
     year: almostMidnight.year(),
     month: almostMidnight.month() + 1,  // 0-indexed

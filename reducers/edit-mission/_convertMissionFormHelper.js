@@ -1,15 +1,16 @@
 import _ from 'lodash'
 
 import { LO_SCAFFOLD_MISSION_GENUS_TYPE, PHASE_I_MISSION_RECORD_TYPE } from '../../utilities'
-import {  momentToQBank, afterMidnight, beforeMidnight} from '../../utilities/time'
+import {  momentToQBank, afterMidnight, beforeMidnight, utcNoon} from '../../utilities/time'
 
 
 export function convertMissionForm (data, directivesItemsMap, itemBankId) {
+
   return {
     displayName: data.displayName.text ? data.displayName.text : data.displayName,
     genusTypeId: data.genusTypeId,
-    startTime: afterMidnight(momentToQBank(data.startTime)),
-    deadline: beforeMidnight(momentToQBank(data.deadline)),
+    startTime: afterMidnight(momentToQBank(utcNoon(data.startTime))),
+    deadline: beforeMidnight(momentToQBank(utcNoon(data.deadline))),
     recordTypeIds: [PHASE_I_MISSION_RECORD_TYPE],
     assessmentOfferedId: data.assessmentOfferedId, // only used for update
     sections: _.map(data.selectedDirectives, (directive) => {
