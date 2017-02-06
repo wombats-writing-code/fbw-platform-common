@@ -3,7 +3,7 @@ import _ from 'lodash'
 import axios from 'axios'
 
 import { getDomain } from '../../utilities'
-import {convertPythonDateToJS } from '../../utilities/time'
+import {convertUTCPythonDateToJSUTC, localDateTime } from '../../utilities/time'
 
 // ----
 // Action types
@@ -44,8 +44,8 @@ export function getMissions (data) {
       // Python months run from 1-12, JavaScript months run from 0-11. We need to adjust the dates here.
       missions = _.map(missions.data, (mission) => {
         return _.assign({}, mission, {
-          startTime: convertPythonDateToJS(mission.startTime),
-          deadline: convertPythonDateToJS(mission.deadline)
+          startTime: localDateTime(convertUTCPythonDateToJSUTC(mission.startTime)),
+          deadline: localDateTime(convertUTCPythonDateToJSUTC(mission.deadline))
         })
       })
 

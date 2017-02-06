@@ -21,8 +21,7 @@ export function checkMissionStatus (mission) {
 };
 
 export const localDateTime = (utcDateObject) => {
-  // convert our UTC date / time (already converted to JS format from python
-  // format by our reducer) to local timezone
+  // convert UTC date / time to local timezone
   let timezone = moment.tz.guess()
 
   return moment.utc(utcDateObject).clone().tz(timezone)
@@ -124,10 +123,10 @@ export function adjustedQBankToMomentObj(timeObject) {
   }
 }
 
-export function convertPythonDateToJS (pythonTime) {
-  // also need to convert the server-side UTC time to
-  // local time
-  let localTime = moment.utc({
+export function convertUTCPythonDateToJSUTC (pythonTime) {
+  // converts the server-side UTC time (python) to
+  // JS UTC time, where month is 0-indexed
+  let jsUTCTime = moment.utc({
     year: pythonTime.year,
     month: pythonTime.month - 1,
     day: pythonTime.day,
@@ -135,13 +134,12 @@ export function convertPythonDateToJS (pythonTime) {
     minute: pythonTime.minute,
     second: pythonTime.second
   })
-  localTime.local()
   return {
-    year: localTime.year(),
-    month: localTime.month(),
-    day: localTime.date(),
-    hour: localTime.hour(),
-    minute: localTime.minute(),
-    second: localTime.second()
+    year: jsUTCTime.year(),
+    month: jsUTCTime.month(),
+    day: jsUTCTime.date(),
+    hour: jsUTCTime.hour(),
+    minute: jsUTCTime.minute(),
+    second: jsUTCTime.second()
   }
 }

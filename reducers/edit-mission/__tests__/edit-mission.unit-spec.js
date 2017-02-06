@@ -200,8 +200,8 @@ describe('edit-mission reducer', () => {
       let updatedMission = res
       updatedMission.childIds.length.should.eql(1)
       updatedMission.displayName.text.should.eql(newName)
-      updatedMission.startTime.year.should.eql(newMission.startTime.year + 1)
-      updatedMission.deadline.year.should.eql(newMission.deadline.year + 1)
+      updatedMission.startTime.year().should.eql(newMission.startTime.year() + 1)
+      updatedMission.deadline.year().should.eql(newMission.deadline.year() + 1)
       updatedMission.sections.length.should.eql(1)
       updatedMission.sections[0].learningObjectiveId.should.eql(NEW_DIRECTIVE_ID)
       updatedMission.sections[0].childIds.length.should.eql(3)  // half of the 6 available

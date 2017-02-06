@@ -3,7 +3,7 @@ import _ from 'lodash'
 import axios from 'axios'
 
 import { getDomain } from '../../utilities'
-import { convertPythonDateToJS } from '../../utilities/time'
+import { convertUTCPythonDateToJSUTC, localDateTime } from '../../utilities/time'
 import { convertMissionForm } from './_convertMissionFormHelper'
 // ------------------------------------
 // Actions
@@ -49,8 +49,8 @@ export function createMission(data, bankId, directivesItemsMap, itemBankId) {
     .then((response) => {
       // console.log('created mission', response.data);
       let mission = _.assign({}, response.data)
-      mission.startTime = convertPythonDateToJS(mission.startTime)
-      mission.deadline = convertPythonDateToJS(mission.deadline)
+      mission.startTime = localDateTime(convertUTCPythonDateToJSUTC(mission.startTime))
+      mission.deadline = localDateTime(convertUTCPythonDateToJSUTC(mission.deadline))
       dispatch(receiveCreateMission(mission));
       return mission
     })

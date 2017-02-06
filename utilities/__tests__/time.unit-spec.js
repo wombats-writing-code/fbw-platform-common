@@ -12,7 +12,7 @@ import {
   afterMidnight,
   beforeMidnight,
   utcNoon,
-  convertPythonDateToJS} from '../time/index'
+  convertUTCPythonDateToJSUTC} from '../time/index'
 
 describe('time utilities', () => {
 
@@ -153,7 +153,7 @@ describe('time utilities', () => {
     }
   })
 
-  it('should convert a UTC datetime to local datetime for convertPythonDateToJS', () => {
+  it('should convert a Python UTC datetime to JS UTC datetime for convertUTCPythonDateToJSUTC', () => {
     let utcTimeObject = {
       "year": 2020,
       "month": 1,
@@ -162,12 +162,8 @@ describe('time utilities', () => {
       "minute": 0,
       "second": 1
     };
-    let result = convertPythonDateToJS(utcTimeObject);
+    let result = convertUTCPythonDateToJSUTC(utcTimeObject);
 
-    if (isUTC) {
-      result.hour.should.be.eql(0)
-    } else {
-      result.hour.should.not.be.eql(0)
-    }
+    result.month.should.be.eql(0)
   })
 })
