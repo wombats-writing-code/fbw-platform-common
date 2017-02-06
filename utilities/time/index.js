@@ -5,8 +5,7 @@ const moment = require('moment-timezone')
 export function checkMissionStatus (mission) {
   let st = mission.startTime
   let dl = mission.deadline
-    // need to subtract one because when you construct a Date object here,
-    // it assumes 0 index....but the native input and server-side use 1 index
+  
   let startTime = moment.utc(st)
   let deadline = moment.utc(dl)
   let now = moment.utc()

@@ -18,6 +18,7 @@ describe('time utilities', () => {
 
   it('should convert a JS UTC date object to local timezone', () => {
     let utcNow = moment.utc()
+    let localNow = moment()
     let date = {
       "year": utcNow.year(),
       "month": utcNow.month(),
@@ -29,7 +30,8 @@ describe('time utilities', () => {
     let result = localDateTime(date);
     result.should.be.a('object')
 
-    result.hour().should.eql(moment().hours())
+    result.hour().should.eql(localNow.hours())
+    result.utcOffset().should.eql(localNow.utcOffset())
   })
 
   it('should give the pending status for a pending mission', () => {
