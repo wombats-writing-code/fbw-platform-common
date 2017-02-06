@@ -9,6 +9,11 @@ export function getRoster(state) {
 export function getEnrolledSubject(state) {
   // return state.bank.banks && state.bank.banks.length > 0 ? state.bank.banks[0] : null;
   if (state.login.isLoggedIn && !state.login.isVisitor) {
+    // for instructor, they pick a bank, so we need to give that option, too
+    if (state.bank.currentBank) {
+      return state.bank.currentBank
+    }
+
     // D2L login, (assuming no QCC yet), so pull enrolled subject from banks
     // via section name
     return _.find(state.bank.banks, (bank) => {

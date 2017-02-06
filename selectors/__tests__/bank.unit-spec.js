@@ -21,10 +21,10 @@ describe('bank selectors', () => {
     result.should.be.eql({id: 'my bank'});
   })
 
-  it('should select the enrolled subject from the banks for D2L real instructor', () => {
+  it('should select the enrolled subject from the banks for D2L real student', () => {
     let result = getEnrolledSubject({
       bank: {
-        currentBank: {id: 'my bank'},
+        currentBank: null,
         banks: [{id: 'foo', displayName: {text: 'fbw bar sp17'}}] // note that this term must match the expected values in index.js
       },
       login: {
@@ -35,10 +35,10 @@ describe('bank selectors', () => {
     result.id.should.be.eql('foo');
   });
 
-  it('should select the enrolled subject from the banks for D2L test instructor', () => {
+  it('should select the enrolled subject from the banks for D2L test student', () => {
     let result = getEnrolledSubject({
       bank: {
-        currentBank: {id: 'my bank'},
+        currentBank: null,
         banks: [{id: 'foo', displayName: {text: 'fbw bar'}}] // note that this term must match the expected values in index.js
       },
       login: {
@@ -47,6 +47,20 @@ describe('bank selectors', () => {
       }
     });
     result.id.should.be.eql('foo');
+  });
+
+  it('should select the current subject from the banks for D2L instructor', () => {
+    let result = getEnrolledSubject({
+      bank: {
+        currentBank: {id: 'foo2', displayName: {text: 'fbw bar'}},
+        banks: [{id: 'foo', displayName: {text: 'fbw bar'}}] // note that this term must match the expected values in index.js
+      },
+      login: {
+        isVisitor: false,
+        isLoggedIn: true
+      }
+    });
+    result.id.should.be.eql('foo2');
   });
 
   it('should get the class roster', () => {
