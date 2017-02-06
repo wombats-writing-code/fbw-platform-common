@@ -16,18 +16,20 @@ import {
 
 describe('time utilities', () => {
 
-  it('should convert a JS date object to local timezone', () => {
+  it('should convert a JS UTC date object to local timezone', () => {
+    let utcNow = moment.utc()
     let date = {
-      "year": 2017,
-      "month": 6,
-      "day": 3,
-      "hour": 0,
-      "minute": 0,
-      "second": 1
+      "year": utcNow.year(),
+      "month": utcNow.month(),
+      "day": utcNow.date(),
+      "hour": utcNow.hours(),
+      "minute": utcNow.minutes(),
+      "second": utcNow.seconds()
     };
     let result = localDateTime(date);
-
     result.should.be.a('object')
+
+    result.hour().should.eql(moment().hours())
   })
 
   it('should give the pending status for a pending mission', () => {
@@ -164,6 +166,11 @@ describe('time utilities', () => {
     };
     let result = convertUTCPythonDateToJSUTC(utcTimeObject);
 
+    result.year.should.be.eql(2020)
     result.month.should.be.eql(0)
+    result.day.should.be.eql(3)
+    result.hour.should.be.eql(0)
+    result.minute.should.be.eql(0)
+    result.second.should.be.eql(1)
   })
 })
