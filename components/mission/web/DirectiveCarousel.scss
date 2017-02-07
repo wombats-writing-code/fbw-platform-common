@@ -1,6 +1,11 @@
 
 @import '../../../styles/base';
 
+.prewrap {
+  white-space: pre-wrap;
+  max-width: 100%;
+}
+
 .carousel-container {
   padding: 0rem 0 .0 0rem;
   background: #fafafa;
@@ -29,11 +34,13 @@
   padding-bottom: calc(.75rem - 5px);
   margin-bottom: -1px;
   border-bottom: 4px solid transparent;
+  @extend .prewrap;
 }
 
 .carousel-thumb__button {
   padding-top: 1em;
   padding-bottom: .5em;
+  @extend .prewrap;
 }
 
 .carousel-thumb--directive .carousel-thumb__button {
