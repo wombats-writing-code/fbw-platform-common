@@ -5,8 +5,7 @@ const moment = require('moment-timezone')
 export function checkMissionStatus (mission) {
   let st = mission.startTime
   let dl = mission.deadline
-    // need to subtract one because when you construct a Date object here,
-    // it assumes 0 index....but the native input and server-side use 1 index
+  
   let startTime = moment.utc(st)
   let deadline = moment.utc(dl)
   let now = moment.utc()
@@ -21,11 +20,21 @@ export function checkMissionStatus (mission) {
 };
 
 export const localDateTime = (utcDateObject) => {
-  // convert our UTC date / time (already converted to JS format from python
-  // format by our reducer) to local timezone
+  // convert UTC date / time to local timezone
   let timezone = moment.tz.guess()
 
   return moment.utc(utcDateObject).clone().tz(timezone)
+}
+
+export const utcNoon = (localDateMoment) => {
+  return moment.utc({
+    year: localDateMoment.year(),
+    month: localDateMoment.month(),
+    day: localDateMoment.date(),
+    hour: 12,
+    minute: 0,
+    second: 0
+  })
 }
 
 export function momentToQBank (momentObject) {
@@ -79,7 +88,6 @@ export function beforeMidnight (timeObject) {
     second: 59
   })
   almostMidnight.utc()
-
   return {
     year: almostMidnight.year(),
     month: almostMidnight.month() + 1,  // 0-indexed
@@ -114,10 +122,10 @@ export function adjustedQBankToMomentObj(timeObject) {
   }
 }
 
-export function convertPythonDateToJS (pythonTime) {
-  // also need to convert the server-side UTC time to
-  // local time
-  let localTime = moment.utc({
+export function convertUTCPythonDateToJSUTC (pythonTime) {
+  // converts the server-side UTC time (python) to
+  // JS UTC time, where month is 0-indexed
+  let jsUTCTime = moment.utc({
     year: pythonTime.year,
     month: pythonTime.month - 1,
     day: pythonTime.day,
@@ -125,13 +133,12 @@ export function convertPythonDateToJS (pythonTime) {
     minute: pythonTime.minute,
     second: pythonTime.second
   })
-  localTime.local()
   return {
-    year: localTime.year(),
-    month: localTime.month(),
-    day: localTime.date(),
-    hour: localTime.hour(),
-    minute: localTime.minute(),
-    second: localTime.second()
+    year: jsUTCTime.year(),
+    month: jsUTCTime.month(),
+    day: jsUTCTime.date(),
+    hour: jsUTCTime.hour(),
+    minute: jsUTCTime.minute(),
+    second: jsUTCTime.second()
   }
 }

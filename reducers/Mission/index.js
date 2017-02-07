@@ -11,6 +11,7 @@ import { CREATE_TAKE_MISSION_OPTIMISTIC, CREATE_TAKE_MISSION, RECEIVE_CREATE_TAK
 import { GET_USER_MISSION_RESULTS_OPTIMISTIC, RECEIVE_GET_USER_MISSION_RESULTS } from './selectClosedMission'
 import { SUBMIT_RESPONSE, SUBMIT_RESPONSE_OPTIMISTIC, RECEIVE_SUBMIT_RESPONSE } from './submitResponse'
 import { SHOW_ANSWER_OPTIMISTIC, RECEIVE_SHOW_ANSWER } from './showAnswer'
+import {RECEIVE_UPDATE_MISSION} from '../edit-mission/updateMission'
 
 import {SELECT_MISSION_RESULT} from './selectMissionResult'
 import { SELECT_DIRECTIVE } from './selectDirective'
@@ -207,6 +208,18 @@ export default function missionReducer (state = initialState, action) {
         currentMission: null,
         missions: null,
         isGetMissionsInProgress: false
+      })
+
+    case RECEIVE_UPDATE_MISSION:
+      return _.assign({}, state, {
+        missions: _.map(state.missions, (m) => {
+          if (m.id === action.mission.id) {
+            return action.mission;
+          }
+
+          return m;
+        }),
+        currentMission: action.mission
       })
 
     default:

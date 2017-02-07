@@ -1,11 +1,14 @@
 import _ from 'lodash'
 import moment from 'moment'
+require('moment-timezone')
 import reducer from '../index'
 import {ADD_MISSION} from '../addMission'
 import {EDIT_MISSION} from '../editMission'
 import {RECEIVE_CREATE_MISSION} from '../createMission'
 
 import {UPDATE_SPAWN_DATE} from '../updateSpawnDate'
+
+import {beforeMidnight, afterMidnight} from '../../../utilities/time'
 
 import {createMission} from '../createMission'
 import {deleteMission} from '../deleteMission'
@@ -76,6 +79,8 @@ const TEST_MISSION = {
 
 let newMission
 
+const isUTC = moment.utc() == moment()
+
 
 describe('edit-mission reducer', () => {
 
@@ -96,6 +101,54 @@ describe('edit-mission reducer', () => {
     });
 
     newState.newMission.name.should.eql('foo');
+  });
+
+  it('should set startTime and deadline to moment objects in the EDIT_MISSION action', () => {
+    let localStartTime = moment({
+      year: 2017,
+      month: 1,
+      day: 1,
+      hour: 0,
+      minute: 0,
+      second: 1
+    })
+    let utcStartTime = localStartTime.utc()
+    let localDeadline = moment({
+      year: 2017,
+      month: 1,
+      day: 5,
+      hour: 23,
+      minute: 59,
+      second: 59
+    })
+    let utcDeadline = localDeadline.utc()
+
+    let startTime = {
+      year: utcStartTime.year(),
+      month: utcStartTime.month(),
+      day: utcStartTime.date(),
+      hour: utcStartTime.hour(),
+      minute: utcStartTime.minute(),
+      second: utcStartTime.second()
+    };
+    let deadline = {
+      year: utcDeadline.year(),
+      month: utcDeadline.month(),
+      day: utcDeadline.date(),
+      hour: utcDeadline.hour(),
+      minute: utcDeadline.minute(),
+      second: utcDeadline.second()
+    }
+
+    let newState = reducer({}, {
+      type: EDIT_MISSION,
+      mission: {
+        startTime: startTime,
+        deadline: deadline
+      }
+    });
+    newState.newMission.startTime.hour().should.eql(utcStartTime.hour())
+    newState.newMission.deadline.hour().should.eql(utcDeadline.hour())
   });
 
   it('should update the state upon the UPDATE_SPAWN_DATE action', () => {
@@ -147,8 +200,8 @@ describe('edit-mission reducer', () => {
       let updatedMission = res
       updatedMission.childIds.length.should.eql(1)
       updatedMission.displayName.text.should.eql(newName)
-      updatedMission.startTime.year.should.eql(newMission.startTime.year + 1)
-      updatedMission.deadline.year.should.eql(newMission.deadline.year + 1)
+      updatedMission.startTime.year().should.eql(newMission.startTime.year() + 1)
+      updatedMission.deadline.year().should.eql(newMission.deadline.year() + 1)
       updatedMission.sections.length.should.eql(1)
       updatedMission.sections[0].learningObjectiveId.should.eql(NEW_DIRECTIVE_ID)
       updatedMission.sections[0].childIds.length.should.eql(3)  // half of the 6 available

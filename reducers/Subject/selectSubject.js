@@ -1,7 +1,6 @@
 import axios from 'axios'
 
-import { getDomain, STUDENT_AUTHORIZATION_FUNCTIONS } from '../../utilities'
-import {momentToQBank} from '../../utilities/time'
+import { getDomain } from '../../utilities'
 // ----
 // Action types
 export const RECEIVE_SELECT_SUBJECT = 'RECEIVE_SELECT_SUBJECT'

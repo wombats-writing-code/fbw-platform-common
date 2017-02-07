@@ -1,4 +1,4 @@
-// mission reducer
+// edit-mission reducer
 
 import thunk from 'redux-thunk';
 import _ from 'lodash'
@@ -10,12 +10,13 @@ import {ADD_MISSION} from './addMission'
 import {EDIT_MISSION} from './editMission'
 import {CREATE_TEST_FLIGHT_MISSIONS_OPTIMISTIC, RECEIVE_CREATE_TEST_FLIGHT_MISSIONS} from './createTestFlightMissions'
 import {CREATE_MISSION_OPTIMISTIC, RECEIVE_CREATE_MISSION} from './createMission'
-import {RECEIVE_UPDATE_MISSION} from './updateMission'
+// import {RECEIVE_UPDATE_MISSION} from './updateMission'
 import {UPDATE_MISSION_FORM} from './updateMissionForm'
 // import {UPDATE_EDIT_MISSION_FORM} from './updateEditMissionForm'
 import {UPDATE_SPAWN_DATE} from './updateSpawnDate'
 import {DELETE_MISSION_OPTIMISTIC, RECEIVE_DELETE_MISSION} from './deleteMission'
 
+import {localDateTime} from '../../utilities/time'
 
 // ------------------------------------
 // Reducer
@@ -35,12 +36,11 @@ export default function editMissionReducer (state = initialState, action) {
       });
 
     case EDIT_MISSION:
-      console.log('EDIT_MISSION', action)
-      
+      // console.log('EDIT_MISSION', action)
+
       let directives = _.compact(_.map(action.mission.sections, section => {
         return _.find(action.outcomes, {id: section.learningObjectiveId});
       }));
-
       return _.assign({}, state, {
         newMission: _.assign({}, action.mission, {
           startTime: moment(action.mission.startTime),
@@ -65,23 +65,23 @@ export default function editMissionReducer (state = initialState, action) {
         isSpawnInProgress: true
       })
 
-    // case UPDATE_SPAWN_DATE:
-    //   let nextSpawnFocusedInputEdit = null;
-    //   if (_.has(action.data, "startDate") && state.spawnStartDate != action.data.startDate) {
-    //     nextSpawnFocusedInputEdit = END_DATE
-    //   } else if (_.has(action.data, "focusedInput")) {
-    //     nextSpawnFocusedInputEdit = action.data.focusedInput
-    //   }
-    //
-    //   let newSpawnStartDate = _.has(action.data, "startDate") ? action.data.startDate : state.spawnDate
-    //   let newSpawnDeadline = _.has(action.data, "endDate") ? action.data.endDate : state.spawnDate
-    //   return _.assign({}, state, {
-    //     spawnDate: {
-    //       startTime: newSpawnStartDate,
-    //       deadline: newSpawnDeadline
-    //     },
-    //     spawnDateFocused: nextSpawnFocusedInputEdit
-    //   })
+    case UPDATE_SPAWN_DATE:
+      let nextSpawnFocusedInputEdit = null;
+      if (_.has(action.data, "startDate") && state.spawnStartDate != action.data.startDate) {
+        nextSpawnFocusedInputEdit = END_DATE
+      } else if (_.has(action.data, "focusedInput")) {
+        nextSpawnFocusedInputEdit = action.data.focusedInput
+      }
+
+      let newSpawnStartDate = _.has(action.data, "startDate") ? action.data.startDate : state.spawnDate
+      let newSpawnDeadline = _.has(action.data, "endDate") ? action.data.endDate : state.spawnDate
+      return _.assign({}, state, {
+        spawnDate: {
+          startTime: newSpawnStartDate,
+          deadline: newSpawnDeadline
+        },
+        spawnDateFocused: nextSpawnFocusedInputEdit
+      })
 
     case RECEIVE_CREATE_TEST_FLIGHT_MISSIONS:
       return _.assign({}, state, {
@@ -101,17 +101,20 @@ export default function editMissionReducer (state = initialState, action) {
         isDeleteMissionInProgress: false,
       })
 
-    case RECEIVE_UPDATE_MISSION:
-      return _.assign({}, state, {
-        missions: _.map(state.missions, (m) => {
-          if (m.id === action.mission.id) {
-            return action.mission;
-          }
-
-          return m;
-        }),
-        currentMission: action.mission
-      })
+    // case RECEIVE_UPDATE_MISSION:
+    //   console.log('receiving update mission', action)
+    //   console.log('current state', state)
+    //   return _.assign({}, state, {
+    //     missions: _.map(state.missions, (m) => {
+    //       console.log('mid', m.id, 'action id', action.mission.id)
+    //       if (m.id === action.mission.id) {
+    //         return action.mission;
+    //       }
+    //
+    //       return m;
+    //     }),
+    //     currentMission: action.mission
+    //   })
 
     case UPDATE_MISSION_FORM:
       // let's add some logic to the datepicker interactions ...
