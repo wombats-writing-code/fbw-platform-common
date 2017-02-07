@@ -27,8 +27,8 @@ module.exports = function(config) {
             loader: 'babel',
             exclude: path.resolve(__dirname, 'node_modules'),
             query: {
-              presets: ["airbnb"],
-              // presets: ["es2015", "react", "stage-0"]
+              // presets: ["airbnb"],
+              presets: ["es2015", "react", "stage-0"]
             }
           },
           {
@@ -86,7 +86,7 @@ module.exports = function(config) {
     babelPreprocessor: {
       options: {
         // presets: ['es2015', 'react', 'stage-0', 'transform-class-properties']
-        presets: ["airbnb", "transform-class-properties"]
+        presets: ["es2015", "airbnb", "transform-class-properties"]
         // presets: ["airbnb"]
       }
     },
