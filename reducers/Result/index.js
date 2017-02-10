@@ -28,6 +28,9 @@ export default function resultReducer (state = initialState, action) {
     case RECEIVE_PHASE_I_RESULTS:
       return _.assign({}, state, {
         phaseIResults: action.results,
+        // phaseIResults: _.map(action.results, (r) => {
+        //   return _.pick(r, [])
+        // }),
         isGetPhaseIResultsInProgress: false
       });
 
