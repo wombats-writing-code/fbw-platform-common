@@ -9,7 +9,7 @@ const chaiHttp = require('chai-http');
 chai.should();
 chai.use(chaiHttp);
 
-import { instructorCourses, enrollments, whoami } from '../_authenticateD2LHelper'
+import {getD2LEnrollments} from '../_authenticateD2LHelper'
 
 const _ = require('lodash')
 const Q = require('q')
@@ -22,20 +22,14 @@ const mockStore = configureMockStore(middlewares)
 
 describe('authenticateD2LHelper', () => {
 
-  it('should get instructor banks when given instructor credentials', done => {
+  it('should get instructor enrollments given instructor credentials', done => {
     let credentials = require('../../../d2lcredentials')
     credentials.role = 'instructor';
 
-    instructorCourses(credentials, '/')
-    .then( (res) => {
-      res.should.be.eql([
-          { id: 'assessment.Bank%3A58498ccb71e482e47e0ed8ce%40bazzim.MIT.EDU',
-          name: 'Fly-by-wire MAT121',
-          orgUnitId: 1744153,
-          term: 'Sandbox',
-          department: 'Sandbox',
-          displayName: 'Fly-by-wire MAT121 -- Sandbox' }
-      ]);
+    getD2LEnrollments(credentials, '/')
+    .then( (courses) => {
+      // console.log('courses', courses);
+      courses[0].name.should.be.eql('Fly-by-wire MAT121');
 
       done();
     })

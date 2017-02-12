@@ -32,11 +32,10 @@ export function submitResponse(data) {
     dispatch(submitResponseOptimistic());
 
     let options = {
-      url: `${getDomain()}/middleman/banks/${data.bankId}/takens/${data.section.id}/questions/${data.questionId}/submit`,
+      url: `${getDomain()}/l4/respond`,
       method: 'POST',
       data: {
-        choiceIds: [data.choiceId],
-        type: 'answer-record-type%3Amulti-choice-with-files-and-feedback%40ODL.MIT.EDU'
+        choiceId: [data.choiceId],
       },
       headers: {
         'x-fbw-username': data.username

@@ -49,6 +49,6 @@ describe('D2LCallback', () => {
   });
 
   after(() => {
-    connectedComponent.detach();
+    // connectedComponent.detach();
   });
 });

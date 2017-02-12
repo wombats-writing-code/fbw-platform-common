@@ -31,24 +31,17 @@ export function selectOpenMission (data) {
     dispatch(openMissionOptimistic(data.mission))
 
     let options = {
-      url: `${getDomain()}/middleman/banks/${data.bankId}/offereds/${data.mission.assessmentOfferedId}/takeMission`,
+      url: `${getDomain()}/l4/missions/${data.mission._id}`,
+      method: 'POST',
       headers: {
         'x-fbw-username': data.username
       }
     };
 
-    let _assessmentSections;
-
     return axios(options)
-    .then((response) => {
-      _assessmentSections = response.data;
-
-      return Q.when(convertImagePaths(_assessmentSections))
-    })
-    .then((questionsWithImages) => {
-      dispatch(receiveOpenMission(questionsWithImages));
-
-      return questionsWithImages;
+    .then((mission) => {
+      dispatch(receiveOpenMission(mission));
+      return mission;
     })
     .catch((error) => {
       console.log('error getting mission data', error)
