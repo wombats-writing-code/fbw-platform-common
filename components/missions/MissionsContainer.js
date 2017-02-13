@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { getMissions } from 'fbw-platform-common/reducers/Mission/getMissions'
 import { selectOpenMission } from 'fbw-platform-common/reducers/Mission/selectOpenMission'
 import { selectClosedMission } from 'fbw-platform-common/reducers/Mission/selectClosedMission'
-import {getEnrolledSubject} from 'fbw-platform-common/selectors/bank'
+import {getCurrentCourse} from 'fbw-platform-common/selectors/course'
 import {getUser} from 'fbw-platform-common/selectors'
 
 // need to getMapping here, instead of SubjectsContainer,
@@ -13,8 +13,7 @@ import { getMapping } from '../reducers/Mapping/getMapping'
 const mapStateToProps = (state, ownProps) => {
   // console.log('state', state);
   return {
-    bank: getEnrolledSubject(state),
-    isGetPrivateBankIdInProgress: state.bank.getPrivateBankIdInProgress ? state.bank.getPrivateBankIdInProgress : false,
+    course: getCurrentCourse(state),
     missions: state.mission ? state.mission.missions : null,
     isGetMissionsInProgress: state.mission ? state.mission.isGetMissionsInProgress : false,
     user: getUser(state),

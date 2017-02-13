@@ -9,7 +9,7 @@ import { selectClosedMission } from '../../reducers/Mission/selectClosedMission'
 import { selectDirective } from '../../reducers/Mission/selectDirective'
 
 import {getUser, getMapping} from '../../selectors/'
-import {getEnrolledSubject} from '../../selectors/bank'
+import {getCurrentCourse} from '../../selectors/course'
 import {directivesFromSections, isTarget, isTargetRouteNavigated} from '../../selectors/mission'
 
 
@@ -22,7 +22,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     user: getUser(state),
-    bank: getEnrolledSubject(state),
+    currentCourse: getCurrentCourse(state),
     missions: state.mission ? state.mission.missions : null,
     missionName: ownProps.params ? ownProps.params.missionName : null,
     mission: ownProps.params && state.mission.missions ?

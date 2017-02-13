@@ -6,13 +6,12 @@ import { selectChoice } from '../../reducers/Mission/selectChoice'
 import { submitResponse } from '../../reducers/Mission/submitResponse'
 import { showAnswer } from '../../reducers/Mission/showAnswer'
 import {getUser} from '../../selectors/'
-import {getEnrolledSubject} from '../../selectors/bank'
+import {getCurrentCourse} from '../../selectors/course'
 
 const mapStateToProps = (state, ownProps) => {
   // console.log('state in question container', state)
   return {
-    bank: getEnrolledSubject(state),
-    privateBankId: state.bank.privateBankId, // @luwenh, deprecated?
+    course: getCurrentCourse(state),
     mission: state.mission.currentMission ? state.mission.currentMission : null,
     isInProgressSubmitChoice: state.mission.isInProgressSubmitChoice ? state.mission.isInProgressSubmitChoice : false,
     isInProgressShowAnswer: state.mission.isInProgressShowAnswer ? state.mission.isInProgressShowAnswer : false,
