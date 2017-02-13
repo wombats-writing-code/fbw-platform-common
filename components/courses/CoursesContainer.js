@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import { connect } from 'react-redux'
-import {getCourses} from '../../selectors'
+import {getCourses, getUser} from '../../selectors'
 import {selectCourse} from '../../reducers/Course/selectCourse'
 import {getMapping} from '../../reducers/Mapping/getMapping'
 
@@ -8,7 +8,8 @@ const mapStateToProps = (state, ownProps) => {
   // console.log('state in QuestionsContainer', state)
 
   return {
-    courses: state.course.courses
+    courses: state.course.courses,
+    user: getUser(state),
   }
 }
 

@@ -6,12 +6,12 @@ import {SELECT_DIRECTIVE} from '../reducers/Mission/selectDirective'
 import {SELECT_TARGET} from '../reducers/Mission/selectTarget'
 import {LOG_OUT} from '../reducers/Login/logOutUser'
 
-import {getUser} from '../selectors'
+import {getUser, getCurrentCourse} from '../selectors'
 
 const logger = store => next => action => {
   if (window.ga) {
     let state = store.getState();
-    let subject = getEnrolledSubject(state);
+    let course = getCurrentCourse(state);
     let username = getUser(state).username;
 
     // console.log('state in logger', state);
@@ -26,7 +26,7 @@ const logger = store => next => action => {
           ga('send', {
             hitType: 'event',
             eventAction: action.type,
-            eventCategory: subject.name || subject.displayName,
+            eventCategory: course.name || course.displayName,
             eventValue: username
           });
         } catch (e) {

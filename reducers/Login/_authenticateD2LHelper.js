@@ -35,6 +35,11 @@ export function getD2LEnrollments(credentials, url) {
 
     if (process.env.NODE_ENV !== 'test') console.log('filtered enrollments', enrollments)
 
+    if (credentials.role === 'student') {
+      let courses = _.map(enrollments, 'OrgUnit');
+      return courses;
+    }
+
     // instructors can get course terms
     let courseTermPromises = [];
     _.each(enrollments, (course) => {
