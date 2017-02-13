@@ -54,10 +54,10 @@ export function getD2LEnrollments(credentials, url) {
     });
 
     return axios.all(courseTermPromises)
-  })
-  .then(res => {
-    let courses = _.map(res, 'data');
-    return courses;
+    .then(res => {
+      let courses = _.map(res, 'data');
+      return courses;
+    });
   })
   .catch((error) => {
     console.log('error getting d2l enrollments', error)

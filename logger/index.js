@@ -6,7 +6,8 @@ import {SELECT_DIRECTIVE} from '../reducers/Mission/selectDirective'
 import {SELECT_TARGET} from '../reducers/Mission/selectTarget'
 import {LOG_OUT} from '../reducers/Login/logOutUser'
 
-import {getUser, getCurrentCourse} from '../selectors'
+import {getUser} from '../selectors'
+import {getCurrentCourse} from '../selectors/course'
 
 const logger = store => next => action => {
   if (window.ga) {
