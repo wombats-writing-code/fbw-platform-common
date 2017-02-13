@@ -53,7 +53,10 @@ describe('mapping reducer', () => {
     }];
     const store = mockStore({});
 
-    store.dispatch(getMapping({Id: '1744153'}, ['outcome']))
+    store.dispatch(getMapping({
+      courseId: '1744153',
+      entityTypes: ['outcome']
+    }))
     .then( () => {
       let actions = store.getActions();
       // console.log('actions', actions)

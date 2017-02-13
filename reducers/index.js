@@ -1,6 +1,5 @@
 
-import courseReducer from './Bank'
-import subjectReducer from './Subject'
+import courseReducer from './Course'
 import missionReducer from './Mission'
 import editMissionReducer from './edit-mission'
 import loginReducer from './Login'
@@ -12,7 +11,6 @@ import resultReducer from './Result'
 export default {
   login: loginReducer,
   course: courseReducer,
-  subject: subjectReducer,
   mission: missionReducer,
   editMission: editMissionReducer,
   mapping: mappingReducer,
