@@ -30,8 +30,10 @@ export function authenticateD2L(credentials, optionalUrl) {
 
     // now get the user enrollments and set them in the global state
     return getD2LEnrollments(credentials, url)
-    .then((courses) => {
-      if (process.env.NODE_ENV !== 'test') console.log("got courses", courses);
+    .then((enrollments) => {
+      if (process.env.NODE_ENV !== 'test') console.log("got enrollments", enrollments);
+
+      courses = enrollments;
 
       return whoami(credentials, url)
     })
