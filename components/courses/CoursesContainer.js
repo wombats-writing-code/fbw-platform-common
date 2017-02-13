@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onSelectCourse: (course) => {dispatch(selectCourse(course))},
-    getMapping: (course, entityTypes) => {dispatch(getMapping(course, entityTypes))}
+    getMapping: (data) => {dispatch(getMapping(data))}
   }
 }
 

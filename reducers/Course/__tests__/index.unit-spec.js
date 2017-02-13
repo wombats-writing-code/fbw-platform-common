@@ -50,7 +50,7 @@ describe('Course reducer', () => {
       type: LOG_OUT
     });
 
-    newState.courses.length.should.eql(2);
+    newState.courses.length.should.eql(0);
   })
 
 })

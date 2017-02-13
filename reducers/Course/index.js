@@ -19,7 +19,9 @@ import {LOG_OUT} from '../Login/logOutUser'
 import VISITOR_COURSES from './visitor-courses'
 
 const initialState = {
-  courses: VISITOR_COURSES
+  courses: [],
+  currentCourse: null
+  // courses: VISITOR_COURSES
 }
 export default function courseReducer (state = initialState, action) {
   switch (action.type) {
@@ -56,7 +58,7 @@ export default function courseReducer (state = initialState, action) {
 
     case LOG_OUT:
       return _.assign({}, state, {
-        courses: VISITOR_COURSES,
+        courses: [],
         currentCourse: null,
         items: null,
       })
