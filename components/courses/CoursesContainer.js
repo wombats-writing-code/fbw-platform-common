@@ -2,6 +2,7 @@ import _ from 'lodash'
 import { connect } from 'react-redux'
 import {getCourses} from '../../selectors'
 import {selectCourse} from '../../reducers/Course/selectCourse'
+import {getMapping} from '../../reducers/Mapping/getMapping'
 
 const mapStateToProps = (state, ownProps) => {
   // console.log('state in QuestionsContainer', state)
@@ -13,7 +14,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onSelectCourse: (course) => {dispatch(selectCourse(course))}
+    onSelectCourse: (course) => {dispatch(selectCourse(course))},
+    getMapping: (course, entityTypes) => {dispatch(getMapping(course, entityTypes))}
   }
 }
 

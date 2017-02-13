@@ -1,9 +1,8 @@
 
 import thunk from 'redux-thunk';
-import 'lodash'
+import _ from 'lodash'
 
-import {RECEIVE_MAPPING} from './getMapping'
-
+import {GET_MAPPING_OPTIMISTIC, RECEIVE_MAPPING} from './getMapping'
 import { LOG_OUT } from '../Login/logOutUser'
 
 // ------------------------------------
@@ -24,8 +23,18 @@ export default function mappingReducer (state = initialState, action) {
         relationships: null
       })
 
+    case GET_MAPPING_OPTIMISTIC:
+      return _.assign({}, state, {
+        isGetMappingInProgress: true
+      })
+
     case RECEIVE_MAPPING:
-      return action.mapping
+      return _.assign({}, state, {
+        modules: _.filter(action.mapping.entities, {type: 'MODULE'}),
+        outcomes: _.filter(action.mapping.entities, {type: 'OUTCOME'}),
+        relationships: action.mapping.relationships,
+        isGetMappingInProgress: false
+      })
 
     default:
       return state
