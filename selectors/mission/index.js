@@ -1,5 +1,10 @@
 import _ from 'lodash'
 
+// ==============
+
+
+/// ==============
+
 export const directivesFromSections = (sections, outcomes) => {
   let objectiveIds = _.map(sections, 'learningObjectiveId');
 

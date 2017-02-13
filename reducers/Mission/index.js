@@ -88,23 +88,27 @@ export default function missionReducer (state = initialState, action) {
       })
 
     case CREATE_TAKE_MISSION_OPTIMISTIC:
-    case GET_USER_MISSION_RESULTS_OPTIMISTIC:
       return _.assign({}, state, {
         currentMission: action.mission,
-        isSubmitTakeMissionInProgress: true
+        isGetMissionInProgress: true
       });
 
     case RECEIVE_CREATE_TAKE_MISSION:
       return _.assign({}, state, {
+        currentMission: action.mission,
         currentDirectiveIndex: 0,
-        isSubmitTakeMissionInProgress: false
+        isGetMissionInProgress: false
+      });
+
+    case GET_USER_MISSION_RESULTS_OPTIMISTIC:
+      return _.assign({}, state, {
+        currentMission: action.mission,
+        isGetMissionInProgress: true
       });
 
     case RECEIVE_GET_USER_MISSION_RESULTS:
       return _.assign({}, state, {
-        resultsExistForUser: action.resultsExistForUser,
-        currentMissionSections: action.mission,
-        isSubmitTakeMissionInProgress: false
+        isGetMissionInProgress: false
       });
 
     case SELECT_MISSION_RESULT:

@@ -32,7 +32,7 @@ export function getMissions (data) {
 
     // let's change this to do the privateBankAlias calculation in the middleman
     let options = {
-      url: `${getDomain()}/l4/missions` + `?courseId=${data.courseId}`,
+      url: `${getDomain()}/l4/missions` + `?courseId=${data.course.Id}`,
       headers: {
         'x-fbw-username': data.username
       }

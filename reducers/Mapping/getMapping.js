@@ -23,7 +23,7 @@ export function receiveMapping(mapping) {
 }
 
 export function getMapping(data) {
-  let courseId = data.courseId;
+  let courseId = data.course.Id;
   let entityTypes = data.entityTypes;
   let relationshipTypes = data.relationshipTypes;
 

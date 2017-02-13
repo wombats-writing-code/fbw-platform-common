@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
   console.log('state in MissionsContainer', state);
 
   return {
-    currentCourse: getCurrentCourse(state),
+    course: getCurrentCourse(state),
     missions: state.mission ? state.mission.missions : null,
     isGetMissionsInProgress: state.mission ? state.mission.isGetMissionsInProgress : false,
     user: getUser(state),

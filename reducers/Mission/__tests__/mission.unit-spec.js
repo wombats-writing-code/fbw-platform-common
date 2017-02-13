@@ -64,29 +64,19 @@ describe('mission reducer', () => {
     });
 
     newState.currentMission.should.eql(mockTakeMission);
-    newState.isSubmitTakeMissionInProgress.should.eql(true);
+    newState.isGetMissionInProgress.should.eql(true);
   });
 
-  it('should update currentMissionSections in state upon RECEIVE_CREATE_TAKE', () => {
+  it('should update state upon RECEIVE_CREATE_TAKE_MISSION', () => {
     let newState = reducer([], {
       type: RECEIVE_CREATE_TAKE_MISSION,
       mission: mockReceiveTakeMission
     });
 
-    newState.isSubmitTakeMissionInProgress.should.eql(false);
+    newState.currentMission.should.eql(mockReceiveTakeMission)
+    newState.isGetMissionInProgress.should.eql(false);
   });
 
-  it('should reduce the RECEIVE_CREATE_MISSION action', () => {
-    let newState = reducer({}, {
-      type: RECEIVE_CREATE_MISSION,
-      mission: {
-        name: 'foo'
-      }
-    });
-
-    newState.missions.length.should.eql(1);
-    newState.currentMission.name.should.be.eql('foo');
-  })
 
   it('should update missions in state upon RECEIVE_DELETE_MISSION', () => {
     let newState = reducer({
@@ -124,6 +114,18 @@ describe('mission reducer', () => {
     newState.currentDirectiveIndex.should.eql(1);
     newState.currentTarget.id.should.eql('superman')
   });
+
+  it('should update state upon RECEIVE_CREATE_MISSION action', () => {
+    let newState = reducer({}, {
+      type: RECEIVE_CREATE_MISSION,
+      mission: {
+        name: 'foo'
+      }
+    });
+
+    newState.missions.length.should.eql(1);
+    newState.currentMission.name.should.be.eql('foo');
+  })
 
   it('should clear everything in this part of mission state upon LOG_OUT', () => {
     let newState = reducer({

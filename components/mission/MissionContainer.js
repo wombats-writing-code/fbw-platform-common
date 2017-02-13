@@ -24,14 +24,11 @@ const mapStateToProps = (state, ownProps) => {
     user: getUser(state),
     currentCourse: getCurrentCourse(state),
     missions: state.mission ? state.mission.missions : null,
-    missionName: ownProps.params ? ownProps.params.missionName : null,
-    mission: ownProps.params && state.mission.missions ?
-              _.find(state.mission.missions, m => slug(m.displayName.text) === slug(ownProps.params.missionName)) :
-              null,
-    currentMissionSections: state.mission.currentMissionSections,
+    isGetMissionInProgress: state.mission.isGetMissionInProgress,
+    isGetMissionsInProgress: state.mission ? state.mission.isGetMissionsInProgress : false,
     directives,
     directiveIndicators: _.map(directives, (d, idx) => {
-      let section = state.mission.currentMissionSections[idx];
+      let section = state.mission.questions[idx];
       let targetsForDirective = _.filter(section.questions, isTarget);
       let navigatedTargets = _.filter(targetsForDirective, question => isTargetRouteNavigated(question, section.questions) || question.isCorrect);
 
@@ -45,8 +42,6 @@ const mapStateToProps = (state, ownProps) => {
       }
     }),
     currentDirectiveIndex: typeof state.mission.currentDirectiveIndex !== 'undefined' ? state.mission.currentDirectiveIndex : null,
-    hasResults: typeof state.mission.resultsExistForUser !== 'undefined' ? state.mission.resultsExistForUser : null,
-    isGetMissionsInProgress: state.mission ? state.mission.isGetMissionsInProgress : false,
     isSubmitTakeMissionInProgress: state.mission ? state.mission.isSubmitTakeMissionInProgress : false
   }
 }

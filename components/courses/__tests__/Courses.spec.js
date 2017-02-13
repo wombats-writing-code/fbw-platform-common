@@ -35,6 +35,11 @@ const STATE = {
           }
       }
     ]
+  },
+  login: {
+    user: {
+      username: 'blah'
+    }
   }
 }
 

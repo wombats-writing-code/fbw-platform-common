@@ -25,39 +25,16 @@ const styles = {
 
 class Mission extends Component {
   componentDidMount() {
-  }
+    if (!this.props.mission && !this.props.isGetMissionInProgress) {
+      let mission = this.props.params && this.props.missions ?
+                _.find(this.props.missions, m => slug(m.displayName) === slug(this.props.params.missionName)) :
+                null
 
-  componentDidUpdate() {
-    // someone just pastes in /missions/MISSION-NAME
-    if (this.props.bank &&
-        !this.props.mission &&
-        !this.props.missions &&
-        !this.props.isGetMissionsInProgress) {
-      this.props.getMissions({
-        bankId: this.props.bank.id,
+      this.props.selectOpenMission({
+        course: this.props.course,
+        mission,
         username: this.props.user.username
-      })
-    }
-
-    if (!this.props.isGetMissionsInProgress && this.props.missions && this.props.mission) {
-      let missionState = checkMissionStatus(this.props.mission)
-      let data = {
-        mission: this.props.mission,
-        username: this.props.username
-      }
-      if (!this.props.isSubmitTakeMissionInProgress &&
-          !this.props.currentMissionSections &&
-          missionState !== "over") {
-        console.log('getting an open mission')
-        this.props.onSelectOpenMission(data);
-
-      } else if (!this.props.isSubmitTakeMissionInProgress &&
-          missionState === "over" &&
-          typeof this.props.hasResults === "undefined") {
-        console.log('getting a closed mission')
-        console.log(this.props)
-        this.props.onSelectClosedMission(data)
-      }
+      });
     }
   }
 

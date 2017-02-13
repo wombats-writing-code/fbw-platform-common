@@ -28,7 +28,7 @@ describe('getMissions', () => {
 
     store.dispatch(getMissions({
       username: 'Nutter-Butter-1145644@acc.edu',
-      courseId: '1744153'
+      course: {Id: '1744153'}
     }))
     .then(missions => {
       // console.log('getMissions.unit-spec', missions);

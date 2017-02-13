@@ -40,6 +40,11 @@ const STATE = {
     missions: [
 
     ]
+  },
+  login: {
+    user: {
+      username: 'blah'
+    }
   }
 }
 

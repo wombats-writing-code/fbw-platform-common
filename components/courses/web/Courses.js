@@ -7,7 +7,7 @@ class Courses extends Component {
 
 
   render() {
-    return {
+    return (
       <ul>
         {_.map(this.props.courses, course => {
           return (
@@ -18,7 +18,7 @@ class Courses extends Component {
         })}
 
       </ul>
-    }
+    )
   }
 }
 
