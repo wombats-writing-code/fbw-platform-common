@@ -19,7 +19,7 @@ import reducer from '../index'
 import {selectOpenMission} from '../selectOpenMission'
 
 describe('getMission', () => {
-  it('should call selectOpenMission and receive a mission with just the Targets for Nutter Butter', function(done) {
+  it('should call selectOpenMission and receive a mission with array of array of questions', function(done) {
     const store = mockStore({});
 
     store.dispatch(selectOpenMission({
@@ -30,13 +30,13 @@ describe('getMission', () => {
     }))
     .then(res => {
       let mission = res.data;
-      // console.log('getMission.unit-spec', mission);
-      console.log('getMission.unit-spec questions[0]', mission.questions[0]);
+      // console.log('selectOpenMission.unit-spec', mission);
+      // console.log('selectOpenMission.unit-spec questions[0]', mission.questions[0]);
 
       mission._id.should.be.eql('589e4ce9f36d2837a7c67935');
-      mission.goals.length.should.be.eql(3);
-      mission.questions.length.should.be.eql(1);
-      mission.questions[0].response.should.be.a('object');
+      mission.goals.length.should.be.eql(2);
+      mission.questions.length.should.be.eql(2);
+      mission.questions[0].response.should.be.a('array');
 
       done();
     });

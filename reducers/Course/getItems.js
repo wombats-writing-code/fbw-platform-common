@@ -22,15 +22,19 @@ export function getItemsOptimistic(data) {
   return {type: GET_ITEMS, data };
 }
 
-export function getItems(bankId) {
+export function getItems(courseId, username) {
 
   return function(dispatch) {
     dispatch(getItemsOptimistic([]));
 
-    let url = `${getDomain()}/middleman/banks/${bankId}/items`;
-
-    return axios(url)
+    return axios({
+      url: `${getDomain()}/l4/questions?courseId=${courseId}` ,
+      headers: {
+        'x-fbw-username': username
+      }
+    })
     .then((response) => {
+      // console.log('get items response', response)
       let items = response.data;
       dispatch(receiveItems(items));
 

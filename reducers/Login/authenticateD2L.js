@@ -44,6 +44,9 @@ export function authenticateD2L(credentials, optionalUrl) {
 
       return username;
     })
+    .catch( err => {
+      console.error(err);
+    })
   }
 }
 

@@ -1,14 +1,14 @@
-// bank reducer
+// course reducer
 
 import thunk from 'redux-thunk';
 import _ from 'lodash'
 
-import {RECEIVE_BANKS} from './getBanks'
-import {RECEIVE_SELECT_BANK, SELECT_BANK_OPTIMISTIC} from './selectBank'
+import {RECEIVE_COURSES} from './getCourses'
+import {SELECT_COURSE} from './selectCourse'
 import {RECEIVE_ITEMS} from './getItems'
 import {RECEIVE_D2L_CLASS_ROSTER, GET_D2L_CLASS_ROSTER_OPTIMISTIC} from './getD2LClassRoster'
 
-import {RECEIVE_AUTHENTICATE_D2L} from '../Login/authenticateD2L'   // updates banks with d2l bank info
+import {RECEIVE_AUTHENTICATE_D2L} from '../Login/authenticateD2L'   // updates courses with d2l course info
 import {LOG_OUT} from '../Login/logOutUser'
 
 
@@ -16,30 +16,22 @@ import {LOG_OUT} from '../Login/logOutUser'
 // Reducer
 // ------------------------------------
 
-import VISITOR_BANKS from './visitor-banks'
+import VISITOR_COURSES from './visitor-courses'
 
 const initialState = {
-  banks: VISITOR_BANKS
+  courses: VISITOR_COURSES
 }
-export default function bankReducer (state = initialState, action) {
+export default function courseReducer (state = initialState, action) {
   switch (action.type) {
-    case RECEIVE_BANKS:
+    case RECEIVE_COURSES:
       return _.assign({}, state, {
-        banks: action.banks,
+        courses: action.courses,
       });
 
-    case SELECT_BANK_OPTIMISTIC:
+    case SELECT_COURSE:
       return _.assign({}, state, {
-        currentBank: action.bank,
-        getPrivateBankIdInProgress: true,
-        privateBankId: null
+        currentCourse: action.course,
       });
-
-    case RECEIVE_SELECT_BANK:
-      return _.assign({}, state, {
-        privateBankId: action.privateBankId,
-        getPrivateBankIdInProgress: false
-      })
 
     case RECEIVE_ITEMS:
       return _.assign({}, state, {
@@ -47,9 +39,9 @@ export default function bankReducer (state = initialState, action) {
       });
 
     case RECEIVE_AUTHENTICATE_D2L:
-      // console.log('RECEIVE_AUTHENTICATE_D2L in bank reducer', action)
+      // console.log('RECEIVE_AUTHENTICATE_D2L in course reducer', action)
       return _.assign({}, state, {
-        banks: action.data.banks
+        courses: action.data.courses
       })
 
     case GET_D2L_CLASS_ROSTER_OPTIMISTIC:
@@ -64,11 +56,9 @@ export default function bankReducer (state = initialState, action) {
 
     case LOG_OUT:
       return _.assign({}, state, {
-        banks: VISITOR_BANKS,
-        currentBank: null,
+        courses: VISITOR_COURSES,
+        currentCourse: null,
         items: null,
-        privateBankId: null,
-        getPrivateBankIdInProgress: false,
       })
 
     default:

@@ -20,7 +20,7 @@ import { SELECT_CHOICE } from './selectChoice'
 import { SET_QUESTION_LIST_HEIGHT } from './setQuestionListHeight'
 import { SET_CHOICE_HEIGHT } from './setChoiceHeight'
 
-import {RECEIVE_SELECT_BANK} from '../Bank/selectBank'
+import {SELECT_COURSE} from '../Course/selectCourse'
 
 import {RECEIVE_CREATE_MISSION} from '../edit-mission/createMission'
 import {RECEIVE_DELETE_MISSION} from '../edit-mission/deleteMission'
@@ -45,7 +45,7 @@ export default function missionReducer (state = initialState, action) {
         currentMission: null
       })
 
-    case RECEIVE_SELECT_BANK:
+    case SELECT_COURSE:
       return _.assign({}, state, {
         missions: null
       })

@@ -13,23 +13,11 @@ let should = require('should');
 chai.should();
 
 const EXPECTED_MAT_121_COURSE = {
-  "Identifier": "1744153",
+  "Id": "1744153",
   "Name": "Fly-by-wire MAT121",
   "Code": "Fly-by-wire MAT121",
   "IsActive": true,
   "Path": "/content/enforced2012/1744153-Fly-by-wireMAT121/",
-  "StartDate": null,
-  "EndDate": null,
-  "CourseTemplate": {
-    "Identifier": "1744152",
-    "Name": "Fly-by-wire MAT121",
-    "Code": "Fly-by-wire MAT121"
-  },
-  "Semester": {
-    "Identifier": "14226",
-    "Name": "Sandbox",
-    "Code": "SB"
-  },
   "Department": {
     "Identifier": "6630",
     "Name": "Sandbox",
@@ -44,7 +32,7 @@ const mockStore = configureMockStore(middlewares)
 
 
 describe('login reducer', function(done) {
-  it('should set the username and authenticatedUrl upon RECEIVE_AUTHENTICATE_D2L', (done) => {
+  it('should update state upon RECEIVE_AUTHENTICATE_D2L', (done) => {
     const mockUrl = 'd2l-callback?x_a=94Uf24iaW4SWpQMzFvsMrH&x_b=uq9naj95YZ2bOzgZ8se69m&x_c=66IANU-TLdAJDIOmfvygR1tA110eoQe-bYdMFldm5rA';
 
     let newState = reducer({}, {
@@ -86,8 +74,7 @@ describe('login reducer', function(done) {
       actions.length.should.be.eql(1);
       actions[0].type.should.be.eql(RECEIVE_AUTHENTICATE_D2L);
       // console.log('actions', actions)
-      actions[0].data.username.should.be.eql(expectedAction[1].data.username)
-      actions[0].data.courses[0].Identifier.should.be.eql(EXPECTED_MAT_121_COURSE.Identifier)
+      actions[0].data.username.should.be.eql(expectedAction[0].data.username)
       done();
     })
   })

@@ -1,5 +1,5 @@
 
-import bankReducer from './Bank'
+import courseReducer from './Bank'
 import subjectReducer from './Subject'
 import missionReducer from './Mission'
 import editMissionReducer from './edit-mission'
@@ -11,7 +11,7 @@ import resultReducer from './Result'
 
 export default {
   login: loginReducer,
-  bank: bankReducer,
+  course: courseReducer,
   subject: subjectReducer,
   mission: missionReducer,
   editMission: editMissionReducer,

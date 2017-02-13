@@ -7,8 +7,6 @@ import {SELECT_TARGET} from '../reducers/Mission/selectTarget'
 import {LOG_OUT} from '../reducers/Login/logOutUser'
 
 import {getUser} from '../selectors'
-import {getEnrolledSubject} from '../selectors/bank'
-
 
 const logger = store => next => action => {
   if (window.ga) {

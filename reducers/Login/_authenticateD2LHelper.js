@@ -5,7 +5,6 @@ let Q = require('q')
 import D2L from 'valence'
 
 import { getDomain } from '../../utilities'
-import {isFBWSpring2017} from '../../selectors/bank'
 
 export function getD2LEnrollments(credentials, url) {
   // need to get all of these, because paginated
@@ -57,6 +56,7 @@ export function getD2LEnrollments(credentials, url) {
   })
   .catch((error) => {
     console.log('error getting d2l enrollments', error)
+    return courses;
   })
 }
 
@@ -101,4 +101,15 @@ function _appendDevRole(credentials) {
 
 export function bankAliasId (courseId) {
   return `assessment.Bank%3A${courseId}%40ACC.D2L.COM`
+}
+
+export function isFBWSpring2017(name) {
+  name = name.toLowerCase()
+  return isFBW(name) ||
+    (name.indexOf('sp17') >= 0 &&
+    (isMAT121(name) || isACC(name)))
+}
+
+export function isFBW(name) {
+  return name.indexOf('fly-by-wire') >= 0 || name.indexOf('fbw') >= 0
 }

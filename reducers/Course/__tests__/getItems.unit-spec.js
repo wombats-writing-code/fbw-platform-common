@@ -1,4 +1,3 @@
-import reducer from '../index'
 
 let chai = require('chai');
 let should = require('should');
@@ -6,6 +5,7 @@ chai.should();
 const chaiHttp = require('chai-http');
 chai.should();
 chai.use(chaiHttp);
+import nock from 'nock'
 
 const _ = require('lodash')
 const Q = require('q')
@@ -18,13 +18,12 @@ const mockStore = configureMockStore(middlewares)
 import {getItems} from '../getItems'
 
 describe('getItems', function() {
+  this.timeout(3000);
 
-  it('should call getItems and receive items for the Accounting bank', function(done) {
-    this.timeout(1000*40);
-
+  it('should call getItems and receive items for Accounting', function(done) {
     const store = mockStore({})
 
-    store.dispatch(getItems('assessment.Bank:57279fbce7dde086c7fe20ff@bazzim.MIT.EDU'))
+    store.dispatch(getItems('1744153', 'Nutter-Butter-1145644@acc.edu'))
     .then(res => {
       // console.log('getItems res', res);
       res.should.be.a('array');
