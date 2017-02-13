@@ -6,13 +6,12 @@ import { selectClosedMission } from '../../reducers/Mission/selectClosedMission'
 import {getCurrentCourse} from '../../selectors/course'
 import {getUser} from '../../selectors'
 
-// need to getMapping here, instead of SubjectsContainer,
-//   because D2L users never see SubjectsContainer
+
 import { getMapping } from '../../reducers/Mapping/getMapping'
 
 const mapStateToProps = (state, ownProps) => {
   console.log('state in MissionsContainer', state);
-  
+
   return {
     currentCourse: getCurrentCourse(state),
     missions: state.mission ? state.mission.missions : null,

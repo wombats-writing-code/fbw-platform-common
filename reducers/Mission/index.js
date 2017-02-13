@@ -90,53 +90,15 @@ export default function missionReducer (state = initialState, action) {
     case CREATE_TAKE_MISSION_OPTIMISTIC:
     case GET_USER_MISSION_RESULTS_OPTIMISTIC:
       return _.assign({}, state, {
-        currentMissionSections: null,
-        resultsExistForUser: true,
         currentMission: action.mission,
         isSubmitTakeMissionInProgress: true
       });
 
     case RECEIVE_CREATE_TAKE_MISSION:
       return _.assign({}, state, {
-        resultsExistForUser: true,
-        currentMissionSections: action.mission,
         currentDirectiveIndex: 0,
         isSubmitTakeMissionInProgress: false
       });
-
-    case GET_SECTION_QUESTIONS_OPTIMISTIC:
-      return state
-
-    case RECEIVE_SECTION_QUESTIONS:
-      let updatedSections = _.assign([], state.currentMissionSections)
-      updatedSections[state.currentDirectiveIndex].questions = action.questions
-
-      _.each(updatedSections, (section) => {
-        let sortedItems = filterItemsByTarget(section.questions);
-        let targetsNavigatedInSection = [];
-        _.each(sortedItems, (questionsList, targetKey) => {
-          // Now go through each of the non-pristine target questions and figure out
-          //   if the route has been finished.
-          // If the route ends in an unanswered question, route not finished.
-          // If the route ends in a wrong response, route not finished.
-          // Route only finished if the last question isCorrect.
-          if (targetStatus(questionsList[0], section.questions) !== 'PRISTINE') {
-            let lastRouteQuestion = questionsList[questionsList.length - 1];
-            if (lastRouteQuestion.responded && lastRouteQuestion.isCorrect) {
-              targetsNavigatedInSection.push(questionsList[0].id);
-            }
-          }
-        });
-        _.each(section.questions, (question) => {
-          if (targetsNavigatedInSection.indexOf(question.id) >= 0) {
-            question.hasNavigated = true;
-          }
-        })
-      });
-
-      return _.assign({}, state, {
-        currentMissionSections: updatedSections
-      })
 
     case RECEIVE_GET_USER_MISSION_RESULTS:
       return _.assign({}, state, {

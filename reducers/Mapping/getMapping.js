@@ -36,7 +36,7 @@ export function getMapping(data) {
     .then( response => {
       dispatch(receiveMapping(response.data));
 
-      return mapping;
+      return response.data;
     })
     .catch((error) => {
       console.log('error getting mapping', error);

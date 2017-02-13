@@ -64,9 +64,7 @@ describe('mission reducer', () => {
     });
 
     newState.currentMission.should.eql(mockTakeMission);
-    newState.resultsExistForUser.should.eql(true);
     newState.isSubmitTakeMissionInProgress.should.eql(true);
-    should.not.exist(newState.currentMissionSections);
   });
 
   it('should update currentMissionSections in state upon RECEIVE_CREATE_TAKE', () => {
@@ -76,7 +74,6 @@ describe('mission reducer', () => {
     });
 
     newState.isSubmitTakeMissionInProgress.should.eql(false);
-    newState.currentMissionSections.length.should.eql(mockReceiveTakeMission.length);
   });
 
   it('should reduce the RECEIVE_CREATE_MISSION action', () => {
@@ -88,7 +85,7 @@ describe('mission reducer', () => {
     });
 
     newState.missions.length.should.eql(1);
-    newState.currentMission.name.should.be.eql('foo')
+    newState.currentMission.name.should.be.eql('foo');
   })
 
   it('should update missions in state upon RECEIVE_DELETE_MISSION', () => {

@@ -26,6 +26,9 @@ describe('getMission', () => {
       username: 'Nutter-Butter-1145644@acc.edu',
       mission: {
         _id: '589e4ce9f36d2837a7c67935'
+      },
+      course: {
+        Id: '1744153'
       }
     }))
     .then(res => {
