@@ -1,14 +1,14 @@
 import { connect } from 'react-redux'
 
-import { getMissions } from 'fbw-platform-common/reducers/Mission/getMissions'
-import { selectOpenMission } from 'fbw-platform-common/reducers/Mission/selectOpenMission'
-import { selectClosedMission } from 'fbw-platform-common/reducers/Mission/selectClosedMission'
-import {getCurrentCourse} from 'fbw-platform-common/selectors/course'
-import {getUser} from 'fbw-platform-common/selectors'
+import { getMissions } from '../../reducers/Mission/getMissions'
+import { selectOpenMission } from '../../reducers/Mission/selectOpenMission'
+import { selectClosedMission } from '../../reducers/Mission/selectClosedMission'
+import {getCurrentCourse} from '../../selectors/course'
+import {getUser} from '../../selectors'
 
 // need to getMapping here, instead of SubjectsContainer,
 //   because D2L users never see SubjectsContainer
-import { getMapping } from '../reducers/Mapping/getMapping'
+import { getMapping } from '../../reducers/Mapping/getMapping'
 
 const mapStateToProps = (state, ownProps) => {
   // console.log('state', state);

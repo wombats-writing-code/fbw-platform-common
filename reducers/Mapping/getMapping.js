@@ -22,13 +22,16 @@ export function receiveMapping(mapping) {
   return {type: RECEIVE_MAPPING, mapping};
 }
 
-export function getMapping(course, entityTypes, relationshipTypes) {
+export function getMapping(data) {
+  let courseId = data.courseId;
+  let entityTypes = data.entityTypes;
+  let relationshipTypes = data.relationshipTypes;
 
   return function(dispatch) {
     dispatch(getMappingOptimistic())
 
     return axios({
-      url: `${getDomain()}/l4/mapping?courseId=${course.Id}&entities=${entityTypes}&relationships=${relationshipTypes}`,
+      url: `${getDomain()}/l4/mapping?courseId=${courseId}&entities=${entityTypes}&relationships=${relationshipTypes}`,
     })
     .then( response => {
       dispatch(receiveMapping(response.data));
