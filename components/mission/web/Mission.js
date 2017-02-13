@@ -28,9 +28,9 @@ class Mission extends Component {
     if (!this.props.mission && !this.props.isGetMissionInProgress) {
       let mission = this.props.params && this.props.missions ?
                 _.find(this.props.missions, m => slug(m.displayName) === slug(this.props.params.missionName)) :
-                null
+                null;
 
-      this.props.selectOpenMission({
+      this.props.onSelectOpenMission({
         course: this.props.course,
         mission,
         username: this.props.user.username
@@ -53,7 +53,7 @@ class Mission extends Component {
       loadingIndicator = <Spinner/>
     }
 
-    console.log('Mission.props', this.props)
+    // console.log('Mission.props', this.props)
 
     return (
       <div>

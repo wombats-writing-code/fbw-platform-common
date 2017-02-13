@@ -1,15 +1,24 @@
 import _ from 'lodash'
 
 // ==============
-
-
-/// ==============
-
-export const directivesFromSections = (sections, outcomes) => {
-  let objectiveIds = _.map(sections, 'learningObjectiveId');
-
-  return _.map(objectiveIds, lo => _.find(outcomes, o => o.id == lo));
+export const getMissionDirectives = (mission, outcomes) => {
+  return _.map(mission.goals, lo => _.find(outcomes, o => o.id == lo));
 }
+
+export const computeSectionProgress= (questionsInSection) => {
+  let targetsForDirective = _.filter(questionsInSection, isTarget);
+  let navigatedTargets = _.filter(targetsForDirective, question => isTargetRouteNavigated(question, questionsInSection) || question.isCorrect);
+
+  // console.log('section', section);
+  // console.log('targetsForDirective', targetsForDirective);
+  // console.log('navigatedTargets', navigatedTargets);
+
+  return {
+    numerator: navigatedTargets.length,
+    denominator: targetsForDirective.length,
+  }
+}
+/// ==============
 
 
 export const isTarget = (question) => {

@@ -10,7 +10,7 @@ import { selectDirective } from '../../reducers/Mission/selectDirective'
 
 import {getUser, getMapping} from '../../selectors/'
 import {getCurrentCourse} from '../../selectors/course'
-import {directivesFromSections, isTarget, isTargetRouteNavigated} from '../../selectors/mission'
+import {getMissionDirectives, computeSectionProgress, isTarget, isTargetRouteNavigated} from '../../selectors/mission'
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -18,7 +18,7 @@ const mapStateToProps = (state, ownProps) => {
   console.log('state in MissionContainer', state);
 
   let outcomes = getMapping(state) ? getMapping(state).outcomes : [];
-  let directives = directivesFromSections(state.mission.currentMissionSections, outcomes);
+  let directives = getMissionDirectives(state.mission.currentMission, outcomes);
 
   return {
     user: getUser(state),
@@ -27,20 +27,7 @@ const mapStateToProps = (state, ownProps) => {
     isGetMissionInProgress: state.mission.isGetMissionInProgress,
     isGetMissionsInProgress: state.mission ? state.mission.isGetMissionsInProgress : false,
     directives,
-    directiveIndicators: _.map(directives, (d, idx) => {
-      let section = state.mission.questions[idx];
-      let targetsForDirective = _.filter(section.questions, isTarget);
-      let navigatedTargets = _.filter(targetsForDirective, question => isTargetRouteNavigated(question, section.questions) || question.isCorrect);
-
-      // console.log('section', section);
-      // console.log('targetsForDirective', targetsForDirective);
-      // console.log('navigatedTargets', navigatedTargets);
-
-      return {
-        numerator: navigatedTargets.length,
-        denominator: targetsForDirective.length,
-      }
-    }),
+    directiveIndicators: _.map(directives, d => computeSectionProgress(state)),
     currentDirectiveIndex: typeof state.mission.currentDirectiveIndex !== 'undefined' ? state.mission.currentDirectiveIndex : null,
     isSubmitTakeMissionInProgress: state.mission ? state.mission.isSubmitTakeMissionInProgress : false
   }
