@@ -8,9 +8,11 @@ import { setQuestionListHeight } from '../../reducers/Mission/setQuestionListHei
 const mapStateToProps = (state, ownProps) => {
   // console.log('state in QuestionsContainer', state)
 
+  let mission = state.mission.currentMission;
+
   return {
-    mission: state.mission.currentMission,
-    questions: getTargetQuestions(state),
+    mission,
+    questions: getTargetQuestions(mission, state.mission.currentTarget),
     outcomes: getMapping(state).outcomes,
     isInProgressSubmitChoice: state.mission.isInProgressSubmitChoice ? state.mission.isInProgressSubmitChoice : false,
     questionListHeight: state.mission.questionListHeight ? state.mission.questionListHeight : 0

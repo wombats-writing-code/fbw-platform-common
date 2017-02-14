@@ -23,9 +23,8 @@ class TargetCarousel extends Component {
 
   _renderTarget = (target, idx) => {
     let targetNumber = targetKey(target)
-    let currentSection = this.props.currentMissionSections[this.props.currentDirectiveIndex]
-    let sectionQuestions = currentSection.questions;
-    let targetRouteQuestions = _.filter(sectionQuestions, question => question.displayName.text[0].startsWith(targetNumber));
+    let sectionQuestions = this.props.currentMissionSections[this.props.currentDirectiveIndex]
+    let targetRouteQuestions = getRouteQuestions(sectionQuestions, target);
 
     // console.log('targetRouteQuestions', targetRouteQuestions)
 
@@ -64,7 +63,7 @@ class TargetCarousel extends Component {
           aria-label={`Target Question ${targetNumber}`}>
           <div className="flex-container align-center">
             {image}
-            <p className="carousel-thumb__text carousel-thumb__text--target bold">{target.displayName.text}</p>
+            <p className="carousel-thumb__text carousel-thumb__text--target bold">{target.displayName}</p>
           </div>
         </button>
       </li>

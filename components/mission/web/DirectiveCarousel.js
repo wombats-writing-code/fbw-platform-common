@@ -17,7 +17,7 @@ class DirectiveCarousel extends Component {
       indicatorText = `${indicator.numerator || '--'}/${indicator.denominator}`;
     }
 
-    let displayName = directive ? directive.displayName.text : 'Error. Somehow this outcome is undefined';
+    let displayName = directive ? directive.displayName : 'Error. Somehow this outcome is undefined';
 
     let isActive = idx === this.props.currentDirectiveIndex;
     let thumb = (

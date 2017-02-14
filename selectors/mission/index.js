@@ -5,6 +5,25 @@ export const getMissionDirectives = (mission, outcomes) => {
   return _.map(mission.goals, lo => _.find(outcomes, o => o.id == lo));
 }
 
+export const getSectionTargets = (sections, sectionIndex) => {
+  if (_.isNil(sectionIndex)) {
+    return null;
+  }
+
+  let targets = _.filter(sections[sectionIndex], isTarget);
+  return targets;
+}
+
+export const getRouteQuestions = (sectionQuestions, target) => {
+  if (!target || !sectionQuestions) {
+    return null;
+  }
+
+  let routeQuestions = filterItemsByTarget(sectionQuestions);
+
+  return routeQuestions
+}
+
 export const computeSectionProgress= (questionsInSection) => {
   let targetsForDirective = _.filter(questionsInSection, isTarget);
   let navigatedTargets = _.filter(targetsForDirective, question => isTargetRouteNavigated(question, questionsInSection) || question.isCorrect);

@@ -39,9 +39,9 @@ export function selectOpenMission (data) {
     };
 
     return axios(options)
-    .then((mission) => {
-      dispatch(receiveOpenMission(mission));
-      return mission;
+    .then((res) => {
+      dispatch(receiveOpenMission(res.data));
+      return res.data;
     })
     .catch((error) => {
       console.log('error getting mission data', error)
