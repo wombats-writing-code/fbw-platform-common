@@ -2,11 +2,15 @@ import _ from 'lodash'
 
 // ==============
 export const getMissionDirectives = (mission, outcomes) => {
+  if (!mission || !outcomes) {
+    return null
+  }
+  
   return _.map(mission.goals, lo => _.find(outcomes, o => o.id == lo));
 }
 
 export const getSectionTargets = (sections, sectionIndex) => {
-  if (_.isNil(sectionIndex)) {
+  if (!sections || _.isNil(sectionIndex)) {
     return null;
   }
 

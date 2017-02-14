@@ -2,7 +2,7 @@ import _ from 'lodash'
 import { connect } from 'react-redux'
 
 import {getMapping} from '../../selectors'
-import { getTargetQuestions } from '../../selectors/mission'
+import { getRouteQuestions } from '../../selectors/mission'
 import { setQuestionListHeight } from '../../reducers/Mission/setQuestionListHeight'
 
 const mapStateToProps = (state, ownProps) => {
@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     mission,
-    questions: getTargetQuestions(mission, state.mission.currentTarget),
+    questions: getRouteQuestions(mission.currentMission[state.mission.currentDirectiveIndex], state.mission.currentTarget),
     outcomes: getMapping(state).outcomes,
     isInProgressSubmitChoice: state.mission.isInProgressSubmitChoice ? state.mission.isInProgressSubmitChoice : false,
     questionListHeight: state.mission.questionListHeight ? state.mission.questionListHeight : 0
