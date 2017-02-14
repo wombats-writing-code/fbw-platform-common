@@ -12,6 +12,7 @@ import {RECEIVE_MISSIONS} from '../getMissions'
 import {SELECT_DIRECTIVE} from '../selectDirective'
 import {SELECT_TARGET} from '../selectTarget'
 import {SELECT_MISSION_RESULT} from '../selectMissionResult'
+import {RECEIVE_SUBMIT_RESPONSE} from '../submitResponse'
 import {RECEIVE_CREATE_TAKE_MISSION, CREATE_TAKE_MISSION_OPTIMISTIC} from '../selectOpenMission'
 
 import {RECEIVE_CREATE_MISSION} from '../../edit-mission/createMission'
@@ -77,6 +78,40 @@ describe('mission reducer', () => {
     newState.isGetMissionInProgress.should.eql(false);
   });
 
+  it('should update the questions in state upon RECEIVE_SUBMIT_RESPONSE', () => {
+    let newState = reducer({
+      currentMission: {
+        questions: [
+          // section 1
+          [
+            [{id: '0'}]
+          ],
+          // section 2
+          [
+            [{id: '12'}, {id: '1'}],    // the first target route
+            [{id: '9'}, {id: '3'}],    // the 2nd target route
+          ]
+        ]
+      }
+    }, {
+      type: RECEIVE_SUBMIT_RESPONSE,
+      responseResult: {
+        question: {
+          id: '1',
+          solution: 'foo',
+          feedback: 'bar',
+          isCorrect: false
+        }
+      }
+    });
+
+    // console.log('new state questions[1][0][1]', newState.currentMission.questions[1][0][1])
+
+    newState.currentMission.questions[1][0][1].solution.should.eql('foo');
+    newState.currentMission.questions[1][0][1].feedback.should.eql('bar');
+    newState.currentMission.questions[1][0][1].responded.should.eql(true);
+    newState.currentMission.questions[1][0][1].isCorrect.should.eql(false);
+  })
 
   it('should update missions in state upon RECEIVE_DELETE_MISSION', () => {
     let newState = reducer({

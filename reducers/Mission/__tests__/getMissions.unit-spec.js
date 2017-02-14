@@ -33,7 +33,7 @@ describe('getMissions', () => {
     .then(missions => {
       // console.log('getMissions.unit-spec', missions);
       missions.should.be.a('array');
-      missions.length.should.be.at.least(2);    // as of Jan 10, 2017
+      missions.length.should.be.at.least(1);    // as of Jan 10, 2017
 
       done();
     });

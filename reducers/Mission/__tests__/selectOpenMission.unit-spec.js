@@ -18,14 +18,14 @@ import reducer from '../index'
 
 import {selectOpenMission} from '../selectOpenMission'
 
-describe('getMission', () => {
-  it('should call selectOpenMission and receive a mission with array of array of questions', function(done) {
+describe('selectOpenMission', () => {
+  it('should call selectOpenMission and receive a mission with array of array of array of questions', function(done) {
     const store = mockStore({});
 
     store.dispatch(selectOpenMission({
       username: 'Nutter-Butter-1145644@acc.edu',
       mission: {
-        _id: '589e4ce9f36d2837a7c67935'
+        _id: '58a302bcf36d2837a7c8042e'
       },
       course: {
         Id: '1744153'

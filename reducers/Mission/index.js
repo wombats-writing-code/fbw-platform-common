@@ -2,14 +2,13 @@
 import _ from 'lodash'
 
 import {targetKey, targetStatus, filterItemsByTarget } from '../../selectors'
-import { updateAssessmentSectionsWithResponse, updateQuestionWithResponse } from '../../utilities'
 
 import {SELECT_MISSION} from './selectMission'
 import { GET_MISSIONS_OPTIMISTIC, RECEIVE_MISSIONS } from './getMissions'
 import { GET_SECTION_QUESTIONS_OPTIMISTIC, RECEIVE_SECTION_QUESTIONS } from './getSectionQuestions'
 import { CREATE_TAKE_MISSION_OPTIMISTIC, CREATE_TAKE_MISSION, RECEIVE_CREATE_TAKE_MISSION } from './selectOpenMission'
 import { GET_USER_MISSION_RESULTS_OPTIMISTIC, RECEIVE_GET_USER_MISSION_RESULTS } from './selectClosedMission'
-import { SUBMIT_RESPONSE, SUBMIT_RESPONSE_OPTIMISTIC, RECEIVE_SUBMIT_RESPONSE } from './submitResponse'
+import {SUBMIT_RESPONSE_OPTIMISTIC, RECEIVE_SUBMIT_RESPONSE } from './submitResponse'
 import { SHOW_ANSWER_OPTIMISTIC, RECEIVE_SHOW_ANSWER } from './showAnswer'
 import {RECEIVE_UPDATE_MISSION} from '../edit-mission/updateMission'
 
@@ -134,24 +133,27 @@ export default function missionReducer (state = initialState, action) {
       })
 
     case RECEIVE_SUBMIT_RESPONSE:
-      // update state missions (insert the new question if it's not a target),
-      // and also the responded question's response state
       return _.assign({}, state, {
         isInProgressSubmitChoice: false,
-        currentTarget: updateQuestionWithResponse(state.currentTarget, action.response),
-        currentMissionSections: updateAssessmentSectionsWithResponse(state.currentMissionSections,
-          action.response)
+        // update the
+        currentMission: _.assign({}, state.currentMission, {
+          questions: _.map(state.currentMission.questions, section => {
+            return _.map(section, targetRoute => {
+              return _.map(targetRoute, q => {
+                if (q.id === action.responseResult.question.id) {
+                  return _.assign({}, action.responseResult.question, {
+                    isCorrect: action.responseResult.question.isCorrect,
+                    responded: true
+                  })
+                }
+
+                return q;
+              })
+            })
+          })
+        })
       })
 
-    case RECEIVE_SHOW_ANSWER:
-      // update state missions (insert the new question if it's not a target),
-      // and also the responded question's response state
-      return _.assign({}, state, {
-        isInProgressShowAnswer: false,
-        currentTarget: updateQuestionWithResponse(state.currentTarget, action.response),
-        currentMissionSections: updateAssessmentSectionsWithResponse(state.currentMissionSections,
-          action.response)
-      })
 
     case SET_QUESTION_LIST_HEIGHT:
       return _.assign({}, state, {

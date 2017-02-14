@@ -7,7 +7,6 @@ import {convertImagePaths} from './_convertImagePaths'
 
 // ----
 // Action types
-export const SUBMIT_RESPONSE = 'SUBMIT_RESPONSE'
 export const SUBMIT_RESPONSE_OPTIMISTIC = 'SUBMIT_RESPONSE_OPTIMISTIC'
 export const RECEIVE_SUBMIT_RESPONSE = 'RECEIVE_SUBMIT_RESPONSE'
 
