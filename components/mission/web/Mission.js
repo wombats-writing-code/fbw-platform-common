@@ -50,7 +50,7 @@ class Mission extends Component {
 
     let loadingIndicator;
     if (this.props.isGetMissionInProgress) {
-      loadingIndicator = <Spinner/>
+      return (<Spinner/>)
     }
 
     // console.log('Mission.props', this.props)

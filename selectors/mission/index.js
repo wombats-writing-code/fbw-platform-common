@@ -41,7 +41,9 @@ export const getRouteQuestions = (sectionQuestions, target) => {
 }
 
 export const computeSectionProgress= (questionsInSection) => {
-  let targetsForDirective = _.filter(questionsInSection, isTarget);
+  if (!questionsInSection) return null;
+
+  let targetsForDirective = _.filter(_.flatMap(questionsInSection), isTarget);
   let navigatedTargets = _.filter(targetsForDirective, question => isTargetRouteNavigated(question, questionsInSection) || question.isCorrect);
 
   // console.log('section', section);

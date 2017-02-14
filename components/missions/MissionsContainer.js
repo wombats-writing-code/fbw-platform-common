@@ -10,7 +10,7 @@ import {getUser} from '../../selectors'
 import { getMapping } from '../../reducers/Mapping/getMapping'
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('state in MissionsContainer', state);
+  // console.log('state in MissionsContainer', state);
 
   return {
     course: getCurrentCourse(state),
