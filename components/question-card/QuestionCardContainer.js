@@ -10,12 +10,14 @@ import {getCurrentCourse} from '../../selectors/course'
 
 const mapStateToProps = (state, ownProps) => {
   // console.log('state in question container', state)
+  let mission = state.mission.currentMission;
+
   return {
     course: getCurrentCourse(state),
-    mission: state.mission.currentMission ? state.mission.currentMission : null,
+    mission,
     isInProgressSubmitChoice: state.mission.isInProgressSubmitChoice ? state.mission.isInProgressSubmitChoice : false,
     isInProgressShowAnswer: state.mission.isInProgressShowAnswer ? state.mission.isInProgressShowAnswer : false,
-    section: typeof state.mission.currentDirectiveIndex !== 'undefined' ? state.mission.currentMissionSections[state.mission.currentDirectiveIndex] : null,
+    section: mission ? mission.questions[state.mission.currentDirectiveIndex] : null,
     user: getUser(state)
   }
 }

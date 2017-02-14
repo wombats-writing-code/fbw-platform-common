@@ -26,7 +26,7 @@ class Questions extends Component {
   }
 
   renderListRow = (questionItem, sectionId, rowId) => {
-    let outcome = _.find(this.props.outcomes, {id: questionItem.learningObjectiveIds[0]});
+    let outcome = _.find(this.props.outcomes, {id: questionItem.outcome});
 
     // console.log('row', rowId, 'total length', this.props.questions.length, 'questions', this.props.questions);
 
@@ -38,7 +38,7 @@ class Questions extends Component {
 
       let nextOutcome;
       if (nextQuestion && questionItem.response.isCorrect) {
-        nextOutcome = _.find(this.props.outcomes, {id: nextQuestion.learningObjectiveIds[0]});
+        nextOutcome = _.find(this.props.outcomes, {id: nextQuestion.outcome});
 
       } else if (nextQuestion && questionItem.response.confusedLearningObjectiveIds && !questionItem.response.isCorrect){
         nextOutcome = _.find(this.props.outcomes, {id: questionItem.response.confusedLearningObjectiveIds[0]});

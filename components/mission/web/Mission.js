@@ -49,7 +49,7 @@ class Mission extends Component {
     }
 
     let loadingIndicator;
-    if (this.props.isSubmitTakeMissionInProgress) {
+    if (this.props.isGetMissionInProgress) {
       loadingIndicator = <Spinner/>
     }
 

@@ -12,10 +12,9 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     mission,
-    questions: getRouteQuestions(mission.currentMission[state.mission.currentDirectiveIndex], state.mission.currentTarget),
+    questions: getRouteQuestions(mission.questions[state.mission.currentDirectiveIndex], state.mission.currentTarget),
     outcomes: getMapping(state).outcomes,
     isInProgressSubmitChoice: state.mission.isInProgressSubmitChoice ? state.mission.isInProgressSubmitChoice : false,
-    questionListHeight: state.mission.questionListHeight ? state.mission.questionListHeight : 0
   }
 }
 

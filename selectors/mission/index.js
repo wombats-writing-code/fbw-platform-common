@@ -1,11 +1,21 @@
 import _ from 'lodash'
 
 // ==============
+export const isTarget = (question) => {
+  if (!question) return undefined;
+
+  return question.referenceNumber.indexOf('.') < 0;
+}
+
+export const targetKey = (target) => {
+  return target ? target.referenceNumber[0] : null;
+}
+
 export const getMissionDirectives = (mission, outcomes) => {
   if (!mission || !outcomes) {
     return null
   }
-  
+
   return _.map(mission.goals, lo => _.find(outcomes, o => o.id == lo));
 }
 
@@ -14,7 +24,7 @@ export const getSectionTargets = (sections, sectionIndex) => {
     return null;
   }
 
-  let targets = _.filter(sections[sectionIndex], isTarget);
+  let targets = _.filter(_.flatMap(sections[sectionIndex]), isTarget);
   return targets;
 }
 
@@ -23,9 +33,11 @@ export const getRouteQuestions = (sectionQuestions, target) => {
     return null;
   }
 
-  let routeQuestions = filterItemsByTarget(sectionQuestions);
+  let routeQuestions = _.find(sectionQuestions, array => {
+    return array[0] === target;
+  });
 
-  return routeQuestions
+  return routeQuestions;
 }
 
 export const computeSectionProgress= (questionsInSection) => {
@@ -41,23 +53,9 @@ export const computeSectionProgress= (questionsInSection) => {
     denominator: targetsForDirective.length,
   }
 }
-/// ==============
 
-
-export const isTarget = (question) => {
-  if (question && question.displayName) {
-    return question.displayName.text.indexOf('.') < 0;
-  }
-
-  return undefined;
-}
-
-export const targetKey = (target) => {
-  return target ? target.displayName.text[0] : null;
-}
-
-export const isTargetRouteNavigated = (target, questions) => {
-  if (!questions || questions.length === 0) {
+export const isTargetRouteNavigated = (target, questionsInRoute) => {
+  if (!questionsInRoute || questionsInRoute.length === 0) {
     throw new Error('No questions of the route were provided')
     return false;
   }
@@ -67,11 +65,7 @@ export const isTargetRouteNavigated = (target, questions) => {
     return false;
   }
 
-  let key = targetKey(target);
-  let questionsInRoute = _.filter(questions, question => question.displayName.text.startsWith(key));  // in case
-
   // a route is navigated only when all of the Targets waypoints have been responded correctly
-
   let hasNavigated = false;
   if (questionsInRoute[0].response && !questionsInRoute[0].response.isCorrect) {
     let lastQuestion = _.takeRight(questionsInRoute)[0];
@@ -96,18 +90,7 @@ export const targetStatus = (target, questionsInRoute) => {
   return status;
 }
 
-export const filterItemsByTarget = (items) => {
-  return _.reduce(items, (result, item) => {
-    let itemKey = targetKey(item);
-
-    if (!itemKey) return null;
-
-    if (!result[itemKey]) result[itemKey] = [];
-    result[itemKey].push(item);
-
-    return result;
-  }, {});
-}
+/// ==============
 
 export function getTargetQuestions (state) {
   let questions

@@ -118,7 +118,7 @@ class QuestionCard extends Component {
                     (<div className="solution">
                         <p className="bold">Solution</p>
                         <div className="question-card__body"
-                          dangerouslySetInnerHTML={{__html: this.props.question.response.feedback.text}}>
+                          dangerouslySetInnerHTML={{__html: this.props.question.response.feedback}}>
                         </div>
                       </div>) : null;
 
@@ -132,7 +132,7 @@ class QuestionCard extends Component {
     return (
       <div className="question-card clearfix">
         <QuestionHeader questionTypeIcon={questionTypeIcon}
-                        headerText={this.props.outcome ? this.props.outcome.displayName.text : ''}
+                        headerText={this.props.outcome ? this.props.outcome.displayName : ''}
                         onShowAnswer={() => this._onShowAnswer(this.props.question)}
                         isExpanded={this.state.isExpanded}
                         isExpandable={this.props.question.responded || this.props.isExpandable}
@@ -142,7 +142,7 @@ class QuestionCard extends Component {
       {inProgressIndicator}
 
       <div className="question-card__body clearfix">
-      <div dangerouslySetInnerHTML={{__html: this.props.question.text.text}}></div>
+      <div dangerouslySetInnerHTML={{__html: this.props.question.text}}></div>
 
       {choices}
       {solution}

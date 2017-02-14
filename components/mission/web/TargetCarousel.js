@@ -24,7 +24,7 @@ class TargetCarousel extends Component {
   _renderTarget = (target, idx) => {
     let targetNumber = targetKey(target)
     let sectionQuestions = this.props.currentMissionSections[this.props.currentDirectiveIndex]
-    let targetRouteQuestions = getRouteQuestions(sectionQuestions, target);
+    let targetRouteQuestions = sectionQuestions[idx];
 
     // console.log('targetRouteQuestions', targetRouteQuestions)
 
@@ -49,7 +49,7 @@ class TargetCarousel extends Component {
         image = <img src={require('../../../assets/target-question@2x.png')}/>;
     }
 
-    let accessibilityLabel = `Target Question ${target.displayName.text}`;
+    let accessibilityLabel = `Target Question ${target.displayName}`;
     let isActive = targetNumber === targetKey(this.props.currentTarget);
     if (idx === 0) {
       this.buttonRefs = []
@@ -63,7 +63,7 @@ class TargetCarousel extends Component {
           aria-label={`Target Question ${targetNumber}`}>
           <div className="flex-container align-center">
             {image}
-            <p className="carousel-thumb__text carousel-thumb__text--target bold">{target.displayName}</p>
+            <p className="carousel-thumb__text carousel-thumb__text--target bold">{target.referenceNumber}</p>
           </div>
         </button>
       </li>

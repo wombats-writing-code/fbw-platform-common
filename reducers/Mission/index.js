@@ -56,6 +56,19 @@ export default function missionReducer (state = initialState, action) {
         currentDirectiveIndex: 0
       })
 
+    case CREATE_TAKE_MISSION_OPTIMISTIC:
+      return _.assign({}, state, {
+        currentMission: action.mission,
+        isGetMissionInProgress: true
+      });
+
+    case RECEIVE_CREATE_TAKE_MISSION:
+      return _.assign({}, state, {
+        currentMission: action.mission,
+        currentDirectiveIndex: 0,
+        isGetMissionInProgress: false
+      });
+
     // ==== from edit-mission ====
     case RECEIVE_CREATE_MISSION:
       return _.assign({}, state, {
@@ -86,19 +99,6 @@ export default function missionReducer (state = initialState, action) {
         heightByChoice: {},
         selectedChoiceId: null
       })
-
-    case CREATE_TAKE_MISSION_OPTIMISTIC:
-      return _.assign({}, state, {
-        currentMission: action.mission,
-        isGetMissionInProgress: true
-      });
-
-    case RECEIVE_CREATE_TAKE_MISSION:
-      return _.assign({}, state, {
-        currentMission: action.mission,
-        currentDirectiveIndex: 0,
-        isGetMissionInProgress: false
-      });
 
     case GET_USER_MISSION_RESULTS_OPTIMISTIC:
       return _.assign({}, state, {
