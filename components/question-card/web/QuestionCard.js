@@ -153,35 +153,22 @@ class QuestionCard extends Component {
     )
   }
 
-  _onSubmitChoice = (choiceId, questionId) => {
+  _onSubmitChoice = (choice, question) => {
     if (!this.props.isInProgressSubmitChoice) {
       $('html, body').animate({
         scrollTop: $("body")[0].scrollHeight - 30
       }, 1000);
 
       this.props.onSubmitResponse({
-        bankId: this.props.bank.id,
-        // bankId: this.props.privateBankId,
-        choiceId: choiceId,
-        questionId: questionId,
-        section: this.props.section,
+        course: this.props.course,
+        choice: choice,
+        question: question,
+        responseHistory: this.props.routeQuestions,
         username: this.props.user.username
-        // username: this.props.username
       });
     }
   }
 
-  _onShowAnswer = (questionItem) => {
-    if (!this.props.isInProgressShowAnswer) {
-      this.props.onShowAnswer({
-        // bankId: this.props.privateBankId,
-        bankId: this.props.bank.id,
-        questionId: this.props.question.id,
-        section: this.props.section,
-        username: this.props.user.username
-      });
-    }
-  }
 }
 
 QuestionCard.propTypes = {

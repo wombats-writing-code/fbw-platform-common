@@ -17,8 +17,8 @@ export const RECEIVE_SUBMIT_RESPONSE = 'RECEIVE_SUBMIT_RESPONSE'
 // Actions
 // ------------------------------------
 
-export function receiveSubmitResponse(response) {
-  return {type: RECEIVE_SUBMIT_RESPONSE, response};
+export function receiveSubmitResponse(responseResult) {
+  return {type: RECEIVE_SUBMIT_RESPONSE, responseResult};
 }
 
 export function submitResponseOptimistic(data) {
@@ -35,7 +35,9 @@ export function submitResponse(data) {
       url: `${getDomain()}/l4/respond`,
       method: 'POST',
       data: {
-        choiceId: [data.choiceId],
+        choice: data.choice,
+        question: data.question,
+        responseHistory: data.responseHistory
       },
       headers: {
         'x-fbw-username': data.username
@@ -43,18 +45,9 @@ export function submitResponse(data) {
     }
 
     return axios(options)
-    .then((results) => {
-      // update the response here with questionId, so we can
-      // find it when updating the state
-      let response = results.data
-      response.questionId = data.questionId
-      response.choiceIds = [data.choiceId]
-      return convertImagePaths(response)
-    })
-    .then((convertedResponse) => {
-      dispatch(receiveSubmitResponse(convertedResponse));
-
-      return convertedResponse;
+    .then((res) => {
+      dispatch(receiveSubmitResponse(res.data));
+      return res.data;
     })
     .catch((error) => {
       console.log('error submitting response', error);
@@ -63,20 +56,20 @@ export function submitResponse(data) {
 }
 
 function _validate(data) {
-  if (!data.bankId) {
-    throw new TypeError('bankId must be non-null')
+  if (!data.course) {
+    throw new TypeError('course must be non-null')
   }
 
-  if (!data.section || !data.section.id) {
-    throw new TypeError('section must be an object with key "id"')
+  if (!data.responseHistory) {
+    throw new TypeError('responseHistory must be an array of the route\'s questions')
   }
 
-  if (!data.questionId) {
-    throw new TypeError('questionId must be non-null')
+  if (!data.question) {
+    throw new TypeError('question must be non-null')
   }
 
-  if (!data.choiceId) {
-    throw new TypeError('choiceId must be non-null')
+  if (!data.choice) {
+    throw new TypeError('choice must be non-null')
   }
 
   if (!data.username) {

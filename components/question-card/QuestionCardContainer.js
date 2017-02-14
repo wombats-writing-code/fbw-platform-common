@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { connect } from 'react-redux'
 
-import { getTargetQuestions } from '../../selectors/mission'
+import { getRouteQuestions } from '../../selectors/mission'
 import { selectChoice } from '../../reducers/Mission/selectChoice'
 import { submitResponse } from '../../reducers/Mission/submitResponse'
 import { showAnswer } from '../../reducers/Mission/showAnswer'
@@ -15,9 +15,9 @@ const mapStateToProps = (state, ownProps) => {
   return {
     course: getCurrentCourse(state),
     mission,
+    routeQuestions: mission ? getRouteQuestions(mission.questions[state.mission.currentDirectiveIndex], state.mission.currentTarget) : null,
     isInProgressSubmitChoice: state.mission.isInProgressSubmitChoice ? state.mission.isInProgressSubmitChoice : false,
     isInProgressShowAnswer: state.mission.isInProgressShowAnswer ? state.mission.isInProgressShowAnswer : false,
-    section: mission ? mission.questions[state.mission.currentDirectiveIndex] : null,
     user: getUser(state)
   }
 }
