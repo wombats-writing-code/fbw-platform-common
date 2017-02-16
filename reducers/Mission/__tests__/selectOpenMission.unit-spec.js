@@ -32,14 +32,15 @@ describe('selectOpenMission', () => {
       }
     }))
     .then(res => {
-      let mission = res.data;
+      let mission = res;
+      // console.log('res', res);
       // console.log('selectOpenMission.unit-spec', mission);
-      // console.log('selectOpenMission.unit-spec questions[0]', mission.questions[0]);
+      // console.log('selectOpenMission.unit-spec questions[0][0][0]', mission.questions[0][0][0]);
 
-      mission._id.should.be.eql('589e4ce9f36d2837a7c67935');
+      mission._id.should.be.eql('58a302bcf36d2837a7c8042e');
       mission.goals.length.should.be.eql(2);
       mission.questions.length.should.be.eql(2);
-      mission.questions[0].response.should.be.a('array');
+      mission.questions[0][0][0].choices.should.be.a('array');
 
       done();
     });

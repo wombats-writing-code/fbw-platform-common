@@ -3,7 +3,6 @@ import axios from 'axios'
 import Q from 'q'
 
 import {getDomain} from '../../utilities'
-import {convertImagePaths} from '../Mission/_convertImagePaths'
 
 // ------------------------------------
 // Actions
@@ -34,10 +33,8 @@ export function getPhaseIResults(mission, bankId) {
     axios.get(url)
     .then((results) => {
       console.log('received phase I results', results.data)
-      return Q.when(convertImagePaths(results.data))
-    })
-    .then((convertedResults) => {
-      dispatch(receivePhaseIResults(convertedResults));
+      dispatch(receivePhaseIResults(results.data));
+      return results.data;
     })
     .catch((error) => {
       console.log('error getting phase I mission results', error);

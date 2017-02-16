@@ -2,7 +2,6 @@ import _ from 'lodash'
 import axios from 'axios'
 import Q from 'q'
 import { getDomain } from '../../utilities'
-import {convertImagePaths} from './_convertImagePaths'
 
 // ----
 // Action types
