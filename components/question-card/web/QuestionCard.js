@@ -118,7 +118,7 @@ class QuestionCard extends Component {
                     (<div className="solution">
                         <p className="bold">Solution</p>
                         <div className="question-card__body"
-                          dangerouslySetInnerHTML={{__html: this.props.question.response.feedback}}>
+                          dangerouslySetInnerHTML={{__html: this.props.question.feedback}}>
                         </div>
                       </div>) : null;
 
@@ -126,7 +126,7 @@ class QuestionCard extends Component {
           (<Choices onSelectChoice={(choiceId) => this.setState({selectedChoiceId: choiceId})}
                       selectedChoiceId={this.state.selectedChoiceId}
                       choices={this.props.question.choices}
-                      responseId={this.props.question.responded ? this.props.question.response.choiceIds[0] : null}
+                      responseId={this.props.question.responded ? this.props.question.response.choice.id : null}
                       isResponseCorrect={this.props.question.isCorrect}/>) : null;
 
     return (
@@ -159,7 +159,7 @@ class QuestionCard extends Component {
         scrollTop: $("body")[0].scrollHeight - 30
       }, 1000);
 
-      let choice = _.find(this.props.choices, {id: choice.id});
+      let choice = _.find(this.props.question.choices, {id: choiceId});
 
       this.props.onSubmitResponse({
         course: this.props.course,

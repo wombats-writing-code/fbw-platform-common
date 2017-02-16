@@ -100,7 +100,12 @@ describe('mission reducer', () => {
           id: '1',
           solution: 'foo',
           feedback: 'bar',
-          isCorrect: false
+          response: {
+            isCorrect: false,
+            choice: {
+              id: 'foo'
+            }
+          }
         }
       }
     });
@@ -110,7 +115,9 @@ describe('mission reducer', () => {
     newState.currentMission.questions[1][0][1].solution.should.eql('foo');
     newState.currentMission.questions[1][0][1].feedback.should.eql('bar');
     newState.currentMission.questions[1][0][1].responded.should.eql(true);
-    newState.currentMission.questions[1][0][1].isCorrect.should.eql(false);
+    newState.currentMission.questions[1][0][1].response.isCorrect.should.eql(false);
+    newState.currentMission.questions[1][0][1].response.choice.should.be.a('object');
+
   })
 
   it('should update missions in state upon RECEIVE_DELETE_MISSION', () => {
