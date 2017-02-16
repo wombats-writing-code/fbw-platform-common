@@ -1,11 +1,4720 @@
 {
+  "location": {
+    "pathname": "/missions/Test-Mission-1",
+    "search": "",
+    "hash": "",
+    "action": "PUSH",
+    "key": "0vcmcw",
+    "query": {}
+  },
+  "login": {
+    "form": {
+      "username": "",
+      "school": "acc"
+    },
+    "user": {
+      "d2l": {
+        "authenticatedUrl": "/d2l-callback"
+      },
+      "username": "Shea-Butter-1145645@acc.edu"
+    },
+    "isLoggedIn": true,
+    "isLoginInProgress": false,
+    "isVisitor": false
+  },
   "course": {
-    "currentCourse": {}
+    "courses": [
+      {
+        "Id": 1744153,
+        "Type": {
+          "Id": 3,
+          "Code": "Course Offering",
+          "Name": "Course Offering"
+        },
+        "Name": "Fly-by-wire MAT121",
+        "Code": "Fly-by-wire MAT121",
+        "HomeUrl": "https://acc.desire2learn.com/d2l/home/1744153",
+        "ImageUrl": null
+      }
+    ],
+    "currentCourse": {
+      "Id": 1744153,
+      "Type": {
+        "Id": 3,
+        "Code": "Course Offering",
+        "Name": "Course Offering"
+      },
+      "Name": "Fly-by-wire MAT121",
+      "Code": "Fly-by-wire MAT121",
+      "HomeUrl": "https://acc.desire2learn.com/d2l/home/1744153",
+      "ImageUrl": null
+    }
   },
   "mission": {
-    "currentMission": {}
+    "missions": [
+      {
+        "_id": "58a302bcf36d2837a7c8042e",
+        "displayName": "Test Mission 1",
+        "type": "PHASE_I_MISSION_TYPE",
+        "startTime": "2017-02-14T13:12:27.232Z",
+        "deadline": "2017-02-26T02:59:07.232Z",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "user": "",
+        "goals": [
+          "58a1d3f4a5bfe29f71e39b21",
+          "58a1d3f4a5bfe29f71e39b24"
+        ]
+      }
+    ],
+    "isGetMissionsInProgress": false,
+    "currentMission": {
+      "_id": "58a302bcf36d2837a7c8042e",
+      "displayName": "Test Mission 1",
+      "type": "PHASE_I_MISSION_TYPE",
+      "startTime": "2017-02-14T13:12:27.232Z",
+      "deadline": "2017-02-26T02:59:07.232Z",
+      "course": "589e4c3ef36d2837a7c6790d",
+      "user": "",
+      "goals": [
+        "58a1d3f4a5bfe29f71e39b21",
+        "58a1d3f4a5bfe29f71e39b24"
+      ],
+      "questions": [
+        [
+          [
+            {
+              "_id": "58a4fbe325b0d9e477d78dee",
+              "itemId": "assessment.Item%3A582f12cd71e4822a2a0588d8%40bazzim.MIT.EDU",
+              "displayName": "Add/subtract/multiply/divide two functions",
+              "description": "",
+              "text": "<p>Let \\( f(x) = 3x^2 -2 \\) and \\( g(x) = \\sqrt{x+1} \\). Find \\( (f+g)(x) \\), \\( (f-g)(x) \\), \\( (fg)(x) \\), and \\( (f/g)(x) \\).</p>\n",
+              "learningObjectiveId": "mc3-objective%3A15206%40MIT-OEIT",
+              "outcome": "58a1d3f4a5bfe29f71e39b21",
+              "course": "589e4c3ef36d2837a7c6790d",
+              "choices": [
+                {
+                  "choiceId": "582f12cd71e4822a2a0588e7",
+                  "displayName": "Choice 2",
+                  "text": "<p>\\( (f+g)(x) = 3(x+1) -2 \\)</p>\n\n<p>\\( (f-g)(x) = 3x^2 -2 - \\sqrt{x+1} \\)</p>\n\n<p>\\( (fg)(x) = 3x^2\\sqrt{x+1} - 2\\sqrt{x+1} \\)</p>\n\n<p>\\( (f/g)(x) = \\frac{3x^2-2}{\\sqrt{x+1}} \\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe325b0d9e477d78df2",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe325b0d9e477d78df2"
+                },
+                {
+                  "choiceId": "582f12cd71e4822a2a0588e8",
+                  "displayName": "Choice 3",
+                  "text": "<p>\\( (f+g)(x) = 3x^2 - 2 + \\sqrt{x + 1} \\)</p>\n\n<p>\\( (f-g)(x) = 3x^2 -2 - \\sqrt{x+1} \\)</p>\n\n<p>\\( (fg)(x) = 3x^2\\sqrt{x+1} - 2\\sqrt{x+1} \\)</p>\n\n<p>\\( (f/g)(x) = \\frac{\\sqrt{x+1}}{3x^2-2} \\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe325b0d9e477d78df1",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe325b0d9e477d78df1"
+                },
+                {
+                  "choiceId": "582f12cd71e4822a2a0588e6",
+                  "displayName": "Choice 1",
+                  "text": "<p>\\( (f+g)(x) = 3x^2 - 2 + \\sqrt{x + 1} \\)</p>\n\n<p>\\( (f-g)(x) = 3x^2 -2 - \\sqrt{x+1} \\)</p>\n\n<p>\\( (fg)(x) = 3(x+1) - 2 \\)</p>\n\n<p>\\( (f/g)(x) = \\frac{3x^2-2}{\\sqrt{x+1}} \\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe325b0d9e477d78df0",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe325b0d9e477d78df0"
+                },
+                {
+                  "choiceId": "582f12cd71e4822a2a0588e5",
+                  "displayName": "Choice 0",
+                  "text": "<p>\\( (f+g)(x) = 3x^2 - 2 + \\sqrt{x + 1} \\)</p>\n\n<p>\\( (f-g)(x) = 3x^2 -2 - \\sqrt{x+1} \\)</p>\n\n<p>\\( (fg)(x) = 3x^2\\sqrt{x+1} - 2\\sqrt{x+1} \\)</p>\n\n<p>\\( (f/g)(x) = \\frac{3x^2-2}{\\sqrt{x+1}} \\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe325b0d9e477d78def",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe325b0d9e477d78def"
+                }
+              ],
+              "__v": 0,
+              "id": "58a4fbe325b0d9e477d78dee",
+              "referenceNumber": "6"
+            }
+          ],
+          [
+            {
+              "_id": "58a4fbe325b0d9e477d78b65",
+              "itemId": "assessment.Item%3A583f321771e482974e5176be%40bazzim.MIT.EDU",
+              "displayName": "Copy of Add/subtract/multiply/divide two functions #5",
+              "description": "",
+              "text": "<p>Let \\( f(x) = 2x+2 \\) and \\( g(x) = x+1 \\). Find \\( (f+g)(x) \\), \\( (f-g)(x) \\), \\( (fg)(x) \\), and \\( (f/g)(x) \\).</p>\n",
+              "learningObjectiveId": "mc3-objective%3A15206%40MIT-OEIT",
+              "outcome": "58a1d3f4a5bfe29f71e39b21",
+              "course": "589e4c3ef36d2837a7c6790d",
+              "choices": [
+                {
+                  "choiceId": "583f321771e482974e5176cc",
+                  "displayName": "Choice 1",
+                  "text": "<p>\\( (f+g)(x) = 2x^2 + 4x + 2 \\)</p>\n\n<p>\\( (f-g)(x) = x+1 \\)</p>\n\n<p>\\( (fg)(x) = 3x+3 \\)</p>\n\n<p>\\( (f/g)(x) = 2 \\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe325b0d9e477d78b69",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe325b0d9e477d78b69"
+                },
+                {
+                  "choiceId": "583f321771e482974e5176ce",
+                  "displayName": "Choice 3",
+                  "text": "<p>\\( (f+g)(x) = 3x+3 \\)</p>\n\n<p>\\( (f-g)(x) = x+1 \\)</p>\n\n<p>\\( (fg)(x) = 2 \\)</p>\n\n<p>\\( (f/g)(x) = 2 \\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe325b0d9e477d78b68",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe325b0d9e477d78b68"
+                },
+                {
+                  "choiceId": "583f321771e482974e5176cd",
+                  "displayName": "Choice 2",
+                  "text": "<p>\\( (f+g)(x) = 3x+3 \\)</p>\n\n<p>\\( (f-g)(x) = x+1 \\)</p>\n\n<p>\\( (fg)(x) = 2 \\)</p>\n\n<p>\\( (f/g)(x) = 2x^2 + 4x + 2 \\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe325b0d9e477d78b67",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe325b0d9e477d78b67"
+                },
+                {
+                  "choiceId": "583f321771e482974e5176cb",
+                  "displayName": "Choice 0",
+                  "text": "<p>\\( (f+g)(x) = 3x+3 \\)</p>\n\n<p>\\( (f-g)(x) = x+1 \\)</p>\n\n<p>\\( (fg)(x) = 2x^2 + 4x + 2 \\)</p>\n\n<p>\\( (f/g)(x) = 2 \\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe325b0d9e477d78b66",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe325b0d9e477d78b66"
+                }
+              ],
+              "__v": 0,
+              "id": "58a4fbe325b0d9e477d78b65",
+              "referenceNumber": "1"
+            }
+          ],
+          [
+            {
+              "_id": "58a4fbe325b0d9e477d78b6b",
+              "itemId": "assessment.Item%3A583f2f4b71e482974e517605%40bazzim.MIT.EDU",
+              "displayName": "Copy of Add/subtract/multiply/divide two functions #4",
+              "description": "",
+              "text": "<p>Let \\( f(x) = 2x+3 \\) and \\( g(x) = 5-x&nbsp;\\). Find \\( (f+g)(x) \\), \\( (f-g)(x) \\), \\( (fg)(x) \\), and \\( (f/g)(x) \\).</p>\n",
+              "learningObjectiveId": "mc3-objective%3A15206%40MIT-OEIT",
+              "outcome": "58a1d3f4a5bfe29f71e39b21",
+              "course": "589e4c3ef36d2837a7c6790d",
+              "choices": [
+                {
+                  "choiceId": "583f2f4b71e482974e517615",
+                  "displayName": "Choice 3",
+                  "text": "<p>\\( (f+g)(x) = x+8 \\)</p>\n\n<p>\\( (f-g)(x) = 3x-2 \\)</p>\n\n<p>\\( (fg)(x) = -2x^2 + 13x -15 \\)</p>\n\n<p>\\( (f/g)(x) = \\frac{2x+3}{5-x} \\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe325b0d9e477d78b6f",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe325b0d9e477d78b6f"
+                },
+                {
+                  "choiceId": "583f2f4b71e482974e517614",
+                  "displayName": "Choice 2",
+                  "text": "<p>\\( (f+g)(x) = x+8 \\)</p>\n\n<p>\\( (f-g)(x) = x-2 \\)</p>\n\n<p>\\( (fg)(x) = -2x^2 + 7x +15 \\)</p>\n\n<p>\\( (f/g)(x) = \\frac{2x+3}{5-x} \\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe325b0d9e477d78b6e",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe325b0d9e477d78b6e"
+                },
+                {
+                  "choiceId": "583f2f4b71e482974e517612",
+                  "displayName": "Choice 0",
+                  "text": "<p>\\( (f+g)(x) = x+8 \\)</p>\n\n<p>\\( (f-g)(x) = 3x-2 \\)</p>\n\n<p>\\( (fg)(x) = -2x^2 + 7x +15 \\)</p>\n\n<p>\\( (f/g)(x) = \\frac{2x+3}{5-x} \\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe325b0d9e477d78b6d",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe325b0d9e477d78b6d"
+                },
+                {
+                  "choiceId": "583f2f4b71e482974e517613",
+                  "displayName": "Choice 1",
+                  "text": "<p>\\( (f+g)(x) = 3x-2 \\)</p>\n\n<p>\\( (f-g)(x) = x-8 \\)</p>\n\n<p>\\( (fg)(x) = -2x^2 + 7x +15 \\)</p>\n\n<p>\\( (f/g)(x) = \\frac{2x+3}{5-x} \\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe325b0d9e477d78b6c",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe325b0d9e477d78b6c"
+                }
+              ],
+              "__v": 0,
+              "id": "58a4fbe325b0d9e477d78b6b",
+              "referenceNumber": "2"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "_id": "58a4fbe325b0d9e477d788af",
+              "itemId": "assessment.Item%3A586bc21e71e482d81a43dd81%40bazzim.MIT.EDU",
+              "displayName": "Copy of Add/subtract complex numbers #4",
+              "description": "",
+              "text": "<p>What is the difference&nbsp;\\( (4+3i) - (2+i) \\)?</p>\n",
+              "learningObjectiveId": "mc3-objective%3A14779%40MIT-OEIT",
+              "outcome": "58a1d3f4a5bfe29f71e39b24",
+              "course": "589e4c3ef36d2837a7c6790d",
+              "choices": [
+                {
+                  "choiceId": "586bc21e71e482d81a43dd90",
+                  "displayName": "Choice 2",
+                  "text": "<p>\\( 7-3i&nbsp;\\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe325b0d9e477d788b3",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe325b0d9e477d788b3"
+                },
+                {
+                  "choiceId": "586bc21e71e482d81a43dd8e",
+                  "displayName": "Choice 0",
+                  "text": "<p>\\(2&nbsp;+2i \\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe325b0d9e477d788b2",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe325b0d9e477d788b2"
+                },
+                {
+                  "choiceId": "586bc21e71e482d81a43dd8f",
+                  "displayName": "Choice 1",
+                  "text": "<p>\\( 5i \\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe325b0d9e477d788b1",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe325b0d9e477d788b1"
+                },
+                {
+                  "choiceId": "586bc21e71e482d81a43dd91",
+                  "displayName": "Choice 3",
+                  "text": "<p>\\( 3+ 3i \\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe325b0d9e477d788b0",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe325b0d9e477d788b0"
+                }
+              ],
+              "__v": 0,
+              "id": "58a4fbe325b0d9e477d788af",
+              "referenceNumber": "2"
+            }
+          ],
+          [
+            {
+              "_id": "58a4fbe325b0d9e477d788a9",
+              "itemId": "assessment.Item%3A586bc4b071e482d81a43ddc2%40bazzim.MIT.EDU",
+              "displayName": "Copy of Add/subtract complex numbers #5",
+              "description": "",
+              "text": "<p>What is the sum \\( (2-3i) +&nbsp;(1+i) \\)?</p>\n",
+              "learningObjectiveId": "mc3-objective%3A14779%40MIT-OEIT",
+              "outcome": "58a1d3f4a5bfe29f71e39b24",
+              "course": "589e4c3ef36d2837a7c6790d",
+              "choices": [
+                {
+                  "choiceId": "586bc4b071e482d81a43ddd0",
+                  "displayName": "Choice 1",
+                  "text": "<p>\\( -1 + 2i \\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe325b0d9e477d788ad",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe325b0d9e477d788ad"
+                },
+                {
+                  "choiceId": "586bc4b071e482d81a43ddd2",
+                  "displayName": "Choice 3",
+                  "text": "<p>\\( 3+ 3i \\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe325b0d9e477d788ac",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe325b0d9e477d788ac"
+                },
+                {
+                  "choiceId": "586bc4b071e482d81a43ddcf",
+                  "displayName": "Choice 0",
+                  "text": "<p>\\( 3 - 2i \\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe325b0d9e477d788ab",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe325b0d9e477d788ab"
+                },
+                {
+                  "choiceId": "586bc4b071e482d81a43ddd1",
+                  "displayName": "Choice 2",
+                  "text": "<p>\\( 7-3i \\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe325b0d9e477d788aa",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe325b0d9e477d788aa"
+                }
+              ],
+              "__v": 0,
+              "id": "58a4fbe325b0d9e477d788a9",
+              "referenceNumber": "1"
+            }
+          ],
+          [
+            {
+              "_id": "58a4fbe425b0d9e477d792c0",
+              "itemId": "assessment.Item%3A57d00dd171e482d888d0cd18%40bazzim.MIT.EDU",
+              "displayName": "Subtract complex numbers",
+              "description": "",
+              "text": "<p>Evaluate and simplify:</p>\n\n<p>\\( (3 + 4i) - (-2 + 3i) \\)</p>\n",
+              "learningObjectiveId": "mc3-objective%3A14779%40MIT-OEIT",
+              "outcome": "58a1d3f4a5bfe29f71e39b24",
+              "course": "589e4c3ef36d2837a7c6790d",
+              "choices": [
+                {
+                  "choiceId": "57d00dd171e482d888d0cd28",
+                  "displayName": "Choice 3",
+                  "text": "<p>\\( 5 + 7i \\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe425b0d9e477d792c4",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe425b0d9e477d792c4"
+                },
+                {
+                  "choiceId": "57d00dd171e482d888d0cd25",
+                  "displayName": "Choice 0",
+                  "text": "<p>\\( 5 + i \\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe425b0d9e477d792c3",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe425b0d9e477d792c3"
+                },
+                {
+                  "choiceId": "57d00dd171e482d888d0cd26",
+                  "displayName": "Choice 1",
+                  "text": "<p>\\( 1 + i \\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe425b0d9e477d792c2",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe425b0d9e477d792c2"
+                },
+                {
+                  "choiceId": "57d00dd171e482d888d0cd27",
+                  "displayName": "Choice 2",
+                  "text": "<p>\\( 6 \\)</p>\n",
+                  "feedback": "",
+                  "_id": "58a4fbe425b0d9e477d792c1",
+                  "confusedOutcomes": [],
+                  "id": "58a4fbe425b0d9e477d792c1"
+                }
+              ],
+              "__v": 0,
+              "id": "58a4fbe425b0d9e477d792c0",
+              "referenceNumber": "5"
+            }
+          ]
+        ]
+      ]
+    },
+    "isGetMissionInProgress": false,
+    "currentDirectiveIndex": 0,
+    "currentTarget": {
+      "_id": "58a4fbe325b0d9e477d78dee",
+      "itemId": "assessment.Item%3A582f12cd71e4822a2a0588d8%40bazzim.MIT.EDU",
+      "displayName": "Add/subtract/multiply/divide two functions",
+      "description": "",
+      "text": "<p>Let \\( f(x) = 3x^2 -2 \\) and \\( g(x) = \\sqrt{x+1} \\). Find \\( (f+g)(x) \\), \\( (f-g)(x) \\), \\( (fg)(x) \\), and \\( (f/g)(x) \\).</p>\n",
+      "learningObjectiveId": "mc3-objective%3A15206%40MIT-OEIT",
+      "outcome": "58a1d3f4a5bfe29f71e39b21",
+      "course": "589e4c3ef36d2837a7c6790d",
+      "choices": [
+        {
+          "choiceId": "582f12cd71e4822a2a0588e7",
+          "displayName": "Choice 2",
+          "text": "<p>\\( (f+g)(x) = 3(x+1) -2 \\)</p>\n\n<p>\\( (f-g)(x) = 3x^2 -2 - \\sqrt{x+1} \\)</p>\n\n<p>\\( (fg)(x) = 3x^2\\sqrt{x+1} - 2\\sqrt{x+1} \\)</p>\n\n<p>\\( (f/g)(x) = \\frac{3x^2-2}{\\sqrt{x+1}} \\)</p>\n",
+          "feedback": "",
+          "_id": "58a4fbe325b0d9e477d78df2",
+          "confusedOutcomes": [],
+          "id": "58a4fbe325b0d9e477d78df2"
+        },
+        {
+          "choiceId": "582f12cd71e4822a2a0588e8",
+          "displayName": "Choice 3",
+          "text": "<p>\\( (f+g)(x) = 3x^2 - 2 + \\sqrt{x + 1} \\)</p>\n\n<p>\\( (f-g)(x) = 3x^2 -2 - \\sqrt{x+1} \\)</p>\n\n<p>\\( (fg)(x) = 3x^2\\sqrt{x+1} - 2\\sqrt{x+1} \\)</p>\n\n<p>\\( (f/g)(x) = \\frac{\\sqrt{x+1}}{3x^2-2} \\)</p>\n",
+          "feedback": "",
+          "_id": "58a4fbe325b0d9e477d78df1",
+          "confusedOutcomes": [],
+          "id": "58a4fbe325b0d9e477d78df1"
+        },
+        {
+          "choiceId": "582f12cd71e4822a2a0588e6",
+          "displayName": "Choice 1",
+          "text": "<p>\\( (f+g)(x) = 3x^2 - 2 + \\sqrt{x + 1} \\)</p>\n\n<p>\\( (f-g)(x) = 3x^2 -2 - \\sqrt{x+1} \\)</p>\n\n<p>\\( (fg)(x) = 3(x+1) - 2 \\)</p>\n\n<p>\\( (f/g)(x) = \\frac{3x^2-2}{\\sqrt{x+1}} \\)</p>\n",
+          "feedback": "",
+          "_id": "58a4fbe325b0d9e477d78df0",
+          "confusedOutcomes": [],
+          "id": "58a4fbe325b0d9e477d78df0"
+        },
+        {
+          "choiceId": "582f12cd71e4822a2a0588e5",
+          "displayName": "Choice 0",
+          "text": "<p>\\( (f+g)(x) = 3x^2 - 2 + \\sqrt{x + 1} \\)</p>\n\n<p>\\( (f-g)(x) = 3x^2 -2 - \\sqrt{x+1} \\)</p>\n\n<p>\\( (fg)(x) = 3x^2\\sqrt{x+1} - 2\\sqrt{x+1} \\)</p>\n\n<p>\\( (f/g)(x) = \\frac{3x^2-2}{\\sqrt{x+1}} \\)</p>\n",
+          "feedback": "",
+          "_id": "58a4fbe325b0d9e477d78def",
+          "confusedOutcomes": [],
+          "id": "58a4fbe325b0d9e477d78def"
+        }
+      ],
+      "__v": 0,
+      "id": "58a4fbe325b0d9e477d78dee",
+      "referenceNumber": "6"
+    },
+    "questionListHeight": 0,
+    "heightByChoice": {},
+    "selectedChoiceId": null,
+    "isInProgressSubmitChoice": false
   },
+  "editMission": {},
   "mapping": {
-    "outcomes": []
-  }
+    "modules": [],
+    "outcomes": [
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b21",
+        "type": "OUTCOME",
+        "displayName": "Add, subtract, multiply, divide two functions",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15206%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-17T19:23:09"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b21"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b22",
+        "type": "OUTCOME",
+        "displayName": "Add/subtract a value to/from both sides of an equation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14767%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-21T09:13:53"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b22"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b23",
+        "type": "OUTCOME",
+        "displayName": "Add/subtract a value to/from both sides of an inequality",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15238%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b23"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b24",
+        "type": "OUTCOME",
+        "displayName": "Add/subtract complex numbers",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14779%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-03T10:18:00"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b24"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b25",
+        "type": "OUTCOME",
+        "displayName": "Add/subtract matrices",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14516%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-31T15:45:15"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b25"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b26",
+        "type": "OUTCOME",
+        "displayName": "Apply the FOIL method",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14704%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b26"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b27",
+        "type": "OUTCOME",
+        "displayName": "Apply the Rational Roots Test to find all possible rational zeros for a polynomial",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14289%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-16T12:00:33"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b27"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b28",
+        "type": "OUTCOME",
+        "displayName": "Apply the change-of-base formula",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14926%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-10T11:41:07"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b28"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b29",
+        "type": "OUTCOME",
+        "displayName": "Apply the concept of slope to find average rate of change",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15102%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-12-08T12:56:15"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b29"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b2a",
+        "type": "OUTCOME",
+        "displayName": "Apply the distance formula to find the radius of a circle",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15026%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-07T15:35:49"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b2a"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b2b",
+        "type": "OUTCOME",
+        "displayName": "Apply the distributive property",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15433%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b2b"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b2c",
+        "type": "OUTCOME",
+        "displayName": "Apply the leading term test to determine end behavior",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14840%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-30T11:28:51"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b2c"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b2d",
+        "type": "OUTCOME",
+        "displayName": "Apply the midpoint formula to find the center of a circle",
+        "description": "Apply the midpoint formula to find the center of a circle given two points that span the diameter.",
+        "learningObjectiveId": "mc3-objective%3A15028%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-23T13:40:01"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b2d"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b2e",
+        "type": "OUTCOME",
+        "displayName": "Apply the power rule for logarithms",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14944%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-10T10:22:33"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b2e"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b2f",
+        "type": "OUTCOME",
+        "displayName": "Apply the product rule for logarithms",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14928%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-10T11:40:09"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b2f"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b30",
+        "type": "OUTCOME",
+        "displayName": "Apply the properties of logarithms to rewrite expressions",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14932%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-10T11:39:33"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b30"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b31",
+        "type": "OUTCOME",
+        "displayName": "Apply the quadratic formula to find the roots of a quadratic equation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14764%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-29T09:36:11"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b31"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b32",
+        "type": "OUTCOME",
+        "displayName": "Apply the quadratic formula to find the roots of a quadratic equation (complex roots)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14702%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-30T13:29:41"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b32"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b33",
+        "type": "OUTCOME",
+        "displayName": "Apply the quotient rule for logarithms",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14929%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-10T10:20:35"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b33"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b34",
+        "type": "OUTCOME",
+        "displayName": "Apply the remainder theorem",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14267%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-23T15:37:27"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b34"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b35",
+        "type": "OUTCOME",
+        "displayName": "Apply the vertical line test",
+        "description": "Use the vertical line test to determine if a graph is that of a function",
+        "learningObjectiveId": "mc3-objective%3A15080%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-16T14:59:21"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b35"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b36",
+        "type": "OUTCOME",
+        "displayName": "Break absolute value into two expressions",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14739%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b36"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b37",
+        "type": "OUTCOME",
+        "displayName": "Calculate common logarithms",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14922%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-07T13:14:17"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b37"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b38",
+        "type": "OUTCOME",
+        "displayName": "Calculate compounded investment value",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14344%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b38"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b39",
+        "type": "OUTCOME",
+        "displayName": "Choose the appropriate representation of \"greater than or equal to\" on a number line.",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14654%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-04T12:34:06"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b39"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b3a",
+        "type": "OUTCOME",
+        "displayName": "Choose the appropriate representation of \"greater than\" on a number line.",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14656%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-04T12:35:08"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b3a"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b3b",
+        "type": "OUTCOME",
+        "displayName": "Choose the appropriate representation of \"less than or equal to\" on a number line.",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14655%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-04T12:34:32"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b3b"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b3c",
+        "type": "OUTCOME",
+        "displayName": "Choose the appropriate representation of \"less than\" on a number line.",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14657%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-04T12:35:32"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b3c"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b3d",
+        "type": "OUTCOME",
+        "displayName": "Classify the type of polynomial (e.g., constant, linear, quadratic, cubic)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14293%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-18T21:43:40"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b3d"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b3e",
+        "type": "OUTCOME",
+        "displayName": "Combine sum of fractions using common denominator",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14461%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b3e"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b3f",
+        "type": "OUTCOME",
+        "displayName": "Combine the difference of two logarithms",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14511%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-07-19T10:52:57"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b3f"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b40",
+        "type": "OUTCOME",
+        "displayName": "Complete the square",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14808%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-08T14:08:03"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b40"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b41",
+        "type": "OUTCOME",
+        "displayName": "Compose a function and its inverse",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15453%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-31T14:58:39"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b41"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b42",
+        "type": "OUTCOME",
+        "displayName": "Compose two functions",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14995%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-25T10:47:39"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b42"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b43",
+        "type": "OUTCOME",
+        "displayName": "Convert a logarithm to an exponential",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14924%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-07T13:15:15"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b43"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b44",
+        "type": "OUTCOME",
+        "displayName": "Convert an exponential to a logarithm",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14345%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-07T13:14:40"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b44"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b45",
+        "type": "OUTCOME",
+        "displayName": "Decompose a function as a composition of two functions",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15143%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b45"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b46",
+        "type": "OUTCOME",
+        "displayName": "Define a linear equation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15113%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b46"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b47",
+        "type": "OUTCOME",
+        "displayName": "Define a one-to-one function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14993%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b47"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b48",
+        "type": "OUTCOME",
+        "displayName": "Define a zero of a function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15208%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b48"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b49",
+        "type": "OUTCOME",
+        "displayName": "Define absolute value",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15336%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b49"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b4a",
+        "type": "OUTCOME",
+        "displayName": "Define diameter",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15220%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b4a"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b4b",
+        "type": "OUTCOME",
+        "displayName": "Define extraneous",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14884%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b4b"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b4c",
+        "type": "OUTCOME",
+        "displayName": "Define radius",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15095%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b4c"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b4d",
+        "type": "OUTCOME",
+        "displayName": "Define the Rational Roots Test for polynomials",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14350%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-12T09:47:17"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b4d"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b4e",
+        "type": "OUTCOME",
+        "displayName": "Define the axis of symmetry of a parabola",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14766%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b4e"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b4f",
+        "type": "OUTCOME",
+        "displayName": "Define the change-of-base formula",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14925%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b4f"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b50",
+        "type": "OUTCOME",
+        "displayName": "Define the condition under which two lines are parallel",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15060%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b50"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b51",
+        "type": "OUTCOME",
+        "displayName": "Define the condition under which two lines are perpendicular",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15061%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b51"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b52",
+        "type": "OUTCOME",
+        "displayName": "Define the difference quotient",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15137%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b52"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b53",
+        "type": "OUTCOME",
+        "displayName": "Define the imaginary number \\( i \\)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14799%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b53"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b54",
+        "type": "OUTCOME",
+        "displayName": "Define the number \\( e \\)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15017%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b54"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b55",
+        "type": "OUTCOME",
+        "displayName": "Define the point-slope form of a line",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15057%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b55"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b56",
+        "type": "OUTCOME",
+        "displayName": "Define the power rule for logarithms",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14952%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b56"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b57",
+        "type": "OUTCOME",
+        "displayName": "Define the product rule for logarithms",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14931%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b57"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b58",
+        "type": "OUTCOME",
+        "displayName": "Define the quotient rule for logarithms",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14951%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b58"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b59",
+        "type": "OUTCOME",
+        "displayName": "Define the standard form of a quadratic equation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14769%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b59"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b5a",
+        "type": "OUTCOME",
+        "displayName": "Define x-intercept",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15067%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b5a"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b5b",
+        "type": "OUTCOME",
+        "displayName": "Define y-intercept",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15068%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b5b"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b5c",
+        "type": "OUTCOME",
+        "displayName": "Describe the domain of a function as all possible inputs",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14466%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-31T10:49:12"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b5c"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b5d",
+        "type": "OUTCOME",
+        "displayName": "Describe the end behavior of a cubic function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14305%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-28T15:39:32"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b5d"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b5e",
+        "type": "OUTCOME",
+        "displayName": "Describe the factor theorem",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14904%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b5e"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b5f",
+        "type": "OUTCOME",
+        "displayName": "Describe the impact of \\( a \\) in the parabolic function \\( a (x-h)^2 + k \\)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14833%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b5f"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b60",
+        "type": "OUTCOME",
+        "displayName": "Describe the impact of \\( h \\) in the parabolic function \\( a (x-h)^2 + k \\)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14834%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b60"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b61",
+        "type": "OUTCOME",
+        "displayName": "Describe the impact of \\( k \\) in the parabolic function \\( a (x-h)^2 + k \\)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14835%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b61"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b62",
+        "type": "OUTCOME",
+        "displayName": "Describe the relationship between multiplicity and function behavior at a zero.",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14894%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-29T11:51:08"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b62"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b63",
+        "type": "OUTCOME",
+        "displayName": "Design a function given vertical asymptote",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14261%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-29T11:20:38"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b63"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b64",
+        "type": "OUTCOME",
+        "displayName": "Design a function given vertical asymptote and x-intercept",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14260%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-25T09:31:11"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b64"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b65",
+        "type": "OUTCOME",
+        "displayName": "Design a function given x-intercept",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14262%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-07-14T10:41:41"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b65"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b66",
+        "type": "OUTCOME",
+        "displayName": "Design a function to match the graph (polynomial)",
+        "description": "Select the function that corresponds to the provided graph of a cubic function.",
+        "learningObjectiveId": "mc3-objective%3A14230%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-12T13:20:50"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b66"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b67",
+        "type": "OUTCOME",
+        "displayName": "Determine function values given a graph",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15079%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b67"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b68",
+        "type": "OUTCOME",
+        "displayName": "Determine if a compound inequality is a union or intersection.",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14674%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-17T13:32:17"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b68"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b69",
+        "type": "OUTCOME",
+        "displayName": "Determine if a correspondence is a relation or a function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15076%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-15T09:53:02"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b69"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b6a",
+        "type": "OUTCOME",
+        "displayName": "Determine if a linear model is appropriate",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15063%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b6a"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b6b",
+        "type": "OUTCOME",
+        "displayName": "Determine if a parabola is concave up or concave down",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14768%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b6b"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b6c",
+        "type": "OUTCOME",
+        "displayName": "Determine if two lines are parallel",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15059%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-18T10:47:30"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b6c"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b6d",
+        "type": "OUTCOME",
+        "displayName": "Determine if two lines are perpendicular",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15062%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-18T10:47:44"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b6d"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b6e",
+        "type": "OUTCOME",
+        "displayName": "Determine the axis of symmetry from the roots of a parabola",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14713%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-29T10:33:09"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b6e"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b6f",
+        "type": "OUTCOME",
+        "displayName": "Determine the axis of symmetry of a parabola given a quadratic function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14247%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b6f"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b70",
+        "type": "OUTCOME",
+        "displayName": "Determine the degree of a polynomial function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14292%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-29T10:46:21"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b70"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b71",
+        "type": "OUTCOME",
+        "displayName": "Determine the equation for a horizontal line",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14783%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b71"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b72",
+        "type": "OUTCOME",
+        "displayName": "Determine the factors of integers",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14351%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-23T15:37:44"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b72"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b73",
+        "type": "OUTCOME",
+        "displayName": "Determine the order of a matrix",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14510%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b73"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b74",
+        "type": "OUTCOME",
+        "displayName": "Determine the sign of a polynomial between zeros",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14844%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b74"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b75",
+        "type": "OUTCOME",
+        "displayName": "Determine the slope of a line from its graph",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14251%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b75"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b76",
+        "type": "OUTCOME",
+        "displayName": "Determine the slope of a line given two points",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15066%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-15T15:38:13"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b76"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b77",
+        "type": "OUTCOME",
+        "displayName": "Determine the symmetry of a graph",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15144%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b77"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b78",
+        "type": "OUTCOME",
+        "displayName": "Determine the vertex of a parabola given its function and axis of symmetry",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14246%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-29T12:35:43"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b78"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b79",
+        "type": "OUTCOME",
+        "displayName": "Determine the y-intercept of a line from its graph",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14252%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b79"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b7a",
+        "type": "OUTCOME",
+        "displayName": "Determine the zeros of a function from its graph",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14241%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-06-13T10:37:43"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b7a"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b7b",
+        "type": "OUTCOME",
+        "displayName": "Determine whether a function is even, odd, or neither",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15147%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b7b"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b7c",
+        "type": "OUTCOME",
+        "displayName": "Determine whether an ordered pair is a solution of an equation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15023%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b7c"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b7d",
+        "type": "OUTCOME",
+        "displayName": "Distribute a negative sign",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14806%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b7d"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b7e",
+        "type": "OUTCOME",
+        "displayName": "Divide a polynomial by a linear factor using synthetic division",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14391%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-18T10:29:17"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b7e"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b7f",
+        "type": "OUTCOME",
+        "displayName": "Divide both sides of an inequality by a positive number",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14867%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b7f"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b80",
+        "type": "OUTCOME",
+        "displayName": "Divide complex numbers",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14711%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-07T10:13:30"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b80"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b81",
+        "type": "OUTCOME",
+        "displayName": "Estimate a linear model from data",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15064%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-18T10:48:54"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b81"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b82",
+        "type": "OUTCOME",
+        "displayName": "Evaluate \\( \\ln e \\)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14938%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b82"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b83",
+        "type": "OUTCOME",
+        "displayName": "Evaluate \\( \\log 1 \\)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14943%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b83"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b84",
+        "type": "OUTCOME",
+        "displayName": "Evaluate a cubic polynomial at a point",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14265%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b84"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b85",
+        "type": "OUTCOME",
+        "displayName": "Evaluate a function at a point",
+        "description": "Given a function and an x-value, substitute into the function to evaluate it at the point.",
+        "learningObjectiveId": "mc3-objective%3A14243%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b85"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b86",
+        "type": "OUTCOME",
+        "displayName": "Evaluate a logarithmic expression",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14517%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b86"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b87",
+        "type": "OUTCOME",
+        "displayName": "Evaluate a piecewise function at a point",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15215%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-12-07T13:34:54"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b87"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b88",
+        "type": "OUTCOME",
+        "displayName": "Evaluate a quadratic polynomial at a point",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14268%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b88"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b89",
+        "type": "OUTCOME",
+        "displayName": "Evaluate an inner/dot product",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14564%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b89"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b8a",
+        "type": "OUTCOME",
+        "displayName": "Evaluate monomials at \\( \\pm \\infty \\)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14845%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b8a"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b8b",
+        "type": "OUTCOME",
+        "displayName": "Evaluate positive integer powers of \\( i \\)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14800%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-07T10:12:15"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b8b"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b8c",
+        "type": "OUTCOME",
+        "displayName": "Evaluate small integer powers of \\( i \\)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14257%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-07T12:04:25"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b8c"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b8d",
+        "type": "OUTCOME",
+        "displayName": "Explain how the degree of the leading term of a polynomial influences end behavior",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14903%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-24T12:43:23"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b8d"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b8e",
+        "type": "OUTCOME",
+        "displayName": "Explain how the leading coefficient of a polynomial influences end behavior",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14902%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-24T12:51:30"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b8e"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b8f",
+        "type": "OUTCOME",
+        "displayName": "Explain that the x-coordinate of a y-intercept is zero",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15094%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-07T14:50:49"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b8f"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b90",
+        "type": "OUTCOME",
+        "displayName": "Explain that the y-coordinate of an x-intercept is zero.",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15093%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-07T12:46:38"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b90"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b91",
+        "type": "OUTCOME",
+        "displayName": "Explain that x-intercepts occur where f(x)=0",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14337%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-07T12:47:17"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b91"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b92",
+        "type": "OUTCOME",
+        "displayName": "Explain that y-intercepts can by found by setting x=0",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14781%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-31T12:24:51"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b92"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b93",
+        "type": "OUTCOME",
+        "displayName": "Explain the conclusion of the intermediate value theorem when f(a) and f(b) have opposite sign",
+        "description": "Given a function f(x) and two points a and b, student can explain the conclusion that if f(a) and f(b) have opposite signs that there must be at least one real zero of f(x) between a and b.",
+        "learningObjectiveId": "mc3-objective%3A14244%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-23T15:38:47"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b93"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b94",
+        "type": "OUTCOME",
+        "displayName": "Explain the conclusion of the intermediate value theorem when f(a) and f(b) have the same sign",
+        "description": "Given a function f(x) and two points a and b, explain the conclusion of the intermediate value theorem when f(a) and f(b) have the same sign.",
+        "learningObjectiveId": "mc3-objective%3A14245%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b94"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b95",
+        "type": "OUTCOME",
+        "displayName": "Explain the criteria for a correspondence to be a function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15131%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-15T09:52:43"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b95"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b96",
+        "type": "OUTCOME",
+        "displayName": "Explain the difference between \"AND\" and \"OR\" when referring to inequalities",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14668%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-23T15:39:01"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b96"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b97",
+        "type": "OUTCOME",
+        "displayName": "Explain the horizontal line test for a one-to-one function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14562%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b97"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b98",
+        "type": "OUTCOME",
+        "displayName": "Explain the relationship between radicals and exponents",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14852%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b98"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b99",
+        "type": "OUTCOME",
+        "displayName": "Explain the vertical line test",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15180%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b99"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b9a",
+        "type": "OUTCOME",
+        "displayName": "Explain what a negative rate of change means",
+        "description": "Explain that a negative rate of change means that one variable is decreasing with respect to the other.",
+        "learningObjectiveId": "mc3-objective%3A15252%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b9a"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b9b",
+        "type": "OUTCOME",
+        "displayName": "Exponentiate to eliminate a logarithm",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14525%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b9b"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b9c",
+        "type": "OUTCOME",
+        "displayName": "Express square roots of negative numbers using i",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14255%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-03T09:49:42"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b9c"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b9d",
+        "type": "OUTCOME",
+        "displayName": "Express the domain of a function using interval notation",
+        "description": "Determine the domain of a given function and write it using interval notation.",
+        "learningObjectiveId": "mc3-objective%3A14231%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-07-06T12:04:34"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b9d"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b9e",
+        "type": "OUTCOME",
+        "displayName": "Express the log of a product as the sum of logs",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14518%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b9e"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39b9f",
+        "type": "OUTCOME",
+        "displayName": "Express vertical asymptote of a logarithm",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14521%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-07-12T16:24:12"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39b9f"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39ba0",
+        "type": "OUTCOME",
+        "displayName": "Extrapolate a linear model to make prediction",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15065%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-18T10:48:38"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39ba0"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39ba1",
+        "type": "OUTCOME",
+        "displayName": "Factor quadratic equations",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14703%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-23T15:06:37"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39ba1"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39ba2",
+        "type": "OUTCOME",
+        "displayName": "Find a function that models an application",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15125%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39ba2"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39ba3",
+        "type": "OUTCOME",
+        "displayName": "Find all of the zeros of a polynomial function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14288%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-23T15:06:28"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39ba3"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39ba4",
+        "type": "OUTCOME",
+        "displayName": "Find an \\(x\\)-value in the domains of a piecewise function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15233%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39ba4"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39ba5",
+        "type": "OUTCOME",
+        "displayName": "Find equations of combined variation given values of the variables",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15150%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39ba5"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39ba6",
+        "type": "OUTCOME",
+        "displayName": "Find equations of direct variation given values of the variables",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15148%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39ba6"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39ba7",
+        "type": "OUTCOME",
+        "displayName": "Find equations of inverse variation given values of the variables",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15149%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39ba7"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39ba8",
+        "type": "OUTCOME",
+        "displayName": "Find equivalent equations by multiplying/dividing by a constant",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14983%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-21T09:28:12"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39ba8"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39ba9",
+        "type": "OUTCOME",
+        "displayName": "Find horizontal asymptotes of a function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14721%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-19T09:30:12"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39ba9"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39baa",
+        "type": "OUTCOME",
+        "displayName": "Find oblique asymptotes of a function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14722%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-25T09:48:25"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39baa"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bab",
+        "type": "OUTCOME",
+        "displayName": "Find remaining zeros of a polynomial when given a zero or linear factor",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14392%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-23T15:39:20"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bab"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bac",
+        "type": "OUTCOME",
+        "displayName": "Find the \\( y \\)-intercept(s) of a function from its graph",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15377%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-12T13:13:38"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bac"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bad",
+        "type": "OUTCOME",
+        "displayName": "Find the \\( y\\)-intercept of an exponential function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15016%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bad"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bae",
+        "type": "OUTCOME",
+        "displayName": "Find the axis of symmetry of a parabola from its graph",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14709%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-17T14:43:30"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bae"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39baf",
+        "type": "OUTCOME",
+        "displayName": "Find the center and radius of a circle",
+        "description": "Given an equation for a circle in standard form, determine the coordinates of the center and the length of the radius.",
+        "learningObjectiveId": "mc3-objective%3A14229%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-12-06T12:58:50"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39baf"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bb0",
+        "type": "OUTCOME",
+        "displayName": "Find the complex conjugate",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14775%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bb0"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bb1",
+        "type": "OUTCOME",
+        "displayName": "Find the difference of two functions",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15133%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bb1"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bb2",
+        "type": "OUTCOME",
+        "displayName": "Find the difference quotient for a function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15136%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bb2"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bb3",
+        "type": "OUTCOME",
+        "displayName": "Find the distance between two points in a plane",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15025%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-31T13:26:59"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bb3"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bb4",
+        "type": "OUTCOME",
+        "displayName": "Find the domain and range of an exponential function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15015%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bb4"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bb5",
+        "type": "OUTCOME",
+        "displayName": "Find the domain of a function given a graph",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15140%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bb5"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bb6",
+        "type": "OUTCOME",
+        "displayName": "Find the domain of a function given its equation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15081%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-15T13:30:13"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bb6"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bb7",
+        "type": "OUTCOME",
+        "displayName": "Find the domain of a logarithmic function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14522%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-07-12T11:35:47"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bb7"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bb8",
+        "type": "OUTCOME",
+        "displayName": "Find the domain of a piecewise function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15141%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bb8"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bb9",
+        "type": "OUTCOME",
+        "displayName": "Find the domain of sum/difference/product/quotient of two functions",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15138%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bb9"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bba",
+        "type": "OUTCOME",
+        "displayName": "Find the equation of a line from its graph",
+        "description": "Given an image of the graph of a line, write its function in slope-intercept form.",
+        "learningObjectiveId": "mc3-objective%3A14239%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-06-01T12:43:35"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bba"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bbb",
+        "type": "OUTCOME",
+        "displayName": "Find the equation of a line given two points",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15058%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-18T10:48:20"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bbb"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bbc",
+        "type": "OUTCOME",
+        "displayName": "Find the intervals over which a quadratic increases/decreases",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14524%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-29T10:59:40"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bbc"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bbd",
+        "type": "OUTCOME",
+        "displayName": "Find the inverse of a function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14343%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-02-01T14:35:35"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bbd"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bbe",
+        "type": "OUTCOME",
+        "displayName": "Find the maximum of a parabola",
+        "description": "Find the maximum (i.e., vertex) of a parabola given as a quadratic function.",
+        "learningObjectiveId": "mc3-objective%3A14232%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-07-13T13:51:39"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bbe"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bbf",
+        "type": "OUTCOME",
+        "displayName": "Find the midpoint of a segment",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15027%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-31T13:27:18"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bbf"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bc0",
+        "type": "OUTCOME",
+        "displayName": "Find the minimum/maximum of a parabola",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14826%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-12T10:04:14"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bc0"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bc1",
+        "type": "OUTCOME",
+        "displayName": "Find the order of a product of two matrices",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14563%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bc1"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bc2",
+        "type": "OUTCOME",
+        "displayName": "Find the product of two functions",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15134%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bc2"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bc3",
+        "type": "OUTCOME",
+        "displayName": "Find the quotient of two functions",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15135%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bc3"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bc4",
+        "type": "OUTCOME",
+        "displayName": "Find the range of a function given a graph",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15139%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bc4"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bc5",
+        "type": "OUTCOME",
+        "displayName": "Find the range of a piecewise function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15142%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bc5"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bc6",
+        "type": "OUTCOME",
+        "displayName": "Find the range of a quadratic function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14308%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-29T11:00:46"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bc6"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bc7",
+        "type": "OUTCOME",
+        "displayName": "Find the relative minima/maxima of a function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15123%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bc7"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bc8",
+        "type": "OUTCOME",
+        "displayName": "Find the slope and y-intercept given a linear equation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15103%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bc8"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bc9",
+        "type": "OUTCOME",
+        "displayName": "Find the sum of two functions algebraically",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15264%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bc9"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bca",
+        "type": "OUTCOME",
+        "displayName": "Find the sum of two functions graphically",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15132%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-12-08T13:47:14"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bca"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bcb",
+        "type": "OUTCOME",
+        "displayName": "Find the vertex of a parabola from a quadratic function",
+        "description": "Given a quadratic function find the vertex of the parabola by finding the axis of symmetry to find the x-value and evaluate the function to find the y-value.",
+        "learningObjectiveId": "mc3-objective%3A14225%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-06-03T12:37:58"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bcb"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bcc",
+        "type": "OUTCOME",
+        "displayName": "Find the vertex of a parabola from its graph",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14708%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bcc"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bcd",
+        "type": "OUTCOME",
+        "displayName": "Find the x-intercept(s) of a function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14336%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-06-21T14:46:33"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bcd"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bce",
+        "type": "OUTCOME",
+        "displayName": "Find the y-intercept(s) of a function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14724%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-31T11:02:38"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bce"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bcf",
+        "type": "OUTCOME",
+        "displayName": "Find the zero of a linear function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15119%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-18T11:07:56"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bcf"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bd0",
+        "type": "OUTCOME",
+        "displayName": "Find vertical asymptotes of a function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14523%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-19T10:04:35"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bd0"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bd1",
+        "type": "OUTCOME",
+        "displayName": "Find where a function is constant",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15122%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bd1"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bd2",
+        "type": "OUTCOME",
+        "displayName": "Find where a function is decreasing",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15121%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bd2"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bd3",
+        "type": "OUTCOME",
+        "displayName": "Find where a function is increasing",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15120%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bd3"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bd4",
+        "type": "OUTCOME",
+        "displayName": "Find x-intercepts of equations of the form Ax+By=C",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15031%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-07T12:46:59"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bd4"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bd5",
+        "type": "OUTCOME",
+        "displayName": "Find y-intercepts of equations of the form Ax+By=C",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15032%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-07T14:52:28"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bd5"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bd6",
+        "type": "OUTCOME",
+        "displayName": "Flip a graph horizontally",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14954%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bd6"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bd7",
+        "type": "OUTCOME",
+        "displayName": "Flip a graph vertically",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14941%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bd7"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bd8",
+        "type": "OUTCOME",
+        "displayName": "Graph a linear equation using the slope and y-intercept.",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14982%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bd8"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bd9",
+        "type": "OUTCOME",
+        "displayName": "Graph a logarithmic function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14927%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-10T10:29:22"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bd9"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bda",
+        "type": "OUTCOME",
+        "displayName": "Graph a piecewise function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15126%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-12-08T15:13:39"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bda"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bdb",
+        "type": "OUTCOME",
+        "displayName": "Graph a quadratic equation of the form \\( f(x) = a(x-h)^2+k \\)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14825%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-12T10:05:40"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bdb"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bdc",
+        "type": "OUTCOME",
+        "displayName": "Graph a quadratic function in standard form",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14828%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-12T10:07:02"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bdc"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bdd",
+        "type": "OUTCOME",
+        "displayName": "Graph an exponential function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15014%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bdd"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bde",
+        "type": "OUTCOME",
+        "displayName": "Graph equations by plotting solutions",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15024%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-27T13:38:24"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bde"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bdf",
+        "type": "OUTCOME",
+        "displayName": "Graph equations of circles",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15030%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bdf"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39be0",
+        "type": "OUTCOME",
+        "displayName": "Graph inequalities on a number line",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14634%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-09T10:54:53"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39be0"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39be1",
+        "type": "OUTCOME",
+        "displayName": "Graph open and closed endpoints",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15265%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39be1"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39be2",
+        "type": "OUTCOME",
+        "displayName": "Graph the function \\( \\ln x \\)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14940%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39be2"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39be3",
+        "type": "OUTCOME",
+        "displayName": "Group real and imaginary parts in complex addition/subtraction",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14803%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39be3"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39be4",
+        "type": "OUTCOME",
+        "displayName": "Identify \\( a \\), \\( h \\), and \\( k \\) in a quadratic equation in the form \\( a(x-h)^2+k\\)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14832%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39be4"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39be5",
+        "type": "OUTCOME",
+        "displayName": "Identify a double root of a function from its graph",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14240%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-06-13T11:37:57"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39be5"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39be6",
+        "type": "OUTCOME",
+        "displayName": "Identify a linear equation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15114%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39be6"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39be7",
+        "type": "OUTCOME",
+        "displayName": "Identify a linear function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15411%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39be7"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39be8",
+        "type": "OUTCOME",
+        "displayName": "Identify a one-to-one function using the horizontal line test",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14512%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-25T10:48:25"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39be8"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39be9",
+        "type": "OUTCOME",
+        "displayName": "Identify extraneous solutions based on division by zero",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14248%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-12-22T12:55:24"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39be9"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bea",
+        "type": "OUTCOME",
+        "displayName": "Identify pairs of inverse functions",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15012%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-25T10:45:55"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bea"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39beb",
+        "type": "OUTCOME",
+        "displayName": "Identify the coefficients a, b, and  the constant c in a quadratic equation ax2 +bx + c =0",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14330%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-06-20T11:47:59"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39beb"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bec",
+        "type": "OUTCOME",
+        "displayName": "Identify the constant term in a polynomial function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14291%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-23T15:40:22"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bec"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bed",
+        "type": "OUTCOME",
+        "displayName": "Identify the domain and range of a correspondence",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15129%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-15T09:41:18"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bed"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bee",
+        "type": "OUTCOME",
+        "displayName": "Identify the inverse of a function from its graph",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14513%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-25T10:48:09"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bee"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bef",
+        "type": "OUTCOME",
+        "displayName": "Identify the leading coefficient of a polynomial function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14290%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-29T10:46:39"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bef"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bf0",
+        "type": "OUTCOME",
+        "displayName": "Identify the leading term of a polynomial function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14886%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bf0"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bf1",
+        "type": "OUTCOME",
+        "displayName": "Identify the logarithmic function from its graph",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14937%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-10T10:31:35"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bf1"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bf2",
+        "type": "OUTCOME",
+        "displayName": "Identify the quotient in synthetic division",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15409%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bf2"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bf3",
+        "type": "OUTCOME",
+        "displayName": "Identify the remainder in synthetic division",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15410%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bf3"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bf4",
+        "type": "OUTCOME",
+        "displayName": "Identify the vertex from a quadratic in the form \\( a(x-h)^2 +k \\)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14830%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-12T10:34:59"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bf4"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bf5",
+        "type": "OUTCOME",
+        "displayName": "Identify when a linear equation has infinitely many solutions",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15117%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bf5"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bf6",
+        "type": "OUTCOME",
+        "displayName": "Identify when a linear equation has no solutions",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15116%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bf6"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bf7",
+        "type": "OUTCOME",
+        "displayName": "Identify when an oblique asymptote exists",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14782%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bf7"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bf8",
+        "type": "OUTCOME",
+        "displayName": "Interpret function notation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15077%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bf8"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bf9",
+        "type": "OUTCOME",
+        "displayName": "Isolate the absolute value in an equation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14688%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-29T10:34:33"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bf9"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bfa",
+        "type": "OUTCOME",
+        "displayName": "Manipulate fractional equations to solve for a variable",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14276%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-29T11:14:10"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bfa"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bfb",
+        "type": "OUTCOME",
+        "displayName": "Mirror a graph across \\( y=x \\)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15001%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bfb"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bfc",
+        "type": "OUTCOME",
+        "displayName": "Multiply an inequality by a negative number",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14740%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bfc"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bfd",
+        "type": "OUTCOME",
+        "displayName": "Multiply complex numbers",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14776%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-27T14:57:29"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bfd"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bfe",
+        "type": "OUTCOME",
+        "displayName": "Multiply matrices when possible",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14515%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-31T15:44:55"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bfe"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39bff",
+        "type": "OUTCOME",
+        "displayName": "Multiply/divide both sides of an inequality by a negative number",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15241%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39bff"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c00",
+        "type": "OUTCOME",
+        "displayName": "Perform integer exponentiation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14561%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c00"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c01",
+        "type": "OUTCOME",
+        "displayName": "Perform long division of polynomials",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14266%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-30T14:44:07"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c01"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c02",
+        "type": "OUTCOME",
+        "displayName": "Perform operations utilizing principle of powers",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14853%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-15T11:08:48"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c02"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c03",
+        "type": "OUTCOME",
+        "displayName": "Plot negative x-coordinates to the right of the vertical axis",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15036%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-27T14:06:48"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c03"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c04",
+        "type": "OUTCOME",
+        "displayName": "Plot negative y-coordinates below the horizontal axis",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15038%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-27T14:07:05"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c04"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c05",
+        "type": "OUTCOME",
+        "displayName": "Plot points on a Cartesian plane",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15022%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-27T15:27:08"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c05"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c06",
+        "type": "OUTCOME",
+        "displayName": "Plot positive x-coordinates to the right of the vertical axis",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15035%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-27T14:07:32"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c06"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c07",
+        "type": "OUTCOME",
+        "displayName": "Plot positive y-coordinates above the horizontal axis",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15037%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-27T14:07:46"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c07"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c08",
+        "type": "OUTCOME",
+        "displayName": "Read off x-axis crossings from the graph of a function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14302%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c08"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c09",
+        "type": "OUTCOME",
+        "displayName": "Rearrange algebraic equations",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14707%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c09"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c0a",
+        "type": "OUTCOME",
+        "displayName": "Recall that the 1st and 2nd coordinates refer to the x and y-coordinates respectively",
+        "description": "Recall that the 1st and 2nd coordinates of an ordered pair refer to the x and y-coordinates respectively",
+        "learningObjectiveId": "mc3-objective%3A15039%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c0a"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c0b",
+        "type": "OUTCOME",
+        "displayName": "Recall that the x-coordinate is the distance from the y-axis",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15033%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c0b"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c0c",
+        "type": "OUTCOME",
+        "displayName": "Recall that the y-coordinate is the distance from the x-axis",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15034%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c0c"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c0d",
+        "type": "OUTCOME",
+        "displayName": "Recall the Remainder Theorem",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14860%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-30T14:26:33"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c0d"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c0e",
+        "type": "OUTCOME",
+        "displayName": "Recall the formula for slope",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15152%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c0e"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c0f",
+        "type": "OUTCOME",
+        "displayName": "Recognize a cubic function from its graph",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14242%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-06-13T10:46:04"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c0f"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c10",
+        "type": "OUTCOME",
+        "displayName": "Recognize a linear function from its graph",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14303%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c10"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c11",
+        "type": "OUTCOME",
+        "displayName": "Recognize a quadratic function from its graph",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14304%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c11"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c12",
+        "type": "OUTCOME",
+        "displayName": "Remember that horizontal asymptotes can be determined by the degrees of the numerator and denominator.",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14784%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c12"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c13",
+        "type": "OUTCOME",
+        "displayName": "Remember that slope can be considered as an average rate of change",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15251%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-12-05T15:55:15"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c13"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c14",
+        "type": "OUTCOME",
+        "displayName": "Remember the behavior of polynomial functions at zeros of even multiplicity.",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14895%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c14"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c15",
+        "type": "OUTCOME",
+        "displayName": "Remember the behavior of polynomial functions at zeros of odd multiplicity.",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14896%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c15"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c16",
+        "type": "OUTCOME",
+        "displayName": "Remember the difference between a parenthesis and a bracket in interval notation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14633%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-23T15:04:30"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c16"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c17",
+        "type": "OUTCOME",
+        "displayName": "Remember the leading term test",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14901%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c17"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c18",
+        "type": "OUTCOME",
+        "displayName": "Represent \"greater than or equal to\" in inequality notation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14672%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-23T15:04:49"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c18"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c19",
+        "type": "OUTCOME",
+        "displayName": "Represent \"less than or equal to\" in inequality notation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14673%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-23T15:04:58"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c19"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c1a",
+        "type": "OUTCOME",
+        "displayName": "Represent 'greater than' in inequality notation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14677%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-23T15:05:07"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c1a"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c1b",
+        "type": "OUTCOME",
+        "displayName": "Represent 'less than' in inequality notation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14676%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-12-07T10:21:53"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c1b"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c1c",
+        "type": "OUTCOME",
+        "displayName": "Represent a union in interval notation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14583%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c1c"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c1d",
+        "type": "OUTCOME",
+        "displayName": "Represent an intersection in interval notation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14671%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-23T15:05:28"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c1d"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c1e",
+        "type": "OUTCOME",
+        "displayName": "Rewrite \\( i^n \\) by dividing \\( n \\) by 4",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14802%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c1e"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c1f",
+        "type": "OUTCOME",
+        "displayName": "Rewrite quadratic equations in the form ax2 + bx + c = 0",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14331%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-29T10:54:41"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c1f"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c20",
+        "type": "OUTCOME",
+        "displayName": "Scale a graph in the \\( x \\)-direction",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15145%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c20"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c21",
+        "type": "OUTCOME",
+        "displayName": "Scale a graph in the \\( y \\)-direction",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15146%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c21"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c22",
+        "type": "OUTCOME",
+        "displayName": "Select the appropriate solution from several algebraic solutions",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14816%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c22"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c23",
+        "type": "OUTCOME",
+        "displayName": "Select the minimum/maximum value of a parabola given its vertex",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14831%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c23"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c24",
+        "type": "OUTCOME",
+        "displayName": "Set up the synthetic division calculation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15408%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c24"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c25",
+        "type": "OUTCOME",
+        "displayName": "Simplify fractions with more than one term in the numerator (one complex)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14735%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-16T15:50:08"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c25"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c26",
+        "type": "OUTCOME",
+        "displayName": "Simplify fractions with square roots in the numerator",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14734%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-23T15:40:59"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c26"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c27",
+        "type": "OUTCOME",
+        "displayName": "Simplify square roots by factoring",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14256%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c27"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c28",
+        "type": "OUTCOME",
+        "displayName": "Sketch a quadratic function given its roots",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14462%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-29T10:49:54"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c28"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c29",
+        "type": "OUTCOME",
+        "displayName": "Sketch rational functions",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14723%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-23T15:41:14"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c29"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c2a",
+        "type": "OUTCOME",
+        "displayName": "Sketch the graph of a polynomial function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14843%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-14T11:48:03"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c2a"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c2b",
+        "type": "OUTCOME",
+        "displayName": "Solve a linear equation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15115%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-18T10:54:22"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c2b"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c2c",
+        "type": "OUTCOME",
+        "displayName": "Solve a logarithmic equation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14509%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c2c"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c2d",
+        "type": "OUTCOME",
+        "displayName": "Solve a logarithmic equation with extraneous solution(s)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14508%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c2d"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c2e",
+        "type": "OUTCOME",
+        "displayName": "Solve a polynomial inequality",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14868%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-19T08:40:10"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c2e"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c2f",
+        "type": "OUTCOME",
+        "displayName": "Solve a quadratic equation by completing the square",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14809%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-08T14:07:34"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c2f"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c30",
+        "type": "OUTCOME",
+        "displayName": "Solve a quadratic equation of the form \\( (x+h)^2 = k \\)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14814%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c30"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c31",
+        "type": "OUTCOME",
+        "displayName": "Solve a quadratic equation to find its roots",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14763%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-02-06T12:18:14"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c31"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c32",
+        "type": "OUTCOME",
+        "displayName": "Solve a quadratic inequality",
+        "description": "Solve a quadratic inequality and express the solution using interval notation.",
+        "learningObjectiveId": "mc3-objective%3A14233%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-16T11:12:19"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c32"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c33",
+        "type": "OUTCOME",
+        "displayName": "Solve a system of two linear equations with two variables by graphing",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14976%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-18T13:16:17"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c33"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c34",
+        "type": "OUTCOME",
+        "displayName": "Solve a system of two linear equations with two variables using the elimination method",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14978%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-18T15:22:40"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c34"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c35",
+        "type": "OUTCOME",
+        "displayName": "Solve a system of two linear equations with two variables using the substitution method",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14977%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-18T14:24:02"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c35"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c36",
+        "type": "OUTCOME",
+        "displayName": "Solve a word problem by finding the minimum/maximum of a parabola",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14829%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c36"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c37",
+        "type": "OUTCOME",
+        "displayName": "Solve a word problem to find the lengths of sides of a rectangle",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14811%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-08T14:54:54"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c37"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c38",
+        "type": "OUTCOME",
+        "displayName": "Solve a word problem to find the right input value to a quadratic function",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14810%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-08T15:08:43"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c38"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c39",
+        "type": "OUTCOME",
+        "displayName": "Solve a word problem using a linear equation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15118%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-29T11:33:09"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c39"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c3a",
+        "type": "OUTCOME",
+        "displayName": "Solve absolute value inequalities and express the solution in interval notation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14581%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-02T14:56:11"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c3a"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c3b",
+        "type": "OUTCOME",
+        "displayName": "Solve an absolute value equation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14567%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-18T21:25:58"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c3b"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c3c",
+        "type": "OUTCOME",
+        "displayName": "Solve an equation and identify extraneous solutions",
+        "description": "Solve an equation and identify extraneous solutions.",
+        "learningObjectiveId": "mc3-objective%3A14234%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-06-01T10:54:53"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c3c"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c3d",
+        "type": "OUTCOME",
+        "displayName": "Solve an exponential equation word problem",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14507%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c3d"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c3e",
+        "type": "OUTCOME",
+        "displayName": "Solve applied problems involving variation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15151%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-12-07T21:16:19"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c3e"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c3f",
+        "type": "OUTCOME",
+        "displayName": "Solve applied problems using linear functions",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15104%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c3f"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c40",
+        "type": "OUTCOME",
+        "displayName": "Solve compound inequalities",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15203%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-12-07T10:37:44"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c40"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c41",
+        "type": "OUTCOME",
+        "displayName": "Solve exponential equations",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14514%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c41"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c42",
+        "type": "OUTCOME",
+        "displayName": "Solve factored quadratic equation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14807%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c42"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c43",
+        "type": "OUTCOME",
+        "displayName": "Solve for a variable in the denominator by cross multiplying",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14531%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c43"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c44",
+        "type": "OUTCOME",
+        "displayName": "Solve for the original variable after using substitution",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14847%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-02-06T13:00:54"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c44"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c45",
+        "type": "OUTCOME",
+        "displayName": "Solve linear inequalities",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14635%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-12-01T10:15:27"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c45"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c46",
+        "type": "OUTCOME",
+        "displayName": "Solve linear inequalities and state the solution in interval notation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14636%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-12-07T10:09:38"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c46"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c47",
+        "type": "OUTCOME",
+        "displayName": "Solve logarithmic equations",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15454%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c47"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c48",
+        "type": "OUTCOME",
+        "displayName": "Solve quadratic inequalities given roots",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14275%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-07-13T13:54:17"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c48"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c49",
+        "type": "OUTCOME",
+        "displayName": "Solve radical equations",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14848%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-24T09:55:25"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c49"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c4a",
+        "type": "OUTCOME",
+        "displayName": "Solve radical equations and identify extraneous solutions",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14885%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-24T09:57:31"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c4a"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c4b",
+        "type": "OUTCOME",
+        "displayName": "Solve rational equations",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14805%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-12-22T14:30:26"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c4b"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c4c",
+        "type": "OUTCOME",
+        "displayName": "Solve systems of equations in three variables using Gaussian elimination",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14979%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c4c"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c4d",
+        "type": "OUTCOME",
+        "displayName": "Solve systems of equations using matrices",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14980%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c4d"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c4e",
+        "type": "OUTCOME",
+        "displayName": "Square a negative number",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14586%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c4e"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c4f",
+        "type": "OUTCOME",
+        "displayName": "Square a positive number",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14851%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c4f"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c50",
+        "type": "OUTCOME",
+        "displayName": "State the distance formula",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15069%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c50"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c51",
+        "type": "OUTCOME",
+        "displayName": "State the midpoint formula",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15070%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c51"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c52",
+        "type": "OUTCOME",
+        "displayName": "State the multiplicity of a zero of a polynomial.",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14891%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c52"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c53",
+        "type": "OUTCOME",
+        "displayName": "State the standard form of the equation of a circle",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15071%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-31T14:14:53"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c53"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c54",
+        "type": "OUTCOME",
+        "displayName": "Subtract complex numbers",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14801%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-07T10:12:45"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c54"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c55",
+        "type": "OUTCOME",
+        "displayName": "Subtract negative numbers",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14804%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c55"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c56",
+        "type": "OUTCOME",
+        "displayName": "Transform a function or graph",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15207%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-11-18T09:17:11"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c56"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c57",
+        "type": "OUTCOME",
+        "displayName": "Translate a word problem into a quadratic equation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14815%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c57"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c58",
+        "type": "OUTCOME",
+        "displayName": "Translate between inequality notation and interval notation.",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14585%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-10T22:28:15"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c58"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c59",
+        "type": "OUTCOME",
+        "displayName": "Translate the graph of a function in the \\( x \\)-direction",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14939%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c59"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c5a",
+        "type": "OUTCOME",
+        "displayName": "Translate the graph of a function in the \\( y \\)-direction",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14942%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-07T13:49:34"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c5a"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c5b",
+        "type": "OUTCOME",
+        "displayName": "Understand composition notation",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15000%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c5b"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c5c",
+        "type": "OUTCOME",
+        "displayName": "Understand dimension requirements for matrix multiplication",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14528%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c5c"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c5d",
+        "type": "OUTCOME",
+        "displayName": "Understand how to find an oblique asymptote.",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15390%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-13T15:36:11"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c5d"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c5e",
+        "type": "OUTCOME",
+        "displayName": "Understand that a real root of a function occurs where its graph touches the x-axis",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14306%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-09T11:05:33"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c5e"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c5f",
+        "type": "OUTCOME",
+        "displayName": "Understand that an extraneous solution must be a solution to the transformed equation",
+        "description": "Impermissible values that are not solutions cannot be extraneous solutions since they are not even solutions",
+        "learningObjectiveId": "mc3-objective%3A14249%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-26T14:16:24"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c5f"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c60",
+        "type": "OUTCOME",
+        "displayName": "Understand that logarithms are not associative",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14560%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-09T11:05:42"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c60"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c61",
+        "type": "OUTCOME",
+        "displayName": "Understand that negative of a logarithm is the logarithm of the reciprocal",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14559%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-09T11:05:51"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c61"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c62",
+        "type": "OUTCOME",
+        "displayName": "Understand that polynomials with real coefficients have complex roots in conjugate pairs",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14859%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c62"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c63",
+        "type": "OUTCOME",
+        "displayName": "Understand that the range of a function is all of its possible output values",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14460%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c63"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c64",
+        "type": "OUTCOME",
+        "displayName": "Understand that the vertical asymptote of a logarithm occurs where its argument is zero",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14527%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c64"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c65",
+        "type": "OUTCOME",
+        "displayName": "Understand that vertical asymptotes occur where the denominator of a function is zero",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14534%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c65"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c66",
+        "type": "OUTCOME",
+        "displayName": "Understand the Fundamental Theorem of Algebra",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14858%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c66"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c67",
+        "type": "OUTCOME",
+        "displayName": "Understand the behavior of a double root near the x-axis",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14307%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c67"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c68",
+        "type": "OUTCOME",
+        "displayName": "Understand the definition of a logarithm",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14921%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-05T10:49:34"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c68"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c69",
+        "type": "OUTCOME",
+        "displayName": "Understand the difference between open and closed interval",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14459%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2017-01-16T11:13:08"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c69"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c6a",
+        "type": "OUTCOME",
+        "displayName": "Understand the difference between vertex of a parabola and its roots",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14280%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-29T11:13:45"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c6a"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c6b",
+        "type": "OUTCOME",
+        "displayName": "Understand the notation \\( f^{-1}(x) \\)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14999%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c6b"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c6c",
+        "type": "OUTCOME",
+        "displayName": "Understand the relationship between domain and range of \\( f\\) and \\( f^{-1} \\)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14998%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-25T10:46:56"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c6c"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c6d",
+        "type": "OUTCOME",
+        "displayName": "Understand the relationship between factors and zeros.",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14905%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c6d"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c6e",
+        "type": "OUTCOME",
+        "displayName": "Understand the relationship between polynomial degree and maximum number of real zeros",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14841%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c6e"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c6f",
+        "type": "OUTCOME",
+        "displayName": "Understand the relationship between polynomial degree and maximum number of turning points",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14842%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c6f"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c70",
+        "type": "OUTCOME",
+        "displayName": "Use substitution to rewrite equations as quadratics",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14846%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c70"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c71",
+        "type": "OUTCOME",
+        "displayName": "Use the factor theorem to determine if \\(x-c\\) is a factor of \\( f(x) \\)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14857%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-30T13:46:32"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c71"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c72",
+        "type": "OUTCOME",
+        "displayName": "Use the intermediate value theorem to find zeros",
+        "description": "Use the intermediate value theorem to determine if there is a real zero between two x-values for a given function.",
+        "learningObjectiveId": "mc3-objective%3A14226%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-29T11:22:00"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c72"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c73",
+        "type": "OUTCOME",
+        "displayName": "Use the remainder theorem to find a function value",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14856%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-16T11:59:32"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c73"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c74",
+        "type": "OUTCOME",
+        "displayName": "Write a linear equation relating the variables in the problem",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15235%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c74"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c75",
+        "type": "OUTCOME",
+        "displayName": "Write a quadratic function in the form \\( a(x-h)^2+k \\)",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14827%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-12T10:08:04"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c75"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c76",
+        "type": "OUTCOME",
+        "displayName": "Write an augmented matrix given a system of equations",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14984%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c76"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c77",
+        "type": "OUTCOME",
+        "displayName": "Write an ordered pair (x, y)",
+        "description": "Write an ordered pair (x, y) given a point on a graph",
+        "learningObjectiveId": "mc3-objective%3A14279%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-27T12:35:22"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c77"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c78",
+        "type": "OUTCOME",
+        "displayName": "Write the equation for a circle with a given center and radius",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15029%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-10-31T14:15:13"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c78"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c79",
+        "type": "OUTCOME",
+        "displayName": "Write the equation for a vertical asymptote",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14526%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c79"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c7a",
+        "type": "OUTCOME",
+        "displayName": "Write the equation for an axis of symmetry",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14712%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c7a"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c7b",
+        "type": "OUTCOME",
+        "displayName": "Write the equation of a line given slope and y-intercept",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A15248%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c7b"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c7c",
+        "type": "OUTCOME",
+        "displayName": "Write the equation of a parabola given its roots and vertex",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14780%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-12T10:08:41"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c7c"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c7d",
+        "type": "OUTCOME",
+        "displayName": "Write the quadratic function from its graph",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14710%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-09-12T10:10:24"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c7d"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c7e",
+        "type": "OUTCOME",
+        "displayName": "Write the system of equations that corresponds to an augmented matrix",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14985%40MIT-OEIT",
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c7e"
+      },
+      {
+        "_id": "58a1d3f4a5bfe29f71e39c7f",
+        "type": "OUTCOME",
+        "displayName": "Write two equivalent inequalities when given an absolute value inequality",
+        "description": "",
+        "learningObjectiveId": "mc3-objective%3A14582%40MIT-OEIT",
+        "auditTrail": {
+          "updatedBy": "MC3GUE$T",
+          "updatedAt": "2016-08-23T13:54:10"
+        },
+        "course": "589e4c3ef36d2837a7c6790d",
+        "__v": 0,
+        "id": "58a1d3f4a5bfe29f71e39c7f"
+      }
+    ],
+    "relationships": [],
+    "isGetMappingInProgress": false
+  },
+  "result": {}
 }

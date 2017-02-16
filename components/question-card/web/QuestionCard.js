@@ -50,13 +50,13 @@ class QuestionCard extends Component {
       if (!this.props.question.responded && !this.state.selectedChoiceId) {
         submitButton = (
           <button disabled
-                  onClick={() => this._onSubmitChoice(this.state.selectedChoiceId, this.props.question.id)}
+                  onClick={() => this._onSubmitChoice(this.state.selectedChoiceId, this.props.question)}
                   className="submit-button is-disabled">
                   {submitButtonText}
           </button>);
 
       } else if (!this.props.question.responded && !this.props.isInProgressSubmitChoice) {
-        submitButton = (<button onClick={() => this._onSubmitChoice(this.state.selectedChoiceId, this.props.question.id)}
+        submitButton = (<button onClick={() => this._onSubmitChoice(this.state.selectedChoiceId, this.props.question)}
                                 className="submit-button"
                                 ref={(btn) => this.activeSubmitButton = btn}>
               {submitButtonText}
@@ -153,11 +153,13 @@ class QuestionCard extends Component {
     )
   }
 
-  _onSubmitChoice = (choice, question) => {
+  _onSubmitChoice = (choiceId, question) => {
     if (!this.props.isInProgressSubmitChoice) {
       $('html, body').animate({
         scrollTop: $("body")[0].scrollHeight - 30
       }, 1000);
+
+      let choice = _.find(this.props.choices, {id: choice.id});
 
       this.props.onSubmitResponse({
         course: this.props.course,
