@@ -34,7 +34,7 @@ export const getRouteQuestions = (sectionQuestions, target) => {
   }
 
   let routeQuestions = _.find(sectionQuestions, array => {
-    return array[0] === target;
+    return array[0] === target || array[0].id === target.id;
   });
 
   return routeQuestions;
@@ -80,12 +80,12 @@ export const isTargetRouteNavigated = (target, questionsInRoute) => {
 export const targetStatus = (target, questionsInRoute) => {
   var status = 'PRISTINE';
 
-  if (isTargetRouteNavigated(target, questionsInRoute) && !target.isCorrect) {
+  if (isTargetRouteNavigated(target, questionsInRoute) && !target.response.isCorrect) {
     status = 'NAVIGATED';
 
-  } else if (target.responded && target.isCorrect) {
+  } else if (target.responded && target.response.isCorrect) {
     status = 'COMPLETE';
-  } else if (target.responded && !target.isCorrect) {
+  } else if (target.responded && !target.response.isCorrect) {
     status = 'FAIL';
   }
 

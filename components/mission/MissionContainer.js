@@ -27,7 +27,7 @@ const mapStateToProps = (state, ownProps) => {
     isGetMissionInProgress: state.mission.isGetMissionInProgress,
     isGetMissionsInProgress: state.mission ? state.mission.isGetMissionsInProgress : false,
     directives,
-    directiveIndicators: mission ? _.map(mission.questions, section => computeSectionProgress(section)) : null,
+    directiveIndicators: mission && mission.questions ? _.map(mission.questions, section => computeSectionProgress(section)) : null,
     currentDirectiveIndex: typeof state.mission.currentDirectiveIndex !== 'undefined' ? state.mission.currentDirectiveIndex : null,
     isSubmitTakeMissionInProgress: state.mission ? state.mission.isSubmitTakeMissionInProgress : false
   }

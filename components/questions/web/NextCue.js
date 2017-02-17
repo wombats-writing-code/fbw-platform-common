@@ -19,7 +19,7 @@ class NextCue extends Component {
         cueText = (
           <p className="cue-text">
             <span>Good! Now let's </span>
-            <span className="bold">{this.props.nextOutcome.displayName.text}</span>
+            <span className="bold">{this.props.nextOutcome.displayName}</span>
             <span>.</span>
           </p>
         )
@@ -39,7 +39,7 @@ class NextCue extends Component {
         cueText = (
           <p className="cue-text">
             <span >Not quite. Looks like you need to work on</span>
-            <span className="bold"> {this.props.nextOutcome.displayName.text}</span>
+            <span className="bold"> {this.props.nextOutcome.displayName}</span>
             <span>.</span>
           </p>
         )
@@ -48,13 +48,13 @@ class NextCue extends Component {
         cueText = (
           <p className="cue-text">
               <span >Not quite. Let's try to </span>
-              <span className="bold">{this.props.outcome.displayName.text}</span>
+              <span className="bold">{this.props.outcome.displayName}</span>
               <span> again.</span>
           </p>
         )
 
       } else if (!this.props.nextQuestion && !this.props.nextOutcome) {
-        cueText = <p >Study the solution carefully and try another Target question.</p>
+        cueText = <p className="cue-text">Study the solution carefully and try another Target question.</p>
       }
     }
 

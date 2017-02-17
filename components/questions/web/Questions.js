@@ -25,23 +25,23 @@ class Questions extends Component {
     }
   }
 
-  renderListRow = (questionItem, sectionId, rowId) => {
+  renderListRow = (questionItem, idx) => {
     let outcome = _.find(this.props.outcomes, {id: questionItem.outcome});
 
-    // console.log('row', rowId, 'total length', this.props.questions.length, 'questions', this.props.questions);
+    // console.log( this.props.questions.length, 'questions', this.props.questions);
 
     let nextQuestion;
     let nextCue;
     if (questionItem.responded) {
       // let hasNextQuestion = (questionItem !== _.last(this.props.questions));
-      nextQuestion = this.props.questions[parseInt(sectionId)+1];
+      nextQuestion = this.props.questions[parseInt(idx)+1];
 
       let nextOutcome;
       if (nextQuestion && questionItem.response.isCorrect) {
         nextOutcome = _.find(this.props.outcomes, {id: nextQuestion.outcome});
 
-      } else if (nextQuestion && questionItem.response.confusedLearningObjectiveIds && !questionItem.response.isCorrect){
-        nextOutcome = _.find(this.props.outcomes, {id: questionItem.response.confusedLearningObjectiveIds[0]});
+      } else if (nextQuestion && questionItem.response.choice.confusedOutcomes && !questionItem.response.isCorrect){
+        nextOutcome = _.find(this.props.outcomes, {id: questionItem.response.choice.confusedOutcomes[0]});
       }
 
       nextCue = (
@@ -67,7 +67,7 @@ class Questions extends Component {
     let isSubmitEnabled = checkMissionStatus(this.props.mission) === 'over' ? false : true;
 
     return (
-      <li key={questionItem.id} className="questions-list__item">
+      <li key={`${questionItem.id}-${idx}`} className="questions-list__item">
         <div className="row">
           <div className="medium-8 medium-centered large-8 large-centered columns">
             <QuestionCard question={questionItem} outcome={outcome} isExpanded={isExpanded} isSubmitEnabled={isSubmitEnabled}/>

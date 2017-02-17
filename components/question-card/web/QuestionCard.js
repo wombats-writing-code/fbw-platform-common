@@ -127,7 +127,7 @@ class QuestionCard extends Component {
                       selectedChoiceId={this.state.selectedChoiceId}
                       choices={this.props.question.choices}
                       responseId={this.props.question.responded ? this.props.question.response.choice.id : null}
-                      isResponseCorrect={this.props.question.isCorrect}/>) : null;
+                      isResponseCorrect={this.props.question.responded ? this.props.question.response.isCorrect : null}/>) : null;
 
     return (
       <div className="question-card clearfix">
@@ -165,7 +165,7 @@ class QuestionCard extends Component {
         course: this.props.course,
         choice: choice,
         question: question,
-        responseHistory: this.props.routeQuestions,
+        responseHistory: _.tail(this.props.routeQuestions),
         username: this.props.user.username
       });
     }
