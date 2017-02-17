@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
   let mission = state.mission.currentMission;
 
   return {
-    course: getCurrentCourse(state),
+    // course: getCurrentCourse(state),
     mission,
     routeQuestions: mission ? getRouteQuestions(mission.questions[state.mission.currentDirectiveIndex], state.mission.currentTarget) : null,
     isInProgressSubmitChoice: state.mission.isInProgressSubmitChoice ? state.mission.isInProgressSubmitChoice : false,

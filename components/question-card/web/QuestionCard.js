@@ -162,7 +162,7 @@ class QuestionCard extends Component {
       let choice = _.find(this.props.question.choices, {id: choiceId});
 
       this.props.onSubmitResponse({
-        course: this.props.course,
+        mission: this.props.mission,
         choice: choice,
         question: question,
         responseHistory: _.tail(this.props.routeQuestions),

@@ -35,7 +35,8 @@ export function submitResponse(data) {
       data: {
         choice: data.choice,
         question: data.question,
-        responseHistory: data.responseHistory
+        responseHistory: data.responseHistory,
+        missionId: data.missionId
       },
       headers: {
         'x-fbw-username': data.username
@@ -54,8 +55,8 @@ export function submitResponse(data) {
 }
 
 function _validate(data) {
-  if (!data.course) {
-    throw new TypeError('course must be non-null')
+  if (!data.missionId) {
+    throw new TypeError('missionId must be provided')
   }
 
   if (!data.responseHistory) {
