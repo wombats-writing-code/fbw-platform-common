@@ -36,7 +36,7 @@ export function submitResponse(data) {
         choice: data.choice,
         question: data.question,
         responseHistory: data.responseHistory,
-        missionId: data.missionId
+        missionId: data.mission._id
       },
       headers: {
         'x-fbw-username': data.username
@@ -55,8 +55,8 @@ export function submitResponse(data) {
 }
 
 function _validate(data) {
-  if (!data.missionId) {
-    throw new TypeError('missionId must be provided')
+  if (!data.mission) {
+    throw new TypeError('mission must be provided')
   }
 
   if (!data.responseHistory) {

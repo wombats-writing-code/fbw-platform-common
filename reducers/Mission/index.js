@@ -135,20 +135,26 @@ export default function missionReducer (state = initialState, action) {
     case RECEIVE_SUBMIT_RESPONSE:
       return _.assign({}, state, {
         isInProgressSubmitChoice: false,
-        // update the
         currentMission: _.assign({}, state.currentMission, {
           questions: _.map(state.currentMission.questions, section => {
             return _.map(section, targetRoute => {
-              return _.map(targetRoute, q => {
+              let needsUpdate;
+              let route = _.map(targetRoute, q => {
                 if (q.id === action.responseResult.question.id) {
+                  needsUpdate = true;
                   return _.assign({}, action.responseResult.question, {
-                    isCorrect: action.responseResult.question.isCorrect,
                     responded: true
                   })
                 }
 
                 return q;
-              })
+              });
+
+              if (needsUpdate && action.responseResult.nextQuestion) {
+                route.push(action.responseResult.nextQuestion);
+              }
+
+              return route;
             })
           })
         })
