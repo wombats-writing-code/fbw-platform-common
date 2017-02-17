@@ -109,12 +109,23 @@ export function bankAliasId (courseId) {
 }
 
 export function isFBWSpring2017(name) {
-  name = name.toLowerCase()
-  return isFBW(name) ||
-    (name.indexOf('sp17') >= 0 &&
-    (isMAT121(name) || isACC(name)))
+  let lowercased = name.toLowerCase()
+  return lowercased.indexOf('fly-by-wire') >= 0 || lowercased.indexOf('fbw') >= 0 ||
+          (lowercased.indexOf('sp17') >= 0 &&
+          (isMAT121(lowercased) || isACC(lowercased)))
 }
 
 export function isFBW(name) {
-  return name.indexOf('fly-by-wire') >= 0 || name.indexOf('fbw') >= 0
+  return
+}
+
+function isMAT121(name) {
+  return name.indexOf('mat') >= 0 &&
+        name.indexOf('121') >= 0 &&
+        (name.indexOf('142') >= 0 || name.indexOf('103') >= 0)
+}
+
+function isACC(name) {
+  return name.indexOf('acc') >= 0 &&
+    name.indexOf('202') >= 0
 }

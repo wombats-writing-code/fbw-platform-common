@@ -29,29 +29,6 @@ export default function loginReducer (state = initialState, action) {
         isLoggedIn: true
       })
 
-    case UPDATE_USERNAME:
-      return _.assign({}, state, {
-        form: {
-          username: action.username ? action.username.replace(/\s/g, '') : ''
-        }
-      })
-
-    case LOGGED_IN_OPTIMISTIC:
-      return _.assign({}, state, {
-        isLoginInProgress: true,
-        isVisitor: true
-      })
-
-    case LOGGED_IN:
-      return _.assign({}, state, {
-        user: {
-          username: action.data.username,
-        },
-        isVisitor: true,
-        isLoginInProgress: false,
-        isLoggedIn: true
-      })
-
     case LOG_OUT:
       return _.assign({}, state, stampNullUser())
 
@@ -73,6 +50,6 @@ function stampNullUser() {
     },
     isLoggedIn: false,
     isLoginInProgress: false,
-    isVisitor: true
+    isVisitor: false
   }
 }
