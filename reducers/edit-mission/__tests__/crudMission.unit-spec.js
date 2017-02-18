@@ -31,8 +31,7 @@ describe('createMission, deleteMission actions', () => {
     }
 
     let course = {
-      _id: 'bar',
-      Id: 'baz'
+      Id: "1724986"
     }
 
     store.dispatch(createMission(mission, course))

@@ -37,7 +37,7 @@ export function createMission(mission, course) {
           goals: _.map(mission.selectedDirectives, 'id'),
           followsFromMissions: _.map(mission.followsFromMissions, 'id')
         },
-        course
+        courseId: course.Id || course.Identifier,
       },
       method: 'POST',
       url: `${getDomain()}/l4/missions/`
