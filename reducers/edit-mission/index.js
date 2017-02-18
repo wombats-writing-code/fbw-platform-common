@@ -101,21 +101,6 @@ export default function editMissionReducer (state = initialState, action) {
         isDeleteMissionInProgress: false,
       })
 
-    // case RECEIVE_UPDATE_MISSION:
-    //   console.log('receiving update mission', action)
-    //   console.log('current state', state)
-    //   return _.assign({}, state, {
-    //     missions: _.map(state.missions, (m) => {
-    //       console.log('mid', m.id, 'action id', action.mission.id)
-    //       if (m.id === action.mission.id) {
-    //         return action.mission;
-    //       }
-    //
-    //       return m;
-    //     }),
-    //     currentMission: action.mission
-    //   })
-
     case UPDATE_MISSION_FORM:
       // let's add some logic to the datepicker interactions ...
       // Probably shouldn't go here, but I'm not sure where it should really go
@@ -183,43 +168,6 @@ export default function editMissionReducer (state = initialState, action) {
         }
       })
 
-    // case UPDATE_EDIT_MISSION_FORM:
-    //   // let's add some logic to the datepicker interactions ...
-    //   // Probably shouldn't go here, but I'm not sure where it should really go
-    //   let nextFocusedInputEdit = null;
-    //   if (_.has(action.data, "startDate") && state.editMission.startTime != action.data.startDate) {
-    //     nextFocusedInputEdit = END_DATE
-    //   } else if (_.has(action.data, "focusedInput")) {
-    //     nextFocusedInputEdit = action.data.focusedInput
-    //   }
-    //
-    //   let newStartTimeEdit = _.has(action.data, "startDate") ? action.data.startDate : state.editMission.startTime,
-    //     newDeadlineEdit = _.has(action.data, "endDate") ? action.data.endDate : state.editMission.deadline,
-    //     newDisplayNameEdit = _.has(action.data, "displayName") ? action.data.displayName : state.editMission.displayName,
-    //     // newGenusTypeIdEdit = _.has(action.data, "genusTypeId") ? action.data.genusTypeId : state.editMission.genusTypeId;
-    //     newGenusTypeIdEdit = 'assessment-genus%3Afbw-homework-mission%40ODL.MIT.EDU';
-    //
-    //   // lets do form validation
-    //   let formErrorEdit = false;
-    //   if (newStartTimeEdit === null ||
-    //       newDeadlineEdit === null ||
-    //       newGenusTypeIdEdit === '' ||
-    //       newDisplayNameEdit === '') {
-    //     formErrorEdit = true;
-    //   }
-    //
-    //   return _.assign({}, state, {
-    //     editMission: {
-    //       id: state.editMission.id,
-    //       assessmentOfferedId: state.editMission.assessmentOfferedId,
-    //       startTime: newStartTimeEdit,
-    //       deadline: newDeadlineEdit,
-    //       displayName: newDisplayNameEdit,
-    //       genusTypeId: newGenusTypeIdEdit,
-    //       focusedInput: nextFocusedInputEdit,
-    //       formError: formErrorEdit
-    //     }
-    //   })
 
     default:
       return state

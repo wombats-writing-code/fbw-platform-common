@@ -22,15 +22,22 @@ export function getItemsOptimistic(data) {
   return {type: GET_ITEMS, data };
 }
 
-export function getItems(courseId, username) {
+export function getItems(data) {
+  if (!data.course) {
+    throw TypeError('course must be provided to getMapping')
+  }
+
+  if (!data.username) {
+    throw TypeError('data must have username field')
+  }
 
   return function(dispatch) {
     dispatch(getItemsOptimistic([]));
 
     return axios({
-      url: `${getDomain()}/l4/questions?courseId=${courseId}` ,
+      url: `${getDomain()}/l4/questions?courseId=${data.course.Id || data.course.Identifier}` ,
       headers: {
-        'x-fbw-username': username
+        'x-fbw-username': data.username
       }
     })
     .then((response) => {

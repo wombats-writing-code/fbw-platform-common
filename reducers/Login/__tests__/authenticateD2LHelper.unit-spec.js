@@ -29,7 +29,7 @@ describe('authenticateD2LHelper', () => {
     getD2LEnrollments(credentials, '/')
     .then( (courses) => {
       // console.log('courses', courses);
-      courses[0].Code.should.be.eql('Fly-by-wire MAT121');
+      courses[0].Code.should.be.a('string');
 
       done();
     })

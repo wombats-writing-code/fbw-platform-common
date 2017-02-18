@@ -28,6 +28,7 @@ export function getD2LClassRoster(data) {
     return classRoster(data.credentials, data.url, data.orgUnitId)
     .then((roster) => {
       dispatch(receiveD2LClassRoster(roster));
+      return roster;
     })
   }
 }

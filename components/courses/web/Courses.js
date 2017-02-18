@@ -12,7 +12,7 @@ class Courses extends Component {
         {_.map(this.props.courses, course => {
           return (
             <li className="course" key={`course_${course.Id}`} onClick={() => this.props.onSelectCourse(course)}>
-              <p>{course.Code}</p>
+              <p>{course.Name}</p>
             </li>
           )
         })}

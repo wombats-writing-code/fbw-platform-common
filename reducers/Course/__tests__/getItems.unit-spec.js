@@ -23,7 +23,10 @@ describe('getItems', function() {
   it('should call getItems and receive items for Accounting', function(done) {
     const store = mockStore({})
 
-    store.dispatch(getItems('1744153', 'Nutter-Butter-1145644@acc.edu'))
+    store.dispatch(getItems({
+      course: {Id: '1744153'},
+      username: 'Nutter-Butter-1145644@acc.edu'
+    }))
     .then(res => {
       // console.log('getItems res', res);
       res.should.be.a('array');

@@ -55,13 +55,13 @@ export function getD2LEnrollments(credentials, url) {
 
     return axios.all(courseTermPromises)
     .then(res => {
-      let courses = _.map(res, 'data');
+      let courses = _.uniqBy(_.flatten(_.map(res, 'data')), 'Code');
       return courses;
     });
   })
   .catch((error) => {
     console.log('error getting d2l enrollments', error)
-    return courses;
+    return error;
   })
 }
 

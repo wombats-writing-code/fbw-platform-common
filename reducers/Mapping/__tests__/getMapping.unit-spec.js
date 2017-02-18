@@ -13,9 +13,27 @@ import configureMockStore from 'redux-mock-store'
 const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
 
-import {getMapping} from '../getMapping'
+import {getMapping, GET_MAPPING_OPTIMISTIC, RECEIVE_MAPPING} from '../getMapping'
 
 describe('getMapping', () => {
 
+  it('should create 2 actions when getMapping() is called', done => {
+    const store = mockStore({});
+
+    store.dispatch(getMapping({
+      course: {Id: '1744153'},
+      entityTypes: ['outcome']
+    }))
+    .then( () => {
+      let actions = store.getActions();
+      // console.log('actions', actions)
+
+      actions.length.should.be.eql(2);
+      actions[0].type.should.be.eql(GET_MAPPING_OPTIMISTIC);
+      actions[1].type.should.be.eql(RECEIVE_MAPPING);
+      actions[1].mapping.entities.length.should.be.above(0);
+      done();
+    });
+  });
 
 })

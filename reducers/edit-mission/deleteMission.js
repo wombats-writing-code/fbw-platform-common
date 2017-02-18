@@ -17,26 +17,25 @@ export function deleteMissionOptimistic(data) {
   return { type: DELETE_MISSION_OPTIMISTIC, data };
 }
 
-export function deleteMission(mission, bankId) {
-  let options = {
-    data: {
-      assessmentOfferedId: mission.assessmentOfferedId
-    },
-    method: 'DELETE',
-    url: `${getDomain()}/middleman/banks/${bankId}/missions/${mission.id}`
+export function deleteMission(mission) {
+  if (!mission) {
+    throw TypeError('whole mission object must be provided to deleteMission')
   }
 
   return function(dispatch) {
     dispatch(deleteMissionOptimistic(mission));
 
-    return axios(options)
+    return axios({
+      method: 'DELETE',
+      url: `${getDomain()}/l4/missions/${mission.id}`
+    })
     .then((results) => {
-      // console.log('deleted mission', mission);
-
       dispatch(receiveDeleteMission(mission));
+      return mission;
     })
     .catch((error) => {
       console.log('error deleting mission', error);
+      return error;
     });
   }
 }
