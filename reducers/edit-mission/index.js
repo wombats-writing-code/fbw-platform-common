@@ -151,21 +151,17 @@ export default function editMissionReducer (state = initialState, action) {
                                   _.clone(state.newMission.directiveSearchQuery) :
                                   action.data.directiveSearchQuery;
 
-      // for update forms, we need to keep at least the id, assessmentOfferedId,
       return _.assign({}, state, {
-        newMission: {
-          id: state.newMission.id || null,
-          assessmentOfferedId: state.newMission.assessmentOfferedId || null,
+        newMission: _.assign({}, state.newMission, {
           startTime: newStartTime,
           deadline: newDeadline,
           displayName: newDisplayName,
-          genusTypeId: newGenusTypeId,
           focusedInput: nextFocusedInput,
           formError: formError,
           selectedModule: action.data.selectedModule || state.newMission.selectedModule,
           selectedDirectives: selectedDirectives,
           directiveSearchQuery: directiveSearchQuery
-        }
+        })
       })
 
 
@@ -179,8 +175,8 @@ function stampNewMission() {
   return {
     startTime: null,
     deadline: null,
+    type: 'PHASE_I_MISSION_TYPE',
     displayName: '',
-    genusTypeId: 'assessment-genus%3Afbw-homework-mission%40ODL.MIT.EDU',
     focusedInput: null,
     formError: false,
     selectedModule: null,

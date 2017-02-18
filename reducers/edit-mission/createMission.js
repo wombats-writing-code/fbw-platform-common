@@ -29,7 +29,14 @@ export function createMission(mission, course) {
 
     return axios({
       data: {
-        mission,
+        mission: {
+          displayName: mission.displayName,
+          startTime: mission.startTime,
+          type: mission.type,
+          deadline: mission.deadline,
+          goals: _.map(mission.selectedDirectives, 'id'),
+          followsFromMissions: _.map(mission.followsFromMissions, 'id')
+        },
         course
       },
       method: 'POST',

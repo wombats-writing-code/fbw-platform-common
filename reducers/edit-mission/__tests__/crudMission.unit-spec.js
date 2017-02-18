@@ -27,7 +27,7 @@ describe('createMission, deleteMission actions', () => {
       type:  'PHASE_I_MISSION_TYPE',
       startTime: moment(),
       deadline: moment().add(7, 'd'),
-      goals: [1, 2, 3]
+      selectedDirectives: [{id:1}, {id:2}, {id:3}]
     }
 
     let course = {
