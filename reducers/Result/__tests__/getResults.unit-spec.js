@@ -30,7 +30,7 @@ describe('getResults', () => {
       username: 'Nutter-Butter-1145644@acc.edu',
     }))
     .then(res => {
-      console.log('getResults res', res);
+      // console.log('getResults res', res);
 
       let actions = store.getActions();
       actions.length.should.eql(2);

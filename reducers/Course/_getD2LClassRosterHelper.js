@@ -7,8 +7,8 @@ import D2L from 'valence'
 import { getDomain } from '../../utilities'
 
 /*
-  Gets the class roster for the given orgUnitId (subject)
-  http://docs.valence.desire2learn.com/res/enroll.html#get--d2l-api-le-(version)-(orgUnitId)-classlist-
+  Gets the class roster for the given courseIdentifier (subject)
+  http://docs.valence.desire2learn.com/res/enroll.html#get--d2l-api-le-(version)-(courseIdentifier)-classlist-
 
   Example output:
   [{
@@ -62,17 +62,16 @@ import { getDomain } from '../../utilities'
     "Email": null
 }]
 */
-export function classRoster (credentials, url, orgUnitId) {
-  let AppContext = new D2L.ApplicationContext(credentials.appID, credentials.appKey);
-  let userContext = AppContext.createUserContext(credentials.host, credentials.port, url)
-  let rosterUrl = `/d2l/api/le/1.5/${orgUnitId}/classlist/`
-  let options = {
-    url: userContext.createAuthenticatedUrl(rosterUrl, 'GET') + _appendDevRole(credentials)
-  }
+export function classRoster (D2LConfig, url, courseIdentifier) {
+  let AppContext = new D2L.ApplicationContext(D2LConfig.appID, D2LConfig.appKey);
+  let userContext = AppContext.createUserContext(D2LConfig.host, D2LConfig.port, url)
+  let rosterUrl = `/d2l/api/le/1.5/${courseIdentifier}/classlist/`
 
   // console.log('roster options', options)
 
-  return axios(options)
+  return axios({
+    url: userContext.createAuthenticatedUrl(rosterUrl, 'GET') + _appendDevRole(D2LConfig)
+  })
   .then((response) => {
     if (process.env.NODE_ENV !== 'test') console.log('got d2l class list', response);
 
@@ -83,9 +82,9 @@ export function classRoster (credentials, url, orgUnitId) {
   })
 }
 
-function _appendDevRole(credentials) {
+function _appendDevRole(D2LConfig) {
   if (process.env.NODE_ENV !== 'production') {
-    return '&role=' + credentials.role
+    return '&role=' + D2LConfig.role
   }
 
   return '';

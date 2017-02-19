@@ -44,7 +44,7 @@ export function getResults(data) {
       }
     })
     .then((results) => {
-      console.log('received results', results.data)
+      // console.log('received results', results.data)
       dispatch(receiveResults(results.data));
       return results.data;
     })

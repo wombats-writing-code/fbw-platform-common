@@ -20,12 +20,23 @@ export function getD2LClassRosterOptimistic () {
 }
 
 export function getD2LClassRoster(data) {
+  if (!data.D2LConfig) {
+    throw new TypeError('data must have a D2LConfig object')
+  }
+
+  if (!data.url) {
+    throw new TypeError('data must have a url string that is the d2l authenticatedUrl')
+  }
+
+  if (!data.courseId) {
+    throw new TypeError('data must have the course Identifier of the course')
+  }
 
   return function (dispatch) {
     dispatch(getD2LClassRosterOptimistic());
 
     // now get the user enrollments and set them in the global state
-    return classRoster(data.credentials, data.url, data.orgUnitId)
+    return classRoster(data.D2LConfig, data.url, data.courseId)
     .then((roster) => {
       dispatch(receiveD2LClassRoster(roster));
       return roster;
