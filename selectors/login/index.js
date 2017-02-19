@@ -1,4 +1,16 @@
 
+
+export const getDisplayNameFromD2LUser = (d2lUser) => {
+  if (!d2lUser) {
+    return new TypeError('the d2l user object with FirstName and LastName fields must be provided');
+  }
+
+  let parts = d2lUser.DisplayName.split(', ');
+
+  return parts[1] + ' ' + parts[0];
+}
+
+
 export const usernameToDisplayName = (username) => {
   if (username.indexOf('-') >= 0) {
     return `${username.split('-')[0]} ${username.split('-')[1]}`

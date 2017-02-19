@@ -7,10 +7,8 @@ import D2L from 'valence'
 
 import {getD2LEnrollments, whoami} from './_authenticateD2LHelper'
 import { getDomain } from '../../utilities'
-import {createBaseQBankStudentAuthorizations} from './logInUser'
 
 export const RECEIVE_AUTHENTICATE_D2L = 'RECEIVE_AUTHENTICATE_D2L'
-export const AUTHENTICATE_D2L_OPTIMISTIC = 'AUTHENTICATE_D2L_OPTIMISTIC'
 
 // ------------------------------------
 // Actions
@@ -19,65 +17,38 @@ export function receiveAuthenticateUrl(data) {
   return { type: RECEIVE_AUTHENTICATE_D2L, data }
 }
 
-export function authenticateD2L(credentials, optionalUrl) {
+export function authenticateD2L(D2LConfig, optionalUrl) {
 
   return function (dispatch) {
-    // console.log('authenticateD2L', credentials)
+    // console.log('authenticateD2L', D2LConfig)
 
     let url = optionalUrl || `${window.location.pathname}${window.location.search}`;
-    let courses, username;
+    let courses, d2lUser;
     if (process.env.NODE_ENV !== 'test') console.log('mounted d2l callback!', url);
 
     // now get the user enrollments and set them in the global state
-    return getD2LEnrollments(credentials, url)
+    return getD2LEnrollments(D2LConfig, url)
     .then((enrollments) => {
       if (process.env.NODE_ENV !== 'test') console.log("got enrollments", enrollments);
 
       courses = enrollments;
 
-      return whoami(credentials, url)
+      return whoami(D2LConfig, url)
     })
     .then((response) => {
       if (process.env.NODE_ENV !== 'test') console.log('got whoami', response);
 
-      username = stringifyUsername(response);
+      d2lUser = stringifyUsername(response);
 
-      dispatch(receiveAuthenticateUrl({url, courses, username}));
+      dispatch(receiveAuthenticateUrl({url, courses, d2lUser}));
 
-      return username;
+      return d2lUser;
     })
     .catch( err => {
       console.error(err);
     })
   }
 }
-
-//
-// export function authenticateD2LStudent(credentials, optionalUrl, testUsername) {
-//
-//   return function (dispatch) {
-//     let url = optionalUrl || `${window.location.pathname}${window.location.search}`;
-//     let courses, username;
-//
-//     return getD2LEnrollments(credentials, url)
-//     .then((courses) => {
-//       if (process.env.NODE_ENV !== 'test') console.log("got courses", courses);
-//       courses = enrolled;
-//
-//       return whoami(credentials, url)
-//     })
-//     .then((response) => {
-//       if (process.env.NODE_ENV !== 'test') console.log('got whoami', response);
-//
-//       dispatch(receiveAuthenticateUrl({url, courses, username}));
-//
-//       return response;
-//     })
-//     .catch((err) => {
-//       console.log(err)
-//     })
-//   }
-// }
 
 
 export function stringifyUsername (whoami) {

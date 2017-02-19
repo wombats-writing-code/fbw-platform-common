@@ -1,5 +1,4 @@
 
-import {LOGGED_IN} from '../reducers/Login/logInUser'
 import {RECEIVE_MISSIONS} from '../reducers/Mission/getMissions'
 import {RECEIVE_CREATE_TAKE_MISSION} from '../reducers/Mission/selectOpenMission'
 import {SELECT_DIRECTIVE} from '../reducers/Mission/selectDirective'
@@ -18,8 +17,8 @@ const logger = store => next => action => {
     // console.log('state in logger', state);
 
     switch(action.type) {
-      case LOGGED_IN:
-        ga('set', 'userId', action.data.username);  // Set the user ID using signed-in user_id.
+      case RECEIVE_AUTHENTICATE_D2L:
+        ga('set', 'userId', action.data.d2lUser.Identifier);  // Set the user ID using signed-in user_id.
         break;
 
       case RECEIVE_MISSIONS:

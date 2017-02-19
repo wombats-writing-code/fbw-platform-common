@@ -1,13 +1,7 @@
 // login reducer
-
 import _ from 'lodash'
 
-import { extractDisplayName } from '../../d2lutils'
-
 import {RECEIVE_AUTHENTICATE_D2L} from './authenticateD2L'
-
-import { UPDATE_USERNAME } from './updateUsername'
-import { LOGGED_IN_OPTIMISTIC, LOGGED_IN } from './logInUser'
 import { LOG_OUT } from './logOutUser'
 
 // ------------------------------------
@@ -20,12 +14,9 @@ export default function loginReducer (state = initialState, action) {
     case RECEIVE_AUTHENTICATE_D2L:
       return _.assign({}, state, {
         user: _.assign({}, state.user, {
-          username: action.data.username,
-          d2l: {
-            authenticatedUrl: action.data.url
-          }
+          authenticatedUrl: action.data.url,
+          d2lUser: action.data.d2lUser
         }),
-        isVisitor: false,
         isLoggedIn: true
       })
 

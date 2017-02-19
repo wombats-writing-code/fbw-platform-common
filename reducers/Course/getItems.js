@@ -27,18 +27,11 @@ export function getItems(data) {
     throw TypeError('course must be provided to getMapping')
   }
 
-  if (!data.username) {
-    throw TypeError('data must have username field')
-  }
-
   return function(dispatch) {
     dispatch(getItemsOptimistic([]));
 
     return axios({
       url: `${getDomain()}/l4/questions?courseId=${data.course.Id || data.course.Identifier}` ,
-      headers: {
-        'x-fbw-username': data.username
-      }
     })
     .then((response) => {
       // console.log('get items response', response)
