@@ -11,7 +11,7 @@ const _ = require('lodash')
 import {RECEIVE_MISSIONS} from '../getMissions'
 import {SELECT_DIRECTIVE} from '../selectDirective'
 import {SELECT_TARGET} from '../selectTarget'
-import {SELECT_MISSION_RESULT} from '../selectMissionResult'
+import {SELECT_STUDENT_RESULT} from '../selectStudentResult'
 import {RECEIVE_SUBMIT_RESPONSE} from '../submitResponse'
 import {RECEIVE_CREATE_TAKE_MISSION, CREATE_TAKE_MISSION_OPTIMISTIC} from '../selectOpenMission'
 
@@ -137,9 +137,9 @@ describe('mission reducer', () => {
     newState.missions[0].id.should.be.eql('bar')
   });
 
-  it('should update state upon SELECT_MISSION_RESULT', () => {
+  it('should update state upon SELECT_STUDENT_RESULT', () => {
     let newState = reducer({}, {
-      type: SELECT_MISSION_RESULT,
+      type: SELECT_STUDENT_RESULT,
       missionResult: {
         sections: [
           {name: 'foo', questions: [

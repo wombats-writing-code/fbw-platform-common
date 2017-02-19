@@ -12,7 +12,7 @@ import {SUBMIT_RESPONSE_OPTIMISTIC, RECEIVE_SUBMIT_RESPONSE } from './submitResp
 import { SHOW_ANSWER_OPTIMISTIC, RECEIVE_SHOW_ANSWER } from './showAnswer'
 import {RECEIVE_UPDATE_MISSION} from '../edit-mission/updateMission'
 
-import {SELECT_MISSION_RESULT} from './selectMissionResult'
+import {SELECT_STUDENT_RESULT} from './selectStudentResult'
 import { SELECT_DIRECTIVE } from './selectDirective'
 import { SELECT_TARGET } from './selectTarget'
 import { SELECT_CHOICE } from './selectChoice'
@@ -110,9 +110,9 @@ export default function missionReducer (state = initialState, action) {
         isGetMissionInProgress: false
       });
 
-    case SELECT_MISSION_RESULT:
+    case SELECT_STUDENT_RESULT:
       let questions = _.flatMap(action.missionResult.sections, 'questions');
-      let currentTarget = _.find(questions, q => q.itemId === action.question.itemId)
+      let currentTarget = _.find(questions, q => q.id === action.question.id)
 
       return _.assign({}, state, {
         currentMissionSections: action.missionResult.sections,
@@ -199,4 +199,9 @@ export default function missionReducer (state = initialState, action) {
     default:
       return state
   }
+}
+
+export const missionConfig = {
+  PHASE_I_MISSION_TYPE: 'PHASE_I_MISSION_TYPE',
+  PHASE_II_MISSION_TYPE: 'PHASE_I_MISSION_TYPE'
 }

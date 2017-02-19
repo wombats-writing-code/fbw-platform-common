@@ -1,9 +1,9 @@
 
 
 
-export const SELECT_MISSION_RESULT = 'SELECT_MISSION_RESULT';
+export const SELECT_STUDENT_RESULT = 'SELECT_STUDENT_RESULT';
 
-export function selectMissionResult(missionResult, currentDirectiveIndex, question) {
+export function selectStudentResult(missionResult, currentDirectiveIndex, question) {
   if (!missionResult) {
     throw new Error('A result of a student mission must be provided.')
   }
