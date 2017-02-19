@@ -4,6 +4,7 @@ import {RECEIVE_CREATE_TAKE_MISSION} from '../reducers/Mission/selectOpenMission
 import {SELECT_DIRECTIVE} from '../reducers/Mission/selectDirective'
 import {SELECT_TARGET} from '../reducers/Mission/selectTarget'
 import {LOG_OUT} from '../reducers/Login/logOutUser'
+import {RECEIVE_AUTHENTICATE_D2L} from '../reducers/Login/authenticateD2L'
 
 import {getD2LUserIdentifer} from '../selectors/login'
 import {getCurrentCourse} from '../selectors/course'

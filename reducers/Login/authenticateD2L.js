@@ -38,7 +38,7 @@ export function authenticateD2L(D2LConfig, optionalUrl) {
     .then((response) => {
       if (process.env.NODE_ENV !== 'test') console.log('got whoami', response);
 
-      d2lUser = stringifyUsername(response);
+      d2lUser = response;
 
       dispatch(receiveAuthenticateUrl({url, courses, d2lUser}));
 
