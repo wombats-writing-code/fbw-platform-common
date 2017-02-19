@@ -12,14 +12,8 @@ class Login extends Component {
   }
 
   componentDidMount () {
-    if (this.props.username) {
+    if (this.props.d2lUserIdentifer) {
       this.props.logout()
-    }
-  }
-
-  componentDidUpdate () {
-    if (this.props.isVisitor && this.textInput) {
-      this.textInput.focus()
     }
   }
 
@@ -33,33 +27,6 @@ class Login extends Component {
       loginButtonText = (<div className="">
         Login
       </div>)
-    }
-
-    let visitorLogin,
-      visitorButtonText = 'Visiting?';
-    if (this.state.isVisitorLoginVisible) {
-      visitorButtonText = 'Cancel';
-
-      let loginButton = (
-        <button type="submit" disabled={this.props.username ? false : true} className="login-form-button login-form-button--submit">
-          {loginButtonText}
-        </button>
-      )
-
-      visitorLogin = (
-        <div className="medium-5 medium-centered columns">
-          <form onSubmit={(e) => this._loginUserSimple(e)}>
-            <input type="text"
-              ref={(input) => {this.textInput = input;}}
-              onChange={(e) => props.updateUsername(e.target.value.toUpperCase())}
-              placeholder='Username'
-              className="login-form__input"
-              value={props.username} />
-
-            {loginButton}
-          </form>
-        </div>
-      )
     }
 
     return (
@@ -76,30 +43,12 @@ class Login extends Component {
             Quinsigamond
           </button>
         </div>
-
-        <button className="visiting-prompt-button" onClick={() => this.setState({isVisitorLoginVisible: !this.state.isVisitorLoginVisible})} >
-          {visitorButtonText}
-        </button>
-
-        {visitorLogin}
-
       </div>
     )
   }
 
   _handleACCLogin = () => {
     window.open(this.props.authenticationUrl, '_self')
-  }
-
-  _loginUserSimple = (e) => {
-    console.log('logging in with visitor username:', this.props.username)
-
-    e.preventDefault();
-    if (this.props.username !== '') {
-      this.props.login('fbw-visitor', this.props.username)
-      // this.props.onSetEnrolledSubjects(bankIds)
-      browserHistory.push('/')
-    }
   }
 
 }

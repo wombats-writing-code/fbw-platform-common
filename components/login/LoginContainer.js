@@ -2,39 +2,31 @@
 import _ from 'lodash'
 import { connect } from 'react-redux'
 
-import { logInUser } from '../../reducers/Login/logInUser'
-import { updateUsername } from '../../reducers/Login/updateUsername'
 import { logOutUser } from '../../reducers/Login/logOutUser'
 import {getAuthenticationUrl} from '../../d2lutils'
-import {authenticateD2LStudent} from '../../reducers/Login/authenticateD2L'
+import {authenticateD2L} from '../../reducers/Login/authenticateD2L'
+import {getD2LUserIdentifer} from '../../selectors/login'
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('state in LoginContainer', state);
+  // console.log('state in LoginContainer', state);
 
   return {
-    username: state.login.form ? state.login.form.username : null,
-    isLoginInProgress: state.username ? state.login.isLoginInProgress : false,
-    currentUsername: state.username ? state.username : null,
-    isVisitor: state.login.isVisitor ? state.login.isVisitor : false
+    d2lUserIdentifer: getD2LUserIdentifer(state),
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    updateUsername: (username) => dispatch(updateUsername(username)),
-    login: (school, username) => dispatch(logInUser(school, username)),
-    logout: () => {
-      dispatch(logOutUser())
-    },
-    authenticateD2L: (credentials, url) => dispatch(authenticateD2LStudent(credentials, url)) // this should only be needed in the iOS case
+    logout: () => dispatch(logOutUser()),
+    authenticateD2L: (D2LConfig, url) => dispatch(authenticateD2L(D2LConfig, url)) // this should only be needed in the iOS case
   }
 }
 
-const provider = (component, credentials) => {
+const provider = (component, D2LConfig) => {
   let mergeProps = (stateProps, dispatchProps, ownProps) => {
     return _.assign({}, stateProps, dispatchProps, ownProps, {
-      authenticationUrl: getAuthenticationUrl(credentials),
-      credentials
+      authenticationUrl: getAuthenticationUrl(D2LConfig),
+      D2LConfig
     })
   }
   return connect(mapStateToProps, mapDispatchToProps, mergeProps)(component)

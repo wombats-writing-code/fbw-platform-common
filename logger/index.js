@@ -5,14 +5,14 @@ import {SELECT_DIRECTIVE} from '../reducers/Mission/selectDirective'
 import {SELECT_TARGET} from '../reducers/Mission/selectTarget'
 import {LOG_OUT} from '../reducers/Login/logOutUser'
 
-import {getUser} from '../selectors'
+import {getD2LUserIdentifer} from '../selectors/login'
 import {getCurrentCourse} from '../selectors/course'
 
 const logger = store => next => action => {
   if (window.ga) {
     let state = store.getState();
     let course = getCurrentCourse(state);
-    let username = getUser(state).username;
+    let userIdentifier = getD2LUserIdentifer(state);
 
     // console.log('state in logger', state);
 
@@ -27,7 +27,7 @@ const logger = store => next => action => {
             hitType: 'event',
             eventAction: action.type,
             eventCategory: course.name || course.displayName,
-            eventValue: username
+            eventValue: userIdentifier
           });
         } catch (e) {
           console.log(e);
@@ -40,7 +40,7 @@ const logger = store => next => action => {
             hitType: 'event',
             eventAction: action.type,
             eventCategory: state.mission.currentMission.displayName.text,
-            eventValue: username
+            eventValue: userIdentifier
           });
         } catch(e) {
           console.log(e);
@@ -53,7 +53,7 @@ const logger = store => next => action => {
             hitType: 'event',
             eventAction: action.type,
             eventCategory: action.directiveIndex,
-            eventValue: username
+            eventValue: userIdentifier
           });
         } catch(e) {
           console.log(e);
@@ -66,7 +66,7 @@ const logger = store => next => action => {
             hitType: 'event',
             eventAction: action.type,
             eventCategory: action.target.itemId,
-            eventValue: username
+            eventValue: userIdentifier
           });
         } catch(e) {
           console.log(e);
@@ -79,7 +79,7 @@ const logger = store => next => action => {
             hitType: 'event',
             eventAction: action.type,
             eventCategory: state.mission.currentMission.displayName.text,
-            eventValue: username
+            eventValue: userIdentifier
           });
         } catch(e) {
           console.log(e);
