@@ -6,7 +6,10 @@ import moment from 'moment'
 import {PHASE_I_MISSION_TYPE, PHASE_II_MISSION_TYPE} from '../Mission'
 import {CREATE_MISSION_OPTIMISTIC, RECEIVE_CREATE_MISSION} from './createMission'
 import {DELETE_MISSION_OPTIMISTIC, RECEIVE_DELETE_MISSION} from './deleteMission'
-
+import {
+  CHANGE_MISSION_NAME, CHANGE_MISSION_TYPE, CHANGE_MISSION_START, CHANGE_MISSION_END,
+  SELECT_MODULE, CHANGE_OUTCOME_SEARCH, TOGGLE_OUTCOME
+} from './updateMissionForm'
 import {EDIT_MISSION} from './editMission'
 // import {CREATE_TEST_FLIGHT_MISSIONS_OPTIMISTIC, RECEIVE_CREATE_TEST_FLIGHT_MISSIONS} from './createTestFlightMissions'
 // import {RECEIVE_UPDATE_MISSION} from './updateMission'
@@ -44,6 +47,13 @@ export default function editMissionReducer (state = initialState, action) {
       return _.assign({}, state, {
         isDeleteMissionInProgress: false,
       });
+
+    case CHANGE_MISSION_TYPE:
+      return _.assign({}, state, {
+        newMission: _.assign({}, state.newMission, {
+          displayName: action.value
+        })
+      })
 
     case CHANGE_MISSION_TYPE:
       return _.assign({}, state, {
@@ -88,7 +98,7 @@ export default function editMissionReducer (state = initialState, action) {
       return _.assign({}, state, {
         newMission: _.assign({}, state.newMission, {
           goals
-        });
+        })
       })
 
 
