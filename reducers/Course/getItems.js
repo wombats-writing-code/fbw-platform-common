@@ -24,7 +24,11 @@ export function getItemsOptimistic(data) {
 
 export function getItems(data) {
   if (!data.course) {
-    throw TypeError('course must be provided to getMapping')
+    throw TypeError('course must be provided to getItems')
+  }
+
+  if (!data.user) {
+    throw TypeError('user must be provided to getItems')
   }
 
   return function(dispatch) {
@@ -32,6 +36,9 @@ export function getItems(data) {
 
     return axios({
       url: `${getDomain()}/l4/questions?courseId=${data.course.Id || data.course.Identifier}` ,
+      headers: {
+        'x-fbw-user': data.user.Identifier
+      }
     })
     .then((response) => {
       // console.log('get items response', response)

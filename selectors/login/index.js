@@ -1,25 +1,21 @@
 
+export const getD2LDisplayName = (d2lUser) => {
+  if (d2lUser.d2LDisplayName && d2lUser.d2LDisplayName.indexOf(', ') > -1) {
+    let parts = d2LDisplayName.split(', ');
+    return parts[1] + ' ' + parts[0];
+
+  } else if (d2lUser.FirstName && d2lUser.LastName) {
+    return d2lUser.FirstName + ' ' + d2lUser.LastName;
+  }
+}
+
 export const getD2LUserIdentifer = (state) => {
   if (state.login.user && state.login.user.d2lUser) {
     return state.login.user.d2lUser.Identifier;
   }
 }
 
-
-export const usernameToDisplayName = (username) => {
-  if (username.indexOf('-') >= 0) {
-    return `${username.split('-')[0]} ${username.split('-')[1]}`
-  }
-
-  return username
-}
-
-export const d2LDisplayNameToDisplayName = (d2LDisplayName) => {
-  if (d2LDisplayName && d2LDisplayName.indexOf(', ') > -1) {
-    let parts = d2LDisplayName.split(', ');
-    return parts[1] + ' ' + parts[0];
-  }
-}
+// ==========
 
 export const osidToDisplayName = (agentId) => {
   if (!agentId) return '';

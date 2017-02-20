@@ -30,8 +30,8 @@ export function getResults(data) {
     throw new TypeError('getResults must be provided a mission object')
   }
 
-  if (!data.username) {
-    throw new TypeError('getResults must be provided a username field')
+  if (!data.user) {
+    throw new TypeError('getResults must be provided a user field')
   }
 
   return function(dispatch) {
@@ -40,7 +40,7 @@ export function getResults(data) {
     return axios({
       url: `${getDomain()}/l4/results?missionId=${data.mission.id}`,
       headers: {
-        'x-fbw-username': data.username
+        'x-fbw-user': data.user.Identifier
       }
     })
     .then((results) => {
