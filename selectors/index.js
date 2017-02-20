@@ -1,5 +1,5 @@
 
-export const getUser = (state) => state.login.user
+export const getUser = (state) => state.login.user.d2lUser;
 
 export const isLoggedIn = (state) => state.login.isLoggedIn
 

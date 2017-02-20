@@ -36,11 +36,8 @@ function stampNullUser() {
       school: 'acc'
     },
     user: {
-      d2l: null,
-      username: ''
     },
     isLoggedIn: false,
     isLoginInProgress: false,
-    isVisitor: false
   }
 }

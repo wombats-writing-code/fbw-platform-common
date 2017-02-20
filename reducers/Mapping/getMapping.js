@@ -31,6 +31,10 @@ export function getMapping(data) {
     throw TypeError('entityType must be provided')
   }
 
+  if (!data.user) {
+    throw TypeError('user must be provided to getMapping')
+  }
+
   let courseId = data.course.Id || data.course.Identifier;
   let relationshipTypesString = arrayEncode(data.relationshipTypes, 'relationships')
   let entityTypesString = arrayEncode(data.entityTypes, 'entities')
@@ -40,6 +44,9 @@ export function getMapping(data) {
 
     return axios({
       url: `${getDomain()}/l4/mapping?courseId=${courseId}${entityTypesString}${relationshipTypesString}`,
+      headers: {
+        'x-fbw-user': data.user.Identifier
+      }
     })
     .then( response => {
       dispatch(receiveMapping(response.data));

@@ -27,26 +27,23 @@ export function getMissionsOptimistic (data) {
 
 // returns a list of Missions
 export function getMissions (data) {
-  if (!data.username) {
-    throw TypeError('data must have username field')
+  if (!data.course) {
+    throw TypeError('data must have course object')
   }
 
-  if (!data.course) {
-    throw TypeError('data must havve course object')
+  if (!data.user) {
+    throw TypeError('data must have user object')
   }
 
   return function (dispatch) {
     dispatch(getMissionsOptimistic())
 
-    // let's change this to do the privateBankAlias calculation in the middleman
-    let options = {
+    return axios({
       url: `${getDomain()}/l4/missions` + `?courseId=${data.course.Id || data.course.Identifier}`,
       headers: {
-        'x-fbw-username': data.username
+        'x-fbw-user': data.user.Identifier
       }
-    }
-
-    return axios(options)
+    })
     .then((res) => {
       dispatch(receiveMissions(res.data));
 

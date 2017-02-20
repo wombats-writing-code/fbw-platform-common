@@ -1,8 +1,7 @@
 
-
 export const getD2LUserIdentifer = (state) => {
-  if (state.login.user && state.login.d2lUser) {
-    return state.login.d2lUser.Identifier;
+  if (state.login.user && state.login.user.d2lUser) {
+    return state.login.user.d2lUser.Identifier;
   }
 }
 

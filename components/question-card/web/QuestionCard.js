@@ -166,7 +166,7 @@ class QuestionCard extends Component {
         choice: choice,
         question: question,
         responseHistory: _.tail(this.props.routeQuestions),
-        username: this.props.user.username
+        user: this.props.user
       });
     }
   }

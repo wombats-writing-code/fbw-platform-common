@@ -24,6 +24,14 @@ export function openMissionOptimistic (mission) {
 }
 
 export function selectOpenMission (data) {
+  if (!data.mission) {
+    throw TypeError('selectOpenMission must be provided a mission object');
+  }
+
+  if (!data.user) {
+    throw TypeError('selectOpenMission must be provided a user object');
+  }
+
   return function (dispatch) {
     dispatch(openMissionOptimistic(data.mission))
 
@@ -31,7 +39,7 @@ export function selectOpenMission (data) {
       url: `${getDomain()}/l4/missions/${data.mission._id}`,
       method: 'POST',
       headers: {
-        'x-fbw-username': data.username
+        'x-fbw-user': data.user.Identifier
       }
     };
 

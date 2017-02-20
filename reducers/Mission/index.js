@@ -5,7 +5,6 @@ import {targetKey, targetStatus, filterItemsByTarget } from '../../selectors'
 
 import {SELECT_MISSION} from './selectMission'
 import { GET_MISSIONS_OPTIMISTIC, RECEIVE_MISSIONS } from './getMissions'
-import { GET_SECTION_QUESTIONS_OPTIMISTIC, RECEIVE_SECTION_QUESTIONS } from './getSectionQuestions'
 import { CREATE_TAKE_MISSION_OPTIMISTIC, CREATE_TAKE_MISSION, RECEIVE_CREATE_TAKE_MISSION } from './selectOpenMission'
 import { GET_USER_MISSION_RESULTS_OPTIMISTIC, RECEIVE_GET_USER_MISSION_RESULTS } from './selectClosedMission'
 import {SUBMIT_RESPONSE_OPTIMISTIC, RECEIVE_SUBMIT_RESPONSE } from './submitResponse'
@@ -28,7 +27,9 @@ import {LOG_OUT} from '../Login/logOutUser'
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = {}
+const initialState = {
+  currentDirectiveIndex: 0
+}
 export default function missionReducer (state = initialState, action) {
   switch (action.type) {
     case GET_MISSIONS_OPTIMISTIC:

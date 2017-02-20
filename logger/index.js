@@ -40,7 +40,7 @@ const logger = store => next => action => {
           ga('send', {
             hitType: 'event',
             eventAction: action.type,
-            eventCategory: state.mission.currentMission.displayName.text,
+            eventCategory: state.mission.currentMission.displayName,
             eventValue: userIdentifier
           });
         } catch(e) {
@@ -79,7 +79,7 @@ const logger = store => next => action => {
           ga('send', {
             hitType: 'event',
             eventAction: action.type,
-            eventCategory: state.mission.currentMission.displayName.text,
+            eventCategory: state.mission.currentMission.displayName,
             eventValue: userIdentifier
           });
         } catch(e) {

@@ -33,7 +33,7 @@ class Mission extends Component {
       this.props.onSelectOpenMission({
         course: this.props.course,
         mission,
-        username: this.props.user.username
+        user: this.props.user
       });
     }
   }

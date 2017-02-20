@@ -39,7 +39,7 @@ export function submitResponse(data) {
         missionId: data.mission._id
       },
       headers: {
-        'x-fbw-username': data.username
+        'x-fbw-user': data.user.Identifier
       }
     }
 
@@ -71,7 +71,7 @@ function _validate(data) {
     throw new TypeError('choice must be non-null')
   }
 
-  if (!data.username) {
-    throw new TypeError('username must be non-null')
+  if (!data.user) {
+    throw new TypeError('user must be non-null')
   }
 }
