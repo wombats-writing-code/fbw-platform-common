@@ -23,7 +23,9 @@ describe('selectOpenMission', () => {
     const store = mockStore({});
 
     store.dispatch(selectOpenMission({
-      username: 'Nutter-Butter-1145644@acc.edu',
+      user: {
+        Identifier: 1145645     // shea butter
+      },
       mission: {
         _id: '58a302bcf36d2837a7c8042e'
       },

@@ -21,6 +21,9 @@ describe('getMapping', () => {
     const store = mockStore({});
 
     store.dispatch(getMapping({
+      user: {
+        Identifier: 1145645     // shea butter
+      },
       course: {Id: '1744153'},
       entityTypes: ['outcome']
     }))

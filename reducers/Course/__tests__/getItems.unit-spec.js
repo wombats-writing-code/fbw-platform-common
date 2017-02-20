@@ -25,7 +25,9 @@ describe('getItems', function() {
 
     store.dispatch(getItems({
       course: {Id: '1744153'},
-      username: 'Nutter-Butter-1145644@acc.edu'
+      user: {
+        Identifier: 1145645     // shea butter
+      },
     }))
     .then(res => {
       // console.log('getItems res', res);

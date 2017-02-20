@@ -3,8 +3,7 @@ import _ from 'lodash'
 import axios from 'axios'
 
 import { getDomain } from '../../utilities'
-import { convertUTCPythonDateToJSUTC, localDateTime } from '../../utilities/time'
-import { convertMissionForm } from './_convertMissionFormHelper'
+import { localDateTime } from '../../utilities/time'
 // ------------------------------------
 // Actions
 // ------------------------------------
@@ -23,7 +22,7 @@ export function createMissionOptimistic(mission) {
 }
 
 
-export function createMission(mission, course) {
+export function createMission(mission, course, user) {
   return function(dispatch) {
     dispatch(createMissionOptimistic());
 
@@ -40,7 +39,10 @@ export function createMission(mission, course) {
         courseId: course.Id || course.Identifier,
       },
       method: 'POST',
-      url: `${getDomain()}/l4/missions/`
+      url: `${getDomain()}/l4/missions/`,
+      headers: {
+        'x-fbw-user': user.Identifier
+      }
     })
     .then((response) => {
       let mission = _.assign({}, response.data)

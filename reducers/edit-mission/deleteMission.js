@@ -17,9 +17,13 @@ export function deleteMissionOptimistic(data) {
   return { type: DELETE_MISSION_OPTIMISTIC, data };
 }
 
-export function deleteMission(mission) {
+export function deleteMission(mission, user) {
   if (!mission) {
     throw TypeError('whole mission object must be provided to deleteMission')
+  }
+
+  if (!user) {
+    throw TypeError('user object must be provided to deleteMission')
   }
 
   return function(dispatch) {
@@ -27,7 +31,10 @@ export function deleteMission(mission) {
 
     return axios({
       method: 'DELETE',
-      url: `${getDomain()}/l4/missions/${mission.id}`
+      url: `${getDomain()}/l4/missions/${mission.id}`,
+      headers: {
+        'x-fbw-user': user.Identifier
+      }
     })
     .then((results) => {
       dispatch(receiveDeleteMission(mission));

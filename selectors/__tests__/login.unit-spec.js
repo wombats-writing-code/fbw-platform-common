@@ -2,48 +2,42 @@ let chai = require('chai');
 let path = require('path')
 chai.should();
 
-import {osidToDisplayName, agentIdFromTakingAgentId, usernameToDisplayName,
-  d2LDisplayNameToDisplayName, agentIdFromD2LRoster
-} from '../login/index'
+import {getD2LDisplayName, getD2LUserIdentifer} from '../login/index'
 
 describe('login selectors', () => {
 
-  it('should get the agentDisplayName of DARTH_VADER', () => {
-    let result = osidToDisplayName("osid.agent.Agent%3ADARTH_VADER%2540fbw-visitor.edu%40MIT-ODL");
-    result.should.be.eql('DARTH_VADER')
-  });
-
-  it('should get the agentDisplayName of Nutter Butter', () => {
-    let result = osidToDisplayName("osid.agent.Agent%3ANutter-Butter-1145644%2540acc.edu%40MIT-ODL");
-    result.should.be.eql('Nutter Butter')
-  });
-
-  it('should get the agentId', () => {
-    let result = agentIdFromTakingAgentId("osid.agent.Agent%3ADARTH_VADER%2540fbw-visitor.edu%40MIT-ODL");
-    result.should.be.eql('DARTH_VADER@fbw-visitor.edu')
-  });
-
-  it('should output a displayName given the username', () => {
-    let result = usernameToDisplayName("Nutter-Butter-1145644@acc.edu");
-    result.should.be.eql('Nutter Butter')
-  })
-
-  it('should output a displayName given the d2l displayName', () => {
-    let result = d2LDisplayNameToDisplayName("Scotch, Butter");
-    result.should.be.eql('Butter Scotch')
-  })
-
-  it('should output a username given a d2l roster object', () => {
-    let result = agentIdFromD2LRoster({
-      "Identifier": "192051",
-      "ProfileIdentifier": "QKGjIK9TtN",
+  it('should get the displayName of a d2l object', () => {
+    let result = getD2LDisplayName({
       "DisplayName": "Butter, Peanut",
       "Username": null,
-      "OrgDefinedId": "S00091797",
-      "Email": null
     });
-    // result.should.be.eql('Peanut-Butter-QKGjIK9TtN@acc.edu');
-    result.should.be.eql('Peanut-Butter-192051@acc.edu');
-  })
 
+    result.should.be.eql('Peanut Butter')
+  });
+
+
+  it('should get the displayName of another d2l object', () => {
+    let result = getD2LDisplayName({
+      "FirstName": "foo",
+      "LastName": "bar"
+    });
+
+    result.should.be.eql('foo bar');
+  });
+
+  it('should get the Identifier of a d2l object', () => {
+    let result = getD2LUserIdentifer({
+      login: {
+        user: {
+          d2lUser: {
+            "Identifier": "192051",
+            "ProfileIdentifier": "QKGjIK9TtN",
+          }
+        }
+      }
+
+    });
+
+    result.should.eql("192051")
+  });
 })

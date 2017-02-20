@@ -27,7 +27,9 @@ describe('getResults', () => {
       mission: {
         id: 'foo-mission'
       },
-      username: 'Nutter-Butter-1145644@acc.edu',
+      user: {
+        Identifier: 1145645     // shea butter
+      },
     }))
     .then(res => {
       // console.log('getResults res', res);

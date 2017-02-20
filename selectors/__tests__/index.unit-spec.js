@@ -4,40 +4,24 @@ let path = require('path')
 chai.should();
 
 import {getUser, getD2LToken,
-        getMapping,
-        getPhaseIResults, getPhaseIIResults
+        getMapping, getResults
 } from '../index'
 
 describe('selectors', () => {
 
-  it('should get the user from state', () => {
-    const mockUser =   {
-      displayName: 'Darth Vader',
-      isVisitor: true,
-      username: '',
-      d2l: null
-    };
-
+  it('should get the d2l user from state', () => {
     let user = getUser({
       login: {
-        user: mockUser
+        user: {
+          d2lUser: {
+            Identifier: 'foo'
+          },
+          authenticatedUrl: 'bar'
+        }
       }
     });
-    user.should.be.eql(mockUser)
-  });
 
-  it('should get the d2lToken from state', () => {
-    const mockUser =   {
-      displayName: 'Darth Vader',
-      isVisitor: true,
-      username: '',
-      d2l: {
-        authenticatedUrl: 'foobarbaz'
-      }
-    };
-
-    let result = getD2LToken({login: {user: mockUser}});
-    result.should.be.eql('foobarbaz')
+    user.Identifier.should.eql('foo')
   });
 
   // =====
@@ -61,18 +45,6 @@ describe('selectors', () => {
   // =====
   // result
   // ======
-  it('should get phase I and phase II from state', () => {
-    const mockState =   {
-      result: {
-        phaseIResults: [],
-        phaseIIResults: [],
-      }
-    };
 
-    let phaseIResults = getPhaseIResults(mockState);
-    let phaseIIResults = getPhaseIIResults(mockState)
-    phaseIResults.should.be.a('array');
-    phaseIIResults.should.be.a('array');
-  });
 
 })

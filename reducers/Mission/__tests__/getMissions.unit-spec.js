@@ -27,7 +27,9 @@ describe('getMissions', () => {
     const store = mockStore({});
 
     store.dispatch(getMissions({
-      username: 'Nutter-Butter-1145644@acc.edu',
+      user: {
+        Identifier: 1145645     // shea butter
+      },
       course: {Id: '1744153'}
     }))
     .then(missions => {
