@@ -8,7 +8,7 @@ import {CREATE_MISSION_OPTIMISTIC, RECEIVE_CREATE_MISSION} from './createMission
 import {DELETE_MISSION_OPTIMISTIC, RECEIVE_DELETE_MISSION} from './deleteMission'
 import {
   CHANGE_MISSION_NAME, CHANGE_MISSION_TYPE, CHANGE_MISSION_START, CHANGE_MISSION_END,
-  SELECT_MODULE, CHANGE_OUTCOME_SEARCH, TOGGLE_OUTCOME
+  SELECT_MODULE, CHANGE_OUTCOME_SEARCH, TOGGLE_OUTCOME, FOLLOWS_FROM_MISSIONS
 } from './updateMissionForm'
 import {EDIT_MISSION} from './editMission'
 // import {CREATE_TEST_FLIGHT_MISSIONS_OPTIMISTIC, RECEIVE_CREATE_TEST_FLIGHT_MISSIONS} from './createTestFlightMissions'
@@ -48,7 +48,7 @@ export default function editMissionReducer (state = initialState, action) {
         isDeleteMissionInProgress: false,
       });
 
-    case CHANGE_MISSION_TYPE:
+    case CHANGE_MISSION_NAME:
       return _.assign({}, state, {
         newMission: _.assign({}, state.newMission, {
           displayName: action.value
@@ -87,7 +87,7 @@ export default function editMissionReducer (state = initialState, action) {
       })
 
     case TOGGLE_OUTCOME:
-      let isSelected = _.find(state.newMission.goals, {id: action.outcome.id});
+      let isSelected = state.newMission.goals.indexOf(action.outcome.id) > -1;
       let goals;
       if (isSelected) {
         goals = _.without(state.newMission.goals, action.outcome.id);
@@ -101,6 +101,11 @@ export default function editMissionReducer (state = initialState, action) {
         })
       })
 
+    case FOLLOWS_FROM_MISSIONS:
+      return _.assign({}, state, {
+        newMission: _.assign({}, state.newMission, {
+          followsFromMissions: _.map(action.missions, 'id')
+        })
 
     default:
       return state
@@ -115,6 +120,8 @@ function stampNewMission() {
     course: '',
     startTime: null,
     deadline: null,
+    followsFromMissions: [],
+    leadsToMissions: [],
     goals: [],
   }
 }

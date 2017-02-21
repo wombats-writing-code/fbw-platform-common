@@ -204,5 +204,5 @@ export default function missionReducer (state = initialState, action) {
 
 export const missionConfig = {
   PHASE_I_MISSION_TYPE: 'PHASE_I_MISSION_TYPE',
-  PHASE_II_MISSION_TYPE: 'PHASE_I_MISSION_TYPE'
+  PHASE_II_MISSION_TYPE: 'PHASE_II_MISSION_TYPE'
 }
