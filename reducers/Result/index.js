@@ -20,7 +20,9 @@ export default function resultReducer (state = initialState, action) {
 
     case RECEIVE_RESULTS:
       return _.assign({}, state, {
-        results: action.results,
+        resultsByMission: _.assign({}, state.resultsByMission, {
+          [action.results[0].mission]: action.results
+        }),
         isGetResultsInProgress: false
       });
 

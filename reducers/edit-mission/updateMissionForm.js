@@ -6,7 +6,7 @@ export const CHANGE_MISSION_END = 'CHANGE_MISSION_END'
 export const SELECT_MODULE = 'SELECT_MODULE'
 export const CHANGE_OUTCOME_SEARCH = 'CHANGE_OUTCOME_SEARCH'
 export const TOGGLE_OUTCOME = 'TOGGLE_OUTCOME'
-export const CHANGE_FOLLOWS_FROM_MISSIONS = 'FOLLOWS_FROM_MISSIONS'
+export const CHANGE_FOLLOWS_FROM_MISSIONS = 'CHANGE_FOLLOWS_FROM_MISSIONS'
 
 export function changeMissionName(value) {
   return {type: CHANGE_MISSION_NAME, value};
@@ -37,5 +37,5 @@ export function toggleOutcome(outcome) {
 }
 
 export function changeFollowsFromMissions(missions) {
-  return {type: FOLLOWS_FROM_MISSIONS, missions};
+  return {type: CHANGE_FOLLOWS_FROM_MISSIONS, missions};
 }

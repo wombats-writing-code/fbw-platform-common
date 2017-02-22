@@ -8,7 +8,7 @@ import {CREATE_MISSION_OPTIMISTIC, RECEIVE_CREATE_MISSION} from './createMission
 import {DELETE_MISSION_OPTIMISTIC, RECEIVE_DELETE_MISSION} from './deleteMission'
 import {
   CHANGE_MISSION_NAME, CHANGE_MISSION_TYPE, CHANGE_MISSION_START, CHANGE_MISSION_END,
-  SELECT_MODULE, CHANGE_OUTCOME_SEARCH, TOGGLE_OUTCOME, FOLLOWS_FROM_MISSIONS
+  SELECT_MODULE, CHANGE_OUTCOME_SEARCH, TOGGLE_OUTCOME, CHANGE_FOLLOWS_FROM_MISSIONS
 } from './updateMissionForm'
 import {EDIT_MISSION} from './editMission'
 // import {CREATE_TEST_FLIGHT_MISSIONS_OPTIMISTIC, RECEIVE_CREATE_TEST_FLIGHT_MISSIONS} from './createTestFlightMissions'
@@ -58,7 +58,8 @@ export default function editMissionReducer (state = initialState, action) {
     case CHANGE_MISSION_TYPE:
       return _.assign({}, state, {
         newMission: _.assign({}, state.newMission, {
-          type: action.missionType
+          type: action.missionType,
+          displayName: action.missionType === PHASE_II_MISSION_TYPE ? 'Phase II' : state.newMission.displayName
         })
       })
 
@@ -101,11 +102,14 @@ export default function editMissionReducer (state = initialState, action) {
         })
       })
 
-    case FOLLOWS_FROM_MISSIONS:
+    case CHANGE_FOLLOWS_FROM_MISSIONS:
+      let displayNames = _.map(action.missions, 'displayName');
       return _.assign({}, state, {
         newMission: _.assign({}, state.newMission, {
-          followsFromMissions: _.map(action.missions, 'id')
+          followsFromMissions: _.map(action.missions, 'id'),
+          displayName: `Phase II (from ${displayNames.join(' + ')})`
         })
+      })
 
     default:
       return state

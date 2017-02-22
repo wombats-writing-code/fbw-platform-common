@@ -13,10 +13,14 @@ describe('result reducer', () => {
   it('should update results and progress in state upon RECEIVE_RESULTS results', () => {
     let newState = reducer({}, {
       type: RECEIVE_RESULTS,
-      results: ['foo', 'bar', 'twee']
+      results: [
+        {name: 'baz', mission: '1'},
+        {name: 'foo', mission: '1'},
+      ]
     });
-
-    newState.results.should.be.eql(['foo', 'bar', 'twee']);
+    
+    newState.resultsByMission['1'][0].name.should.be.eql('baz');
+    newState.resultsByMission['1'][1].name.should.be.eql('foo');
     newState.isGetResultsInProgress.should.be.eql(false);
   })
 
@@ -37,16 +41,6 @@ describe('result reducer', () => {
     });
 
     newState.currentResult.takingAgentId.should.eql('batman');
-  });
-
-  it('should update the current result state upon CREATE_MISSION_OPTIMISTIC', () => {
-    let newState = reducer({}, {
-      type: CREATE_MISSION_OPTIMISTIC,
-      newMission: 'foo'
-    });
-
-    should.not.exist(newState.results);
-    should.not.exist(newState.results);
   });
 
 })

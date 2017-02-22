@@ -1,4 +1,3 @@
-
 import _ from 'lodash'
 import axios from 'axios'
 
@@ -23,6 +22,18 @@ export function createMissionOptimistic(mission) {
 
 
 export function createMission(mission, course, user) {
+  if (!mission) {
+    return new TypeError('mission object must be provided to createMission')
+  }
+
+  if (!course) {
+    return new TypeError('course object must be provided to createMission')
+  }
+
+  if (!user) {
+    return new TypeError('course object must be provided to createMission')
+  }
+
   return function(dispatch) {
     dispatch(createMissionOptimistic());
 
@@ -30,11 +41,11 @@ export function createMission(mission, course, user) {
       data: {
         mission: {
           displayName: mission.displayName,
-          startTime: mission.startTime,
           type: mission.type,
+          startTime: mission.startTime,
           deadline: mission.deadline,
-          goals: _.map(mission.selectedDirectives, 'id'),
-          followsFromMissions: _.map(mission.followsFromMissions, 'id')
+          goals: mission.goals,
+          followsFromMissions: mission.followsFromMissions,
         },
         courseId: course.Id || course.Identifier,
       },

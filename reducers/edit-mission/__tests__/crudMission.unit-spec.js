@@ -26,7 +26,7 @@ let user = {
 describe('createMission, deleteMission actions', () => {
 
   let testMission;
-  it('should create a mission upon calling createMission', done => {
+  it('should create a phase 1 mission upon calling createMission', done => {
     const store = mockStore({})
     let mission = {
       displayName: 'front end test foo',
