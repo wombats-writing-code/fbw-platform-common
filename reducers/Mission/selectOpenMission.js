@@ -6,7 +6,6 @@ import { getDomain } from '../../utilities'
 // ----
 // Action types
 export const RECEIVE_CREATE_TAKE_MISSION = 'RECEIVE_CREATE_TAKE_MISSION'
-export const CREATE_TAKE_MISSION = 'CREATE_TAKE_MISSION'
 export const CREATE_TAKE_MISSION_OPTIMISTIC = 'CREATE_TAKE_MISSION_OPTIMISTIC'
 
 // ----

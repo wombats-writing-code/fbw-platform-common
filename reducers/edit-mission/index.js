@@ -11,9 +11,6 @@ import {
   SELECT_MODULE, CHANGE_OUTCOME_SEARCH, TOGGLE_OUTCOME, CHANGE_FOLLOWS_FROM_MISSIONS
 } from './updateMissionForm'
 import {EDIT_MISSION} from './editMission'
-// import {CREATE_TEST_FLIGHT_MISSIONS_OPTIMISTIC, RECEIVE_CREATE_TEST_FLIGHT_MISSIONS} from './createTestFlightMissions'
-// import {RECEIVE_UPDATE_MISSION} from './updateMission'
-// import {UPDATE_SPAWN_DATE} from './updateSpawnDate'
 
 import {localDateTime} from '../../utilities/time'
 
@@ -59,7 +56,6 @@ export default function editMissionReducer (state = initialState, action) {
       return _.assign({}, state, {
         newMission: _.assign({}, state.newMission, {
           type: action.missionType,
-          displayName: action.missionType === PHASE_II_MISSION_TYPE ? 'Phase II' : state.newMission.displayName
         })
       })
 
@@ -117,7 +113,7 @@ export default function editMissionReducer (state = initialState, action) {
 }
 
 
-function stampNewMission() {
+export function stampNewMission() {
   return {
     displayName: '',
     type: PHASE_I_MISSION_TYPE,

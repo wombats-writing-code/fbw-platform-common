@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 import slug from 'slug'
-
 import _ from 'lodash'
 
 import { getMissions } from '../../reducers/Mission/getMissions'

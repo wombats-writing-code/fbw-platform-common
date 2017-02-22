@@ -19,10 +19,10 @@ export default function resultReducer (state = initialState, action) {
       });
 
     case RECEIVE_RESULTS:
+      let groupedByMission = _.groupBy(action.results, 'mission');
+
       return _.assign({}, state, {
-        resultsByMission: _.assign({}, state.resultsByMission, {
-          [action.results[0].mission]: action.results
-        }),
+        resultsByMission: _.assign({}, state.resultsByMission, groupedByMission),
         isGetResultsInProgress: false
       });
 
