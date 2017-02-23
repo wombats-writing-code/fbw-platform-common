@@ -47,7 +47,17 @@ export function createMissions(missions, course, user) {
   return function(dispatch) {
     dispatch(createMissionsOptimistic());
 
-    return Q.all(_.map(missions, mission => _createMission(mission, course, user)))
+    return axios({
+      method: 'POST',
+      url: `${getDomain()}/l4/missions-bulk/`,
+      data: {
+        missions: missions,
+        courseId: course.Id || course.Identifier,
+      },
+      headers: {
+        'x-fbw-user': user.Identifier
+      }
+    })
     .then( missions => {
       dispatch(receiveCreateMissions(missions));
       return missions;
@@ -81,7 +91,6 @@ export function _createMission(mission, course, user) {
         followsFromMissions: mission.followsFromMissions,
       },
       courseId: course.Id || course.Identifier,
-      userId: mission.userId,         // this is the user id for the mission, INSIDE the mission object -- not the global user id
     },
     method: 'POST',
     url: `${getDomain()}/l4/missions/`,

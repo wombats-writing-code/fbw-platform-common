@@ -4,7 +4,10 @@ import _ from 'lodash'
 import moment from 'moment'
 
 import {PHASE_I_MISSION_TYPE, PHASE_II_MISSION_TYPE} from '../Mission'
-import {CREATE_MISSION_OPTIMISTIC, RECEIVE_CREATE_MISSION} from './createMission'
+import {
+  CREATE_MISSION_OPTIMISTIC, RECEIVE_CREATE_MISSION,
+  CREATE_MISSIONS_OPTIMISTIC, RECEIVE_CREATE_MISSIONS
+} from './createMission'
 import {DELETE_MISSION_OPTIMISTIC, RECEIVE_DELETE_MISSION} from './deleteMission'
 import {
   CHANGE_MISSION_NAME, CHANGE_MISSION_TYPE, CHANGE_MISSION_START, CHANGE_MISSION_END,
@@ -24,11 +27,14 @@ const initialState = {
 
 export default function editMissionReducer (state = initialState, action) {
   switch (action.type) {
+
+    case CREATE_MISSIONS_OPTIMISTIC:
     case CREATE_MISSION_OPTIMISTIC:
       return _.assign({}, state, {
         isCreateMissionInProgress: true,
       })
 
+    case RECEIVE_CREATE_MISSIONS:
     case RECEIVE_CREATE_MISSION:
       return _.assign({}, state, {
         newMission: stampNewMission(),

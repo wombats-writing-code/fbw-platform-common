@@ -1,8 +1,7 @@
 let chai = require('chai');
-let path = require('path')
 chai.should();
 
-import {getD2LDisplayName, getD2LUserIdentifer} from '../login/index'
+import {getD2LDisplayName, getD2LUserIdentifier} from '../login/index'
 
 describe('login selectors', () => {
 
@@ -26,16 +25,9 @@ describe('login selectors', () => {
   });
 
   it('should get the Identifier of a d2l object', () => {
-    let result = getD2LUserIdentifer({
-      login: {
-        user: {
-          d2lUser: {
-            "Identifier": "192051",
-            "ProfileIdentifier": "QKGjIK9TtN",
-          }
-        }
-      }
-
+    let result = getD2LUserIdentifier({
+        "Identifier": "192051",
+        "ProfileIdentifier": "QKGjIK9TtN",
     });
 
     result.should.eql("192051")

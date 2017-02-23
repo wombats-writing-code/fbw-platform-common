@@ -9,8 +9,6 @@ export const getD2LDisplayName = (d2lUser) => {
   }
 }
 
-export const getD2LUserIdentifer = (state) => {
-  if (state.login.user && state.login.user.d2lUser) {
-    return state.login.user.d2lUser.Identifier;
-  }
+export const getD2LUserIdentifier = (d2lUser) => {
+  return d2lUser.Identifier;
 }

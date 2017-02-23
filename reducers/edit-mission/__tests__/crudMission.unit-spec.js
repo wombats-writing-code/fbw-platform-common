@@ -5,14 +5,9 @@ import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store'
 const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
-
+const should = require('should');
 import nock from 'nock'
-let chai = require('chai');
-const chaiHttp = require('chai-http');
 
-let should = require('should');
-chai.should();
-chai.use(chaiHttp);
 
 import {
   createMission, CREATE_MISSION_OPTIMISTIC, RECEIVE_CREATE_MISSION,
@@ -70,12 +65,8 @@ describe('createMission, deleteMission actions', () => {
   let phase2Missions;
   it('should create an array of phase 2 missions upon calling createMissions', done => {
     nock('http://localhost:8888')
-    .post(`/l4/missions/`)
-    .reply(200, { body: {missions: ['mission1'] }})
-
-    nock('http://localhost:8888')
-    .post(`/l4/missions/`)
-    .reply(200, { body: {missions: ['mission2'] }})
+    .post(`/l4/missions-bulk/`)
+    .reply(200, { body: {missions: ['mission1', 'mission2'] }})
 
     const store = mockStore({})
     let missions = [
