@@ -58,9 +58,9 @@ export function createMissions(missions, course, user) {
         'x-fbw-user': user.Identifier
       }
     })
-    .then( missions => {
-      dispatch(receiveCreateMissions(missions));
-      return missions;
+    .then( res => {
+      dispatch(receiveCreateMissions(res.data));
+      return res.data;
     })
   }
 }

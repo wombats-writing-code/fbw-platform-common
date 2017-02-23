@@ -35,11 +35,16 @@ export function getMissions (data) {
     throw TypeError('data must have user object')
   }
 
+  let getAllMissionsFlag = '';
+  if (data.all) {
+    getAllMissionsFlag = '&all=true';
+  }
+
   return function (dispatch) {
     dispatch(getMissionsOptimistic())
 
     return axios({
-      url: `${getDomain()}/l4/missions` + `?courseId=${data.course.Id || data.course.Identifier}`,
+      url: `${getDomain()}/l4/missions` + `?courseId=${data.course.Id || data.course.Identifier}${getAllMissionsFlag}`,
       headers: {
         'x-fbw-user': data.user.Identifier
       }
