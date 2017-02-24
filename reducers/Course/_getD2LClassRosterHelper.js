@@ -73,7 +73,7 @@ export function classRoster (D2LConfig, url, courseIdentifier) {
     url: userContext.createAuthenticatedUrl(rosterUrl, 'GET') + _appendDevRole(D2LConfig)
   })
   .then((response) => {
-    if (process.env.NODE_ENV !== 'test') console.log('got d2l class list', response);
+    if (process.env.NODE_ENV !== 'test') console.log('got d2l class list', response.data);
 
     return Q.when(response.data)
   })

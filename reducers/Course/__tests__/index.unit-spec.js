@@ -1,15 +1,12 @@
-import reducer from '../index'
+const should = require('should');
 
-let chai = require('chai');
-let should = require('should');
-chai.should();
-
-import {RECEIVE_ITEMS} from '../getItems'
-import {RECEIVE_BANKS} from '../getCourses'
 import {SELECT_COURSE} from '../selectCourse'
+import {RECEIVE_ITEMS} from '../getItems'
 import {RECEIVE_AUTHENTICATE_D2L} from '../../Login/authenticateD2L'
+import {RECEIVE_D2L_CLASS_ROSTER, GET_D2L_CLASS_ROSTER_OPTIMISTIC} from '../getD2LClassRoster'
 import {LOG_OUT} from '../../Login/logOutUser'
 
+import reducer from '../index'
 
 describe('Course reducer', () => {
 
@@ -43,14 +40,25 @@ describe('Course reducer', () => {
     newState.items.should.be.eql(['one', 'two']);
   });
 
+  it('should update state upon RECEIVE_D2L_CLASS_ROSTER', () => {
+    let newState = reducer({}, {
+      type: RECEIVE_D2L_CLASS_ROSTER,
+      roster: ['1', '2']
+    });
+
+    newState.roster.should.be.eql(['1', '2']);
+    newState.isGetRosterInProgress.should.eql(false);
+  });
+
   it('should clear everything in course state upon LOG_OUT', () => {
-    let newState = reducer({
-      courses: ['superman'],
-    }, {
+    let newState = reducer({}, {
       type: LOG_OUT
     });
 
+    should.not.exist(newState.currentCourse);
+    should.not.exist(newState.items);
     newState.courses.length.should.eql(0);
+    newState.isGetRosterInProgress.should.eql(false);
   })
 
 })

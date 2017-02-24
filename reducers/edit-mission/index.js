@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import _ from 'lodash'
 import moment from 'moment'
 
-import {PHASE_I_MISSION_TYPE, PHASE_II_MISSION_TYPE} from '../Mission'
+import {missionConfig} from '../Mission'
 import {
   CREATE_MISSION_OPTIMISTIC, RECEIVE_CREATE_MISSION,
   CREATE_MISSIONS_OPTIMISTIC, RECEIVE_CREATE_MISSIONS
@@ -27,6 +27,10 @@ const initialState = {
 
 export default function editMissionReducer (state = initialState, action) {
   switch (action.type) {
+    case EDIT_MISSION:
+      return _.assign({}, state, {
+        newMission: action.mission
+      })
 
     case CREATE_MISSIONS_OPTIMISTIC:
     case CREATE_MISSION_OPTIMISTIC:
@@ -122,9 +126,9 @@ export default function editMissionReducer (state = initialState, action) {
 export function stampNewMission() {
   return {
     displayName: '',
-    type: PHASE_I_MISSION_TYPE,
+    type: null,
     course: '',
-    startTime: null,
+    startTime: moment(),
     deadline: null,
     followsFromMissions: [],
     leadsToMissions: [],

@@ -18,8 +18,6 @@ import {SELECT_STUDENT_RESULT} from './selectStudentResult'
 import { SELECT_DIRECTIVE } from './selectDirective'
 import { SELECT_TARGET } from './selectTarget'
 import { SELECT_CHOICE } from './selectChoice'
-import { SET_QUESTION_LIST_HEIGHT } from './setQuestionListHeight'
-import { SET_CHOICE_HEIGHT } from './setChoiceHeight'
 
 import {SELECT_COURSE} from '../Course/selectCourse'
 
@@ -78,7 +76,7 @@ export default function missionReducer (state = initialState, action) {
       })
 
     case RECEIVE_CREATE_MISSIONS:
-      let followsFromMission = action.missions[0] ? action.missions[0].followsFromMission[0] : null;
+      let followsFromMission = action.missions[0] ? action.missions[0].followsFromMissions[0] : null;
 
       return _.assign({}, state, {
         missions: _.compact(_.concat(action.missions, state.missions)),      // creates a new array of existing missions with the new mission appended
@@ -105,7 +103,6 @@ export default function missionReducer (state = initialState, action) {
       return _.assign({}, state, {
         currentTarget: action.target,
         questionListHeight: 0,
-        heightByChoice: {},
         selectedChoiceId: null
       })
 
@@ -170,21 +167,9 @@ export default function missionReducer (state = initialState, action) {
         })
       })
 
-
-    case SET_QUESTION_LIST_HEIGHT:
-      return _.assign({}, state, {
-        questionListHeight: action.questionListHeight
-      })
-
     case SELECT_CHOICE:
       return _.assign({}, state, {
         selectedChoiceId: action.choiceId
-      })
-
-    case SET_CHOICE_HEIGHT:
-      let updatedHeightMap = _.assign({}, state.heightByChoice, action.height)
-      return _.assign({}, state, {
-        heightByChoice: updatedHeightMap
       })
 
     case LOG_OUT:

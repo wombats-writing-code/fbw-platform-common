@@ -1,13 +1,10 @@
-
-import thunk from 'redux-thunk';
-import 'lodash'
+import _ from 'lodash'
 import axios from 'axios'
 
 import {getDomain} from '../../utilities'
-import {convertUTCPythonDateToJSUTC, localDateTime} from '../../utilities/time'
-import {convertMissionForm} from './_convertMissionFormHelper'
+import {localDateTime} from '../../utilities/time'
 
-export const UPDATE_MISSION = 'UPDATE_MISSION'
+export const UPDATE_MISSION_OPTIMISTIC = 'UPDATE_MISSION_OPTIMISTIC'
 export const RECEIVE_UPDATE_MISSION = 'RECEIVE_UPDATE_MISSION'
 
 export function receiveUpdateMission(mission) {
@@ -15,27 +12,26 @@ export function receiveUpdateMission(mission) {
 }
 
 export function updateMissionOptimistic(mission) {
-   return {type: UPDATE_MISSION, mission };
+   return {type: UPDATE_MISSION_OPTIMISTIC, mission };
 }
 
-export function updateMission(data, bankId, directivesItemsMap, itemBankId) {
-  let missionParams = convertMissionForm(data, directivesItemsMap, itemBankId),
-  options = {
-    data: missionParams,
-    method: 'PUT',
-    url: `${getDomain()}/middleman/banks/${bankId}/missions/${data.id}`
-  };
-
+export function updateMission(mission, user) {
   return function(dispatch) {
     dispatch(updateMissionOptimistic(missionParams));
 
-    return axios(options)
-    .then(({data: mission}) => {
-      // console.log('updated mission', mission);
-      mission.startTime = localDateTime(convertUTCPythonDateToJSUTC(mission.startTime));
-      mission.deadline = localDateTime(convertUTCPythonDateToJSUTC(mission.deadline));
-      dispatch(receiveUpdateMission(mission));
-      return mission
+    return axios({
+      method: 'PUT',
+      url: `${getDomain()}/l4/missions/${mission.id}/`,
+      data: {
+        mission,
+      },
+      headers: {
+        'x-fbw-user': user.Identifier
+      }
+    })
+    .then( res => {
+      dispatch(receiveUpdateMission(res.data));
+      return res.data
     })
     .catch((error) => {
       console.log('error updating mission', error);

@@ -19,19 +19,15 @@ import {RECEIVE_CREATE_MISSION} from '../../edit-mission/createMission'
 import {RECEIVE_DELETE_MISSION} from '../../edit-mission/deleteMission'
 import {LOG_OUT} from '../../Login/logOutUser'
 
-const mockMissions = require('./missions.mock.json')
-const mockTarget = require('./target.mock.json')
-const mockTakeMission = require('./take-mission.mock.json')
-const mockReceiveTakeMission = require('./receive-take-mission.mock.json')
 
 describe('mission reducer', () => {
   it('should update the missions in state upon RECEIVE_MISSIONS', () => {
     let newState = reducer([], {
       type: RECEIVE_MISSIONS,
-      missions: mockMissions
+      missions: ['foo', 'bar']
     });
 
-    newState.missions.should.be.deep.equal(mockMissions);
+    newState.missions.should.eql(['foo', 'bar']);
     newState.isGetMissionsInProgress.should.eql(false);
   });
 
@@ -47,34 +43,33 @@ describe('mission reducer', () => {
   });
 
   it('should update the selected currentTarget in state upon SELECT_TARGET', () => {
+    let target = {name: 'foo'};
     let newState = reducer([], {
       type: SELECT_TARGET,
-      target: mockTarget
+      target: target
     });
 
-    newState.currentTarget.should.eql(mockTarget);
-    newState.heightByChoice.should.eql({});
-    newState.questionListHeight.should.eql(0);
+    newState.currentTarget.should.eql(target);
     should.not.exist(newState.selectedChoiceId);
   })
 
   it('should optimistically update state upon RECEIVE_CREATE_TAKE_MISSION_OPTIMISTIC', () => {
     let newState = reducer([], {
       type: CREATE_TAKE_MISSION_OPTIMISTIC,
-      mission: mockTakeMission
+      mission: {name: 'baz'}
     });
 
-    newState.currentMission.should.eql(mockTakeMission);
+    newState.currentMission.should.eql({name: 'baz'});
     newState.isGetMissionInProgress.should.eql(true);
   });
 
   it('should update state upon RECEIVE_CREATE_TAKE_MISSION', () => {
     let newState = reducer([], {
       type: RECEIVE_CREATE_TAKE_MISSION,
-      mission: mockReceiveTakeMission
+      mission: {name: 'superman'}
     });
 
-    newState.currentMission.should.eql(mockReceiveTakeMission)
+    newState.currentMission.should.eql({name: 'superman'})
     newState.isGetMissionInProgress.should.eql(false);
   });
 

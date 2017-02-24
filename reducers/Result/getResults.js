@@ -37,12 +37,7 @@ export function getResults(data) {
   return function(dispatch) {
     dispatch(getResultsOptimistic());
 
-    return axios({
-      url: `${getDomain()}/l4/results?missionId=${data.mission.id}`,
-      headers: {
-        'x-fbw-user': data.user.Identifier
-      }
-    })
+    return _getResults(data.mission.id, data.user)
     .then((results) => {
       // console.log('received results', results.data)
       dispatch(receiveResults(results.data));
@@ -52,4 +47,26 @@ export function getResults(data) {
       console.log('error getting mission results', error);
     })
   }
+}
+
+/**
+  accepts an array of mission ids to get results in one go
+*/
+export function getResultsBulk(data) {
+  let getResultsPromises = _.map(data.missions, id => _getResults(id, data.user));
+
+  return Q.all(getResultsPromises)
+  .then( res => {
+    console.log('response', res)
+  })
+}
+
+
+function _getResults(missionId, user) {
+  return axios({
+    url: `${getDomain()}/l4/results?missionId=${missionId}`,
+    headers: {
+      'x-fbw-user': user.Identifier
+    }
+  })
 }

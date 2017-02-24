@@ -43,6 +43,11 @@ describe('createMission, deleteMission actions', () => {
       Id: "1724986"
     }
 
+    nock('http://localhost:8888')
+    .post(`/l4/missions/`)
+    .reply(200, { body: {mission: mission}})
+
+
     store.dispatch(createMission(mission, course, user))
     .then((res) => {
       let actions = store.getActions();
@@ -113,10 +118,15 @@ describe('createMission, deleteMission actions', () => {
   });
 
   it('should delete a mission upon calling deleteMission', done => {
+
+    nock('http://localhost:8888')
+    .delete(`/l4/missions/bar`)
+    .reply(200, { body: {mission: testMission}})
+
     const store = mockStore({})
     // console.log('testMission', testMission);
 
-    store.dispatch(deleteMission(testMission, user))
+    store.dispatch(deleteMission({id: 'bar'}, user))
     .then((res) => {
       let actions = store.getActions();
       actions.length.should.eql(2);

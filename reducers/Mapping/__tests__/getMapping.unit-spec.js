@@ -1,13 +1,7 @@
-let chai = require('chai');
 let should = require('should');
-chai.should();
-const chaiHttp = require('chai-http');
-chai.should();
-chai.use(chaiHttp);
-
 import _ from 'lodash'
 const Q = require('q')
-
+import nock from 'nock'
 import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store'
 const middlewares = [ thunk ]
@@ -19,6 +13,14 @@ describe('getMapping', () => {
 
   it('should create 2 actions when getMapping() is called', done => {
     const store = mockStore({});
+
+    nock('http://localhost:8888')
+    .get('/l4/mapping?courseId=1744153&entities=outcome')
+    .reply(200, {
+      entities: ['superman', 'batman'],
+      relationships: ['foo']
+    });
+
 
     store.dispatch(getMapping({
       user: {
@@ -34,7 +36,9 @@ describe('getMapping', () => {
       actions.length.should.be.eql(2);
       actions[0].type.should.be.eql(GET_MAPPING_OPTIMISTIC);
       actions[1].type.should.be.eql(RECEIVE_MAPPING);
-      actions[1].mapping.entities.length.should.be.above(0);
+      actions[1].mapping.entities.length.should.eql(2);
+      actions[1].mapping.relationships.length.should.eql(1);
+
       done();
     });
   });

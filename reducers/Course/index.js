@@ -3,7 +3,6 @@
 import thunk from 'redux-thunk';
 import _ from 'lodash'
 
-import {RECEIVE_COURSES} from './getCourses'
 import {SELECT_COURSE} from './selectCourse'
 import {RECEIVE_ITEMS} from './getItems'
 import {RECEIVE_D2L_CLASS_ROSTER, GET_D2L_CLASS_ROSTER_OPTIMISTIC} from './getD2LClassRoster'
@@ -16,8 +15,6 @@ import {LOG_OUT} from '../Login/logOutUser'
 // Reducer
 // ------------------------------------
 
-import VISITOR_COURSES from './visitor-courses'
-
 const initialState = {
   courses: [],
   currentCourse: null
@@ -25,11 +22,6 @@ const initialState = {
 }
 export default function courseReducer (state = initialState, action) {
   switch (action.type) {
-    case RECEIVE_COURSES:
-      return _.assign({}, state, {
-        courses: action.courses,
-      });
-
     case SELECT_COURSE:
       return _.assign({}, state, {
         currentCourse: action.course,
@@ -48,11 +40,13 @@ export default function courseReducer (state = initialState, action) {
 
     case GET_D2L_CLASS_ROSTER_OPTIMISTIC:
       return _.assign({}, state, {
+        isGetRosterInProgress: true,
         roster: []
       })
 
     case RECEIVE_D2L_CLASS_ROSTER:
       return _.assign({}, state, {
+        isGetRosterInProgress: false,
         roster: action.roster
       })
 
@@ -61,6 +55,7 @@ export default function courseReducer (state = initialState, action) {
         courses: [],
         currentCourse: null,
         items: null,
+        isGetRosterInProgress: false
       })
 
     default:

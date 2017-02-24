@@ -49,8 +49,3 @@ export function authenticateD2L(D2LConfig, optionalUrl) {
     })
   }
 }
-
-
-export function stringifyUsername (whoami) {
-  return `${whoami.FirstName}-${whoami.LastName}-${whoami.Identifier}@acc.edu`
-}

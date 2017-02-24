@@ -31,10 +31,6 @@ export default function loginReducer (state = initialState, action) {
 
 function stampNullUser() {
   return {
-    form: {
-      username: '',
-      school: 'acc'
-    },
     user: {
     },
     isLoggedIn: false,
