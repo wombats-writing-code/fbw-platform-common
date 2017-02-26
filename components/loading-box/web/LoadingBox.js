@@ -1,6 +1,6 @@
 import React from 'react'
 
-import '../../styles/animations.scss'
+import '../../../styles/animations.scss'
 import './LoadingBox.scss'
 
 export const LoadingBox = (type) => {

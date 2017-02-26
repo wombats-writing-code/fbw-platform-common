@@ -1,7 +1,5 @@
 import React from 'react'
 
-import '../../styles/animations.scss'
-
 let styles = {
   container: {
     height: '100%',
