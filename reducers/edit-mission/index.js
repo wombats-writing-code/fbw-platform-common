@@ -66,6 +66,7 @@ export default function editMissionReducer (state = initialState, action) {
       return _.assign({}, state, {
         newMission: _.assign({}, state.newMission, {
           type: action.missionType,
+          displayName: ''
         })
       })
 
@@ -85,7 +86,7 @@ export default function editMissionReducer (state = initialState, action) {
 
     case SELECT_MODULE:
       return _.assign({}, state, {
-        selectedModule: action.module
+        selectedModule: state.selectedModule === action.module ? null : action.module
       })
 
     case CHANGE_OUTCOME_SEARCH:
@@ -128,7 +129,7 @@ export function stampNewMission() {
     displayName: '',
     type: null,
     course: '',
-    startTime: moment(),
+    startTime: null,
     deadline: null,
     followsFromMissions: [],
     leadsToMissions: [],

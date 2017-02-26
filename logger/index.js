@@ -6,14 +6,14 @@ import {SELECT_TARGET} from '../reducers/Mission/selectTarget'
 import {LOG_OUT} from '../reducers/Login/logOutUser'
 import {RECEIVE_AUTHENTICATE_D2L} from '../reducers/Login/authenticateD2L'
 
-import {getD2LUserIdentifer} from '../selectors/login'
+import {getD2LUserIdentifier} from '../selectors/login'
 import {getCurrentCourse} from '../selectors/course'
 
 const logger = store => next => action => {
   if (window.ga) {
     let state = store.getState();
     let course = getCurrentCourse(state);
-    let userIdentifier = getD2LUserIdentifer(state);
+    let userIdentifier = getD2LUserIdentifier(state);
 
     // console.log('state in logger', state);
 
