@@ -5,13 +5,13 @@ import { connect } from 'react-redux'
 import { logOutUser } from '../../reducers/Login/logOutUser'
 import {getAuthenticationUrl} from '../../d2lutils'
 import {authenticateD2L} from '../../reducers/Login/authenticateD2L'
-import {getD2LUserIdentifer} from '../../selectors/login'
+import {getD2LUserIdentifier} from '../../selectors/login'
 
 const mapStateToProps = (state, ownProps) => {
   // console.log('state in LoginContainer', state);
 
   return {
-    d2lUserIdentifer: getD2LUserIdentifer(state),
+    d2lUserIdentifer: getD2LUserIdentifier(state),
   }
 }
 

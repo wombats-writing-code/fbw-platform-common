@@ -55,10 +55,19 @@ export function getResults(data) {
 export function getResultsBulk(data) {
   let getResultsPromises = _.map(data.missions, id => _getResults(id, data.user));
 
-  return Q.all(getResultsPromises)
-  .then( res => {
-    console.log('response', res)
-  })
+  return function(dispatch) {
+    dispatch(getResultsOptimistic());
+
+    return Q.all(getResultsPromises)
+    .then( res => {
+      dispatch(receiveResults(_.flatten(_.map(res, 'data'))));
+      return res.data;
+    })
+    .catch((error) => {
+      console.log('error getting mission results bulk', error);
+    })
+  }
+
 }
 
 

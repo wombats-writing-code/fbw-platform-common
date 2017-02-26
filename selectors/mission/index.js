@@ -44,8 +44,10 @@ export const computeSectionProgress= (questionsInSection) => {
   if (!questionsInSection) return null;
 
   let targetsForDirective = _.filter(_.flatMap(questionsInSection), isTarget);
-  let navigatedTargets = _.filter(targetsForDirective, question => isTargetRouteNavigated(question, questionsInSection) || question.isCorrect);
-
+  let navigatedTargets = _.filter(targetsForDirective, question => {
+    return isTargetRouteNavigated(question, questionsInSection[question.targetIndex]) ||
+            (question.response && question.response.isCorrect);
+  });
   // console.log('section', section);
   // console.log('targetsForDirective', targetsForDirective);
   // console.log('navigatedTargets', navigatedTargets);
@@ -62,14 +64,9 @@ export const isTargetRouteNavigated = (target, questionsInRoute) => {
     return false;
   }
 
-  if (!target) {
-    throw new Error('No target question provided');
-    return false;
-  }
-
   // a route is navigated only when all of the Targets waypoints have been responded correctly
   let hasNavigated = false;
-  if (questionsInRoute[0].response && !questionsInRoute[0].response.isCorrect) {
+  if (questionsInRoute[0].response && questionsInRoute[0].response.isCorrect === false) {
     let lastQuestion = _.takeRight(questionsInRoute)[0];
     hasNavigated = lastQuestion.response && lastQuestion.response.isCorrect;
   }
