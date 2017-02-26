@@ -13,6 +13,7 @@ import {
   createMission, CREATE_MISSION_OPTIMISTIC, RECEIVE_CREATE_MISSION,
   createMissions, CREATE_MISSIONS_OPTIMISTIC, RECEIVE_CREATE_MISSIONS
 } from '../createMission'
+import {updateMission} from '../updateMission'
 import {deleteMission} from '../deleteMission'
 import {missionConfig} from '../../Mission'
 // import {updateMission} from '../updateMission'
@@ -66,6 +67,42 @@ describe('createMission, deleteMission actions', () => {
       done()
     });
   });
+
+  it('should update a mission upon calling updateMission', done => {
+    const store = mockStore({})
+    let mission = {
+      id: '12345678',
+      displayName: 'updated platform unit test',
+      type:  missionConfig.PHASE_I_MISSION_TYPE,
+      startTime: moment(),
+      deadline: moment().add(7, 'd'),
+      goals: [1, 2, 3]
+    };
+
+    let course = {
+      Id: "1724986"
+    }
+
+    nock('http://localhost:8888')
+    .put(`/l4/missions/12345678`)
+    .reply(200, { body: {mission: mission}})
+
+
+    store.dispatch(updateMission(mission, user))
+    .then((res) => {
+      let actions = store.getActions();
+      actions.length.should.eql(2)
+      actions[0].type.should.eql(UPDATE_MISSION_OPTIMISTIC)
+      actions[1].type.should.eql(RECEIVE_UPDATE_MISSION)
+      actions[1].mission.displayName.should.eql('updated platform unit test');
+
+      done();
+    })
+    .catch((err) => {
+      console.log(err);
+      done()
+    });
+  })
 
   let phase2Missions;
   it('should create an array of phase 2 missions upon calling createMissions', done => {
