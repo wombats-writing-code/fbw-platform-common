@@ -15,7 +15,7 @@ import {SELECT_STUDENT_RESULT} from '../selectStudentResult'
 import {RECEIVE_SUBMIT_RESPONSE} from '../submitResponse'
 import {RECEIVE_CREATE_TAKE_MISSION, CREATE_TAKE_MISSION_OPTIMISTIC} from '../selectOpenMission'
 
-import {RECEIVE_CREATE_MISSION} from '../../edit-mission/createMission'
+import {RECEIVE_CREATE_MISSION, RECEIVE_CREATE_MISSIONS} from '../../edit-mission/createMission'
 import {RECEIVE_DELETE_MISSION} from '../../edit-mission/deleteMission'
 import {LOG_OUT} from '../../Login/logOutUser'
 
@@ -162,6 +162,20 @@ describe('mission reducer', () => {
 
     newState.missions.length.should.eql(1);
     newState.currentMission.name.should.be.eql('foo');
+  })
+
+  it('should update state upon RECEIVE_CREATE_MISSIONS action', () => {
+    let newState = reducer({}, {
+      type: RECEIVE_CREATE_MISSIONS,
+      missions: [
+        { id: 'foo', followsFromMissions: ['1'] },
+        {id: 'baz', followsFromMissions: ['1']},
+        { id: 'bar', followsFromMissions: ['1'] }
+      ]
+    });
+
+    newState.missions.length.should.eql(3);
+    newState.currentMission.leadsToMissions.should.be.eql(['foo', 'baz', 'bar']);
   })
 
   it('should clear everything in this part of mission state upon LOG_OUT', () => {

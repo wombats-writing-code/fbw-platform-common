@@ -80,7 +80,9 @@ export default function missionReducer (state = initialState, action) {
 
       return _.assign({}, state, {
         missions: _.compact(_.concat(action.missions, state.missions)),      // creates a new array of existing missions with the new mission appended
-        currentMission: _.find(state.missions, {id: followsFromMission})
+        currentMission: _.assign({}, _.find(state.missions, {id: followsFromMission}), {
+          leadsToMissions: _.map(_.compact(action.missions), 'id')
+        })
       })
 
     case RECEIVE_DELETE_MISSION:
