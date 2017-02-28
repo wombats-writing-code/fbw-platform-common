@@ -5,6 +5,7 @@ import moment from 'moment'
 let Q = require('q')
 import D2L from 'valence'
 
+import {createUser} from './createUser'
 import {getD2LEnrollments, whoami} from './_authenticateD2LHelper'
 import { getDomain } from '../../utilities'
 
@@ -40,9 +41,14 @@ export function authenticateD2L(D2LConfig, optionalUrl) {
 
       d2lUser = response;
 
-      dispatch(receiveAuthenticateUrl({url, courses, d2lUser}));
+      // we need to create the user
+      return createUser(d2lUser);
+    })
+    .then( user => {
+      // console.log('create user result', user);
+      dispatch(receiveAuthenticateUrl({url, courses, d2lUser: user}));
 
-      return d2lUser;
+      return {url, courses, d2lUser}
     })
     .catch( err => {
       console.error(err);

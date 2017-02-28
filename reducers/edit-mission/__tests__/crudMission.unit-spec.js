@@ -13,7 +13,7 @@ import {
   createMission, CREATE_MISSION_OPTIMISTIC, RECEIVE_CREATE_MISSION,
   createMissions, CREATE_MISSIONS_OPTIMISTIC, RECEIVE_CREATE_MISSIONS
 } from '../createMission'
-import {updateMission} from '../updateMission'
+import {updateMission, UPDATE_MISSION_OPTIMISTIC, RECEIVE_UPDATE_MISSION} from '../updateMission'
 import {deleteMission} from '../deleteMission'
 import {missionConfig} from '../../Mission'
 // import {updateMission} from '../updateMission'
@@ -46,7 +46,7 @@ describe('createMission, deleteMission actions', () => {
 
     nock('http://localhost:8888')
     .post(`/l4/missions/`)
-    .reply(200, { body: {mission: mission}})
+    .reply(200, mission)
 
 
     store.dispatch(createMission(mission, course, user))
@@ -84,8 +84,8 @@ describe('createMission, deleteMission actions', () => {
     }
 
     nock('http://localhost:8888')
-    .put(`/l4/missions/12345678`)
-    .reply(200, { body: {mission: mission}})
+    .put(`/l4/missions/12345678/`)
+    .reply(200, mission)
 
 
     store.dispatch(updateMission(mission, user))
@@ -108,7 +108,7 @@ describe('createMission, deleteMission actions', () => {
   it('should create an array of phase 2 missions upon calling createMissions', done => {
     nock('http://localhost:8888')
     .post(`/l4/missions-bulk/`)
-    .reply(200, { body: {missions: ['mission1', 'mission2'] }})
+    .reply(200, ['mission1', 'mission2'])
 
     const store = mockStore({})
     let missions = [
@@ -155,19 +155,19 @@ describe('createMission, deleteMission actions', () => {
   });
 
   it('should delete a mission upon calling deleteMission', done => {
+    let mission = {id: 'bar'}
 
     nock('http://localhost:8888')
     .delete(`/l4/missions/bar`)
-    .reply(200, { body: {mission: testMission}})
+    .reply(200, mission)
 
     const store = mockStore({})
-    // console.log('testMission', testMission);
 
-    store.dispatch(deleteMission({id: 'bar'}, user))
+    store.dispatch(deleteMission(mission, user))
     .then((res) => {
       let actions = store.getActions();
       actions.length.should.eql(2);
-      actions[1].mission.displayName.should.eql('platform unit test');
+      actions[1].mission.id.should.eql('bar');
 
       done();
     })
