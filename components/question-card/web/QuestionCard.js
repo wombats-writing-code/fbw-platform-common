@@ -161,6 +161,10 @@ class QuestionCard extends Component {
 
       let choice = _.find(this.props.question.choices, {id: choiceId});
 
+      // we'll move this logic elsewhere, but for now it belongs here
+      // we cut out the Target from the response history
+      // let responseHistory = _.tail(this.props.routeQuestions);
+
       this.props.onSubmitResponse({
         mission: this.props.mission,
         choice: choice,

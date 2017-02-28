@@ -147,7 +147,7 @@ export default function missionReducer (state = initialState, action) {
             return _.map(section, targetRoute => {
               let needsUpdate;
               let route = _.map(targetRoute, q => {
-                if (q.id === action.responseResult.question.id) {
+                if (q.instanceId === action.responseResult.question.instanceId) {
                   needsUpdate = true;
                   return _.assign({}, action.responseResult.question, {
                     responded: true

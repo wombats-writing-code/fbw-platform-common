@@ -79,12 +79,12 @@ describe('mission reducer', () => {
         questions: [
           // section 1
           [
-            [{id: '0'}]
+            [{instanceId: '0'}]
           ],
           // section 2
           [
-            [{id: '12'}, {id: '1'}],    // the first target route
-            [{id: '9'}, {id: '3'}],    // the 2nd target route
+            [{instanceId: '12'}, {instanceId: '1'}],    // the first target route
+            [{instanceId: '9'}, {instanceId: '3'}],    // the 2nd target route
           ]
         ]
       }
@@ -92,7 +92,7 @@ describe('mission reducer', () => {
       type: RECEIVE_SUBMIT_RESPONSE,
       responseResult: {
         question: {
-          id: '1',
+          instanceId: '1',
           solution: 'foo',
           feedback: 'bar',
           response: {
