@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import { getDomain } from '../../utilities'
 export const GET_STUDENT_RESULT_OPTIMISTIC = 'GET_STUDENT_RESULT_OPTIMISTIC';
 export const GET_STUDENT_RESULT_SUCCESS = 'GET_STUDENT_RESULT_SUCCESS'
 
