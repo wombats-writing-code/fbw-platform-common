@@ -14,7 +14,6 @@ import {RECEIVE_CREATE_MISSION, RECEIVE_CREATE_MISSIONS} from '../edit-mission/c
 import {RECEIVE_UPDATE_MISSION} from '../edit-mission/updateMission'
 import {RECEIVE_DELETE_MISSION} from '../edit-mission/deleteMission'
 
-import {SELECT_STUDENT_RESULT} from './selectStudentResult'
 import { SELECT_DIRECTIVE } from './selectDirective'
 import { SELECT_TARGET } from './selectTarget'
 import { SELECT_CHOICE } from './selectChoice'
@@ -130,16 +129,6 @@ export default function missionReducer (state = initialState, action) {
     case RECEIVE_GET_USER_MISSION_RESULTS:
       return _.assign({}, state, {
         isGetMissionInProgress: false
-      });
-
-    case SELECT_STUDENT_RESULT:
-      let questions = _.flatMap(action.missionResult.sections, 'questions');
-      let currentTarget = _.find(questions, q => q.id === action.question.id)
-
-      return _.assign({}, state, {
-        currentMissionSections: action.missionResult.sections,
-        currentDirectiveIndex: action.currentDirectiveIndex,
-        currentTarget: currentTarget
       });
 
     case SUBMIT_RESPONSE_OPTIMISTIC:

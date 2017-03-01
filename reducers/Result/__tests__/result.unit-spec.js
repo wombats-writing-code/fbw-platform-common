@@ -1,11 +1,11 @@
-import reducer from '../index'
-
 let chai = require('chai');
 let should = require('should');
 chai.should();
 
+import reducer from '../index'
+
 import {GET_RESULTS_OPTIMISTIC, RECEIVE_RESULTS} from '../getResults'
-import {SELECT_STUDENT_RESULT} from '../../Mission/selectStudentResult'
+import {GET_STUDENT_RESULT_SUCCESS} from '../getStudentResult'
 import {CREATE_MISSION_OPTIMISTIC} from '../../edit-mission/createMission'
 
 describe('result reducer', () => {
@@ -18,29 +18,25 @@ describe('result reducer', () => {
         {name: 'foo', mission: '1'},
       ]
     });
-    
+
     newState.resultsByMission['1'][0].name.should.be.eql('baz');
     newState.resultsByMission['1'][1].name.should.be.eql('foo');
     newState.isGetResultsInProgress.should.be.eql(false);
   })
 
-  it('should update the current result state upon SELECT_STUDENT_RESULT', () => {
+  it('should update the current result state upon GET_STUDENT_RESULT', () => {
     let newState = reducer({}, {
-      type: SELECT_STUDENT_RESULT,
-      missionResult: {
-        takingAgentId: 'batman',
-        sections: [
-          {name: 'foo', questions: [
-            {id: 'superman'}
-          ]},
-          {name: 'bar'}
-        ]
-      },
-      currentDirectiveIndex: 1,
-      question: {id: 'superman'}
+      type: GET_STUDENT_RESULT_SUCCESS,
+      student: 'batman',
+      mission: {displayName: 'foo'},
+      questions: [1, 2]
     });
 
-    newState.currentResult.takingAgentId.should.eql('batman');
+    newState.currentStudent.should.eql('batman');
+    newState.currentMission.displayName.should.eql('foo');
+    newState.currentMission.questions.should.eql([1,2]);
+    newState.isGetStudentResultInProgress.should.eql(false);
+
   });
 
 })

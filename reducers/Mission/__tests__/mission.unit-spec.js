@@ -3,7 +3,6 @@ import reducer from '../index'
 let chai = require('chai');
 let should = require('should');
 chai.should();
-const chaiHttp = require('chai-http');
 chai.should();
 
 const _ = require('lodash')
@@ -11,7 +10,6 @@ const _ = require('lodash')
 import {RECEIVE_MISSIONS} from '../getMissions'
 import {SELECT_DIRECTIVE} from '../selectDirective'
 import {SELECT_TARGET} from '../selectTarget'
-import {SELECT_STUDENT_RESULT} from '../selectStudentResult'
 import {RECEIVE_SUBMIT_RESPONSE} from '../submitResponse'
 import {RECEIVE_CREATE_TAKE_MISSION, CREATE_TAKE_MISSION_OPTIMISTIC} from '../selectOpenMission'
 
@@ -130,26 +128,6 @@ describe('mission reducer', () => {
 
     newState.missions.length.should.eql(1);
     newState.missions[0].id.should.be.eql('bar')
-  });
-
-  it('should update state upon SELECT_STUDENT_RESULT', () => {
-    let newState = reducer({}, {
-      type: SELECT_STUDENT_RESULT,
-      missionResult: {
-        sections: [
-          {name: 'foo', questions: [
-            {id: 'superman'}
-          ]},
-          {name: 'bar'}
-        ]
-      },
-      currentDirectiveIndex: 1,
-      question: {id: 'superman'}
-    });
-
-    newState.currentMissionSections.length.should.eql(2);
-    newState.currentDirectiveIndex.should.eql(1);
-    newState.currentTarget.id.should.eql('superman')
   });
 
   it('should update state upon RECEIVE_CREATE_MISSION action', () => {

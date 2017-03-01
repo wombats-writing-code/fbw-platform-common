@@ -15,9 +15,9 @@ import {getMissionDirectives, computeSectionProgress, isTarget, isTargetRouteNav
 const mapStateToProps = (state, ownProps) => {
   // console.log('ownProps of MissionContainer', ownProps)
   console.log('state in MissionContainer', state);
-  let mission = state.mission.currentMission;
+  let mission = ownProps.mission || state.mission.currentMission;
   let outcomes = getMapping(state) ? getMapping(state).outcomes : [];
-  let directives = getMissionDirectives(state.mission.currentMission, outcomes);
+  let directives = getMissionDirectives(mission, outcomes);
 
   return {
     user: getUser(state),

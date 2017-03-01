@@ -1,8 +1,12 @@
+import reducer from '../index'
 
 let chai = require('chai');
 let should = require('should');
 chai.should();
+const chaiHttp = require('chai-http');
 chai.should();
+chai.use(chaiHttp);
+
 const _ = require('lodash')
 const Q = require('q')
 const nock = require('nock')
@@ -11,9 +15,6 @@ import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store'
 const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
-
-import reducer from '../index'
-
 
 import {getResults, GET_RESULTS_OPTIMISTIC, RECEIVE_RESULTS} from '../getResults'
 
