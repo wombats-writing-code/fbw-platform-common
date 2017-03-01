@@ -76,10 +76,11 @@ export default function missionReducer (state = initialState, action) {
       })
 
     case RECEIVE_CREATE_MISSIONS:
-      let followsFromMission = action.missions[0] ? action.missions[0].followsFromMissions[0] : null;
-      let newMissionIds =  _.map(_.compact(action.missions), 'id');
+      let newMissions = _.compact(action.missions);
+      let newMissionIds =  _.map(newMissions, 'id');
+      let followsFromMission = newMissions[0] ? newMissions[0].followsFromMissions[0] : null;
       // creates a new array of existing missions with the new mission appended
-      let allMissions = _.compact(_.concat(action.missions, state.missions));
+      let allMissions = _.concat(newMissions, state.missions);
 
       return _.assign({}, state, {
         missions: _.map(allMissions, mission => {
