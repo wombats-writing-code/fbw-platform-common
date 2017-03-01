@@ -14,6 +14,8 @@ import {RECEIVE_CREATE_MISSION, RECEIVE_CREATE_MISSIONS} from '../edit-mission/c
 import {RECEIVE_UPDATE_MISSION} from '../edit-mission/updateMission'
 import {RECEIVE_DELETE_MISSION} from '../edit-mission/deleteMission'
 
+import {GET_STUDENT_RESULT_SUCCESS} from '../Result/getStudentResult'
+
 import { SELECT_DIRECTIVE } from './selectDirective'
 import { SELECT_TARGET } from './selectTarget'
 import { SELECT_CHOICE } from './selectChoice'
@@ -193,6 +195,13 @@ export default function missionReducer (state = initialState, action) {
           return m;
         }),
         currentMission: action.mission
+      })
+
+    case GET_STUDENT_RESULT_SUCCESS:
+      return _.assign({}, state, {
+        currentMission: _.assign({}, action.mission, {
+          questions: action.questions
+        })
       })
 
     default:

@@ -17,6 +17,8 @@ import {RECEIVE_CREATE_MISSION, RECEIVE_CREATE_MISSIONS} from '../../edit-missio
 import {RECEIVE_DELETE_MISSION} from '../../edit-mission/deleteMission'
 import {LOG_OUT} from '../../Login/logOutUser'
 
+import {GET_STUDENT_RESULT_SUCCESS} from '../../Result/getStudentResult'
+
 
 describe('mission reducer', () => {
   it('should update the missions in state upon RECEIVE_MISSIONS', () => {
@@ -160,6 +162,18 @@ describe('mission reducer', () => {
     newState.missions.length.should.eql(4);
     newState.currentMission.leadsToMissions.should.be.eql(['foo', 'baz', 'bar']);
   })
+
+  it('should update the current result state upon GET_STUDENT_RESULT_SUCCESS', () => {
+    let newState = reducer({}, {
+      type: GET_STUDENT_RESULT_SUCCESS,
+      student: 'batman',
+      mission: {displayName: 'foo'},
+      questions: [1, 2]
+    });
+
+    newState.currentMission.displayName.should.eql('foo');
+    newState.currentMission.questions.should.eql([1,2]);
+  });
 
   it('should clear everything in this part of mission state upon LOG_OUT', () => {
     let newState = reducer({
