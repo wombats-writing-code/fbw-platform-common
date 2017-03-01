@@ -2,7 +2,7 @@ import _ from 'lodash'
 
 // ==============
 export const isTarget = (question) => {
-  if (!question) return undefined;
+  if (!question || !question.referenceNumber) return undefined;
 
   return question.referenceNumber.indexOf('.') < 0;
 }

@@ -33,6 +33,7 @@ export default function missionReducer (state = initialState, action) {
   switch (action.type) {
     case GET_MISSIONS_OPTIMISTIC:
       return _.assign({}, state, {
+        currentMission: null,
         missions: [],
         isGetMissionsInProgress: true
       })
