@@ -12,7 +12,6 @@ import '../../../styles/common.css'
 let chai = require('chai')
 chai.should()
 
-// mock question from the 1st question of directive 7 of the Algebra Internal test mission
 const QUESTION = require('./question.mock.json')
 const QUESTION_WRONG = require('./question-wrong.mock.json')
 
@@ -32,9 +31,9 @@ describe('QuestionCard', () => {
       {attachTo: div}
     );
 
-    questionCard.props().question.displayName.text.should.be.eql("1");
+    questionCard.props().question.displayName.should.be.eql(QUESTION.displayName);
     questionCard.find('.choice').length.should.be.eql(4);
-    questionCard.find('.question-header-text').text().should.be.eql(OUTCOME.displayName.text);
+    questionCard.find('.question-header-text').text().should.be.eql(OUTCOME.displayName);
 
     questionCard.detach();
   });

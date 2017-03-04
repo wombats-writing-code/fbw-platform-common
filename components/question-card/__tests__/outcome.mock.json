@@ -1,28 +1,17 @@
 {
-     "displayName": {
-         "text": "Find the midpoint of a segment",
-         "languageTypeId": "639-2%3AENG%40iso.org",
-         "scriptTypeId": "15924%3ALATN%40iso.org",
-         "formatTypeId": "format.text%3APlain%40okapia.net"
-     },
-     "description": {
-         "text": "",
-         "languageTypeId": "639-2%3AENG%40iso.org",
-         "scriptTypeId": "15924%3ALATN%40iso.org",
-         "formatTypeId": "format.text%3APlain%40okapia.net"
-     },
-     "cognitiveProcessId": "",
-     "knowledgeCategoryId": "",
-     "assessmentId": "",
-     "objectiveBankId": "mc3-objectivebank%3A2823%40MIT-OEIT",
-     "current": true,
-     "auditTrail": {
-         "updatedOn": "2016-10-31T13:27:18",
-         "addedOn": "2016-10-27T12:09:01",
-         "addedBy": "MC3GUE$T",
-         "updatedBy": "MC3GUE$T"
-     },
-     "genusTypeId": "mc3-objective%3Amc3.learning.outcome%40MIT-OEIT",
-     "type": "Objective",
-     "id": "mc3-objective%3A15027%40MIT-OEIT"
- }
+  "_id": {
+    "$oid": "58a8a02e0895cd3f6b528232"
+  },
+  "type": "OUTCOME",
+  "displayName": "Add/subtract matrices",
+  "description": "",
+  "learningObjectiveId": "mc3-objective%3A14516%40MIT-OEIT",
+  "auditTrail": {
+    "updatedAt": "2017-01-31T15:45:15",
+    "updatedBy": "MC3GUE$T",
+    "createdAt": "2016-07-11T14:31:31",
+    "createdBy": "MC3GUE$T"
+  },
+  "domain": "58a7969bf36d287948269839",
+  "__v": 0
+}

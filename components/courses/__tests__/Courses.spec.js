@@ -72,6 +72,6 @@ describe('Courses', () => {
   });
 
   after(() => {
-    // connectedComponent.detach();
+    connectedComponent.detach();
   });
 });

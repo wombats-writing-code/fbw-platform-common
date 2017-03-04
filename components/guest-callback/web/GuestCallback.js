@@ -1,14 +1,12 @@
 import React, {Component} from 'react'
 import { browserHistory } from 'react-router'
 
-import './D2LCallback.scss'
+import './GuestCallback.scss'
 
-class D2LCallback extends Component {
+class GuestCallback extends Component {
 
   componentDidMount () {
-
-    this.props.authenticateD2L(this.props.credentials);
-
+    this.props.authenticateGuest();
   }
 
   render() {
@@ -21,4 +19,4 @@ class D2LCallback extends Component {
 
 }
 
-export default D2LCallback
+export default GuestCallback

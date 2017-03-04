@@ -31,20 +31,33 @@ class Login extends Component {
 
     return (
       <div className="login">
-        <h1 className="app-name text-center">Fly-by-Wire</h1>
+        <div className="app-name text-center">
+          {/* <div className="flex-container"> */}
+            {/* <p className="app-title">Fly-by-Wire</p> */}
+          {/* </div> */}
+          <img className="app-logo" src={require('../../../assets/fbw-web-icon.png')} />
+          <p className="app-tagline">Adaptive learning for differentiated instruction</p>
+        </div>
 
-        <div className="school-buttons flex-container space-between medium-8 medium-centered columns">
+        <div className="school-buttons medium-8 medium-centered columns">
           <button onClick={() => this._handleACCLogin()}
-            className="login-form-button login-form-button--d2l flex-container align-center">
-            Arapahoe <img className="d2l-login-button__image" src={require('../../../assets/myACC.png')} />
+                  className="login-button login-button--d2l ">
+
+            <img className="login-button__image" src={require('../../../assets/myACC.png')} />
+            Arapahoe
           </button>
-          <button disabled
-            className="login-form-button login-form-button--d2l is-disabled">
-            Quinsigamond
+          <button  onClick={() => this._handleGuestLogin()}
+                    className="login-button">
+            <img className="login-button__image" src={require('../../../assets/visitor.png')} />
+            Guest
           </button>
         </div>
       </div>
     )
+  }
+
+  _handleGuestLogin() {
+    window.open(this.props.guestAuthenticationUrl, '_self')
   }
 
   _handleACCLogin = () => {

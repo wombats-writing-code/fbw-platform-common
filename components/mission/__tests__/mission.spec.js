@@ -31,7 +31,7 @@ describe('Mission', () => {
     store = mockStore(STATE);
     connectedComponent = mount(
       <Provider store={store}>
-        <Mission  />
+        <Mission mission={STATE.mission.currentMission} />
       </Provider>,
       {attachTo: div}
     );
@@ -46,6 +46,6 @@ describe('Mission', () => {
   });
 
   after( function() {
-    // connectedComponent.detach();
+    connectedComponent.detach();
   });
 });

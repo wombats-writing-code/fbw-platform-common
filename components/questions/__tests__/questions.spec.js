@@ -41,11 +41,11 @@ describe('Questions', () => {
     const questions = connectedQuestions.find(Questions)
 
     // questions.props().questions.length.should.be.eql(3);
-    questions.find('.question-card').length.should.be.eql(3);   // 3 questions total
-    questions.find('.choice').length.should.be.eql(4);          // only 1 question is expanded
-    questions.find('.is-selected').length.should.be.eql(0);     // no choices are expanded except for last one
-    questions.find('.answered-question-cue').length.should.be.eql(2);     // no choices are expanded except for last one
-    questions.find('.submit-button').length.should.be.eql(0);
+    questions.find('.question-card').length.should.be.eql(3);
+    questions.find('.choice').length.should.be.eql(4);
+    questions.find('.is-selected').length.should.be.eql(0);
+    questions.find('.answered-question-cue').length.should.be.eql(2);
+    questions.find('.submit-button').length.should.be.eql(1);
   });
 
 

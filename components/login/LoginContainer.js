@@ -2,10 +2,14 @@
 import _ from 'lodash'
 import { connect } from 'react-redux'
 
-import { logOutUser } from '../../reducers/Login/logOutUser'
 import {getAuthenticationUrl} from '../../d2lutils'
 import {authenticateD2L} from '../../reducers/Login/authenticateD2L'
 import {getD2LUserIdentifier} from '../../selectors/login'
+
+import {getGuestAuthenticationUrl} from '../../reducers/Login/authenticateGuest'
+
+import { logOutUser } from '../../reducers/Login/logOutUser'
+
 
 const mapStateToProps = (state, ownProps) => {
   // console.log('state in LoginContainer', state);
@@ -25,6 +29,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 const provider = (component, D2LConfig) => {
   let mergeProps = (stateProps, dispatchProps, ownProps) => {
     return _.assign({}, stateProps, dispatchProps, ownProps, {
+      guestAuthenticationUrl: getGuestAuthenticationUrl(),
       authenticationUrl: getAuthenticationUrl(D2LConfig),
       D2LConfig
     })

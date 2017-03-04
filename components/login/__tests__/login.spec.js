@@ -46,6 +46,6 @@ describe('Login', () => {
   });
 
   after( () => {
-    connectedComponent.detach()
+    // connectedComponent.detach()
   })
 });

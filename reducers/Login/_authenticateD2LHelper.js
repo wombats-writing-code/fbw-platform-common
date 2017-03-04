@@ -104,10 +104,6 @@ function _appendDevRole(credentials) {
   return '';
 }
 
-export function bankAliasId (courseId) {
-  return `assessment.Bank%3A${courseId}%40ACC.D2L.COM`
-}
-
 export function isFBWSpring2017(name) {
   let lowercased = name.toLowerCase()
   return lowercased.indexOf('fly-by-wire') >= 0 || lowercased.indexOf('fbw') >= 0 ||

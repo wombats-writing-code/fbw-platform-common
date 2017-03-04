@@ -8,39 +8,86 @@
   height: 100vh;
   width: 100%;
   color: #fff;
-  padding-top: 10%;
+  padding-top: 6%;
 }
 
 .app-name {
   margin-bottom: 6rem;
 }
 
+.app-logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 320px;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  // border-radius: 50%;
+  // box-shadow: 0 0 1px 1px rgba(#000, .3);
+}
+
+.app-title {
+  letter-spacing: 1px;
+  font-style: italic;
+  font-size: 3.8rem;
+  font-weight: 500;
+
+  @media screen and (max-width: 400px) {
+    font-size: 3rem;
+  }
+}
+
+.app-tagline {
+  font-style: italic;
+
+  @media screen and (max-width: 400px) {
+    font-size: .875rem;
+  }
+}
+
 .login {
-  background: $app-blue-dark;
+  background: rgba(127,198,189,1);
+  background: -moz-linear-gradient(top, rgba(127,198,189,1) 0%, rgba(75,181,193,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(127,198,189,1)), color-stop(100%, rgba(75,181,193,1)));
+  background: -webkit-linear-gradient(top, rgba(127,198,189,1) 0%, rgba(75,181,193,1) 100%);
+  background: -o-linear-gradient(top, rgba(127,198,189,1) 0%, rgba(75,181,193,1) 100%);
+  background: -ms-linear-gradient(top, rgba(127,198,189,1) 0%, rgba(75,181,193,1) 100%);
+  background: linear-gradient(to bottom, rgba(127,198,189,1) 0%, rgba(75,181,193,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7fc6bd', endColorstr='#4bb5c1', GradientType=0 );
 }
 
-.login-form-button {
-  border: 1px solid #ccc;
-  color: #f8f8f8;
-  border-radius: 3px;
+.login-button {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em 1em;
   margin-bottom: 3rem;
-  font-weight: 600;
+  width: 300px;
+  text-align: center;
+  background: #3D5EB7;
+  font-weight: 500;
+
+  // border: 1px solid #fff;
+  // color: #f8f8f8;
+  // border-radius: 3px;
 }
 
-.login-form-button--d2l {
-  min-width: 10rem;
+.login-button--d2l {
+  background: #705FCE;
 }
 
-.login-form-button:hover {
+.login-button:hover {
   opacity: .8;
 }
 
-.d2l-login-button__image {
-    height: 1rem;
-    margin-left: .5em;
+.login-button__image {
+    height: 1.1rem;
+    position: absolute;
+    left: 1em;
 }
 
-.login-form-button.is-disabled {
+.login-button.is-disabled {
   opacity: .5;
   pointer-events: none;
 }
@@ -77,7 +124,7 @@
   border-bottom: 2px solid #fff;
 }
 
-.login-form-button--submit {
+.login-button--submit {
   min-width: 10rem;
   display: block;
   margin-right: 0;

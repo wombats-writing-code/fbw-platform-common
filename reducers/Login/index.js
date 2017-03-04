@@ -2,6 +2,8 @@
 import _ from 'lodash'
 
 import {RECEIVE_AUTHENTICATE_D2L} from './authenticateD2L'
+import {RECEIVE_AUTHENTICATE_GUEST} from './authenticateGuest'
+
 import { LOG_OUT } from './logOutUser'
 
 // ------------------------------------
