@@ -10,10 +10,11 @@ const mockStore = configureMockStore(middlewares)
 
 import reducer from '../index'
 import {RECEIVE_AUTHENTICATE_D2L} from '../authenticateD2L'
+import {RECEIVE_AUTHENTICATE_GUEST} from '../authenticateGuest'
 
 describe('login reducer', function(done) {
-  it('should update state upon RECEIVE_AUTHENTICATE_D2L', (done) => {
 
+  it('should update state upon RECEIVE_AUTHENTICATE_D2L', (done) => {
     let newState = reducer({}, {
       type: RECEIVE_AUTHENTICATE_D2L,
       data: {
@@ -24,6 +25,27 @@ describe('login reducer', function(done) {
         courses: ['bar']
       }
     });
+
+    newState.user.d2lUser.Identifier.should.be.eql('foo');
+    newState.user.authenticatedUrl.should.be.eql('bah')
+    newState.isLoggedIn.should.be.eql(true);
+
+    done();
+  });
+
+  it('should update state upon RECEIVE_AUTHENTICATE_GUEST', (done) => {
+    let newState = reducer({}, {
+      type: RECEIVE_AUTHENTICATE_GUEST,
+      data: {
+        url: 'bah',
+        d2lUser: {
+          Identifier: 'foo'
+        },
+        courses: ['bar']
+      }
+    });
+
+    console.log('newState', newState)
 
     newState.user.d2lUser.Identifier.should.be.eql('foo');
     newState.user.authenticatedUrl.should.be.eql('bah')

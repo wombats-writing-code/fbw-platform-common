@@ -31,7 +31,7 @@ describe('authenticateGuest', function(done) {
       let actions = store.getActions()
       actions.length.should.be.eql(1);
       actions[0].type.should.be.eql(RECEIVE_AUTHENTICATE_GUEST);
-      console.log('actions', actions)
+      // console.log('actions', actions)
       actions[0].data.courses.should.be.a('array')
       actions[0].data.url.should.be.a('string')
       actions[0].data.d2lUser.should.be.a('object')
