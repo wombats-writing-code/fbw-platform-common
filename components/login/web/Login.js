@@ -31,27 +31,45 @@ class Login extends Component {
 
     return (
       <div className="login">
-        <div className="app-name text-center">
-          {/* <div className="flex-container"> */}
-            {/* <p className="app-title">Fly-by-Wire</p> */}
-          {/* </div> */}
-          <img className="app-logo" src={require('../../../assets/fbw-web-icon.png')} />
-          <p className="app-tagline">Adaptive learning for differentiated instruction</p>
+        <div className="app-name text-center clearfix">
+          <div className="medium-7 large-5 columns medium-centered">
+            <img className="app-logo" src={require('../../../assets/fbw-web-icon.png')} />
+          </div>
+          {/* <p className="app-tagline">Adaptive learning for differentiated instruction</p> */}
         </div>
 
-        <div className="school-buttons medium-8 medium-centered columns">
-          <button onClick={() => this._handleACCLogin()}
-                  className="login-button login-button--d2l ">
+        <div className="row">
+          <div className="school-buttons medium-8 medium-centered columns">
+            <button onClick={() => this._handleACCLogin()}
+                    className="login-button login-button--d2l ">
 
-            <img className="login-button__image" src={require('../../../assets/myACC.png')} />
-            Arapahoe
-          </button>
-          <button  onClick={() => this._handleGuestLogin()}
-                    className="login-button">
-            <img className="login-button__image" src={require('../../../assets/visitor.png')} />
-            Guest
-          </button>
+              <img className="login-button__image" src={require('../../../assets/myACC.png')} />
+              Arapahoe
+            </button>
+            <button  onClick={() => this._handleGuestLogin()}
+                      className="login-button">
+              <img className="login-button__image" src={require('../../../assets/visitor.png')} />
+              Guest
+            </button>
+          </div>
         </div>
+
+        <div className="row">
+          <div className="medium-6 columns medium-centered">
+            <hr className="divider"></hr>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="medium-6 columns medium-centered">
+            <p className="contact">
+              <b>Say hello</b> <a href="mailto:fly-by-wire@mit.edu">fly-by-wire@mit.edu</a>
+              &ensp; &#8226; &ensp; <b>Visit us</b> <a href="http://mapping.mit.edu" target="_blank">MIT Mapping Lab</a>
+              &ensp; &#8226; &ensp; <b>Funded by</b> <a href="https://fipsedatabase.ed.gov/fipse/" target="_blank">US Department of Education</a>
+            </p>
+          </div>
+        </div>
+
       </div>
     )
   }
