@@ -27,6 +27,7 @@ describe('authenticateD2L and authenticateD2LHelper', function(done) {
       actions.length.should.be.eql(1);
       actions[0].type.should.be.eql(RECEIVE_AUTHENTICATE_D2L);
       // console.log('actions', actions)
+      actions[0].data.courses.should.be.a('array')
       actions[0].data.url.should.be.a('string')
       actions[0].data.d2lUser.should.be.a('object')
       done();

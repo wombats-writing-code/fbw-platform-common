@@ -20,76 +20,36 @@ export function getGuestAuthenticationUrl() {
 export function authenticateGuest() {
   return function(dispatch) {
 
-    // now get the user enrollments and set them in the global state
+    let url = 'guest-callback-authentication', courses, d2lUser;
     return axios({
       url: `${getDomain()}/mock-d2l/enrollments`,
     })
-    .then((enrollments) => {
-      if (process.env.NODE_ENV !== 'test') console.log("got enrollments", enrollments);
+    .then((res) => {
+      courses = res.data;
 
-      courses = enrollments;
+      if (process.env.NODE_ENV !== 'test') console.log("got enrollments", courses);
 
       return axios({
         url: `${getDomain()}/mock-d2l/whoami`,
       })
     })
-    .then((response) => {
-      if (process.env.NODE_ENV !== 'test') console.log('got whoami', response);
+    .then((res) => {
+      d2lUser = res.data;
 
-      d2lUser = response;
+      if (process.env.NODE_ENV !== 'test') console.log('got whoami', d2lUser);
 
       // we need to create the user
       return createUser(d2lUser);
     })
     .then( user => {
-      // console.log('create user result', user);
-      dispatch(receiveAuthenticateUrl({url, courses, d2lUser: user}));
+      console.log('create user result', user);
+      dispatch(receiveAuthenticateGuest({url, courses, d2lUser: user}))
 
       return {url, courses, d2lUser}
     })
     .catch( err => {
-      console.error(err);
+      console.log(err);
     })
 
-    dispatch(receiveAuthenticateGuest({url, courses, d2lUser: user}))
   }
 }
-
-//
-// export function authenticateD2L(D2LConfig, optionalUrl) {
-//
-//   return function (dispatch) {
-//     // console.log('authenticateD2L', D2LConfig)
-//
-//     let url = optionalUrl || `${window.location.pathname}${window.location.search}`;
-//     let courses, d2lUser;
-//     if (process.env.NODE_ENV !== 'test') console.log('mounted d2l callback!', url);
-//
-//     // now get the user enrollments and set them in the global state
-//     return getD2LEnrollments(D2LConfig, url)
-//     .then((enrollments) => {
-//       if (process.env.NODE_ENV !== 'test') console.log("got enrollments", enrollments);
-//
-//       courses = enrollments;
-//
-//       return whoami(D2LConfig, url)
-//     })
-//     .then((response) => {
-//       if (process.env.NODE_ENV !== 'test') console.log('got whoami', response);
-//
-//       d2lUser = response;
-//
-//       // we need to create the user
-//       return createUser(d2lUser);
-//     })
-//     .then( user => {
-//       // console.log('create user result', user);
-//       dispatch(receiveAuthenticateUrl({url, courses, d2lUser: user}));
-//
-//       return {url, courses, d2lUser}
-//     })
-//     .catch( err => {
-//       console.error(err);
-//     })
-//   }
-// }
