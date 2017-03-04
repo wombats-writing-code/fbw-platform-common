@@ -25,7 +25,7 @@ export function authenticateGuest() {
       url: `${getDomain()}/mock-d2l/enrollments`,
     })
     .then((res) => {
-      courses = res.data;
+      courses = _.map(res.data.Items, 'OrgUnit')
 
       if (process.env.NODE_ENV !== 'test') console.log("got enrollments", courses);
 
