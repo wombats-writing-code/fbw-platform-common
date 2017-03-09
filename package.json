@@ -1,6 +1,6 @@
 {
   "name": "fbw-platform-common",
-  "version": "3.0.86",
+  "version": "3.0.87",
   "description": "Common stuff to the FbW apps",
   "main": "index.js",
   "engines": {
@@ -8,7 +8,7 @@
     "npm": "^3.0.0"
   },
   "scripts": {
-    "build": "./node_modules/.bin/babel src/ --out-dir .; cp -r src/styles .; cp -r src/assets .",
+    "build": "./node_modules/.bin/babel src/ --copy-files --out-dir .",
     "prepublish": "npm run build",
     "test": "./node_modules/.bin/mocha -r jsdom-global/register --compilers js:babel-core/register --colors  $(find . ! -path './node_modules/*' -name '*.unit-spec.js')",
     "karma": "karma start --browsers Chrome --log-level debug",
