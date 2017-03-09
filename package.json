@@ -8,10 +8,15 @@
     "npm": "^3.0.0"
   },
   "scripts": {
+    "build": "./node_modules/.bin/babel src/ --out-dir dist/",
+    "prepublish": "npm run build",
     "test": "./node_modules/.bin/mocha -r jsdom-global/register --compilers js:babel-core/register --colors  $(find . ! -path './node_modules/*' -name '*.unit-spec.js')",
     "karma": "karma start --browsers Chrome --log-level debug",
     "jest": "jest"
   },
+  "files": [
+    "dist/"
+  ],
   "jest": {
     "preset": "react-native"
   },
@@ -61,6 +66,7 @@
     "yargs": "^6.3.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.23.0",
     "babel-core": "^6.17.0",
     "babel-eslint": "^7.1.0",
     "babel-jest": "^18.0.0",
