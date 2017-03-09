@@ -1,0 +1,972 @@
+{
+  "location": {
+    "pathname": "/login",
+    "search": "",
+    "hash": "",
+    "state": null,
+    "action": "POP",
+    "key": "00ek5b",
+    "query": {},
+    "$searchBase": {
+      "search": "",
+      "searchBase": ""
+    }
+  },
+  "view": {
+    "name": "dashboard.resultsView",
+    "mission": {
+      "hasSpawnedFollowOnPhase": true,
+      "displayName": {
+        "text": "Internal test mission",
+        "languageTypeId": "639-2%3AENG%40ISO",
+        "scriptTypeId": "15924%3ALATN%40ISO",
+        "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+      },
+      "description": {
+        "text": "",
+        "languageTypeId": "639-2%3AENG%40ISO",
+        "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+        "scriptTypeId": "15924%3ALATN%40ISO"
+      },
+      "recordTypeIds": [
+        "osid-object%3Asimple-child-sequencing%40ODL.MIT.EDU",
+        "assessment-record-type%3Afbw-phase-i%40ODL.MIT.EDU"
+      ],
+      "type": "Assessment",
+      "bankId": "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU",
+      "levelId": "",
+      "childIds": [
+        "assessment_authoring.AssessmentPart%3A5855473771e4823bce25a7c5%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473771e4823bce25a7c9%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473771e4823bce25a7cd%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7d1%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7d5%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7d9%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7dd%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7e1%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7e5%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7e9%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7ed%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7f1%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7f5%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7f9%40bazzim.MIT.EDU"
+      ],
+      "genusTypeId": "assessment-genus%3Afbw-homework-mission%40ODL.MIT.EDU",
+      "assignedBankIds": [
+        "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU"
+      ],
+      "offereds": [
+        {
+          "reviewOptions": {
+            "whetherCorrect": {
+              "afterAttempt": true,
+              "duringAttempt": true,
+              "beforeDeadline": true,
+              "afterDeadline": true
+            },
+            "solution": {
+              "afterAttempt": true,
+              "duringAttempt": false,
+              "beforeDeadline": true,
+              "afterDeadline": true
+            }
+          },
+          "itemsShuffled": null,
+          "description": {
+            "text": "",
+            "languageTypeId": "639-2%3AENG%40ISO",
+            "scriptTypeId": "15924%3ALATN%40ISO",
+            "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+          },
+          "itemsSequential": null,
+          "bankId": "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU",
+          "scoreSystemId": "",
+          "maxAttempts": null,
+          "deadline": {
+            "hour": 23,
+            "month": 1,
+            "second": 59,
+            "microsecond": 0,
+            "year": 2017,
+            "day": 31,
+            "minute": 59
+          },
+          "startTime": {
+            "hour": 0,
+            "month": 12,
+            "second": 1,
+            "microsecond": 0,
+            "year": 2016,
+            "day": 17,
+            "minute": 0
+          },
+          "duration": null,
+          "displayName": {
+            "text": "",
+            "languageTypeId": "639-2%3AENG%40ISO",
+            "scriptTypeId": "15924%3ALATN%40ISO",
+            "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+          },
+          "id": "assessment.AssessmentOffered%3A5855473871e4823bce25a7fd%40bazzim.MIT.EDU",
+          "gradeSystemId": "",
+          "recordTypeIds": [
+            "assessment-offered-record-type%3Areview-options%40MOODLE.ORG"
+          ],
+          "assessmentId": "assessment.Assessment%3A5855473771e4823bce25a7c4%40bazzim.MIT.EDU",
+          "levelId": "",
+          "assignedBankIds": [
+            "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU"
+          ],
+          "genusTypeId": "GenusType%3ADEFAULT%40DLKIT.MIT.EDU",
+          "type": "AssessmentOffered"
+        }
+      ],
+      "rubricId": "",
+      "id": "assessment.Assessment%3A5855473771e4823bce25a7c4%40bazzim.MIT.EDU",
+      "startTime": {
+        "year": 2016,
+        "month": 11,
+        "day": 17,
+        "hour": 0,
+        "minute": 0,
+        "second": 1
+      },
+      "deadline": {
+        "year": 2017,
+        "month": 0,
+        "day": 31,
+        "hour": 23,
+        "minute": 59,
+        "second": 59
+      },
+      "assessmentOfferedId": "assessment.AssessmentOffered%3A5855473871e4823bce25a7fd%40bazzim.MIT.EDU"
+    },
+    "currentDirective": {
+      "type": "Objective",
+      "id": "mc3-objective%3A15059%40MIT-OEIT",
+      "auditTrail": {
+        "addedBy": "MC3GUE$T",
+        "addedOn": "2016-10-31T10:48:58",
+        "updatedBy": "MC3GUE$T",
+        "updatedOn": "2016-11-18T10:47:30"
+      },
+      "current": true,
+      "description": {
+        "formatTypeId": "format.text%3APlain%40okapia.net",
+        "languageTypeId": "639-2%3AENG%40iso.org",
+        "scriptTypeId": "15924%3ALATN%40iso.org",
+        "text": ""
+      },
+      "displayName": {
+        "formatTypeId": "format.text%3APlain%40okapia.net",
+        "languageTypeId": "639-2%3AENG%40iso.org",
+        "scriptTypeId": "15924%3ALATN%40iso.org",
+        "text": "Determine if two lines are parallel"
+      },
+      "genusTypeId": "mc3-objective%3Amc3.learning.outcome%40MIT-OEIT",
+      "assessmentId": "",
+      "cognitiveProcessId": "",
+      "knowledgeCategoryId": "",
+      "objectiveBankId": "mc3-objectivebank%3A2823%40MIT-OEIT"
+    }
+  },
+  "login": {
+    "isLoginInProgress": false,
+    "form": {
+      "username": "I123"
+    },
+    "user": {
+      "displayName": "Darth Vader",
+      "isVisitor": true,
+      "username": null,
+      "d2l": null
+    }
+  },
+  "bank": {
+    "enrolledBankIds": [
+      {
+        "id": "assessment.Bank%3A57d70ed471e482a74879349a%40bazzim.MIT.EDU"
+      },
+      {
+        "id": "assessment.Bank%3A576d6d3271e4828c441d721a%40bazzim.MIT.EDU"
+      }
+    ],
+    "banks": []
+  },
+  "subject": {},
+  "mission": {
+    "missions": [
+      {
+        "hasSpawnedFollowOnPhase": false,
+        "displayName": {
+          "text": "debug",
+          "languageTypeId": "639-2%3AENG%40ISO",
+          "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+          "scriptTypeId": "15924%3ALATN%40ISO"
+        },
+        "description": {
+          "text": "",
+          "languageTypeId": "639-2%3AENG%40ISO",
+          "scriptTypeId": "15924%3ALATN%40ISO",
+          "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+        },
+        "recordTypeIds": [
+          "osid-object%3Asimple-child-sequencing%40ODL.MIT.EDU",
+          "assessment-record-type%3Afbw-phase-i%40ODL.MIT.EDU"
+        ],
+        "type": "Assessment",
+        "bankId": "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU",
+        "levelId": "",
+        "childIds": [
+          "assessment_authoring.AssessmentPart%3A5856be3771e48299b3979204%40bazzim.MIT.EDU"
+        ],
+        "genusTypeId": "assessment-genus%3Afbw-homework-mission%40ODL.MIT.EDU",
+        "assignedBankIds": [
+          "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU"
+        ],
+        "offereds": [
+          {
+            "reviewOptions": {
+              "whetherCorrect": {
+                "afterAttempt": true,
+                "beforeDeadline": true,
+                "afterDeadline": true,
+                "duringAttempt": true
+              },
+              "solution": {
+                "afterAttempt": true,
+                "beforeDeadline": true,
+                "afterDeadline": true,
+                "duringAttempt": false
+              }
+            },
+            "itemsShuffled": null,
+            "description": {
+              "text": "",
+              "languageTypeId": "639-2%3AENG%40ISO",
+              "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+              "scriptTypeId": "15924%3ALATN%40ISO"
+            },
+            "itemsSequential": null,
+            "bankId": "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU",
+            "scoreSystemId": "",
+            "maxAttempts": null,
+            "deadline": {
+              "hour": 23,
+              "month": 1,
+              "second": 59,
+              "microsecond": 0,
+              "year": 2017,
+              "day": 30,
+              "minute": 59
+            },
+            "startTime": {
+              "hour": 0,
+              "month": 12,
+              "second": 1,
+              "microsecond": 0,
+              "year": 2016,
+              "day": 18,
+              "minute": 0
+            },
+            "duration": null,
+            "gradeSystemId": "",
+            "id": "assessment.AssessmentOffered%3A5856be3771e48299b3979206%40bazzim.MIT.EDU",
+            "displayName": {
+              "text": "",
+              "languageTypeId": "639-2%3AENG%40ISO",
+              "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+              "scriptTypeId": "15924%3ALATN%40ISO"
+            },
+            "recordTypeIds": [
+              "assessment-offered-record-type%3Areview-options%40MOODLE.ORG"
+            ],
+            "assessmentId": "assessment.Assessment%3A5856be3771e48299b3979203%40bazzim.MIT.EDU",
+            "levelId": "",
+            "assignedBankIds": [
+              "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU"
+            ],
+            "genusTypeId": "GenusType%3ADEFAULT%40DLKIT.MIT.EDU",
+            "type": "AssessmentOffered"
+          }
+        ],
+        "rubricId": "",
+        "id": "assessment.Assessment%3A5856be3771e48299b3979203%40bazzim.MIT.EDU",
+        "startTime": {
+          "year": 2016,
+          "month": 11,
+          "day": 18,
+          "hour": 0,
+          "minute": 0,
+          "second": 1
+        },
+        "deadline": {
+          "year": 2017,
+          "month": 0,
+          "day": 30,
+          "hour": 23,
+          "minute": 59,
+          "second": 59
+        },
+        "assessmentOfferedId": "assessment.AssessmentOffered%3A5856be3771e48299b3979206%40bazzim.MIT.EDU"
+      },
+      {
+        "hasSpawnedFollowOnPhase": true,
+        "displayName": {
+          "text": "Internal test mission",
+          "languageTypeId": "639-2%3AENG%40ISO",
+          "scriptTypeId": "15924%3ALATN%40ISO",
+          "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+        },
+        "description": {
+          "text": "",
+          "languageTypeId": "639-2%3AENG%40ISO",
+          "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+          "scriptTypeId": "15924%3ALATN%40ISO"
+        },
+        "recordTypeIds": [
+          "osid-object%3Asimple-child-sequencing%40ODL.MIT.EDU",
+          "assessment-record-type%3Afbw-phase-i%40ODL.MIT.EDU"
+        ],
+        "type": "Assessment",
+        "bankId": "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU",
+        "levelId": "",
+        "childIds": [
+          "assessment_authoring.AssessmentPart%3A5855473771e4823bce25a7c5%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A5855473771e4823bce25a7c9%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A5855473771e4823bce25a7cd%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7d1%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7d5%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7d9%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7dd%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7e1%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7e5%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7e9%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7ed%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7f1%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7f5%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7f9%40bazzim.MIT.EDU"
+        ],
+        "genusTypeId": "assessment-genus%3Afbw-homework-mission%40ODL.MIT.EDU",
+        "assignedBankIds": [
+          "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU"
+        ],
+        "offereds": [
+          {
+            "reviewOptions": {
+              "whetherCorrect": {
+                "afterAttempt": true,
+                "duringAttempt": true,
+                "beforeDeadline": true,
+                "afterDeadline": true
+              },
+              "solution": {
+                "afterAttempt": true,
+                "duringAttempt": false,
+                "beforeDeadline": true,
+                "afterDeadline": true
+              }
+            },
+            "itemsShuffled": null,
+            "description": {
+              "text": "",
+              "languageTypeId": "639-2%3AENG%40ISO",
+              "scriptTypeId": "15924%3ALATN%40ISO",
+              "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+            },
+            "itemsSequential": null,
+            "bankId": "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU",
+            "scoreSystemId": "",
+            "maxAttempts": null,
+            "deadline": {
+              "hour": 23,
+              "month": 1,
+              "second": 59,
+              "microsecond": 0,
+              "year": 2017,
+              "day": 31,
+              "minute": 59
+            },
+            "startTime": {
+              "hour": 0,
+              "month": 12,
+              "second": 1,
+              "microsecond": 0,
+              "year": 2016,
+              "day": 17,
+              "minute": 0
+            },
+            "duration": null,
+            "displayName": {
+              "text": "",
+              "languageTypeId": "639-2%3AENG%40ISO",
+              "scriptTypeId": "15924%3ALATN%40ISO",
+              "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+            },
+            "id": "assessment.AssessmentOffered%3A5855473871e4823bce25a7fd%40bazzim.MIT.EDU",
+            "gradeSystemId": "",
+            "recordTypeIds": [
+              "assessment-offered-record-type%3Areview-options%40MOODLE.ORG"
+            ],
+            "assessmentId": "assessment.Assessment%3A5855473771e4823bce25a7c4%40bazzim.MIT.EDU",
+            "levelId": "",
+            "assignedBankIds": [
+              "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU"
+            ],
+            "genusTypeId": "GenusType%3ADEFAULT%40DLKIT.MIT.EDU",
+            "type": "AssessmentOffered"
+          }
+        ],
+        "rubricId": "",
+        "id": "assessment.Assessment%3A5855473771e4823bce25a7c4%40bazzim.MIT.EDU",
+        "startTime": {
+          "year": 2016,
+          "month": 11,
+          "day": 17,
+          "hour": 0,
+          "minute": 0,
+          "second": 1
+        },
+        "deadline": {
+          "year": 2017,
+          "month": 0,
+          "day": 31,
+          "hour": 23,
+          "minute": 59,
+          "second": 59
+        },
+        "assessmentOfferedId": "assessment.AssessmentOffered%3A5855473871e4823bce25a7fd%40bazzim.MIT.EDU"
+      },
+      {
+        "hasSpawnedFollowOnPhase": true,
+        "displayName": {
+          "text": "Danielle's Awesome Test",
+          "languageTypeId": "639-2%3AENG%40ISO",
+          "scriptTypeId": "15924%3ALATN%40ISO",
+          "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+        },
+        "description": {
+          "text": "",
+          "languageTypeId": "639-2%3AENG%40ISO",
+          "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+          "scriptTypeId": "15924%3ALATN%40ISO"
+        },
+        "recordTypeIds": [
+          "osid-object%3Asimple-child-sequencing%40ODL.MIT.EDU",
+          "assessment-record-type%3Afbw-phase-i%40ODL.MIT.EDU"
+        ],
+        "type": "Assessment",
+        "bankId": "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU",
+        "levelId": "",
+        "childIds": [
+          "assessment_authoring.AssessmentPart%3A5850592f71e4824fcc9d33ea%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A5850592f71e4824fcc9d33ec%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A5850592f71e4824fcc9d33ee%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A5850592f71e4824fcc9d33f0%40bazzim.MIT.EDU"
+        ],
+        "genusTypeId": "assessment-genus%3Afbw-homework-mission%40ODL.MIT.EDU",
+        "assignedBankIds": [
+          "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU"
+        ],
+        "offereds": [
+          {
+            "reviewOptions": {
+              "whetherCorrect": {
+                "afterAttempt": true,
+                "duringAttempt": true,
+                "beforeDeadline": true,
+                "afterDeadline": true
+              },
+              "solution": {
+                "afterAttempt": true,
+                "duringAttempt": false,
+                "beforeDeadline": true,
+                "afterDeadline": true
+              }
+            },
+            "itemsShuffled": null,
+            "description": {
+              "text": "",
+              "languageTypeId": "639-2%3AENG%40ISO",
+              "scriptTypeId": "15924%3ALATN%40ISO",
+              "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+            },
+            "itemsSequential": null,
+            "bankId": "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU",
+            "scoreSystemId": "",
+            "maxAttempts": null,
+            "deadline": {
+              "hour": 23,
+              "month": 12,
+              "second": 59,
+              "microsecond": 0,
+              "year": 2016,
+              "day": 14,
+              "minute": 59
+            },
+            "startTime": {
+              "hour": 0,
+              "month": 12,
+              "second": 1,
+              "microsecond": 0,
+              "year": 2016,
+              "day": 13,
+              "minute": 0
+            },
+            "duration": null,
+            "displayName": {
+              "text": "",
+              "languageTypeId": "639-2%3AENG%40ISO",
+              "scriptTypeId": "15924%3ALATN%40ISO",
+              "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+            },
+            "id": "assessment.AssessmentOffered%3A5850593271e4824fcc9d33f2%40bazzim.MIT.EDU",
+            "gradeSystemId": "",
+            "recordTypeIds": [
+              "assessment-offered-record-type%3Areview-options%40MOODLE.ORG"
+            ],
+            "assessmentId": "assessment.Assessment%3A5850592f71e4824fcc9d33e9%40bazzim.MIT.EDU",
+            "levelId": "",
+            "assignedBankIds": [
+              "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU"
+            ],
+            "genusTypeId": "GenusType%3ADEFAULT%40DLKIT.MIT.EDU",
+            "type": "AssessmentOffered"
+          }
+        ],
+        "rubricId": "",
+        "id": "assessment.Assessment%3A5850592f71e4824fcc9d33e9%40bazzim.MIT.EDU",
+        "startTime": {
+          "year": 2016,
+          "month": 11,
+          "day": 13,
+          "hour": 0,
+          "minute": 0,
+          "second": 1
+        },
+        "deadline": {
+          "year": 2016,
+          "month": 11,
+          "day": 14,
+          "hour": 23,
+          "minute": 59,
+          "second": 59
+        },
+        "assessmentOfferedId": "assessment.AssessmentOffered%3A5850593271e4824fcc9d33f2%40bazzim.MIT.EDU"
+      },
+      {
+        "hasSpawnedFollowOnPhase": false,
+        "displayName": {
+          "text": "TEST GPL_MAT",
+          "languageTypeId": "639-2%3AENG%40ISO",
+          "scriptTypeId": "15924%3ALATN%40ISO",
+          "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+        },
+        "description": {
+          "text": "Graphs and properties of logarithmic functions",
+          "languageTypeId": "639-2%3AENG%40ISO",
+          "scriptTypeId": "15924%3ALATN%40ISO",
+          "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+        },
+        "recordTypeIds": [
+          "osid-object%3Asimple-child-sequencing%40ODL.MIT.EDU",
+          "assessment-record-type%3Afbw-phase-i%40ODL.MIT.EDU"
+        ],
+        "type": "Assessment",
+        "bankId": "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU",
+        "levelId": "",
+        "childIds": [
+          "assessment_authoring.AssessmentPart%3A57fe9e3771e48240ccf2c4b7%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A57fe9e3871e48240ccf2c4bb%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A57fe9e3871e48240ccf2c4be%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A57fe9e3971e48240ccf2c4c1%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A57fe9e3971e48240ccf2c4c5%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A57fe9e3971e48240ccf2c4c8%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A57fe9e3a71e48240ccf2c4cb%40bazzim.MIT.EDU"
+        ],
+        "genusTypeId": "assessment-genus%3Afbw-homework-mission%40ODL.MIT.EDU",
+        "assignedBankIds": [
+          "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU"
+        ],
+        "offereds": [
+          {
+            "reviewOptions": {
+              "whetherCorrect": {
+                "afterAttempt": true,
+                "beforeDeadline": true,
+                "afterDeadline": true,
+                "duringAttempt": true
+              },
+              "solution": {
+                "afterAttempt": true,
+                "beforeDeadline": true,
+                "afterDeadline": true,
+                "duringAttempt": false
+              }
+            },
+            "itemsShuffled": null,
+            "description": {
+              "text": "",
+              "languageTypeId": "639-2%3AENG%40ISO",
+              "scriptTypeId": "15924%3ALATN%40ISO",
+              "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+            },
+            "itemsSequential": null,
+            "bankId": "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU",
+            "scoreSystemId": "",
+            "maxAttempts": null,
+            "deadline": {
+              "hour": 12,
+              "month": 12,
+              "second": 0,
+              "microsecond": 0,
+              "year": 2026,
+              "day": 31,
+              "minute": 0
+            },
+            "startTime": {
+              "hour": 12,
+              "month": 10,
+              "second": 0,
+              "microsecond": 0,
+              "year": 2016,
+              "day": 1,
+              "minute": 0
+            },
+            "duration": null,
+            "displayName": {
+              "text": "",
+              "languageTypeId": "639-2%3AENG%40ISO",
+              "scriptTypeId": "15924%3ALATN%40ISO",
+              "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+            },
+            "id": "assessment.AssessmentOffered%3A57fe9e4f71e48240ccf2c4cf%40bazzim.MIT.EDU",
+            "gradeSystemId": "",
+            "recordTypeIds": [
+              "assessment-offered-record-type%3Areview-options%40MOODLE.ORG"
+            ],
+            "assessmentId": "assessment.Assessment%3A57fe9e3771e48240ccf2c4b6%40bazzim.MIT.EDU",
+            "levelId": "",
+            "assignedBankIds": [
+              "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU"
+            ],
+            "genusTypeId": "GenusType%3ADEFAULT%40DLKIT.MIT.EDU",
+            "type": "AssessmentOffered"
+          }
+        ],
+        "rubricId": "",
+        "id": "assessment.Assessment%3A57fe9e3771e48240ccf2c4b6%40bazzim.MIT.EDU",
+        "startTime": {
+          "year": 2016,
+          "month": 9,
+          "day": 1,
+          "hour": 12,
+          "minute": 0,
+          "second": 0
+        },
+        "deadline": {
+          "year": 2026,
+          "month": 11,
+          "day": 31,
+          "hour": 12,
+          "minute": 0,
+          "second": 0
+        },
+        "assessmentOfferedId": "assessment.AssessmentOffered%3A57fe9e4f71e48240ccf2c4cf%40bazzim.MIT.EDU"
+      },
+      {
+        "hasSpawnedFollowOnPhase": false,
+        "displayName": {
+          "text": "Graphs and properties of logarithmic functions",
+          "languageTypeId": "639-2%3AENG%40ISO",
+          "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+          "scriptTypeId": "15924%3ALATN%40ISO"
+        },
+        "description": {
+          "text": "Graphs and properties of logarithmic functions",
+          "languageTypeId": "639-2%3AENG%40ISO",
+          "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+          "scriptTypeId": "15924%3ALATN%40ISO"
+        },
+        "recordTypeIds": [
+          "osid-object%3Asimple-child-sequencing%40ODL.MIT.EDU",
+          "assessment-record-type%3Afbw-phase-i%40ODL.MIT.EDU"
+        ],
+        "type": "Assessment",
+        "bankId": "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU",
+        "levelId": "",
+        "childIds": [
+          "assessment_authoring.AssessmentPart%3A57fd158b71e48240ccf2c085%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A57fd158b71e48240ccf2c089%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A57fd158c71e48240ccf2c08c%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A57fd158c71e48240ccf2c08f%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A57fd158d71e48240ccf2c093%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A57fd158d71e48240ccf2c096%40bazzim.MIT.EDU",
+          "assessment_authoring.AssessmentPart%3A57fd158d71e48240ccf2c099%40bazzim.MIT.EDU"
+        ],
+        "genusTypeId": "assessment-genus%3Afbw-homework-mission%40ODL.MIT.EDU",
+        "assignedBankIds": [
+          "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU"
+        ],
+        "offereds": [
+          {
+            "reviewOptions": {
+              "whetherCorrect": {
+                "afterAttempt": true,
+                "duringAttempt": true,
+                "beforeDeadline": true,
+                "afterDeadline": true
+              },
+              "solution": {
+                "afterAttempt": true,
+                "duringAttempt": false,
+                "beforeDeadline": true,
+                "afterDeadline": true
+              }
+            },
+            "itemsShuffled": null,
+            "description": {
+              "text": "",
+              "languageTypeId": "639-2%3AENG%40ISO",
+              "scriptTypeId": "15924%3ALATN%40ISO",
+              "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+            },
+            "itemsSequential": null,
+            "bankId": "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU",
+            "scoreSystemId": "",
+            "maxAttempts": null,
+            "deadline": {
+              "hour": 6,
+              "month": 10,
+              "second": 0,
+              "microsecond": 0,
+              "year": 2016,
+              "day": 29,
+              "minute": 0
+            },
+            "startTime": {
+              "hour": 12,
+              "month": 10,
+              "second": 0,
+              "microsecond": 0,
+              "year": 2016,
+              "day": 11,
+              "minute": 0
+            },
+            "duration": null,
+            "displayName": {
+              "text": "",
+              "languageTypeId": "639-2%3AENG%40ISO",
+              "scriptTypeId": "15924%3ALATN%40ISO",
+              "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+            },
+            "id": "assessment.AssessmentOffered%3A57fd15ab71e48240ccf2c09d%40bazzim.MIT.EDU",
+            "gradeSystemId": "",
+            "recordTypeIds": [
+              "assessment-offered-record-type%3Areview-options%40MOODLE.ORG"
+            ],
+            "assessmentId": "assessment.Assessment%3A57fd158a71e48240ccf2c084%40bazzim.MIT.EDU",
+            "levelId": "",
+            "assignedBankIds": [
+              "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU"
+            ],
+            "genusTypeId": "GenusType%3ADEFAULT%40DLKIT.MIT.EDU",
+            "type": "AssessmentOffered"
+          }
+        ],
+        "rubricId": "",
+        "id": "assessment.Assessment%3A57fd158a71e48240ccf2c084%40bazzim.MIT.EDU",
+        "startTime": {
+          "year": 2016,
+          "month": 9,
+          "day": 11,
+          "hour": 12,
+          "minute": 0,
+          "second": 0
+        },
+        "deadline": {
+          "year": 2016,
+          "month": 9,
+          "day": 29,
+          "hour": 6,
+          "minute": 0,
+          "second": 0
+        },
+        "assessmentOfferedId": "assessment.AssessmentOffered%3A57fd15ab71e48240ccf2c09d%40bazzim.MIT.EDU"
+      }
+    ],
+    "currentMission": {
+      "hasSpawnedFollowOnPhase": true,
+      "displayName": {
+        "text": "Internal test mission",
+        "languageTypeId": "639-2%3AENG%40ISO",
+        "scriptTypeId": "15924%3ALATN%40ISO",
+        "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+      },
+      "description": {
+        "text": "",
+        "languageTypeId": "639-2%3AENG%40ISO",
+        "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
+        "scriptTypeId": "15924%3ALATN%40ISO"
+      },
+      "recordTypeIds": [
+        "osid-object%3Asimple-child-sequencing%40ODL.MIT.EDU",
+        "assessment-record-type%3Afbw-phase-i%40ODL.MIT.EDU"
+      ],
+      "type": "Assessment",
+      "bankId": "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU",
+      "levelId": "",
+      "childIds": [
+        "assessment_authoring.AssessmentPart%3A5855473771e4823bce25a7c5%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473771e4823bce25a7c9%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473771e4823bce25a7cd%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7d1%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7d5%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7d9%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7dd%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7e1%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7e5%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7e9%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7ed%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7f1%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7f5%40bazzim.MIT.EDU",
+        "assessment_authoring.AssessmentPart%3A5855473871e4823bce25a7f9%40bazzim.MIT.EDU"
+      ],
+      "genusTypeId": "assessment-genus%3Afbw-homework-mission%40ODL.MIT.EDU",
+      "assignedBankIds": [
+        "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU"
+      ],
+      "offereds": [
+        {
+          "reviewOptions": {
+            "whetherCorrect": {
+              "afterAttempt": true,
+              "duringAttempt": true,
+              "beforeDeadline": true,
+              "afterDeadline": true
+            },
+            "solution": {
+              "afterAttempt": true,
+              "duringAttempt": false,
+              "beforeDeadline": true,
+              "afterDeadline": true
+            }
+          },
+          "itemsShuffled": null,
+          "description": {
+            "text": "",
+            "languageTypeId": "639-2%3AENG%40ISO",
+            "scriptTypeId": "15924%3ALATN%40ISO",
+            "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+          },
+          "itemsSequential": null,
+          "bankId": "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU",
+          "scoreSystemId": "",
+          "maxAttempts": null,
+          "deadline": {
+            "hour": 23,
+            "month": 1,
+            "second": 59,
+            "microsecond": 0,
+            "year": 2017,
+            "day": 31,
+            "minute": 59
+          },
+          "startTime": {
+            "hour": 0,
+            "month": 12,
+            "second": 1,
+            "microsecond": 0,
+            "year": 2016,
+            "day": 17,
+            "minute": 0
+          },
+          "duration": null,
+          "displayName": {
+            "text": "",
+            "languageTypeId": "639-2%3AENG%40ISO",
+            "scriptTypeId": "15924%3ALATN%40ISO",
+            "formatTypeId": "TextFormats%3APLAIN%40okapia.net"
+          },
+          "id": "assessment.AssessmentOffered%3A5855473871e4823bce25a7fd%40bazzim.MIT.EDU",
+          "gradeSystemId": "",
+          "recordTypeIds": [
+            "assessment-offered-record-type%3Areview-options%40MOODLE.ORG"
+          ],
+          "assessmentId": "assessment.Assessment%3A5855473771e4823bce25a7c4%40bazzim.MIT.EDU",
+          "levelId": "",
+          "assignedBankIds": [
+            "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU"
+          ],
+          "genusTypeId": "GenusType%3ADEFAULT%40DLKIT.MIT.EDU",
+          "type": "AssessmentOffered"
+        }
+      ],
+      "rubricId": "",
+      "id": "assessment.Assessment%3A5855473771e4823bce25a7c4%40bazzim.MIT.EDU",
+      "startTime": {
+        "year": 2016,
+        "month": 11,
+        "day": 17,
+        "hour": 0,
+        "minute": 0,
+        "second": 1
+      },
+      "deadline": {
+        "year": 2017,
+        "month": 0,
+        "day": 31,
+        "hour": 23,
+        "minute": 59,
+        "second": 59
+      },
+      "assessmentOfferedId": "assessment.AssessmentOffered%3A5855473871e4823bce25a7fd%40bazzim.MIT.EDU"
+    },
+    "spawnDate": null,
+    "spawnDateFocused": false,
+    "editMission": {
+      "id": "assessment.Assessment%3A5855473771e4823bce25a7c4%40bazzim.MIT.EDU",
+      "assessmentOfferedId": "assessment.AssessmentOffered%3A5855473871e4823bce25a7fd%40bazzim.MIT.EDU",
+      "displayName": "Internal test mission",
+      "genusTypeId": "assessment-genus%3Afbw-homework-mission%40ODL.MIT.EDU",
+      "focusedInput": null,
+      "formError": false,
+      "startTime": {
+        "year": 2016,
+        "month": 11,
+        "day": 17,
+        "hour": 0,
+        "minute": 0,
+        "second": 1
+      },
+      "deadline": {
+        "year": 2017,
+        "month": 0,
+        "day": 31,
+        "hour": 23,
+        "minute": 59,
+        "second": 59
+      }
+    },
+    "isGetPhaseIIResultsInProgress": false
+  },
+  "editMission": {
+    "newMission": {
+      "startTime": null,
+      "deadline": null,
+      "displayName": "",
+      "genusTypeId": "assessment-genus%3Afbw-homework-mission%40ODL.MIT.EDU",
+      "focusedInput": null,
+      "formError": false,
+      "selectedModule": null,
+      "selectedDirectives": [],
+      "directiveSearchQuery": ""
+    }
+  },
+  "mapping": {
+    "modules": null,
+    "outcomes": null,
+    "relationships": null
+  },
+  "result": {}
+}

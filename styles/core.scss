@@ -1,0 +1,124 @@
+@import 'base';
+@import '~normalize.css/normalize';
+
+// Some best-practice CSS that's useful for most apps
+// Just remove them if they're not what you want
+html {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+button {
+  padding-top: .5em;
+  padding-bottom: .5em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:disabled, button:disabled:hover {
+  cursor: default;
+  opacity: .5;
+}
+
+
+.flex-container {
+  display: flex;
+}
+
+.flex-container.align-center {
+  align-items: center;
+}
+
+.flex-container.align-top {
+  align-items: flex-start;;
+}
+
+.flex-container.align-bottom {
+  align-items: flex-end;
+}
+
+.flex-container.justify-center {
+  justify-content: center;
+}
+
+.flex-container.space-between {
+  justify-content: space-between;
+}
+
+.flex-container.space-around {
+  justify-content: space-around;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.mute {
+  color: #666;
+}
+
+.warning-color {
+  color: $app-red;
+}
+
+.light {
+  font-weight: 300;
+}
+
+// ===== common to all =====
+
+.clickable-list {
+  margin-left: 0;
+  list-style: none;
+}
+
+.clickable-row__item {
+  cursor: pointer;
+  padding: .75rem 1em;
+  border-bottom: 1px solid #ddd;
+}
+
+.clickable-row__item:hover {
+  background: #f8f8f8;
+}
+
+.clickable-row__item.is-selected {
+  cursor: default;
+  background: #f8f8f8;
+}
+
+.clickable-row__item:last-of-type {
+  border-bottom: 0;
+}
+
+.row-title {
+  font-weight: 600;
+}
+
+.row-subtitle {
+  color: #555;
+  font-size: .875em;
+}
+
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,81 @@
+@import '../../../styles/base';
+
+
+.login {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  color: #fff;
+  padding-top: 5%;
+}
+
+.app-name {
+  margin-bottom: 4.5rem;
+}
+
+.app-logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.login {
+  background: rgba(127,198,189,1);
+  background: -moz-linear-gradient(top, rgba(127,198,189,1) 0%, rgba(75,181,193,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(127,198,189,1)), color-stop(100%, rgba(75,181,193,1)));
+  background: -webkit-linear-gradient(top, rgba(127,198,189,1) 0%, rgba(75,181,193,1) 100%);
+  background: -o-linear-gradient(top, rgba(127,198,189,1) 0%, rgba(75,181,193,1) 100%);
+  background: -ms-linear-gradient(top, rgba(127,198,189,1) 0%, rgba(75,181,193,1) 100%);
+  background: linear-gradient(to bottom, rgba(127,198,189,1) 0%, rgba(75,181,193,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7fc6bd', endColorstr='#4bb5c1', GradientType=0 );
+}
+
+.login-button {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em 1em;
+  margin-bottom: 3rem;
+  width: 300px;
+  text-align: center;
+  background: #3D5EB7;
+  font-weight: 500;
+}
+
+.login-button--d2l {
+  background: #705FCE;
+}
+
+.login-button:hover {
+  opacity: .8;
+}
+
+.login-button__image {
+    height: 1.1rem;
+    position: absolute;
+    left: 1em;
+}
+
+.divider {
+  border-color: rgba(127,198,189,1) transparent rgba(147,228,209,1) transparent;
+  border-size: 1px;
+  border-style: solid;
+  height: 0;
+}
+
+.contact {
+  color: #404040;
+  font-size: .8rem;
+}
+
+.contact a {
+  color: #eee;
+}
+
+.contact a:hover {
+  color: #fff;
+}

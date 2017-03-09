@@ -1,0 +1,54 @@
+{
+  "_id": "58b49f97f92055c2fd40a080",
+  "itemId": "assessment.Item%3A57d01fb771e482d888d0ce3d%40bazzim.MIT.EDU",
+  "displayName": "Group real and imaginary parts",
+  "description": "",
+  "text": "<p>Group the real and imaginary parts of the expression:</p>\n\n<p>\\( (-1 + 5i) + (3 - 2i) \\)</p>\n",
+  "learningObjectiveId": "mc3-objective%3A14803%40MIT-OEIT",
+  "outcome": "58a8a02e0895cd3f6b5282f0",
+  "domain": "58a7969bf36d287948269839",
+  "choices": [
+    {
+      "choiceId": "57d01fb771e482d888d0ce4d",
+      "displayName": "Choice 3",
+      "text": "<p>\\( (-1 + 5) + (3-2)i \\)</p>\n",
+      "feedback": "",
+      "_id": "58b49f97f92055c2fd40a081",
+      "confusedOutcomes": [],
+      "id": "58b49f97f92055c2fd40a081"
+    },
+    {
+      "choiceId": "57d01fb771e482d888d0ce4b",
+      "displayName": "Choice 1",
+      "text": "<p>\\( (-1 + 5) + (3-2)i \\)</p>\n",
+      "feedback": "",
+      "_id": "58b49f97f92055c2fd40a083",
+      "confusedOutcomes": [],
+      "id": "58b49f97f92055c2fd40a083"
+    },
+    {
+      "choiceId": "57d01fb771e482d888d0ce4c",
+      "displayName": "Choice 2",
+      "text": "<p>\\( (-1 -2) + (5+3)i \\)</p>\n",
+      "feedback": "",
+      "_id": "58b49f97f92055c2fd40a082",
+      "confusedOutcomes": [],
+      "id": "58b49f97f92055c2fd40a082"
+    },
+    {
+      "choiceId": "57d01fb771e482d888d0ce4a",
+      "displayName": "Choice 0",
+      "text": "<p>\\( (-1 + 3) + (5-2)i \\)</p>\n",
+      "feedback": "",
+      "_id": "58b49f97f92055c2fd40a084",
+      "confusedOutcomes": [],
+      "id": "58b49f97f92055c2fd40a084"
+    }
+  ],
+  "__v": 0,
+  "id": "58b49f97f92055c2fd40a080",
+  "instanceId": "87176d55-2c41",
+  "referenceNumber": "5.3",
+  "sectionIndex": 0,
+  "targetIndex": 1
+}

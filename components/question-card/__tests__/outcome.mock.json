@@ -1,0 +1,17 @@
+{
+  "_id": {
+    "$oid": "58a8a02e0895cd3f6b528232"
+  },
+  "type": "OUTCOME",
+  "displayName": "Add/subtract matrices",
+  "description": "",
+  "learningObjectiveId": "mc3-objective%3A14516%40MIT-OEIT",
+  "auditTrail": {
+    "updatedAt": "2017-01-31T15:45:15",
+    "updatedBy": "MC3GUE$T",
+    "createdAt": "2016-07-11T14:31:31",
+    "createdBy": "MC3GUE$T"
+  },
+  "domain": "58a7969bf36d287948269839",
+  "__v": 0
+}

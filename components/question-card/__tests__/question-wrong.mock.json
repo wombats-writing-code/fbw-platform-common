@@ -1,0 +1,85 @@
+{
+  "targetIndex": 1,
+  "sectionIndex": 0,
+  "mission": "58bac8c867064a000f27e719",
+  "referenceNumber": "5",
+  "instanceId": "025309b4-65e9",
+  "id": "58b49f96f92055c2fd409687",
+  "__v": 0,
+  "choices": [
+    {
+      "id": "58b49f96f92055c2fd40968b",
+      "confusedOutcomes": [],
+      "_id": "58b49f96f92055c2fd40968b",
+      "feedback": "",
+      "text": "<p>\\( 3 - 2i \\)</p>\n",
+      "displayName": "Choice 0",
+      "choiceId": "586bc4b071e482d81a43ddcf"
+    },
+    {
+      "id": "58b49f96f92055c2fd409689",
+      "confusedOutcomes": [
+        "58a8a02e0895cd3f6b5282f0"
+      ],
+      "_id": "58b49f96f92055c2fd409689",
+      "feedback": "",
+      "text": "<p>\\( 7-3i \\)</p>\n",
+      "displayName": "Choice 2",
+      "choiceId": "586bc4b071e482d81a43ddd1"
+    },
+    {
+      "id": "58b49f96f92055c2fd409688",
+      "confusedOutcomes": [
+        "58a8a02e0895cd3f6b5282f0"
+      ],
+      "_id": "58b49f96f92055c2fd409688",
+      "feedback": "",
+      "text": "<p>\\( 3+ 3i \\)</p>\n",
+      "displayName": "Choice 3",
+      "choiceId": "586bc4b071e482d81a43ddd2"
+    },
+    {
+      "id": "58b49f96f92055c2fd40968a",
+      "confusedOutcomes": [
+        "58a8a02e0895cd3f6b5282f0"
+      ],
+      "_id": "58b49f96f92055c2fd40968a",
+      "feedback": "",
+      "text": "<p>\\( -1 + 2i \\)</p>\n",
+      "displayName": "Choice 1",
+      "choiceId": "586bc4b071e482d81a43ddd0"
+    }
+  ],
+  "domain": "58a7969bf36d287948269839",
+  "outcome": "58a8a02e0895cd3f6b528231",
+  "learningObjectiveId": "mc3-objective%3A14779%40MIT-OEIT",
+  "text": "<p>What is the sum \\( (2-3i) +&nbsp;(1+i) \\)?</p>\n",
+  "description": "",
+  "displayName": "Copy of Add/subtract complex numbers #5",
+  "itemId": "assessment.Item%3A586bc4b071e482d81a43ddc2%40bazzim.MIT.EDU",
+  "_id": "58b49f96f92055c2fd409687",
+  "solution": {
+    "choiceId": "586bc4b071e482d81a43ddcf",
+    "displayName": "Choice 0",
+    "text": "<p>\\( 3 - 2i \\)</p>\n",
+    "feedback": "",
+    "_id": "58b49f96f92055c2fd40968c",
+    "confusedOutcomes": []
+  },
+  "feedback": "<div class=\"collapsible solution__step\">\r\n<div class=\"collapsible__header\"><strong>Step 1: Group real and imaginary parts</strong></div>\r\n\r\n<div class=\"collapsible__body\">\\( (2-3i) +&nbsp;(1+i) = (2+1) + (-3+1)i \\)</div>\r\n</div>\r\n\r\n<div class=\"collapsible solution__step\">\r\n<div class=\"collapsible__header\"><strong>Step 2: Evaluate real and imaginary parts</strong></div>\r\n\r\n<div class=\"collapsible__body\">\\( (2+1) + (-3+1)i = 3 -2i \\)</div>\r\n</div>\r\n",
+  "responded": true,
+  "response": {
+    "isCorrect": false,
+    "choice": {
+      "id": "58b49f96f92055c2fd409689",
+      "confusedOutcomes": [
+        "58a8a02e0895cd3f6b5282f0"
+      ],
+      "_id": "58b49f96f92055c2fd409689",
+      "feedback": "",
+      "text": "<p>\\( 7-3i \\)</p>\n",
+      "displayName": "Choice 2",
+      "choiceId": "586bc4b071e482d81a43ddd1"
+    }
+  }
+}
