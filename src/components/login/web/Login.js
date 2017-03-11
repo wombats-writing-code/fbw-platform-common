@@ -64,7 +64,8 @@ class Login extends Component {
           <div className="medium-6 columns medium-centered">
             <p className="contact">
               <b>Say hello</b> <a href="mailto:fly-by-wire@mit.edu">fly-by-wire@mit.edu</a>
-              &ensp; &#8226; &ensp; <b>Visit us</b> <a href="http://mapping.mit.edu" target="_blank">MIT Mapping Lab</a>
+              &ensp; &#8226; &ensp; <b>Learn more</b> <a href="http://fbw.mit.edu" target="_blank">Fly by Wire </a>
+              &ensp; &#8226; &ensp; <b>Explore</b> <a href="http://mapping.mit.edu" target="_blank">MIT Mapping Lab</a>
               &ensp; &#8226; &ensp; <b>Funded by</b> <a href="https://fipsedatabase.ed.gov/fipse/" target="_blank">US Department of Education</a>
             </p>
           </div>
