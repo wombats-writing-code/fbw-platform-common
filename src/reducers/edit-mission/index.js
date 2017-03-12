@@ -15,6 +15,7 @@ import {
   SELECT_MODULE, CHANGE_OUTCOME_SEARCH, TOGGLE_OUTCOME, CHANGE_FOLLOWS_FROM_MISSIONS
 } from './updateMissionForm'
 import {EDIT_MISSION} from './editMission'
+import {CLICK_ADD_MISSION} from './clickAddMission'
 
 import {localDateTime} from '../../utilities/time'
 
@@ -28,6 +29,11 @@ const initialState = {
 
 export default function editMissionReducer (state = initialState, action) {
   switch (action.type) {
+    case CLICK_ADD_MISSION:
+      return _.assign({}, state, {
+        newMission: stampNewMission()
+      })
+      
     case EDIT_MISSION:
       return _.assign({}, state, {
         newMission: action.mission
@@ -78,7 +84,8 @@ export default function editMissionReducer (state = initialState, action) {
       return _.assign({}, state, {
         newMission: _.assign({}, state.newMission, {
           type: action.missionType,
-          displayName: ''
+          displayName: '',
+          description: ''
         })
       })
 

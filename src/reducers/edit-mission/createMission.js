@@ -100,7 +100,6 @@ export function _createMission(mission, course, user) {
   })
   .then((response) => {
     return response.data;
-    let mission = _.assign({}, response.data)
   })
   .catch((error) => {
     console.log('error creating mission', error);

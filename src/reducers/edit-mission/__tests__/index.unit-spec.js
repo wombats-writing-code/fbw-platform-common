@@ -13,6 +13,8 @@ import {deleteMission} from '../deleteMission'
 import {updateMission} from '../updateMission'
 import reducer from '../index'
 import {EDIT_MISSION} from '../editMission'
+import {CLICK_ADD_MISSION} from '../clickAddMission'
+
 import {
   CREATE_MISSION_OPTIMISTIC, RECEIVE_CREATE_MISSION,
   CREATE_MISSIONS_OPTIMISTIC, RECEIVE_CREATE_MISSIONS
@@ -83,6 +85,9 @@ describe('edit-mission reducer', () => {
     })
 
     newState.newMission.type.should.eql(missionConfig.PHASE_II_MISSION_TYPE);
+    newState.newMission.displayName.should.eql('');
+    newState.newMission.description.should.eql('');
+
   });
 
   it('should update state upon the CHANGE_MISSION_START action', () => {
@@ -177,6 +182,16 @@ describe('edit-mission reducer', () => {
     });
 
     newState.newMission.displayName.should.eql('foo');
+  });
+
+  it('should update the state upon the CLICK_ADD_MISSION action', () => {
+    let newState = reducer({}, {
+      type: CLICK_ADD_MISSION
+    });
+
+    should.not.exist(newState.newMission.type);
+    newState.newMission.displayName.should.eql('');
+    newState.newMission.goals.should.eql([]);
   });
 
 })
