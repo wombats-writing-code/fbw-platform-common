@@ -81,7 +81,7 @@ class NavBar extends Component {
 
       case 'dashboard/:missionName':
         breadcrumbs = _.concat(breadcrumbs, {
-          path: '/dashboard',
+          path: '/missions',
           name: 'Dashboard'
         }, {
           path: props.route.path,
