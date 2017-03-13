@@ -50,22 +50,24 @@ class NavBar extends Component {
       path: '/', name: 'Home'
     }];
 
+    if (!props.route) {
+      return breadcrumbs
+    }
+
     switch(props.route.path) {
       case 'missions':
         breadcrumbs = _.concat(breadcrumbs, {
           path: '/missions',
           name: 'Missions'
         });
-
         break;
 
-      case 'dashboard':
-        breadcrumbs = _.concat(breadcrumbs, {
-          path: '/dashboard',
-          name: 'Dashboard'
-        });
-
-        break;
+      // case 'dashboard':
+      //   breadcrumbs = _.concat(breadcrumbs, {
+      //     path: '/dashboard',
+      //     name: 'Dashboard'
+      //   });
+      //   break;
 
       case '/missions/:missionName':
         breadcrumbs = _.concat(breadcrumbs, {
@@ -77,7 +79,7 @@ class NavBar extends Component {
         });
         break;
 
-      case '/dashboard/:missionName':
+      case 'dashboard/:missionName':
         breadcrumbs = _.concat(breadcrumbs, {
           path: '/dashboard',
           name: 'Dashboard'

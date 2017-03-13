@@ -80,10 +80,29 @@ NavBar=function(_Component){_inherits(NavBar,_Component);function NavBar(){var _
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 _logout=function(){
 _reactRouter.browserHistory.push('/logout-success');
 _this.props.logout();
-},_temp),_possibleConstructorReturn(_this,_ret);}_createClass(NavBar,[{key:'render',value:function(){function render(){var props=this.props;var breadcrumbs=this._getPath(this.props);if(!props.user){return null;}return _react2['default'].createElement('div',{className:'nav-bar flex-container align-center space-between'},_react2['default'].createElement('a',{href:'/'},_react2['default'].createElement('img',{className:'nav-bar__logo',src:require('../../../assets/logo-site--inverted.png')})),_react2['default'].createElement('ul',{className:'breadcrumbs'},_.map(breadcrumbs,function(crumb,idx){return _react2['default'].createElement('li',{className:'breadcrumb',key:'breadcrumbs_'+idx},_react2['default'].createElement(_reactRouter.Link,{to:crumb.path,className:idx===breadcrumbs.length-1?"breadcrumb__link is-inactive":"breadcrumb__link"},crumb.name));})),_react2['default'].createElement('div',{className:'nav-bar__app-control flex-container align-center space-between'},_react2['default'].createElement('p',{className:'username'},(0,_login.getD2LDisplayName)(props.user)),_react2['default'].createElement('button',{className:'logout-button',tabIndex:'1',onClick:this._logout},'Logout')));}return render;}()},{key:'_getPath',value:function(){function _getPath(props){var breadcrumbs=[{path:'/',name:'Home'}];switch(props.route.path){case'missions':breadcrumbs=_.concat(breadcrumbs,{path:'/missions',name:'Missions'});break;case'/missions/:missionName':breadcrumbs=_.concat(breadcrumbs,{path:'/missions',name:'Missions'},{path:props.route.path,name:props.routeParams.missionName});break;}return breadcrumbs;}return _getPath;}()},{key:'_getTitle',value:function(){function _getTitle(props){if(props.routeParams){var key=_.keys(props.routeParams)[0];return props.routeParams[key];}}return _getTitle;}()}]);return NavBar;}(_react.Component);exports['default']=
+},_temp),_possibleConstructorReturn(_this,_ret);}_createClass(NavBar,[{key:'render',value:function(){function render(){var props=this.props;var breadcrumbs=this._getPath(this.props);if(!props.user){return null;}return _react2['default'].createElement('div',{className:'nav-bar flex-container align-center space-between'},_react2['default'].createElement('a',{href:'/'},_react2['default'].createElement('img',{className:'nav-bar__logo',src:require('../../../assets/logo-site--inverted.png')})),_react2['default'].createElement('span',{className:'nav-bar__app-name'},props.appName),_react2['default'].createElement('ul',{className:'breadcrumbs'},_.map(breadcrumbs,function(crumb,idx){return _react2['default'].createElement('li',{className:'breadcrumb',key:'breadcrumbs_'+idx},_react2['default'].createElement(_reactRouter.Link,{to:crumb.path,className:idx===breadcrumbs.length-1?"breadcrumb__link is-inactive":"breadcrumb__link"},crumb.name));})),_react2['default'].createElement('div',{className:'nav-bar__app-control flex-container align-center space-between'},_react2['default'].createElement('p',{className:'username'},(0,_login.getD2LDisplayName)(props.user)),_react2['default'].createElement('button',{className:'logout-button',tabIndex:'1',onClick:this._logout},'Logout')));}return render;}()},{key:'_getPath',value:function(){function _getPath(props){var breadcrumbs=[{path:'/',name:'Home'}];switch(props.route.path){case'missions':breadcrumbs=_.concat(breadcrumbs,{path:'/missions',name:'Missions'});break;case'dashboard':breadcrumbs=_.concat(breadcrumbs,{path:'/dashboard',name:'Dashboard'});break;case'/missions/:missionName':breadcrumbs=_.concat(breadcrumbs,{path:'/missions',name:'Missions'},{path:props.route.path,name:props.routeParams.missionName});break;case'/dashboard/:missionName':breadcrumbs=_.concat(breadcrumbs,{path:'/dashboard',name:'Dashboard'},{path:props.route.path,name:props.routeParams.missionName});break;}return breadcrumbs;}return _getPath;}()},{key:'_getTitle',value:function(){function _getTitle(props){if(props.routeParams){var key=_.keys(props.routeParams)[0];return props.routeParams[key];}}return _getTitle;}()}]);return NavBar;}(_react.Component);exports['default']=
 
 
 

@@ -19,7 +19,7 @@
 .nav-bar__logo {
   height: 2.5rem;
   margin-left: 2rem;
-  margin-right: 2rem;
+  margin-right: 1rem;
   opacity: .9;
 
   @media (max-width: 740px) {
@@ -28,7 +28,10 @@
 }
 
 .nav-bar__app-name {
-  font-weight: 300;
+  margin-bottom: .25rem;
+  margin-right: 2rem;
+  font-weight: 600;
+  color: #eee;
 }
 
 .breadcrumbs {
@@ -44,11 +47,16 @@
 }
 
 a.breadcrumb__link {
-  color: #fff;
+  color: #f8f8f8;
   font-weight: 600;
 }
 
-.breadcrumb__link.is-inactive {
+a.breadcrumb__link:hover {
+  color: #fff;
+}
+
+.breadcrumb__link.is-inactive, .breadcrumb__link.is-inactive:hover {
+  text-decoration: none;
   pointer-events: none;
   font-weight: 400;
 }
