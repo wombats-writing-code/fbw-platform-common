@@ -45,7 +45,7 @@ describe('login reducer', function(done) {
       }
     });
 
-    console.log('newState', newState)
+    // console.log('newState', newState)
 
     newState.user.d2lUser.Identifier.should.be.eql('foo');
     newState.user.authenticatedUrl.should.be.eql('bah')

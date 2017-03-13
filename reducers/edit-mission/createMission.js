@@ -100,7 +100,6 @@ headers:{
 
 then(function(response){
 return response.data;
-var mission=_lodash2['default'].assign({},response.data);
 })['catch'](
 function(error){
 console.log('error creating mission',error);

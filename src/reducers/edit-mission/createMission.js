@@ -32,14 +32,50 @@ export function receiveCreateMissions(missions) {
 
 
 export function createMission(mission, course, user) {
+  if (!mission) {
+    throw new TypeError('mission object must be provided to createMission')
+  }
+
+  if (!course) {
+    throw new TypeError('course object must be provided to createMission')
+  }
+
+  if (!user) {
+    throw new TypeError('course object must be provided to createMission')
+  }
+
   return function(dispatch) {
     dispatch(createMissionOptimistic());
 
-    return _createMission(mission, course, user)
-    .then( mission => {
+    return axios({
+      data: {
+        mission: {
+          displayName: mission.displayName,
+          description: mission.description,
+          type: mission.type,
+          startTime: mission.startTime,
+          deadline: mission.deadline,
+          goals: mission.goals,
+          followsFromMissions: mission.followsFromMissions,
+        },
+        courseId: course.Id || course.Identifier,
+      },
+      method: 'POST',
+      url: `${getDomain()}/l4/missions/`,
+      headers: {
+        'x-fbw-user': user.Identifier
+      }
+    })
+    .then( response => {
+      let mission = response.data;
+
       dispatch(receiveCreateMission(mission));
       return mission;
     })
+    .catch((error) => {
+      console.log('error creating mission', error);
+      return error;
+    });
   }
 }
 
@@ -63,46 +99,4 @@ export function createMissions(missions, course, user) {
       return res.data;
     })
   }
-}
-
-
-export function _createMission(mission, course, user) {
-  if (!mission) {
-    throw new TypeError('mission object must be provided to createMission')
-  }
-
-  if (!course) {
-    throw new TypeError('course object must be provided to createMission')
-  }
-
-  if (!user) {
-    throw new TypeError('course object must be provided to createMission')
-  }
-
-  return axios({
-    data: {
-      mission: {
-        displayName: mission.displayName,
-        description: mission.description,
-        type: mission.type,
-        startTime: mission.startTime,
-        deadline: mission.deadline,
-        goals: mission.goals,
-        followsFromMissions: mission.followsFromMissions,
-      },
-      courseId: course.Id || course.Identifier,
-    },
-    method: 'POST',
-    url: `${getDomain()}/l4/missions/`,
-    headers: {
-      'x-fbw-user': user.Identifier
-    }
-  })
-  .then((response) => {
-    return response.data;
-  })
-  .catch((error) => {
-    console.log('error creating mission', error);
-    return error;
-  });
 }

@@ -147,19 +147,21 @@ describe('mission reducer', () => {
   it('should update state upon RECEIVE_CREATE_MISSIONS action', () => {
     let newState = reducer({
       missions: [
-        {id: '1'}
+        {id: '1'},
+        {id: '2'}
       ]
     }, {
       type: RECEIVE_CREATE_MISSIONS,
       missions: [
-        { id: 'foo', followsFromMissions: ['1'] },
-        {id: 'baz', followsFromMissions: ['1']},
-        { id: 'bar', followsFromMissions: ['1'] }
+        { id: 'foo', followsFromMissions: ['1', '2'] },
+        {id: 'baz', followsFromMissions: ['1', '2']},
+        { id: 'bar', followsFromMissions: ['1', '2'] }
       ]
     });
 
-    _.last(newState.missions).leadsToMissions.should.be.eql(['foo', 'baz', 'bar']);
-    newState.missions.length.should.eql(4);
+    _.find(newState.missions, {id: '1'}).leadsToMissions.should.be.eql(['foo', 'baz', 'bar']);
+    _.find(newState.missions, {id: '2'}).leadsToMissions.should.be.eql(['foo', 'baz', 'bar']);
+    newState.missions.length.should.eql(5);
     newState.currentMission.leadsToMissions.should.be.eql(['foo', 'baz', 'bar']);
   })
 

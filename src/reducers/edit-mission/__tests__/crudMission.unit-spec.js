@@ -13,7 +13,10 @@ import {
   createMission, CREATE_MISSION_OPTIMISTIC, RECEIVE_CREATE_MISSION,
   createMissions, CREATE_MISSIONS_OPTIMISTIC, RECEIVE_CREATE_MISSIONS
 } from '../createMission'
-import {updateMission, UPDATE_MISSION_OPTIMISTIC, RECEIVE_UPDATE_MISSION} from '../updateMission'
+import {
+  updateMission, UPDATE_MISSION_OPTIMISTIC, RECEIVE_UPDATE_MISSION,
+  updateMissions, UPDATE_MISSIONS_OPTIMISTIC, RECEIVE_UPDATE_MISSIONS
+} from '../updateMission'
 import {deleteMission} from '../deleteMission'
 import {missionConfig} from '../../Mission'
 // import {updateMission} from '../updateMission'
@@ -153,6 +156,34 @@ describe('createMission, deleteMission actions', () => {
       done()
     });
   });
+
+  it(`should update the newly-created phase II missions`, done => {
+    let missions = [
+      {name: 'foo'},
+      {name: 'bar'}
+    ];
+
+    nock('http://localhost:8888')
+    .post(`/l4/missions-bulk/`)
+    .reply(200, missions)
+
+    const store = mockStore({})
+
+    store.dispatch(updateMissions(missions, user))
+    .then((res) => {
+      let actions = store.getActions();
+      actions.length.should.eql(2)
+      actions[0].type.should.eql(UPDATE_MISSIONS_OPTIMISTIC)
+      actions[1].type.should.eql(RECEIVE_UPDATE_MISSIONS)
+      actions[1].missions.length.should.eql(missions.length);
+
+      done();
+    })
+    .catch((err) => {
+      console.log(err);
+      done()
+    });
+  })
 
   it('should delete a mission upon calling deleteMission', done => {
     let mission = {id: 'bar'}

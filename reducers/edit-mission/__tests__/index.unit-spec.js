@@ -13,6 +13,8 @@ var _deleteMission=require('../deleteMission');
 var _updateMission=require('../updateMission');
 var _index=require('../index');var _index2=_interopRequireDefault(_index);
 var _editMission=require('../editMission');
+var _clickAddMission=require('../clickAddMission');
+
 
 
 
@@ -83,6 +85,9 @@ missionType:_Mission.missionConfig.PHASE_II_MISSION_TYPE});
 
 
 newState.newMission.type.should.eql(_Mission.missionConfig.PHASE_II_MISSION_TYPE);
+newState.newMission.displayName.should.eql('');
+newState.newMission.description.should.eql('');
+
 });
 
 it('should update state upon the CHANGE_MISSION_START action',function(){
@@ -177,6 +182,16 @@ displayName:'foo'}});
 
 
 newState.newMission.displayName.should.eql('foo');
+});
+
+it('should update the state upon the CLICK_ADD_MISSION action',function(){
+var newState=(0,_index2['default'])({},{
+type:_clickAddMission.CLICK_ADD_MISSION});
+
+
+should.not.exist(newState.newMission.type);
+newState.newMission.displayName.should.eql('');
+newState.newMission.goals.should.eql([]);
 });
 
 });
