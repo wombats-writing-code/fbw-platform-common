@@ -14,6 +14,9 @@ var _createMission=require('../createMission');
 
 
 var _updateMission=require('../updateMission');
+
+
+
 var _deleteMission=require('../deleteMission');
 var _Mission=require('../../Mission');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var middlewares=[_reduxThunk2['default']];var mockStore=(0,_reduxMockStore2['default'])(middlewares);var should=require('should');
 
@@ -145,6 +148,34 @@ actions[1].type.should.eql(_createMission.RECEIVE_CREATE_MISSIONS);
 actions[1].missions.length.should.eql(missions.length);
 
 phase2Missions=actions[1].missions;
+
+done();
+})['catch'](
+function(err){
+console.log(err);
+done();
+});
+});
+
+it('should update the newly-created phase II missions',function(done){
+var missions=[
+{name:'foo'},
+{name:'bar'}];
+
+
+(0,_nock2['default'])('http://localhost:8888').
+post('/l4/missions-bulk/').
+reply(200,missions);
+
+var store=mockStore({});
+
+store.dispatch((0,_updateMission.updateMissions)(missions,user)).
+then(function(res){
+var actions=store.getActions();
+actions.length.should.eql(2);
+actions[0].type.should.eql(_updateMission.UPDATE_MISSIONS_OPTIMISTIC);
+actions[1].type.should.eql(_updateMission.RECEIVE_UPDATE_MISSIONS);
+actions[1].missions.length.should.eql(missions.length);
 
 done();
 })['catch'](

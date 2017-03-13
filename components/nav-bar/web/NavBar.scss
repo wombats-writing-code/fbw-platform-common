@@ -1,5 +1,5 @@
 
-@import '../../../styles/base';
+@import '../../styles/base';
 
 .nav-bar {
   padding-top: 1.25rem;
@@ -25,10 +25,6 @@
   @media (max-width: 740px) {
     margin-right: .5rem;
   }
-}
-
-.nav-bar__app-name {
-  font-weight: 300;
 }
 
 .breadcrumbs {

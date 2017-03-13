@@ -41,11 +41,11 @@ _react2['default'].createElement(Login,null)),
 it('should render the login page',function(){
 var login=connectedComponent.find(Login);
 
-login.find('.login-form-button--d2l').length.should.be.eql(2);
-
+login.find('.login-button').length.should.be.eql(2);
+login.find('.login-button--d2l').length.should.be.eql(1);
 });
 
 after(function(){
-
+connectedComponent.detach();
 });
 });

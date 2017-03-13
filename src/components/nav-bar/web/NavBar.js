@@ -19,6 +19,7 @@ class NavBar extends Component {
     return (
       <div className="nav-bar flex-container align-center space-between">
         <a href="/"><img className="nav-bar__logo" src={require('../../../assets/logo-site--inverted.png')}/></a>
+        <span className="nav-bar__app-name">{props.appName}</span>
         <ul className="breadcrumbs">
           {_.map(breadcrumbs, (crumb, idx) => {
             return (
@@ -58,10 +59,28 @@ class NavBar extends Component {
 
         break;
 
+      case 'dashboard':
+        breadcrumbs = _.concat(breadcrumbs, {
+          path: '/dashboard',
+          name: 'Dashboard'
+        });
+
+        break;
+
       case '/missions/:missionName':
         breadcrumbs = _.concat(breadcrumbs, {
           path: '/missions',
           name: 'Missions'
+        }, {
+          path: props.route.path,
+          name: props.routeParams.missionName
+        });
+        break;
+
+      case '/dashboard/:missionName':
+        breadcrumbs = _.concat(breadcrumbs, {
+          path: '/dashboard',
+          name: 'Dashboard'
         }, {
           path: props.route.path,
           name: props.routeParams.missionName

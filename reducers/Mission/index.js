@@ -80,13 +80,13 @@ missions:_lodash2['default'].compact(_lodash2['default'].concat(action.mission,s
 case _createMission.RECEIVE_CREATE_MISSIONS:
 var newMissions=_lodash2['default'].compact(action.missions);
 var newMissionIds=_lodash2['default'].map(newMissions,'id');
-var followsFromMission=newMissions[0]?newMissions[0].followsFromMissions[0]:null;
+var followsFromMissions=newMissions[0]?newMissions[0].followsFromMissions:[];
 
 var allMissions=_lodash2['default'].concat(newMissions,state.missions);
 
 return{v:_lodash2['default'].assign({},state,{
 missions:_lodash2['default'].map(allMissions,function(mission){
-if(mission.id===followsFromMission){
+if(followsFromMissions.indexOf(mission.id)>-1){
 return _lodash2['default'].assign({},mission,{
 leadsToMissions:newMissionIds});
 
@@ -94,7 +94,7 @@ leadsToMissions:newMissionIds});
 
 return mission;
 }),
-currentMission:_lodash2['default'].assign({},_lodash2['default'].find(state.missions,{id:followsFromMission}),{
+currentMission:_lodash2['default'].assign({},_lodash2['default'].find(state.missions,{id:followsFromMissions[0]}),{
 leadsToMissions:newMissionIds})})};
 
 
