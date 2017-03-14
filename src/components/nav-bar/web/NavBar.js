@@ -88,6 +88,16 @@ class NavBar extends Component {
           name: props.routeParams.missionName
         });
         break;
+
+      case 'students/:studentId/missions/:missionName':
+        breadcrumbs = _.concat(breadcrumbs, {
+          path: '/missions',
+          name: 'Dashboard'
+        }, {
+          path: props.route.path,
+          name: props.routeParams.missionName
+        });
+        break;
     }
 
 
