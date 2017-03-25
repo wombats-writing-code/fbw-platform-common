@@ -51,7 +51,7 @@ export function updateMission(mission, user) {
 
 export function updateMissions(missions, user) {
   return function(dispatch) {
-    dispatch(updateMissionOptimistic());
+    dispatch(updateMissionsOptimistic());
 
     return axios({
       method: 'PUT',

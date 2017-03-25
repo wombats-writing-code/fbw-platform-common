@@ -6,7 +6,7 @@ import {targetKey, targetStatus, filterItemsByTarget } from '../../selectors'
 import {SELECT_MISSION} from './selectMission'
 import { GET_MISSIONS_OPTIMISTIC, RECEIVE_MISSIONS } from './getMissions'
 import { CREATE_TAKE_MISSION_OPTIMISTIC, CREATE_TAKE_MISSION, RECEIVE_CREATE_TAKE_MISSION } from './selectOpenMission'
-import { GET_USER_MISSION_RESULTS_OPTIMISTIC, RECEIVE_GET_USER_MISSION_RESULTS } from './selectClosedMission'
+import { GET_CLOSED_MISSION_OPTIMISTIC, RECEIVE_CLOSED_MISSION } from './selectClosedMission'
 import {SUBMIT_RESPONSE_OPTIMISTIC, RECEIVE_SUBMIT_RESPONSE } from './submitResponse'
 import { SHOW_ANSWER_OPTIMISTIC, RECEIVE_SHOW_ANSWER } from './showAnswer'
 
@@ -111,7 +111,7 @@ export default function missionReducer (state = initialState, action) {
     case SELECT_DIRECTIVE:
       return _.assign({}, state, {
         currentDirectiveIndex: action.directiveIndex,
-        currentTarget: null,
+        currentTarget: state.mission.questions[0] && state.mission.questions[0][0] && state.mission.questions[0][0][0],
         selectedChoiceId: null
       })
 
@@ -122,13 +122,13 @@ export default function missionReducer (state = initialState, action) {
         selectedChoiceId: null
       })
 
-    case GET_USER_MISSION_RESULTS_OPTIMISTIC:
+    case GET_CLOSED_MISSION_OPTIMISTIC:
       return _.assign({}, state, {
         currentMission: action.mission,
         isGetMissionInProgress: true
       });
 
-    case RECEIVE_GET_USER_MISSION_RESULTS:
+    case RECEIVE_CLOSED_MISSION:
       return _.assign({}, state, {
         isGetMissionInProgress: false
       });

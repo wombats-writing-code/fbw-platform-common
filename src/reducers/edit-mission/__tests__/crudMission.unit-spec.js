@@ -164,7 +164,7 @@ describe('createMission, deleteMission actions', () => {
     ];
 
     nock('http://localhost:8888')
-    .post(`/l4/missions-bulk/`)
+    .put(`/l4/missions-bulk/`, {missions})
     .reply(200, missions)
 
     const store = mockStore({})
@@ -172,6 +172,7 @@ describe('createMission, deleteMission actions', () => {
     store.dispatch(updateMissions(missions, user))
     .then((res) => {
       let actions = store.getActions();
+      // console.log('actions', actions)
       actions.length.should.eql(2)
       actions[0].type.should.eql(UPDATE_MISSIONS_OPTIMISTIC)
       actions[1].type.should.eql(RECEIVE_UPDATE_MISSIONS)

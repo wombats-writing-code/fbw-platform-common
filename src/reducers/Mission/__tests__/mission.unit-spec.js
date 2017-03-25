@@ -12,6 +12,7 @@ import {SELECT_DIRECTIVE} from '../selectDirective'
 import {SELECT_TARGET} from '../selectTarget'
 import {RECEIVE_SUBMIT_RESPONSE} from '../submitResponse'
 import {RECEIVE_CREATE_TAKE_MISSION, CREATE_TAKE_MISSION_OPTIMISTIC} from '../selectOpenMission'
+import {RECEIVE_CLOSED_MISSION, GET_CLOSED_MISSION_OPTIMISTIC} from '../selectClosedMission'
 
 import {RECEIVE_CREATE_MISSION, RECEIVE_CREATE_MISSIONS} from '../../edit-mission/createMission'
 import {RECEIVE_DELETE_MISSION} from '../../edit-mission/deleteMission'
@@ -34,11 +35,11 @@ describe('mission reducer', () => {
   it('should update the selected currentDirectiveIndex in state upon SELECT_DIRECTIVE', () => {
     let newState = reducer([], {
       type: SELECT_DIRECTIVE,
-      directiveIndex: 3
+      directiveIndex: 3,
     });
 
     newState.currentDirectiveIndex.should.eql(3);
-    should.not.exist(newState.currentTarget);
+    // should.not.exist(newState.currentTarget);
     should.not.exist(newState.selectedChoiceId);
   });
 

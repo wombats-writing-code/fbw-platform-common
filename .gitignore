@@ -4,3 +4,12 @@ node_modules/
 .DS_Store
 npm-debug.log
 *.swp
+/assets/
+/components/
+/configuration/
+/d2utils/
+/logger/
+/reducers/
+/selectors/
+/styles/
+/utilities/

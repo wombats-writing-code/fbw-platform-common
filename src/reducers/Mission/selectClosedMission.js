@@ -5,8 +5,8 @@ import { getDomain } from '../../utilities'
 
 // ----
 // Action types
-export const RECEIVE_GET_USER_MISSION_RESULTS = 'RECEIVE_GET_USER_MISSION_RESULTS'
-export const GET_USER_MISSION_RESULTS_OPTIMISTIC = 'GET_USER_MISSION_RESULTS_OPTIMISTIC'
+export const RECEIVE_CLOSED_MISSION = 'RECEIVE_CLOSED_MISSION'
+export const GET_CLOSED_MISSION_OPTIMISTIC = 'GET_CLOSED_MISSION_OPTIMISTIC'
 
 // ----
 
@@ -14,49 +14,30 @@ export const GET_USER_MISSION_RESULTS_OPTIMISTIC = 'GET_USER_MISSION_RESULTS_OPT
 // Actions
 // ------------------------------------
 
-export function receiveGetUserMissionResults (mission, resultsExistForUser) {
-  return { type: RECEIVE_GET_USER_MISSION_RESULTS, mission, resultsExistForUser }
+export function receiveClosedMission (mission) {
+  return { type: RECEIVE_CLOSED_MISSION, mission }
 }
 
-export function getUserMissionResultsOptimistic (mission) {
-  return { type: GET_USER_MISSION_RESULTS_OPTIMISTIC, mission }
+export function getClosedMissionOptimistic (mission) {
+  return { type: GET_CLOSED_MISSION_OPTIMISTIC, mission }
 }
 
 export function selectClosedMission (data) {
   return function (dispatch) {
-    // we need to send this data, so that the currentMission gets set in state
-    // currentMission is needed to later on properly render the UI
-    // in the QuestionCard -- to hide the Submit button, we need to be able to
-    // calculate missionStatus
-    // For performance reasons, this needs to be passed in the privateBankId
-    //   of the student, not the missions's assignedBank
-    dispatch(getUserMissionResultsOptimistic(data.mission))
 
-    let options = {
-      url: `${getDomain()}/middleman/banks/${data.bankId}/offereds/${data.mission.assessmentOfferedId}/results`,
+    dispatch(getClosedMissionOptimistic(data.mission))
+
+    // console.log('url', `${getDomain()}/l4/results?missionId=${data.mission._id}&userId=${data.user.Identifier}&reconstruction=true`)
+
+    return axios({
+      url: `${getDomain()}/l4/results?missionId=${data.mission._id}&userId=${data.user.Identifier}&reconstruction=true`,
       headers: {
-        'x-fbw-username': data.username
+        'x-fbw-user': data.user.Identifier
       }
-    }
-
-    let resultSections
-    return axios(options)
-    .then((response) => {
-      resultSections = response.data
-      //console.log('received mission results', response)\
-      return Q.when(convertImagePaths(resultSections))
     })
-    .then((questionsWithImages) => {
-
-      // console.log('result sections', resultSections)
-      dispatch(receiveGetUserMissionResults(questionsWithImages, true))
-
-      return questionsWithImages
-    })
-    .catch((error) => {
-      // this will get hit by a 500 when the user has no results
-      // console.log('error getting mission results for user', error)
-      dispatch(receiveGetUserMissionResults(null, false))
-    })
+    .then((res) => {
+      dispatch(receiveClosedMission(res.data))
+      return res.data;
+    });
   }
 }

@@ -17,7 +17,7 @@ class NavBar extends Component {
     // console.log('props in NavBar', props)
 
     return (
-      <div className="nav-bar flex-container align-center space-between">
+      <div className="nav-bar flex-container align-center space-between wrap">
         <a href="/"><img className="nav-bar__logo" src={require('../../../assets/logo-site--inverted.png')}/></a>
         <span className="nav-bar__app-name">{props.appName}</span>
         <ul className="breadcrumbs">
