@@ -109,9 +109,11 @@ export default function missionReducer (state = initialState, action) {
     // =========
 
     case SELECT_DIRECTIVE:
+      let currentMission = state.mission && state.mission.currentMission;
+
       return _.assign({}, state, {
         currentDirectiveIndex: action.directiveIndex,
-        currentTarget: state.mission.questions[0] && state.mission.questions[0][0] && state.mission.questions[0][0][0],
+        currentTarget: currentMission ? currentMission.questions[0] && currentMission.questions[0][0] && currentMission.questions[0][0][0] : null,
         selectedChoiceId: null
       })
 
