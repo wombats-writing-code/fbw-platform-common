@@ -15,6 +15,7 @@ var mapStateToProps=function(){function mapStateToProps(state,ownProps){
 var mission=ownProps.mission||state.mission.currentMission;
 
 return{
+isLast:state.mission.currentTarget&&state.mission.currentTarget.sectionIndex===mission.questions.length-1,
 currentTarget:state.mission.currentTarget,
 mission:mission,
 questions:(0,_mission.getRouteQuestions)(mission.questions[state.mission.currentDirectiveIndex],state.mission.currentTarget),
@@ -32,6 +33,10 @@ onClickTryNextTarget:function(){function onClickTryNextTarget(currentQuestion,mi
 
 var nextTargetRoute=mission.questions[currentQuestion.sectionIndex][currentQuestion.targetIndex+1];
 if(!nextTargetRoute){
+if(currentQuestion.sectionIndex+1===mission.questions.length){
+return;
+}
+
 nextTargetRoute=mission.questions[currentQuestion.sectionIndex+1][0];
 dispatch((0,_selectDirective.selectDirective)(currentQuestion.sectionIndex+1));
 dispatch((0,_selectTarget.selectTarget)(nextTargetRoute[0]));

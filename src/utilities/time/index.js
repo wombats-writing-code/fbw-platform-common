@@ -5,7 +5,7 @@ const moment = require('moment-timezone')
 export function checkMissionStatus (mission) {
   let st = mission.startTime
   let dl = mission.deadline
-  
+
   let startTime = moment.utc(st)
   let deadline = moment.utc(dl)
   let now = moment.utc()

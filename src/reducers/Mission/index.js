@@ -64,9 +64,15 @@ export default function missionReducer (state = initialState, action) {
       });
 
     case RECEIVE_CREATE_TAKE_MISSION:
+      var target;
+      if (action.mission && action.mission.questions[0] && action.mission.questions[0][0]) {
+        target = action.mission.questions[0][0][0];
+      }
+
       return _.assign({}, state, {
         currentMission: action.mission,
         currentDirectiveIndex: 0,
+        currentTarget: target,
         isGetMissionInProgress: false
       });
 
@@ -110,11 +116,14 @@ export default function missionReducer (state = initialState, action) {
 
     case SELECT_DIRECTIVE:
       let currentMission = state.currentMission;
-      console.log('selectDirective', currentMission, currentMission.questions[0][0]);
+      var target;
+      if (currentMission && currentMission.questions[0] && currentMission.questions[0][0]) {
+        target = currentMission.questions[action.directiveIndex][0][0];
+      }
 
       return _.assign({}, state, {
         currentDirectiveIndex: action.directiveIndex,
-        currentTarget: currentMission ? currentMission.questions[0] && currentMission.questions[0][0] && currentMission.questions[0][0][0] : null,
+        currentTarget: target,
         selectedChoiceId: null
       })
 
@@ -134,7 +143,20 @@ export default function missionReducer (state = initialState, action) {
       });
 
     case RECEIVE_CLOSED_MISSION:
+      console.log('RECEIVE_CLOSED_MISSION', action)
+      let mission = _.assign({}, action.mission, {
+        questions: action.questions
+      })
+
+      var target;
+      if (mission.questions && mission.questions[0] && mission.questions[0][0]) {
+        target = mission.questions[0][0][0];
+      }
+
       return _.assign({}, state, {
+        currentMission: mission,
+        currentDirectiveIndex: 0,
+        currentTarget: target,
         isGetMissionInProgress: false
       });
 

@@ -14,8 +14,8 @@ export const GET_CLOSED_MISSION_OPTIMISTIC = 'GET_CLOSED_MISSION_OPTIMISTIC'
 // Actions
 // ------------------------------------
 
-export function receiveClosedMission (mission) {
-  return { type: RECEIVE_CLOSED_MISSION, mission }
+export function receiveClosedMission (mission, questions) {
+  return { type: RECEIVE_CLOSED_MISSION, mission, questions }
 }
 
 export function getClosedMissionOptimistic (mission) {
@@ -36,7 +36,7 @@ export function selectClosedMission (data) {
       }
     })
     .then((res) => {
-      dispatch(receiveClosedMission(res.data))
+      dispatch(receiveClosedMission(data.mission, res.data))
       return res.data;
     });
   }

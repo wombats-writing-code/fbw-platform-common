@@ -57,16 +57,14 @@ class Questions extends Component {
         nextOutcome = _.find(this.props.outcomes, {id: questionItem.response.choice.confusedOutcomes[0]});
       }
 
-      // console.log('questionItem', questionItem, 'mission');
-
       nextCue = (
-          <NextCue isLastTarget={this.props.isLastTarget}
-                              currentQuestion={questionItem}
-                               response={questionItem.response}
-                               outcome = {outcome}
-                               nextQuestion={nextQuestion}
-                               nextOutcome={nextOutcome}
-                               onClickTryNextTarget={() => this.props.onClickTryNextTarget(questionItem, this.props.mission)}
+          <NextCue isLastTarget={this.props.isLast && !nextQuestion}
+                  currentQuestion={questionItem}
+                   response={questionItem.response}
+                   outcome = {outcome}
+                   nextQuestion={nextQuestion}
+                   nextOutcome={nextOutcome}
+                   onClickTryNextTarget={() => this.props.onClickTryNextTarget(questionItem, this.props.mission)}
           />
       )
     }
@@ -98,11 +96,12 @@ class Questions extends Component {
   }
 
   render() {
+    // console.log('this.props of Questions.js', this.props);
+
     if (!this.props.questions) {
       return null;
     }
 
-    // console.log('this.props of Questions.js', this.props);
 
 
     // console.log('will render questions', this.props.questions);

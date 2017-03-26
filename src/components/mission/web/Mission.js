@@ -39,18 +39,21 @@ class Mission extends Component {
   }
 
   render() {
-    if (this.props.mission) {
-      let missionState = checkMissionStatus(this.props.mission)
-      if (!this.props.hasResults && missionState === "over") {
-        return (<div style={[styles.container, {paddingTop: 80, paddingLeft: 30}]}>
-          <div>You did not participate in this mission, so you have no results.</div>
-        </div>)
-      }
-    }
-
     let loadingIndicator;
     if (this.props.isGetMissionInProgress) {
       return (<Spinner/>)
+    }
+
+
+    let missionState = checkMissionStatus(this.props.mission)
+    console.log('checkMissionStatus', missionState, mission)
+
+    if (this.props.mission.questions.length === 0 && missionState === "over") {
+      return (
+        <div style={[styles.container, {paddingTop: 80, paddingLeft: 30}]}>
+          <div>You did not participate in this mission, so you have no results.</div>
+        </div>
+      )
     }
 
     // console.log('Mission.props', this.props)

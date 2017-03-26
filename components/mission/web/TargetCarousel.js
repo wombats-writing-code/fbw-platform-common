@@ -63,7 +63,7 @@ _react2['default'].createElement('button',{className:'carousel-thumb__button',re
 'aria-label':'Target Question '+targetNumber},
 _react2['default'].createElement('div',{className:'flex-container align-center'},
 image,
-_react2['default'].createElement('p',{className:'carousel-thumb__text carousel-thumb__text--target bold'},target.referenceNumber))));
+_react2['default'].createElement('p',{className:'carousel-thumb__text carousel-thumb__text--target'},'#',target.referenceNumber))));
 
 
 

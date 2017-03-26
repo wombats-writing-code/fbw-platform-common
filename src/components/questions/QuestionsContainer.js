@@ -15,6 +15,7 @@ const mapStateToProps = (state, ownProps) => {
   let mission = ownProps.mission || state.mission.currentMission;
 
   return {
+    isLast: state.mission.currentTarget && state.mission.currentTarget.sectionIndex === mission.questions.length-1,
     currentTarget: state.mission.currentTarget,
     mission,
     questions: getRouteQuestions(mission.questions[state.mission.currentDirectiveIndex], state.mission.currentTarget),
@@ -35,7 +36,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         if (currentQuestion.sectionIndex+1 === mission.questions.length) {
           return;
         }
-        
+
         nextTargetRoute = mission.questions[currentQuestion.sectionIndex+1][0];
         dispatch(selectDirective(currentQuestion.sectionIndex+1));
         dispatch(selectTarget(nextTargetRoute[0]));

@@ -38,10 +38,6 @@ function Questions(){_classCallCheck(this,Questions);var _this=_possibleConstruc
 
 
 
-
-
-
-
 renderListRow=function(questionItem,idx){
 var outcome=_lodash2['default'].find(_this.props.outcomes,{id:questionItem.outcome});
 
@@ -61,10 +57,8 @@ nextOutcome=_lodash2['default'].find(_this.props.outcomes,{id:nextQuestion.outco
 nextOutcome=_lodash2['default'].find(_this.props.outcomes,{id:questionItem.response.choice.confusedOutcomes[0]});
 }
 
-console.log('questionItem',questionItem,'mission');
-
 nextCue=
-_react2['default'].createElement(_NextCue2['default'],{isLastTarget:_this.props.isLastTarget,
+_react2['default'].createElement(_NextCue2['default'],{isLastTarget:_this.props.isLast&&!nextQuestion,
 currentQuestion:questionItem,
 response:questionItem.response,
 outcome:outcome,
@@ -99,13 +93,14 @@ _react2['default'].createElement(QuestionCard,{question:questionItem,outcome:out
 nextCue));
 
 
-};_this.state={shouldScrollUp:false};return _this;}_createClass(Questions,[{key:'componentDidUpdate',value:function(){function componentDidUpdate(prevProps){if(prevProps.isInProgressSubmitChoice&&!this.props.isInProgressSubmitChoice){var nextCueTop=(0,_jquery2['default'])('.answered-question-cue').last();(0,_jquery2['default'])("html, body").animate({scrollTop:nextCueTop.offset.top},1000);}if(prevProps.currentTarget!==this.props.currentTarget){console.log('prev target',prevProps.currentTarget,'currentTarget',this.props.currentTarget);(0,_jquery2['default'])("html, body").animate({scrollTop:0},1000);}}return componentDidUpdate;}()},{key:'render',value:function(){function render()
+};return _this;}_createClass(Questions,[{key:'componentDidUpdate',value:function(){function componentDidUpdate(prevProps){if(prevProps.isInProgressSubmitChoice&&!this.props.isInProgressSubmitChoice){var nextCueTop=(0,_jquery2['default'])('.answered-question-cue').last();(0,_jquery2['default'])("html, body").animate({scrollTop:nextCueTop.offset.top},1000);}if(prevProps.currentTarget!==this.props.currentTarget){(0,_jquery2['default'])("html, body").animate({scrollTop:0},1000);}}return componentDidUpdate;}()},{key:'render',value:function(){function render()
 
 {
+
+
 if(!this.props.questions){
 return null;
 }
-
 
 
 

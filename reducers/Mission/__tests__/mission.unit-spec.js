@@ -67,10 +67,37 @@ newState.isGetMissionInProgress.should.eql(true);
 it('should update state upon RECEIVE_CREATE_TAKE_MISSION',function(){
 var newState=(0,_index2['default'])([],{
 type:_selectOpenMission.RECEIVE_CREATE_TAKE_MISSION,
-mission:{name:'superman'}});
+mission:{
+name:'superman',
+questions:[
+[
+['foo']]]}});
 
 
-newState.currentMission.should.eql({name:'superman'});
+
+
+
+newState.currentMission.name.should.eql('superman');
+newState.currentTarget.should.eql('foo');
+newState.isGetMissionInProgress.should.eql(false);
+});
+
+it('should update state upon RECEIVE_CLOSED_MISSION',function(){
+var newState=(0,_index2['default'])([],{
+type:_selectClosedMission.RECEIVE_CLOSED_MISSION,
+mission:{
+name:'superman'},
+
+questions:[
+[
+['foo']]]});
+
+
+
+
+newState.currentMission.name.should.eql('superman');
+newState.currentDirectiveIndex.should.eql(0);
+newState.currentTarget.should.eql('foo');
 newState.isGetMissionInProgress.should.eql(false);
 });
 

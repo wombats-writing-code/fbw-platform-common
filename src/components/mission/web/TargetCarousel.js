@@ -63,7 +63,7 @@ class TargetCarousel extends Component {
           aria-label={`Target Question ${targetNumber}`}>
           <div className="flex-container align-center">
             {image}
-            <p className="carousel-thumb__text carousel-thumb__text--target bold">{target.referenceNumber}</p>
+            <p className="carousel-thumb__text carousel-thumb__text--target">#{target.referenceNumber}</p>
           </div>
         </button>
       </li>

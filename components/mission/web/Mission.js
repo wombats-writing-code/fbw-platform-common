@@ -26,31 +26,34 @@ height:'100%'}};var
 Mission=function(_Component){_inherits(Mission,_Component);function Mission(){_classCallCheck(this,Mission);return _possibleConstructorReturn(this,(Mission.__proto__||Object.getPrototypeOf(Mission)).apply(this,arguments));}_createClass(Mission,[{key:'componentDidMount',value:function(){function componentDidMount()
 {var _this2=this;
 if(!this.props.mission&&!this.props.isGetMissionInProgress){
-var mission=this.props.params&&this.props.missions?
+var _mission=this.props.params&&this.props.missions?
 _.find(this.props.missions,function(m){return(0,_slug2['default'])(m.displayName)===(0,_slug2['default'])(_this2.props.params.missionName);}):
 null;
 
 this.props.onSelectOpenMission({
 course:this.props.course,
-mission:mission,
+mission:_mission,
 user:this.props.user});
 
 }
 }return componentDidMount;}()},{key:'render',value:function(){function render()
 
 {
-if(this.props.mission){
-var missionState=(0,_time.checkMissionStatus)(this.props.mission);
-if(!this.props.hasResults&&missionState==="over"){
-return _react2['default'].createElement('div',{style:[styles.container,{paddingTop:80,paddingLeft:30}]},
-_react2['default'].createElement('div',null,'You did not participate in this mission, so you have no results.'));
-
-}
-}
-
 var loadingIndicator=void 0;
 if(this.props.isGetMissionInProgress){
 return _react2['default'].createElement(_reactSpinner2['default'],null);
+}
+
+
+var missionState=(0,_time.checkMissionStatus)(this.props.mission);
+console.log('checkMissionStatus',missionState,mission);
+
+if(this.props.mission.questions.length===0&&missionState==="over"){
+return(
+_react2['default'].createElement('div',{style:[styles.container,{paddingTop:80,paddingLeft:30}]},
+_react2['default'].createElement('div',null,'You did not participate in this mission, so you have no results.')));
+
+
 }
 
 

@@ -22,11 +22,7 @@ describe('selectClosedMission', () => {
 
     nock('http://localhost:8888')
     .get(`/l4/results?missionId=${missionId}&userId=${userId}&reconstruction=true`)
-    .reply(200, {
-      _id: missionId,
-      goals: ['1', '2'],
-      questions: [['bar'], ['foo']],
-    });
+    .reply(200, [['bar'], ['foo']]);
 
     const store = mockStore({});
 
@@ -44,6 +40,7 @@ describe('selectClosedMission', () => {
       actions[0].type.should.eql(GET_CLOSED_MISSION_OPTIMISTIC);
       actions[1].type.should.eql(RECEIVE_CLOSED_MISSION);
       actions[1].mission._id.should.eql(missionId);
+      actions[1].questions.length.should.eql(2);
 
       // console.log('res', res);
       // console.log('selectClosedMission.unit-spec', mission);

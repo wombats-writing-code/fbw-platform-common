@@ -43,7 +43,7 @@ class NextCue extends Component {
                     </p>
 
       } else if (this.props.isLastTarget) {
-        cueText = <p className="cue-text">Good job! You've finished all the questions in this goal.</p>
+        cueText = <p className="cue-text">Well done!</p>
       }
 
     } else {

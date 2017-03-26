@@ -30,111 +30,133 @@ Object.defineProperty(exports,"__esModule",{value:true});exports.missionConfig=u
 
 
 
-missionReducer;var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);var _selectors=require('../../selectors');var _selectMission=require('./selectMission');var _getMissions=require('./getMissions');var _selectOpenMission=require('./selectOpenMission');var _selectClosedMission=require('./selectClosedMission');var _submitResponse=require('./submitResponse');var _showAnswer=require('./showAnswer');var _createMission=require('../edit-mission/createMission');var _updateMission=require('../edit-mission/updateMission');var _deleteMission=require('../edit-mission/deleteMission');var _getStudentResult=require('../Result/getStudentResult');var _selectDirective=require('./selectDirective');var _selectTarget=require('./selectTarget');var _selectChoice=require('./selectChoice');var _selectCourse=require('../Course/selectCourse');var _logOutUser=require('../Login/logOutUser');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var initialState={currentDirectiveIndex:0};function missionReducer(){var state=arguments.length>0&&arguments[0]!==undefined?arguments[0]:initialState;var action=arguments[1];var _ret=function(){
-switch(action.type){
-case _getMissions.GET_MISSIONS_OPTIMISTIC:
-return{v:_lodash2['default'].assign({},state,{
-currentMission:null,
-missions:[],
-isGetMissionsInProgress:true})};
-
-
-case _getMissions.RECEIVE_MISSIONS:
-return{v:_lodash2['default'].assign({},state,{
-missions:action.missions,
-isGetMissionsInProgress:false,
-currentMission:null})};
-
-
-case _selectCourse.SELECT_COURSE:
-return{v:_lodash2['default'].assign({},state,{
-missions:null})};
-
-
-case _selectMission.SELECT_MISSION:
-return{v:_lodash2['default'].assign({},state,{
-currentMission:action.mission,
-currentDirectiveIndex:0})};
-
-
-case _selectOpenMission.CREATE_TAKE_MISSION_OPTIMISTIC:
-return{v:_lodash2['default'].assign({},state,{
-currentMission:action.mission,
-isGetMissionInProgress:true})};
-
-
-case _selectOpenMission.RECEIVE_CREATE_TAKE_MISSION:
-return{v:_lodash2['default'].assign({},state,{
-currentMission:action.mission,
-currentDirectiveIndex:0,
-isGetMissionInProgress:false})};
+missionReducer;var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);var _selectors=require('../../selectors');var _selectMission=require('./selectMission');var _getMissions=require('./getMissions');var _selectOpenMission=require('./selectOpenMission');var _selectClosedMission=require('./selectClosedMission');var _submitResponse=require('./submitResponse');var _showAnswer=require('./showAnswer');var _createMission=require('../edit-mission/createMission');var _updateMission=require('../edit-mission/updateMission');var _deleteMission=require('../edit-mission/deleteMission');var _getStudentResult=require('../Result/getStudentResult');var _selectDirective=require('./selectDirective');var _selectTarget=require('./selectTarget');var _selectChoice=require('./selectChoice');var _selectCourse=require('../Course/selectCourse');var _logOutUser=require('../Login/logOutUser');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var initialState={currentDirectiveIndex:0};function missionReducer(){var state=arguments.length>0&&arguments[0]!==undefined?arguments[0]:initialState;var action=arguments[1];var
 
 
 
-case _createMission.RECEIVE_CREATE_MISSION:
-return{v:_lodash2['default'].assign({},state,{
-currentMission:action.mission,
-missions:_lodash2['default'].compact(_lodash2['default'].concat(action.mission,state.missions))})};
 
 
-case _createMission.RECEIVE_CREATE_MISSIONS:
-var newMissions=_lodash2['default'].compact(action.missions);
-var newMissionIds=_lodash2['default'].map(newMissions,'id');
-var followsFromMissions=newMissions[0]?newMissions[0].followsFromMissions:[];
 
-var allMissions=_lodash2['default'].concat(newMissions,state.missions);
 
-return{v:_lodash2['default'].assign({},state,{
-missions:_lodash2['default'].map(allMissions,function(mission){
-if(followsFromMissions.indexOf(mission.id)>-1){
-return _lodash2['default'].assign({},mission,{
-leadsToMissions:newMissionIds});
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+target;var
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+target;var
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+target;var _ret=function(){switch(action.type){case _getMissions.GET_MISSIONS_OPTIMISTIC:return{v:_lodash2['default'].assign({},state,{currentMission:null,missions:[],isGetMissionsInProgress:true})};case _getMissions.RECEIVE_MISSIONS:return{v:_lodash2['default'].assign({},state,{missions:action.missions,isGetMissionsInProgress:false,currentMission:null})};case _selectCourse.SELECT_COURSE:return{v:_lodash2['default'].assign({},state,{missions:null})};case _selectMission.SELECT_MISSION:return{v:_lodash2['default'].assign({},state,{currentMission:action.mission,currentDirectiveIndex:0})};case _selectOpenMission.CREATE_TAKE_MISSION_OPTIMISTIC:return{v:_lodash2['default'].assign({},state,{currentMission:action.mission,isGetMissionInProgress:true})};case _selectOpenMission.RECEIVE_CREATE_TAKE_MISSION:if(action.mission&&action.mission.questions[0]&&action.mission.questions[0][0]){target=action.mission.questions[0][0][0];}return{v:_lodash2['default'].assign({},state,{currentMission:action.mission,currentDirectiveIndex:0,currentTarget:target,isGetMissionInProgress:false})};case _createMission.RECEIVE_CREATE_MISSION:return{v:_lodash2['default'].assign({},state,{currentMission:action.mission,missions:_lodash2['default'].compact(_lodash2['default'].concat(action.mission,state.missions))})};case _createMission.RECEIVE_CREATE_MISSIONS:var newMissions=_lodash2['default'].compact(action.missions);var newMissionIds=_lodash2['default'].map(newMissions,'id');var followsFromMissions=newMissions[0]?newMissions[0].followsFromMissions:[];var allMissions=_lodash2['default'].concat(newMissions,state.missions);return{v:_lodash2['default'].assign({},state,{missions:_lodash2['default'].map(allMissions,function(mission){if(followsFromMissions.indexOf(mission.id)>-1){return _lodash2['default'].assign({},mission,{leadsToMissions:newMissionIds});}return mission;}),currentMission:_lodash2['default'].assign({},_lodash2['default'].find(state.missions,{id:followsFromMissions[0]}),{leadsToMissions:newMissionIds})})};case _deleteMission.RECEIVE_DELETE_MISSION:return{v:_lodash2['default'].assign({},state,{currentMission:null,missions:_lodash2['default'].filter(state.missions,function(m){return m.id!==action.mission.id;})})};case _selectDirective.SELECT_DIRECTIVE:var currentMission=state.currentMission;if(currentMission&&currentMission.questions[0]&&currentMission.questions[0][0]){target=currentMission.questions[action.directiveIndex][0][0];}return{v:_lodash2['default'].assign({},state,{currentDirectiveIndex:action.directiveIndex,currentTarget:target,selectedChoiceId:null})};case _selectTarget.SELECT_TARGET:return{v:_lodash2['default'].assign({},state,{currentTarget:action.target,questionListHeight:0,selectedChoiceId:null})};case _selectClosedMission.GET_CLOSED_MISSION_OPTIMISTIC:return{v:_lodash2['default'].assign({},state,{currentMission:action.mission,currentDirectiveIndex:0,currentTarget:null,isGetMissionInProgress:true})};case _selectClosedMission.RECEIVE_CLOSED_MISSION:console.log('RECEIVE_CLOSED_MISSION',action);var mission=_lodash2['default'].assign({},action.mission,{questions:action.questions});
+if(mission.questions&&mission.questions[0]&&mission.questions[0][0]){
+target=mission.questions[0][0][0];
 }
 
-return mission;
-}),
-currentMission:_lodash2['default'].assign({},_lodash2['default'].find(state.missions,{id:followsFromMissions[0]}),{
-leadsToMissions:newMissionIds})})};
-
-
-
-case _deleteMission.RECEIVE_DELETE_MISSION:
 return{v:_lodash2['default'].assign({},state,{
-currentMission:null,
-missions:_lodash2['default'].filter(state.missions,function(m){
-return m.id!==action.mission.id;
-})})};
-
-
-
-case _selectDirective.SELECT_DIRECTIVE:
-var currentMission=state.currentMission;
-console.log('selectDirective',currentMission);
-
-return{v:_lodash2['default'].assign({},state,{
-currentDirectiveIndex:action.directiveIndex,
-currentTarget:currentMission?currentMission.questions[0]&&currentMission.questions[0][0]&&currentMission.questions[0][0][0]:null,
-selectedChoiceId:null})};
-
-
-case _selectTarget.SELECT_TARGET:
-return{v:_lodash2['default'].assign({},state,{
-currentTarget:action.target,
-questionListHeight:0,
-selectedChoiceId:null})};
-
-
-case _selectClosedMission.GET_CLOSED_MISSION_OPTIMISTIC:
-return{v:_lodash2['default'].assign({},state,{
-currentMission:action.mission,
+currentMission:mission,
 currentDirectiveIndex:0,
-currentTarget:null,
-isGetMissionInProgress:true})};
-
-
-case _selectClosedMission.RECEIVE_CLOSED_MISSION:
-return{v:_lodash2['default'].assign({},state,{
+currentTarget:target,
 isGetMissionInProgress:false})};
 
 
