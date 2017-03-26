@@ -1,4 +1,4 @@
-Object.defineProperty(exports,"__esModule",{value:true});exports.GET_USER_MISSION_RESULTS_OPTIMISTIC=exports.RECEIVE_GET_USER_MISSION_RESULTS=undefined;exports.
+Object.defineProperty(exports,"__esModule",{value:true});exports.GET_CLOSED_MISSION_OPTIMISTIC=exports.RECEIVE_CLOSED_MISSION=undefined;exports.
 
 
 
@@ -14,49 +14,30 @@ Object.defineProperty(exports,"__esModule",{value:true});exports.GET_USER_MISSIO
 
 
 
-receiveGetUserMissionResults=receiveGetUserMissionResults;exports.
+receiveClosedMission=receiveClosedMission;exports.
 
 
 
-getUserMissionResultsOptimistic=getUserMissionResultsOptimistic;exports.
+getClosedMissionOptimistic=getClosedMissionOptimistic;exports.
 
 
 
-selectClosedMission=selectClosedMission;var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);var _axios=require('axios');var _axios2=_interopRequireDefault(_axios);var _q=require('q');var _q2=_interopRequireDefault(_q);var _utilities=require('../../utilities');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var RECEIVE_GET_USER_MISSION_RESULTS=exports.RECEIVE_GET_USER_MISSION_RESULTS='RECEIVE_GET_USER_MISSION_RESULTS';var GET_USER_MISSION_RESULTS_OPTIMISTIC=exports.GET_USER_MISSION_RESULTS_OPTIMISTIC='GET_USER_MISSION_RESULTS_OPTIMISTIC';function receiveGetUserMissionResults(mission,resultsExistForUser){return{type:RECEIVE_GET_USER_MISSION_RESULTS,mission:mission,resultsExistForUser:resultsExistForUser};}function getUserMissionResultsOptimistic(mission){return{type:GET_USER_MISSION_RESULTS_OPTIMISTIC,mission:mission};}function selectClosedMission(data){
+selectClosedMission=selectClosedMission;var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);var _axios=require('axios');var _axios2=_interopRequireDefault(_axios);var _q=require('q');var _q2=_interopRequireDefault(_q);var _utilities=require('../../utilities');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var RECEIVE_CLOSED_MISSION=exports.RECEIVE_CLOSED_MISSION='RECEIVE_CLOSED_MISSION';var GET_CLOSED_MISSION_OPTIMISTIC=exports.GET_CLOSED_MISSION_OPTIMISTIC='GET_CLOSED_MISSION_OPTIMISTIC';function receiveClosedMission(mission){return{type:RECEIVE_CLOSED_MISSION,mission:mission};}function getClosedMissionOptimistic(mission){return{type:GET_CLOSED_MISSION_OPTIMISTIC,mission:mission};}function selectClosedMission(data){
 return function(dispatch){
 
+dispatch(getClosedMissionOptimistic(data.mission));
 
 
 
-
-
-dispatch(getUserMissionResultsOptimistic(data.mission));
-
-var options={
-url:(0,_utilities.getDomain)()+'/middleman/banks/'+data.bankId+'/offereds/'+data.mission.assessmentOfferedId+'/results',
+return(0,_axios2['default'])({
+url:(0,_utilities.getDomain)()+'/l4/results?missionId='+data.mission._id+'&userId='+data.user.Identifier+'&reconstruction=true',
 headers:{
-'x-fbw-username':data.username}};
+'x-fbw-user':data.user.Identifier}}).
 
 
-
-var resultSections=void 0;
-return(0,_axios2['default'])(options).
-then(function(response){
-resultSections=response.data;
-
-return _q2['default'].when(convertImagePaths(resultSections));
-}).
-then(function(questionsWithImages){
-
-
-dispatch(receiveGetUserMissionResults(questionsWithImages,true));
-
-return questionsWithImages;
-})['catch'](
-function(error){
-
-
-dispatch(receiveGetUserMissionResults(null,false));
+then(function(res){
+dispatch(receiveClosedMission(res.data));
+return res.data;
 });
 };
 }

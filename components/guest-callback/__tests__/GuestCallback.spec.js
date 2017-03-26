@@ -44,6 +44,6 @@ callback.find('.callback-text').text().should.be.eql("Redirecting you to your da
 });
 
 after(function(){
-
+connectedComponent.detach();
 });
 });

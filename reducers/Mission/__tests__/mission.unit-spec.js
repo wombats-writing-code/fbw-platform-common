@@ -12,6 +12,7 @@ var _selectDirective=require('../selectDirective');
 var _selectTarget=require('../selectTarget');
 var _submitResponse=require('../submitResponse');
 var _selectOpenMission=require('../selectOpenMission');
+var _selectClosedMission=require('../selectClosedMission');
 
 var _createMission=require('../../edit-mission/createMission');
 var _deleteMission=require('../../edit-mission/deleteMission');
@@ -38,7 +39,7 @@ directiveIndex:3});
 
 
 newState.currentDirectiveIndex.should.eql(3);
-should.not.exist(newState.currentTarget);
+
 should.not.exist(newState.selectedChoiceId);
 });
 

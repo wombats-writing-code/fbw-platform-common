@@ -15,7 +15,24 @@ var _NextCue=require('./NextCue');var _NextCue2=_interopRequireDefault(_NextCue)
 
 require('./Questions.scss');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var QuestionCard=(0,_QuestionCardContainer2['default'])(_QuestionCard2['default']);var
 
-Questions=function(_Component){_inherits(Questions,_Component);function Questions(){var _ref;var _temp,_this,_ret;_classCallCheck(this,Questions);for(var _len=arguments.length,args=Array(_len),_key=0;_key<_len;_key++){args[_key]=arguments[_key];}return _ret=(_temp=(_this=_possibleConstructorReturn(this,(_ref=Questions.__proto__||Object.getPrototypeOf(Questions)).call.apply(_ref,[this].concat(args))),_this),_this.
+Questions=function(_Component){_inherits(Questions,_Component);
+
+function Questions(){_classCallCheck(this,Questions);var _this=_possibleConstructorReturn(this,(Questions.__proto__||Object.getPrototypeOf(Questions)).call(this));_this.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -44,12 +61,17 @@ nextOutcome=_lodash2['default'].find(_this.props.outcomes,{id:nextQuestion.outco
 nextOutcome=_lodash2['default'].find(_this.props.outcomes,{id:questionItem.response.choice.confusedOutcomes[0]});
 }
 
+console.log('questionItem',questionItem,'mission');
+
 nextCue=
 _react2['default'].createElement(_NextCue2['default'],{isLastTarget:_this.props.isLastTarget,
+currentQuestion:questionItem,
 response:questionItem.response,
 outcome:outcome,
 nextQuestion:nextQuestion,
-nextOutcome:nextOutcome});
+nextOutcome:nextOutcome,
+onClickTryNextTarget:function(){function onClickTryNextTarget(){return _this.props.onClickTryNextTarget(questionItem,_this.props.mission);}return onClickTryNextTarget;}()});
+
 
 }
 
@@ -77,7 +99,7 @@ _react2['default'].createElement(QuestionCard,{question:questionItem,outcome:out
 nextCue));
 
 
-},_temp),_possibleConstructorReturn(_this,_ret);}_createClass(Questions,[{key:'componentDidUpdate',value:function(){function componentDidUpdate(prevProps){if(prevProps.isInProgressSubmitChoice&&!this.props.isInProgressSubmitChoice){var nextCueTop=(0,_jquery2['default'])('.answered-question-cue').last();(0,_jquery2['default'])("html, body").animate({scrollTop:nextCueTop.offset.top},1000);}}return componentDidUpdate;}()},{key:'render',value:function(){function render()
+};_this.state={shouldScrollUp:false};return _this;}_createClass(Questions,[{key:'componentDidUpdate',value:function(){function componentDidUpdate(prevProps){if(prevProps.isInProgressSubmitChoice&&!this.props.isInProgressSubmitChoice){var nextCueTop=(0,_jquery2['default'])('.answered-question-cue').last();(0,_jquery2['default'])("html, body").animate({scrollTop:nextCueTop.offset.top},1000);}if(prevProps.currentTarget!==this.props.currentTarget){console.log('prev target',prevProps.currentTarget,'currentTarget',this.props.currentTarget);(0,_jquery2['default'])("html, body").animate({scrollTop:0},1000);}}return componentDidUpdate;}()},{key:'render',value:function(){function render()
 
 {
 if(!this.props.questions){

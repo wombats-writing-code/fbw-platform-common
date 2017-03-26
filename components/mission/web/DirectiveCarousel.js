@@ -54,7 +54,7 @@ var directivesCarousel=void 0;
 if(this.props.directives&&this.props.directives.length>0){
 directivesCarousel=
 _react2['default'].createElement('div',{className:'carousel-container directive-carousel'},
-_react2['default'].createElement('div',{className:'carousel flex-container align-center'},
+_react2['default'].createElement('div',{className:'carousel flex-container align-top'},
 _lodash2['default'].map(this.props.directives,this._renderThumb)));
 
 

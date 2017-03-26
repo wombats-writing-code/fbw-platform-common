@@ -164,7 +164,7 @@ var missions=[
 
 
 (0,_nock2['default'])('http://localhost:8888').
-post('/l4/missions-bulk/').
+put('/l4/missions-bulk/',{missions:missions}).
 reply(200,missions);
 
 var store=mockStore({});
@@ -172,6 +172,7 @@ var store=mockStore({});
 store.dispatch((0,_updateMission.updateMissions)(missions,user)).
 then(function(res){
 var actions=store.getActions();
+
 actions.length.should.eql(2);
 actions[0].type.should.eql(_updateMission.UPDATE_MISSIONS_OPTIMISTIC);
 actions[1].type.should.eql(_updateMission.RECEIVE_UPDATE_MISSIONS);

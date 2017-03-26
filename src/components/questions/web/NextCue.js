@@ -1,6 +1,7 @@
 import React, { Component, }  from 'react';
 
-var _ = require('lodash');
+import _ from 'lodash'
+import {isTarget} from '../../../selectors/mission'
 
 import './NextCue.scss'
 
@@ -27,8 +28,19 @@ class NextCue extends Component {
       } else if (this.props.nextQuestion && !this.props.nextOutcome) {
         cueText = <p className="cue-text">No outcome bug. Please notify your instructors.</p>
 
-      } else if (!this.props.nextQuestion && !this.props.isLastTarget) {
-        cueText = <p className="cue-text">Good job! You've reached the end of the route. Please try another Target question.</p>
+      } else if (isTarget(this.props.currentQuestion) && !this.props.nextQuestion && !this.props.isLastTarget) {
+        cueText = <p className="cue-text">Nice! &thinsp;
+                      <span className="try-next-target" onClick={this.props.onClickTryNextTarget}>
+                        Do the next one! &uarr;
+                      </span>
+                    </p>
+
+      } else if (!isTarget(this.props.currentQuestion) && !this.props.nextQuestion && !this.props.isLastTarget) {
+        cueText = <p className="cue-text">Good job! You should now be able to do the next Target question. &thinsp;
+                      <span className="try-next-target" onClick={this.props.onClickTryNextTarget}>
+                        Try another one &uarr;
+                      </span>
+                    </p>
 
       } else if (this.props.isLastTarget) {
         cueText = <p className="cue-text">Good job! You've finished all the questions in this goal.</p>

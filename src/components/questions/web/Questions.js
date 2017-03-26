@@ -17,11 +17,24 @@ import './Questions.scss'
 
 class Questions extends Component {
 
+  constructor() {
+    super();
+  }
+
   componentDidUpdate(prevProps) {
     if (prevProps.isInProgressSubmitChoice && !this.props.isInProgressSubmitChoice) {
       let nextCueTop = $('.answered-question-cue').last();
       // console.log('scroll to', nextCueTop);
       $("html, body").animate({ scrollTop: nextCueTop.offset.top }, 1000);
+    }
+
+    // if (prevProps.questions !== this.props.questions) {
+    //   console.log('questions changed')
+    // }
+
+    if (prevProps.currentTarget !== this.props.currentTarget) {
+      // console.log('prev target', prevProps.currentTarget, 'currentTarget', this.props.currentTarget)
+      $("html, body").animate({ scrollTop: 0 }, 1000);
     }
   }
 
@@ -44,12 +57,17 @@ class Questions extends Component {
         nextOutcome = _.find(this.props.outcomes, {id: questionItem.response.choice.confusedOutcomes[0]});
       }
 
+      // console.log('questionItem', questionItem, 'mission');
+
       nextCue = (
           <NextCue isLastTarget={this.props.isLastTarget}
+                              currentQuestion={questionItem}
                                response={questionItem.response}
                                outcome = {outcome}
                                nextQuestion={nextQuestion}
-                               nextOutcome={nextOutcome}/>
+                               nextOutcome={nextOutcome}
+                               onClickTryNextTarget={() => this.props.onClickTryNextTarget(questionItem, this.props.mission)}
+          />
       )
     }
 

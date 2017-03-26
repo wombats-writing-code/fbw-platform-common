@@ -54,7 +54,7 @@ class DirectiveCarousel extends Component {
     if (this.props.directives && this.props.directives.length > 0) {
       directivesCarousel = (
         <div className="carousel-container directive-carousel">
-          <div className="carousel flex-container align-center">
+          <div className="carousel flex-container align-top">
             {_.map(this.props.directives, this._renderThumb)}
           </div>
         </div>

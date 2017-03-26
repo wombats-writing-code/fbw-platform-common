@@ -5,12 +5,17 @@ import {getMapping} from '../../selectors'
 import { getRouteQuestions } from '../../selectors/mission'
 import { setQuestionListHeight } from '../../reducers/Mission/setQuestionListHeight'
 
+import { selectDirective } from '../../reducers/Mission/selectDirective'
+import { selectTarget } from '../../reducers/Mission/selectTarget'
+
+
 const mapStateToProps = (state, ownProps) => {
   // console.log('state in QuestionsContainer', state)
 
   let mission = ownProps.mission || state.mission.currentMission;
 
   return {
+    currentTarget: state.mission.currentTarget,
     mission,
     questions: getRouteQuestions(mission.questions[state.mission.currentDirectiveIndex], state.mission.currentTarget),
     outcomes: getMapping(state).outcomes,
@@ -20,7 +25,28 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onSetListViewHeight: data => dispatch(setQuestionListHeight(data))
+    onSetListViewHeight: data => dispatch(setQuestionListHeight(data)),
+    onClickTryNextTarget: (currentQuestion, mission) => {
+      // console.log('currentQuestion', currentQuestion, 'mission', mission)
+      // console.log('mission.questions', mission.questions[currentQuestion.sectionIndex][currentQuestion.targetIndex + 1])
+
+      let nextTargetRoute = mission.questions[currentQuestion.sectionIndex][currentQuestion.targetIndex + 1];
+      if (!nextTargetRoute) {
+        if (currentQuestion.sectionIndex+1 === mission.questions.length) {
+          return;
+        }
+        
+        nextTargetRoute = mission.questions[currentQuestion.sectionIndex+1][0];
+        dispatch(selectDirective(currentQuestion.sectionIndex+1));
+        dispatch(selectTarget(nextTargetRoute[0]));
+
+        return;
+      }
+
+      let nextTarget = nextTargetRoute[0]
+
+      dispatch(selectTarget(nextTarget));
+    }
   }
 }
 

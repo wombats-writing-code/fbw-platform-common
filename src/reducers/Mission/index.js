@@ -109,7 +109,8 @@ export default function missionReducer (state = initialState, action) {
     // =========
 
     case SELECT_DIRECTIVE:
-      let currentMission = state.mission && state.mission.currentMission;
+      let currentMission = state.currentMission;
+      console.log('selectDirective', currentMission, currentMission.questions[0][0]);
 
       return _.assign({}, state, {
         currentDirectiveIndex: action.directiveIndex,
@@ -127,6 +128,8 @@ export default function missionReducer (state = initialState, action) {
     case GET_CLOSED_MISSION_OPTIMISTIC:
       return _.assign({}, state, {
         currentMission: action.mission,
+        currentDirectiveIndex: 0,
+        currentTarget: null,
         isGetMissionInProgress: true
       });
 

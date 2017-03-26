@@ -1,3 +1,4 @@
+@import '../../../styles/base';
 
 .answered-question-cue {
   width: 100%;
@@ -12,4 +13,14 @@
   font-style: italic;
   margin-bottom: 0;
   font-size: .875rem;
+}
+
+.try-next-target {
+  cursor: default;
+  color: $app-blue-2;
+}
+
+.try-next-target:hover {
+  cursor: default;
+  color: lighten($app-blue-2, 25%);
 }

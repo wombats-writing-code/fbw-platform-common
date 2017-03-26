@@ -16,7 +16,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7fc6bd', endColorstr='#4bb5c1', GradientType=0 );
 
   @media all and (max-width: 700px) {
-    // display: block !important;
+    font-size: .875em;
   }
 }
 
@@ -27,8 +27,9 @@
   opacity: .9;
 
   @media all and (max-width: 710px) {
-    width: 50px;
+    width: 100px;
     height: auto;
+    margin-left: .5rem;
     margin-right: .5rem;
   }
 }

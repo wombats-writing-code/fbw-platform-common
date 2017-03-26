@@ -46,6 +46,6 @@ mission.find('.question-card').length.should.be.eql(2);
 });
 
 after(function(){
-connectedComponent.detach();
+
 });
 });

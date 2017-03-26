@@ -46,6 +46,6 @@ describe('Mission', () => {
   });
 
   after( function() {
-    connectedComponent.detach();
+    // connectedComponent.detach();
   });
 });

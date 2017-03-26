@@ -115,8 +115,8 @@ class QuestionCard extends Component {
     // console.log('question', this.props.question)
 
     let solution = (this.props.question.responded && this.state.isExpanded) ?
-                    (<div className="solution">
-                        <p className="bold mute uppercase">Solution</p>
+                    (<div className="question-card__solution">
+                        <p className="bold uppercase">Solution</p>
                         <div className=""
                           dangerouslySetInnerHTML={{__html: this.props.question.feedback}}>
                         </div>

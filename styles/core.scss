@@ -41,6 +41,10 @@ button:disabled, button:disabled:hover {
   display: flex;
 }
 
+.flex-container.wrap {
+  flex-wrap: wrap;
+}
+
 .flex-container.align-center {
   align-items: center;
 }

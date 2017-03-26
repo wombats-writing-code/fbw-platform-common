@@ -109,9 +109,12 @@ return m.id!==action.mission.id;
 
 
 case _selectDirective.SELECT_DIRECTIVE:
+var currentMission=state.currentMission;
+console.log('selectDirective',currentMission);
+
 return{v:_lodash2['default'].assign({},state,{
 currentDirectiveIndex:action.directiveIndex,
-currentTarget:null,
+currentTarget:currentMission?currentMission.questions[0]&&currentMission.questions[0][0]&&currentMission.questions[0][0][0]:null,
 selectedChoiceId:null})};
 
 
@@ -122,13 +125,15 @@ questionListHeight:0,
 selectedChoiceId:null})};
 
 
-case _selectClosedMission.GET_USER_MISSION_RESULTS_OPTIMISTIC:
+case _selectClosedMission.GET_CLOSED_MISSION_OPTIMISTIC:
 return{v:_lodash2['default'].assign({},state,{
 currentMission:action.mission,
+currentDirectiveIndex:0,
+currentTarget:null,
 isGetMissionInProgress:true})};
 
 
-case _selectClosedMission.RECEIVE_GET_USER_MISSION_RESULTS:
+case _selectClosedMission.RECEIVE_CLOSED_MISSION:
 return{v:_lodash2['default'].assign({},state,{
 isGetMissionInProgress:false})};
 

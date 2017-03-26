@@ -44,6 +44,6 @@ describe('GuestCallback', () => {
   });
 
   after(() => {
-    // connectedComponent.detach();
+    connectedComponent.detach();
   });
 });
