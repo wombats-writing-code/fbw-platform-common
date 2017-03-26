@@ -143,7 +143,7 @@ export default function missionReducer (state = initialState, action) {
       });
 
     case RECEIVE_CLOSED_MISSION:
-      console.log('RECEIVE_CLOSED_MISSION', action)
+      // console.log('RECEIVE_CLOSED_MISSION', action)
       let mission = _.assign({}, action.mission, {
         questions: action.questions
       })

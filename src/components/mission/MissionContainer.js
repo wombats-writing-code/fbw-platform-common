@@ -21,6 +21,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     user: getUser(state),
+    mission,
     currentCourse: getCurrentCourse(state),
     missions: state.mission ? state.mission.missions : null,
     isGetMissionInProgress: state.mission.isGetMissionInProgress,

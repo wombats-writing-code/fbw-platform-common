@@ -21,6 +21,7 @@ var directives=(0,_mission.getMissionDirectives)(mission,outcomes);
 
 return{
 user:(0,_selectors.getUser)(state),
+mission:mission,
 currentCourse:(0,_course.getCurrentCourse)(state),
 missions:state.mission?state.mission.missions:null,
 isGetMissionInProgress:state.mission.isGetMissionInProgress,

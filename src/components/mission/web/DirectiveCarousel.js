@@ -14,7 +14,7 @@ class DirectiveCarousel extends Component {
     let indicatorText;
     if (this.props.directiveIndicators) {
       let indicator = this.props.directiveIndicators[idx];
-      indicatorText = `${indicator.numerator || '--'}/${indicator.denominator}`;
+      indicatorText = indicator ? `${indicator.numerator || '--'}/${indicator.denominator}` : '';
     }
 
     let displayName = directive ? directive.displayName : 'Error. Somehow this outcome is undefined';

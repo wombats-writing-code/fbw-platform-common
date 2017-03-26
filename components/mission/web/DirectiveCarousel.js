@@ -14,7 +14,7 @@ _renderThumb=function(directive,idx){
 var indicatorText=void 0;
 if(_this.props.directiveIndicators){
 var indicator=_this.props.directiveIndicators[idx];
-indicatorText=(indicator.numerator||'--')+'/'+indicator.denominator;
+indicatorText=indicator?(indicator.numerator||'--')+'/'+indicator.denominator:'';
 }
 
 var displayName=directive?directive.displayName:'Error. Somehow this outcome is undefined';

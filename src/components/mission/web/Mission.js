@@ -25,12 +25,20 @@ const styles = {
 
 class Mission extends Component {
   componentDidMount() {
-    if (!this.props.mission && !this.props.isGetMissionInProgress) {
-      let mission = this.props.params && this.props.missions ?
-                _.find(this.props.missions, m => slug(m.displayName) === slug(this.props.params.missionName)) :
-                null;
+    let missionState = checkMissionStatus(this.props.mission);
+    let mission = this.props.params && this.props.missions ?
+              _.find(this.props.missions, m => slug(m.displayName) === slug(this.props.params.missionName)) :
+              null;
 
+    if (!this.props.isGetMissionInProgress && missionState !== 'over') {
       this.props.onSelectOpenMission({
+        course: this.props.course,
+        mission,
+        user: this.props.user
+      });
+
+    } else if (missionState === 'over') {
+      this.props.onSelectClosedMission({
         course: this.props.course,
         mission,
         user: this.props.user
@@ -39,24 +47,27 @@ class Mission extends Component {
   }
 
   render() {
+    // console.log('Mission.props', this.props)
+
     let loadingIndicator;
     if (this.props.isGetMissionInProgress) {
       return (<Spinner/>)
     }
 
+    if (this.props.mission) {
+      // console.log('this.props.mission', this.props.mission)
+      let missionState = checkMissionStatus(this.props.mission)
+      // console.log('checkMissionStatus', missionState, this.props.mission.questions.length)
 
-    let missionState = checkMissionStatus(this.props.mission)
-    console.log('checkMissionStatus', missionState, mission)
-
-    if (this.props.mission.questions.length === 0 && missionState === "over") {
-      return (
-        <div style={[styles.container, {paddingTop: 80, paddingLeft: 30}]}>
-          <div>You did not participate in this mission, so you have no results.</div>
-        </div>
-      )
+      if (this.props.mission.questions.length === 0 && missionState === "over") {
+      // if (this.props.mission.questions.length === 0 && missionState === "over") {
+        return (
+          <div style={[styles.container, {paddingTop: 80, paddingLeft: 30}]}>
+            <div>This mission is over. You didn't open it while it was open, so you have no results here.</div>
+          </div>
+        )
+      }
     }
-
-    // console.log('Mission.props', this.props)
 
     return (
       <div>
