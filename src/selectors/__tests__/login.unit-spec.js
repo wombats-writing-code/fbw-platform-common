@@ -1,7 +1,7 @@
 let chai = require('chai');
 chai.should();
 
-import {getD2LDisplayName, getD2LUserIdentifier} from '../login/index'
+import {getD2LDisplayName, getD2LUserIdentifier, getD2LDisplayNameLastFirst} from '../login/index'
 
 describe('login selectors', () => {
 
@@ -22,6 +22,23 @@ describe('login selectors', () => {
     });
 
     result.should.be.eql('foo bar');
+  });
+
+  it('should get the displayNameLastName of a d2l user', () => {
+    let result = getD2LDisplayNameLastFirst({
+      "FirstName": "Obi-wan",
+      "LastName": "Kenobi"
+    });
+
+    result.should.be.eql('Kenobi, Obi-wan');
+  });
+
+  it('should get the displayNameLastName of a d2l user', () => {
+    let result = getD2LDisplayNameLastFirst({
+      "DisplayName": "Butter, Peanut",
+    });
+
+    result.should.be.eql('Butter, Peanut');
   });
 
   it('should get the Identifier of a d2l object', () => {
