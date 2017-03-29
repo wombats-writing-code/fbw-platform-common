@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import {browserHistory} from 'react-router'
 import axios from 'axios'
 import Q from 'q'
 
@@ -77,7 +78,7 @@ export function createMission(mission, course, user) {
       return error;
     })
     .then( (result) => {
-      console.log('finally result', result)
+      console.log('finally createMission result', result)
       browserHistory.push('/missions');
     });
   }
@@ -102,5 +103,10 @@ export function createMissions(missions, course, user) {
       dispatch(receiveCreateMissions(res.data));
       return res.data;
     })
+    .catch( err => err)
+    .then( (result) => {
+      console.log('finally createMissions result', result)
+      browserHistory.push('/missions');
+    });
   }
 }
