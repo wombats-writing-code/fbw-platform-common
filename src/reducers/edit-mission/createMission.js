@@ -78,7 +78,7 @@ export function createMission(mission, course, user) {
       return error;
     })
     .then( (result) => {
-      console.log('finally createMission result', result)
+      // console.log('finally createMission result', result)
       browserHistory.push('/missions');
     });
   }
@@ -105,7 +105,7 @@ export function createMissions(missions, course, user) {
     })
     .catch( err => err)
     .then( (result) => {
-      console.log('finally createMissions result', result)
+      // console.log('finally createMissions result', result)
       browserHistory.push('/missions');
     });
   }

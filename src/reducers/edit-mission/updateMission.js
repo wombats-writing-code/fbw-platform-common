@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import axios from 'axios'
-
+import {browserHistory} from 'react-router'
 import {getDomain} from '../../utilities'
 import {localDateTime} from '../../utilities/time'
 
@@ -69,6 +69,9 @@ export function updateMissions(missions, user) {
     })
     .catch((error) => {
       console.log('error updating missions', error);
+    })
+    .then( res => {
+      browserHistory.push('/missions');
     });
   }
 }
