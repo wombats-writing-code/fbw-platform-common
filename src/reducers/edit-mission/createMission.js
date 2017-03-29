@@ -75,6 +75,10 @@ export function createMission(mission, course, user) {
     .catch((error) => {
       console.log('error creating mission', error);
       return error;
+    })
+    .then( (result) => {
+      console.log('finally result', result)
+      browserHistory.push('/missions');
     });
   }
 }

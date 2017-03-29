@@ -57,13 +57,13 @@ return _react2['default'].createElement(_reactSpinner2['default'],null);
 if(this.props.mission){
 
 var missionState=(0,_time.checkMissionStatus)(this.props.mission);
-console.log('checkMissionStatus',missionState,this.props.mission.questions.length);
+
 
 if(this.props.mission.questions.length===0&&missionState==="over"){
 
 return(
 _react2['default'].createElement('div',{style:[styles.container,{paddingTop:80,paddingLeft:30}]},
-_react2['default'].createElement('div',null,'You did not participate in this mission, so you have no results.')));
+_react2['default'].createElement('div',null,'This mission is over. You didn\'t open it while it was open, so you have no results here.')));
 
 
 }
