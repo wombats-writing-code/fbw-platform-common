@@ -1,5 +1,4 @@
 
-import {GET_MAPPING_OPTIMISTIC, RECEIVE_MAPPING} from '../getMapping'
 
 let chai = require('chai');
 let should = require('should');
@@ -11,7 +10,10 @@ const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
 
 import reducer from '../index'
+
+import {GET_MAPPING_OPTIMISTIC, RECEIVE_MAPPING} from '../getMapping'
 import {getMapping} from '../getMapping'
+import {VISUALIZE_ENTITY, CLOSE_VISUALIZE_ENTITY} from '../visualizeEntity'
 
 describe('mapping reducer', () => {
 
@@ -46,4 +48,24 @@ describe('mapping reducer', () => {
     done();
   });
 
+  it(`should update state upon VISUALIZE_ENTITY`, done => {
+    let newState = reducer({}, {
+      type: VISUALIZE_ENTITY,
+      entity: {
+        name: 'foo'
+      }
+    })
+
+    newState.currentEntity.name.should.eql('foo')
+    done();
+  })
+
+  it(`should update state upon CLOSE_VISUALIZE_ENTITY`, done => {
+    let newState = reducer({}, {
+      type: CLOSE_VISUALIZE_ENTITY,
+    })
+
+    should.not.exist(newState.currentEntity)
+    done()
+  })
 })
