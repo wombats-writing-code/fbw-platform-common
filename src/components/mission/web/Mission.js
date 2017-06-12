@@ -28,9 +28,10 @@ class Mission extends Component {
     let missionState = checkMissionStatus(this.props.mission);
     let mission = this.props.params && this.props.missions ?
               _.find(this.props.missions, m => slug(m.displayName) === slug(this.props.params.missionName)) :
-              null;
+              this.props.mission;
 
-    console.log('slugged:', slug(this.props.params.missionName), slug('test 1'))
+    console.log('this.props', this.props)
+    console.log('slugged:', slug('test 1'))
     console.log('mission', mission)
     console.log('missions', this.props.missions)
 
