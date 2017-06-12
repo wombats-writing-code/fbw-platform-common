@@ -30,6 +30,10 @@ var mission=this.props.params&&this.props.missions?
 _.find(this.props.missions,function(m){return(0,_slug2['default'])(m.displayName)===(0,_slug2['default'])(_this2.props.params.missionName);}):
 null;
 
+console.log('slugged:',(0,_slug2['default'])(props.params.missionName),(0,_slug2['default'])('test 1'));
+console.log('mission',mission);
+console.log('missions',this.props.missions);
+
 if(!this.props.isGetMissionInProgress&&missionState!=='over'){
 this.props.onSelectOpenMission({
 course:this.props.course,
