@@ -14,7 +14,8 @@ Object.defineProperty(exports,"__esModule",{value:true});exports['default']=
 
 
 
-mappingReducer;var _reduxThunk=require('redux-thunk');var _reduxThunk2=_interopRequireDefault(_reduxThunk);var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);var _getMapping=require('./getMapping');var _logOutUser=require('../Login/logOutUser');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var initialState={modules:null,outcomes:null,relationships:null};function mappingReducer(){var state=arguments.length>0&&arguments[0]!==undefined?arguments[0]:initialState;var action=arguments[1];
+
+mappingReducer;var _reduxThunk=require('redux-thunk');var _reduxThunk2=_interopRequireDefault(_reduxThunk);var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);var _getMapping=require('./getMapping');var _visualizeEntity=require('./visualizeEntity');var _logOutUser=require('../Login/logOutUser');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var initialState={modules:null,outcomes:null,relationships:null};function mappingReducer(){var state=arguments.length>0&&arguments[0]!==undefined?arguments[0]:initialState;var action=arguments[1];
 switch(action.type){
 case _logOutUser.LOG_OUT:
 return _lodash2['default'].assign({},{
@@ -34,6 +35,16 @@ modules:_lodash2['default'].filter(action.mapping.entities,{type:'MODULE'}),
 outcomes:_lodash2['default'].filter(action.mapping.entities,{type:'OUTCOME'}),
 relationships:action.mapping.relationships,
 isGetMappingInProgress:false});
+
+
+case _visualizeEntity.VISUALIZE_ENTITY:
+return _lodash2['default'].assign({},state,{
+currentEntity:action.entity});
+
+
+case _visualizeEntity.CLOSE_VISUALIZE_ENTITY:
+return _lodash2['default'].assign({},state,{
+currentEntity:null});
 
 
 default:
