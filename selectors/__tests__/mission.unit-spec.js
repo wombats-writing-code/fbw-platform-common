@@ -23,5 +23,22 @@ result.should.be.eql(true);
 done();
 });
 
+it('should say the given target is the last target in the section',function(done){
+var section=[
+[],
+[],
+[
+{id:'1'},
+{id:'2'}]];
+
+
+var target=section[2][0];
+var result=(0,_mission.isLastTargetInRoute)(target,section);
+
+result.should.be.eql(true);
+
+done();
+});
+
 
 });

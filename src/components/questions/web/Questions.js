@@ -58,7 +58,7 @@ class Questions extends Component {
       }
 
       nextCue = (
-          <NextCue isLastTarget={this.props.isLastTarget && !nextQuestion}
+          <NextCue isLastTarget={this.props.isLastTarget}
                   currentQuestion={questionItem}
                    response={questionItem.response}
                    outcome = {outcome}

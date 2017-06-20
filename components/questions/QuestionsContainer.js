@@ -13,12 +13,13 @@ var mapStateToProps=function(){function mapStateToProps(state,ownProps){
 
 
 var mission=ownProps.mission||state.mission.currentMission;
+var section=mission?mission.questions[state.mission.currentDirectiveIndex]:null;
 
 return{
-isLast:state.mission.currentTarget&&state.mission.currentTarget.sectionIndex===mission.questions.length-1,
-currentTarget:state.mission.currentTarget,
 mission:mission,
-questions:(0,_mission.getRouteQuestions)(mission.questions[state.mission.currentDirectiveIndex],state.mission.currentTarget),
+isLastTarget:mission?(0,_mission.isLastTargetInRoute)(state.mission.currentTarget,section):null,
+currentTarget:state.mission.currentTarget,
+questions:(0,_mission.getRouteQuestions)(section,state.mission.currentTarget),
 outcomes:(0,_selectors.getMapping)(state).outcomes,
 isInProgressSubmitChoice:state.mission.isInProgressSubmitChoice?state.mission.isInProgressSubmitChoice:false};
 
