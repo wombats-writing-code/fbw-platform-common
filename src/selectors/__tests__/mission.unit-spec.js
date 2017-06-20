@@ -3,7 +3,7 @@ let path = require('path')
 chai.should();
 
 const sectionQuestions = require('./section-questions.json');
-import {getSectionTargets, isTargetRouteNavigated} from '../mission'
+import {getSectionTargets, isTargetRouteNavigated, isLastTargetInRoute} from '../mission'
 
 describe('mission selectors', () => {
 
@@ -22,6 +22,23 @@ describe('mission selectors', () => {
 
     done();
   });
+
+  it('should say the given target is the last target in the section', done => {
+    let section = [
+      [],
+      [],
+      [
+        {id: '1'},
+        {id: '2'}
+      ]
+    ]
+    let target = section[2][0];
+    let result = isLastTargetInRoute(target, section)
+
+    result.should.be.eql(true);
+
+    done();
+  })
 
 
 })

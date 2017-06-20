@@ -30,10 +30,10 @@ class Mission extends Component {
               _.find(this.props.missions, m => slug(m.displayName) === slug(this.props.params.missionName)) :
               this.props.mission;
 
-    console.log('this.props', this.props)
-    console.log('slugged:', slug('test 1'))
-    console.log('mission', mission)
-    console.log('missions', this.props.missions)
+    // console.log('this.props', this.props)
+    // console.log('slugged:', slug('test 1'))
+    // console.log('mission', mission)
+    // console.log('missions', this.props.missions)
 
     if (!this.props.isGetMissionInProgress && missionState !== 'over') {
       this.props.onSelectOpenMission({

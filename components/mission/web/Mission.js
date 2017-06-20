@@ -28,9 +28,10 @@ Mission=function(_Component){_inherits(Mission,_Component);function Mission(){_c
 var missionState=(0,_time.checkMissionStatus)(this.props.mission);
 var mission=this.props.params&&this.props.missions?
 _.find(this.props.missions,function(m){return(0,_slug2['default'])(m.displayName)===(0,_slug2['default'])(_this2.props.params.missionName);}):
-null;
+this.props.mission;
 
-console.log('slugged:',(0,_slug2['default'])(this.props.params.missionName),(0,_slug2['default'])('test 1'));
+console.log('this.props',this.props);
+console.log('slugged:',(0,_slug2['default'])('test 1'));
 console.log('mission',mission);
 console.log('missions',this.props.missions);
 

@@ -2,7 +2,7 @@ import _ from 'lodash'
 import { connect } from 'react-redux'
 
 import {getMapping} from '../../selectors'
-import { getRouteQuestions } from '../../selectors/mission'
+import { getRouteQuestions, isLastTargetInRoute } from '../../selectors/mission'
 import { setQuestionListHeight } from '../../reducers/Mission/setQuestionListHeight'
 
 import { selectDirective } from '../../reducers/Mission/selectDirective'
@@ -13,12 +13,13 @@ const mapStateToProps = (state, ownProps) => {
   // console.log('state in QuestionsContainer', state)
 
   let mission = ownProps.mission || state.mission.currentMission;
+  let section = mission ? mission.questions[state.mission.currentDirectiveIndex] : null;
 
   return {
-    isLast: state.mission.currentTarget && state.mission.currentTarget.sectionIndex === mission.questions.length-1,
-    currentTarget: state.mission.currentTarget,
     mission,
-    questions: getRouteQuestions(mission.questions[state.mission.currentDirectiveIndex], state.mission.currentTarget),
+    isLastTarget: mission ? isLastTargetInRoute(state.mission.currentTarget, section) : null,
+    currentTarget: state.mission.currentTarget,
+    questions: getRouteQuestions(section, state.mission.currentTarget),
     outcomes: getMapping(state).outcomes,
     isInProgressSubmitChoice: state.mission.isInProgressSubmitChoice ? state.mission.isInProgressSubmitChoice : false,
   }

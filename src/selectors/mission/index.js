@@ -91,6 +91,14 @@ export const targetStatus = (target, questionsInRoute) => {
   return status;
 }
 
+
+export const isLastTargetInRoute = (target, questionsInSection) => {
+  if (target && questionsInSection) {
+    let lastTarget = _.last(questionsInSection)[0];
+    return lastTarget === target;
+  }
+}
+
 /// ==============
 
 export function getTargetQuestions (state) {
