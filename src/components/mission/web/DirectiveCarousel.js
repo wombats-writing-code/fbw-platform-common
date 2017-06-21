@@ -17,10 +17,10 @@ class DirectiveCarousel extends Component {
 
       // if the goal is completed, show a green or brown check
       if (indicator.isComplete && indicator.isMastered) {
-        checkIcon = <img className="carousel-thumb__check" src={require('../../../assets/check--green.png')}/>
+        checkIcon = <img className="carousel-thumb__check" src={require('../../../assets/goal--mastered.png')}/>
 
       } else if (indicator.isComplete && !indicator.isMastered) {
-        checkIcon = <img className="carousel-thumb__check" src={require('../../../assets/check--brown.png')}/>
+        checkIcon = <img className="carousel-thumb__check" src={require('../../../assets/goal--tried.png')}/>
 
       // if the goal isn't completed, show how many left
       } else {
@@ -71,7 +71,7 @@ class DirectiveCarousel extends Component {
     if (this.props.directives && this.props.directives.length > 0) {
       directivesCarousel = (
         <div className="carousel-container directive-carousel">
-          <div className="carousel flex-container align-top">
+          <div className="carousel flex-container">
             {_.map(this.props.directives, this._renderThumb)}
           </div>
         </div>

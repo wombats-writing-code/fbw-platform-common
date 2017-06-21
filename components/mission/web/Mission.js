@@ -82,6 +82,7 @@ currentDirectiveIndex:this.props.currentDirectiveIndex,
 directiveIndicators:this.props.directiveIndicators,
 onSelectDirective:this.props.onSelectDirective})),
 
+
 _react2['default'].createElement('nav',{className:'nav-target-carousel',role:'navigation','aria-label':'Target Questions Menu'},
 _react2['default'].createElement(TargetCarousel,{mission:this.props.mission})),
 

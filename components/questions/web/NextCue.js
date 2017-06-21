@@ -43,7 +43,7 @@ _react2['default'].createElement('span',{className:'try-next-target',onClick:thi
 
 
 }else if(this.props.isLastTarget){
-cueText=_react2['default'].createElement('p',{className:'cue-text'},'Well done!');
+cueText=_react2['default'].createElement('p',{className:'cue-text'},'You\'ve reached the end of this goal. Review this goal\'s questions again or move on to the next goal.');
 }
 
 }else{

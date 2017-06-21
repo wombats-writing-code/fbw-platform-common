@@ -56,6 +56,17 @@
   margin-bottom: 0;
 }
 
+.carousel-thumb__check {
+  position: absolute;
+  top: .5em;
+  left: 1em;
+  margin-bottom: 0;
+
+  width: 13px;
+  height: 13px;
+}
+
+
 .carousel-thumb:hover {
   opacity: .8;
 }
@@ -85,13 +96,6 @@
 .carousel-thumb.is-active .carousel-thumb__text {
   color: $app-blue-dark;
 }
-
-// ===== old
-//
-// .carousel-thumb:hover {
-//   background: #fff;
-// }
-//
 
 
 // ===========

@@ -14,7 +14,8 @@ require('../../../styles/core.scss');
 require('../../../styles/animations.scss');
 require('../../../styles/common.css');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var Mission=(0,_MissionContainer2['default'])(_Mission2['default']);
 
-var STATE=require('./state.mock.json');
+
+var STATE=require('./correct-state.mock.json');
 
 var chai=require('chai');
 chai.should();

@@ -51,6 +51,6 @@ questions.find('.submit-button').length.should.be.eql(1);
 
 
 after(function(){
-
+connectedQuestions.detach();
 });
 });
