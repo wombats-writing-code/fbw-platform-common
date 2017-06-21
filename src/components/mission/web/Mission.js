@@ -80,7 +80,8 @@ class Mission extends Component {
           <DirectiveCarousel directives={this.props.directives}
                             currentDirectiveIndex={this.props.currentDirectiveIndex}
                             directiveIndicators={this.props.directiveIndicators}
-                              onSelectDirective={this.props.onSelectDirective}/>
+                              onSelectDirective={this.props.onSelectDirective}
+                             />
         </nav>
         <nav className="nav-target-carousel" role="navigation" aria-label="Target Questions Menu">
           <TargetCarousel mission={this.props.mission}/>

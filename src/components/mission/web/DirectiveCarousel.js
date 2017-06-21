@@ -3,7 +3,6 @@
 import React, {Component} from 'react'
 import _ from 'lodash'
 
-import { hasAchievedDirective } from '../../../selectors/mission'
 import './DirectiveCarousel.scss'
 
 class DirectiveCarousel extends Component {
@@ -11,13 +10,30 @@ class DirectiveCarousel extends Component {
   _renderThumb = (directive, idx) => {
     // let outcome = _.find(this.props.outcomes, {id: directive.learningObjectiveId})
 
-    let indicatorText;
+    let indicatorText, checkIcon;
+
     if (this.props.directiveIndicators) {
       let indicator = this.props.directiveIndicators[idx];
-      indicatorText = indicator ? `${indicator.numerator || '--'}/${indicator.denominator}` : '';
+
+      // if the goal is completed, show a green or brown check
+      if (indicator.isComplete && indicator.isMastered) {
+        checkIcon = <img className="carousel-thumb__check" src={require('../../../assets/check--green.png')}/>
+
+      } else if (indicator.isComplete && !indicator.isMastered) {
+        checkIcon = <img className="carousel-thumb__check" src={require('../../../assets/check--brown.png')}/>
+
+      // if the goal isn't completed, show how many left
+      } else {
+        indicatorText = (
+          <span className="carousel-thumb__icon">
+            {indicator ? `${indicator.numerator || '--'}/${indicator.denominator}` : ''}
+          </span>
+        )
+      }
     }
 
     let displayName = directive ? directive.displayName : 'Error. Somehow this outcome is undefined';
+
 
     let isActive = idx === this.props.currentDirectiveIndex;
     let thumb = (
@@ -26,7 +42,8 @@ class DirectiveCarousel extends Component {
         <button className="carousel-thumb__button" onClick={() => this.props.onSelectDirective(idx)}
                 aria-label={`Learning Outcome: ${displayName}`}>
           <div className="flex-container align-bottom space-between prewrap">
-            <span className="carousel-thumb__icon">{indicatorText}</span>
+            {indicatorText}
+            {checkIcon}
             <p className="carousel-thumb__text">{displayName}</p>
           </div>
         </button>

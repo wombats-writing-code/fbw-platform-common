@@ -51,6 +51,6 @@ describe('Questions', () => {
 
 
   after( () => {
-    // connectedQuestions.detach();
+    connectedQuestions.detach();
   })
 });

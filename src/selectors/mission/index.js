@@ -57,6 +57,8 @@ export const computeSectionProgress= (questionsInSection) => {
   return {
     numerator: navigatedTargets.length,
     denominator: targetsForDirective.length,
+    isComplete: isGoalCompleted(questionsInSection),
+    isMastered: isGoalMastered(questionsInSection)
   }
 }
 
@@ -97,6 +99,25 @@ export const isLastTargetInRoute = (target, questionsInSection) => {
     let lastTarget = _.last(questionsInSection)[0];
     return lastTarget === target || lastTarget.id === target.id;
   }
+}
+
+// a goal is completed when there's nothing left to do in the route of each target question
+export const isGoalCompleted = (questionsInSection) => {
+  return _.every(questionsInSection, route => {
+    return _.every(route, question => {
+      // console.log('isGoalCompleted question', question);
+      return question.responded;
+    })
+  })
+}
+
+export const isGoalMastered = (questionsInSection) => {
+  return _.every(questionsInSection, route => {
+    return _.every(route, question => {
+      // console.log('isGoalMastered question', question);
+      return question.response && question.response.isCorrect;
+    })
+  })
 }
 
 /// ==============

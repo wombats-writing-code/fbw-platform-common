@@ -58,7 +58,7 @@ nextOutcome=_lodash2['default'].find(_this.props.outcomes,{id:questionItem.respo
 }
 
 nextCue=
-_react2['default'].createElement(_NextCue2['default'],{isLastTarget:_this.props.isLastTarget&&!nextQuestion,
+_react2['default'].createElement(_NextCue2['default'],{isLastTarget:_this.props.isLastTarget,
 currentQuestion:questionItem,
 response:questionItem.response,
 outcome:outcome,
