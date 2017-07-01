@@ -24,7 +24,8 @@ export const getSectionTargets = (sections, sectionIndex) => {
     return null;
   }
 
-  let targets = _.filter(_.flatMap(sections[sectionIndex]), isTarget);
+  // filter out targets, then make unique by referenceNumber
+  let targets = _.uniqBy(_.filter(_.flatMap(sections[sectionIndex]), isTarget), q => q.referenceNumber);
   return targets;
 }
 

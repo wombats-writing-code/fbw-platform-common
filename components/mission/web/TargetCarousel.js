@@ -30,7 +30,7 @@ console.log('targetNumber',targetNumber);
 console.log('sectionQuestions',sectionQuestions);
 console.log('targetRouteQuestions',targetRouteQuestions);
 
-console.log('currentDirectiveIndex',currentDirectiveIndex);
+console.log('currentDirectiveIndex',_this.props.currentDirectiveIndex);
 console.log('idx',idx);
 
 var status=(0,_mission.targetStatus)(target,targetRouteQuestions);
