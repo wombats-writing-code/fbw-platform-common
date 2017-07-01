@@ -167,7 +167,7 @@ class QuestionCard extends Component {
       // we'll move this logic elsewhere, but for now it belongs here
       // we cut out the Target from the response history
 
-      console.log('this.props.routeQuestions', this.props.routeQuestions)
+      // console.log('this.props.routeQuestions', this.props.routeQuestions)
 
       this.props.onSubmitResponse({
         mission: this.props.mission,

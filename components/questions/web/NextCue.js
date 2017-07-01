@@ -16,7 +16,21 @@ var response=this.props.response;
 
 var cueText;
 if(response.isCorrect){
+
+
 if(this.props.nextQuestion&&this.props.nextOutcome){
+
+
+if((0,_mission.isTarget)(this.props.nextQuestion)){
+cueText=
+_react2['default'].createElement('p',{className:'cue-text'},
+_react2['default'].createElement('span',null,'Good, you\'ve climbed back up the ladder! Now let\'s try the original goal again: '),
+_react2['default'].createElement('span',{className:'bold'},this.props.nextOutcome.displayName),
+_react2['default'].createElement('span',null,'.'));
+
+
+
+}else{
 cueText=
 _react2['default'].createElement('p',{className:'cue-text'},
 _react2['default'].createElement('span',null,'Good! Now let\'s '),
@@ -24,9 +38,13 @@ _react2['default'].createElement('span',{className:'bold'},this.props.nextOutcom
 _react2['default'].createElement('span',null,'.'));
 
 
+}
+
 
 }else if(this.props.nextQuestion&&!this.props.nextOutcome){
 cueText=_react2['default'].createElement('p',{className:'cue-text'},'No outcome bug. Please notify your instructors.');
+
+
 
 }else if((0,_mission.isTarget)(this.props.currentQuestion)&&!this.props.nextQuestion&&!this.props.isLastTarget){
 cueText=_react2['default'].createElement('p',{className:'cue-text'},'Nice! \u2009',
@@ -35,9 +53,12 @@ _react2['default'].createElement('span',{className:'try-next-target',onClick:thi
 
 
 
-}else if(!(0,_mission.isTarget)(this.props.currentQuestion)&&!this.props.nextQuestion&&!this.props.isLastTarget){
+
+
+}else if(!this.props.nextQuestion&&!this.props.isLastTarget){
 cueText=_react2['default'].createElement('p',{className:'cue-text'},'Good job! You should now be able to do the next Target question. \u2009',
 _react2['default'].createElement('span',{className:'try-next-target',onClick:this.props.onClickTryNextTarget},'Try another one \u2191'));
+
 
 
 
