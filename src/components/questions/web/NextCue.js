@@ -22,11 +22,11 @@ class NextCue extends Component {
 
         // if the next question is a Target, this means that the student has climbed back up the scaffold
         console.log('this.props.nextQuestion', this.props.nextQuestion);
-        
+
         if (isTarget(this.props.nextQuestion)) {
           cueText = (
             <p className="cue-text">
-              <span>Good, you've climbed back up the ladder! Now let's try the original goal again: </span>
+              <span>Good, you've climbed back up the route! Now let's try the original goal again: </span>
               <span className="bold">{this.props.nextOutcome.displayName}</span>
               <span>.</span>
             </p>
@@ -48,7 +48,7 @@ class NextCue extends Component {
 
       // if the current question is a Target question, and there's no next Question, and it's not the last target in the goal,
       // this means the student got it right upon first try
-      } else if (isTarget(this.props.currentQuestion) && !this.props.nextQuestion && !this.props.isLastTarget) {
+    } else if (this.props.isFirstQuestion && !this.props.nextQuestion && !this.props.isLastTarget) {
         cueText = <p className="cue-text">Nice! &thinsp;
                       <span className="try-next-target" onClick={this.props.onClickTryNextTarget}>
                         Do the next one! &uarr;

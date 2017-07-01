@@ -60,6 +60,7 @@ class Questions extends Component {
       nextCue = (
           <NextCue isLastTarget={this.props.isLastTarget}
                   currentQuestion={questionItem}
+                  isFirstQuestion={idx === 0}
                    response={questionItem.response}
                    outcome = {outcome}
                    nextQuestion={nextQuestion}
