@@ -21,7 +21,7 @@ if(response.isCorrect){
 if(this.props.nextQuestion&&this.props.nextOutcome){
 
 
-console.log('this.props.nextQuestion',this.props.nextQuestion);
+
 
 if((0,_mission.isTarget)(this.props.nextQuestion)){
 cueText=

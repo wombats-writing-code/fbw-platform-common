@@ -46,11 +46,11 @@ export const getRouteQuestions = (sectionQuestions, target) => {
 export const computeSectionProgress= (questionsInSection) => {
   if (!questionsInSection) return null;
 
-  let targetsForDirective = _.filter(_.flatMap(questionsInSection), isTarget);
-  let navigatedTargets = _.filter(targetsForDirective, question => {
+  let targetsForDirective = _.uniqBy(_.filter(_.flatMap(questionsInSection), isTarget), q => q.referenceNumber);
+  let navigatedTargets = _.uniqBy(_.filter(targetsForDirective, question => {
     return isTargetRouteNavigated(question, questionsInSection[question.targetIndex]) ||
             (question.response && question.response.isCorrect);
-  });
+  }), q => q.referenceNumber);
   // console.log('section', section);
   // console.log('targetsForDirective', targetsForDirective);
   // console.log('navigatedTargets', navigatedTargets);

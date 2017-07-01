@@ -112,7 +112,7 @@ class QuestionCard extends Component {
     }
 
     // console.log('outcome:', this.props.outcome);
-    console.log('question', this.props.question)
+    // console.log('question', this.props.question)
 
     let solution = (this.props.question.responded && this.state.isExpanded) ?
                     (<div className="question-card__solution">
