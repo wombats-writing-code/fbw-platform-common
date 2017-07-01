@@ -85,7 +85,7 @@ var isSubmitEnabled=(0,_time.checkMissionStatus)(_this.props.mission)==='over'?f
 return(
 _react2['default'].createElement('li',{key:questionItem.id+'-'+idx,className:'questions-list__item'},
 _react2['default'].createElement('div',{className:'row'},
-_react2['default'].createElement('div',{className:'medium-8 medium-centered large-8 large-centered columns'},
+_react2['default'].createElement('div',{className:'medium-9 medium-centered large-8 large-centered columns'},
 _react2['default'].createElement(QuestionCard,{question:questionItem,outcome:outcome,isExpanded:isExpanded,isSubmitEnabled:isSubmitEnabled}))),
 
 

@@ -26,7 +26,7 @@ checkIcon=_react2['default'].createElement('img',{className:'carousel-thumb__che
 }else{
 indicatorText=
 _react2['default'].createElement('span',{className:'carousel-thumb__icon'},
-indicator?(indicator.numerator||'--')+'/'+indicator.denominator:'');
+indicator?(indicator.numerator||'--')+' of '+indicator.denominator:'');
 
 
 }
