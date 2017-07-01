@@ -85,7 +85,7 @@ class Questions extends Component {
     return (
       <li key={`${questionItem.id}-${idx}`} className="questions-list__item">
         <div className="row">
-          <div className="medium-8 medium-centered large-8 large-centered columns">
+          <div className="medium-9 medium-centered large-8 large-centered columns">
             <QuestionCard question={questionItem} outcome={outcome} isExpanded={isExpanded} isSubmitEnabled={isSubmitEnabled}/>
           </div>
         </div>

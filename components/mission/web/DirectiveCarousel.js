@@ -17,10 +17,10 @@ var indicator=_this.props.directiveIndicators[idx];
 
 
 if(indicator.isComplete&&indicator.isMastered){
-checkIcon=_react2['default'].createElement('img',{className:'carousel-thumb__check',src:require('../../../assets/check--green.png')});
+checkIcon=_react2['default'].createElement('img',{className:'carousel-thumb__check',src:require('../../../assets/goal--mastered.png')});
 
 }else if(indicator.isComplete&&!indicator.isMastered){
-checkIcon=_react2['default'].createElement('img',{className:'carousel-thumb__check',src:require('../../../assets/check--brown.png')});
+checkIcon=_react2['default'].createElement('img',{className:'carousel-thumb__check',src:require('../../../assets/goal--tried.png')});
 
 
 }else{
@@ -71,7 +71,7 @@ var directivesCarousel=void 0;
 if(this.props.directives&&this.props.directives.length>0){
 directivesCarousel=
 _react2['default'].createElement('div',{className:'carousel-container directive-carousel'},
-_react2['default'].createElement('div',{className:'carousel flex-container align-top'},
+_react2['default'].createElement('div',{className:'carousel flex-container'},
 _lodash2['default'].map(this.props.directives,this._renderThumb)));
 
 

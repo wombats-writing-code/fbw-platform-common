@@ -118,6 +118,9 @@ class QuestionCard extends Component {
                     (<div className="question-card__solution">
                         <p className="bold uppercase">Solution</p>
                         <div className=""
+                          dangerouslySetInnerHTML={{__html: this.props.question.text}}>
+                        </div>
+                        <div className=""
                           dangerouslySetInnerHTML={{__html: this.props.question.feedback}}>
                         </div>
                       </div>) : null;
@@ -169,7 +172,8 @@ class QuestionCard extends Component {
         mission: this.props.mission,
         choice: choice,
         question: question,
-        responseHistory: _.tail(this.props.routeQuestions),
+        // responseHistory: _.tail(this.props.routeQuestions),
+        responseHistory: this.props.routeQuestions,
         user: this.props.user
       });
     }

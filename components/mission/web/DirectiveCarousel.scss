@@ -8,7 +8,7 @@
 
 .carousel-container {
   padding: 0rem 0 .0 0rem;
-  background: #fafafa;
+  background: #f8f8f8;
   border-bottom: 1px solid #ccc;
 }
 
@@ -32,8 +32,7 @@
   flex: none;
   font-size: .875rem;
   padding-bottom: calc(.75rem - 5px);
-  margin-bottom: -1px;
-  border-bottom: 4px solid transparent;
+  border-bottom: none;
   @extend .prewrap;
 }
 
@@ -62,8 +61,8 @@
   left: 1em;
   margin-bottom: 0;
 
-  width: 13px;
-  height: 13px;
+  width: 50px;
+  height: auto;
 }
 
 
@@ -76,7 +75,7 @@
   color: #5f5f5f;
   font-weight: 600;
   text-align: left;
-  margin-top: 1em;
+  margin-top: 1.25em;
   margin-bottom: 0;
 }
 
@@ -86,7 +85,9 @@
 
 .carousel-thumb.is-active {
   cursor: default;
-  border-bottom: 4px solid $app-blue-dark;
+  // border-bottom: 4px solid $app-blue-dark;
+  background: #fff;
+  box-shadow: 0 0 1px 1px rgba(#000, .4);
 }
 
 .carousel-thumb.is-active:hover {
@@ -94,7 +95,7 @@
 }
 
 .carousel-thumb.is-active .carousel-thumb__text {
-  color: $app-blue-dark;
+  color: #333;
 }
 
 

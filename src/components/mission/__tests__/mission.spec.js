@@ -15,7 +15,8 @@ import '../../../styles/animations.scss'
 import '../../../styles/common.css'
 
 // const STATE = require('./state.mock.json')
-const STATE = require('./correct-state.mock.json')
+// const STATE = require('./correct-state.mock.json')
+const STATE = require('./solution-state.mock.json')
 
 let chai = require('chai')
 chai.should()

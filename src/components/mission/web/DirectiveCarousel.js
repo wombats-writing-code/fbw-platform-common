@@ -26,7 +26,7 @@ class DirectiveCarousel extends Component {
       } else {
         indicatorText = (
           <span className="carousel-thumb__icon">
-            {indicator ? `${indicator.numerator || '--'}/${indicator.denominator}` : ''}
+            {indicator ? `${indicator.numerator || '--'} of ${indicator.denominator}` : ''}
           </span>
         )
       }
