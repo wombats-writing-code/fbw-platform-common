@@ -29,8 +29,8 @@ class TargetCarousel extends Component {
     console.log('targetNumber', targetNumber);
     console.log('sectionQuestions', sectionQuestions)
     console.log('targetRouteQuestions', targetRouteQuestions)
-    
-    console.log('currentDirectiveIndex', currentDirectiveIndex)
+
+    console.log('currentDirectiveIndex', this.props.currentDirectiveIndex)
     console.log('idx', idx)
 
     let status = targetStatus(target, targetRouteQuestions);
