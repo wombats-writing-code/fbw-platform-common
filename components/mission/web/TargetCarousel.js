@@ -26,12 +26,12 @@ var targetNumber=(0,_mission.targetKey)(target);
 var sectionQuestions=_this.props.currentMissionSections[_this.props.currentDirectiveIndex];
 var targetRouteQuestions=sectionQuestions[idx];
 
-console.log('targetNumber',targetNumber);
-console.log('sectionQuestions',sectionQuestions);
-console.log('targetRouteQuestions',targetRouteQuestions);
 
-console.log('currentDirectiveIndex',_this.props.currentDirectiveIndex);
-console.log('idx',idx);
+
+
+
+
+
 
 var status=(0,_mission.targetStatus)(target,targetRouteQuestions);
 var image=void 0;

@@ -21,7 +21,7 @@ class NextCue extends Component {
       if (this.props.nextQuestion && this.props.nextOutcome) {
 
         // if the next question is a Target, this means that the student has climbed back up the scaffold
-        console.log('this.props.nextQuestion', this.props.nextQuestion);
+        // console.log('this.props.nextQuestion', this.props.nextQuestion);
 
         if (isTarget(this.props.nextQuestion)) {
           cueText = (
