@@ -167,6 +167,7 @@ var choice=_lodash2['default'].find(_this.props.question.choices,{id:choiceId});
 
 
 
+console.log('this.props.routeQuestions',_this.props.routeQuestions);
 
 _this.props.onSubmitResponse({
 mission:_this.props.mission,
