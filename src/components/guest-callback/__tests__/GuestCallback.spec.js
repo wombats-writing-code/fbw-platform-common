@@ -10,7 +10,6 @@ import GuestCallback from '../GuestCallbackContainer'
 import '../../../styles/foundation.min.css'
 import '../../../styles/core.scss'
 import '../../../styles/animations.scss'
-import '../../../styles/common.css'
 
 const STATE = require('./state.mock.json')
 

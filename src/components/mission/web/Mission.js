@@ -35,7 +35,7 @@ class Mission extends Component {
     // console.log('mission', mission)
     // console.log('missions', this.props.missions)
 
-    if (!this.props.isGetMissionInProgress && missionState !== 'over') {
+    if (!this.props.doNotTakeMission && !this.props.isGetMissionInProgress && missionState !== 'over') {
       this.props.onSelectOpenMission({
         course: this.props.course,
         mission,

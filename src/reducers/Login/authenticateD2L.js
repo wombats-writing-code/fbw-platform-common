@@ -32,6 +32,7 @@ export function authenticateD2L(D2LConfig, optionalUrl) {
     .then((enrollments) => {
       if (process.env.NODE_ENV !== 'test') console.log("got enrollments", enrollments);
 
+      // courses come directly from the 3rd party D2L endpoint
       courses = enrollments;
 
       return whoami(D2LConfig, url)

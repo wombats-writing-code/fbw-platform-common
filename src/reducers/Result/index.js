@@ -28,7 +28,8 @@ export default function resultReducer (state = initialState, action) {
 
     case GET_STUDENT_RESULT_OPTIMISTIC:
       return _.assign({}, state, {
-        isGetStudentResultInProgress: true
+        isGetStudentResultInProgress: true,
+        currentMission: null
       })
 
     case GET_STUDENT_RESULT_SUCCESS:
