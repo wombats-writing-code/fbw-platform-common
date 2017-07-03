@@ -87,7 +87,7 @@ class Mission extends Component {
           <TargetCarousel mission={this.props.mission}/>
         </nav>
         <main>
-          <Questions mission={this.props.mission} />
+          <Questions mission={this.props.mission} isSubmitEnabled={this.props.doNotTakeMission ? false : undefined}/>
         </main>
 
         {loadingIndicator}

@@ -11,8 +11,7 @@ var _enzyme=require('enzyme');
 
 require('../../../styles/foundation.min.css');
 require('../../../styles/core.scss');
-require('../../../styles/animations.scss');
-require('../../../styles/common.css');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var Mission=(0,_MissionContainer2['default'])(_Mission2['default']);
+require('../../../styles/animations.scss');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var Mission=(0,_MissionContainer2['default'])(_Mission2['default']);
 
 
 

@@ -35,7 +35,7 @@ this.props.mission;
 
 
 
-if(!this.props.isGetMissionInProgress&&missionState!=='over'){
+if(!this.props.doNotTakeMission&&!this.props.isGetMissionInProgress&&missionState!=='over'){
 this.props.onSelectOpenMission({
 course:this.props.course,
 mission:mission,

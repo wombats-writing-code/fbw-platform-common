@@ -32,6 +32,7 @@ return(0,_authenticateD2LHelper.getD2LEnrollments)(D2LConfig,url).
 then(function(enrollments){
 if(process.env.NODE_ENV!=='test')console.log("got enrollments",enrollments);
 
+
 courses=enrollments;
 
 return(0,_authenticateD2LHelper.whoami)(D2LConfig,url);

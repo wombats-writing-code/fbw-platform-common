@@ -13,8 +13,7 @@ var _enzyme=require('enzyme');
 
 require('../../../styles/foundation.min.css');
 require('../../../styles/core.scss');
-require('../../../styles/animations.scss');
-require('../../../styles/common.css');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var credentials=require('../../../d2lcredentials');var D2LCallback=(0,_D2LCallbackContainer2['default'])(_D2LCallback2['default'],credentials);
+require('../../../styles/animations.scss');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var credentials=require('../../../d2lcredentials');var D2LCallback=(0,_D2LCallbackContainer2['default'])(_D2LCallback2['default'],credentials);
 
 var STATE=require('./state.mock.json');
 

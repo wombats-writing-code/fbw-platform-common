@@ -28,7 +28,8 @@ isGetResultsInProgress:false});
 
 case _getStudentResult.GET_STUDENT_RESULT_OPTIMISTIC:
 return _lodash2['default'].assign({},state,{
-isGetStudentResultInProgress:true});
+isGetStudentResultInProgress:true,
+currentMission:null});
 
 
 case _getStudentResult.GET_STUDENT_RESULT_SUCCESS:
