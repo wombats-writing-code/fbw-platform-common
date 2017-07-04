@@ -81,7 +81,7 @@ class Questions extends Component {
       }
     }
 
-    let isSubmitEnabled = checkMissionStatus(this.props.mission) === 'over' ? false : true;
+    let isSubmitEnabled = checkMissionStatus(this.props.mission) === 'over' || (this.props.isSubmitEnabled === false) ? false : true;
 
     return (
       <li key={`${questionItem.id}-${idx}`} className="questions-list__item">

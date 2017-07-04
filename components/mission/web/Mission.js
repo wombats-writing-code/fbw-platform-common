@@ -87,7 +87,7 @@ _react2['default'].createElement('nav',{className:'nav-target-carousel',role:'na
 _react2['default'].createElement(TargetCarousel,{mission:this.props.mission})),
 
 _react2['default'].createElement('main',null,
-_react2['default'].createElement(Questions,{mission:this.props.mission})),
+_react2['default'].createElement(Questions,{mission:this.props.mission,isSubmitEnabled:this.props.doNotTakeMission?false:undefined})),
 
 
 loadingIndicator));
