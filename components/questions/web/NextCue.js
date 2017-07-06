@@ -26,9 +26,9 @@ if(this.props.nextQuestion&&this.props.nextOutcome){
 if((0,_mission.isTarget)(this.props.nextQuestion)){
 cueText=
 _react2['default'].createElement('p',{className:'cue-text'},
-_react2['default'].createElement('span',null,'Good, you\'ve climbed back up the route! Now let\'s try the original goal again: '),
-_react2['default'].createElement('span',{className:'bold'},this.props.nextOutcome.displayName),
-_react2['default'].createElement('span',null,'.'));
+_react2['default'].createElement('span',null,'Great, you got back to the target! Let\'s try to '),
+_react2['default'].createElement('span',{className:'bold'},' ',this.props.nextOutcome.displayName),
+_react2['default'].createElement('span',null,' again.'));
 
 
 
