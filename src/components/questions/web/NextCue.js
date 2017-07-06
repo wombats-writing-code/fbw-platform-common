@@ -26,9 +26,9 @@ class NextCue extends Component {
         if (isTarget(this.props.nextQuestion)) {
           cueText = (
             <p className="cue-text">
-              <span>Good, you've climbed back up the route! Now let's try the original goal again: </span>
-              <span className="bold">{this.props.nextOutcome.displayName}</span>
-              <span>.</span>
+              <span>Great, you got back to the target! Let's try to </span>
+              <span className="bold"> {this.props.nextOutcome.displayName}</span>
+              <span> again.</span>
             </p>
           )
 

@@ -30,7 +30,7 @@ export function getD2LEnrollments(credentials, url) {
       return enrollment.OrgUnit.Type.Code == 'Course Offering' &&
         enrollment.Access.IsActive &&
         enrollment.Access.CanAccess &&
-        isFBWSpring2017(enrollment.OrgUnit.Name);
+        isCurrentFbW(enrollment.OrgUnit.Name);
     });
 
     if (process.env.NODE_ENV !== 'test') console.log('filtered enrollments', enrollments)
@@ -104,24 +104,28 @@ function _appendDevRole(credentials) {
   return '';
 }
 
-export function isFBWSpring2017(name) {
+export function isCurrentFbW(name) {
   let lowercased = name.toLowerCase()
   return lowercased.indexOf('fly-by-wire') >= 0 || lowercased.indexOf('fbw') >= 0 ||
-          (lowercased.indexOf('sp17') >= 0 &&
-          (isMAT121(lowercased) || isACC(lowercased)))
+        lowercased.indexOf('fa17') > -1 && _isValidClass(lowercased);
+
+          // old code for spring 2017
+          // (lowercased.indexOf('sp17') >= 0 &&
+          // (isMAT121(lowercased) || isACC(lowercased)))
 }
 
-export function isFBW(name) {
-  return
+function _isValidClass(name) {
+  return name.indexOf('mat121') > -1 || name.indexOf('acc121202') > -1;
 }
 
-function isMAT121(name) {
-  return name.indexOf('mat') >= 0 &&
-        name.indexOf('121') >= 0 &&
-        (name.indexOf('142') >= 0 || name.indexOf('103') >= 0)
-}
 
-function isACC(name) {
-  return name.indexOf('acc') >= 0 &&
-    name.indexOf('202') >= 0
-}
+// function isMAT121(name) {
+//   return name.indexOf('mat') >= 0 &&
+//         name.indexOf('121') >= 0 &&
+//         (name.indexOf('142') >= 0 || name.indexOf('103') >= 0)
+// }
+//
+// function isACC(name) {
+//   return name.indexOf('acc') >= 0 &&
+//     name.indexOf('202') >= 0
+// }

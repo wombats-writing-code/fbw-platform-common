@@ -81,7 +81,7 @@ isExpanded=true;
 }
 }
 
-var isSubmitEnabled=(0,_time.checkMissionStatus)(_this.props.mission)==='over'?false:true;
+var isSubmitEnabled=(0,_time.checkMissionStatus)(_this.props.mission)==='over'||_this.props.isSubmitEnabled===false?false:true;
 
 return(
 _react2['default'].createElement('li',{key:questionItem.id+'-'+idx,className:'questions-list__item'},
