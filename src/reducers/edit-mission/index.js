@@ -33,13 +33,17 @@ export default function editMissionReducer (state = initialState, action) {
       return _.assign({}, state, {
         newMission: stampNewMission()
       })
-      
+
     case EDIT_MISSION:
       return _.assign({}, state, {
         newMission: action.mission
       })
 
     case CREATE_MISSIONS_OPTIMISTIC:
+      return _.assign({}, state, {
+        isCreateMissionInProgress: action.mission
+      })
+
     case CREATE_MISSION_OPTIMISTIC:
       return _.assign({}, state, {
         isCreateMissionInProgress: true,

@@ -22,8 +22,8 @@ export function createMissionOptimistic() {
    return {type: CREATE_MISSION_OPTIMISTIC };
 }
 
-export function createMissionsOptimistic() {
-   return {type: CREATE_MISSIONS_OPTIMISTIC };
+export function createMissionsOptimistic(mission) {
+   return {type: CREATE_MISSIONS_OPTIMISTIC, mission };
 }
 
 
@@ -86,7 +86,7 @@ export function createMission(mission, course, user) {
 
 export function createMissions(missions, course, user) {
   return function(dispatch) {
-    dispatch(createMissionsOptimistic());
+    dispatch(createMissionsOptimistic(missions[0]));
 
     return axios({
       method: 'POST',
@@ -106,7 +106,7 @@ export function createMissions(missions, course, user) {
     .catch( err => err)
     .then( (result) => {
       // console.log('finally createMissions result', result)
-      browserHistory.push('/missions');
+      // browserHistory.push('/missions');
     });
   }
 }

@@ -30,6 +30,15 @@ import {missionConfig} from '../../Mission'
 
 describe('edit-mission reducer', () => {
 
+  it('should update state upon the CREATE_MISSIONS_OPTIMISTIC action', () => {
+    let newState = reducer({}, {
+      type: CREATE_MISSIONS_OPTIMISTIC,
+      mission: {displayName: 'foo'}
+    })
+
+    newState.isCreateMissionInProgress.displayName.should.eql('foo')
+  })
+
   it('should update state upon the RECEIVE_CREATE_MISSION action', () => {
     let newState = reducer({}, {
       type: RECEIVE_CREATE_MISSION,
