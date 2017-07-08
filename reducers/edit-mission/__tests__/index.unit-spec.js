@@ -30,6 +30,15 @@ var _Mission=require('../../Mission');function _interopRequireDefault(obj){retur
 
 describe('edit-mission reducer',function(){
 
+it('should update state upon the CREATE_MISSIONS_OPTIMISTIC action',function(){
+var newState=(0,_index2['default'])({},{
+type:_createMission.CREATE_MISSIONS_OPTIMISTIC,
+mission:{displayName:'foo'}});
+
+
+newState.isCreateMissionInProgress.displayName.should.eql('foo');
+});
+
 it('should update state upon the RECEIVE_CREATE_MISSION action',function(){
 var newState=(0,_index2['default'])({},{
 type:_createMission.RECEIVE_CREATE_MISSION,
