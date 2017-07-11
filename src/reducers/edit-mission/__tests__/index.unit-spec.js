@@ -14,6 +14,7 @@ import {updateMission} from '../updateMission'
 import reducer from '../index'
 import {EDIT_MISSION} from '../editMission'
 import {CLICK_ADD_MISSION} from '../clickAddMission'
+import {CLICK_EDIT_MISSION, CANCEL_EDIT_MISSION} from '../clickEditMission'
 
 import {
   CREATE_MISSION_OPTIMISTIC, RECEIVE_CREATE_MISSION,
@@ -202,5 +203,27 @@ describe('edit-mission reducer', () => {
     newState.newMission.displayName.should.eql('');
     newState.newMission.goals.should.eql([]);
   });
+
+  it('should update the state upon the CLICK_EDIT_MISSION action', () => {
+    let newState = reducer({}, {
+      type: CLICK_EDIT_MISSION,
+      mission: {
+        displayName: 'foo'
+      }
+    });
+
+    newState.editMission.displayName.should.eql('foo');
+    newState.isEditMissionInProgress.should.eql(true);
+  });
+
+  it('should update the state upon the CANCEL_EDIT_MISSION action', () => {
+    let newState = reducer({}, {
+      type: CANCEL_EDIT_MISSION,
+    });
+
+    should.not.exist(newState.editMission);
+    newState.isEditMissionInProgress.should.eql(false);
+  });
+
 
 })

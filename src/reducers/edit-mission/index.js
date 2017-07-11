@@ -16,6 +16,7 @@ import {
 } from './updateMissionForm'
 import {EDIT_MISSION} from './editMission'
 import {CLICK_ADD_MISSION} from './clickAddMission'
+import {CLICK_EDIT_MISSION, CANCEL_EDIT_MISSION} from './clickEditMission'
 
 import {localDateTime} from '../../utilities/time'
 
@@ -32,6 +33,18 @@ export default function editMissionReducer (state = initialState, action) {
     case CLICK_ADD_MISSION:
       return _.assign({}, state, {
         newMission: stampNewMission()
+      })
+
+    case CLICK_EDIT_MISSION:
+      return _.assign({}, state, {
+        isEditMissionInProgress: true,
+        editMission: action.mission
+      })
+
+    case CANCEL_EDIT_MISSION:
+      return _.assign({}, state, {
+        isEditMissionInProgress: false,
+        editMission: null
       })
 
     case EDIT_MISSION:
