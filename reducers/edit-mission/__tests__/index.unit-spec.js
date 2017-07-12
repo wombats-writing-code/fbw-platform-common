@@ -212,7 +212,7 @@ displayName:'foo'}});
 
 
 
-newState.editMission.displayName.should.eql('foo');
+newState.newMission.displayName.should.eql('foo');
 newState.isEditMissionInProgress.should.eql(true);
 });
 
@@ -221,7 +221,7 @@ var newState=(0,_index2['default'])({},{
 type:_clickEditMission.CANCEL_EDIT_MISSION});
 
 
-should.not.exist(newState.editMission);
+
 newState.isEditMissionInProgress.should.eql(false);
 });
 

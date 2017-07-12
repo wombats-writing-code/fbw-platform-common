@@ -223,7 +223,7 @@ export default function missionReducer (state = initialState, action) {
 
           return m;
         }),
-        currentMission: action.mission
+        // currentMission: action.mission
       })
 
     case GET_STUDENT_RESULT_SUCCESS:

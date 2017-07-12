@@ -77,7 +77,8 @@ export default function editMissionReducer (state = initialState, action) {
     case RECEIVE_UPDATE_MISSION:
       return _.assign({}, state, {
         isUpdateMissionInProgress: false,
-        newMission: stampNewMission()
+        newMission: stampNewMission(),
+        isEditMissionInProgress: false
       })
 
     case DELETE_MISSION_OPTIMISTIC:
