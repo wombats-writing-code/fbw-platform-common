@@ -14,6 +14,7 @@ var _updateMission=require('../updateMission');
 var _index=require('../index');var _index2=_interopRequireDefault(_index);
 var _editMission=require('../editMission');
 var _clickAddMission=require('../clickAddMission');
+var _clickEditMission=require('../clickEditMission');
 
 
 
@@ -202,5 +203,27 @@ should.not.exist(newState.newMission.type);
 newState.newMission.displayName.should.eql('');
 newState.newMission.goals.should.eql([]);
 });
+
+it('should update the state upon the CLICK_EDIT_MISSION action',function(){
+var newState=(0,_index2['default'])({},{
+type:_clickEditMission.CLICK_EDIT_MISSION,
+mission:{
+displayName:'foo'}});
+
+
+
+newState.editMission.displayName.should.eql('foo');
+newState.isEditMissionInProgress.should.eql(true);
+});
+
+it('should update the state upon the CANCEL_EDIT_MISSION action',function(){
+var newState=(0,_index2['default'])({},{
+type:_clickEditMission.CANCEL_EDIT_MISSION});
+
+
+should.not.exist(newState.editMission);
+newState.isEditMissionInProgress.should.eql(false);
+});
+
 
 });

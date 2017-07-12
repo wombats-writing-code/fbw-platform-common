@@ -212,7 +212,7 @@ describe('edit-mission reducer', () => {
       }
     });
 
-    newState.editMission.displayName.should.eql('foo');
+    newState.newMission.displayName.should.eql('foo');
     newState.isEditMissionInProgress.should.eql(true);
   });
 
@@ -221,7 +221,7 @@ describe('edit-mission reducer', () => {
       type: CANCEL_EDIT_MISSION,
     });
 
-    should.not.exist(newState.editMission);
+    // should.not.exist(newState.newMission.);
     newState.isEditMissionInProgress.should.eql(false);
   });
 

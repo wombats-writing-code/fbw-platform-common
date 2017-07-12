@@ -38,13 +38,13 @@ export default function editMissionReducer (state = initialState, action) {
     case CLICK_EDIT_MISSION:
       return _.assign({}, state, {
         isEditMissionInProgress: true,
-        editMission: action.mission
+        newMission: action.mission
       })
 
     case CANCEL_EDIT_MISSION:
       return _.assign({}, state, {
         isEditMissionInProgress: false,
-        editMission: null
+        newMission: null
       })
 
     case EDIT_MISSION:
