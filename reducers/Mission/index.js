@@ -222,8 +222,8 @@ return action.mission;
 }
 
 return m;
-}),
-currentMission:action.mission})};
+})})};
+
 
 
 case _getStudentResult.GET_STUDENT_RESULT_SUCCESS:

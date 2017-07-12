@@ -109,7 +109,7 @@ export default function missionReducer (state = initialState, action) {
 
     case RECEIVE_DELETE_MISSION:
       return _.assign({}, state, {
-        currentMission: null,
+        // currentMission: null,
         missions: _.filter(state.missions, (m) => {
           return m.id !== action.mission.id
         })

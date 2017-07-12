@@ -68,6 +68,7 @@ missions:[{displayName:'foo'}]});
 
 newState.newMission.displayName.should.eql('');
 newState.isUpdateMissionInProgress.should.eql(false);
+newState.isEditMissionInProgress.shoul.eql(false);
 });
 
 it('should update state upon the RECEIVE_DELETE_MISSION action',function(){
