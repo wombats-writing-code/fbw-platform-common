@@ -89,6 +89,8 @@ export default function editMissionReducer (state = initialState, action) {
     case RECEIVE_DELETE_MISSION:
       return _.assign({}, state, {
         isDeleteMissionInProgress: false,
+        isEditMissionInProgress: false,
+        newMission: stampNewMission()
       });
 
     case CHANGE_MISSION_NAME:
