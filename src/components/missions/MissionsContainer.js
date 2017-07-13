@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-
+import _ from 'lodash'
 import { getMissions } from '../../reducers/Mission/getMissions'
 import { selectOpenMission } from '../../reducers/Mission/selectOpenMission'
 import { selectClosedMission } from '../../reducers/Mission/selectClosedMission'
@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     course: getCurrentCourse(state),
-    missions: state.mission ? state.mission.missions : null,
+    missions: state.mission ? _.orderBy(state.mission.missions, 'deadline') : null,
     isGetMissionsInProgress: state.mission ? state.mission.isGetMissionsInProgress : false,
     user: getUser(state),
     // mapping: state.mapping ? state.mapping : null
