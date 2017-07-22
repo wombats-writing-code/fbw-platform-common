@@ -1,5 +1,5 @@
 Object.defineProperty(exports,"__esModule",{value:true});var _reactRedux=require('react-redux');
-
+var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);
 var _getMissions2=require('../../reducers/Mission/getMissions');
 var _selectOpenMission=require('../../reducers/Mission/selectOpenMission');
 var _selectClosedMission=require('../../reducers/Mission/selectClosedMission');
@@ -7,14 +7,14 @@ var _course=require('../../selectors/course');
 var _selectors=require('../../selectors');
 
 
-var _getMapping2=require('../../reducers/Mapping/getMapping');
+var _getMapping2=require('../../reducers/Mapping/getMapping');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}
 
 var mapStateToProps=function(){function mapStateToProps(state,ownProps){
 
 
 return{
 course:(0,_course.getCurrentCourse)(state),
-missions:state.mission?state.mission.missions:null,
+missions:state.mission?_lodash2['default'].orderBy(state.mission.missions,'deadline'):null,
 isGetMissionsInProgress:state.mission?state.mission.isGetMissionsInProgress:false,
 user:(0,_selectors.getUser)(state)};
 

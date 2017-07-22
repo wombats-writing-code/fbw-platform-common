@@ -17,7 +17,7 @@ export function getGuestAuthenticationUrl() {
   return `${getDomain()}/mock-d2l/authenticate-guest`;
 }
 
-export function authenticateGuest() {
+export function authenticateGuest(name) {
   return function(dispatch) {
 
     let url = 'guest-callback-authentication', courses, d2lUser;
@@ -29,9 +29,23 @@ export function authenticateGuest() {
 
       if (process.env.NODE_ENV !== 'test') console.log("got enrollments", courses);
 
-      return axios({
-        url: `${getDomain()}/mock-d2l/whoami`,
-      })
+      // if the name was provided, get the user associated with the name
+      if (name) {
+        return axios({
+          url: `${getDomain()}/mock-d2l/whoami`,
+          method: 'POST',
+          body: {
+            name
+          }
+        })
+        
+      // else, get a random user
+      } else {
+        return axios({
+          url: `${getDomain()}/mock-d2l/whoami`,
+        })
+      }
+
     })
     .then((res) => {
       d2lUser = res.data;

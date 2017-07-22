@@ -6,7 +6,10 @@ import './GuestCallback.scss'
 class GuestCallback extends Component {
 
   componentDidMount () {
-    this.props.authenticateGuest();
+    let name = this.props.params.name;
+    console.log('name', name)
+
+    this.props.authenticateGuest(name);
   }
 
   render() {

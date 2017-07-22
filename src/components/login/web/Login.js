@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { browserHistory } from 'react-router'
+import slug from 'slug'
 
 import './Login.scss'
 
@@ -7,6 +8,7 @@ class Login extends Component {
   constructor() {
     super();
     this.state = {
+      guestName: '',
       isVisitorLoginVisible: false
     }
   }
@@ -35,22 +37,32 @@ class Login extends Component {
           <div className="medium-7 large-5 columns medium-centered">
             <img className="app-logo" src={require('../../../assets/fbw-web-icon.png')} />
           </div>
-          {/* <p className="app-tagline">Adaptive learning for differentiated instruction</p> */}
         </div>
 
         <div className="row">
-          <div className="school-buttons medium-8 medium-centered columns">
-            <button onClick={() => this._handleACCLogin()}
-                    className="login-button login-button--d2l ">
-
+          <div className="medium-5 large-4 medium-centered columns">
+            <button className="login-button login-button--d2l " onClick={() => this._handleACCLogin()}>
               <img className="login-button__image" src={require('../../../assets/myACC.png')} />
               Arapahoe
             </button>
-            <button  onClick={() => this._handleGuestLogin()}
-                      className="login-button">
-              <img className="login-button__image" src={require('../../../assets/visitor.png')} />
-              Guest
-            </button>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="medium-7 large-6 medium-centered columns">
+            <p className="login__guest-prompt text-center">Not an Arapahoe student? Login with your name: </p>
+            <div className="flex-container space-between align-center">
+              <input className="input login__guest-input" placeholder="First and last name, e.g. Jane Doe"
+                    value={this.state.guestName}
+                    onChange={(e) => this.setState({guestName: e.target.value})}/>
+              <button className="login-button login-button--guest" onClick={() => this._handleGuestLogin(this.state.guestName)}>
+                Login &rarr;
+              </button>
+              {/* <button className="login-button login-button--guest" onClick={() => this._handleGuestLogin()}>
+                <img className="login-button__image" src={require('../../../assets/visitor.png')} />
+                Guest
+              </button> */}
+            </div>
           </div>
         </div>
 
@@ -75,8 +87,9 @@ class Login extends Component {
     )
   }
 
-  _handleGuestLogin() {
-    window.open(this.props.guestAuthenticationUrl, '_self')
+  _handleGuestLogin(name) {
+    console.log(name);
+    window.open(`${this.props.guestAuthenticationUrl}?name=${slug(_.lowerCase(name))}`, '_self')
   }
 
   _handleACCLogin = () => {

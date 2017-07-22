@@ -11,7 +11,7 @@ import nock from 'nock'
 import { authenticateGuest, RECEIVE_AUTHENTICATE_GUEST } from '../authenticateGuest'
 
 describe('authenticateGuest', function(done) {
-  it('should create an action for authenticateGuest', done => {
+  it('should create an action for authenticateGuest with no name', done => {
     const store = mockStore({})
 
     nock('http://localhost:8888')
@@ -27,6 +27,34 @@ describe('authenticateGuest', function(done) {
     .reply(200, {name: 'superman'})
 
     store.dispatch(authenticateGuest())
+    .then( () => {
+      let actions = store.getActions()
+      actions.length.should.be.eql(1);
+      actions[0].type.should.be.eql(RECEIVE_AUTHENTICATE_GUEST);
+      // console.log('actions', actions)
+      actions[0].data.courses.should.be.a('array')
+      actions[0].data.url.should.be.a('string')
+      actions[0].data.d2lUser.should.be.a('object')
+      done();
+    })
+  });
+
+  it('should create an action for authenticateGuest with a guest-provided name', done => {
+    const store = mockStore({})
+
+    nock('http://localhost:8888')
+    .get(`/mock-d2l/enrollments`)
+    .reply(200, ['foo'])
+
+    nock('http://localhost:8888')
+    .post(`/mock-d2l/whoami`)
+    .reply(200, {name: 'jane doe'})
+
+    nock('http://localhost:8888')
+    .post(`/l4/users`)
+    .reply(200, {name: 'superman'})
+
+    store.dispatch(authenticateGuest('jane doe'))
     .then( () => {
       let actions = store.getActions()
       actions.length.should.be.eql(1);
