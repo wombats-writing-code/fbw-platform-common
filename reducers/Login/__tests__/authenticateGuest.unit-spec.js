@@ -8,15 +8,18 @@ var _reduxMockStore=require('redux-mock-store');var _reduxMockStore2=_interopReq
 
 var _nock=require('nock');var _nock2=_interopRequireDefault(_nock);
 
-var _d2lcredentials=require('../../../d2lcredentials');var _d2lcredentials2=_interopRequireDefault(_d2lcredentials);
 var _authenticateGuest=require('../authenticateGuest');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}process.env.NODE_ENV='test';var should=require('should');var middlewares=[_reduxThunk2['default']];var mockStore=(0,_reduxMockStore2['default'])(middlewares);
 
 describe('authenticateGuest',function(done){
 it('should create an action for authenticateGuest with no name',function(done){
+var D2LConfig=_lodash2['default'].assign({},require('../../../d2lcredentials'),{
+role:'student'});
+
+
 var store=mockStore({});
 
 (0,_nock2['default'])('http://localhost:8888').
-get('/mock-d2l/enrollments').
+get('/mock-d2l/enrollments?role=student&name=undefined').
 reply(200,['foo']);
 
 (0,_nock2['default'])('http://localhost:8888').
@@ -27,7 +30,7 @@ reply(200,{name:'superman'});
 post('/l4/users').
 reply(200,{name:'superman'});
 
-store.dispatch((0,_authenticateGuest.authenticateGuest)()).
+store.dispatch((0,_authenticateGuest.authenticateGuest)(D2LConfig)).
 then(function(){
 var actions=store.getActions();
 actions.length.should.be.eql(1);
@@ -41,10 +44,14 @@ done();
 });
 
 it('should create an action for authenticateGuest with a guest-provided name',function(done){
+var D2LConfig=_lodash2['default'].assign({},require('../../../d2lcredentials'),{
+role:'instructor'});
+
+
 var store=mockStore({});
 
 (0,_nock2['default'])('http://localhost:8888').
-get('/mock-d2l/enrollments').
+get('/mock-d2l/enrollments?role=instructor&name=jane%20doe').
 reply(200,['foo']);
 
 (0,_nock2['default'])('http://localhost:8888').
@@ -55,7 +62,7 @@ reply(200,{name:'jane doe'});
 post('/l4/users').
 reply(200,{name:'superman'});
 
-store.dispatch((0,_authenticateGuest.authenticateGuest)(_d2lcredentials2['default'],'jane doe')).
+store.dispatch((0,_authenticateGuest.authenticateGuest)(D2LConfig,'jane doe')).
 then(function(){
 var actions=store.getActions();
 actions.length.should.be.eql(1);

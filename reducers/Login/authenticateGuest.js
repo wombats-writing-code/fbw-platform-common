@@ -27,7 +27,7 @@ return function(dispatch){
 
 var url='guest-callback-authentication',courses=void 0,d2lUser=void 0;
 return(0,_axios2['default'])({
-url:(0,_utilities.getDomain)()+'/mock-d2l/enrollments'}).
+url:(0,_utilities.getDomain)()+'/mock-d2l/enrollments?role='+D2LConfig.role+'&name='+name}).
 
 then(function(res){
 courses=_lodash2['default'].map(res.data.Items,'OrgUnit');

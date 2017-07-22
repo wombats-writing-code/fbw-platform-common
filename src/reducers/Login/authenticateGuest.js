@@ -14,23 +14,34 @@ function receiveAuthenticateGuest(data) {
 }
 
 export function getGuestAuthenticationUrl(D2LConfig) {
-  let role;
-  if (D2LConfig && D2LConfig.role === 'instructor') {
-    return `${getDomain()}/mock-d2l/authenticate-guest?role=instructor`
+  if (!D2LConfig) {
+    throw new Error('D2LConfig object must be given to getGuestAuthenticationUrl')
   }
 
-  return `${getDomain()}/mock-d2l/authenticate-guest?role=student`
+  let role = D2LConfig.role;
+
+  return `${getDomain()}/mock-d2l/authenticate-guest?role=${role}`
 }
 
 export function authenticateGuest(D2LConfig, name) {
-  return function(dispatch) {
+  if (!D2LConfig) {
+    throw new Error('D2LConfig object must be given to getGuestAuthenticationUrl')
+  }
 
+  let role = D2LConfig.role;
+
+  return function(dispatch) {
     let url = 'guest-callback-authentication', courses, d2lUser;
     return axios({
-      url: `${getDomain()}/mock-d2l/enrollments?role=${D2LConfig.role}&name=${name}`,
+      url: `${getDomain()}/mock-d2l/enrollments?role=${role}&name=${name}`,
     })
     .then((res) => {
-      courses = _.map(res.data.Items, 'OrgUnit')
+
+      if (role === 'student') {
+        courses = _.map(res.data.Items, 'OrgUnit')
+      } else {
+        courses = res.data;
+      }
 
       if (process.env.NODE_ENV !== 'test') console.log("got enrollments", courses);
 
@@ -63,7 +74,7 @@ export function authenticateGuest(D2LConfig, name) {
       return createUser(d2lUser);
     })
     .then( user => {
-      console.log('create user result', user);
+      // console.log('create user result', user);
       dispatch(receiveAuthenticateGuest({url, courses, d2lUser: user}))
 
       return {url, courses, d2lUser}
