@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 const provider = (component, D2LConfig) => {
   let mergeProps = (stateProps, dispatchProps, ownProps) => {
     return _.assign({}, stateProps, dispatchProps, ownProps, {
-      guestAuthenticationUrl: getGuestAuthenticationUrl(),
+      guestAuthenticationUrl: getGuestAuthenticationUrl(D2LConfig),
       authenticationUrl: getAuthenticationUrl(D2LConfig),
       D2LConfig
     })

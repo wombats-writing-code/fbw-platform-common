@@ -13,8 +13,14 @@ function receiveAuthenticateGuest(data) {
   return {type: RECEIVE_AUTHENTICATE_GUEST, data}
 }
 
-export function getGuestAuthenticationUrl() {
-  return `${getDomain()}/mock-d2l/authenticate-guest`;
+export function getGuestAuthenticationUrl(D2LConfig) {
+  let role;
+  // very HACK-ish. we detect what the role is based on the URL
+  if (D2LConfig && D2LConfig.role === 'instructor') {
+    return `${getDomain()}/mock-d2l/authenticate-guest?role=instructor`
+  }
+
+  return `${getDomain()}/mock-d2l/authenticate-guest?role=student`
 }
 
 export function authenticateGuest(name) {

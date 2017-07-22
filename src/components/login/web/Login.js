@@ -50,7 +50,7 @@ class Login extends Component {
 
         <div className="row">
           <div className="medium-7 large-6 medium-centered columns">
-            <p className="login__guest-prompt text-center">Not an Arapahoe student? Login with your name: </p>
+            <p className="login__guest-prompt text-center">Not Arapahoe? Login with your name: </p>
             <div className="flex-container space-between align-center">
               <input className="input login__guest-input" placeholder="First and last name, e.g. Jane Doe"
                     value={this.state.guestName}
