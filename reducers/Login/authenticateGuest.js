@@ -58,7 +58,7 @@ if(process.env.NODE_ENV!=='test')console.log('got whoami',d2lUser);
 return(0,_createUser.createUser)(d2lUser);
 }).
 then(function(user){
-
+console.log('create user result',user);
 dispatch(receiveAuthenticateGuest({url:url,courses:courses,d2lUser:user}));
 
 return{url:url,courses:courses,d2lUser:d2lUser};
