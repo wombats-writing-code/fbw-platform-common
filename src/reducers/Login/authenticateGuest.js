@@ -58,7 +58,7 @@ export function authenticateGuest(name) {
       return createUser(d2lUser);
     })
     .then( user => {
-      // console.log('create user result', user);
+      console.log('create user result', user);
       dispatch(receiveAuthenticateGuest({url, courses, d2lUser: user}))
 
       return {url, courses, d2lUser}
