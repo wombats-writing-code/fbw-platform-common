@@ -21,7 +21,7 @@ var result=(0,_index.getD2LDisplayName)({
 "LastName":"bar"});
 
 
-result.should.be.eql('foo bar');
+result.should.be.eql('Foo Bar');
 });
 
 it('should get the displayNameLastName of a d2l user',function(){

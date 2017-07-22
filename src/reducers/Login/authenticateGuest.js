@@ -29,14 +29,14 @@ export function authenticateGuest(name) {
 
       if (process.env.NODE_ENV !== 'test') console.log("got enrollments", courses);
 
-      console.log('authenticateGuest name', name)
+      // console.log('authenticateGuest name', name)
 
       // if the name was provided, get the user associated with the name
       if (name) {
         return axios({
           url: `${getDomain()}/mock-d2l/whoami`,
           method: 'POST',
-          body: {
+          data: {
             name
           }
         })

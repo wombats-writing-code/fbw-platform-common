@@ -12,7 +12,7 @@ if(name){
 name=_lodash2['default'].replace(name,'-',' ');
 }
 
-console.log('name',name);
+
 
 this.props.authenticateGuest(name);
 }return componentDidMount;}()},{key:'render',value:function(){function render()

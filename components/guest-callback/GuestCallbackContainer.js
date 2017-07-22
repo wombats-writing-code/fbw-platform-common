@@ -10,7 +10,7 @@ return{};
 
 var mapDispatchToProps=function(){function mapDispatchToProps(dispatch,ownProps){
 return{
-authenticateGuest:function(){function authenticateGuest(){return dispatch((0,_authenticateGuest2.authenticateGuest)());}return authenticateGuest;}()};
+authenticateGuest:function(){function authenticateGuest(name){return dispatch((0,_authenticateGuest2.authenticateGuest)(name));}return authenticateGuest;}()};
 
 }return mapDispatchToProps;}();exports['default']=
 
