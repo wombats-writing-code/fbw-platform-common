@@ -10,9 +10,20 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    authenticateGuest: (name) => dispatch(authenticateGuest(name))
+    authenticateGuest: (credentials, name) => dispatch(authenticateGuest(credentials, name))
   }
 }
 
+const provider = (component, credentials) => {
+  let mergeProps = (stateProps, dispatchProps, ownProps) => {
+    return _.assign({}, stateProps, dispatchProps, ownProps, {
+      credentials
+    })
+  }
 
-export default connect(mapStateToProps, mapDispatchToProps)(GuestCallback)
+  return connect(mapStateToProps, mapDispatchToProps, mergeProps)(component)
+}
+
+export default provider
+
+// export default connect(mapStateToProps, mapDispatchToProps)(GuestCallback)

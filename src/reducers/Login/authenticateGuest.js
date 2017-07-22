@@ -15,7 +15,6 @@ function receiveAuthenticateGuest(data) {
 
 export function getGuestAuthenticationUrl(D2LConfig) {
   let role;
-  // very HACK-ish. we detect what the role is based on the URL
   if (D2LConfig && D2LConfig.role === 'instructor') {
     return `${getDomain()}/mock-d2l/authenticate-guest?role=instructor`
   }
@@ -23,7 +22,7 @@ export function getGuestAuthenticationUrl(D2LConfig) {
   return `${getDomain()}/mock-d2l/authenticate-guest?role=student`
 }
 
-export function authenticateGuest(name) {
+export function authenticateGuest(D2LConfig, name) {
   return function(dispatch) {
 
     let url = 'guest-callback-authentication', courses, d2lUser;
@@ -35,7 +34,7 @@ export function authenticateGuest(name) {
 
       if (process.env.NODE_ENV !== 'test') console.log("got enrollments", courses);
 
-      // console.log('authenticateGuest name', name)
+      console.log('authenticateGuest name', name)
 
       // if the name was provided, get the user associated with the name
       if (name) {

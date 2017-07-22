@@ -14,7 +14,7 @@ class GuestCallback extends Component {
 
     // console.log('name', name)
 
-    this.props.authenticateGuest(name);
+    this.props.authenticateGuest(this.props.credentials, name);
   }
 
   render() {

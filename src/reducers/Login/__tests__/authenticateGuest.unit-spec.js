@@ -8,6 +8,7 @@ const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
 import nock from 'nock'
 
+import D2LConfig from '../../../d2lcredentials'
 import { authenticateGuest, RECEIVE_AUTHENTICATE_GUEST } from '../authenticateGuest'
 
 describe('authenticateGuest', function(done) {
@@ -54,7 +55,7 @@ describe('authenticateGuest', function(done) {
     .post(`/l4/users`)
     .reply(200, {name: 'superman'})
 
-    store.dispatch(authenticateGuest('jane doe'))
+    store.dispatch(authenticateGuest(D2LConfig, 'jane doe'))
     .then( () => {
       let actions = store.getActions()
       actions.length.should.be.eql(1);
