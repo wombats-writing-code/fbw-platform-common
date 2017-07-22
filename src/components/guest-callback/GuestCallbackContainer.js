@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    authenticateGuest: () => dispatch(authenticateGuest())
+    authenticateGuest: (name) => dispatch(authenticateGuest(name))
   }
 }
 

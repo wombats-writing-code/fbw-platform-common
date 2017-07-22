@@ -29,6 +29,8 @@ courses=_lodash2['default'].map(res.data.Items,'OrgUnit');
 
 if(process.env.NODE_ENV!=='test')console.log("got enrollments",courses);
 
+console.log('authenticateGuest name',name);
+
 
 if(name){
 return(0,_axios2['default'])({

@@ -12,7 +12,7 @@ class GuestCallback extends Component {
       name = _.replace(name, '-', ' ')
     }
 
-    console.log('name', name)
+    // console.log('name', name)
 
     this.props.authenticateGuest(name);
   }

@@ -88,7 +88,7 @@ class Login extends Component {
   }
 
   _handleGuestLogin(name) {
-    console.log(name);
+    // console.log(name);
     window.open(`${this.props.guestAuthenticationUrl}?name=${slug(_.lowerCase(name))}`, '_self')
   }
 

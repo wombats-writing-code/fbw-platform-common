@@ -1,3 +1,4 @@
+const _ = require('lodash')
 
 export const getD2LDisplayName = (d2lUser) => {
   if (d2lUser.DisplayName && d2lUser.DisplayName.indexOf(', ') > -1) {
@@ -5,7 +6,7 @@ export const getD2LDisplayName = (d2lUser) => {
     return parts[1] + ' ' + parts[0];
 
   } else if (d2lUser.FirstName && d2lUser.LastName) {
-    return d2lUser.FirstName + ' ' + d2lUser.LastName;
+    return _.capitalize(d2lUser.FirstName) + ' ' + _.capitalize(d2lUser.LastName);
   }
 }
 
@@ -15,7 +16,7 @@ export const getD2LDisplayNameLastFirst = (d2lUser) => {
   }
 
   if (d2lUser.FirstName && d2lUser.LastName) {
-    return d2lUser.LastName + ', ' + d2lUser.FirstName;
+    return _.capitalize(d2lUser.LastName) + ', ' + _.capitalize(d2lUser.FirstName);
   }
 
   return 'No name ' + d2lUser.Identifier;
