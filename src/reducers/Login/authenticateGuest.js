@@ -29,6 +29,8 @@ export function authenticateGuest(name) {
 
       if (process.env.NODE_ENV !== 'test') console.log("got enrollments", courses);
 
+      console.log('authenticateGuest name', name)
+
       // if the name was provided, get the user associated with the name
       if (name) {
         return axios({
@@ -38,7 +40,7 @@ export function authenticateGuest(name) {
             name
           }
         })
-        
+
       // else, get a random user
       } else {
         return axios({

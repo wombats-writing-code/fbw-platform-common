@@ -45,6 +45,6 @@ login.find('.login-button--d2l').length.should.be.eql(1);
 });
 
 after(function(){
-connectedComponent.detach();
+
 });
 });

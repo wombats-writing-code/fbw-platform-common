@@ -1,12 +1,17 @@
 import React, {Component} from 'react'
 import { browserHistory } from 'react-router'
+import _ from 'lodash'
 
 import './GuestCallback.scss'
 
 class GuestCallback extends Component {
 
   componentDidMount () {
-    let name = this.props.params.name;
+    let name = this.props.location.query && this.props.location.query.name;
+    if (name) {
+      name = _.replace(name, '-', ' ')
+    }
+
     console.log('name', name)
 
     this.props.authenticateGuest(name);

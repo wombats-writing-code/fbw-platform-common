@@ -6,7 +6,10 @@ require('./GuestCallback.scss');function _interopRequireDefault(obj){return obj&
 GuestCallback=function(_Component){_inherits(GuestCallback,_Component);function GuestCallback(){_classCallCheck(this,GuestCallback);return _possibleConstructorReturn(this,(GuestCallback.__proto__||Object.getPrototypeOf(GuestCallback)).apply(this,arguments));}_createClass(GuestCallback,[{key:'componentDidMount',value:function(){function componentDidMount()
 
 {
-this.props.authenticateGuest();
+var name=this.props.params.name;
+console.log('name',name);
+
+this.props.authenticateGuest(name);
 }return componentDidMount;}()},{key:'render',value:function(){function render()
 
 {
