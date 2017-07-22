@@ -29,7 +29,7 @@ authenticateD2L:function(){function authenticateD2L(D2LConfig,url){return dispat
 var provider=function(){function provider(component,D2LConfig){
 var mergeProps=function(){function mergeProps(stateProps,dispatchProps,ownProps){
 return _lodash2['default'].assign({},stateProps,dispatchProps,ownProps,{
-guestAuthenticationUrl:(0,_authenticateGuest.getGuestAuthenticationUrl)(),
+guestAuthenticationUrl:(0,_authenticateGuest.getGuestAuthenticationUrl)(D2LConfig),
 authenticationUrl:(0,_d2lutils.getAuthenticationUrl)(D2LConfig),
 D2LConfig:D2LConfig});
 

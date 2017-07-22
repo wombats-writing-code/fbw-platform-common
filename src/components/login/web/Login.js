@@ -89,7 +89,7 @@ class Login extends Component {
 
   _handleGuestLogin(name) {
     // console.log(name);
-    window.open(`${this.props.guestAuthenticationUrl}?name=${slug(_.trim(_.lowerCase(name)))}`, '_self')
+    window.open(`${this.props.guestAuthenticationUrl}&name=${slug(_.trim(_.lowerCase(name)))}`, '_self')
   }
 
   _handleACCLogin = () => {
