@@ -27,7 +27,7 @@ export function authenticateGuest(D2LConfig, name) {
 
     let url = 'guest-callback-authentication', courses, d2lUser;
     return axios({
-      url: `${getDomain()}/mock-d2l/enrollments`,
+      url: `${getDomain()}/mock-d2l/enrollments?role=${D2LConfig.role}&name=${name}`,
     })
     .then((res) => {
       courses = _.map(res.data.Items, 'OrgUnit')

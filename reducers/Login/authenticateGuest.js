@@ -22,8 +22,7 @@ getGuestAuthenticationUrl=getGuestAuthenticationUrl;exports.
 
 
 
-
-authenticateGuest=authenticateGuest;var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);var _axios=require('axios');var _axios2=_interopRequireDefault(_axios);var _moment=require('moment');var _moment2=_interopRequireDefault(_moment);var _createUser=require('./createUser');var _utilities=require('../../utilities');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var Q=require('q');var RECEIVE_AUTHENTICATE_GUEST=exports.RECEIVE_AUTHENTICATE_GUEST='RECEIVE_AUTHENTICATE_GUEST';function receiveAuthenticateGuest(data){return{type:RECEIVE_AUTHENTICATE_GUEST,data:data};}function getGuestAuthenticationUrl(D2LConfig){var role=void 0;if(D2LConfig&&D2LConfig.role==='instructor'){return(0,_utilities.getDomain)()+'/mock-d2l/authenticate-guest?role=instructor';}return(0,_utilities.getDomain)()+'/mock-d2l/authenticate-guest?role=student';}function authenticateGuest(name){
+authenticateGuest=authenticateGuest;var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);var _axios=require('axios');var _axios2=_interopRequireDefault(_axios);var _moment=require('moment');var _moment2=_interopRequireDefault(_moment);var _createUser=require('./createUser');var _utilities=require('../../utilities');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var Q=require('q');var RECEIVE_AUTHENTICATE_GUEST=exports.RECEIVE_AUTHENTICATE_GUEST='RECEIVE_AUTHENTICATE_GUEST';function receiveAuthenticateGuest(data){return{type:RECEIVE_AUTHENTICATE_GUEST,data:data};}function getGuestAuthenticationUrl(D2LConfig){var role=void 0;if(D2LConfig&&D2LConfig.role==='instructor'){return(0,_utilities.getDomain)()+'/mock-d2l/authenticate-guest?role=instructor';}return(0,_utilities.getDomain)()+'/mock-d2l/authenticate-guest?role=student';}function authenticateGuest(D2LConfig,name){
 return function(dispatch){
 
 var url='guest-callback-authentication',courses=void 0,d2lUser=void 0;
@@ -35,7 +34,7 @@ courses=_lodash2['default'].map(res.data.Items,'OrgUnit');
 
 if(process.env.NODE_ENV!=='test')console.log("got enrollments",courses);
 
-
+console.log('authenticateGuest name',name);
 
 
 if(name){

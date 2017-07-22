@@ -10,9 +10,18 @@ return{};
 
 var mapDispatchToProps=function(){function mapDispatchToProps(dispatch,ownProps){
 return{
-authenticateGuest:function(){function authenticateGuest(name){return dispatch((0,_authenticateGuest2.authenticateGuest)(name));}return authenticateGuest;}()};
+authenticateGuest:function(){function authenticateGuest(credentials,name){return dispatch((0,_authenticateGuest2.authenticateGuest)(credentials,name));}return authenticateGuest;}()};
 
-}return mapDispatchToProps;}();exports['default']=
+}return mapDispatchToProps;}();
 
+var provider=function(){function provider(component,credentials){
+var mergeProps=function(){function mergeProps(stateProps,dispatchProps,ownProps){
+return _.assign({},stateProps,dispatchProps,ownProps,{
+credentials:credentials});
 
-(0,_reactRedux.connect)(mapStateToProps,mapDispatchToProps)(_GuestCallback2['default']);
+}return mergeProps;}();
+
+return(0,_reactRedux.connect)(mapStateToProps,mapDispatchToProps,mergeProps)(component);
+}return provider;}();exports['default']=
+
+provider;

@@ -8,15 +8,18 @@ const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
 import nock from 'nock'
 
-import D2LConfig from '../../../d2lcredentials'
 import { authenticateGuest, RECEIVE_AUTHENTICATE_GUEST } from '../authenticateGuest'
 
 describe('authenticateGuest', function(done) {
   it('should create an action for authenticateGuest with no name', done => {
+    let D2LConfig = _.assign({}, require('../../../d2lcredentials'), {
+      role: 'student'
+    })
+
     const store = mockStore({})
 
     nock('http://localhost:8888')
-    .get(`/mock-d2l/enrollments`)
+    .get(`/mock-d2l/enrollments?role=student&name=undefined`)
     .reply(200, ['foo'])
 
     nock('http://localhost:8888')
@@ -27,7 +30,7 @@ describe('authenticateGuest', function(done) {
     .post(`/l4/users`)
     .reply(200, {name: 'superman'})
 
-    store.dispatch(authenticateGuest())
+    store.dispatch(authenticateGuest(D2LConfig))
     .then( () => {
       let actions = store.getActions()
       actions.length.should.be.eql(1);
@@ -41,10 +44,14 @@ describe('authenticateGuest', function(done) {
   });
 
   it('should create an action for authenticateGuest with a guest-provided name', done => {
+    let D2LConfig = _.assign({}, require('../../../d2lcredentials'), {
+      role: 'instructor'
+    })
+
     const store = mockStore({})
 
     nock('http://localhost:8888')
-    .get(`/mock-d2l/enrollments`)
+    .get(`/mock-d2l/enrollments?role=instructor&name=jane%20doe`)
     .reply(200, ['foo'])
 
     nock('http://localhost:8888')

@@ -14,7 +14,7 @@ name=_lodash2['default'].replace(name,'-',' ');
 
 
 
-this.props.authenticateGuest(name);
+this.props.authenticateGuest(this.props.credentials,name);
 }return componentDidMount;}()},{key:'render',value:function(){function render()
 
 {
