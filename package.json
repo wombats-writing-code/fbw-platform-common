@@ -1,6 +1,6 @@
 {
   "name": "fbw-platform-common",
-  "version": "3.1.84",
+  "version": "3.1.85",
   "description": "Common stuff to the FbW apps",
   "main": "index.js",
   "engines": {
