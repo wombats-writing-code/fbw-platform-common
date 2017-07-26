@@ -1,7 +1,7 @@
-
 import _ from 'lodash'
+import Q from 'q'
 import axios from 'axios'
-
+import { getDomain } from '../../utilities'
 import {classRoster} from './_getD2LClassRosterHelper'
 
 
@@ -36,10 +36,36 @@ export function getD2LClassRoster(data) {
     dispatch(getD2LClassRosterOptimistic());
 
     // now get the user enrollments and set them in the global state
-    return classRoster(data.D2LConfig, data.url, data.courseId)
-    .then((roster) => {
-      dispatch(receiveD2LClassRoster(roster));
-      return roster;
+    return Q.all([
+      classRoster(data.D2LConfig, data.url, data.courseId),
+      _getFbWUsers(data.user)
+    ])
+    .then((response) => {
+      let roster = response[0];
+      let users = response[1];
+
+      let rosterWithIds = _.filter(_.map(roster, person => {
+        return _.assign({}, _.find(users, {Identifier: person.Identifier}))
+      }), 'id')
+
+      console.log('rosterWithIds', rosterWithIds)
+
+      dispatch(receiveD2LClassRoster(rosterWithIds));
+      return rosterWithIds;
     })
   }
+}
+
+export function _getFbWUsers(userObject) {
+  return axios({
+    url: `${getDomain()}/l4/users`,
+    headers: {
+      'x-fbw-user': userObject.Identifier
+    }
+  })
+  .then( res => {
+    // console.log('got fbw users', res.data);
+    return res.data
+  })
+  .catch( err => console.log('err in _getFbWUsers'))
 }
