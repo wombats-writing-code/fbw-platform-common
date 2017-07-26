@@ -1,6 +1,8 @@
 const _ = require('lodash')
 
 export const getD2LDisplayName = (d2lUser) => {
+  if (!d2lUser) return null;
+
   if (d2lUser.DisplayName && d2lUser.DisplayName.indexOf(', ') > -1) {
     let parts = d2lUser.DisplayName.split(', ');
     return parts[1] + ' ' + parts[0];
@@ -11,6 +13,8 @@ export const getD2LDisplayName = (d2lUser) => {
 }
 
 export const getD2LDisplayNameLastFirst = (d2lUser) => {
+  if (!d2lUser) return null;
+
   if (d2lUser.DisplayName) {
     return d2lUser.DisplayName;
   }
