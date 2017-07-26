@@ -3,8 +3,7 @@ import _ from 'lodash'
 
 import {GET_RESULTS_OPTIMISTIC, RECEIVE_RESULTS} from './getResults'
 import {GET_STUDENT_RESULT_OPTIMISTIC, GET_STUDENT_RESULT_SUCCESS} from './getStudentResult'
-import {CREATE_MISSION_OPTIMISTIC} from '../edit-mission/createMission'
-
+import {RECEIVE_DELETE_MISSION, CREATE_MISSION_OPTIMISTIC} from '../edit-mission/createMission'
 
 // ------------------------------------
 // Reducer
@@ -45,6 +44,13 @@ export default function resultReducer (state = initialState, action) {
       return _.assign({}, state, {
         results: null,
       });
+
+    case RECEIVE_DELETE_MISSION:
+      return _.assign({}, state, {
+        resultsByMission: _.assign({}, state.resultsByMission, {
+          [action.mission.id]: undefined
+        })
+      })
 
 
     default:

@@ -22,7 +22,7 @@ status.should.eql('over');
 it('should detect a mission that\'s pending',function(){
 var status=(0,_index.checkMissionStatus)({
 startTime:"2017-03-17T02:00:00.000Z",
-deadline:"2017-04-30T04:00:00.000Z"});
+deadline:"2057-04-30T04:00:00.000Z"});
 
 
 status.should.eql('pending');
