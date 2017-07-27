@@ -146,9 +146,16 @@ describe('mission reducer', () => {
   it('should update missions in state upon RECEIVE_DELETE_MISSION', () => {
     let newState = reducer({
       missions: [
-        {id: 'foo'},
-        {id: 'bar'}
-      ]
+        { id: 'foo'},
+        {
+          id: 'bar',
+          leadsToMissions: ['foo']
+        }
+      ],
+      currentMission: {
+        id: 'superman',
+        leadsToMissions: ['foo', 'bar']
+      }
     }, {
       type: RECEIVE_DELETE_MISSION,
       mission: {
@@ -157,7 +164,9 @@ describe('mission reducer', () => {
     });
 
     newState.missions.length.should.eql(1);
-    newState.missions[0].id.should.be.eql('bar')
+    newState.missions[0].id.should.be.eql('bar');
+    newState.missions[0].leadsToMissions.should.eql([])
+    newState.currentMission.leadsToMissions.should.eql(['bar'])
   });
 
   it('should update state upon RECEIVE_CREATE_MISSION action', () => {

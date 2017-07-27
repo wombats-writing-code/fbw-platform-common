@@ -108,11 +108,19 @@ export default function missionReducer (state = initialState, action) {
       })
 
     case RECEIVE_DELETE_MISSION:
+      let m = state.currentMission ? _.assign({}, state.currentMission, {
+        leadsToMissions: _.without(state.currentMission.leadsToMissions, action.mission.id)
+      }): null;
+
       return _.assign({}, state, {
-        // currentMission: null,
-        missions: _.filter(state.missions, (m) => {
-          return m.id !== action.mission.id
-        })
+        missions: _.compact(_.map(state.missions, (m) => {
+          if (m.id !== action.mission.id) {
+            return _.assign({}, m, {
+              leadsToMissions: _.without(m.leadsToMissions, action.mission.id)
+            })
+          }
+        })),
+        currentMission: m
       })
     // =========
 
