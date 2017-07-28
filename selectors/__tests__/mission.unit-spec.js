@@ -23,6 +23,19 @@ result.should.be.eql(true);
 done();
 });
 
+it('should say a route is navigated given the single target',function(done){
+var result=(0,_mission.isTargetRouteNavigated)([
+{
+name:'foo',
+responded:true}],
+
+sectionQuestions);
+
+result.should.be.eql(true);
+
+done();
+});
+
 it('should say the given target is the last target in the section',function(done){
 var section=[
 [],
