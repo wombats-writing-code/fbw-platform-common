@@ -6,7 +6,8 @@ var _index=require('../index');var _index2=_interopRequireDefault(_index);
 
 var _getResults=require('../getResults');
 var _getStudentResult=require('../getStudentResult');
-var _createMission=require('../../edit-mission/createMission');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var chai=require('chai');var should=require('should');chai.should();
+var _createMission=require('../../edit-mission/createMission');
+var _deleteMission=require('../../edit-mission/deleteMission');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var chai=require('chai');var should=require('should');chai.should();
 
 describe('result reducer',function(){
 
@@ -45,7 +46,7 @@ foo:['1','2','3'],
 bar:['another','series','of','records']}},
 
 {
-type:_createMission.RECEIVE_DELETE_MISSION,
+type:_deleteMission.RECEIVE_DELETE_MISSION,
 mission:{id:'foo'}});
 
 
