@@ -147,7 +147,14 @@ it('should update missions in state upon RECEIVE_DELETE_MISSION',function(){
 var newState=(0,_index2['default'])({
 missions:[
 {id:'foo'},
-{id:'bar'}]},
+{
+id:'bar',
+leadsToMissions:['foo']}],
+
+
+currentMission:{
+id:'superman',
+leadsToMissions:['foo','bar']}},
 
 {
 type:_deleteMission.RECEIVE_DELETE_MISSION,
@@ -158,6 +165,8 @@ id:'foo'}});
 
 newState.missions.length.should.eql(1);
 newState.missions[0].id.should.be.eql('bar');
+newState.missions[0].leadsToMissions.should.eql([]);
+newState.currentMission.leadsToMissions.should.eql(['bar']);
 });
 
 it('should update state upon RECEIVE_CREATE_MISSION action',function(){

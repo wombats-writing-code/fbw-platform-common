@@ -47,7 +47,7 @@ export default function resultReducer (state = initialState, action) {
 
     case RECEIVE_DELETE_MISSION:
     console.log('update resultsByMission', action.mission.id);
-    
+
       return _.assign({}, state, {
         resultsByMission: _.assign({}, state.resultsByMission, {
           [action.mission.id]: undefined

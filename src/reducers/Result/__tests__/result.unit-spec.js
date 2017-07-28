@@ -6,7 +6,7 @@ import reducer from '../index'
 
 import {GET_RESULTS_OPTIMISTIC, RECEIVE_RESULTS} from '../getResults'
 import {GET_STUDENT_RESULT_SUCCESS} from '../getStudentResult'
-import {CREATE_MISSION_OPTIMISTIC} from '../../edit-mission/createMission'
+import {CREATE_MISSION_OPTIMISTIC, RECEIVE_DELETE_MISSION} from '../../edit-mission/createMission'
 
 describe('result reducer', () => {
 
@@ -36,7 +36,21 @@ describe('result reducer', () => {
     newState.currentMission.displayName.should.eql('foo');
     newState.currentMission.questions.should.eql([1,2]);
     newState.isGetStudentResultInProgress.should.eql(false);
+  });
 
+  it('should update the dictionary of results state upon RECEIVE_DELETE_MISSION', () => {
+    let newState = reducer({
+      resultsByMission: {
+        foo: ['1', '2', '3'],
+        bar: ['another', 'series', 'of', 'records']
+      }
+    }, {
+      type: RECEIVE_DELETE_MISSION,
+      mission: {id: 'foo'},
+    });
+
+    should.not.exist(newState.resultsByMission['foo']);
+    newState.resultsByMission['bar'].should.eql(['another', 'series', 'of', 'records'])
   });
 
 })
