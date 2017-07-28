@@ -23,6 +23,19 @@ describe('mission selectors', () => {
     done();
   });
 
+  it('should say a route is navigated given the single target', done => {
+    let result = isTargetRouteNavigated([
+      {
+        name: 'foo',
+        responded: true
+      }
+    ], sectionQuestions);
+
+    result.should.be.eql(true);
+
+    done();
+  });
+
   it('should say the given target is the last target in the section', done => {
     let section = [
       [],

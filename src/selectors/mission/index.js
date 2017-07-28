@@ -69,6 +69,10 @@ export const isTargetRouteNavigated = (target, questionsInRoute) => {
     return false;
   }
 
+  if (questionsInRoute.length === 1 && questionsInRoute.responded) {
+    return true
+  }
+
   // a route is navigated only when all of the Targets waypoints have been responded correctly
   let hasNavigated = false;
   if (questionsInRoute[0].response && questionsInRoute[0].response.isCorrect === false) {
