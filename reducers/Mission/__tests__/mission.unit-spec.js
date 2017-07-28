@@ -6,7 +6,6 @@ var _index=require('../index');var _index2=_interopRequireDefault(_index);
 
 
 
-
 var _getMissions=require('../getMissions');
 var _selectDirective=require('../selectDirective');
 var _selectTarget=require('../selectTarget');
@@ -18,7 +17,7 @@ var _createMission=require('../../edit-mission/createMission');
 var _deleteMission=require('../../edit-mission/deleteMission');
 var _logOutUser=require('../../Login/logOutUser');
 
-var _getStudentResult=require('../../Result/getStudentResult');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var chai=require('chai');var should=require('should');chai.should();chai.should();var _=require('lodash');
+var _getStudentResult=require('../../Result/getStudentResult');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var chai=require('chai');var should=require('should');chai.should();var _=require('lodash');
 
 
 describe('mission reducer',function(){

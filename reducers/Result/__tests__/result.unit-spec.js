@@ -36,7 +36,21 @@ newState.currentStudent.should.eql('batman');
 newState.currentMission.displayName.should.eql('foo');
 newState.currentMission.questions.should.eql([1,2]);
 newState.isGetStudentResultInProgress.should.eql(false);
+});
 
+it('should update the dictionary of results state upon RECEIVE_DELETE_MISSION',function(){
+var newState=(0,_index2['default'])({
+resultsByMission:{
+foo:['1','2','3'],
+bar:['another','series','of','records']}},
+
+{
+type:_createMission.RECEIVE_DELETE_MISSION,
+mission:{id:'foo'}});
+
+
+should.not.exist(newState.resultsByMission['foo']);
+newState.resultsByMission['bar'].should.eql(['another','series','of','records']);
 });
 
 });

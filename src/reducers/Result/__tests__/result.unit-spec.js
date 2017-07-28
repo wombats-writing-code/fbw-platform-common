@@ -6,7 +6,8 @@ import reducer from '../index'
 
 import {GET_RESULTS_OPTIMISTIC, RECEIVE_RESULTS} from '../getResults'
 import {GET_STUDENT_RESULT_SUCCESS} from '../getStudentResult'
-import {CREATE_MISSION_OPTIMISTIC, RECEIVE_DELETE_MISSION} from '../../edit-mission/createMission'
+import {CREATE_MISSION_OPTIMISTIC} from '../../edit-mission/createMission'
+import {RECEIVE_DELETE_MISSION} from '../../edit-mission/deleteMission'
 
 describe('result reducer', () => {
 

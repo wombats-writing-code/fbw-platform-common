@@ -3,7 +3,8 @@ import _ from 'lodash'
 
 import {GET_RESULTS_OPTIMISTIC, RECEIVE_RESULTS} from './getResults'
 import {GET_STUDENT_RESULT_OPTIMISTIC, GET_STUDENT_RESULT_SUCCESS} from './getStudentResult'
-import {RECEIVE_DELETE_MISSION, CREATE_MISSION_OPTIMISTIC} from '../edit-mission/createMission'
+import {CREATE_MISSION_OPTIMISTIC} from '../edit-mission/createMission'
+import {RECEIVE_DELETE_MISSION} from '../edit-mission/deleteMission'
 
 // ------------------------------------
 // Reducer
