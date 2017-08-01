@@ -1,4 +1,4 @@
-var _react=require('react');var _react2=_interopRequireDefault(_react);
+var _jsxFileName='src/components/guest-callback/__tests__/GuestCallback.spec.js';var _react=require('react');var _react2=_interopRequireDefault(_react);
 var _reactRedux=require('react-redux');
 var _reduxMockStore=require('redux-mock-store');var _reduxMockStore2=_interopRequireDefault(_reduxMockStore);
 var _reduxThunk=require('redux-thunk');var _reduxThunk2=_interopRequireDefault(_reduxThunk);
@@ -28,8 +28,8 @@ global.document.body.appendChild(div);
 
 store=mockStore(STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store},
-_react2['default'].createElement(_GuestCallbackContainer2['default'],null)),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:31}},
+_react2['default'].createElement(_GuestCallbackContainer2['default'],{__source:{fileName:_jsxFileName,lineNumber:32}})),
 
 {attachTo:div});
 

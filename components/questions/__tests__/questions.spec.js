@@ -1,4 +1,4 @@
-var _react=require('react');var _react2=_interopRequireDefault(_react);
+var _jsxFileName='src/components/questions/__tests__/questions.spec.js';var _react=require('react');var _react2=_interopRequireDefault(_react);
 
 var _reactRedux=require('react-redux');
 var _reduxMockStore=require('redux-mock-store');var _reduxMockStore2=_interopRequireDefault(_reduxMockStore);
@@ -29,8 +29,8 @@ global.document.body.appendChild(div);
 
 store=mockStore(STATE);
 connectedQuestions=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store},
-_react2['default'].createElement(Questions,null)),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:32}},
+_react2['default'].createElement(Questions,{__source:{fileName:_jsxFileName,lineNumber:33}})),
 
 {attachTo:div});
 

@@ -1,4 +1,4 @@
-'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
+'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _jsxFileName='src/components/mission/web/DirectiveCarousel.js';var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
 
 var _react=require('react');var _react2=_interopRequireDefault(_react);
 var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);
@@ -17,15 +17,15 @@ var indicator=_this.props.directiveIndicators[idx];
 
 
 if(indicator.isComplete&&indicator.isMastered){
-checkIcon=_react2['default'].createElement('img',{className:'carousel-thumb__check',src:require('../../../assets/goal--mastered.png')});
+checkIcon=_react2['default'].createElement('img',{className:'carousel-thumb__check',src:require('../../../assets/goal--mastered.png'),__source:{fileName:_jsxFileName,lineNumber:20}});
 
 }else if(indicator.isComplete&&!indicator.isMastered){
-checkIcon=_react2['default'].createElement('img',{className:'carousel-thumb__check',src:require('../../../assets/goal--tried.png')});
+checkIcon=_react2['default'].createElement('img',{className:'carousel-thumb__check',src:require('../../../assets/goal--tried.png'),__source:{fileName:_jsxFileName,lineNumber:23}});
 
 
 }else{
 indicatorText=
-_react2['default'].createElement('span',{className:'carousel-thumb__icon'},
+_react2['default'].createElement('span',{className:'carousel-thumb__icon',__source:{fileName:_jsxFileName,lineNumber:28}},
 indicator?(indicator.numerator||'--')+' of '+indicator.denominator:'');
 
 
@@ -38,13 +38,13 @@ var displayName=directive?directive.displayName:'Error. Somehow this outcome is 
 var isActive=idx===_this.props.currentDirectiveIndex;
 var thumb=
 _react2['default'].createElement('div',{key:idx,
-className:isActive?"carousel-thumb is-active carousel-thumb--directive":"carousel-thumb carousel-thumb--directive"},
+className:isActive?"carousel-thumb is-active carousel-thumb--directive":"carousel-thumb carousel-thumb--directive",__source:{fileName:_jsxFileName,lineNumber:40}},
 _react2['default'].createElement('button',{className:'carousel-thumb__button',onClick:function(){function onClick(){return _this.props.onSelectDirective(idx);}return onClick;}(),
-'aria-label':'Learning Outcome: '+displayName},
-_react2['default'].createElement('div',{className:'flex-container align-bottom space-between prewrap'},
+'aria-label':'Learning Outcome: '+displayName,__source:{fileName:_jsxFileName,lineNumber:42}},
+_react2['default'].createElement('div',{className:'flex-container align-bottom space-between prewrap',__source:{fileName:_jsxFileName,lineNumber:44}},
 indicatorText,
 checkIcon,
-_react2['default'].createElement('p',{className:'carousel-thumb__text'},displayName))));
+_react2['default'].createElement('p',{className:'carousel-thumb__text',__source:{fileName:_jsxFileName,lineNumber:47}},displayName))));
 
 
 
@@ -70,8 +70,8 @@ return thumb;
 var directivesCarousel=void 0;
 if(this.props.directives&&this.props.directives.length>0){
 directivesCarousel=
-_react2['default'].createElement('div',{className:'carousel-container directive-carousel'},
-_react2['default'].createElement('div',{className:'carousel flex-container'},
+_react2['default'].createElement('div',{className:'carousel-container directive-carousel',__source:{fileName:_jsxFileName,lineNumber:73}},
+_react2['default'].createElement('div',{className:'carousel flex-container',__source:{fileName:_jsxFileName,lineNumber:74}},
 _lodash2['default'].map(this.props.directives,this._renderThumb)));
 
 
@@ -79,7 +79,7 @@ _lodash2['default'].map(this.props.directives,this._renderThumb)));
 }
 
 return(
-_react2['default'].createElement('div',{className:''},
+_react2['default'].createElement('div',{className:'',__source:{fileName:_jsxFileName,lineNumber:82}},
 directivesCarousel));
 
 

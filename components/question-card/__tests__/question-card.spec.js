@@ -1,4 +1,4 @@
-var _react=require('react');var _react2=_interopRequireDefault(_react);
+var _jsxFileName='src/components/question-card/__tests__/question-card.spec.js';var _react=require('react');var _react2=_interopRequireDefault(_react);
 var _QuestionCard=require('../web/QuestionCard');var _QuestionCard2=_interopRequireDefault(_QuestionCard);
 var _enzyme=require('enzyme');
 
@@ -25,7 +25,7 @@ global.document.body.appendChild(div);
 var questionCard=(0,_enzyme.mount)(
 _react2['default'].createElement(_QuestionCard2['default'],{question:QUESTION,
 outcome:OUTCOME,
-isExpanded:true}),
+isExpanded:true,__source:{fileName:_jsxFileName,lineNumber:26}}),
 
 {attachTo:div});
 
@@ -44,7 +44,7 @@ global.document.body.appendChild(div);
 var questionCard=(0,_enzyme.mount)(
 _react2['default'].createElement(_QuestionCard2['default'],{question:QUESTION_WRONG,
 outcome:OUTCOME,
-isExpanded:true}),
+isExpanded:true,__source:{fileName:_jsxFileName,lineNumber:45}}),
 
 {attachTo:div});
 

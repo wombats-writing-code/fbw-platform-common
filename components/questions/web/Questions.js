@@ -1,4 +1,4 @@
-Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=require('react');var _react2=_interopRequireDefault(_react);
+Object.defineProperty(exports,"__esModule",{value:true});var _jsxFileName='src/components/questions/web/Questions.js';var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=require('react');var _react2=_interopRequireDefault(_react);
 var _time=require('../../../utilities/time');
 
 var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);
@@ -65,7 +65,7 @@ response:questionItem.response,
 outcome:outcome,
 nextQuestion:nextQuestion,
 nextOutcome:nextOutcome,
-onClickTryNextTarget:function(){function onClickTryNextTarget(){return _this.props.onClickTryNextTarget(questionItem,_this.props.mission);}return onClickTryNextTarget;}()});
+onClickTryNextTarget:function(){function onClickTryNextTarget(){return _this.props.onClickTryNextTarget(questionItem,_this.props.mission);}return onClickTryNextTarget;}(),__source:{fileName:_jsxFileName,lineNumber:61}});
 
 
 }
@@ -84,10 +84,10 @@ isExpanded=true;
 var isSubmitEnabled=(0,_time.checkMissionStatus)(_this.props.mission)==='over'||_this.props.isSubmitEnabled===false?false:true;
 
 return(
-_react2['default'].createElement('li',{key:questionItem.id+'-'+idx,className:'questions-list__item'},
-_react2['default'].createElement('div',{className:'row'},
-_react2['default'].createElement('div',{className:'medium-9 medium-centered large-8 large-centered columns'},
-_react2['default'].createElement(QuestionCard,{question:questionItem,outcome:outcome,isExpanded:isExpanded,isSubmitEnabled:isSubmitEnabled}))),
+_react2['default'].createElement('li',{key:questionItem.id+'-'+idx,className:'questions-list__item',__source:{fileName:_jsxFileName,lineNumber:87}},
+_react2['default'].createElement('div',{className:'row',__source:{fileName:_jsxFileName,lineNumber:88}},
+_react2['default'].createElement('div',{className:'medium-9 medium-centered large-8 large-centered columns',__source:{fileName:_jsxFileName,lineNumber:89}},
+_react2['default'].createElement(QuestionCard,{question:questionItem,outcome:outcome,isExpanded:isExpanded,isSubmitEnabled:isSubmitEnabled,__source:{fileName:_jsxFileName,lineNumber:90}}))),
 
 
 
@@ -109,9 +109,9 @@ return null;
 var inProgressIndicator=void 0;
 if(this.props.isInProgressSubmitChoice){
 inProgressIndicator=
-_react2['default'].createElement('div',{className:'text-center'},
-_react2['default'].createElement('p',null,'Please wait while we check your answer...'),
-_react2['default'].createElement(_reactSpinner2['default'],null));
+_react2['default'].createElement('div',{className:'text-center',__source:{fileName:_jsxFileName,lineNumber:112}},
+_react2['default'].createElement('p',{__source:{fileName:_jsxFileName,lineNumber:113}},'Please wait while we check your answer...'),
+_react2['default'].createElement(_reactSpinner2['default'],{__source:{fileName:_jsxFileName,lineNumber:114}}));
 
 }
 
@@ -120,12 +120,12 @@ var infiniteTimelineHeight={
 height:this.props.questionListHeight};
 
 
-var infiniteTimeline=_react2['default'].createElement('div',null);
+var infiniteTimeline=_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:123}});
 
 return(
-_react2['default'].createElement('div',{className:'questions'},
+_react2['default'].createElement('div',{className:'questions',__source:{fileName:_jsxFileName,lineNumber:126}},
 infiniteTimeline,
-_react2['default'].createElement('ul',{className:'questions-list'},
+_react2['default'].createElement('ul',{className:'questions-list',__source:{fileName:_jsxFileName,lineNumber:128}},
 _lodash2['default'].map(this.props.questions,this.renderListRow)),
 
 

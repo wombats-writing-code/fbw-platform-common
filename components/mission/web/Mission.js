@@ -1,4 +1,4 @@
-Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=require('react');var _react2=_interopRequireDefault(_react);
+Object.defineProperty(exports,"__esModule",{value:true});var _jsxFileName='src/components/mission/web/Mission.js';var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=require('react');var _react2=_interopRequireDefault(_react);
 var _reactSpinner=require('react-spinner');var _reactSpinner2=_interopRequireDefault(_reactSpinner);
 var _slug=require('slug');var _slug2=_interopRequireDefault(_slug);
 
@@ -56,7 +56,7 @@ user:this.props.user});
 
 var loadingIndicator=void 0;
 if(this.props.isGetMissionInProgress){
-return _react2['default'].createElement(_reactSpinner2['default'],null);
+return _react2['default'].createElement(_reactSpinner2['default'],{__source:{fileName:_jsxFileName,lineNumber:59}});
 }
 
 if(this.props.mission){
@@ -67,27 +67,27 @@ var missionState=(0,_time.checkMissionStatus)(this.props.mission);
 if(this.props.mission.questions.length===0&&missionState==="over"){
 
 return(
-_react2['default'].createElement('div',{style:[styles.container,{paddingTop:80,paddingLeft:30}]},
-_react2['default'].createElement('div',null,'This mission is over. You didn\'t open it while it was open, so you have no results here.')));
+_react2['default'].createElement('div',{style:[styles.container,{paddingTop:80,paddingLeft:30}],__source:{fileName:_jsxFileName,lineNumber:70}},
+_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:71}},'This mission is over. You didn\'t open it while it was open, so you have no results here.')));
 
 
 }
 }
 
 return(
-_react2['default'].createElement('div',null,
-_react2['default'].createElement('nav',{role:'navigation','aria-label':'Directives Menu'},
+_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:78}},
+_react2['default'].createElement('nav',{role:'navigation','aria-label':'Directives Menu',__source:{fileName:_jsxFileName,lineNumber:79}},
 _react2['default'].createElement(DirectiveCarousel,{directives:this.props.directives,
 currentDirectiveIndex:this.props.currentDirectiveIndex,
 directiveIndicators:this.props.directiveIndicators,
-onSelectDirective:this.props.onSelectDirective})),
+onSelectDirective:this.props.onSelectDirective,__source:{fileName:_jsxFileName,lineNumber:80}})),
 
 
-_react2['default'].createElement('nav',{className:'nav-target-carousel',role:'navigation','aria-label':'Target Questions Menu'},
-_react2['default'].createElement(TargetCarousel,{mission:this.props.mission})),
+_react2['default'].createElement('nav',{className:'nav-target-carousel',role:'navigation','aria-label':'Target Questions Menu',__source:{fileName:_jsxFileName,lineNumber:86}},
+_react2['default'].createElement(TargetCarousel,{mission:this.props.mission,__source:{fileName:_jsxFileName,lineNumber:87}})),
 
-_react2['default'].createElement('main',null,
-_react2['default'].createElement(Questions,{mission:this.props.mission,isSubmitEnabled:this.props.doNotTakeMission?false:undefined})),
+_react2['default'].createElement('main',{__source:{fileName:_jsxFileName,lineNumber:89}},
+_react2['default'].createElement(Questions,{mission:this.props.mission,isSubmitEnabled:this.props.doNotTakeMission?false:undefined,__source:{fileName:_jsxFileName,lineNumber:90}})),
 
 
 loadingIndicator));
