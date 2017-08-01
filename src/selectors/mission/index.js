@@ -70,7 +70,7 @@ export const isTargetRouteNavigated = (target, questionsInRoute) => {
   }
 
   if (questionsInRoute.length === 1 && questionsInRoute[0].responded) {
-    console.log('questionsInRoute', questionsInRoute)
+    // console.log('questionsInRoute', questionsInRoute)
     return true
   }
 
