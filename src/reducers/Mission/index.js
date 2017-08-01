@@ -234,12 +234,14 @@ export default function missionReducer (state = initialState, action) {
         // currentMission: action.mission
       })
 
-    case GET_STUDENT_RESULT_SUCCESS:
-      return _.assign({}, state, {
-        currentMission: _.assign({}, action.mission, {
-          questions: action.questions
-        })
-      })
+    // DON'T DO THIS! It breaks the Instructor app's
+    //   student-results view.
+    // case GET_STUDENT_RESULT_SUCCESS:
+    //   return _.assign({}, state, {
+    //     currentMission: _.assign({}, action.mission, {
+    //       questions: action.questions
+    //     })
+    //   })
 
     default:
       return state

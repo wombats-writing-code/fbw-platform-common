@@ -201,7 +201,7 @@ describe('mission reducer', () => {
     newState.currentMission.leadsToMissions.should.be.eql(['foo', 'baz', 'bar']);
   })
 
-  it('should update the current result state upon GET_STUDENT_RESULT_SUCCESS', () => {
+  it('should not update the current result state upon GET_STUDENT_RESULT_SUCCESS', () => {
     let newState = reducer({}, {
       type: GET_STUDENT_RESULT_SUCCESS,
       student: 'batman',
@@ -209,8 +209,7 @@ describe('mission reducer', () => {
       questions: [1, 2]
     });
 
-    newState.currentMission.displayName.should.eql('foo');
-    newState.currentMission.questions.should.eql([1,2]);
+    should.not.exist(newState.currentMission);
   });
 
   it('should clear everything in this part of mission state upon LOG_OUT', () => {
