@@ -5,6 +5,7 @@
 
 var _mission=require('../mission');var chai=require('chai');var path=require('path');chai.should();var sectionQuestions=require('./section-questions.json');
 
+
 describe('mission selectors',function(){
 
 it('should return the targets of a given section',function(done){
@@ -53,5 +54,39 @@ result.should.be.eql(true);
 done();
 });
 
+it('should return the questions when target is the first in the list',function(){
+var section=[
+[{
+id:1},
+{
+id:2}],
 
+[{
+id:3}]];
+
+
+var target={
+id:1};
+
+var questions=(0,_mission.getRouteQuestions)(section,target);
+questions.should.be.eql(section[0]);
+});
+
+it('should return the questions when target is not the first in the list',function(){
+var section=[
+[{
+id:1},
+{
+id:2}],
+
+[{
+id:3}]];
+
+
+var target={
+id:2};
+
+var questions=(0,_mission.getRouteQuestions)(section,target);
+questions.should.be.eql(section[0]);
+});
 });

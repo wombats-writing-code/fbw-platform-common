@@ -30,7 +30,8 @@ Object.defineProperty(exports,"__esModule",{value:true});exports.missionConfig=u
 
 
 
-missionReducer;var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);var _selectors=require('../../selectors');var _selectMission=require('./selectMission');var _getMissions=require('./getMissions');var _selectOpenMission=require('./selectOpenMission');var _selectClosedMission=require('./selectClosedMission');var _submitResponse=require('./submitResponse');var _showAnswer=require('./showAnswer');var _createMission=require('../edit-mission/createMission');var _updateMission=require('../edit-mission/updateMission');var _deleteMission=require('../edit-mission/deleteMission');var _getStudentResult=require('../Result/getStudentResult');var _selectDirective=require('./selectDirective');var _selectTarget=require('./selectTarget');var _selectChoice=require('./selectChoice');var _selectCourse=require('../Course/selectCourse');var _logOutUser=require('../Login/logOutUser');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var initialState={currentDirectiveIndex:0};function missionReducer(){var state=arguments.length>0&&arguments[0]!==undefined?arguments[0]:initialState;var action=arguments[1];
+
+missionReducer;var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);var _selectors=require('../../selectors');var _selectMission=require('./selectMission');var _getMissions=require('./getMissions');var _selectOpenMission=require('./selectOpenMission');var _selectClosedMission=require('./selectClosedMission');var _submitResponse=require('./submitResponse');var _showAnswer=require('./showAnswer');var _createMission=require('../edit-mission/createMission');var _updateMission=require('../edit-mission/updateMission');var _deleteMission=require('../edit-mission/deleteMission');var _getStudentResult=require('../Result/getStudentResult');var _selectDirective=require('./selectDirective');var _selectTarget=require('./selectTarget');var _selectChoice=require('./selectChoice');var _resetDashboardMission=require('./resetDashboardMission');var _selectCourse=require('../Course/selectCourse');var _logOutUser=require('../Login/logOutUser');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var initialState={currentDirectiveIndex:0};function missionReducer(){var state=arguments.length>0&&arguments[0]!==undefined?arguments[0]:initialState;var action=arguments[1];
 switch(action.type){
 case _getMissions.GET_MISSIONS_OPTIMISTIC:
 return _lodash2['default'].assign({},state,{
@@ -239,6 +240,25 @@ return _lodash2['default'].assign({},state,{
 currentMission:_lodash2['default'].assign({},action.mission,{
 questions:action.questions})});
 
+
+
+case _resetDashboardMission.RESET_DASHBOARD_MISSION:
+
+
+
+
+if(!action.mission){
+return _lodash2['default'].assign({},state);
+}
+
+var phaseIMission=action.mission.type===missionConfig.PHASE_I_MISSION_TYPE?
+action.mission:
+_lodash2['default'].find(state.missions,function(mission){
+return _lodash2['default'].includes(action.mission.followsFromMissions,mission._id);
+});
+
+return _lodash2['default'].assign({},state,{
+currentMission:phaseIMission});
 
 
 default:
