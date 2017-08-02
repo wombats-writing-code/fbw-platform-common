@@ -1,4 +1,4 @@
-import reducer from '../index'
+import reducer, {missionConfig} from '../index'
 
 let chai = require('chai');
 let should = require('should');
@@ -18,6 +18,7 @@ import {RECEIVE_DELETE_MISSION} from '../../edit-mission/deleteMission'
 import {LOG_OUT} from '../../Login/logOutUser'
 
 import {GET_STUDENT_RESULT_SUCCESS} from '../../Result/getStudentResult'
+import {RESET_DASHBOARD_MISSION} from '../resetDashboardMission'
 
 
 describe('mission reducer', () => {
@@ -225,5 +226,52 @@ describe('mission reducer', () => {
     should.not.exist(newState.missions);
     should.not.exist(newState.currentMission);
     newState.isGetMissionsInProgress.should.eql(false);
-  })
+  });
+
+  it('should keep currentMission as phase when call RESET_DASHBOARD_MISSION', () => {
+    const originalMission = {
+      name: 'foo',
+      _id: 123,
+      type: missionConfig.PHASE_I_MISSION_TYPE
+    };
+    let newState = reducer({
+      missions: [{
+        _id: 321,
+        type: missionConfig.PHASE_II_MISSION_TYPE,
+        followsFromMissions: [123]
+      }],
+      currentMission: originalMission
+    }, {
+      type: RESET_DASHBOARD_MISSION,
+      mission: originalMission
+    });
+
+    newState.currentMission.should.eql(originalMission);
+  });
+
+  it('should find the followsFrom phase I on RESET_DASHBOARD_MISSION, when currentMission is phase II', () => {
+    const originalMission = {
+      name: 'foo',
+      _id: 123,
+      type: missionConfig.PHASE_I_MISSION_TYPE
+    };
+    const phaseIIMission = {
+      _id: 124,
+      type: missionConfig.PHASE_II_MISSION_TYPE,
+      followsFromMissions: [123]
+    }
+    let newState = reducer({
+      missions: [{
+        _id: 125,
+        type: missionConfig.PHASE_I_MISSION_TYPE
+      },
+      originalMission, phaseIIMission],
+      currentMission: phaseIIMission
+    }, {
+      type: RESET_DASHBOARD_MISSION,
+      mission: phaseIIMission
+    });
+
+    newState.currentMission.should.eql(originalMission);
+  });
 })

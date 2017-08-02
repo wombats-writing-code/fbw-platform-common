@@ -19,6 +19,7 @@ import {GET_STUDENT_RESULT_SUCCESS} from '../Result/getStudentResult'
 import { SELECT_DIRECTIVE } from './selectDirective'
 import { SELECT_TARGET } from './selectTarget'
 import { SELECT_CHOICE } from './selectChoice'
+import { RESET_DASHBOARD_MISSION } from './resetDashboardMission'
 
 import {SELECT_COURSE} from '../Course/selectCourse'
 
@@ -240,6 +241,21 @@ export default function missionReducer (state = initialState, action) {
           questions: action.questions
         })
       })
+
+    case RESET_DASHBOARD_MISSION:
+      // This is needed for viewing Phase II student results,
+      //   so when you click the "back" button, the ``currentMission``
+      //   in the Instructor Dashboard always needs to be the
+      //   original Phase I mission. So call this action.
+      const phaseIMission = action.mission.type === missionConfig.PHASE_I_MISSION_TYPE ?
+        action.mission :
+        _.find(state.missions, (mission) => {
+          return _.includes(action.mission.followsFromMissions, mission._id);
+        });
+
+      return _.assign({}, state, {
+        currentMission: phaseIMission
+      });
 
     default:
       return state
