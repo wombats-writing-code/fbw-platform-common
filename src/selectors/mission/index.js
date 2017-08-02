@@ -36,8 +36,16 @@ export const getRouteQuestions = (sectionQuestions, target) => {
 
   // console.log('sectionQuestions', sectionQuestions, 'target', target);
 
+  // For unfinished routes (achieved or not), the web backend
+  //   is not sending the target as the first question in the list.
+  //   It typically is the "bottom" question of the route that
+  //   shows up at index 0 -- so when viewing student results,
+  //   you could not navigate / view the "unfinished" target routes.
+  // So, make this more robust and check all questions in the array.
   let routeQuestions = _.find(sectionQuestions, array => {
-    return array[0] === target || array[0].id === target.id;
+    let arrayIds = _.map(array, 'id');
+    return _.includes(array, target) || _.includes(arrayIds, target.id);
+    // return array[0] === target || array[0].id === target.id;
   });
 
   return routeQuestions;

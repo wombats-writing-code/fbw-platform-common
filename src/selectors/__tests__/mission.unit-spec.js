@@ -3,7 +3,8 @@ let path = require('path')
 chai.should();
 
 const sectionQuestions = require('./section-questions.json');
-import {getSectionTargets, isTargetRouteNavigated, isLastTargetInRoute} from '../mission'
+import {getSectionTargets, isTargetRouteNavigated,
+  isLastTargetInRoute, getRouteQuestions} from '../mission'
 
 describe('mission selectors', () => {
 
@@ -53,5 +54,39 @@ describe('mission selectors', () => {
     done();
   })
 
+  it('should return the questions when target is the first in the list', () => {
+    let section = [
+      [{
+        id: 1
+      }, {
+        id: 2
+      }],
+      [{
+        id: 3
+      }]
+    ];
+    let target = {
+      id: 1
+    }
+    let questions = getRouteQuestions(section, target);
+    questions.should.be.eql(section[0]);
+  })
 
+  it('should return the questions when target is not the first in the list', () => {
+    let section = [
+      [{
+        id: 1
+      }, {
+        id: 2
+      }],
+      [{
+        id: 3
+      }]
+    ];
+    let target = {
+      id: 2
+    }
+    let questions = getRouteQuestions(section, target);
+    questions.should.be.eql(section[0]);
+  })
 })
