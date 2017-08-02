@@ -57,16 +57,19 @@ done();
 it('should return the questions when target is the first in the list',function(){
 var section=[
 [{
-id:1},
+id:'1',
+referenceNumber:'1'},
 {
-id:2}],
+id:'2',
+referenceNumber:'1.2'}],
 
 [{
-id:3}]];
+id:'3',
+referenceNumber:'2'}]];
 
 
 var target={
-id:1};
+id:'1'};
 
 var questions=(0,_mission.getRouteQuestions)(section,target);
 questions.should.be.eql(section[0]);
@@ -75,18 +78,28 @@ questions.should.be.eql(section[0]);
 it('should return the questions when target is not the first in the list',function(){
 var section=[
 [{
-id:1},
+id:'1',
+referenceNumber:'1.1'},
 {
-id:2}],
+id:'2',
+referenceNumber:'1'}],
 
 [{
-id:3}]];
+id:'3',
+referenceNumber:'2'}]];
 
 
 var target={
-id:2};
+id:'2'};
 
 var questions=(0,_mission.getRouteQuestions)(section,target);
-questions.should.be.eql(section[0]);
+
+questions.should.be.eql([{
+id:'2',
+referenceNumber:'1'},
+{
+id:'1',
+referenceNumber:'1.1'}]);
+
 });
 });
