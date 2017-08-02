@@ -274,4 +274,30 @@ describe('mission reducer', () => {
 
     newState.currentMission.should.eql(originalMission);
   });
+
+  it('should do nothing on RESET_DASHBOARD_MISSION, when currentMission is undefined', () => {
+    const originalMission = {
+      name: 'foo',
+      _id: 123,
+      type: missionConfig.PHASE_I_MISSION_TYPE
+    };
+    const phaseIIMission = {
+      _id: 124,
+      type: missionConfig.PHASE_II_MISSION_TYPE,
+      followsFromMissions: [123]
+    }
+    let newState = reducer({
+      missions: [{
+        _id: 125,
+        type: missionConfig.PHASE_I_MISSION_TYPE
+      },
+      originalMission, phaseIIMission],
+      currentMission: phaseIIMission
+    }, {
+      type: RESET_DASHBOARD_MISSION,
+      mission: null
+    });
+
+    newState.currentMission.should.eql(phaseIIMission);
+  });
 })

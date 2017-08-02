@@ -247,6 +247,10 @@ export default function missionReducer (state = initialState, action) {
       //   so when you click the "back" button, the ``currentMission``
       //   in the Instructor Dashboard always needs to be the
       //   original Phase I mission. So call this action.
+      if (!action.mission) {
+        return _.assign({}, state);
+      }
+
       const phaseIMission = action.mission.type === missionConfig.PHASE_I_MISSION_TYPE ?
         action.mission :
         _.find(state.missions, (mission) => {
