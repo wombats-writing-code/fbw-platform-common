@@ -1,5 +1,7 @@
 process.env.NODE_ENV = 'test'
 
+let chai = require('chai');
+
 import _ from 'lodash'
 import thunk from 'redux-thunk'
 let should = require('should');
@@ -7,6 +9,8 @@ import configureMockStore from 'redux-mock-store'
 const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
 import nock from 'nock'
+
+chai.should();
 
 import { authenticateGuest, RECEIVE_AUTHENTICATE_GUEST } from '../authenticateGuest'
 
@@ -16,6 +20,8 @@ describe('authenticateGuest', function(done) {
       role: 'student'
     })
 
+    console.log(D2LConfig);
+
     const store = mockStore({})
 
     nock('http://localhost:8888')
@@ -24,7 +30,10 @@ describe('authenticateGuest', function(done) {
 
     nock('http://localhost:8888')
     .get(`/mock-d2l/whoami`)
-    .reply(200, {name: 'superman'})
+    .reply(200, {
+      name: 'superman',
+      Identifier: 321
+    })
 
     nock('http://localhost:8888')
     .post(`/l4/users`)
@@ -33,6 +42,7 @@ describe('authenticateGuest', function(done) {
     store.dispatch(authenticateGuest(D2LConfig))
     .then( () => {
       let actions = store.getActions()
+      console.log(actions)
       actions.length.should.be.eql(1);
       actions[0].type.should.be.eql(RECEIVE_AUTHENTICATE_GUEST);
       // console.log('actions', actions)
@@ -56,7 +66,10 @@ describe('authenticateGuest', function(done) {
 
     nock('http://localhost:8888')
     .post(`/mock-d2l/whoami`)
-    .reply(200, {name: 'jane doe'})
+    .reply(200, {
+      name: 'jane doe',
+      Identifier: 123
+    })
 
     nock('http://localhost:8888')
     .post(`/l4/users`)
