@@ -234,10 +234,12 @@ return m;
 
 
 
-case _getStudentResult.GET_STUDENT_RESULT_SUCCESS:
-return _lodash2['default'].assign({},state,{
-currentMission:_lodash2['default'].assign({},action.mission,{
-questions:action.questions})});
+
+
+
+
+
+
 
 
 
