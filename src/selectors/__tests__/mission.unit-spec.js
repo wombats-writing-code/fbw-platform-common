@@ -57,16 +57,19 @@ describe('mission selectors', () => {
   it('should return the questions when target is the first in the list', () => {
     let section = [
       [{
-        id: 1
+        id: '1',
+        referenceNumber: '1'
       }, {
-        id: 2
+        id: '2',
+        referenceNumber: '1.2'
       }],
       [{
-        id: 3
+        id: '3',
+        referenceNumber: '2'
       }]
     ];
     let target = {
-      id: 1
+      id: '1'
     }
     let questions = getRouteQuestions(section, target);
     questions.should.be.eql(section[0]);
@@ -75,18 +78,28 @@ describe('mission selectors', () => {
   it('should return the questions when target is not the first in the list', () => {
     let section = [
       [{
-        id: 1
+        id: '1',
+        referenceNumber: '1.1'
       }, {
-        id: 2
+        id: '2',
+        referenceNumber: '1'
       }],
       [{
-        id: 3
+        id: '3',
+        referenceNumber: '2'
       }]
     ];
     let target = {
-      id: 2
+      id: '2'
     }
     let questions = getRouteQuestions(section, target);
-    questions.should.be.eql(section[0]);
+    // make sure this is sorted
+    questions.should.be.eql([{
+      id: '2',
+      referenceNumber: '1'
+    }, {
+      id: '1',
+      referenceNumber: '1.1'
+    }]);
   })
 })
