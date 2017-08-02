@@ -2,7 +2,6 @@
 let chai = require('chai');
 let should = require('should');
 chai.should();
-chai.should();
 
 const _ = require('lodash')
 const Q = require('q')
@@ -15,12 +14,12 @@ const mockStore = configureMockStore(middlewares)
 
 import {getStudentResult, GET_STUDENT_RESULT_OPTIMISTIC, GET_STUDENT_RESULT_SUCCESS} from '../getStudentResult'
 
-describe('getResults', () => {
+describe('getStudentResult', () => {
   afterEach(() => {
     nock.cleanAll()
   })
 
-  it('should call getResults and receive a list of records for a user', function(done) {
+  it('should call getStudentResult and receive a list of records for a single user', function(done) {
     const USER = {
       Identifier: 1145645     // shea butter
     }
@@ -35,11 +34,7 @@ describe('getResults', () => {
 
     const store = mockStore({})
 
-    store.dispatch(getStudentResult({
-      student: USER,
-      mission: MISSION,
-      user: USER
-    }))
+    store.dispatch(getStudentResult(USER, MISSION, USER))
     .then(res => {
       // console.log('getResults res', res);
 
