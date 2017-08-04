@@ -239,7 +239,7 @@ describe('mission reducer', () => {
         _id: 321,
         type: missionConfig.PHASE_II_MISSION_TYPE,
         followsFromMissions: [123]
-      }],
+      }, originalMission],
       currentMission: originalMission
     }, {
       type: RESET_DASHBOARD_MISSION,

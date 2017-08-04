@@ -251,8 +251,12 @@ if(!action.mission){
 return _lodash2['default'].assign({},state);
 }
 
+
+
+
+
 var phaseIMission=action.mission.type===missionConfig.PHASE_I_MISSION_TYPE?
-action.mission:
+_lodash2['default'].find(state.missions,{_id:action.mission._id}):
 _lodash2['default'].find(state.missions,function(mission){
 return _lodash2['default'].includes(action.mission.followsFromMissions,mission._id);
 });

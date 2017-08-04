@@ -238,8 +238,8 @@ var newState=(0,_index2['default'])({
 missions:[{
 _id:321,
 type:_index.missionConfig.PHASE_II_MISSION_TYPE,
-followsFromMissions:[123]}],
-
+followsFromMissions:[123]},
+originalMission],
 currentMission:originalMission},
 {
 type:_resetDashboardMission.RESET_DASHBOARD_MISSION,

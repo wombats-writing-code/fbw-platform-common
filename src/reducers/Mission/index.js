@@ -251,8 +251,12 @@ export default function missionReducer (state = initialState, action) {
         return _.assign({}, state);
       }
 
+      // If `true`, pick Phase I mission from state, so that it "resets". This
+      //   takes care of the case when a student doesn't have phase II,
+      //   but we want to show the "EmptyState" message, so we've sent
+      //   in a modified Phase I.
       const phaseIMission = action.mission.type === missionConfig.PHASE_I_MISSION_TYPE ?
-        action.mission :
+        _.find(state.missions, {_id: action.mission._id}) :
         _.find(state.missions, (mission) => {
           return _.includes(action.mission.followsFromMissions, mission._id);
         });
