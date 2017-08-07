@@ -16,6 +16,7 @@ import {getD2LClassRoster, _getFbWUsers,
 describe('getD2LClassRoster', function() {
   it('should call getD2LClassRoster and receive an array of student names who are in the course', function(done) {
     const store = mockStore({})
+    let calledCreateUser = false;
 
     nock('http://localhost:8888')
     .get('/l4/users')
@@ -23,6 +24,12 @@ describe('getD2LClassRoster', function() {
         {id: 'foo', Identifier: '1'},
         {id: 'bar', Identifier: '2'}
     ]);
+
+    nock('http://localhost:8888')
+    .post('/l4/users')
+    .reply(200, () => {
+      calledCreateUser = true;
+    });
 
     nock("http://localhost:8888")
     .filteringPath(function(path){
@@ -53,6 +60,8 @@ describe('getD2LClassRoster', function() {
       res.should.be.a('array');
       res.length.should.eql(2);
       res[0].id.should.eql('foo')
+
+      calledCreateUser.should.eql(true);
 
       done();
     });

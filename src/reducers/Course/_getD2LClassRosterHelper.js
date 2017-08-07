@@ -5,6 +5,7 @@ let Q = require('q')
 import D2L from 'valence'
 
 import { getDomain } from '../../utilities'
+import { createUser } from '../Login/createUser'
 
 /*
   Gets the class roster for the given courseIdentifier (subject)
@@ -66,7 +67,7 @@ export function classRoster (D2LConfig, url, courseIdentifier) {
   let AppContext = new D2L.ApplicationContext(D2LConfig.appID, D2LConfig.appKey);
   let userContext = AppContext.createUserContext(D2LConfig.host, D2LConfig.port, url)
   let rosterUrl = `/d2l/api/le/1.5/${courseIdentifier}/classlist/`
-
+  let roster;
   // console.log('roster options', options)
 
   return axios({
@@ -74,8 +75,11 @@ export function classRoster (D2LConfig, url, courseIdentifier) {
   })
   .then((response) => {
     if (process.env.NODE_ENV !== 'test') console.log('got d2l class list', response.data);
-
-    return Q.when(response.data)
+    roster = response.data;
+    return Q.when(_.map(roster, (user) => {return createUser(user);}));
+  })
+  .then(() => {
+    return Q.when(roster);
   })
   .catch((error) => {
     console.log('error getting d2l class roster', error)
