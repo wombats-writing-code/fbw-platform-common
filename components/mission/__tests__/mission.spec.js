@@ -1,6 +1,7 @@
 var _jsxFileName='src/components/mission/__tests__/mission.spec.js';var _react=require('react');var _react2=_interopRequireDefault(_react);
 
 var _reactRedux=require('react-redux');
+var _reduxThunk=require('redux-thunk');var _reduxThunk2=_interopRequireDefault(_reduxThunk);
 var _reduxMockStore=require('redux-mock-store');var _reduxMockStore2=_interopRequireDefault(_reduxMockStore);
 
 var _Mission=require('../web/Mission');var _Mission2=_interopRequireDefault(_Mission);
@@ -22,7 +23,8 @@ chai.should();
 
 describe('Mission',function(){
 
-var mockStore=(0,_reduxMockStore2['default'])([]);
+var middlewares=[_reduxThunk2['default']];
+var mockStore=(0,_reduxMockStore2['default'])(middlewares);
 var connectedComponent=void 0,store=void 0;
 
 before(function(){
@@ -31,8 +33,8 @@ global.document.body.appendChild(div);
 
 store=mockStore(STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:34}},
-_react2['default'].createElement(Mission,{mission:STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:35}})),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:36}},
+_react2['default'].createElement(Mission,{mission:STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:37}})),
 
 {attachTo:div});
 

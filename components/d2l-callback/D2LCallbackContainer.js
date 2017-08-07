@@ -1,4 +1,5 @@
-Object.defineProperty(exports,"__esModule",{value:true});var _reactRedux=require('react-redux');
+Object.defineProperty(exports,"__esModule",{value:true});var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);
+var _reactRedux=require('react-redux');
 var _D2LCallback=require('./web/D2LCallback');var _D2LCallback2=_interopRequireDefault(_D2LCallback);
 
 var _authenticateD2L2=require('../../reducers/Login/authenticateD2L');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}
@@ -30,7 +31,7 @@ dispatch((0,_authenticateD2L2.authenticateD2L)(credentials,optionalUrl));
 
 var provider=function(){function provider(component,credentials){
 var mergeProps=function(){function mergeProps(stateProps,dispatchProps,ownProps){
-return _.assign({},stateProps,dispatchProps,ownProps,{
+return _lodash2['default'].assign({},stateProps,dispatchProps,ownProps,{
 credentials:credentials});
 
 }return mergeProps;}();
