@@ -19,9 +19,11 @@ const mapStateToProps = (state, ownProps) => {
   let mission = ownProps.mission || state.mission.currentMission;
   let outcomes = getMapping(state) ? getMapping(state).outcomes : [];
   let directives = getMissionDirectives(mission, outcomes);
+  // need to add a check for ownProps.user for StudentResults in instructor app
+  let user = ownProps.user || getUser(state);
 
   return {
-    user: getUser(state),
+    user: user,
     mission,
     currentCourse: getCurrentCourse(state),
     missions: state.mission ? state.mission.missions : null,
