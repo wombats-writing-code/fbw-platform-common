@@ -41,7 +41,7 @@ export function getD2LClassRoster(data) {
     .then((res) => {
       roster = res;
       return Q.when(_getFbWUsers(data.user));
-    ])
+    })
     .then((response) => {
       let users = response;
 
