@@ -44,7 +44,9 @@ describe('Questions', () => {
     questions.find('.choice').length.should.be.eql(4);
     questions.find('.is-selected').length.should.be.eql(0);
     questions.find('.answered-question-cue').length.should.be.eql(2);
-    questions.find('.submit-button').length.should.be.eql(1);
+
+    // Cannot submit to an "over" mission
+    questions.find('.submit-button').length.should.be.eql(0);
   });
 
 

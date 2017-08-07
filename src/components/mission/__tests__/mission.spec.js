@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {Provider} from 'react-redux'
+import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store'
 //
 import MissionComponent from '../web/Mission';
@@ -22,7 +23,8 @@ chai.should()
 
 describe('Mission', () => {
 
-  let mockStore = configureStore([]);
+  const middlewares = [thunk]; // add your middlewares like `redux-thunk`
+  let mockStore = configureStore(middlewares);
   let connectedComponent, store;
 
   before(function() {

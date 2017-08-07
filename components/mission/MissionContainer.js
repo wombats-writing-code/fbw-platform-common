@@ -20,8 +20,10 @@ var mission=ownProps.mission||state.mission.currentMission;
 var outcomes=(0,_selectors.getMapping)(state)?(0,_selectors.getMapping)(state).outcomes:[];
 var directives=(0,_mission.getMissionDirectives)(mission,outcomes);
 
+var user=ownProps.user||(0,_selectors.getUser)(state);
+
 return{
-user:(0,_selectors.getUser)(state),
+user:user,
 mission:mission,
 currentCourse:(0,_course.getCurrentCourse)(state),
 missions:state.mission?state.mission.missions:null,

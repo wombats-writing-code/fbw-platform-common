@@ -4,7 +4,8 @@ import configureStore from 'redux-mock-store'
 import thunk from 'redux-thunk';
 import {mount, shallow} from 'enzyme';
 
-import GuestCallback from '../GuestCallbackContainer'
+import GuestCallbackComponent from '../web/GuestCallback'
+import GuestCallbackContainer from '../GuestCallbackContainer'
 
 
 import '../../../styles/foundation.min.css'
@@ -12,6 +13,9 @@ import '../../../styles/core.scss'
 import '../../../styles/animations.scss'
 
 const STATE = require('./state.mock.json')
+const CONFIG = require('./config.mock.json')
+
+const GuestCallback = GuestCallbackContainer(GuestCallbackComponent, CONFIG)
 
 let chai = require('chai')
 chai.should()
@@ -29,7 +33,7 @@ describe('GuestCallback', () => {
     store = mockStore(STATE);
     connectedComponent = mount(
       <Provider store={store}>
-        <GuestCallback  />
+        <GuestCallback location={{query: {name: 'foo'}}}/>
       </Provider>,
       {attachTo: div}
     );

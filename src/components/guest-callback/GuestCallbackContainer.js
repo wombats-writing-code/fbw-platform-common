@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { connect, dispatch } from 'react-redux'
 import GuestCallback from './web/GuestCallback'
 

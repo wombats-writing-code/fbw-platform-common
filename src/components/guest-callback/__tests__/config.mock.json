@@ -1,0 +1,8 @@
+{
+  "role": "",
+  "appID": "",
+  "appKey": "",
+  "host": "desire2learn.com",
+  "port": 80,
+  "callbackUrl": "/d2l-callback"
+}
