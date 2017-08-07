@@ -34,15 +34,16 @@ export function getD2LClassRoster(data) {
 
   return function (dispatch) {
     dispatch(getD2LClassRosterOptimistic());
+    let roster;
 
     // now get the user enrollments and set them in the global state
-    return Q.all([
-      classRoster(data.D2LConfig, data.url, data.courseId),
-      _getFbWUsers(data.user)
+    return Q.when(classRoster(data.D2LConfig, data.url, data.courseId))
+    .then((res) => {
+      roster = res;
+      return Q.when(_getFbWUsers(data.user));
     ])
     .then((response) => {
-      let roster = response[0];
-      let users = response[1];
+      let users = response;
 
       let rosterWithIds = _.filter(_.map(roster, person => {
         return _.assign({}, _.find(users, {Identifier: person.Identifier}))
