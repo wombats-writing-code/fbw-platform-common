@@ -50,13 +50,14 @@ export const getRouteQuestions = (sectionQuestions, target) => {
     return _.includes(array, target) || _.includes(arrayIds, target.id);
     // return array[0] === target || array[0].id === target.id;
   });
-  // Then sort the routeQuestions by referenceNumber.
-  // NOTE that this is
-  //   definitely a hack / does not do a good natural sort for values
-  //   > 10. So it will put 1.10 before 1.2, for example (if students
-  //   ever get to 10 or more questions in a level).
-
-  return _.sortBy(routeQuestions, 'referenceNumber');
+  // Do NOT sort the routeQuestions here for Instructor App
+  //    * unfinished routes bug: means that unfinished routes do not render
+  //      properly when viewing student results. One fix was to
+  //      sort here, to make sure that the target question was always
+  //      the first question in the list. BUT:
+  // Sorting breaks the student experience
+  return routeQuestions;
+  // return _.sortBy(routeQuestions, 'referenceNumber');
 }
 
 export const computeSectionProgress= (questionsInSection) => {

@@ -95,11 +95,11 @@ id:'2'};
 var questions=(0,_mission.getRouteQuestions)(section,target);
 
 questions.should.be.eql([{
-id:'2',
-referenceNumber:'1'},
-{
 id:'1',
-referenceNumber:'1.1'}]);
+referenceNumber:'1.1'},
+{
+id:'2',
+referenceNumber:'1'}]);
 
 });
 });

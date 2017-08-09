@@ -93,13 +93,13 @@ describe('mission selectors', () => {
       id: '2'
     }
     let questions = getRouteQuestions(section, target);
-    // make sure this is sorted
+    // make sure this is NOT sorted, otherwise the student experience breaks
     questions.should.be.eql([{
-      id: '2',
-      referenceNumber: '1'
-    }, {
       id: '1',
       referenceNumber: '1.1'
+    }, {
+      id: '2',
+      referenceNumber: '1'
     }]);
   })
 })
