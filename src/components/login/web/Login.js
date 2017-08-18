@@ -35,8 +35,8 @@ class Login extends Component {
       Login &rarr;
     </button>);
 
-    if (this.state.guestName !== '') {
-      loginButton = (<button className="login-button login-button--guest" onClick={() => this._handleGuestLogin(this.state.guestName)}>
+    if (this.state.guestName.trim() !== '') {
+      loginButton = (<button className="login-button login-button--guest" onClick={() => this._handleGuestLogin(this.state.guestName.trim())}>
         Login &rarr;
       </button>);
     }
@@ -65,7 +65,7 @@ class Login extends Component {
             <div className="flex-container space-between align-center">
               <input className="input login__guest-input" placeholder="First and last name, e.g. Jane Doe"
                     value={this.state.guestName}
-                    onChange={(e) => this.setState({guestName: e.target.value.trim()})}/>
+                    onChange={(e) => this.setState({guestName: e.target.value})}/>
               {loginButton}
             </div>
           </div>
