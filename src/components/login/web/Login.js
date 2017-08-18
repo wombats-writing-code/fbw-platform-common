@@ -69,7 +69,7 @@ class Login extends Component {
               {loginButton}
             </div>
           </div>
-        </div>);
+        </div>
 
         <div className="row">
           <div className="medium-6 columns medium-centered">
