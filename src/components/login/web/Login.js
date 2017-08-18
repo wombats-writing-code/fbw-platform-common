@@ -31,7 +31,7 @@ class Login extends Component {
       </div>)
     }
 
-    let loginButton = (<button disabled className="login-button login-button--guest login-button--guest--disabled">
+    let loginButton = (<button className="login-button login-button--guest login-button--guest--disabled">
       Login &rarr;
     </button>);
 
@@ -65,7 +65,7 @@ class Login extends Component {
             <div className="flex-container space-between align-center">
               <input className="input login__guest-input" placeholder="First and last name, e.g. Jane Doe"
                     value={this.state.guestName}
-                    onChange={(e) => this.setState({guestName: e.target.value})}/>
+                    onChange={(e) => this.setState({guestName: e.target.value.trim()})}/>
               {loginButton}
             </div>
           </div>
