@@ -74,6 +74,11 @@
   flex: 1;
 }
 
+.login-button--guest--disabled {
+  color: gray;
+  pointer-events: none;
+}
+
 .login__guest-input {
   padding: 1em 0 1em 0;
   margin-bottom: 3rem;
