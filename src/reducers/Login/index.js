@@ -25,7 +25,7 @@ export default function loginReducer (state = initialState, action) {
       })
 
     case LOG_OUT:
-      return _.assign({}, state, stampNullUser())
+      return _.assign({}, stampNullUser())
 
 
     default:

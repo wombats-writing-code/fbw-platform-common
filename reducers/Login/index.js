@@ -25,7 +25,7 @@ isLoggedIn:true});
 
 
 case _logOutUser.LOG_OUT:
-return _lodash2['default'].assign({},state,stampNullUser());
+return _lodash2['default'].assign({},stampNullUser());
 
 
 default:
