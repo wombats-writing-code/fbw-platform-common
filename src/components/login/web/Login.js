@@ -31,14 +31,14 @@ class Login extends Component {
       </div>)
     }
 
-    let loginButton = (<button className="login-button login-button--guest login-button--guest--disabled">
+    let loginButton = <button className="login-button login-button--guest login-button--guest--disabled">
       Login &rarr;
-    </button>);
+    </button>
 
     if (this.state.guestName.trim() !== '') {
-      loginButton = (<button className="login-button login-button--guest" onClick={() => this._handleGuestLogin(this.state.guestName.trim())}>
+      loginButton = <button className="login-button login-button--guest" onClick={() => this._handleGuestLogin(this.state.guestName.trim())}>
         Login &rarr;
-      </button>);
+      </button>
     }
 
 
