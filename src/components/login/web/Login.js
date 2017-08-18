@@ -31,6 +31,17 @@ class Login extends Component {
       </div>)
     }
 
+    let loginButton = (<button disabled className="login-button login-button--guest login-button--guest--disabled">
+      Login &rarr;
+    </button>);
+
+    if (this.state.guestName !== '') {
+      loginButton = (<button className="login-button login-button--guest" onClick={() => this._handleGuestLogin(this.state.guestName)}>
+        Login &rarr;
+      </button>);
+    }
+
+
     return (
       <div className="login">
         <div className="app-name text-center clearfix">
@@ -55,16 +66,10 @@ class Login extends Component {
               <input className="input login__guest-input" placeholder="First and last name, e.g. Jane Doe"
                     value={this.state.guestName}
                     onChange={(e) => this.setState({guestName: e.target.value})}/>
-              <button className="login-button login-button--guest" onClick={() => this._handleGuestLogin(this.state.guestName)}>
-                Login &rarr;
-              </button>
-              {/* <button className="login-button login-button--guest" onClick={() => this._handleGuestLogin()}>
-                <img className="login-button__image" src={require('../../../assets/visitor.png')} />
-                Guest
-              </button> */}
+              {loginButton}
             </div>
           </div>
-        </div>
+        </div>);
 
         <div className="row">
           <div className="medium-6 columns medium-centered">
