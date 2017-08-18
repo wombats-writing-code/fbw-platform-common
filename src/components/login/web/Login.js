@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, {Component} from 'react'
 import { browserHistory } from 'react-router'
 import slug from 'slug'
@@ -35,8 +36,8 @@ class Login extends Component {
       Login &rarr;
     </button>
 
-    if (this.state.guestName.trim() !== '') {
-      loginButton = <button className="login-button login-button--guest" onClick={() => this._handleGuestLogin(this.state.guestName.trim())}>
+    if (this._cleanGuestUsername(this.state.guestName) !== '') {
+      loginButton = <button className="login-button login-button--guest" onClick={() => this._handleGuestLogin(this.state.guestName)}>
         Login &rarr;
       </button>
     }
@@ -92,9 +93,13 @@ class Login extends Component {
     )
   }
 
+  _cleanGuestUsername(name) {
+    return slug(_.trim(_.lowerCase(name)));
+  }
+
   _handleGuestLogin(name) {
     // console.log(name);
-    window.open(`${this.props.guestAuthenticationUrl}&name=${slug(_.trim(_.lowerCase(name)))}`, '_self')
+    window.open(`${this.props.guestAuthenticationUrl}&name=${this._cleanGuestUsername(name)}`, '_self')
   }
 
   _handleACCLogin = () => {
