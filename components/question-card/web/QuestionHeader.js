@@ -24,28 +24,35 @@ _this.state={};return _this;
 {
 var showMoreIcon=void 0,toggleButtonLabel='';
 if(this.props.isExpandable&&!this.props.isExpanded){
-showMoreIcon=_react2['default'].createElement('img',{className:'expand-question-icon',src:require('../../../assets/show-more--down@2x.png'),__source:{fileName:_jsxFileName,lineNumber:27}});
+showMoreIcon=_react2['default'].createElement('img',{
+'aria-hidden':true,
+className:'expand-question-icon',
+src:require('../../../assets/show-more--down@2x.png'),__source:{fileName:_jsxFileName,lineNumber:27}});
 toggleButtonLabel='Expand question';
 
 }else if(this.props.isExpandable&&this.props.isExpanded){
-showMoreIcon=_react2['default'].createElement('img',{className:'expand-question-icon',src:require('../../../assets/show-more--up@2x.png'),__source:{fileName:_jsxFileName,lineNumber:31}});
+showMoreIcon=_react2['default'].createElement('img',{
+'aria-hidden':true,
+className:'expand-question-icon',
+src:require('../../../assets/show-more--up@2x.png'),__source:{fileName:_jsxFileName,lineNumber:34}});
 toggleButtonLabel='Hide question';
 }
 
 var toggleButton=void 0;
 if(this.props.isExpandable){
 toggleButton=
-_react2['default'].createElement('button',{className:'expand-question-button',onClick:this.props.onToggleExpand,__source:{fileName:_jsxFileName,lineNumber:38}},
-showMoreIcon);
+_react2['default'].createElement('button',{className:'expand-question-button',onClick:this.props.onToggleExpand,__source:{fileName:_jsxFileName,lineNumber:44}},
+showMoreIcon,
+_react2['default'].createElement('p',{className:'question-header-text toggle-question-label',__source:{fileName:_jsxFileName,lineNumber:46}},toggleButtonLabel));
 
 
 }
 
 return(
-_react2['default'].createElement('div',{className:'question-header flex-container align-center',__source:{fileName:_jsxFileName,lineNumber:45}},
+_react2['default'].createElement('div',{className:'question-header flex-container align-center',__source:{fileName:_jsxFileName,lineNumber:52}},
 this.props.questionTypeIcon,
 
-_react2['default'].createElement('p',{className:'question-header-text',__source:{fileName:_jsxFileName,lineNumber:48}},this.props.headerText),
+_react2['default'].createElement('p',{className:'question-header-text',__source:{fileName:_jsxFileName,lineNumber:55}},this.props.headerText),
 
 toggleButton));
 

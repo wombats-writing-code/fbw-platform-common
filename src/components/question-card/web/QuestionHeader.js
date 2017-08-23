@@ -24,11 +24,17 @@ class QuestionHeader extends Component {
   render() {
     let showMoreIcon, toggleButtonLabel = '';
     if (this.props.isExpandable && !this.props.isExpanded) {
-      showMoreIcon = <img className="expand-question-icon" src={require('../../../assets/show-more--down@2x.png')}/>
+      showMoreIcon = <img
+        aria-hidden
+        className="expand-question-icon"
+        src={require('../../../assets/show-more--down@2x.png')}/>
       toggleButtonLabel = 'Expand question';
 
     } else if (this.props.isExpandable && this.props.isExpanded) {
-      showMoreIcon = <img className="expand-question-icon" src={require('../../../assets/show-more--up@2x.png')}/>
+      showMoreIcon = <img
+        aria-hidden
+        className="expand-question-icon"
+        src={require('../../../assets/show-more--up@2x.png')}/>
       toggleButtonLabel = 'Hide question';
     }
 
@@ -37,6 +43,7 @@ class QuestionHeader extends Component {
       toggleButton = (
         <button className="expand-question-button" onClick={this.props.onToggleExpand}>
           {showMoreIcon}
+          <p className="question-header-text toggle-question-label">{toggleButtonLabel}</p>
         </button>
       )
     }

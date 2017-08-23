@@ -52,6 +52,7 @@ isExpanded:true,__source:{fileName:_jsxFileName,lineNumber:45}}),
 questionCard.find('.is-selected').length.should.be.eql(1);
 questionCard.find('.responded-choice-icon').length.should.be.eql(1);
 questionCard.find('.expand-question-icon').length.should.be.eql(1);
+questionCard.find('.toggle-question-label').length.should.be.eql(1);
 
 questionCard.detach();
 });
