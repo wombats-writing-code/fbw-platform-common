@@ -52,7 +52,7 @@ return(
 _react2['default'].createElement('div',{className:'question-header flex-container align-center',__source:{fileName:_jsxFileName,lineNumber:52}},
 this.props.questionTypeIcon,
 
-_react2['default'].createElement('p',{className:'question-header-text',__source:{fileName:_jsxFileName,lineNumber:55}},this.props.headerText),
+_react2['default'].createElement('p',{className:'question-header-text',__source:{fileName:_jsxFileName,lineNumber:55}},'Goal: ',this.props.headerText),
 
 toggleButton));
 
