@@ -79,7 +79,7 @@ var thumb=
 _react2['default'].createElement('li',{key:target.id,className:isActive?"carousel-thumb is-active":"carousel-thumb",
 onClick:function(){function onClick(){return _this.props.onSelectTarget(target);}return onClick;}(),__source:{fileName:_jsxFileName,lineNumber:79}},
 _react2['default'].createElement('button',{className:'carousel-thumb__button',ref:function(){function ref(btn){return _this.buttonRefs.push(btn);}return ref;}(),
-'aria-label':'Target Question '+targetNumber,__source:{fileName:_jsxFileName,lineNumber:81}},
+'aria-label':'Goal Question '+targetNumber,__source:{fileName:_jsxFileName,lineNumber:81}},
 _react2['default'].createElement('div',{className:'flex-container align-center',__source:{fileName:_jsxFileName,lineNumber:83}},
 image,
 _react2['default'].createElement('p',{className:'carousel-thumb__text carousel-thumb__text--target',__source:{fileName:_jsxFileName,lineNumber:85}},'#',target.referenceNumber))));

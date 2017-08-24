@@ -79,7 +79,7 @@ class TargetCarousel extends Component {
       <li key={target.id} className={isActive ? "carousel-thumb is-active" : "carousel-thumb"}
           onClick={() => this.props.onSelectTarget(target)}>
         <button className="carousel-thumb__button" ref={(btn) => this.buttonRefs.push(btn)}
-          aria-label={`Target Question ${targetNumber}`}>
+          aria-label={`Goal Question ${targetNumber}`}>
           <div className="flex-container align-center">
             {image}
             <p className="carousel-thumb__text carousel-thumb__text--target">#{target.referenceNumber}</p>
