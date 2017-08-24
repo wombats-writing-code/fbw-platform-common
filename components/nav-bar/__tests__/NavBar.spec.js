@@ -8,9 +8,12 @@ var _web=require('../web/');var _web2=_interopRequireDefault(_web);
 
 var _enzyme=require('enzyme');
 
+
+
+
 require('../../../styles/foundation.min.css');
 require('../../../styles/core.scss');
-require('../../../styles/animations.scss');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}
+require('../../../styles/animations.scss');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var chai=require('chai');chai.should();
 
 var STATE={
 route:{
@@ -46,6 +49,7 @@ missions:[]},
 
 login:{
 user:{
+d2lUser:'Susan Peabody',
 username:'Susan Peabody'}}};
 
 
@@ -61,10 +65,17 @@ before(function(){
 var div=global.document.createElement('div');
 global.document.body.appendChild(div);
 
+var props={
+route:{
+path:STATE.route.path},
+
+user:'foo'};
+
+
 store=mockStore(STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:66}},
-_react2['default'].createElement(_web2['default'],{__source:{fileName:_jsxFileName,lineNumber:67}})),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:77}},
+_react2['default'].createElement(_web2['default'],{__source:{fileName:_jsxFileName,lineNumber:78}})),
 
 {attachTo:div});
 
@@ -73,7 +84,9 @@ _react2['default'].createElement(_web2['default'],{__source:{fileName:_jsxFileNa
 it('should display breadcrumbs',function(){
 var component=connectedComponent.find(_web2['default']);
 
-component.find('.mission').length.should.eql(0);
+component.find('.breadcrumb').length.should.eql(1);
+component.find('a').first().prop('aria-label').should.eql('Home');
+component.find('img').first().prop('alt-text').should.eql('');
 });
 
 after(function(){

@@ -8,6 +8,9 @@ import NavBar from '../web/';
 
 import {mount, shallow} from 'enzyme';
 
+let chai = require('chai')
+chai.should()
+
 import '../../../styles/foundation.min.css'
 import '../../../styles/core.scss'
 import '../../../styles/animations.scss'
@@ -46,6 +49,7 @@ const STATE = {
   },
   login: {
     user: {
+      d2lUser: 'Susan Peabody',
       username: 'Susan Peabody'
     }
   }
@@ -61,10 +65,17 @@ describe('NavBar', () => {
     const div = global.document.createElement('div');
     global.document.body.appendChild(div);
 
+    const props = {
+      route: {
+        path: STATE.route.path
+      },
+      user: 'foo'
+    };
+
     store = mockStore(STATE);
     connectedComponent = mount(
       <Provider store={store}>
-        <NavBar  />
+        <NavBar />
       </Provider>,
       {attachTo: div}
     );
@@ -73,7 +84,9 @@ describe('NavBar', () => {
   it('should display breadcrumbs', () => {
     const component = connectedComponent.find(NavBar)
 
-    component.find('.mission').length.should.eql(0);
+    component.find('.breadcrumb').length.should.eql(1);  // Home
+    component.find('a').first().prop('aria-label').should.eql('Home');
+    component.find('img').first().prop('alt-text').should.eql('');
   });
 
   after(() => {
