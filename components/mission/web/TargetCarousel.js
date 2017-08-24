@@ -37,24 +37,38 @@ var status=(0,_mission.targetStatus)(target,targetRouteQuestions);
 var image=void 0;
 switch(status){
 case'COMPLETE':
-image=_react2['default'].createElement('img',{className:'target-icon',src:require('../../../assets/target-question--correct@2x.png'),__source:{fileName:_jsxFileName,lineNumber:40}});
+image=_react2['default'].createElement('img',{
+alt:'Correct goal question',
+className:'target-icon',
+src:require('../../../assets/target-question--correct@2x.png'),__source:{fileName:_jsxFileName,lineNumber:40}});
 break;
 case'FAIL':
-image=_react2['default'].createElement('img',{className:'target-icon',src:require('../../../assets/target-question--incorrect@2x.png'),__source:{fileName:_jsxFileName,lineNumber:43}});
+image=_react2['default'].createElement('img',{
+alt:'Incorrect goal question',
+className:'target-icon',
+src:require('../../../assets/target-question--incorrect@2x.png'),__source:{fileName:_jsxFileName,lineNumber:46}});
 break;
 case'NAVIGATED':
-image=_react2['default'].createElement('img',{className:'target-icon',src:require('../../../assets/target-question--navigated@2x.png'),__source:{fileName:_jsxFileName,lineNumber:46}});
+image=_react2['default'].createElement('img',{
+alt:'Navigated goal question route',
+className:'target-icon',
+src:require('../../../assets/target-question--navigated@2x.png'),__source:{fileName:_jsxFileName,lineNumber:52}});
 break;
 case'PRISTINE':
-image=_react2['default'].createElement('img',{className:'target-icon',src:require('../../../assets/target-question@2x.png'),__source:{fileName:_jsxFileName,lineNumber:49}});
+image=_react2['default'].createElement('img',{
+alt:'Unattempted goal question',
+className:'target-icon',
+src:require('../../../assets/target-question@2x.png'),__source:{fileName:_jsxFileName,lineNumber:58}});
 break;
 
 default:
 console.warn('Warning: unrecognized status',status);
-image=_react2['default'].createElement('img',{src:require('../../../assets/target-question@2x.png'),__source:{fileName:_jsxFileName,lineNumber:54}});}
+image=_react2['default'].createElement('img',{
+alt:'Unattempted goal question',
+src:require('../../../assets/target-question@2x.png'),__source:{fileName:_jsxFileName,lineNumber:66}});}
 
 
-var accessibilityLabel='Target Question '+target.displayName;
+
 var isActive=targetNumber===(0,_mission.targetKey)(_this.props.currentTarget);
 if(idx===0){
 _this.buttonRefs=[];
@@ -63,12 +77,12 @@ _this.buttonRefs=[];
 }
 var thumb=
 _react2['default'].createElement('li',{key:target.id,className:isActive?"carousel-thumb is-active":"carousel-thumb",
-onClick:function(){function onClick(){return _this.props.onSelectTarget(target);}return onClick;}(),__source:{fileName:_jsxFileName,lineNumber:65}},
+onClick:function(){function onClick(){return _this.props.onSelectTarget(target);}return onClick;}(),__source:{fileName:_jsxFileName,lineNumber:79}},
 _react2['default'].createElement('button',{className:'carousel-thumb__button',ref:function(){function ref(btn){return _this.buttonRefs.push(btn);}return ref;}(),
-'aria-label':'Target Question '+targetNumber,__source:{fileName:_jsxFileName,lineNumber:67}},
-_react2['default'].createElement('div',{className:'flex-container align-center',__source:{fileName:_jsxFileName,lineNumber:69}},
+'aria-label':'Target Question '+targetNumber,__source:{fileName:_jsxFileName,lineNumber:81}},
+_react2['default'].createElement('div',{className:'flex-container align-center',__source:{fileName:_jsxFileName,lineNumber:83}},
 image,
-_react2['default'].createElement('p',{className:'carousel-thumb__text carousel-thumb__text--target',__source:{fileName:_jsxFileName,lineNumber:71}},'#',target.referenceNumber))));
+_react2['default'].createElement('p',{className:'carousel-thumb__text carousel-thumb__text--target',__source:{fileName:_jsxFileName,lineNumber:85}},'#',target.referenceNumber))));
 
 
 
@@ -84,14 +98,14 @@ return thumb;
 if(!this.props.targets||
 this.props.targets&&this.props.targets.length===0){
 return(
-_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:87}}));
+_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:101}}));
 
 }
 
 this.buttonRefs=[];
 return(
-_react2['default'].createElement('div',{className:'carousel-container flex-container align-top',__source:{fileName:_jsxFileName,lineNumber:93}},
-_react2['default'].createElement('ul',{className:'carousel flex-container align-center',__source:{fileName:_jsxFileName,lineNumber:94}},
+_react2['default'].createElement('div',{className:'carousel-container flex-container align-top',__source:{fileName:_jsxFileName,lineNumber:107}},
+_react2['default'].createElement('ul',{className:'carousel flex-container align-center',__source:{fileName:_jsxFileName,lineNumber:108}},
 _.map(this.props.targets,this._renderTarget))));
 
 

@@ -37,24 +37,38 @@ class TargetCarousel extends Component {
     let image;
     switch(status) {
       case 'COMPLETE':
-        image = <img className="target-icon" src={require('../../../assets/target-question--correct@2x.png')}/>;
+        image = <img
+          alt="Correct goal question"
+          className="target-icon"
+          src={require('../../../assets/target-question--correct@2x.png')}/>;
         break;
       case 'FAIL':
-        image = <img className="target-icon" src={require('../../../assets/target-question--incorrect@2x.png')}/>;
+        image = <img
+          alt="Incorrect goal question"
+          className="target-icon"
+          src={require('../../../assets/target-question--incorrect@2x.png')}/>;
         break;
       case 'NAVIGATED':
-        image = <img className="target-icon" src={require('../../../assets/target-question--navigated@2x.png')}/>;
+        image = <img
+          alt="Navigated goal question route"
+          className="target-icon"
+          src={require('../../../assets/target-question--navigated@2x.png')}/>;
         break;
       case 'PRISTINE':
-        image = <img className="target-icon" src={require('../../../assets/target-question@2x.png')}/>;
+        image = <img
+          alt="Unattempted goal question"
+          className="target-icon"
+          src={require('../../../assets/target-question@2x.png')}/>;
         break;
 
       default:
         console.warn('Warning: unrecognized status', status);
-        image = <img src={require('../../../assets/target-question@2x.png')}/>;
+        image = <img
+          alt="Unattempted goal question"
+          src={require('../../../assets/target-question@2x.png')}/>;
     }
 
-    let accessibilityLabel = `Target Question ${target.displayName}`;
+    // let accessibilityLabel = `Target Question ${target.displayName}`;
     let isActive = targetNumber === targetKey(this.props.currentTarget);
     if (idx === 0) {
       this.buttonRefs = []
