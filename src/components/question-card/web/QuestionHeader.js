@@ -52,7 +52,8 @@ class QuestionHeader extends Component {
       <div className="question-header flex-container align-center">
         {this.props.questionTypeIcon}
 
-        <p className="question-header-text">Goal: {this.props.headerText}</p>
+        <p className="question-header-text">
+          <span className="bold">Goal:</span> {this.props.headerText}</p>
 
         {toggleButton}
 
