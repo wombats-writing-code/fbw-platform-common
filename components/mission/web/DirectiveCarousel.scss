@@ -24,14 +24,14 @@
 .carousel-label {
   width: 6rem;
   color: #555;
-  font-size: .875rem;
+  font-size: 1rem;  // 16pt for accessibility
   text-align: left;
 }
 
 .carousel-thumb {
   position: relative;
   flex: none;
-  font-size: .875rem;
+  font-size: 1rem;  // 16pt for accessibility
   padding-bottom: calc(.75rem - 5px);
   border-bottom: none;
   @extend .prewrap;
@@ -47,12 +47,12 @@
 
 .carousel-thumb--directive .carousel-thumb__button {
   // height: 6em;
-  font-size: .875em;
+  font-size: 1rem;  // 16pt for accessibility
 }
 
 .carousel-thumb__icon {
   position: absolute;
-  font-size: .875em;
+  font-size: 1rem;  // 16pt for accessibility
   top: .5em;
   left: 1em;
   margin-bottom: 0;
