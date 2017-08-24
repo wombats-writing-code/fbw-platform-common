@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import React, {Component} from 'react'
 import { IndexLink, Link, browserHistory } from 'react-router'
 import './NavBar.scss'
@@ -18,7 +19,11 @@ class NavBar extends Component {
 
     return (
       <div className="nav-bar flex-container align-center space-between wrap">
-        <a href="/"><img className="nav-bar__logo" src={require('../../../assets/logo-site--inverted.png')}/></a>
+        <a href="/" aria-label="Home"><img
+          aria-hidden
+          className="nav-bar__logo"
+          src={require('../../../assets/logo-site--inverted.png')}/>
+        </a>
         <span className="nav-bar__app-name">{props.appName}</span>
         <ul className="breadcrumbs">
           {_.map(breadcrumbs, (crumb, idx) => {
