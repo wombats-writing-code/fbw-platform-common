@@ -26,7 +26,7 @@ class NextCue extends Component {
         if (isTarget(this.props.nextQuestion)) {
           cueText = (
             <p className="cue-text">
-              <span>Great, you got back to the target! Let's try to </span>
+              <span>Great, you got back to the goal! Let's try to </span>
               <span className="bold"> {this.props.nextOutcome.displayName}</span>
               <span> again.</span>
             </p>
@@ -58,7 +58,7 @@ class NextCue extends Component {
       // if there's no next question, and it's not the last target,
       // it means the student has reached the end of the scaffold
       } else if (!this.props.nextQuestion && !this.props.isLastTarget) {
-        cueText = <p className="cue-text">Good job! You should now be able to do the next Target question. &thinsp;
+        cueText = <p className="cue-text">Good job! You should now be able to do the next Goal question. &thinsp;
                       <span className="try-next-target" onClick={this.props.onClickTryNextTarget}>
                         Try another one &uarr;
                       </span>
@@ -89,7 +89,7 @@ class NextCue extends Component {
         )
 
       } else if (!this.props.nextQuestion && !this.props.nextOutcome) {
-        cueText = <p className="cue-text">Study the solution carefully and try another Target question.</p>
+        cueText = <p className="cue-text">Study the solution carefully and try another Goal question.</p>
       }
     }
 

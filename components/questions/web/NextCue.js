@@ -26,7 +26,7 @@ if(this.props.nextQuestion&&this.props.nextOutcome){
 if((0,_mission.isTarget)(this.props.nextQuestion)){
 cueText=
 _react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:28}},
-_react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:29}},'Great, you got back to the target! Let\'s try to '),
+_react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:29}},'Great, you got back to the goal! Let\'s try to '),
 _react2['default'].createElement('span',{className:'bold',__source:{fileName:_jsxFileName,lineNumber:30}},' ',this.props.nextOutcome.displayName),
 _react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:31}},' again.'));
 
@@ -58,7 +58,7 @@ _react2['default'].createElement('span',{className:'try-next-target',onClick:thi
 
 
 }else if(!this.props.nextQuestion&&!this.props.isLastTarget){
-cueText=_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:61}},'Good job! You should now be able to do the next Target question. \u2009',
+cueText=_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:61}},'Good job! You should now be able to do the next Goal question. \u2009',
 _react2['default'].createElement('span',{className:'try-next-target',onClick:this.props.onClickTryNextTarget,__source:{fileName:_jsxFileName,lineNumber:62}},'Try another one \u2191'));
 
 
@@ -89,7 +89,7 @@ _react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNum
 
 
 }else if(!this.props.nextQuestion&&!this.props.nextOutcome){
-cueText=_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:92}},'Study the solution carefully and try another Target question.');
+cueText=_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:92}},'Study the solution carefully and try another Goal question.');
 }
 }
 
