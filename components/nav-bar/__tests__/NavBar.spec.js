@@ -86,7 +86,7 @@ var component=connectedComponent.find(_web2['default']);
 
 component.find('.breadcrumb').length.should.eql(1);
 component.find('a').first().prop('aria-label').should.eql('Home');
-component.find('img').first().prop('alt-text').should.eql('');
+component.find('img').first().prop('alt').should.eql('');
 });
 
 after(function(){
