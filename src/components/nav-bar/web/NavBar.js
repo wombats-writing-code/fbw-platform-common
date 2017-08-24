@@ -42,7 +42,7 @@ class NavBar extends Component {
           <p className="username">
             {getD2LDisplayName(props.user)}
           </p>
-          <button className="logout-button" tabIndex="1" onClick={this._logout}>
+          <button className="logout-button" onClick={this._logout}>
             Logout
           </button>
         </div>
