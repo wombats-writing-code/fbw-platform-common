@@ -21,7 +21,7 @@ class NavBar extends Component {
       <div className="nav-bar flex-container align-center space-between wrap">
         <a href="/" aria-label="Home"><img
           aria-hidden
-          alt-text=""
+          alt=""
           className="nav-bar__logo"
           src={require('../../../assets/logo-site--inverted.png')}/>
         </a>
