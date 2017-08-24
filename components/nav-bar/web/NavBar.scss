@@ -56,6 +56,7 @@
 a.breadcrumb__link {
   color: #f8f8f8;
   font-weight: 600;
+  font-size: 1rem;
 }
 
 a.breadcrumb__link:hover {
@@ -84,7 +85,7 @@ a.breadcrumb__link:hover {
 
 .username {
   // display: inline-block;
-  font-size: .875rem;
+  font-size: 1rem;  // 16pt for accessibility
   margin-bottom: 0;
   margin-right: 1em;
   color: #fff;
@@ -92,7 +93,7 @@ a.breadcrumb__link:hover {
 
 .logout-button {
   padding: .5em 1em;
-  font-size: .875rem;
+  font-size: 1rem;  // 16pt for accessibility
   color: #eee;
   border: 1px solid #eee;
   border-radius: 3px;
