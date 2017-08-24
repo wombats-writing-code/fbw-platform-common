@@ -33,6 +33,7 @@ describe('QuestionCard', () => {
     questionCard.props().question.displayName.should.be.eql(QUESTION.displayName);
     questionCard.find('.choice').length.should.be.eql(4);
     questionCard.find('.question-header-text').text().should.be.eql('Goal: ' + OUTCOME.displayName);
+    questionCard.find('.question-type-icon').first().prop('alt').should.be.eql('Review question');
 
     questionCard.detach();
   });
@@ -53,6 +54,7 @@ describe('QuestionCard', () => {
     questionCard.find('.responded-choice-icon').length.should.be.eql(1);
     questionCard.find('.expand-question-icon').length.should.be.eql(1);
     questionCard.find('.toggle-question-label').length.should.be.eql(1);
+    questionCard.find('.question-type-icon').first().prop('alt').should.be.eql('Goal question');
 
     questionCard.detach();
   });

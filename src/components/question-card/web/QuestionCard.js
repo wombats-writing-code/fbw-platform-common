@@ -91,23 +91,41 @@ class QuestionCard extends Component {
     let questionTypeIcon;
     if (isTarget(this.props.question)) {
       if (this.props.question.responded && this.props.question.response.isCorrect) {
-        questionTypeIcon = <img className="question-type-icon" src={require('../../../assets/target-icon--correct@2x.png')} />
+        questionTypeIcon = <img
+          alt="Goal question"
+          className="question-type-icon"
+          src={require('../../../assets/target-icon--correct@2x.png')} />
 
       } else if (this.props.question.responded && !this.props.question.response.isCorrect) {
-        questionTypeIcon = <img className="question-type-icon" src={require('../../../assets/target-icon--incorrect@2x.png')} />
+        questionTypeIcon = <img
+          alt="Goal question"
+          className="question-type-icon"
+          src={require('../../../assets/target-icon--incorrect@2x.png')} />
 
       } else {
-        questionTypeIcon = <img className="question-type-icon" src={require('../../../assets/target-icon@2x.png')} />
+        questionTypeIcon = <img
+          alt="Goal question"
+          className="question-type-icon"
+          src={require('../../../assets/target-icon@2x.png')} />
       }
     } else {
       if (this.props.question.responded && this.props.question.response.isCorrect) {
-        questionTypeIcon = <img className="question-type-icon" src={require('../../../assets/waypoint-icon--correct@2x.png')} />
+        questionTypeIcon = <img
+          alt="Review question"
+          className="question-type-icon"
+          src={require('../../../assets/waypoint-icon--correct@2x.png')} />
 
       } else if (this.props.question.responded && !this.props.question.response.isCorrect) {
-        questionTypeIcon = <img className="question-type-icon" src={require('../../../assets/waypoint-icon--incorrect@2x.png')} />
+        questionTypeIcon = <img
+          alt="Review question"
+          className="question-type-icon"
+          src={require('../../../assets/waypoint-icon--incorrect@2x.png')} />
 
       } else {
-        questionTypeIcon = <img className="question-type-icon" src={require('../../../assets/waypoint-icon@2x.png')} />
+        questionTypeIcon = <img
+          alt="Review question"
+          className="question-type-icon"
+          src={require('../../../assets/waypoint-icon@2x.png')} />
       }
     }
 
