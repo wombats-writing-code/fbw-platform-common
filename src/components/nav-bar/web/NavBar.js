@@ -42,6 +42,9 @@ class NavBar extends Component {
           <p className="username">
             {getD2LDisplayName(props.user)}
           </p>
+          <button className="help-button" onClick={this._openHelp}>
+            Help
+          </button>
           <button className="logout-button" onClick={this._logout}>
             Logout
           </button>
@@ -115,6 +118,10 @@ class NavBar extends Component {
       let key = _.keys(props.routeParams)[0];
       return props.routeParams[key];
     }
+  }
+
+  _openHelp() {
+    window.open('/guide', '_blank');
   }
 
   _logout = () => {

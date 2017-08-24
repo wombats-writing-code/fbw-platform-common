@@ -82,6 +82,18 @@ describe('NavBar', () => {
     component.find('img').first().prop('alt').should.eql('');
   });
 
+  it('should display help button', () => {
+    const component = connectedComponent.find(NavBar)
+
+    component.find('.help-button').length.should.eql(1);
+  });
+
+  it('should display logout button', () => {
+    const component = connectedComponent.find(NavBar)
+
+    component.find('.logout-button').length.should.eql(1);
+  });
+
   after(() => {
     // connectedComponent.detach();
   });

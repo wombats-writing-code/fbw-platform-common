@@ -82,6 +82,18 @@ component.find('a').first().prop('aria-label').should.eql('Home');
 component.find('img').first().prop('alt').should.eql('');
 });
 
+it('should display help button',function(){
+var component=connectedComponent.find(_web2['default']);
+
+component.find('.help-button').length.should.eql(1);
+});
+
+it('should display logout button',function(){
+var component=connectedComponent.find(_web2['default']);
+
+component.find('.logout-button').length.should.eql(1);
+});
+
 after(function(){
 
 });
