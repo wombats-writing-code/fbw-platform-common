@@ -65,17 +65,10 @@ before(function(){
 var div=global.document.createElement('div');
 global.document.body.appendChild(div);
 
-var props={
-route:{
-path:STATE.route.path},
-
-user:'foo'};
-
-
 store=mockStore(STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:77}},
-_react2['default'].createElement(_web2['default'],{__source:{fileName:_jsxFileName,lineNumber:78}})),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:70}},
+_react2['default'].createElement(_web2['default'],{__source:{fileName:_jsxFileName,lineNumber:71}})),
 
 {attachTo:div});
 

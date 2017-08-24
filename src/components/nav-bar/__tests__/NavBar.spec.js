@@ -65,13 +65,6 @@ describe('NavBar', () => {
     const div = global.document.createElement('div');
     global.document.body.appendChild(div);
 
-    const props = {
-      route: {
-        path: STATE.route.path
-      },
-      user: 'foo'
-    };
-
     store = mockStore(STATE);
     connectedComponent = mount(
       <Provider store={store}>
