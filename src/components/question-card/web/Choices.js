@@ -22,10 +22,16 @@ class Choices extends Component {
     // we style it a bit differently if it's a responded-to choice
     if (responseId && responseId === choice.id) {
       if (this.props.isResponseCorrect) {
-        respondedChoiceIcon = <img className="responded-choice-icon" src={require('../../../assets/responseType--correct@2x.png')} />
+        respondedChoiceIcon = <img
+          alt="Correct"
+          className="responded-choice-icon"
+          src={require('../../../assets/responseType--correct@2x.png')} />
 
       } else {
-        respondedChoiceIcon  = <img className="responded-choice-icon" src={require('../../../assets/responseType--incorrect@2x.png')} />
+        respondedChoiceIcon  = <img
+          alt="Incorrect"
+          className="responded-choice-icon"
+          src={require('../../../assets/responseType--incorrect@2x.png')} />
       }
     }
 
