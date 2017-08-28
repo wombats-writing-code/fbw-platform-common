@@ -50,13 +50,15 @@ _react2['default'].createElement('button',{className:'choice__button',
 onClick:function(){function onClick(){return _this.props.onSelectChoice(choice.id);}return onClick;}(),
 ref:function(){function ref(btn){return _this.choiceButtonRefs.push(btn);}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:49}},
 
-_react2['default'].createElement('div',{className:'choice__row flex-container align-center',__source:{fileName:_jsxFileName,lineNumber:53}},
-_react2['default'].createElement('span',{className:'choice__label',__source:{fileName:_jsxFileName,lineNumber:54}},
+_react2['default'].createElement('div',{
+className:'choice__row flex-container align-center',
+'aria-controls':'submitBtn',__source:{fileName:_jsxFileName,lineNumber:53}},
+_react2['default'].createElement('span',{className:'choice__label',__source:{fileName:_jsxFileName,lineNumber:56}},
 Alphabet[idx],')'),
 
 
-_react2['default'].createElement('div',{className:'choice__text',dangerouslySetInnerHTML:{__html:choice.text},__source:{fileName:_jsxFileName,lineNumber:58}}),
-_react2['default'].createElement('span',{'aria-live':'polite',__source:{fileName:_jsxFileName,lineNumber:59}},
+_react2['default'].createElement('div',{className:'choice__text',dangerouslySetInnerHTML:{__html:choice.text},__source:{fileName:_jsxFileName,lineNumber:60}}),
+_react2['default'].createElement('span',{'aria-live':'polite',__source:{fileName:_jsxFileName,lineNumber:61}},
 respondedChoiceIcon)))));
 
 
@@ -69,7 +71,7 @@ respondedChoiceIcon)))));
 if(!this.props.choices)return null;
 
 return(
-_react2['default'].createElement('ul',{className:'choices','aria-controls':'submitBtn',__source:{fileName:_jsxFileName,lineNumber:72}},
+_react2['default'].createElement('ul',{className:'choices',__source:{fileName:_jsxFileName,lineNumber:74}},
 _.map(this.props.choices,_.partial(this.renderChoice,_,_,this.props.responseId))));
 
 

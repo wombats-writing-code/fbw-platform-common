@@ -50,7 +50,9 @@ class Choices extends Component {
                 onClick={() => this.props.onSelectChoice(choice.id)}
                 ref={(btn) => this.choiceButtonRefs.push(btn)}>
 
-          <div className="choice__row flex-container align-center">
+          <div
+            className="choice__row flex-container align-center"
+            aria-controls="submitBtn">
             <span className="choice__label">
               {Alphabet[idx]}&#x00029;
             </span>
@@ -69,7 +71,7 @@ class Choices extends Component {
     if (!this.props.choices) return null;
 
     return (
-      <ul className="choices" aria-controls="submitBtn">
+      <ul className="choices">
         {_.map(this.props.choices, _.partial(this.renderChoice, _, _, this.props.responseId))}
       </ul>
     )
