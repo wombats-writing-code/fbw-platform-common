@@ -23,12 +23,14 @@ class Choices extends Component {
     if (responseId && responseId === choice.id) {
       if (this.props.isResponseCorrect) {
         respondedChoiceIcon = <img
+          aria-live="polite"
           alt="Correct"
           className="responded-choice-icon"
           src={require('../../../assets/responseType--correct@2x.png')} />
 
       } else {
         respondedChoiceIcon  = <img
+          aria-live="polite"
           alt="Incorrect"
           className="responded-choice-icon"
           src={require('../../../assets/responseType--incorrect@2x.png')} />
