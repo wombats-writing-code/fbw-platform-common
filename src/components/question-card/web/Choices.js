@@ -43,7 +43,6 @@ class Choices extends Component {
 
     return (
       <li
-        aria-live="polite"
         key={choice.id}
         className={isChoiceSelected ? "choice is-selected" : "choice"}
         style={responseId && inactiveStyle}>
@@ -57,8 +56,9 @@ class Choices extends Component {
             </span>
 
             <div className="choice__text" dangerouslySetInnerHTML={{__html: choice.text}}></div>
-
-            {respondedChoiceIcon}
+            <span aria-live="polite">
+              {respondedChoiceIcon}
+            </span>
           </div>
         </button>
       </li>
