@@ -134,7 +134,7 @@ class QuestionCard extends Component {
     // console.log('question', this.props.question)
 
     let solution = (this.props.question.responded && this.state.isExpanded) ?
-                    (<div className="question-card__solution">
+                    (<div className="question-card__solution" ref={(solution) => { this.solution = solution; }}>
                         <p className="bold uppercase">Solution</p>
                         <div className=""
                           dangerouslySetInnerHTML={{__html: this.props.question.text}}>
@@ -153,7 +153,9 @@ class QuestionCard extends Component {
                       isResponseCorrect={this.props.question.responded ? this.props.question.response.isCorrect : null}/>) : null;
 
     return (
-      <div className="question-card clearfix">
+      <div
+        aria-role="group"
+        className="question-card clearfix">
         <QuestionHeader questionTypeIcon={questionTypeIcon}
                         headerText={this.props.outcome ? this.props.outcome.displayName : ''}
                         onShowAnswer={() => this._onShowAnswer(this.props.question)}
@@ -197,6 +199,8 @@ class QuestionCard extends Component {
         responseHistory: this.props.routeQuestions,
         user: this.props.user
       });
+
+      this.solution.focus();
     }
   }
 
