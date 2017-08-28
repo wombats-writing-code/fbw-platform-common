@@ -155,7 +155,7 @@ class QuestionCard extends Component {
 
     return (
       <div
-        aria-role="group"
+        role="group"
         className="question-card clearfix">
         <QuestionHeader questionTypeIcon={questionTypeIcon}
                         headerText={this.props.outcome ? this.props.outcome.displayName : ''}
@@ -191,8 +191,9 @@ class QuestionCard extends Component {
       // we cut out the Target from the response history
 
       // console.log('this.props.routeQuestions', this.props.routeQuestions)
-
-      this.solution.focus();
+      setTimeout(() => {
+        this.solution.focus();
+      }, 1000);
       this.props.onSubmitResponse({
         mission: this.props.mission,
         choice: choice,
