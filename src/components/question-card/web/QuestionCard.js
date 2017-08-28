@@ -65,8 +65,6 @@ class QuestionCard extends Component {
       }
     }
 
-
-
     // console.log('question', this.props.question)
 
     let inProgressIndicator;
@@ -134,7 +132,10 @@ class QuestionCard extends Component {
     // console.log('question', this.props.question)
 
     let solution = (this.props.question.responded && this.state.isExpanded) ?
-                    (<div className="question-card__solution" ref={(solution) => { this.solution = solution; }}>
+                    (<div
+                      className="question-card__solution"
+                      tabIndex={-1}
+                      ref={(sol) => { this.solution = sol; }}>
                         <p className="bold uppercase">Solution</p>
                         <div className=""
                           dangerouslySetInnerHTML={{__html: this.props.question.text}}>
@@ -191,6 +192,7 @@ class QuestionCard extends Component {
 
       // console.log('this.props.routeQuestions', this.props.routeQuestions)
 
+      this.solution.focus();
       this.props.onSubmitResponse({
         mission: this.props.mission,
         choice: choice,
@@ -199,8 +201,6 @@ class QuestionCard extends Component {
         responseHistory: this.props.routeQuestions,
         user: this.props.user
       });
-
-      this.solution.focus();
     }
   }
 
