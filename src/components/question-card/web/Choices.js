@@ -23,14 +23,12 @@ class Choices extends Component {
     if (responseId && responseId === choice.id) {
       if (this.props.isResponseCorrect) {
         respondedChoiceIcon = <img
-          aria-live="polite"
           alt="Correct"
           className="responded-choice-icon"
           src={require('../../../assets/responseType--correct@2x.png')} />
 
       } else {
         respondedChoiceIcon  = <img
-          aria-live="polite"
           alt="Incorrect"
           className="responded-choice-icon"
           src={require('../../../assets/responseType--incorrect@2x.png')} />
@@ -43,7 +41,7 @@ class Choices extends Component {
     let inactiveStyle = {pointerEvents: 'none', cursor: 'default'}
 
     return (
-      <li key={choice.id} className={isChoiceSelected ? "choice is-selected" : "choice"}
+      <li aria-live="polite" key={choice.id} className={isChoiceSelected ? "choice is-selected" : "choice"}
           style={responseId && inactiveStyle}>
         <button className="choice__button"
                 onClick={() => this.props.onSelectChoice(choice.id)}
