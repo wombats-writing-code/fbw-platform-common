@@ -91,8 +91,13 @@ a.breadcrumb__link:hover {
   color: #fff;
 }
 
-.logout-button,
 .help-button {
+  font-size: 1rem;  // 16pt for accessibility
+  color: #eee;
+  margin-right: 1rem;
+}
+
+.logout-button {
   padding: .5em 1em;
   font-size: 1rem;  // 16pt for accessibility
   color: #eee;
@@ -103,8 +108,4 @@ a.breadcrumb__link:hover {
 .logout-button:hover,
 .help-button:hover {
   opacity: .8;
-}
-
-.help-button {
-  margin-right: 1rem;
 }
