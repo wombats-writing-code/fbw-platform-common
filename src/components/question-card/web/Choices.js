@@ -21,6 +21,7 @@ class Choices extends Component {
     let respondedChoiceIcon;
     // we style it a bit differently if it's a responded-to choice
     if (responseId && responseId === choice.id) {
+      const imageId = `response-image-${choice.id}`;
       if (this.props.isResponseCorrect) {
         respondedChoiceIcon = <img
           alt="Correct"
@@ -41,8 +42,11 @@ class Choices extends Component {
     let inactiveStyle = {pointerEvents: 'none', cursor: 'default'}
 
     return (
-      <li aria-live="polite" key={choice.id} className={isChoiceSelected ? "choice is-selected" : "choice"}
-          style={responseId && inactiveStyle}>
+      <li
+        aria-live="polite"
+        key={choice.id}
+        className={isChoiceSelected ? "choice is-selected" : "choice"}
+        style={responseId && inactiveStyle}>
         <button className="choice__button"
                 onClick={() => this.props.onSelectChoice(choice.id)}
                 ref={(btn) => this.choiceButtonRefs.push(btn)}>
@@ -65,7 +69,7 @@ class Choices extends Component {
     if (!this.props.choices) return null;
 
     return (
-      <ul className="choices">
+      <ul className="choices" aria-controls="submitBtn">
         {_.map(this.props.choices, _.partial(this.renderChoice, _, _, this.props.responseId))}
       </ul>
     )

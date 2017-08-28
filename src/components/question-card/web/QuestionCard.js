@@ -57,6 +57,7 @@ class QuestionCard extends Component {
 
       } else if (!this.props.question.responded && !this.props.isInProgressSubmitChoice) {
         submitButton = (<button onClick={() => this._onSubmitChoice(this.state.selectedChoiceId, this.props.question)}
+                                id="submitBtn"
                                 className="submit-button"
                                 ref={(btn) => this.activeSubmitButton = btn}>
               {submitButtonText}
