@@ -16,6 +16,10 @@ function Choices(){_classCallCheck(this,Choices);var _this=_possibleConstructorR
 
 
 
+
+
+
+
 renderChoice=function(choice,idx,responseId){
 
 var respondedChoiceIcon=void 0;
@@ -26,13 +30,13 @@ if(_this.props.isResponseCorrect){
 respondedChoiceIcon=_react2['default'].createElement('img',{
 alt:'Correct',
 className:'responded-choice-icon',
-src:require('../../../assets/responseType--correct@2x.png'),__source:{fileName:_jsxFileName,lineNumber:26}});
+src:require('../../../assets/responseType--correct@2x.png'),__source:{fileName:_jsxFileName,lineNumber:30}});
 
 }else{
 respondedChoiceIcon=_react2['default'].createElement('img',{
 alt:'Incorrect',
 className:'responded-choice-icon',
-src:require('../../../assets/responseType--incorrect@2x.png'),__source:{fileName:_jsxFileName,lineNumber:32}});
+src:require('../../../assets/responseType--incorrect@2x.png'),__source:{fileName:_jsxFileName,lineNumber:36}});
 }
 }
 
@@ -45,33 +49,33 @@ return(
 _react2['default'].createElement('li',{
 key:choice.id,
 className:isChoiceSelected?"choice is-selected":"choice",
-style:responseId&&inactiveStyle,__source:{fileName:_jsxFileName,lineNumber:45}},
+style:responseId&&inactiveStyle,__source:{fileName:_jsxFileName,lineNumber:49}},
 _react2['default'].createElement('button',{className:'choice__button',
 onClick:function(){function onClick(){return _this.props.onSelectChoice(choice.id);}return onClick;}(),
-ref:function(){function ref(btn){return _this.choiceButtonRefs.push(btn);}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:49}},
+ref:function(){function ref(btn){return _this.choiceButtonRefs.push(btn);}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:53}},
 
 _react2['default'].createElement('div',{
 className:'choice__row flex-container align-center',
-'aria-controls':'submitBtn',__source:{fileName:_jsxFileName,lineNumber:53}},
-_react2['default'].createElement('span',{className:'choice__label',__source:{fileName:_jsxFileName,lineNumber:56}},
+'aria-controls':'submitBtn',__source:{fileName:_jsxFileName,lineNumber:57}},
+_react2['default'].createElement('span',{className:'choice__label',__source:{fileName:_jsxFileName,lineNumber:60}},
 Alphabet[idx],')'),
 
 
-_react2['default'].createElement('div',{className:'choice__text',dangerouslySetInnerHTML:{__html:choice.text},__source:{fileName:_jsxFileName,lineNumber:60}}),
-_react2['default'].createElement('span',{'aria-live':'polite',__source:{fileName:_jsxFileName,lineNumber:61}},
+_react2['default'].createElement('div',{className:'choice__text',dangerouslySetInnerHTML:{__html:choice.text},__source:{fileName:_jsxFileName,lineNumber:64}}),
+_react2['default'].createElement('span',{'aria-live':'polite',__source:{fileName:_jsxFileName,lineNumber:65}},
 respondedChoiceIcon)))));
 
 
 
 
 
-};_this.choiceButtonRefs=[];return _this;}_createClass(Choices,[{key:'componentDidMount',value:function(){function componentDidMount(){if(this.choiceButtonRefs.length>0){this.choiceButtonRefs[0].focus();}}return componentDidMount;}()},{key:'render',value:function(){function render()
+};_this.choiceButtonRefs=[];return _this;}_createClass(Choices,[{key:'componentDidMount',value:function(){function componentDidMount(){}return componentDidMount;}()},{key:'render',value:function(){function render()
 
 {
 if(!this.props.choices)return null;
 
 return(
-_react2['default'].createElement('ul',{className:'choices',__source:{fileName:_jsxFileName,lineNumber:74}},
+_react2['default'].createElement('ul',{className:'choices',__source:{fileName:_jsxFileName,lineNumber:78}},
 _.map(this.props.choices,_.partial(this.renderChoice,_,_,this.props.responseId))));
 
 

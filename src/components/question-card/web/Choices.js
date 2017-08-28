@@ -11,9 +11,13 @@ class Choices extends Component {
   }
 
   componentDidMount() {
-    if (this.choiceButtonRefs.length > 0) {
-      this.choiceButtonRefs[0].focus()
-    }
+    // This is super-annoying for keyboard navigation...removing it
+    // With this present, basically skips over the entire solution
+    //   block, etc., but that is content we hope the screenreader
+    //   actually reads.
+    // if (this.choiceButtonRefs.length > 0) {
+    //   this.choiceButtonRefs[0].focus()
+    // }
   }
 
   renderChoice = (choice, idx, responseId) => {
