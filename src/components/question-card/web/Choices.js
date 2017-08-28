@@ -55,15 +55,14 @@ class Choices extends Component {
                 ref={(btn) => this.choiceButtonRefs.push(btn)}>
 
           <div
+            aria-live="polite"
             className="choice__row flex-container align-center">
             <span className="choice__label">
               {Alphabet[idx]}&#x00029;
             </span>
 
             <div className="choice__text" dangerouslySetInnerHTML={{__html: choice.text}}></div>
-            <span aria-live="polite">
-              {respondedChoiceIcon}
-            </span>
+            {respondedChoiceIcon}
           </div>
         </button>
       </li>
