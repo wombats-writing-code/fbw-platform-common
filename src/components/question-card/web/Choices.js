@@ -47,8 +47,7 @@ class Choices extends Component {
 
     return (
       <li
-        aria-live="rude"
-        role="region"
+        aria-live="polite"
         key={choice.id}
         className={isChoiceSelected ? "choice is-selected" : "choice"}
         style={responseId && inactiveStyle}>
