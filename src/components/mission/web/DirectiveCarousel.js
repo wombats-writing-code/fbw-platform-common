@@ -10,25 +10,26 @@ class DirectiveCarousel extends Component {
   _renderThumb = (directive, idx) => {
     // let outcome = _.find(this.props.outcomes, {id: directive.learningObjectiveId})
 
-    let indicatorText, checkIcon;
+    let indicatorText;
+    let indicatorStyle = 'carousel-thumb__icon';
 
     if (this.props.directiveIndicators) {
       let indicator = this.props.directiveIndicators[idx];
 
       // if the goal is completed, show a green or brown check
       if (indicator.isComplete && indicator.isMastered) {
-        checkIcon = <img className="carousel-thumb__check" src={require('../../../assets/goal--mastered.png')}/>
+        indicatorText = 'Achieved';
+        indicatorStyle += ' carousel-thumb__achieved';
+        // checkIcon = <img className="carousel-thumb__check" src={require('../../../assets/goal--mastered.png')}/>
 
       } else if (indicator.isComplete && !indicator.isMastered) {
-        checkIcon = <img className="carousel-thumb__check" src={require('../../../assets/goal--tried.png')}/>
+        indicatorText = 'Tried';
+        indicatorStyle += ' carousel-thumb__tried';
+        // checkIcon = <img className="carousel-thumb__check" src={require('../../../assets/goal--tried.png')}/>
 
       // if the goal isn't completed, show how many left
       } else {
-        indicatorText = (
-          <span className="carousel-thumb__icon">
-            {indicator ? `${indicator.numerator || '--'} of ${indicator.denominator}` : ''}
-          </span>
-        )
+        indicatorText = indicator ? `${indicator.numerator || '--'} of ${indicator.denominator}` : ''
       }
     }
 
@@ -42,8 +43,9 @@ class DirectiveCarousel extends Component {
         <button className="carousel-thumb__button" onClick={() => this.props.onSelectDirective(idx)}
                 aria-label={`Learning Outcome: ${displayName}; ${indicatorText}`}>
           <div className="flex-container align-bottom space-between prewrap">
-            {indicatorText}
-            {checkIcon}
+            <span className={indicatorStyle}>
+              {indicatorText}
+            </span>
             <p className="carousel-thumb__text">{displayName}</p>
           </div>
         </button>
