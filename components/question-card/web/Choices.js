@@ -56,12 +56,13 @@ ref:function(){function ref(btn){return _this.choiceButtonRefs.push(btn);}return
 
 _react2['default'].createElement('div',{
 'aria-live':'polite',
+role:'region',
 className:'choice__row flex-container align-center',__source:{fileName:_jsxFileName,lineNumber:57}},
-_react2['default'].createElement('span',{className:'choice__label',__source:{fileName:_jsxFileName,lineNumber:60}},
+_react2['default'].createElement('span',{className:'choice__label',__source:{fileName:_jsxFileName,lineNumber:61}},
 Alphabet[idx],')'),
 
 
-_react2['default'].createElement('div',{className:'choice__text',dangerouslySetInnerHTML:{__html:choice.text},__source:{fileName:_jsxFileName,lineNumber:64}}),
+_react2['default'].createElement('div',{className:'choice__text',dangerouslySetInnerHTML:{__html:choice.text},__source:{fileName:_jsxFileName,lineNumber:65}}),
 respondedChoiceIcon))));
 
 
@@ -75,7 +76,7 @@ if(!this.props.choices)return null;
 return(
 _react2['default'].createElement('ul',{
 className:'choices',
-'aria-controls':'submitBtn',__source:{fileName:_jsxFileName,lineNumber:76}},
+'aria-controls':'submitBtn',__source:{fileName:_jsxFileName,lineNumber:77}},
 _.map(this.props.choices,_.partial(this.renderChoice,_,_,this.props.responseId))));
 
 

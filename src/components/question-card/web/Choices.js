@@ -56,6 +56,7 @@ class Choices extends Component {
 
           <div
             aria-live="polite"
+            role="region"
             className="choice__row flex-container align-center">
             <span className="choice__label">
               {Alphabet[idx]}&#x00029;
