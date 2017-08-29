@@ -83,13 +83,27 @@ class Questions extends Component {
 
     let isSubmitEnabled = checkMissionStatus(this.props.mission) === 'over' || (this.props.isSubmitEnabled === false) ? false : true;
 
-    return (
-      <li key={`${questionItem.id}-${idx}`} className="questions-list__item">
-        <div className="row">
+    let questionCard = (
+      <div className="row">
+        <div className="medium-9 medium-centered large-8 large-centered columns">
+          <QuestionCard question={questionItem} outcome={outcome} isExpanded={isExpanded} isSubmitEnabled={isSubmitEnabled}/>
+        </div>
+      </div>
+    )
+
+    if (questionItem === _.last(this.props.questions)) {
+      questionCard = (
+        <div className="row" id="main-content">
           <div className="medium-9 medium-centered large-8 large-centered columns">
             <QuestionCard question={questionItem} outcome={outcome} isExpanded={isExpanded} isSubmitEnabled={isSubmitEnabled}/>
           </div>
         </div>
+      )
+    }
+
+    return (
+      <li key={`${questionItem.id}-${idx}`} className="questions-list__item">
+        {questionCard}
 
         {nextCue}
       </li>
@@ -123,7 +137,7 @@ class Questions extends Component {
     let infiniteTimeline = (<div></div>);
 
     return (
-      <div className="questions" id="main-content">
+      <div className="questions">
         {infiniteTimeline}
         <ul className="questions-list">
           {_.map(this.props.questions, this.renderListRow)}
