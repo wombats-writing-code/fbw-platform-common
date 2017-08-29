@@ -23,25 +23,31 @@ class QuestionHeader extends Component {
 
   render() {
     let showMoreIcon, toggleButtonLabel = '';
+    let ariaExpanded = false;
     if (this.props.isExpandable && !this.props.isExpanded) {
       showMoreIcon = <img
         aria-hidden
         className="expand-question-icon"
         src={require('../../../assets/show-more--down@2x.png')}/>
-      toggleButtonLabel = 'Expand question';
+      toggleButtonLabel = 'Show choices';
 
     } else if (this.props.isExpandable && this.props.isExpanded) {
       showMoreIcon = <img
         aria-hidden
         className="expand-question-icon"
         src={require('../../../assets/show-more--up@2x.png')}/>
-      toggleButtonLabel = 'Hide question';
+      toggleButtonLabel = 'Hide choices';
+      ariaExpanded = true;
     }
 
     let toggleButton;
     if (this.props.isExpandable) {
       toggleButton = (
-        <button className="expand-question-button" onClick={this.props.onToggleExpand}>
+        <button
+          aria-expanded={ariaExpanded}
+          aria-label="Toggle choices and solution"
+          className="expand-question-button"
+          onClick={this.props.onToggleExpand}>
           {showMoreIcon}
           <p className="question-header-text toggle-question-label">{toggleButtonLabel}</p>
         </button>
