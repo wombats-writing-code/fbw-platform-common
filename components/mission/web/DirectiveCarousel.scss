@@ -59,7 +59,8 @@
   margin-bottom: 0;
 }
 
-.carousel-thumb__icon .carousel-thumb__tried{
+.carousel-thumb__icon.carousel-thumb__tried,
+.carousel-thumb__icon.carousel-thumb__achieved{
   text-align: center;
   width: 5rem;
   color: white;
