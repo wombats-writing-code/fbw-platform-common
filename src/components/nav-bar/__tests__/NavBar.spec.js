@@ -78,7 +78,7 @@ describe('NavBar', () => {
     const component = connectedComponent.find(NavBar)
 
     component.find('.breadcrumb').length.should.eql(1);  // Home
-    component.find('a').first().prop('aria-label').should.eql('Home');
+    component.find('a').at(1).prop('aria-label').should.eql('Home');
     component.find('img').first().prop('alt').should.eql('');
   });
 
@@ -92,6 +92,11 @@ describe('NavBar', () => {
     const component = connectedComponent.find(NavBar)
 
     component.find('.logout-button').length.should.eql(1);
+  });
+
+  it('should include a (hidden) skip link', () => {
+    const component = connectedComponent.find(NavBar)
+    component.find('#skip-link').length.should.eql(1);
   });
 
   after(() => {

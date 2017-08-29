@@ -123,7 +123,7 @@ class Questions extends Component {
     let infiniteTimeline = (<div></div>);
 
     return (
-      <div className="questions">
+      <div className="questions" id="main-content">
         {infiniteTimeline}
         <ul className="questions-list">
           {_.map(this.props.questions, this.renderListRow)}

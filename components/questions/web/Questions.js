@@ -123,7 +123,7 @@ height:this.props.questionListHeight};
 var infiniteTimeline=_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:123}});
 
 return(
-_react2['default'].createElement('div',{className:'questions',__source:{fileName:_jsxFileName,lineNumber:126}},
+_react2['default'].createElement('div',{className:'questions',id:'main-content',__source:{fileName:_jsxFileName,lineNumber:126}},
 infiniteTimeline,
 _react2['default'].createElement('ul',{className:'questions-list',__source:{fileName:_jsxFileName,lineNumber:128}},
 _lodash2['default'].map(this.props.questions,this.renderListRow)),

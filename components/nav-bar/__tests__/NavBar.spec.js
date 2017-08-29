@@ -78,7 +78,7 @@ it('should display breadcrumbs',function(){
 var component=connectedComponent.find(_web2['default']);
 
 component.find('.breadcrumb').length.should.eql(1);
-component.find('a').first().prop('aria-label').should.eql('Home');
+component.find('a').at(1).prop('aria-label').should.eql('Home');
 component.find('img').first().prop('alt').should.eql('');
 });
 
@@ -92,6 +92,11 @@ it('should display logout button',function(){
 var component=connectedComponent.find(_web2['default']);
 
 component.find('.logout-button').length.should.eql(1);
+});
+
+it('should include a (hidden) skip link',function(){
+var component=connectedComponent.find(_web2['default']);
+component.find('#skip-link').length.should.eql(1);
 });
 
 after(function(){

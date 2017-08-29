@@ -109,3 +109,24 @@ a.breadcrumb__link:hover {
 .help-button:hover {
   opacity: .8;
 }
+
+.element-invisible {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  word-wrap: normal;
+}
+
+#skip-link a,
+#skip-link a:link,
+#skip-link a:visited {
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  display: block;
+  line-height: 2;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+}
