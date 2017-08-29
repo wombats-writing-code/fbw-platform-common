@@ -59,6 +59,23 @@
   margin-bottom: 0;
 }
 
+.carousel-thumb__icon .carousel-thumb__tried{
+  text-align: center;
+  width: 5rem;
+  color: white;
+  border-radius: 5px;
+  padding: 0.2rem;
+  font-size: 0.875rem;
+}
+
+.carousel-thumb__tried {
+  background: hsla(22,74%,43%,1);
+}
+
+.carousel-thumb__achieved {
+  background: hsla(112,35%,38%,1);
+}
+
 .carousel-thumb__check {
   position: absolute;
   top: .5em;
