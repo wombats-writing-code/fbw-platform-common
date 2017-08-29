@@ -27,9 +27,10 @@ button {
   padding-right: 1em;
 }
 
-button:focus {
-  outline: none;
-}
+// let's keep a focus ring for accessibility...
+// button:focus {
+//   outline: none;
+// }
 
 button:disabled, button:disabled:hover {
   cursor: default;
