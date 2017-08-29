@@ -47,7 +47,6 @@ class Choices extends Component {
 
     return (
       <li
-        aria-live="polite"
         key={choice.id}
         className={isChoiceSelected ? "choice is-selected" : "choice"}
         style={responseId && inactiveStyle}>
@@ -56,6 +55,7 @@ class Choices extends Component {
                 ref={(btn) => this.choiceButtonRefs.push(btn)}>
 
           <div
+            aria-live="polite"
             className="choice__row flex-container align-center">
             <span className="choice__label">
               {Alphabet[idx]}&#x00029;
