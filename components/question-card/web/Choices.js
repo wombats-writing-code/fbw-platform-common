@@ -47,17 +47,17 @@ var inactiveStyle={pointerEvents:'none',cursor:'default'};
 
 return(
 _react2['default'].createElement('li',{
+'aria-live':'rude',
+role:'region',
 key:choice.id,
 className:isChoiceSelected?"choice is-selected":"choice",
 style:responseId&&inactiveStyle,__source:{fileName:_jsxFileName,lineNumber:49}},
 _react2['default'].createElement('button',{className:'choice__button',
 onClick:function(){function onClick(){return _this.props.onSelectChoice(choice.id);}return onClick;}(),
-ref:function(){function ref(btn){return _this.choiceButtonRefs.push(btn);}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:53}},
+ref:function(){function ref(btn){return _this.choiceButtonRefs.push(btn);}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:55}},
 
 _react2['default'].createElement('div',{
-'aria-live':'rude',
-role:'region',
-className:'choice__row flex-container align-center',__source:{fileName:_jsxFileName,lineNumber:57}},
+className:'choice__row flex-container align-center',__source:{fileName:_jsxFileName,lineNumber:59}},
 _react2['default'].createElement('span',{className:'choice__label',__source:{fileName:_jsxFileName,lineNumber:61}},
 Alphabet[idx],')'),
 
