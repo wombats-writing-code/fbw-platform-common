@@ -55,7 +55,6 @@ class Choices extends Component {
                 ref={(btn) => this.choiceButtonRefs.push(btn)}>
 
           <div
-            aria-live="polite"
             className="choice__row flex-container align-center">
             <span className="choice__label">
               {Alphabet[idx]}&#x00029;
@@ -74,8 +73,7 @@ class Choices extends Component {
 
     return (
       <ul
-        className="choices"
-        aria-controls="submitBtn">
+        className="choices">
         {_.map(this.props.choices, _.partial(this.renderChoice, _, _, this.props.responseId))}
       </ul>
     )
