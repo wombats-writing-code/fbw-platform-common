@@ -89,7 +89,7 @@
 
 .carousel-thumb.is-active {
   cursor: default;
-  // border-bottom: 4px solid $app-blue-dark;
+  border-bottom: 4px solid $app-blue-dark;  // adding this back for accessibility
   background: #fff;
   box-shadow: 0 0 1px 1px rgba(#000, .4);
 }
