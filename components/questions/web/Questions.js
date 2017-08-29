@@ -93,7 +93,7 @@ _react2['default'].createElement(QuestionCard,{question:questionItem,outcome:out
 
 if(questionItem===_lodash2['default'].last(_this.props.questions)){
 questionCard=
-_react2['default'].createElement('div',{className:'row',id:'main-content',__source:{fileName:_jsxFileName,lineNumber:96}},
+_react2['default'].createElement('div',{className:'row',id:'main-content',tabIndex:-1,__source:{fileName:_jsxFileName,lineNumber:96}},
 _react2['default'].createElement('div',{className:'medium-9 medium-centered large-8 large-centered columns',__source:{fileName:_jsxFileName,lineNumber:97}},
 _react2['default'].createElement(QuestionCard,{question:questionItem,outcome:outcome,isExpanded:isExpanded,isSubmitEnabled:isSubmitEnabled,__source:{fileName:_jsxFileName,lineNumber:98}})));
 

@@ -20,7 +20,10 @@ class NavBar extends Component {
     return (
       <div className="nav-bar flex-container align-center space-between wrap">
         <div id="skip-link">
-          <a href="#main-content" className="element-invisible element-focusable">Skip to main content</a>
+          <a
+            href="#main-content"
+            className="element-invisible element-focusable"
+            onClick={this._skipToMain}>Skip to main content</a>
         </div>
         <a href="/" aria-label="Home"><img
           aria-hidden
@@ -128,6 +131,14 @@ class NavBar extends Component {
     this.props.logout();
   }
 
+  _skipToMain = () => {
+    // need to shift focus to the main content...
+    // kind of hacky, as stated here:
+    //   https://stackoverflow.com/questions/37956513/react-router-reset-focus-on-route-change-accessibility#37957318
+    // But don't feel like passing refs through so many other
+    //   components...
+    document.getElementById('main-content').focus();
+  }
 }
 
 
