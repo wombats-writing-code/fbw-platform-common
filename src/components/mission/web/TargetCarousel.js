@@ -34,6 +34,7 @@ class TargetCarousel extends Component {
     // console.log('idx', idx)
 
     let status = targetStatus(target, targetRouteQuestions);
+    let statusText = 'Unattempted';
     let image;
     switch(status) {
       case 'COMPLETE':
@@ -41,18 +42,21 @@ class TargetCarousel extends Component {
           alt="Correct goal question"
           className="target-icon"
           src={require('../../../assets/target-question--correct@2x.png')}/>;
+        statusText = 'Correct';
         break;
       case 'FAIL':
         image = <img
           alt="Incorrect goal question"
           className="target-icon"
           src={require('../../../assets/target-question--incorrect@2x.png')}/>;
+        statusText = 'Incorrect goal question, route incomplete';
         break;
       case 'NAVIGATED':
         image = <img
           alt="Navigated goal question route"
           className="target-icon"
           src={require('../../../assets/target-question--navigated@2x.png')}/>;
+        statusText = 'Incorrect goal question, route complete';
         break;
       case 'PRISTINE':
         image = <img
@@ -79,7 +83,7 @@ class TargetCarousel extends Component {
       <li key={target.id} className={isActive ? "carousel-thumb is-active" : "carousel-thumb"}
           onClick={() => this.props.onSelectTarget(target)}>
         <button className="carousel-thumb__button" ref={(btn) => this.buttonRefs.push(btn)}
-          aria-label={`Goal Question ${targetNumber}`}>
+          aria-label={`Goal Question ${targetNumber}; ${statusText}`}>
           <div className="flex-container align-center">
             {image}
             <p className="carousel-thumb__text carousel-thumb__text--target">#{target.referenceNumber}</p>
