@@ -55,7 +55,7 @@ onClick:function(){function onClick(){return _this.props.onSelectChoice(choice.i
 ref:function(){function ref(btn){return _this.choiceButtonRefs.push(btn);}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:53}},
 
 _react2['default'].createElement('div',{
-'aria-live':'polite',
+'aria-live':'rude',
 role:'region',
 className:'choice__row flex-container align-center',__source:{fileName:_jsxFileName,lineNumber:57}},
 _react2['default'].createElement('span',{className:'choice__label',__source:{fileName:_jsxFileName,lineNumber:61}},

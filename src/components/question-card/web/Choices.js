@@ -55,7 +55,7 @@ class Choices extends Component {
                 ref={(btn) => this.choiceButtonRefs.push(btn)}>
 
           <div
-            aria-live="polite"
+            aria-live="rude"
             role="region"
             className="choice__row flex-container align-center">
             <span className="choice__label">
