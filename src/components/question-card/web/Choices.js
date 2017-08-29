@@ -51,6 +51,7 @@ class Choices extends Component {
         className={isChoiceSelected ? "choice is-selected" : "choice"}
         style={responseId && inactiveStyle}>
         <button className="choice__button"
+                disabled={!_.isNull(this.props.responseId)}
                 onClick={() => this.props.responseId ? null : this.props.onSelectChoice(choice.id)}
                 ref={(btn) => this.choiceButtonRefs.push(btn)}>
 
