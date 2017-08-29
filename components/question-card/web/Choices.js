@@ -51,7 +51,7 @@ key:choice.id,
 className:isChoiceSelected?"choice is-selected":"choice",
 style:responseId&&inactiveStyle,__source:{fileName:_jsxFileName,lineNumber:49}},
 _react2['default'].createElement('button',{className:'choice__button',
-onClick:function(){function onClick(){return _this.props.onSelectChoice(choice.id);}return onClick;}(),
+onClick:function(){function onClick(){return _this.props.responseId?null:_this.props.onSelectChoice(choice.id);}return onClick;}(),
 ref:function(){function ref(btn){return _this.choiceButtonRefs.push(btn);}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:53}},
 
 _react2['default'].createElement('div',{
