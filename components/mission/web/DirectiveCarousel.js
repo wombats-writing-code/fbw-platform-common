@@ -40,7 +40,7 @@ var thumb=
 _react2['default'].createElement('div',{key:idx,
 className:isActive?"carousel-thumb is-active carousel-thumb--directive":"carousel-thumb carousel-thumb--directive",__source:{fileName:_jsxFileName,lineNumber:40}},
 _react2['default'].createElement('button',{className:'carousel-thumb__button',onClick:function(){function onClick(){return _this.props.onSelectDirective(idx);}return onClick;}(),
-'aria-label':'Learning Outcome: '+displayName,__source:{fileName:_jsxFileName,lineNumber:42}},
+'aria-label':'Learning Outcome: '+displayName+'; '+indicatorText,__source:{fileName:_jsxFileName,lineNumber:42}},
 _react2['default'].createElement('div',{className:'flex-container align-bottom space-between prewrap',__source:{fileName:_jsxFileName,lineNumber:44}},
 indicatorText,
 checkIcon,

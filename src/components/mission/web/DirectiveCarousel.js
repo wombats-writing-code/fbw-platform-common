@@ -40,7 +40,7 @@ class DirectiveCarousel extends Component {
       <div key={idx}
           className={isActive ? "carousel-thumb is-active carousel-thumb--directive" : "carousel-thumb carousel-thumb--directive"}>
         <button className="carousel-thumb__button" onClick={() => this.props.onSelectDirective(idx)}
-                aria-label={`Learning Outcome: ${displayName}`}>
+                aria-label={`Learning Outcome: ${displayName}; ${indicatorText}`}>
           <div className="flex-container align-bottom space-between prewrap">
             {indicatorText}
             {checkIcon}
