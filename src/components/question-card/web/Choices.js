@@ -43,8 +43,10 @@ class Choices extends Component {
     let isChoiceSelected = responseId && responseId === choice.id ||
                             this.props.selectedChoiceId === choice.id;
 
+    const labelClasses = isChoiceSelected ? 'choice choice__button is-selected' : 'choice choice__button';
+
     return (
-      <label className="choice choice__button"
+      <label className={labelClasses}
         key={choice.id}>
         <input
           type="radio"

@@ -43,22 +43,24 @@ src:require('../../../assets/responseType--incorrect@2x.png'),__source:{fileName
 var isChoiceSelected=responseId&&responseId===choice.id||
 _this.props.selectedChoiceId===choice.id;
 
+var labelClasses=isChoiceSelected?'choice choice__button is-selected':'choice choice__button';
+
 return(
-_react2['default'].createElement('label',{className:'choice choice__button',
-key:choice.id,__source:{fileName:_jsxFileName,lineNumber:47}},
+_react2['default'].createElement('label',{className:labelClasses,
+key:choice.id,__source:{fileName:_jsxFileName,lineNumber:49}},
 _react2['default'].createElement('input',{
 type:'radio',
 value:choice.id,
 checked:isChoiceSelected,
 disabled:!_.isNull(_this.props.responseId),
-onChange:function(){function onChange(){return _this.props.responseId?null:_this.props.onSelectChoice(choice.id);}return onChange;}(),__source:{fileName:_jsxFileName,lineNumber:49}}),
+onChange:function(){function onChange(){return _this.props.responseId?null:_this.props.onSelectChoice(choice.id);}return onChange;}(),__source:{fileName:_jsxFileName,lineNumber:51}}),
 _react2['default'].createElement('div',{
-className:'choice__row flex-container align-center',__source:{fileName:_jsxFileName,lineNumber:55}},
-_react2['default'].createElement('span',{className:'choice__label',__source:{fileName:_jsxFileName,lineNumber:57}},
+className:'choice__row flex-container align-center',__source:{fileName:_jsxFileName,lineNumber:57}},
+_react2['default'].createElement('span',{className:'choice__label',__source:{fileName:_jsxFileName,lineNumber:59}},
 Alphabet[idx],')'),
 
 
-_react2['default'].createElement('div',{className:'choice__text',dangerouslySetInnerHTML:{__html:choice.text},__source:{fileName:_jsxFileName,lineNumber:61}}),
+_react2['default'].createElement('div',{className:'choice__text',dangerouslySetInnerHTML:{__html:choice.text},__source:{fileName:_jsxFileName,lineNumber:63}}),
 respondedChoiceIcon)));
 
 
@@ -70,7 +72,7 @@ if(!this.props.choices)return null;
 
 return(
 _react2['default'].createElement('ul',{
-className:'choices',__source:{fileName:_jsxFileName,lineNumber:72}},
+className:'choices',__source:{fileName:_jsxFileName,lineNumber:74}},
 _.map(this.props.choices,_.partial(this.renderChoice,_,_,this.props.responseId))));
 
 

@@ -18,8 +18,8 @@
 
 .choice.is-selected {
   font-weight: 600;
-  background: #f8f8f8;
-  border-left-color: #2C3E50;
+  background: hsla(0,0%,89%,1);
+  // border-left-color: #2C3E50;
 }
 
 .choice.is-inactive {
@@ -41,7 +41,7 @@
 
 .choice__button input[type="radio"] {
   align-self: flex-start;
-  margin: 0.5rem 0.5rem 0 0;
+  margin: 0.6rem 0.5rem 0 0;
 }
 
 .choice__button:focus {
