@@ -156,7 +156,6 @@ class QuestionCard extends Component {
 
     return (
       <div
-        role="group"
         className="question-card clearfix">
         <QuestionHeader questionTypeIcon={questionTypeIcon}
                         headerText={this.props.outcome ? this.props.outcome.displayName : ''}
