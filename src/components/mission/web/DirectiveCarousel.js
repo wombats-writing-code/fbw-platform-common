@@ -81,7 +81,7 @@ class DirectiveCarousel extends Component {
     }
 
     return (
-      <div className="">
+      <div id="directive-carousel" className="">
         {directivesCarousel}
       </div>
 

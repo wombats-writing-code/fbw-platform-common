@@ -81,7 +81,7 @@ _lodash2['default'].map(this.props.directives,this._renderThumb)));
 }
 
 return(
-_react2['default'].createElement('div',{className:'',__source:{fileName:_jsxFileName,lineNumber:84}},
+_react2['default'].createElement('div',{id:'directive-carousel',className:'',__source:{fileName:_jsxFileName,lineNumber:84}},
 directivesCarousel));
 
 
