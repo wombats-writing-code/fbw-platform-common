@@ -16,6 +16,7 @@ var mission=ownProps.mission||state.mission.currentMission;
 var section=mission?mission.questions[state.mission.currentDirectiveIndex]:null;
 
 return{
+currentPath:state.location.pathname,
 mission:mission,
 isLastTarget:mission?(0,_mission.isLastTargetInRoute)(state.mission.currentTarget,section):null,
 currentTarget:state.mission.currentTarget,

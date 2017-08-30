@@ -16,6 +16,7 @@ const mapStateToProps = (state, ownProps) => {
   let section = mission ? mission.questions[state.mission.currentDirectiveIndex] : null;
 
   return {
+    currentPath: state.location.pathname,
     mission,
     isLastTarget: mission ? isLastTargetInRoute(state.mission.currentTarget, section) : null,
     currentTarget: state.mission.currentTarget,

@@ -65,6 +65,7 @@ response:questionItem.response,
 outcome:outcome,
 nextQuestion:nextQuestion,
 nextOutcome:nextOutcome,
+currentPath:_this.props.currentPath,
 onClickTryNextTarget:function(){function onClickTryNextTarget(){return _this.props.onClickTryNextTarget(questionItem,_this.props.mission);}return onClickTryNextTarget;}(),__source:{fileName:_jsxFileName,lineNumber:61}});
 
 
@@ -84,25 +85,25 @@ isExpanded=true;
 var isSubmitEnabled=(0,_time.checkMissionStatus)(_this.props.mission)==='over'||_this.props.isSubmitEnabled===false?false:true;
 
 var questionCard=
-_react2['default'].createElement('div',{className:'row',__source:{fileName:_jsxFileName,lineNumber:87}},
-_react2['default'].createElement('div',{className:'medium-9 medium-centered large-8 large-centered columns',__source:{fileName:_jsxFileName,lineNumber:88}},
-_react2['default'].createElement(QuestionCard,{question:questionItem,outcome:outcome,isExpanded:isExpanded,isSubmitEnabled:isSubmitEnabled,__source:{fileName:_jsxFileName,lineNumber:89}})));
+_react2['default'].createElement('div',{className:'row',__source:{fileName:_jsxFileName,lineNumber:88}},
+_react2['default'].createElement('div',{className:'medium-9 medium-centered large-8 large-centered columns',__source:{fileName:_jsxFileName,lineNumber:89}},
+_react2['default'].createElement(QuestionCard,{question:questionItem,outcome:outcome,isExpanded:isExpanded,isSubmitEnabled:isSubmitEnabled,__source:{fileName:_jsxFileName,lineNumber:90}})));
 
 
 
 
 if(questionItem===_lodash2['default'].last(_this.props.questions)){
 questionCard=
-_react2['default'].createElement('div',{className:'row',id:'main-content',tabIndex:-1,__source:{fileName:_jsxFileName,lineNumber:96}},
-_react2['default'].createElement('div',{className:'medium-9 medium-centered large-8 large-centered columns',__source:{fileName:_jsxFileName,lineNumber:97}},
-_react2['default'].createElement(QuestionCard,{question:questionItem,outcome:outcome,isExpanded:isExpanded,isSubmitEnabled:isSubmitEnabled,__source:{fileName:_jsxFileName,lineNumber:98}})));
+_react2['default'].createElement('div',{className:'row',id:'main-content',tabIndex:-1,__source:{fileName:_jsxFileName,lineNumber:97}},
+_react2['default'].createElement('div',{className:'medium-9 medium-centered large-8 large-centered columns',__source:{fileName:_jsxFileName,lineNumber:98}},
+_react2['default'].createElement(QuestionCard,{question:questionItem,outcome:outcome,isExpanded:isExpanded,isSubmitEnabled:isSubmitEnabled,__source:{fileName:_jsxFileName,lineNumber:99}})));
 
 
 
 }
 
 return(
-_react2['default'].createElement('li',{key:questionItem.id+'-'+idx,className:'questions-list__item',__source:{fileName:_jsxFileName,lineNumber:105}},
+_react2['default'].createElement('li',{key:questionItem.id+'-'+idx,className:'questions-list__item',__source:{fileName:_jsxFileName,lineNumber:106}},
 questionCard,
 
 nextCue));
@@ -123,9 +124,9 @@ return null;
 var inProgressIndicator=void 0;
 if(this.props.isInProgressSubmitChoice){
 inProgressIndicator=
-_react2['default'].createElement('div',{className:'text-center',__source:{fileName:_jsxFileName,lineNumber:126}},
-_react2['default'].createElement('p',{__source:{fileName:_jsxFileName,lineNumber:127}},'Please wait while we check your answer...'),
-_react2['default'].createElement(_reactSpinner2['default'],{__source:{fileName:_jsxFileName,lineNumber:128}}));
+_react2['default'].createElement('div',{className:'text-center',__source:{fileName:_jsxFileName,lineNumber:127}},
+_react2['default'].createElement('p',{__source:{fileName:_jsxFileName,lineNumber:128}},'Please wait while we check your answer...'),
+_react2['default'].createElement(_reactSpinner2['default'],{__source:{fileName:_jsxFileName,lineNumber:129}}));
 
 }
 
@@ -134,12 +135,12 @@ var infiniteTimelineHeight={
 height:this.props.questionListHeight};
 
 
-var infiniteTimeline=_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:137}});
+var infiniteTimeline=_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:138}});
 
 return(
-_react2['default'].createElement('div',{className:'questions',__source:{fileName:_jsxFileName,lineNumber:140}},
+_react2['default'].createElement('div',{className:'questions',__source:{fileName:_jsxFileName,lineNumber:141}},
 infiniteTimeline,
-_react2['default'].createElement('ul',{className:'questions-list',__source:{fileName:_jsxFileName,lineNumber:142}},
+_react2['default'].createElement('ul',{className:'questions-list',__source:{fileName:_jsxFileName,lineNumber:143}},
 _lodash2['default'].map(this.props.questions,this.renderListRow)),
 
 

@@ -65,6 +65,7 @@ class Questions extends Component {
                    outcome = {outcome}
                    nextQuestion={nextQuestion}
                    nextOutcome={nextOutcome}
+                   currentPath={this.props.currentPath}
                    onClickTryNextTarget={() => this.props.onClickTryNextTarget(questionItem, this.props.mission)}
           />
       )

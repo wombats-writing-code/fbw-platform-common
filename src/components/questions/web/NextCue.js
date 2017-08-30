@@ -14,8 +14,9 @@ class NextCue extends Component {
   render() {
     // console.log('inRender of NextCue', this.props.response, 'next question', this.props.nextQuestion);
     var response = this.props.response;
-
     var cueText;
+    const targetCarouselPath = `${this.props.currentPath}#target-carousel`;
+
     if (response.isCorrect) {
 
       // if there is a next question and a next outcome
@@ -51,7 +52,7 @@ class NextCue extends Component {
       // this means the student got it right upon first try
     } else if (this.props.isFirstQuestion && !this.props.nextQuestion && !this.props.isLastTarget) {
         cueText = <p className="cue-text">Nice! &thinsp;
-                      <Link to="#target-carousel" className="try-next-target" onClick={this.props.onClickTryNextTarget}>
+                      <Link to={targetCarouselPath} className="try-next-target" onClick={this.props.onClickTryNextTarget}>
                         Do the next one! &uarr;
                       </Link>
                     </p>
@@ -60,7 +61,7 @@ class NextCue extends Component {
       // it means the student has reached the end of the scaffold
       } else if (!this.props.nextQuestion && !this.props.isLastTarget) {
         cueText = <p className="cue-text">Good job! You should now be able to do the next Goal question. &thinsp;
-                      <Link to="#target-carousel" className="try-next-target" onClick={this.props.onClickTryNextTarget}>
+                      <Link to={targetCarouselPath} className="try-next-target" onClick={this.props.onClickTryNextTarget}>
                         Try another one &uarr;
                       </Link>
                     </p>

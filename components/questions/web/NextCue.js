@@ -14,8 +14,9 @@ props));
 {
 
 var response=this.props.response;
-
 var cueText;
+var targetCarouselPath=this.props.currentPath+'#target-carousel';
+
 if(response.isCorrect){
 
 
@@ -26,32 +27,32 @@ if(this.props.nextQuestion&&this.props.nextOutcome){
 
 if((0,_mission.isTarget)(this.props.nextQuestion)){
 cueText=
-_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:29}},
-_react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:30}},'Great, you got back to the goal! Let\'s try to '),
-_react2['default'].createElement('span',{className:'bold',__source:{fileName:_jsxFileName,lineNumber:31}},' ',this.props.nextOutcome.displayName),
-_react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:32}},' again.'));
+_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:30}},
+_react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:31}},'Great, you got back to the goal! Let\'s try to '),
+_react2['default'].createElement('span',{className:'bold',__source:{fileName:_jsxFileName,lineNumber:32}},' ',this.props.nextOutcome.displayName),
+_react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:33}},' again.'));
 
 
 
 }else{
 cueText=
-_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:38}},
-_react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:39}},'Good! Now let\'s '),
-_react2['default'].createElement('span',{className:'bold',__source:{fileName:_jsxFileName,lineNumber:40}},this.props.nextOutcome.displayName),
-_react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:41}},'.'));
+_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:39}},
+_react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:40}},'Good! Now let\'s '),
+_react2['default'].createElement('span',{className:'bold',__source:{fileName:_jsxFileName,lineNumber:41}},this.props.nextOutcome.displayName),
+_react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:42}},'.'));
 
 
 }
 
 
 }else if(this.props.nextQuestion&&!this.props.nextOutcome){
-cueText=_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:48}},'No outcome bug. Please notify your instructors.');
+cueText=_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:49}},'No outcome bug. Please notify your instructors.');
 
 
 
 }else if(this.props.isFirstQuestion&&!this.props.nextQuestion&&!this.props.isLastTarget){
-cueText=_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:53}},'Nice! \u2009',
-_react2['default'].createElement(_reactRouter.Link,{to:'#target-carousel',className:'try-next-target',onClick:this.props.onClickTryNextTarget,__source:{fileName:_jsxFileName,lineNumber:54}},'Do the next one! \u2191'));
+cueText=_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:54}},'Nice! \u2009',
+_react2['default'].createElement(_reactRouter.Link,{to:targetCarouselPath,className:'try-next-target',onClick:this.props.onClickTryNextTarget,__source:{fileName:_jsxFileName,lineNumber:55}},'Do the next one! \u2191'));
 
 
 
@@ -59,38 +60,38 @@ _react2['default'].createElement(_reactRouter.Link,{to:'#target-carousel',classN
 
 
 }else if(!this.props.nextQuestion&&!this.props.isLastTarget){
-cueText=_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:62}},'Good job! You should now be able to do the next Goal question. \u2009',
-_react2['default'].createElement(_reactRouter.Link,{to:'#target-carousel',className:'try-next-target',onClick:this.props.onClickTryNextTarget,__source:{fileName:_jsxFileName,lineNumber:63}},'Try another one \u2191'));
+cueText=_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:63}},'Good job! You should now be able to do the next Goal question. \u2009',
+_react2['default'].createElement(_reactRouter.Link,{to:targetCarouselPath,className:'try-next-target',onClick:this.props.onClickTryNextTarget,__source:{fileName:_jsxFileName,lineNumber:64}},'Try another one \u2191'));
 
 
 
 
 
 }else if(this.props.isLastTarget){
-cueText=_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:70}},'You\'ve reached the end of this goal. Review this goal\'s questions again or move on to the next goal.');
+cueText=_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:71}},'You\'ve reached the end of this goal. Review this goal\'s questions again or move on to the next goal.');
 }
 
 }else{
 if(this.props.nextQuestion&&this.props.nextOutcome){
 cueText=
-_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:76}},
-_react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:77}},'Not quite. Looks like you need to work on'),
-_react2['default'].createElement('span',{className:'bold',__source:{fileName:_jsxFileName,lineNumber:78}},' ',this.props.nextOutcome.displayName),
-_react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:79}},'.'));
+_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:77}},
+_react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:78}},'Not quite. Looks like you need to work on'),
+_react2['default'].createElement('span',{className:'bold',__source:{fileName:_jsxFileName,lineNumber:79}},' ',this.props.nextOutcome.displayName),
+_react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:80}},'.'));
 
 
 
 }else if(this.props.nextQuestion&&!this.props.nextOutcome){
 cueText=
-_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:85}},
-_react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:86}},'Not quite. Let\'s try to '),
-_react2['default'].createElement('span',{className:'bold',__source:{fileName:_jsxFileName,lineNumber:87}},this.props.outcome.displayName),
-_react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:88}},' again.'));
+_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:86}},
+_react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:87}},'Not quite. Let\'s try to '),
+_react2['default'].createElement('span',{className:'bold',__source:{fileName:_jsxFileName,lineNumber:88}},this.props.outcome.displayName),
+_react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:89}},' again.'));
 
 
 
 }else if(!this.props.nextQuestion&&!this.props.nextOutcome){
-cueText=_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:93}},'Study the solution carefully and try another Goal question.');
+cueText=_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:94}},'Study the solution carefully and try another Goal question.');
 }
 }
 
@@ -99,7 +100,7 @@ if(!this.props.nextQuestion){
 }
 
 return(
-_react2['default'].createElement('div',{className:'answered-question-cue',__source:{fileName:_jsxFileName,lineNumber:102}},
+_react2['default'].createElement('div',{className:'answered-question-cue',__source:{fileName:_jsxFileName,lineNumber:103}},
 cueText));
 
 
