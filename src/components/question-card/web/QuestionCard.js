@@ -129,14 +129,16 @@ class QuestionCard extends Component {
 
     // console.log('outcome:', this.props.outcome);
     // console.log('question', this.props.question)
+    const solutionStateText = this.props.question.responded && this.props.question.response.isCorrect ? 'Correct!' : 'Incorrect...';
 
     let solution = (this.props.question.responded && this.state.isExpanded) ?
                     (<div
                       role="group"
+                      aria-label={`${solutionStateText}: detailed solution available`}
                       className="question-card__solution"
                       tabIndex={-1}
                       ref={(sol) => { this.solution = sol; }}>
-                        <p className="bold uppercase">{this.props.question.responded && this.props.question.response.isCorrect ? 'Correct!' : 'Incorrect...'}</p>
+                        <p className="bold uppercase">{solutionStateText}</p>
                         <p className="bold uppercase">Solution</p>
                         <div className=""
                           dangerouslySetInnerHTML={{__html: this.props.question.text}}>
