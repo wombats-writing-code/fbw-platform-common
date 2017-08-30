@@ -26,5 +26,9 @@
 }
 
 .isInProgressSubmitChoice {
-    margin-top: 90;
-  }
+  margin-top: 90;
+}
+
+#main-content:focus {
+  outline: none;
+}
