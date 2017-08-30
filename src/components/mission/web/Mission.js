@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Spinner from 'react-spinner'
 import slug from 'slug'
+import DocumentTitle from 'react-document-title'
 
 import DirectiveCarouselContainer from '../DirectiveCarouselContainer'
 import DirectiveCarouselComponent from './DirectiveCarousel'
@@ -75,23 +76,25 @@ class Mission extends Component {
     }
 
     return (
-      <div>
-        <nav role="navigation" aria-label="Directives Menu">
-          <DirectiveCarousel directives={this.props.directives}
-                            currentDirectiveIndex={this.props.currentDirectiveIndex}
-                            directiveIndicators={this.props.directiveIndicators}
-                              onSelectDirective={this.props.onSelectDirective}
-                             />
-        </nav>
-        <nav className="nav-target-carousel" role="navigation" aria-label="Target Questions Menu">
-          <TargetCarousel mission={this.props.mission}/>
-        </nav>
-        <main>
-          <Questions mission={this.props.mission} isSubmitEnabled={this.props.doNotTakeMission ? false : undefined}/>
-        </main>
+      <DocumentTitle title={`Mission: ${this.props.mission.displayName}`}>
+        <div>
+          <nav role="navigation" aria-label="Directives Menu">
+            <DirectiveCarousel directives={this.props.directives}
+                              currentDirectiveIndex={this.props.currentDirectiveIndex}
+                              directiveIndicators={this.props.directiveIndicators}
+                                onSelectDirective={this.props.onSelectDirective}
+                               />
+          </nav>
+          <nav className="nav-target-carousel" role="navigation" aria-label="Target Questions Menu">
+            <TargetCarousel mission={this.props.mission}/>
+          </nav>
+          <main>
+            <Questions mission={this.props.mission} isSubmitEnabled={this.props.doNotTakeMission ? false : undefined}/>
+          </main>
 
-        {loadingIndicator}
-      </div>
+          {loadingIndicator}
+        </div>
+      </DocumentTitle>
     )
   }
 
