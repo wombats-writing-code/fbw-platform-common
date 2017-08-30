@@ -16,6 +16,7 @@ class NextCue extends Component {
     var response = this.props.response;
     var cueText;
     const targetCarouselPath = `${this.props.currentPath}#target-carousel`;
+    const directiveCarouselPath = `${this.props.currentPath}#directive-carousel`;
 
     if (response.isCorrect) {
 
@@ -61,14 +62,19 @@ class NextCue extends Component {
       // it means the student has reached the end of the scaffold
       } else if (!this.props.nextQuestion && !this.props.isLastTarget) {
         cueText = <p className="cue-text">Good job! You should now be able to do the next Goal question. &thinsp;
-                      <Link to={targetCarouselPath} className="try-next-target" onClick={this.props.onClickTryNextTarget}>
-                        Try another one &uarr;
+                      <Link to={targetCarouselPath} className="try-next-target">
+                      {/* <Link to={targetCarouselPath} className="try-next-target" onClick={this.props.onClickTryNextTarget}> */}
+                        Try another goal question &uarr;
                       </Link>
                     </p>
 
       // if the target is the last one in the goal, tell the student to review
       } else if (this.props.isLastTarget) {
-        cueText = <p className="cue-text">You've reached the end of this goal. Review this goal's questions again or move on to the next goal.</p>
+        cueText = <p className="cue-text">You've reached the end of this goal. Review this goal's questions again or
+          <Link to={directiveCarouselPath} className="try-next-directive">
+            move on to the next goal.
+          </Link>
+        </p>
       }
 
     } else {
