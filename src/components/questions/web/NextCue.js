@@ -15,8 +15,8 @@ class NextCue extends Component {
     // console.log('inRender of NextCue', this.props.response, 'next question', this.props.nextQuestion);
     var response = this.props.response;
     var cueText;
-    const targetCarouselPath = `${this.props.currentPath}/#target-carousel`;
-    const directiveCarouselPath = `${this.props.currentPath}/#directive-carousel`;
+    const targetCarouselPath = `${this.props.currentPath}#target-carousel`;
+    const directiveCarouselPath = `${this.props.currentPath}#directive-carousel`;
 
     if (response.isCorrect) {
 
@@ -53,7 +53,7 @@ class NextCue extends Component {
       // this means the student got it right upon first try
     } else if (this.props.isFirstQuestion && !this.props.nextQuestion && !this.props.isLastTarget) {
         cueText = <p className="cue-text">Nice! &thinsp;
-                      <Link to={targetCarouselPath} className="try-next-target" onClick={this.props.onClickTryNextTarget}>
+                      <Link to={targetCarouselPath} className="try-next-target">
                         Pick another goal question &uarr;
                       </Link>
                     </p>
@@ -63,14 +63,13 @@ class NextCue extends Component {
       } else if (!this.props.nextQuestion && !this.props.isLastTarget) {
         cueText = <p className="cue-text">Good job! You should now be able to do the next Goal question. &thinsp;
                       <Link to={targetCarouselPath} className="try-next-target">
-                      {/* <Link to={targetCarouselPath} className="try-next-target" onClick={this.props.onClickTryNextTarget}> */}
                         Pick another goal question &uarr;
                       </Link>
                     </p>
 
       // if the target is the last one in the goal, tell the student to review
       } else if (this.props.isLastTarget) {
-        cueText = <p className="cue-text">You've reached the end of this goal. Review this goal's questions again or
+        cueText = <p className="cue-text">You've reached the end of this goal. Review this goal's questions again or &thinsp;
           <Link to={directiveCarouselPath} className="try-next-directive">
             select another goal.
           </Link>
