@@ -15,8 +15,8 @@ props));
 
 var response=this.props.response;
 var cueText;
-var targetCarouselPath=this.props.currentPath+'#target-carousel';
-var directiveCarouselPath=this.props.currentPath+'#directive-carousel';
+var targetCarouselPath=this.props.currentPath+'/#target-carousel';
+var directiveCarouselPath=this.props.currentPath+'/#directive-carousel';
 
 if(response.isCorrect){
 

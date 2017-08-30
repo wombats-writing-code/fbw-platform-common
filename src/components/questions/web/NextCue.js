@@ -15,8 +15,8 @@ class NextCue extends Component {
     // console.log('inRender of NextCue', this.props.response, 'next question', this.props.nextQuestion);
     var response = this.props.response;
     var cueText;
-    const targetCarouselPath = `${this.props.currentPath}#target-carousel`;
-    const directiveCarouselPath = `${this.props.currentPath}#directive-carousel`;
+    const targetCarouselPath = `${this.props.currentPath}/#target-carousel`;
+    const directiveCarouselPath = `${this.props.currentPath}/#directive-carousel`;
 
     if (response.isCorrect) {
 
