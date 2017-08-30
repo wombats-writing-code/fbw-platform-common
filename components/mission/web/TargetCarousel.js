@@ -108,7 +108,7 @@ _react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumb
 
 this.buttonRefs=[];
 return(
-_react2['default'].createElement('div',{className:'carousel-container flex-container align-top',__source:{fileName:_jsxFileName,lineNumber:111}},
+_react2['default'].createElement('div',{id:'target-carousel',className:'carousel-container flex-container align-top',__source:{fileName:_jsxFileName,lineNumber:111}},
 _react2['default'].createElement('ul',{className:'carousel flex-container align-center',__source:{fileName:_jsxFileName,lineNumber:112}},
 _.map(this.props.targets,this._renderTarget))));
 

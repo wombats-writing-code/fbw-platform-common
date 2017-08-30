@@ -1,4 +1,5 @@
 import React, { Component, }  from 'react';
+import { Link } from 'react-router'
 
 import _ from 'lodash'
 import {isTarget} from '../../../selectors/mission'
@@ -50,18 +51,18 @@ class NextCue extends Component {
       // this means the student got it right upon first try
     } else if (this.props.isFirstQuestion && !this.props.nextQuestion && !this.props.isLastTarget) {
         cueText = <p className="cue-text">Nice! &thinsp;
-                      <span className="try-next-target" onClick={this.props.onClickTryNextTarget}>
+                      <Link to="#target-carousel" className="try-next-target" onClick={this.props.onClickTryNextTarget}>
                         Do the next one! &uarr;
-                      </span>
+                      </Link>
                     </p>
 
       // if there's no next question, and it's not the last target,
       // it means the student has reached the end of the scaffold
       } else if (!this.props.nextQuestion && !this.props.isLastTarget) {
         cueText = <p className="cue-text">Good job! You should now be able to do the next Goal question. &thinsp;
-                      <span className="try-next-target" onClick={this.props.onClickTryNextTarget}>
+                      <Link to="#target-carousel" className="try-next-target" onClick={this.props.onClickTryNextTarget}>
                         Try another one &uarr;
-                      </span>
+                      </Link>
                     </p>
 
       // if the target is the last one in the goal, tell the student to review

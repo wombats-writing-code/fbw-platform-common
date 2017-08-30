@@ -108,7 +108,7 @@ class TargetCarousel extends Component {
 
     this.buttonRefs = []
     return (
-      <div className="carousel-container flex-container align-top">
+      <div id="target-carousel" className="carousel-container flex-container align-top">
         <ul className="carousel flex-container align-center" >
           {_.map(this.props.targets, this._renderTarget)}
         </ul>
