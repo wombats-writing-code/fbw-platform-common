@@ -54,7 +54,7 @@ class NextCue extends Component {
     } else if (this.props.isFirstQuestion && !this.props.nextQuestion && !this.props.isLastTarget) {
         cueText = <p className="cue-text">Nice! &thinsp;
                       <Link to={targetCarouselPath} className="try-next-target" onClick={this.props.onClickTryNextTarget}>
-                        Do the next one! &uarr;
+                        Pick another goal question &uarr;
                       </Link>
                     </p>
 
@@ -64,7 +64,7 @@ class NextCue extends Component {
         cueText = <p className="cue-text">Good job! You should now be able to do the next Goal question. &thinsp;
                       <Link to={targetCarouselPath} className="try-next-target">
                       {/* <Link to={targetCarouselPath} className="try-next-target" onClick={this.props.onClickTryNextTarget}> */}
-                        Try another goal question &uarr;
+                        Pick another goal question &uarr;
                       </Link>
                     </p>
 
@@ -72,7 +72,7 @@ class NextCue extends Component {
       } else if (this.props.isLastTarget) {
         cueText = <p className="cue-text">You've reached the end of this goal. Review this goal's questions again or
           <Link to={directiveCarouselPath} className="try-next-directive">
-            move on to the next goal.
+            select another goal.
           </Link>
         </p>
       }

@@ -53,7 +53,7 @@ cueText=_react2['default'].createElement('p',{className:'cue-text',__source:{fil
 
 }else if(this.props.isFirstQuestion&&!this.props.nextQuestion&&!this.props.isLastTarget){
 cueText=_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:55}},'Nice! \u2009',
-_react2['default'].createElement(_reactRouter.Link,{to:targetCarouselPath,className:'try-next-target',onClick:this.props.onClickTryNextTarget,__source:{fileName:_jsxFileName,lineNumber:56}},'Do the next one! \u2191'));
+_react2['default'].createElement(_reactRouter.Link,{to:targetCarouselPath,className:'try-next-target',onClick:this.props.onClickTryNextTarget,__source:{fileName:_jsxFileName,lineNumber:56}},'Pick another goal question \u2191'));
 
 
 
@@ -62,7 +62,7 @@ _react2['default'].createElement(_reactRouter.Link,{to:targetCarouselPath,classN
 
 }else if(!this.props.nextQuestion&&!this.props.isLastTarget){
 cueText=_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:64}},'Good job! You should now be able to do the next Goal question. \u2009',
-_react2['default'].createElement(_reactRouter.Link,{to:targetCarouselPath,className:'try-next-target',__source:{fileName:_jsxFileName,lineNumber:65}},'Try another goal question \u2191'));
+_react2['default'].createElement(_reactRouter.Link,{to:targetCarouselPath,className:'try-next-target',__source:{fileName:_jsxFileName,lineNumber:65}},'Pick another goal question \u2191'));
 
 
 
@@ -71,7 +71,7 @@ _react2['default'].createElement(_reactRouter.Link,{to:targetCarouselPath,classN
 
 }else if(this.props.isLastTarget){
 cueText=_react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:73}},'You\'ve reached the end of this goal. Review this goal\'s questions again or',
-_react2['default'].createElement(_reactRouter.Link,{to:directiveCarouselPath,className:'try-next-directive',__source:{fileName:_jsxFileName,lineNumber:74}},'move on to the next goal.'));
+_react2['default'].createElement(_reactRouter.Link,{to:directiveCarouselPath,className:'try-next-directive',__source:{fileName:_jsxFileName,lineNumber:74}},'select another goal.'));
 
 
 
