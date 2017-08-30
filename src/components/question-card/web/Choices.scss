@@ -41,7 +41,7 @@
 
 .choice__button input[type="radio"] {
   align-self: flex-start;
-  margin: 0.5rem 0 0 0.5rem;
+  margin: 0.5rem 0.5rem 0 0;
 }
 
 .choice__button:focus {
@@ -55,7 +55,6 @@
 
 .choice__text {
   flex: 1;
-  font-size: 1rem;
 }
 
 .choice__text p {
@@ -64,6 +63,7 @@
 
 .choice__row {
   flex: 1;
+  font-size: 1rem;
 }
 
 .responded-choice-icon {
