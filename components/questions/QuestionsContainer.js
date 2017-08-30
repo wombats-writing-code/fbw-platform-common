@@ -28,28 +28,28 @@ isInProgressSubmitChoice:state.mission.isInProgressSubmitChoice?state.mission.is
 
 var mapDispatchToProps=function(){function mapDispatchToProps(dispatch,ownProps){
 return{
-onSetListViewHeight:function(){function onSetListViewHeight(data){return dispatch((0,_setQuestionListHeight.setQuestionListHeight)(data));}return onSetListViewHeight;}(),
-onClickTryNextTarget:function(){function onClickTryNextTarget(currentQuestion,mission){
+onSetListViewHeight:function(){function onSetListViewHeight(data){return dispatch((0,_setQuestionListHeight.setQuestionListHeight)(data));}return onSetListViewHeight;}()};
 
 
 
-var nextTargetRoute=mission.questions[currentQuestion.sectionIndex][currentQuestion.targetIndex+1];
-if(!nextTargetRoute){
-if(currentQuestion.sectionIndex+1===mission.questions.length){
-return;
-}
 
-nextTargetRoute=mission.questions[currentQuestion.sectionIndex+1][0];
-dispatch((0,_selectDirective.selectDirective)(currentQuestion.sectionIndex+1));
-dispatch((0,_selectTarget.selectTarget)(nextTargetRoute[0]));
 
-return;
-}
 
-var nextTarget=nextTargetRoute[0];
 
-dispatch((0,_selectTarget.selectTarget)(nextTarget));
-}return onClickTryNextTarget;}()};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }return mapDispatchToProps;}();
 

@@ -17,12 +17,12 @@
 
 .try-next-target,
 .try-next-directive {
-  cursor: default;
+  // cursor: default;
   color: $app-blue-2;
 }
 
 .try-next-target:hover,
 .try-next-directive:hover {
-  cursor: default;
+  // cursor: default;
   color: lighten($app-blue-2, 25%);
 }

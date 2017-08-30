@@ -66,7 +66,8 @@ class Questions extends Component {
                    nextQuestion={nextQuestion}
                    nextOutcome={nextOutcome}
                    currentPath={this.props.currentPath}
-                   onClickTryNextTarget={() => this.props.onClickTryNextTarget(questionItem, this.props.mission)}
+                   onClickReturnToDirectiveCarousel={this.props.onClickReturnToDirectiveCarousel}
+                   onClickReturnToTargetCarousel={this.props.onClickReturnToTargetCarousel}
           />
       )
     }

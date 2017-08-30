@@ -24,80 +24,93 @@ height:'100%'}};var
 
 
 
-Mission=function(_Component){_inherits(Mission,_Component);function Mission(){_classCallCheck(this,Mission);return _possibleConstructorReturn(this,(Mission.__proto__||Object.getPrototypeOf(Mission)).apply(this,arguments));}_createClass(Mission,[{key:'componentDidMount',value:function(){function componentDidMount()
-{var _this2=this;
-var missionState=(0,_time.checkMissionStatus)(this.props.mission);
-var mission=this.props.params&&this.props.missions?
-_.find(this.props.missions,function(m){return(0,_slug2['default'])(m.displayName)===(0,_slug2['default'])(_this2.props.params.missionName);}):
-this.props.mission;
+Mission=function(_Component){_inherits(Mission,_Component);function Mission(){var _ref;var _temp,_this,_ret;_classCallCheck(this,Mission);for(var _len=arguments.length,args=Array(_len),_key=0;_key<_len;_key++){args[_key]=arguments[_key];}return _ret=(_temp=(_this=_possibleConstructorReturn(this,(_ref=Mission.__proto__||Object.getPrototypeOf(Mission)).call.apply(_ref,[this].concat(args))),_this),_this.
 
 
 
 
 
 
-if(!this.props.doNotTakeMission&&!this.props.isGetMissionInProgress&&missionState!=='over'){
-this.props.onSelectOpenMission({
-course:this.props.course,
-mission:mission,
-user:this.props.user});
-
-
-}else if(missionState==='over'){
-this.props.onSelectClosedMission({
-course:this.props.course,
-mission:mission,
-user:this.props.user});
-
-}
-}return componentDidMount;}()},{key:'render',value:function(){function render()
-
-{
-
-
-var loadingIndicator=void 0;
-if(this.props.isGetMissionInProgress){
-return _react2['default'].createElement(_reactSpinner2['default'],{__source:{fileName:_jsxFileName,lineNumber:60}});
-}
-
-if(this.props.mission){
-
-var missionState=(0,_time.checkMissionStatus)(this.props.mission);
-
-
-if(this.props.mission.questions.length===0&&missionState==="over"){
-
-return(
-_react2['default'].createElement('div',{style:[styles.container,{paddingTop:80,paddingLeft:30}],__source:{fileName:_jsxFileName,lineNumber:71}},
-_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:72}},'This mission is over. You didn\'t open it while it was open, so you have no results here.')));
-
-
-}
-}
-
-return(
-_react2['default'].createElement(_reactDocumentTitle2['default'],{title:'Mission: '+this.props.mission.displayName,__source:{fileName:_jsxFileName,lineNumber:79}},
-_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:80}},
-_react2['default'].createElement('nav',{role:'navigation','aria-label':'Directives Menu',__source:{fileName:_jsxFileName,lineNumber:81}},
-_react2['default'].createElement(DirectiveCarousel,{directives:this.props.directives,
-currentDirectiveIndex:this.props.currentDirectiveIndex,
-directiveIndicators:this.props.directiveIndicators,
-onSelectDirective:this.props.onSelectDirective,__source:{fileName:_jsxFileName,lineNumber:82}})),
-
-
-_react2['default'].createElement('nav',{className:'nav-target-carousel',role:'navigation','aria-label':'Target Questions Menu',__source:{fileName:_jsxFileName,lineNumber:88}},
-_react2['default'].createElement(TargetCarousel,{mission:this.props.mission,__source:{fileName:_jsxFileName,lineNumber:89}})),
-
-_react2['default'].createElement('main',{__source:{fileName:_jsxFileName,lineNumber:91}},
-_react2['default'].createElement(Questions,{mission:this.props.mission,isSubmitEnabled:this.props.doNotTakeMission?false:undefined,__source:{fileName:_jsxFileName,lineNumber:92}})),
-
-
-loadingIndicator)));
 
 
 
-}return render;}()}]);return Mission;}(_react.Component);exports['default']=
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+onClickReturnToTargetCarousel=function(){
+_this.targetCarousel.focus();
+},_this.
+
+onClickReturnToDirectiveCarousel=function(){
+_this.directiveCarousel.focus();
+},_temp),_possibleConstructorReturn(_this,_ret);}_createClass(Mission,[{key:'componentDidMount',value:function(){function componentDidMount(){var _this2=this;var missionState=(0,_time.checkMissionStatus)(this.props.mission);var mission=this.props.params&&this.props.missions?_.find(this.props.missions,function(m){return(0,_slug2['default'])(m.displayName)===(0,_slug2['default'])(_this2.props.params.missionName);}):this.props.mission;if(!this.props.doNotTakeMission&&!this.props.isGetMissionInProgress&&missionState!=='over'){this.props.onSelectOpenMission({course:this.props.course,mission:mission,user:this.props.user});}else if(missionState==='over'){this.props.onSelectClosedMission({course:this.props.course,mission:mission,user:this.props.user});}}return componentDidMount;}()},{key:'render',value:function(){function render(){var _this3=this;var loadingIndicator=void 0;if(this.props.isGetMissionInProgress){return _react2['default'].createElement(_reactSpinner2['default'],{__source:{fileName:_jsxFileName,lineNumber:60}});}if(this.props.mission){var missionState=(0,_time.checkMissionStatus)(this.props.mission);if(this.props.mission.questions.length===0&&missionState==="over"){return _react2['default'].createElement('div',{style:[styles.container,{paddingTop:80,paddingLeft:30}],__source:{fileName:_jsxFileName,lineNumber:71}},_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:72}},'This mission is over. You didn\'t open it while it was open, so you have no results here.'));}}return _react2['default'].createElement(_reactDocumentTitle2['default'],{title:'Mission: '+this.props.mission.displayName,__source:{fileName:_jsxFileName,lineNumber:79}},_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:80}},_react2['default'].createElement('nav',{role:'navigation','aria-label':'Directives Menu',__source:{fileName:_jsxFileName,lineNumber:81}},_react2['default'].createElement(DirectiveCarousel,{directives:this.props.directives,currentDirectiveIndex:this.props.currentDirectiveIndex,directiveIndicators:this.props.directiveIndicators,onSelectDirective:this.props.onSelectDirective,ref:function(){function ref(directives){_this3.directiveCarousel=directives;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:82}})),_react2['default'].createElement('nav',{className:'nav-target-carousel',role:'navigation','aria-label':'Target Questions Menu',__source:{fileName:_jsxFileName,lineNumber:88}},_react2['default'].createElement(TargetCarousel,{mission:this.props.mission,ref:function(){function ref(targets){_this3.targetCarousel=targets;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:89}})),_react2['default'].createElement('main',{__source:{fileName:_jsxFileName,lineNumber:93}},_react2['default'].createElement(Questions,{mission:this.props.mission,isSubmitEnabled:this.props.doNotTakeMission?false:undefined,onClickReturnToTargetCarousel:this.onClickReturnToTargetCarousel,onClickReturnToDirectiveCarousel:this.onClickReturnToDirectiveCarousel,__source:{fileName:_jsxFileName,lineNumber:94}})),loadingIndicator));}return render;}()}]);return Mission;}(_react.Component);exports['default']=
 
 
 Mission;

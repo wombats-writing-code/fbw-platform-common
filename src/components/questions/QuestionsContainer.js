@@ -29,27 +29,27 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onSetListViewHeight: data => dispatch(setQuestionListHeight(data)),
-    onClickTryNextTarget: (currentQuestion, mission) => {
-      // console.log('currentQuestion', currentQuestion, 'mission', mission)
-      // console.log('mission.questions', mission.questions[currentQuestion.sectionIndex][currentQuestion.targetIndex + 1])
-
-      let nextTargetRoute = mission.questions[currentQuestion.sectionIndex][currentQuestion.targetIndex + 1];
-      if (!nextTargetRoute) {
-        if (currentQuestion.sectionIndex+1 === mission.questions.length) {
-          return;
-        }
-
-        nextTargetRoute = mission.questions[currentQuestion.sectionIndex+1][0];
-        dispatch(selectDirective(currentQuestion.sectionIndex+1));
-        dispatch(selectTarget(nextTargetRoute[0]));
-
-        return;
-      }
-
-      let nextTarget = nextTargetRoute[0]
-
-      dispatch(selectTarget(nextTarget));
-    }
+    // onClickTryNextTarget: (currentQuestion, mission) => {
+    //   // console.log('currentQuestion', currentQuestion, 'mission', mission)
+    //   // console.log('mission.questions', mission.questions[currentQuestion.sectionIndex][currentQuestion.targetIndex + 1])
+    //
+    //   let nextTargetRoute = mission.questions[currentQuestion.sectionIndex][currentQuestion.targetIndex + 1];
+    //   if (!nextTargetRoute) {
+    //     if (currentQuestion.sectionIndex+1 === mission.questions.length) {
+    //       return;
+    //     }
+    //
+    //     nextTargetRoute = mission.questions[currentQuestion.sectionIndex+1][0];
+    //     dispatch(selectDirective(currentQuestion.sectionIndex+1));
+    //     dispatch(selectTarget(nextTargetRoute[0]));
+    //
+    //     return;
+    //   }
+    //
+    //   let nextTarget = nextTargetRoute[0]
+    //
+    //   dispatch(selectTarget(nextTarget));
+    // }
   }
 }
 

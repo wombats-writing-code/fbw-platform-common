@@ -53,7 +53,7 @@ class NextCue extends Component {
       // this means the student got it right upon first try
     } else if (this.props.isFirstQuestion && !this.props.nextQuestion && !this.props.isLastTarget) {
         cueText = <p className="cue-text">Nice! &thinsp;
-                      <Link to={targetCarouselPath} className="try-next-target">
+                      <Link to={targetCarouselPath} className="try-next-target" onClick={this.props.onClickReturnToTargetCarousel}>
                         Pick another goal question &uarr;
                       </Link>
                     </p>
@@ -62,7 +62,7 @@ class NextCue extends Component {
       // it means the student has reached the end of the scaffold
       } else if (!this.props.nextQuestion && !this.props.isLastTarget) {
         cueText = <p className="cue-text">Good job! You should now be able to do the next Goal question. &thinsp;
-                      <Link to={targetCarouselPath} className="try-next-target">
+                      <Link to={targetCarouselPath} className="try-next-target" onClick={this.props.onClickReturnToTargetCarousel}>
                         Pick another goal question &uarr;
                       </Link>
                     </p>
@@ -70,7 +70,7 @@ class NextCue extends Component {
       // if the target is the last one in the goal, tell the student to review
       } else if (this.props.isLastTarget) {
         cueText = <p className="cue-text">You've reached the end of this goal. Review this goal's questions again or &thinsp;
-          <Link to={directiveCarouselPath} className="try-next-directive">
+          <Link to={directiveCarouselPath} className="try-next-directive" onClick={this.props.onClickReturnToDirectiveCarousel}>
             select another goal.
           </Link>
         </p>

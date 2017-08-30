@@ -83,13 +83,19 @@ class Mission extends Component {
                               currentDirectiveIndex={this.props.currentDirectiveIndex}
                               directiveIndicators={this.props.directiveIndicators}
                                 onSelectDirective={this.props.onSelectDirective}
-                               />
+                               ref={ (directives) => {this.directiveCarousel = directives;} }/>
           </nav>
           <nav className="nav-target-carousel" role="navigation" aria-label="Target Questions Menu">
-            <TargetCarousel mission={this.props.mission}/>
+            <TargetCarousel
+              mission={this.props.mission}
+              ref={ (targets) => {this.targetCarousel = targets;} }/>
           </nav>
           <main>
-            <Questions mission={this.props.mission} isSubmitEnabled={this.props.doNotTakeMission ? false : undefined}/>
+            <Questions
+              mission={this.props.mission}
+              isSubmitEnabled={this.props.doNotTakeMission ? false : undefined}
+              onClickReturnToTargetCarousel={this.onClickReturnToTargetCarousel}
+              onClickReturnToDirectiveCarousel={this.onClickReturnToDirectiveCarousel}/>
           </main>
 
           {loadingIndicator}
@@ -98,6 +104,13 @@ class Mission extends Component {
     )
   }
 
+  onClickReturnToTargetCarousel = () => {
+    this.targetCarousel.focus();
+  }
+
+  onClickReturnToDirectiveCarousel = () => {
+    this.directiveCarousel.focus();
+  }
 }
 
 export default Mission
