@@ -156,6 +156,8 @@ class QuestionCard extends Component {
 
     return (
       <div
+        role="group"
+        aria-label={`Question ${questionItem.referenceNumber}`}
         className="question-card clearfix">
         <QuestionHeader questionTypeIcon={questionTypeIcon}
                         headerText={this.props.outcome ? this.props.outcome.displayName : ''}

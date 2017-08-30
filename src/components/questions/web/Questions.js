@@ -104,8 +104,6 @@ class Questions extends Component {
 
     return (
       <li
-        role="group"
-        aria-label={`Question ${questionItem.referenceNumber}`}
         key={`${questionItem.id}-${idx}`}
         className="questions-list__item">
         {questionCard}

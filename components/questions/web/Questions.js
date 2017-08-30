@@ -104,8 +104,6 @@ _react2['default'].createElement(QuestionCard,{question:questionItem,outcome:out
 
 return(
 _react2['default'].createElement('li',{
-role:'group',
-'aria-label':'Question '+questionItem.referenceNumber,
 key:questionItem.id+'-'+idx,
 className:'questions-list__item',__source:{fileName:_jsxFileName,lineNumber:106}},
 questionCard,
@@ -128,9 +126,9 @@ return null;
 var inProgressIndicator=void 0;
 if(this.props.isInProgressSubmitChoice){
 inProgressIndicator=
-_react2['default'].createElement('div',{className:'text-center',__source:{fileName:_jsxFileName,lineNumber:131}},
-_react2['default'].createElement('p',{__source:{fileName:_jsxFileName,lineNumber:132}},'Please wait while we check your answer...'),
-_react2['default'].createElement(_reactSpinner2['default'],{__source:{fileName:_jsxFileName,lineNumber:133}}));
+_react2['default'].createElement('div',{className:'text-center',__source:{fileName:_jsxFileName,lineNumber:129}},
+_react2['default'].createElement('p',{__source:{fileName:_jsxFileName,lineNumber:130}},'Please wait while we check your answer...'),
+_react2['default'].createElement(_reactSpinner2['default'],{__source:{fileName:_jsxFileName,lineNumber:131}}));
 
 }
 
@@ -139,12 +137,12 @@ var infiniteTimelineHeight={
 height:this.props.questionListHeight};
 
 
-var infiniteTimeline=_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:142}});
+var infiniteTimeline=_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:140}});
 
 return(
-_react2['default'].createElement('div',{className:'questions',__source:{fileName:_jsxFileName,lineNumber:145}},
+_react2['default'].createElement('div',{className:'questions',__source:{fileName:_jsxFileName,lineNumber:143}},
 infiniteTimeline,
-_react2['default'].createElement('ul',{className:'questions-list',__source:{fileName:_jsxFileName,lineNumber:147}},
+_react2['default'].createElement('ul',{className:'questions-list',__source:{fileName:_jsxFileName,lineNumber:145}},
 _lodash2['default'].map(this.props.questions,this.renderListRow)),
 
 
