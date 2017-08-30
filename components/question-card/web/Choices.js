@@ -43,38 +43,34 @@ src:require('../../../assets/responseType--incorrect@2x.png'),__source:{fileName
 var isChoiceSelected=responseId&&responseId===choice.id||
 _this.props.selectedChoiceId===choice.id;
 
-var inactiveStyle={pointerEvents:'none',cursor:'default'};
-
 return(
-_react2['default'].createElement('li',{
-key:choice.id,
-className:isChoiceSelected?"choice is-selected":"choice",
-style:responseId&&inactiveStyle,__source:{fileName:_jsxFileName,lineNumber:49}},
-_react2['default'].createElement('button',{className:'choice__button',
+_react2['default'].createElement('label',{className:'choice choice__button',
+key:choice.id,__source:{fileName:_jsxFileName,lineNumber:47}},
+_react2['default'].createElement('input',{
+type:'radio',
+value:choice.id,
+checked:isChoiceSelected,
 disabled:!_.isNull(_this.props.responseId),
-onClick:function(){function onClick(){return _this.props.responseId?null:_this.props.onSelectChoice(choice.id);}return onClick;}(),
-ref:function(){function ref(btn){return _this.choiceButtonRefs.push(btn);}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:53}},
-
+onChange:function(){function onChange(){return _this.props.responseId?null:_this.props.onSelectChoice(choice.id);}return onChange;}(),__source:{fileName:_jsxFileName,lineNumber:49}}),
 _react2['default'].createElement('div',{
-className:'choice__row flex-container align-center',__source:{fileName:_jsxFileName,lineNumber:58}},
-_react2['default'].createElement('span',{className:'choice__label',__source:{fileName:_jsxFileName,lineNumber:60}},
+className:'choice__row flex-container align-center',__source:{fileName:_jsxFileName,lineNumber:55}},
+_react2['default'].createElement('span',{className:'choice__label',__source:{fileName:_jsxFileName,lineNumber:57}},
 Alphabet[idx],')'),
 
 
-_react2['default'].createElement('div',{className:'choice__text',dangerouslySetInnerHTML:{__html:choice.text},__source:{fileName:_jsxFileName,lineNumber:64}}),
-respondedChoiceIcon))));
+_react2['default'].createElement('div',{className:'choice__text',dangerouslySetInnerHTML:{__html:choice.text},__source:{fileName:_jsxFileName,lineNumber:61}}),
+respondedChoiceIcon)));
 
 
 
-
-};_this.choiceButtonRefs=[];return _this;}_createClass(Choices,[{key:'componentDidMount',value:function(){function componentDidMount(){}return componentDidMount;}()},{key:'render',value:function(){function render()
+};return _this;}_createClass(Choices,[{key:'componentDidMount',value:function(){function componentDidMount(){}return componentDidMount;}()},{key:'render',value:function(){function render()
 
 {
 if(!this.props.choices)return null;
 
 return(
 _react2['default'].createElement('ul',{
-className:'choices',__source:{fileName:_jsxFileName,lineNumber:76}},
+className:'choices',__source:{fileName:_jsxFileName,lineNumber:72}},
 _.map(this.props.choices,_.partial(this.renderChoice,_,_,this.props.responseId))));
 
 

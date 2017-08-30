@@ -168,12 +168,12 @@ class QuestionCard extends Component {
 
       {inProgressIndicator}
 
-      <div className="question-card__body clearfix">
-      <div dangerouslySetInnerHTML={{__html: this.props.question.text}}></div>
+      <fieldset className="question-card__body clearfix">
+        <legend dangerouslySetInnerHTML={{__html: this.props.question.text}}></legend>
 
-      {choices}
-      {solution}
-      </div>
+        {choices}
+        {solution}
+      </fieldset>
 
       {submitButton}
     </div>

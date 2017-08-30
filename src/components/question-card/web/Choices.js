@@ -7,7 +7,7 @@ import './Choices.scss'
 class Choices extends Component {
   constructor() {
     super();
-    this.choiceButtonRefs = [];
+    // this.choiceButtonRefs = [];
   }
 
   componentDidMount() {
@@ -43,18 +43,15 @@ class Choices extends Component {
     let isChoiceSelected = responseId && responseId === choice.id ||
                             this.props.selectedChoiceId === choice.id;
 
-    let inactiveStyle = {pointerEvents: 'none', cursor: 'default'}
-
     return (
-      <li
-        key={choice.id}
-        className={isChoiceSelected ? "choice is-selected" : "choice"}
-        style={responseId && inactiveStyle}>
-        <button className="choice__button"
-                disabled={!_.isNull(this.props.responseId)}
-                onClick={() => this.props.responseId ? null : this.props.onSelectChoice(choice.id)}
-                ref={(btn) => this.choiceButtonRefs.push(btn)}>
-
+      <label className="choice choice__button"
+        key={choice.id}>
+        <input
+          type="radio"
+          value={choice.id}
+          checked={isChoiceSelected}
+          disabled={!_.isNull(this.props.responseId)}
+          onChange={() => this.props.responseId ? null : this.props.onSelectChoice(choice.id)} />
           <div
             className="choice__row flex-container align-center">
             <span className="choice__label">
@@ -64,8 +61,7 @@ class Choices extends Component {
             <div className="choice__text" dangerouslySetInnerHTML={{__html: choice.text}}></div>
             {respondedChoiceIcon}
           </div>
-        </button>
-      </li>
+      </label>
     )
   }
 
