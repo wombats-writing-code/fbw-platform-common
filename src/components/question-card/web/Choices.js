@@ -48,21 +48,23 @@ class Choices extends Component {
     return (
       <label className={labelClasses}
         key={choice.id}>
-        <input
-          type="radio"
-          value={choice.id}
-          checked={isChoiceSelected}
-          disabled={!_.isNull(this.props.responseId)}
-          onChange={() => this.props.responseId ? null : this.props.onSelectChoice(choice.id)} />
-          <div
-            className="choice__row flex-container align-center">
-            <span className="choice__label">
-              {Alphabet[idx]}&#x00029;
-            </span>
+        <div className="input__wrapper">
+          <input
+            type="radio"
+            value={choice.id}
+            checked={isChoiceSelected}
+            disabled={!_.isNull(this.props.responseId)}
+            onChange={() => this.props.responseId ? null : this.props.onSelectChoice(choice.id)} />
+        </div>
+        <div
+          className="choice__row flex-container align-center">
+          <span className="choice__label">
+            {Alphabet[idx]}&#x00029;
+          </span>
 
-            <div className="choice__text" dangerouslySetInnerHTML={{__html: choice.text}}></div>
-            {respondedChoiceIcon}
-          </div>
+          <div className="choice__text" dangerouslySetInnerHTML={{__html: choice.text}}></div>
+          {respondedChoiceIcon}
+        </div>
       </label>
     )
   }

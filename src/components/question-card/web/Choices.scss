@@ -40,8 +40,7 @@
 }
 
 .choice__button input[type="radio"] {
-  align-self: flex-start;
-  margin: 0.6rem 0.5rem 0 0;
+  margin: 0.25rem 0.5rem 0 0;
 }
 
 .choice__button:focus {
@@ -64,6 +63,13 @@
 .choice__row {
   flex: 1;
   font-size: 1rem;
+}
+
+.input__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
 }
 
 .responded-choice-icon {
