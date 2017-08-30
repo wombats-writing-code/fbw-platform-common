@@ -30,9 +30,9 @@ class QuestionCard extends Component {
       MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
     }
 
-    if (this.activeSubmitButton) {
-      this.activeSubmitButton.focus()
-    }
+    // if (this.activeSubmitButton) {
+    //   this.activeSubmitButton.focus()
+    // }
   }
 
   render() {
