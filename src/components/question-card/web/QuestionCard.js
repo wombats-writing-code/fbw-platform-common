@@ -172,8 +172,9 @@ class QuestionCard extends Component {
         <legend dangerouslySetInnerHTML={{__html: this.props.question.text}}></legend>
 
         {choices}
-        {solution}
       </fieldset>
+
+      {solution}
 
       {submitButton}
     </div>
