@@ -33,7 +33,9 @@
   outline: none;
 }
 
-.MathJax:focus {
+.MathJax:focus,
+.MathJax_ContextMenu:focus,
+.MathJax_MenuItem:focus {
   outline-style: dashed;
   outline-width: 3px;
   outline-offset: 0.5rem;
