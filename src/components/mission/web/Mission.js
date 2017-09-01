@@ -78,22 +78,32 @@ class Mission extends Component {
     return (
       <DocumentTitle title={`Mission: ${this.props.mission.displayName}`}>
         <div>
-          <nav role="navigation" aria-label="Directives Menu">
+          <nav
+            tabIndex={-1}
+            role="navigation"
+            aria-label="Directives Menu"
+            ref={ (directives) => {this.directiveCarouselRef = directives;} }>
             <DirectiveCarousel directives={this.props.directives}
                                currentDirectiveIndex={this.props.currentDirectiveIndex}
                                directiveIndicators={this.props.directiveIndicators}
                                onSelectDirective={this._onSelectDirective}
-                               ref={ (directives) => {this.directiveCarousel = directives;} }/>
+                               />
           </nav>
-          <nav className="nav-target-carousel" role="navigation" aria-label="Target Questions Menu">
+          <nav
+            tabIndex={-1}
+            className="nav-target-carousel"
+            role="navigation"
+            aria-label="Target Questions Menu"
+            ref={ (targets) => {this.targetCarouselRef = targets;} }>
             <TargetCarousel
               onSelectTarget={this._onSelectTarget}
               mission={this.props.mission}
-              ref={ (targets) => {this.targetCarousel = targets;} }/>
+              />
           </nav>
-          <main>
+          <main
+            tabIndex={-1}
+            ref={ (questions) => {this.questionsRef = questions;} }>
             <Questions
-              ref={ (questions) => {this.questions = questions;} }
               mission={this.props.mission}
               isSubmitEnabled={this.props.doNotTakeMission ? false : undefined}
               onClickReturnToTargetCarousel={this.onClickReturnToTargetCarousel}
@@ -107,21 +117,21 @@ class Mission extends Component {
   }
 
   _onSelectDirective = (index) => {
-    this.targetCarousel.focus();
+    this.targetCarouselRef.focus();
     this.props.onSelectDirective(index);
   }
 
   _onSelectTarget = (target) => {
-    this.questions.focus();
+    this.questionsRef.focus();
     this.props.onSelectTarget(target);
   }
 
   onClickReturnToTargetCarousel = () => {
-    this.targetCarousel.focus();
+    this.targetCarouselRef.focus();
   }
 
   onClickReturnToDirectiveCarousel = () => {
-    this.directiveCarousel.focus();
+    this.directiveCarouselRef.focus();
   }
 }
 
