@@ -28,9 +28,11 @@ button {
 }
 
 // let's keep a focus ring for accessibility...
-// button:focus {
-//   outline: none;
-// }
+button:focus {
+  outline-color: $app-red-dark;
+  outline-offset: 0.25rem;
+  outline-style: dashed;
+}
 
 button:disabled, button:disabled:hover {
   cursor: default;
