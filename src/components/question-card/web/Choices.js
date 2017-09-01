@@ -58,9 +58,9 @@ class Choices extends Component {
         </div>
         <div
           className="choice__row flex-container align-center">
-          <span className="choice__label">
+          {/* <span className="choice__label">
             {Alphabet[idx]}&#x00029;
-          </span>
+          </span> */}
 
           <div className="choice__text" dangerouslySetInnerHTML={{__html: choice.text}}></div>
           {respondedChoiceIcon}

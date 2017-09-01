@@ -58,8 +58,8 @@ onChange:function(){function onChange(){return _this.props.responseId?null:_this
 
 _react2['default'].createElement('div',{
 className:'choice__row flex-container align-center',__source:{fileName:_jsxFileName,lineNumber:59}},
-_react2['default'].createElement('span',{className:'choice__label',__source:{fileName:_jsxFileName,lineNumber:61}},
-Alphabet[idx],')'),
+
+
 
 
 _react2['default'].createElement('div',{className:'choice__text',dangerouslySetInnerHTML:{__html:choice.text},__source:{fileName:_jsxFileName,lineNumber:65}}),
