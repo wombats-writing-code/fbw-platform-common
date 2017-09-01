@@ -1,4 +1,4 @@
-
+@import '../../../styles/base';
 
 .questions-list {
   margin-left: 0;
@@ -31,4 +31,11 @@
 
 #main-content:focus {
   outline: none;
+}
+
+.MathJax:focus {
+  outline-style: dashed;
+  outline-width: 3px;
+  outline-offset: 0.5rem;
+  outline-color: $app-red-dark;
 }
