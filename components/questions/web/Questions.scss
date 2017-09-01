@@ -35,9 +35,9 @@
 
 .MathJax:focus,
 .MathJax_ContextMenu:focus,
+.MathJax_Menu:focus,
 .MathJax_MenuItem:focus {
   outline-style: dashed;
   outline-width: 3px;
-  outline-offset: 0.5rem;
   outline-color: $app-red-dark;
 }
