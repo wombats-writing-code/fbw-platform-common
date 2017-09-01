@@ -11,3 +11,10 @@
   font-size: 1rem;  // 16px for accessibility
   // font-weight: 600;
 }
+
+#target-carousel button:focus {
+  outline-style: dashed;
+  outline-width: 3px;
+  outline-offset: -0.3rem;
+  outline-color: $app-red-dark;
+}

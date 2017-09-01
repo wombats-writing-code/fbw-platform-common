@@ -121,6 +121,12 @@
   color: #333;
 }
 
+#directive-carousel button:focus {
+  outline-style: dashed;
+  outline-width: 3px;
+  outline-offset: -0.3rem;
+  outline-color: $app-red-dark;
+}
 
 // ===========
 .directive-carousel {

@@ -51,3 +51,10 @@
 fieldset {
   border: none;
 }
+
+.question-card button:focus {
+  outline-style: dashed;
+  outline-width: 3px;
+  outline-offset: 0.3rem;
+  outline-color: $app-red-dark;
+}
