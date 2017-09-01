@@ -2,7 +2,6 @@ import _ from 'lodash'
 import { connect } from 'react-redux'
 
 import { isTarget } from '../../selectors/mission'
-import { selectTarget } from '../../reducers/Mission/selectTarget'
 import {getMapping} from '../../selectors'
 import {getSectionTargets} from '../../selectors/mission'
 
@@ -22,7 +21,6 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onSelectTarget: data => dispatch(selectTarget(data))
   }
 }
 

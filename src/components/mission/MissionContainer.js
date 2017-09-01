@@ -6,6 +6,7 @@ import { getMissions } from '../../reducers/Mission/getMissions'
 import { selectOpenMission } from '../../reducers/Mission/selectOpenMission'
 import { selectClosedMission } from '../../reducers/Mission/selectClosedMission'
 import { selectDirective } from '../../reducers/Mission/selectDirective'
+import { selectTarget } from '../../reducers/Mission/selectTarget'
 
 import {getUser, getMapping} from '../../selectors/'
 import {getCurrentCourse} from '../../selectors/course'
@@ -45,7 +46,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     onSelectOpenMission: data => dispatch(selectOpenMission(data)),
     onSelectClosedMission: data => dispatch(selectClosedMission(data)),
     getMissions: data => dispatch(getMissions(data)),
-    onSelectDirective: directiveIndex => dispatch(selectDirective(directiveIndex))
+    onSelectDirective: directiveIndex => dispatch(selectDirective(directiveIndex)),
+    onSelectTarget: data => dispatch(selectTarget(data))
   }
 }
 

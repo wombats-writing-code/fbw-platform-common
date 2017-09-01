@@ -6,6 +6,7 @@ var _getMissions2=require('../../reducers/Mission/getMissions');
 var _selectOpenMission=require('../../reducers/Mission/selectOpenMission');
 var _selectClosedMission=require('../../reducers/Mission/selectClosedMission');
 var _selectDirective=require('../../reducers/Mission/selectDirective');
+var _selectTarget=require('../../reducers/Mission/selectTarget');
 
 var _selectors=require('../../selectors/');
 var _course=require('../../selectors/course');
@@ -45,7 +46,8 @@ return{
 onSelectOpenMission:function(){function onSelectOpenMission(data){return dispatch((0,_selectOpenMission.selectOpenMission)(data));}return onSelectOpenMission;}(),
 onSelectClosedMission:function(){function onSelectClosedMission(data){return dispatch((0,_selectClosedMission.selectClosedMission)(data));}return onSelectClosedMission;}(),
 getMissions:function(){function getMissions(data){return dispatch((0,_getMissions2.getMissions)(data));}return getMissions;}(),
-onSelectDirective:function(){function onSelectDirective(directiveIndex){return dispatch((0,_selectDirective.selectDirective)(directiveIndex));}return onSelectDirective;}()};
+onSelectDirective:function(){function onSelectDirective(directiveIndex){return dispatch((0,_selectDirective.selectDirective)(directiveIndex));}return onSelectDirective;}(),
+onSelectTarget:function(){function onSelectTarget(data){return dispatch((0,_selectTarget.selectTarget)(data));}return onSelectTarget;}()};
 
 }return mapDispatchToProps;}();
 

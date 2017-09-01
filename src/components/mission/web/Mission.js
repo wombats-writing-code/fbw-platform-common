@@ -80,18 +80,20 @@ class Mission extends Component {
         <div>
           <nav role="navigation" aria-label="Directives Menu">
             <DirectiveCarousel directives={this.props.directives}
-                              currentDirectiveIndex={this.props.currentDirectiveIndex}
-                              directiveIndicators={this.props.directiveIndicators}
-                                onSelectDirective={this.props.onSelectDirective}
+                               currentDirectiveIndex={this.props.currentDirectiveIndex}
+                               directiveIndicators={this.props.directiveIndicators}
+                               onSelectDirective={this._onSelectDirective}
                                ref={ (directives) => {this.directiveCarousel = directives;} }/>
           </nav>
           <nav className="nav-target-carousel" role="navigation" aria-label="Target Questions Menu">
             <TargetCarousel
+              onSelectTarget={this._onSelectTarget}
               mission={this.props.mission}
               ref={ (targets) => {this.targetCarousel = targets;} }/>
           </nav>
           <main>
             <Questions
+              ref={ (questions) => {this.questions = questions;} }
               mission={this.props.mission}
               isSubmitEnabled={this.props.doNotTakeMission ? false : undefined}
               onClickReturnToTargetCarousel={this.onClickReturnToTargetCarousel}
@@ -102,6 +104,16 @@ class Mission extends Component {
         </div>
       </DocumentTitle>
     )
+  }
+
+  _onSelectDirective = (index) => {
+    this.targetCarousel.focus();
+    this.props.onSelectDirective(index);
+  }
+
+  _onSelectTarget = (target) => {
+    this.questions.focus();
+    this.props.onSelectTarget(target);
   }
 
   onClickReturnToTargetCarousel = () => {

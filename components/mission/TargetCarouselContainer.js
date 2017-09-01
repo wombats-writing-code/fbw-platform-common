@@ -2,7 +2,6 @@ Object.defineProperty(exports,"__esModule",{value:true});var _lodash=require('lo
 var _reactRedux=require('react-redux');
 
 var _mission=require('../../selectors/mission');
-var _selectTarget=require('../../reducers/Mission/selectTarget');
 var _selectors=require('../../selectors');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}
 
 
@@ -21,8 +20,7 @@ outcomes:(0,_selectors.getMapping)(state).outcomes?(0,_selectors.getMapping)(sta
 }return mapStateToProps;}();
 
 var mapDispatchToProps=function(){function mapDispatchToProps(dispatch,ownProps){
-return{
-onSelectTarget:function(){function onSelectTarget(data){return dispatch((0,_selectTarget.selectTarget)(data));}return onSelectTarget;}()};
+return{};
 
 }return mapDispatchToProps;}();
 
