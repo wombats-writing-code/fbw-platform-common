@@ -9,6 +9,13 @@
 
 }
 
+.answered-question-cue a:focus {
+  outline-style: dashed;
+  outline-color: $app-red-dark;
+  outline-width: 3px;
+  outline-offset: 0.5rem;
+}
+
 .cue-text {
   // font-style: italic;
   margin-bottom: 0;
