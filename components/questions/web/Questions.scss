@@ -41,3 +41,7 @@
   outline-width: 3px;
   outline-color: $app-red-dark;
 }
+
+.MathJax:focus {
+  outline-offset: 0.25rem;
+}
