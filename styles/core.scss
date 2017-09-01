@@ -28,8 +28,7 @@ button {
 }
 
 // let's keep a focus ring for accessibility...
-button:focus,
-a:focus {
+button:focus {
   outline-color: $app-red-dark;
   outline-offset: 0.25rem;
   outline-style: dashed;

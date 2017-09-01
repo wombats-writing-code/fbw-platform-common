@@ -110,6 +110,12 @@ a.breadcrumb__link:hover {
   opacity: .8;
 }
 
+.nav-bar a:focus {
+  outline-color: $app-red-dark;
+  outline-offset: 0.25rem;
+  outline-style: dashed;
+}
+
 .element-invisible {
   position: absolute !important;
   clip: rect(1px, 1px, 1px, 1px);
