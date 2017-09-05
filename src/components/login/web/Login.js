@@ -33,7 +33,7 @@ class Login extends Component {
       </div>)
     }
 
-    let loginButton = <button className="login-button login-button--guest login-button--guest--disabled">
+    let loginButton = <button disabled className="login-button login-button--guest login-button--guest--disabled">
       Login &rarr;
     </button>
 

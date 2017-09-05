@@ -56,6 +56,13 @@
   opacity: .8;
 }
 
+.login-button:focus {
+  outline-offset: 0.5rem;
+  outline-color: $app-red-dark;
+  outline-width: 3px;
+  outline-style: dashed;
+}
+
 .login-button__image {
     height: 1.1rem;
     position: absolute;
@@ -110,7 +117,11 @@
 }
 
 .login__guest-input:focus {
-  outline: none;
+  // outline: none;
+  outline-offset: 0.5rem;
+  outline-color: $app-red-dark;
+  outline-width: 3px;
+  outline-style: dashed;
   border-bottom-color: #3D5EB7;
 }
 
@@ -133,4 +144,11 @@
 
 .contact a:hover {
   color: #fff;
+}
+
+.contact a:focus {
+  outline-offset: 0.5rem;
+  outline-color: $app-red-dark;
+  outline-width: 3px;
+  outline-style: dashed;
 }
