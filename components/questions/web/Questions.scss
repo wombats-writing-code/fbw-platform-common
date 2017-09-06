@@ -81,3 +81,11 @@
   padding: 1em;
   margin-top: -1.25rem;
 }
+
+#skip-link-to-directive-carousel .element-focusable:focus,
+#skip-link-to-target-carousel .element-focusable:focus {
+  outline-color: $app-red-dark;
+  outline-offset: 0.25rem;
+  outline-style: dashed;
+  outline-width: 3px;
+}
