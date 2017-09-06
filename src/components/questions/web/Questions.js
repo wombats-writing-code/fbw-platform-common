@@ -148,8 +148,38 @@ class Questions extends Component {
         </ul>
 
         {inProgressIndicator}
+        <div id="skip-link-to-directive-carousel">
+          <a
+            href="#directive-carousel"
+            className="element-invisible element-focusable"
+            onClick={this._skipToDirectiveCarousel}>Skip to goals</a>
+        </div>
+        <div id="skip-link-to-target-carousel">
+          <a
+            href="#target-carousel"
+            className="element-invisible element-focusable"
+            onClick={this._skipToTargetCarousel}>Skip to goal questions</a>
+        </div>
       </div>
     )
+  }
+
+  _skipToDirectiveCarousel = () => {
+    // need to shift focus to the directive carousel...
+    // kind of hacky, as stated here:
+    //   https://stackoverflow.com/questions/37956513/react-router-reset-focus-on-route-change-accessibility#37957318
+    // But don't feel like passing refs through so many other
+    //   components...
+    document.getElementById('directive-carousel').focus();
+  }
+
+  _skipToTargetCarousel = () => {
+    // need to shift focus to the target carousel...
+    // kind of hacky, as stated here:
+    //   https://stackoverflow.com/questions/37956513/react-router-reset-focus-on-route-change-accessibility#37957318
+    // But don't feel like passing refs through so many other
+    //   components...
+    document.getElementById('target-carousel').focus();
   }
 }
 

@@ -19,7 +19,7 @@ class NavBar extends Component {
 
     return (
       <div className="nav-bar flex-container align-center space-between wrap">
-        <div id="skip-link">
+        <div id="skip-link-to-main-content">
           <a
             href="#main-content"
             className="element-invisible element-focusable"

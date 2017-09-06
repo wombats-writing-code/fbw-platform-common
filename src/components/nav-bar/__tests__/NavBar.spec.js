@@ -96,7 +96,7 @@ describe('NavBar', () => {
 
   it('should include a (hidden) skip link', () => {
     const component = connectedComponent.find(NavBar)
-    component.find('#skip-link').length.should.eql(1);
+    component.find('#skip-link-to-main-content').length.should.eql(1);
   });
 
   after(() => {

@@ -49,7 +49,15 @@ describe('Questions', () => {
     questions.find('.submit-button').length.should.be.eql(0);
   });
 
+  it('should include a (hidden) skip link to directives', () => {
+    const questions = connectedQuestions.find(Questions)
+    questions.find('#skip-link-to-directive-carousel').length.should.eql(1);
+  });
 
+  it('should include a (hidden) skip link to targets', () => {
+    const questions = connectedQuestions.find(Questions)
+    questions.find('#skip-link-to-target-carousel').length.should.eql(1);
+  });
 
   after( () => {
     connectedQuestions.detach();

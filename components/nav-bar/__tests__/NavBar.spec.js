@@ -96,7 +96,7 @@ component.find('.logout-button').length.should.eql(1);
 
 it('should include a (hidden) skip link',function(){
 var component=connectedComponent.find(_web2['default']);
-component.find('#skip-link').length.should.eql(1);
+component.find('#skip-link-to-main-content').length.should.eql(1);
 });
 
 after(function(){
