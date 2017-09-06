@@ -127,7 +127,7 @@ a.breadcrumb__link:hover {
   word-wrap: normal;
 }
 
-#skip-link {
+#skip-link-to-main-content {
   left: 50%;
   margin-left: -6.5em;
   margin-top: 0;
@@ -137,8 +137,8 @@ a.breadcrumb__link:hover {
   z-index: 1050;
 }
 
-#skip-link a,
-#skip-link a:link {
+#skip-link-to-main-content a,
+#skip-link-to-main-content a:link {
   background: rgba(0,0,0,0.6);
   color: #fff;
   display: block;
@@ -148,8 +148,8 @@ a.breadcrumb__link:hover {
   text-decoration: none;
 }
 
-#skip-link .element-focusable:active,
-#skip-link .element-focusable:focus {
+#skip-link-to-main-content .element-focusable:active,
+#skip-link-to-main-content .element-focusable:focus {
   clip: auto;
   height: auto;
   overflow: visible;

@@ -45,3 +45,39 @@
 .MathJax:focus {
   outline-offset: 0.25rem;
 }
+
+#skip-link-to-directive-carousel,
+#skip-link-to-target-carousel {
+  left: 50%;
+  margin-left: -6.5em;
+  margin-top: 0;
+  padding: 0 0.5em;
+  position: absolute;
+  width: 12em;
+  z-index: 1050;
+}
+
+#skip-link-to-directive-carousel a,
+#skip-link-to-target-carousel a,
+#skip-link-to-directive-carousel a:link,
+#skip-link-to-target-carousel a:link {
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  display: block;
+  line-height: 2;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+}
+
+#skip-link-to-directive-carousel .element-focusable:active,
+#skip-link-to-target-carousel .element-focusable:active,
+#skip-link-to-directive-carousel .element-focusable:focus,
+#skip-link-to-target-carousel .element-focusable:focus {
+  clip: auto;
+  height: auto;
+  overflow: visible;
+  width: 100%;
+  padding: 1em;
+  margin-top: -1.25rem;
+}
