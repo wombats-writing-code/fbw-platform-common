@@ -165,16 +165,25 @@ export const grabTargetQuestionsFromRecords = (studentRecords) => {
   return _.uniqBy(_.filter(studentRecords, r => isTarget(r.question)), record => record.question.id);
 }
 
-export const pointsEarned = (questions) => {
-  // console.log('points earned for', questions)
-
-  let numberCorrect = _.reduce(questions, (sum, question) => {
+export const numberCorrectTargets = (questions) => {
+  // assumes questions is already a list of targets
+  // Call `grabTargetQuestionsFromRecords` first
+  return _.reduce(questions, (sum, question) => {
     if (question && question.response && question.response.isCorrect) {
       sum++;
     }
 
     return sum;
   }, 0);
+}
+
+export const pointsEarned = (questions) => {
+  // assumes questions is already a list of targets
+  // Call `grabTargetQuestionsFromRecords` first
+
+  // console.log('points earned for', questions)
+
+  let numberCorrect = numberCorrectTargets(questions);
 
   let percentCorrect = _.round((numberCorrect / questions.length) * 100, 1);
   // console.log('number correct', numberCorrect)
@@ -184,13 +193,17 @@ export const pointsEarned = (questions) => {
 }
 
 
-export const numberUnansweredTargets = (questions) => {
-  const targetQuestions = _.map(questions, (question) => {
-    if (isTarget(question)) {
-      return question;
-    }
-  });
-  return _.filter(targetQuestions, targetQuestion => !targetQuestion.responded).length;
+export const numberUnansweredTargets = (targetQuestions) => {
+  // assumes targetQuestions is already a list of targets
+  // Call `grabTargetQuestionsFromRecords` first
+
+  return _.filter(targetQuestions, targetQuestion => !targetQuestion.responseResult).length;
+}
+
+export const numberAttemptedTargets = (targetQuestions) => {
+  // assumes targetQuestions is already a list of targets
+  // Call `grabTargetQuestionsFromRecords` first
+  return _.filter(targetQuestions, targetQuestion => targetQuestion.responseResult).length;
 }
 
 // export function hasAchievedDirective (targets) {

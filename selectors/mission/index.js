@@ -1,4 +1,4 @@
-Object.defineProperty(exports,"__esModule",{value:true});exports.directiveIdsFromQuestions=exports.isGoalMastered=exports.isGoalCompleted=exports.isLastTargetInRoute=exports.targetStatus=exports.isTargetRouteNavigated=exports.computeSectionProgress=exports.getRouteQuestions=exports.getSectionTargets=exports.getMissionDirectives=exports.targetKey=exports.isTarget=undefined;exports.
+Object.defineProperty(exports,"__esModule",{value:true});exports.numberAttemptedTargets=exports.numberUnansweredTargets=exports.pointsEarned=exports.numberCorrectTargets=exports.grabTargetQuestionsFromRecords=exports.directiveIdsFromQuestions=exports.isGoalMastered=exports.isGoalCompleted=exports.isLastTargetInRoute=exports.targetStatus=exports.isTargetRouteNavigated=exports.computeSectionProgress=exports.getRouteQuestions=exports.getSectionTargets=exports.getMissionDirectives=exports.targetKey=exports.isTarget=undefined;exports.
 
 
 
@@ -159,3 +159,49 @@ return questions;
 var directiveIdsFromQuestions=exports.directiveIdsFromQuestions=function(){function directiveIdsFromQuestions(questionsData){
 return _lodash2['default'].map(questionsData,function(section,index){return section.learningObjectiveId;});
 }return directiveIdsFromQuestions;}();
+
+var grabTargetQuestionsFromRecords=exports.grabTargetQuestionsFromRecords=function(){function grabTargetQuestionsFromRecords(studentRecords){
+
+return _lodash2['default'].uniqBy(_lodash2['default'].filter(studentRecords,function(r){return isTarget(r.question);}),function(record){return record.question.id;});
+}return grabTargetQuestionsFromRecords;}();
+
+var numberCorrectTargets=exports.numberCorrectTargets=function(){function numberCorrectTargets(questions){
+
+
+return _lodash2['default'].reduce(questions,function(sum,question){
+if(question&&question.response&&question.response.isCorrect){
+sum++;
+}
+
+return sum;
+},0);
+}return numberCorrectTargets;}();
+
+var pointsEarned=exports.pointsEarned=function(){function pointsEarned(questions){
+
+
+
+
+
+var numberCorrect=numberCorrectTargets(questions);
+
+var percentCorrect=_lodash2['default'].round(numberCorrect/questions.length*100,1);
+
+
+
+return numberCorrect+' / '+questions.length+'; '+percentCorrect+'%';
+}return pointsEarned;}();
+
+
+var numberUnansweredTargets=exports.numberUnansweredTargets=function(){function numberUnansweredTargets(targetQuestions){
+
+
+
+return _lodash2['default'].filter(targetQuestions,function(targetQuestion){return!targetQuestion.responseResult;}).length;
+}return numberUnansweredTargets;}();
+
+var numberAttemptedTargets=exports.numberAttemptedTargets=function(){function numberAttemptedTargets(targetQuestions){
+
+
+return _lodash2['default'].filter(targetQuestions,function(targetQuestion){return targetQuestion.responseResult;}).length;
+}return numberAttemptedTargets;}();

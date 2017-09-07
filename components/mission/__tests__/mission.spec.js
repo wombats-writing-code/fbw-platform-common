@@ -48,6 +48,12 @@ mission.find('.question-card').length.should.be.eql(2);
 
 });
 
+it('should render a mission with the current status displayed',function(){
+var mission=connectedComponent.find(Mission);
+
+mission.find('.current-status').length.should.be.eql(1);
+});
+
 after(function(){
 connectedComponent.detach();
 });

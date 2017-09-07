@@ -48,6 +48,12 @@ describe('Mission', () => {
 
   });
 
+  it('should render a mission with the current status displayed', () => {
+    const mission = connectedComponent.find(Mission)
+
+    mission.find('.current-status').length.should.be.eql(1);
+  });
+
   after( function() {
     connectedComponent.detach();
   });

@@ -2,8 +2,12 @@
 
 
 
+var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);
 
-var _mission=require('../mission');var chai=require('chai');var path=require('path');chai.should();var sectionQuestions=require('./section-questions.json');
+
+var _mission=require('../mission');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var chai=require('chai');var path=require('path');chai.should();var sectionQuestions=require('./section-questions.json');
+
+
 
 
 describe('mission selectors',function(){
@@ -102,4 +106,300 @@ id:'2',
 referenceNumber:'1'}]);
 
 });
+});
+
+describe('(resultsSelector) pointsEarned',function(){
+
+it('should calculate points earned for all correct',function(done){
+var questions=[
+{response:{
+isCorrect:true}},
+
+{response:{
+isCorrect:true}},
+
+{response:{
+isCorrect:true}}];
+
+
+
+var points=(0,_mission.pointsEarned)(questions);
+points.should.eql('3 / 3; 100%');
+
+done();
+});
+
+it('should calculate points earned for all wrong',function(done){
+var questions=[
+{response:{
+isCorrect:false}},
+
+{response:{
+isCorrect:false}},
+
+{response:{
+isCorrect:false}}];
+
+
+
+var points=(0,_mission.pointsEarned)(questions);
+points.should.eql('0 / 3; 0%');
+
+done();
+});
+
+it('should calculate points earned for none responded',function(done){
+var questions=[
+{response:{
+isCorrect:null}},
+
+{response:{
+isCorrect:null}},
+
+{response:{
+isCorrect:null}}];
+
+
+
+var points=(0,_mission.pointsEarned)(questions);
+points.should.eql('0 / 3; 0%');
+
+done();
+});
+});
+
+describe('numberCorrectTargets selector',function(){
+
+it('should count all correct',function(done){
+var questions=[
+{response:{
+isCorrect:true}},
+
+{response:{
+isCorrect:true}},
+
+{response:{
+isCorrect:true}}];
+
+
+
+var results=(0,_mission.numberCorrectTargets)(questions);
+results.should.eql(3);
+
+done();
+});
+
+it('should not count all wrong',function(done){
+var questions=[
+{response:{
+isCorrect:false}},
+
+{response:{
+isCorrect:false}},
+
+{response:{
+isCorrect:false}}];
+
+
+
+var results=(0,_mission.numberCorrectTargets)(questions);
+results.should.eql(0);
+
+done();
+});
+
+it('should not count none responded',function(done){
+var questions=[
+{response:{
+isCorrect:null}},
+
+{response:{
+isCorrect:null}},
+
+{response:{
+isCorrect:null}}];
+
+
+
+var results=(0,_mission.numberCorrectTargets)(questions);
+results.should.eql(0);
+
+done();
+});
+});
+
+describe('grabTargetQuestionsFromRecords selector',function(){
+
+it('should not return waypoint questions',function(done){
+var records=[
+{question:{
+referenceNumber:'1',
+id:'1'}},
+
+{question:{
+referenceNumber:'1.1',
+id:'2'}},
+
+{question:{
+referenceNumber:'2',
+id:'3'}}];
+
+
+
+var targets=(0,_mission.grabTargetQuestionsFromRecords)(records);
+targets.length.should.eql(2);
+_lodash2['default'].map(targets,'question.id').should.eql(['1','3']);
+
+done();
+});
+
+it('should not return duplicate target questions',function(done){
+
+var records=[
+{question:{
+referenceNumber:'1',
+id:'1'}},
+
+{question:{
+referenceNumber:'1.1',
+id:'2'}},
+
+{question:{
+referenceNumber:'2',
+id:'1'}}];
+
+
+
+var targets=(0,_mission.grabTargetQuestionsFromRecords)(records);
+targets.length.should.eql(1);
+_lodash2['default'].map(targets,'question.id').should.eql(['1']);
+
+done();
+});
+
+});
+
+
+describe('numberUnansweredTargets selector',function(){
+
+it('should calculate 0 targets remaining when all responded',function(done){
+var questions=[
+{responseResult:true,
+referenceNumber:'1',
+id:'1'},
+{responseResult:true,
+referenceNumber:'2',
+id:'2'},
+{responseResult:true,
+referenceNumber:'3',
+id:'3'}];
+
+
+var results=(0,_mission.numberUnansweredTargets)(questions);
+results.should.eql(0);
+
+done();
+});
+
+it('should not calculate unresponded targets',function(done){
+var questions=[
+{responseResult:true,
+referenceNumber:'1',
+id:'1'},
+{foo:'bar',
+referenceNumber:'2',
+id:'2'},
+{responseResult:true,
+referenceNumber:'3',
+id:'3'}];
+
+
+var results=(0,_mission.numberUnansweredTargets)(questions);
+results.should.eql(1);
+
+done();
+});
+
+it('should not calculate unresponded targets with responded false',function(done){
+
+var questions=[
+{responseResult:true,
+referenceNumber:'1',
+id:'1'},
+{responseResult:false,
+referenceNumber:'2',
+id:'2'},
+{responseResult:true,
+referenceNumber:'3',
+id:'3'}];
+
+
+var results=(0,_mission.numberUnansweredTargets)(questions);
+results.should.eql(1);
+
+done();
+});
+
+});
+
+describe('numberAttemptedTargets selector',function(){
+
+it('should calculate 3 attempted targets when all responded',function(done){
+var questions=[
+{responseResult:true,
+referenceNumber:'1',
+id:'1'},
+{responseResult:true,
+referenceNumber:'2',
+id:'2'},
+{responseResult:true,
+referenceNumber:'3',
+id:'3'}];
+
+
+var results=(0,_mission.numberAttemptedTargets)(questions);
+results.should.eql(3);
+
+done();
+});
+
+it('should not calculate unresponded targets',function(done){
+var questions=[
+{responseResult:true,
+referenceNumber:'1',
+id:'1'},
+{foo:'bar',
+referenceNumber:'2',
+id:'2'},
+{responseResult:true,
+referenceNumber:'3',
+id:'3'}];
+
+
+var results=(0,_mission.numberAttemptedTargets)(questions);
+results.should.eql(2);
+
+done();
+});
+
+it('should not calculate unresponded targets with responded false',function(done){
+
+var questions=[
+{responseResult:true,
+referenceNumber:'1',
+id:'1'},
+{responseResult:false,
+referenceNumber:'2',
+id:'2'},
+{responseResult:true,
+referenceNumber:'3',
+id:'3'}];
+
+
+var results=(0,_mission.numberAttemptedTargets)(questions);
+results.should.eql(2);
+
+done();
+});
+
 });

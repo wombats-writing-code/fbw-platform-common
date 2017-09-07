@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Spinner from 'react-spinner'
 import slug from 'slug'
+import _ from 'lodash'
 import DocumentTitle from 'react-document-title'
 
 import DirectiveCarouselContainer from '../DirectiveCarouselContainer'
@@ -16,6 +17,8 @@ import QuestionsComponent from '../../questions/web/Questions'
 const Questions = QuestionsContainer(QuestionsComponent)
 
 import {checkMissionStatus } from '../../../utilities/time'
+import { numberCorrectTargets, numberAttemptedTargets,
+  numberUnansweredTargets, isTarget } from '../../../selectors/mission';
 
 import './Mission.scss'
 const styles = {
@@ -52,6 +55,19 @@ class Mission extends Component {
     }
   }
 
+  currentStatus = (records) => {
+    // calculate the student's:
+    // # question / # correct / # unattempted
+    // to show at the top of the page
+    // `records` should be from this.props.mission.questions
+    //    which needs to be flattened
+    const targetQuestions = _.filter(_.flattenDeep(records), isTarget);
+    const correct = numberCorrectTargets(targetQuestions);
+    const attempted = numberAttemptedTargets(targetQuestions);
+    const unattempted = numberUnansweredTargets(targetQuestions);
+    return `${correct} Correct | ${attempted} Attempted | ${unattempted} Remaining`;
+  }
+
   render() {
     // console.log('Mission.props', this.props)
 
@@ -78,6 +94,11 @@ class Mission extends Component {
     return (
       <DocumentTitle title={`Mission: ${this.props.mission.displayName}`}>
         <div>
+          <div>
+            <div className='current-status'>
+              {this.currentStatus(this.props.mission.questions)}
+            </div>
+          </div>
           <nav
             tabIndex={-1}
             role="navigation"
