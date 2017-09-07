@@ -160,6 +160,38 @@ export const directiveIdsFromQuestions = (questionsData) => {
   return _.map(questionsData, (section, index) => section.learningObjectiveId);
 }
 
+export const grabTargetQuestionsFromRecords = (studentRecords) => {
+  // for a single student's set of records
+  return _.uniqBy(_.filter(studentRecords, r => isTarget(r.question)), record => record.question.id);
+}
+
+export const pointsEarned = (questions) => {
+  // console.log('points earned for', questions)
+
+  let numberCorrect = _.reduce(questions, (sum, question) => {
+    if (question && question.response && question.response.isCorrect) {
+      sum++;
+    }
+
+    return sum;
+  }, 0);
+
+  let percentCorrect = _.round((numberCorrect / questions.length) * 100, 1);
+  // console.log('number correct', numberCorrect)
+  // console.log('percentCorrect', percentCorrect)
+
+  return `${numberCorrect} / ${questions.length}; ${percentCorrect}%`;
+}
+
+
+export const numberUnansweredTargets = (questions) => {
+  const targetQuestions = _.map(questions, (question) => {
+    if (isTarget(question)) {
+      return question;
+    }
+  });
+  return _.filter(targetQuestions, targetQuestion => !targetQuestion.responded).length;
+}
 
 // export function hasAchievedDirective (targets) {
 //   if (!targets) return null;

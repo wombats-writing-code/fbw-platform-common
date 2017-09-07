@@ -2,9 +2,12 @@ let chai = require('chai');
 let path = require('path')
 chai.should();
 
+import _ from 'lodash';
+
 const sectionQuestions = require('./section-questions.json');
 import {getSectionTargets, isTargetRouteNavigated,
-  isLastTargetInRoute, getRouteQuestions} from '../mission'
+  isLastTargetInRoute, getRouteQuestions, pointsEarned,
+  numberUnansweredTargets, grabTargetQuestionsFromRecords} from '../mission'
 
 describe('mission selectors', () => {
 
@@ -102,4 +105,177 @@ describe('mission selectors', () => {
       referenceNumber: '1'
     }]);
   })
+})
+
+describe('(resultsSelector) pointsEarned', () => {
+
+  it(`should calculate points earned for all correct`, function(done) {
+    const questions = [
+      {response: {
+        isCorrect: true,
+      }},
+      {response: {
+        isCorrect: true,
+      }},
+      {response: {
+        isCorrect: true,
+      }},
+    ];
+
+    let points = pointsEarned(questions);
+    points.should.eql('3 / 3; 100%');
+
+    done();
+  });
+
+  it(`should calculate points earned for all wrong`, function(done) {
+    const questions = [
+      {response: {
+        isCorrect: false,
+      }},
+      {response: {
+        isCorrect: false,
+      }},
+      {response: {
+        isCorrect: false,
+      }},
+    ];
+
+    let points = pointsEarned(questions);
+    points.should.eql('0 / 3; 0%');
+
+    done();
+  });
+
+  it(`should calculate points earned for none responded`, function(done) {
+    const questions = [
+      {response: {
+        isCorrect: null,
+      }},
+      {response: {
+        isCorrect: null,
+      }},
+      {response: {
+        isCorrect: null,
+      }},
+    ];
+
+    let points = pointsEarned(questions);
+    points.should.eql('0 / 3; 0%');
+
+    done();
+  });
+})
+
+describe('grabTargetQuestionsFromRecords selector', () => {
+
+  it(`should not return waypoint questions`, function(done) {
+    const records = [
+      {question: {
+        referenceNumber: '1',
+        id: '1'
+      }},
+      {question: {
+        referenceNumber: '1.1',
+        id: '2'
+      }},
+      {question: {
+        referenceNumber: '2',
+        id: '3'
+      }},
+    ];
+
+    let targets = grabTargetQuestionsFromRecords(records);
+    targets.length.should.eql(2);
+    _.map(targets, 'question.id').should.eql(['1', '3']);
+
+    done();
+  });
+
+  it(`should not return duplicate target questions`, function(done) {
+    // though this should be an impossible state to reach
+    const records = [
+      {question: {
+        referenceNumber: '1',
+        id: '1'
+      }},
+      {question: {
+        referenceNumber: '1.1',
+        id: '2'
+      }},
+      {question: {
+        referenceNumber: '2',
+        id: '1'
+      }},
+    ];
+
+    let targets = grabTargetQuestionsFromRecords(records);
+    targets.length.should.eql(1);
+    _.map(targets, 'question.id').should.eql(['1']);
+
+    done();
+  });
+
+})
+
+describe('numberUnansweredTargets selector', () => {
+
+  it(`should calculate 0 targets remaining when all responded`, function(done) {
+    const questions = [
+      {responded: true,
+       referenceNumber: '1',
+       id: '1'},
+      {responded: true,
+       referenceNumber: '2',
+       id: '2'},
+      {responded: true,
+       referenceNumber: '3',
+       id: '3'},
+    ];
+
+    let results = numberUnansweredTargets(questions);
+    results.should.eql(0);
+
+    done();
+  });
+
+  it(`should not calculate unresponded targets`, function(done) {
+    const questions = [
+      {responded: true,
+       referenceNumber: '1',
+       id: '1'},
+      {foo: 'bar',
+       referenceNumber: '2',
+       id: '2'},
+      {responded: true,
+       referenceNumber: '3',
+       id: '3'},
+    ];
+
+    let results = numberUnansweredTargets(questions);
+    results.should.eql(1);
+
+    done();
+  });
+
+  it(`should not calculate unresponded targets with responded false`, function(done) {
+    // this state should never actually happen?
+    const questions = [
+      {responded: true,
+       referenceNumber: '1',
+       id: '1'},
+      {responded: false,
+       referenceNumber: '2',
+       id: '2'},
+      {responded: true,
+       referenceNumber: '3',
+       id: '3'},
+    ];
+
+    let results = numberUnansweredTargets(questions);
+    results.should.eql(1);
+
+    done();
+  });
+
 })
