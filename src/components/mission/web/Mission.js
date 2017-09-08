@@ -97,6 +97,7 @@ class Mission extends Component {
           contentLabel="Completed Mission Summary"
         >
           <div
+            aria-label={`You've answered all the goal questions for this mission. You correctly answered ${summaryString} goal questions. Feel free to return to the mission and review your questions.`}
             ref={(modal) => {this.modal = modal;}}
             tabIndex={-1}>
             <h3>Mission complete!</h3>
@@ -113,6 +114,7 @@ class Mission extends Component {
               </p>
             </div>
             <button
+              aria-label="Return to mission"
               className="close-modal-button"
               onClick={this.onCloseModal}>Return to Mission</button>
           </div>
