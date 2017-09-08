@@ -10,6 +10,7 @@ var _mission=require('../mission');function _interopRequireDefault(obj){return o
 
 
 
+
 describe('mission selectors',function(){
 
 it('should return the targets of a given section',function(done){
@@ -279,6 +280,56 @@ done();
 
 });
 
+describe('grabTargetQuestionsFromMission selector',function(){
+
+it('should not return waypoint questions',function(done){
+var records=[
+{
+referenceNumber:'1',
+id:'1'},
+
+{
+referenceNumber:'1.1',
+id:'2'},
+
+{
+referenceNumber:'2',
+id:'3'}];
+
+
+
+var targets=(0,_mission.grabTargetQuestionsFromMission)(records);
+targets.length.should.eql(2);
+_lodash2['default'].map(targets,'id').should.eql(['1','3']);
+
+done();
+});
+
+it('should not return duplicate target questions',function(done){
+
+var records=[
+{
+referenceNumber:'1',
+id:'1'},
+
+{
+referenceNumber:'1.1',
+id:'2'},
+
+{
+referenceNumber:'2',
+id:'1'}];
+
+
+
+var targets=(0,_mission.grabTargetQuestionsFromMission)(records);
+targets.length.should.eql(1);
+_lodash2['default'].map(targets,'id').should.eql(['1']);
+
+done();
+});
+
+});
 
 describe('numberUnansweredTargets selector',function(){
 

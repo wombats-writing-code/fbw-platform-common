@@ -52,6 +52,9 @@ it('should render a mission with the current status displayed',function(){
 var mission=connectedComponent.find(Mission);
 
 mission.find('.current-status').length.should.be.eql(1);
+mission.html().should.contain('5 Correct');
+mission.html().should.contain('11 Attempted');
+mission.html().should.contain('34 Remaining');
 });
 
 after(function(){

@@ -55,13 +55,13 @@ Mission=function(_Component){_inherits(Mission,_Component);function Mission(){va
 
 
 
-currentStatus=function(records){
+currentStatus=function(missionQuestions){
 
 
 
 
 
-var targetQuestions=_lodash2['default'].filter(_lodash2['default'].flattenDeep(records),_mission.isTarget);
+var targetQuestions=(0,_mission.grabTargetQuestionsFromMission)(_lodash2['default'].flattenDeep(missionQuestions));
 var correct=(0,_mission.numberCorrectTargets)(targetQuestions);
 var attempted=(0,_mission.numberAttemptedTargets)(targetQuestions);
 var unattempted=(0,_mission.numberUnansweredTargets)(targetQuestions);

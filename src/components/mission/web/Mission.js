@@ -18,7 +18,7 @@ const Questions = QuestionsContainer(QuestionsComponent)
 
 import {checkMissionStatus } from '../../../utilities/time'
 import { numberCorrectTargets, numberAttemptedTargets,
-  numberUnansweredTargets, isTarget } from '../../../selectors/mission';
+  numberUnansweredTargets, grabTargetQuestionsFromMission } from '../../../selectors/mission';
 
 import './Mission.scss'
 const styles = {
@@ -55,13 +55,13 @@ class Mission extends Component {
     }
   }
 
-  currentStatus = (records) => {
+  currentStatus = (missionQuestions) => {
     // calculate the student's:
     // # question / # correct / # unattempted
     // to show at the top of the page
     // `records` should be from this.props.mission.questions
     //    which needs to be flattened
-    const targetQuestions = _.filter(_.flattenDeep(records), isTarget);
+    const targetQuestions = grabTargetQuestionsFromMission(_.flattenDeep(missionQuestions));
     const correct = numberCorrectTargets(targetQuestions);
     const attempted = numberAttemptedTargets(targetQuestions);
     const unattempted = numberUnansweredTargets(targetQuestions);

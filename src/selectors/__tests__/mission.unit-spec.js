@@ -8,7 +8,8 @@ const sectionQuestions = require('./section-questions.json');
 import {getSectionTargets, isTargetRouteNavigated,
   isLastTargetInRoute, getRouteQuestions, pointsEarned,
   numberUnansweredTargets, grabTargetQuestionsFromRecords,
-  numberAttemptedTargets, numberCorrectTargets} from '../mission'
+  numberAttemptedTargets, numberCorrectTargets,
+  grabTargetQuestionsFromMission} from '../mission'
 
 describe('mission selectors', () => {
 
@@ -279,6 +280,56 @@ describe('grabTargetQuestionsFromRecords selector', () => {
 
 })
 
+describe('grabTargetQuestionsFromMission selector', () => {
+
+  it(`should not return waypoint questions`, function(done) {
+    const records = [
+      {
+        referenceNumber: '1',
+        id: '1'
+      },
+      {
+        referenceNumber: '1.1',
+        id: '2'
+      },
+      {
+        referenceNumber: '2',
+        id: '3'
+      },
+    ];
+
+    let targets = grabTargetQuestionsFromMission(records);
+    targets.length.should.eql(2);
+    _.map(targets, 'id').should.eql(['1', '3']);
+
+    done();
+  });
+
+  it(`should not return duplicate target questions`, function(done) {
+    // though this should be an impossible state to reach
+    const records = [
+      {
+        referenceNumber: '1',
+        id: '1'
+      },
+      {
+        referenceNumber: '1.1',
+        id: '2'
+      },
+      {
+        referenceNumber: '2',
+        id: '1'
+      },
+    ];
+
+    let targets = grabTargetQuestionsFromMission(records);
+    targets.length.should.eql(1);
+    _.map(targets, 'id').should.eql(['1']);
+
+    done();
+  });
+
+})
 
 describe('numberUnansweredTargets selector', () => {
 

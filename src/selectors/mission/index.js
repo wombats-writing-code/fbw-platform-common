@@ -165,6 +165,13 @@ export const grabTargetQuestionsFromRecords = (studentRecords) => {
   return _.uniqBy(_.filter(studentRecords, r => isTarget(r.question)), record => record.question.id);
 }
 
+export const grabTargetQuestionsFromMission = (missionQuestions) => {
+  // When passing in this.props.mission.questions from MissionContainer component
+  // This has to make sure to grab only targets achieved on the FIRST attempt,
+  // so `uniqBy` takes them in order, which works...
+  return _.uniqBy(_.filter(missionQuestions, q => isTarget(q)), question => question.id);
+}
+
 export const numberCorrectTargets = (questions) => {
   // assumes questions is already a list of targets
   // Call `grabTargetQuestionsFromRecords` first

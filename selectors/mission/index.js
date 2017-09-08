@@ -1,4 +1,4 @@
-Object.defineProperty(exports,"__esModule",{value:true});exports.numberAttemptedTargets=exports.numberUnansweredTargets=exports.pointsEarned=exports.numberCorrectTargets=exports.grabTargetQuestionsFromRecords=exports.directiveIdsFromQuestions=exports.isGoalMastered=exports.isGoalCompleted=exports.isLastTargetInRoute=exports.targetStatus=exports.isTargetRouteNavigated=exports.computeSectionProgress=exports.getRouteQuestions=exports.getSectionTargets=exports.getMissionDirectives=exports.targetKey=exports.isTarget=undefined;exports.
+Object.defineProperty(exports,"__esModule",{value:true});exports.numberAttemptedTargets=exports.numberUnansweredTargets=exports.pointsEarned=exports.numberCorrectTargets=exports.grabTargetQuestionsFromMission=exports.grabTargetQuestionsFromRecords=exports.directiveIdsFromQuestions=exports.isGoalMastered=exports.isGoalCompleted=exports.isLastTargetInRoute=exports.targetStatus=exports.isTargetRouteNavigated=exports.computeSectionProgress=exports.getRouteQuestions=exports.getSectionTargets=exports.getMissionDirectives=exports.targetKey=exports.isTarget=undefined;exports.
 
 
 
@@ -164,6 +164,13 @@ var grabTargetQuestionsFromRecords=exports.grabTargetQuestionsFromRecords=functi
 
 return _lodash2['default'].uniqBy(_lodash2['default'].filter(studentRecords,function(r){return isTarget(r.question);}),function(record){return record.question.id;});
 }return grabTargetQuestionsFromRecords;}();
+
+var grabTargetQuestionsFromMission=exports.grabTargetQuestionsFromMission=function(){function grabTargetQuestionsFromMission(missionQuestions){
+
+
+
+return _lodash2['default'].uniqBy(_lodash2['default'].filter(missionQuestions,function(q){return isTarget(q);}),function(question){return question.id;});
+}return grabTargetQuestionsFromMission;}();
 
 var numberCorrectTargets=exports.numberCorrectTargets=function(){function numberCorrectTargets(questions){
 
