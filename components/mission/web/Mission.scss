@@ -24,3 +24,10 @@
   background: $app-blue-dark;
   color: white;
 }
+
+.close-modal-button:focus {
+  outline-style: dashed;
+  outline-width: 3px;
+  outline-offset: 0.5rem;
+  outline-color: $app-red-dark;
+}
