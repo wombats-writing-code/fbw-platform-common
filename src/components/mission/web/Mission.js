@@ -29,6 +29,12 @@ const styles = {
 }
 
 class Mission extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      closeModal: false
+    }
+  }
   componentDidMount() {
     let missionState = checkMissionStatus(this.props.mission);
     let mission = this.props.params && this.props.missions ?
@@ -81,7 +87,8 @@ class Mission extends Component {
     // show a modal window telling them they've finished the mission, if
     //   there are 0 unattempted.
     const status = this.calculateStatus();
-    if (status.unattempted === 0) {
+    if (!this.state.closeModal && status.unattempted === 0 && status.correct > 0) {
+      const summaryString = `${status.correct} out of ${status.attempted}`; // for testing
       return (
         <Modal
           isOpen={true}
@@ -93,13 +100,14 @@ class Mission extends Component {
               Congratulations, you've answered all the goal questions for this mission.
             </p>
             <p>
-              You correctly answered {status.correct} out of {status.attempted} goal questions.
+              You correctly answered {summaryString} goal questions.
             </p>
             <p>
               Feel free to close this dialog window and review the questions,
               or quit the Fly-by-Wire application.
             </p>
           </div>
+          <button onClick={() => this.setState({closeModal: true})}>Close Modal</button>
         </Modal>
       )
     }

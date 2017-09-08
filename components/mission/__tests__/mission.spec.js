@@ -4,6 +4,7 @@ var _reactRedux=require('react-redux');
 var _reduxThunk=require('redux-thunk');var _reduxThunk2=_interopRequireDefault(_reduxThunk);
 var _reduxMockStore=require('redux-mock-store');var _reduxMockStore2=_interopRequireDefault(_reduxMockStore);
 var _reactModal=require('react-modal');var _reactModal2=_interopRequireDefault(_reactModal);
+var _reactDom=require('react-dom');var _reactDom2=_interopRequireDefault(_reactDom);
 
 var _Mission=require('../web/Mission');var _Mission2=_interopRequireDefault(_Mission);
 var _MissionContainer=require('../MissionContainer');var _MissionContainer2=_interopRequireDefault(_MissionContainer);
@@ -35,8 +36,8 @@ global.document.body.appendChild(div);
 
 store=mockStore(STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:38}},
-_react2['default'].createElement(Mission,{mission:STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:39}})),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:39}},
+_react2['default'].createElement(Mission,{mission:STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:40}})),
 
 {attachTo:div});
 
@@ -76,17 +77,17 @@ global.document.body.appendChild(div);
 
 store=mockStore(COMPLETED_STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:79}},
-_react2['default'].createElement(Mission,{mission:COMPLETED_STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:80}})),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:80}},
+_react2['default'].createElement(Mission,{mission:COMPLETED_STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:81}})),
 
 {attachTo:div});
 
 });
 
 it('should render a modal',function(){
-var mission=connectedComponent.find(Mission);
-
-mission.find('.modal-contents').length.should.eql(1);
+var modal=_reactDom2['default'].findDOMNode(connectedComponent.find(_reactModal2['default']).node.portal);
+console.log('modal',modal);
+modal.innerHTML.should.contain('2 out of 2');
 
 
 });

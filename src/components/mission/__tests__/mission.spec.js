@@ -4,6 +4,7 @@ import {Provider} from 'react-redux'
 import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store'
 import Modal from 'react-modal';
+import ReactDOM from 'react-dom';
 //
 import MissionComponent from '../web/Mission';
 import MissionContainer from '../MissionContainer'
@@ -84,9 +85,9 @@ describe('A completed Mission', () => {
   });
 
   it('should render a modal', () => {
-    const mission = connectedComponent.find(Mission);
-
-    mission.find('.modal-contents').length.should.eql(1);
+    const modal = ReactDOM.findDOMNode(connectedComponent.find(Modal).node.portal);
+    console.log('modal', modal);
+    modal.innerHTML.should.contain('2 out of 2');
     // STATE.should.be.eql('bar')
 
   });
