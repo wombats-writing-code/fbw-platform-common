@@ -28,6 +28,10 @@ const styles = {
   }
 }
 
+// This attempts to make the rest of the app "hidden" from screenreaders
+//   while the modal is open.
+Modal.setAppElement('#root');
+
 class Mission extends Component {
   constructor(props) {
     super(props);
