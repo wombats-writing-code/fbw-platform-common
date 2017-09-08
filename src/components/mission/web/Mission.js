@@ -91,28 +91,31 @@ class Mission extends Component {
       const summaryString = `${status.correct} out of ${status.attempted}`; // for testing
       return (
         <Modal
-          ref={(modal) => {this.modal = modal;}}
           onAfterOpen={this.onOpenModal}
           onBeforeClose={this.onClickReturnToDirectiveCarousel}
           isOpen={true}
           contentLabel="Completed Mission Summary"
         >
-          <h3>Mission complete!</h3>
-          <div className="modal-contents">
-            <p>
-              Congratulations, you've answered all the goal questions for this mission.
-            </p>
-            <p>
-              You correctly answered {summaryString} goal questions.
-            </p>
-            <p>
-              Feel free to close this dialog window and review the questions,
-              or quit the Fly-by-Wire application.
-            </p>
+          <div
+            ref={(modal) => {this.modal = modal;}}
+            tabIndex={-1}>
+            <h3>Mission complete!</h3>
+            <div className="modal-contents">
+              <p>
+                Congratulations, you've answered all the goal questions for this mission.
+              </p>
+              <p>
+                You correctly answered {summaryString} goal questions.
+              </p>
+              <p>
+                Feel free to close this dialog window and review the questions,
+                or quit the Fly-by-Wire application.
+              </p>
+            </div>
+            <button
+              className="close-modal-button"
+              onClick={this.onCloseModal}>Return to Mission</button>
           </div>
-          <button
-            className="close-modal-button"
-            onClick={() => this.setState({closeModal: true})}>Return to Mission</button>
         </Modal>
       )
     }
@@ -205,6 +208,11 @@ class Mission extends Component {
 
   onOpenModal = () => {
     this.modal.focus();
+  }
+
+  onCloseModal = () => {
+    this.setState({ closeModal: true });
+    this.directiveCarouselRef.focus();
   }
 }
 
