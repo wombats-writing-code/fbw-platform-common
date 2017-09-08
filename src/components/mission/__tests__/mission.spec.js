@@ -10,7 +10,7 @@ import MissionComponent from '../web/Mission';
 import MissionContainer from '../MissionContainer'
 const Mission = MissionContainer(MissionComponent)
 //
-import {mount, shallow} from 'enzyme';
+import {mount, shallow, ReactWrapper} from 'enzyme';
 
 import '../../../styles/foundation.min.css'
 import '../../../styles/core.scss'
@@ -20,6 +20,7 @@ import '../../../styles/animations.scss'
 // const STATE = require('./correct-state.mock.json')
 const STATE = require('./solution-state.mock.json')
 const COMPLETED_STATE = require('./completed-state.mock.json')
+const UNOPENED_STATE = require('./unopened-state.mock.json')
 
 let chai = require('chai')
 chai.should()
@@ -60,6 +61,11 @@ describe('Mission', () => {
     mission.html().should.contain('34 Remaining');
   });
 
+  it('should not render a modal when have unattempted questions', () => {
+    connectedComponent.find(Modal).length.should.eql(0);
+
+  });
+
   after( function() {
     connectedComponent.detach();
   });
@@ -86,9 +92,43 @@ describe('A completed Mission', () => {
 
   it('should render a modal', () => {
     const modal = ReactDOM.findDOMNode(connectedComponent.find(Modal).node.portal);
-    console.log('modal', modal);
     modal.innerHTML.should.contain('2 out of 2');
-    // STATE.should.be.eql('bar')
+
+  });
+
+  it('should close modal when click the button', () => {
+    const modal = new ReactWrapper(ReactDOM.findDOMNode(connectedComponent.find(Modal).node.portal), true);
+    // modal.innerHTML.should.contain('2 out of 2');
+    modal.find('.close-modal-button').simulate('click');
+    connectedComponent.find(Modal).length.should.eql(0);
+  });
+
+  after( function() {
+    connectedComponent.detach();
+  });
+});
+
+describe('An unopened Mission', () => {
+
+  const middlewares = [thunk]; // add your middlewares like `redux-thunk`
+  let mockStore = configureStore(middlewares);
+  let connectedComponent, store;
+
+  before(function() {
+    const div = global.document.createElement('div');
+    global.document.body.appendChild(div);
+
+    store = mockStore(UNOPENED_STATE);
+    connectedComponent = mount(
+      <Provider store={store}>
+        <Mission mission={UNOPENED_STATE.mission.currentMission} />
+      </Provider>,
+      {attachTo: div}
+    );
+  });
+
+  it('should not render a modal', () => {
+    connectedComponent.find(Modal).length.should.eql(0);
 
   });
 
