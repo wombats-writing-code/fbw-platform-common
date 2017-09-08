@@ -91,6 +91,9 @@ class Mission extends Component {
       const summaryString = `${status.correct} out of ${status.attempted}`; // for testing
       return (
         <Modal
+          ref={(modal) => {this.modal = modal;}}
+          onAfterOpen={this.onOpenModal}
+          onBeforeClose={this.onClickReturnToDirectiveCarousel}
           isOpen={true}
           contentLabel="Completed Mission Summary"
         >
@@ -198,6 +201,10 @@ class Mission extends Component {
 
   onClickReturnToDirectiveCarousel = () => {
     this.directiveCarouselRef.focus();
+  }
+
+  onOpenModal = () => {
+    this.modal.focus();
   }
 }
 
