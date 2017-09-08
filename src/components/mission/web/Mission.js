@@ -3,6 +3,7 @@ import Spinner from 'react-spinner'
 import slug from 'slug'
 import _ from 'lodash'
 import DocumentTitle from 'react-document-title'
+import Modal from 'react-modal'
 
 import DirectiveCarouselContainer from '../DirectiveCarouselContainer'
 import DirectiveCarouselComponent from './DirectiveCarousel'
@@ -18,7 +19,7 @@ const Questions = QuestionsContainer(QuestionsComponent)
 
 import {checkMissionStatus } from '../../../utilities/time'
 import { numberCorrectTargets, numberAttemptedTargets,
-  numberUnansweredTargets, grabTargetQuestionsFromMission } from '../../../selectors/mission';
+  numberUnattemptedTargets, grabTargetQuestionsFromMission } from '../../../selectors/mission';
 
 import './Mission.scss'
 const styles = {
@@ -55,21 +56,53 @@ class Mission extends Component {
     }
   }
 
-  currentStatus = (missionQuestions) => {
+  calculateStatus = () => {
+    const missionQuestionsFlat = _.flattenDeep(this.props.mission.questions);
+    const targetQuestions = grabTargetQuestionsFromMission(missionQuestionsFlat);
+    return {
+      correct: numberCorrectTargets(targetQuestions),
+      attempted: numberAttemptedTargets(targetQuestions),
+      unattempted: numberUnattemptedTargets(targetQuestions)
+    }
+  }
+
+  currentStatus = () => {
     // calculate the student's:
     // # question / # correct / # unattempted
     // to show at the top of the page
     // `records` should be from this.props.mission.questions
     //    which needs to be flattened
-    const targetQuestions = grabTargetQuestionsFromMission(_.flattenDeep(missionQuestions));
-    const correct = numberCorrectTargets(targetQuestions);
-    const attempted = numberAttemptedTargets(targetQuestions);
-    const unattempted = numberUnansweredTargets(targetQuestions);
-    return `${correct} Correct | ${attempted} Attempted | ${unattempted} Remaining`;
+    const status = this.calculateStatus();
+    return `${status.correct} Correct | ${status.attempted} Attempted | ${status.unattempted} Remaining`;
   }
 
   render() {
     // console.log('Mission.props', this.props)
+    // show a modal window telling them they've finished the mission, if
+    //   there are 0 unattempted.
+    const status = this.calculateStatus();
+    if (status.unattempted === 0) {
+      return (
+        <Modal
+          isOpen={true}
+          contentLabel="Completed Mission Summary"
+        >
+          <h3>Mission complete!</h3>
+          <div className="modal-contents">
+            <p>
+              Congratulations, you've answered all the goal questions for this mission.
+            </p>
+            <p>
+              You correctly answered {status.correct} out of {status.attempted} goal questions.
+            </p>
+            <p>
+              Feel free to close this dialog window and review the questions,
+              or quit the Fly-by-Wire application.
+            </p>
+          </div>
+        </Modal>
+      )
+    }
 
     let loadingIndicator;
     if (this.props.isGetMissionInProgress) {
@@ -96,7 +129,7 @@ class Mission extends Component {
         <div>
           <div>
             <div className='current-status'>
-              {this.currentStatus(this.props.mission.questions)}
+              {this.currentStatus()}
             </div>
           </div>
           <nav

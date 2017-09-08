@@ -3,6 +3,7 @@ import React from 'react';
 import {Provider} from 'react-redux'
 import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store'
+import Modal from 'react-modal';
 //
 import MissionComponent from '../web/Mission';
 import MissionContainer from '../MissionContainer'
@@ -17,6 +18,7 @@ import '../../../styles/animations.scss'
 // const STATE = require('./state.mock.json')
 // const STATE = require('./correct-state.mock.json')
 const STATE = require('./solution-state.mock.json')
+const COMPLETED_STATE = require('./completed-state.mock.json')
 
 let chai = require('chai')
 chai.should()
@@ -55,6 +57,38 @@ describe('Mission', () => {
     mission.html().should.contain('5 Correct');
     mission.html().should.contain('11 Attempted');
     mission.html().should.contain('34 Remaining');
+  });
+
+  after( function() {
+    connectedComponent.detach();
+  });
+});
+
+describe('A completed Mission', () => {
+
+  const middlewares = [thunk]; // add your middlewares like `redux-thunk`
+  let mockStore = configureStore(middlewares);
+  let connectedComponent, store;
+
+  before(function() {
+    const div = global.document.createElement('div');
+    global.document.body.appendChild(div);
+
+    store = mockStore(COMPLETED_STATE);
+    connectedComponent = mount(
+      <Provider store={store}>
+        <Mission mission={COMPLETED_STATE.mission.currentMission} />
+      </Provider>,
+      {attachTo: div}
+    );
+  });
+
+  it('should render a modal', () => {
+    const mission = connectedComponent.find(Mission);
+
+    mission.find('.modal-contents').length.should.eql(1);
+    // STATE.should.be.eql('bar')
+
   });
 
   after( function() {

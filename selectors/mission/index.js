@@ -1,4 +1,4 @@
-Object.defineProperty(exports,"__esModule",{value:true});exports.numberAttemptedTargets=exports.numberUnansweredTargets=exports.pointsEarned=exports.numberCorrectTargets=exports.grabTargetQuestionsFromMission=exports.grabTargetQuestionsFromRecords=exports.directiveIdsFromQuestions=exports.isGoalMastered=exports.isGoalCompleted=exports.isLastTargetInRoute=exports.targetStatus=exports.isTargetRouteNavigated=exports.computeSectionProgress=exports.getRouteQuestions=exports.getSectionTargets=exports.getMissionDirectives=exports.targetKey=exports.isTarget=undefined;exports.
+Object.defineProperty(exports,"__esModule",{value:true});exports.numberAttemptedTargets=exports.numberUnattemptedTargets=exports.pointsEarned=exports.numberCorrectTargets=exports.grabTargetQuestionsFromMission=exports.grabTargetQuestionsFromRecords=exports.directiveIdsFromQuestions=exports.isGoalMastered=exports.isGoalCompleted=exports.isLastTargetInRoute=exports.targetStatus=exports.isTargetRouteNavigated=exports.computeSectionProgress=exports.getRouteQuestions=exports.getSectionTargets=exports.getMissionDirectives=exports.targetKey=exports.isTarget=undefined;exports.
 
 
 
@@ -200,13 +200,13 @@ return numberCorrect+' / '+questions.length+'; '+percentCorrect+'%';
 }return pointsEarned;}();
 
 
-var numberUnansweredTargets=exports.numberUnansweredTargets=function(){function numberUnansweredTargets(targetQuestions){
+var numberUnattemptedTargets=exports.numberUnattemptedTargets=function(){function numberUnattemptedTargets(targetQuestions){
 
 
 
 
 return _lodash2['default'].filter(targetQuestions,function(targetQuestion){return!(targetQuestion.responseResult||targetQuestion.response);}).length;
-}return numberUnansweredTargets;}();
+}return numberUnattemptedTargets;}();
 
 var numberAttemptedTargets=exports.numberAttemptedTargets=function(){function numberAttemptedTargets(targetQuestions){
 

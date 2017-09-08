@@ -331,7 +331,7 @@ done();
 
 });
 
-describe('numberUnansweredTargets selector',function(){
+describe('numberUnattemptedTargets selector',function(){
 
 it('should calculate 0 targets remaining when all have responseResult',function(done){
 var questions=[
@@ -346,7 +346,7 @@ referenceNumber:'3',
 id:'3'}];
 
 
-var results=(0,_mission.numberUnansweredTargets)(questions);
+var results=(0,_mission.numberUnattemptedTargets)(questions);
 results.should.eql(0);
 
 done();
@@ -365,7 +365,7 @@ referenceNumber:'3',
 id:'3'}];
 
 
-var results=(0,_mission.numberUnansweredTargets)(questions);
+var results=(0,_mission.numberUnattemptedTargets)(questions);
 results.should.eql(1);
 
 done();
@@ -385,7 +385,7 @@ referenceNumber:'3',
 id:'3'}];
 
 
-var results=(0,_mission.numberUnansweredTargets)(questions);
+var results=(0,_mission.numberUnattemptedTargets)(questions);
 results.should.eql(1);
 
 done();
@@ -404,7 +404,7 @@ referenceNumber:'3',
 id:'3'}];
 
 
-var results=(0,_mission.numberUnansweredTargets)(questions);
+var results=(0,_mission.numberUnattemptedTargets)(questions);
 results.should.eql(0);
 
 done();
@@ -423,7 +423,7 @@ referenceNumber:'3',
 id:'3'}];
 
 
-var results=(0,_mission.numberUnansweredTargets)(questions);
+var results=(0,_mission.numberUnattemptedTargets)(questions);
 results.should.eql(1);
 
 done();
@@ -443,7 +443,7 @@ referenceNumber:'3',
 id:'3'}];
 
 
-var results=(0,_mission.numberUnansweredTargets)(questions);
+var results=(0,_mission.numberUnattemptedTargets)(questions);
 results.should.eql(1);
 
 done();

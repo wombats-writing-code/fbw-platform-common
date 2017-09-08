@@ -15,7 +15,7 @@ var _mission=require('../../selectors/mission');function _interopRequireDefault(
 
 var mapStateToProps=function(){function mapStateToProps(state,ownProps){
 
-console.log('state in MissionContainer',state);
+
 
 var mission=ownProps.mission||state.mission.currentMission;
 var outcomes=(0,_selectors.getMapping)(state)?(0,_selectors.getMapping)(state).outcomes:[];

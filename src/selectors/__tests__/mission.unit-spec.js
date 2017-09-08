@@ -7,7 +7,7 @@ import _ from 'lodash';
 const sectionQuestions = require('./section-questions.json');
 import {getSectionTargets, isTargetRouteNavigated,
   isLastTargetInRoute, getRouteQuestions, pointsEarned,
-  numberUnansweredTargets, grabTargetQuestionsFromRecords,
+  numberUnattemptedTargets, grabTargetQuestionsFromRecords,
   numberAttemptedTargets, numberCorrectTargets,
   grabTargetQuestionsFromMission} from '../mission'
 
@@ -331,7 +331,7 @@ describe('grabTargetQuestionsFromMission selector', () => {
 
 })
 
-describe('numberUnansweredTargets selector', () => {
+describe('numberUnattemptedTargets selector', () => {
 
   it(`should calculate 0 targets remaining when all have responseResult`, function(done) {
     const questions = [
@@ -346,7 +346,7 @@ describe('numberUnansweredTargets selector', () => {
        id: '3'},
     ];
 
-    let results = numberUnansweredTargets(questions);
+    let results = numberUnattemptedTargets(questions);
     results.should.eql(0);
 
     done();
@@ -365,7 +365,7 @@ describe('numberUnansweredTargets selector', () => {
        id: '3'},
     ];
 
-    let results = numberUnansweredTargets(questions);
+    let results = numberUnattemptedTargets(questions);
     results.should.eql(1);
 
     done();
@@ -385,7 +385,7 @@ describe('numberUnansweredTargets selector', () => {
        id: '3'},
     ];
 
-    let results = numberUnansweredTargets(questions);
+    let results = numberUnattemptedTargets(questions);
     results.should.eql(1);
 
     done();
@@ -404,7 +404,7 @@ describe('numberUnansweredTargets selector', () => {
        id: '3'},
     ];
 
-    let results = numberUnansweredTargets(questions);
+    let results = numberUnattemptedTargets(questions);
     results.should.eql(0);
 
     done();
@@ -423,7 +423,7 @@ describe('numberUnansweredTargets selector', () => {
        id: '3'},
     ];
 
-    let results = numberUnansweredTargets(questions);
+    let results = numberUnattemptedTargets(questions);
     results.should.eql(1);
 
     done();
@@ -443,7 +443,7 @@ describe('numberUnansweredTargets selector', () => {
        id: '3'},
     ];
 
-    let results = numberUnansweredTargets(questions);
+    let results = numberUnattemptedTargets(questions);
     results.should.eql(1);
 
     done();

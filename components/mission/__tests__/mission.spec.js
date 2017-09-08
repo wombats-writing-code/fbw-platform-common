@@ -3,6 +3,7 @@ var _jsxFileName='src/components/mission/__tests__/mission.spec.js';var _react=r
 var _reactRedux=require('react-redux');
 var _reduxThunk=require('redux-thunk');var _reduxThunk2=_interopRequireDefault(_reduxThunk);
 var _reduxMockStore=require('redux-mock-store');var _reduxMockStore2=_interopRequireDefault(_reduxMockStore);
+var _reactModal=require('react-modal');var _reactModal2=_interopRequireDefault(_reactModal);
 
 var _Mission=require('../web/Mission');var _Mission2=_interopRequireDefault(_Mission);
 var _MissionContainer=require('../MissionContainer');var _MissionContainer2=_interopRequireDefault(_MissionContainer);
@@ -17,6 +18,7 @@ require('../../../styles/animations.scss');function _interopRequireDefault(obj){
 
 
 var STATE=require('./solution-state.mock.json');
+var COMPLETED_STATE=require('./completed-state.mock.json');
 
 var chai=require('chai');
 chai.should();
@@ -33,8 +35,8 @@ global.document.body.appendChild(div);
 
 store=mockStore(STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:36}},
-_react2['default'].createElement(Mission,{mission:STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:37}})),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:38}},
+_react2['default'].createElement(Mission,{mission:STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:39}})),
 
 {attachTo:div});
 
@@ -55,6 +57,38 @@ mission.find('.current-status').length.should.be.eql(1);
 mission.html().should.contain('5 Correct');
 mission.html().should.contain('11 Attempted');
 mission.html().should.contain('34 Remaining');
+});
+
+after(function(){
+connectedComponent.detach();
+});
+});
+
+describe('A completed Mission',function(){
+
+var middlewares=[_reduxThunk2['default']];
+var mockStore=(0,_reduxMockStore2['default'])(middlewares);
+var connectedComponent=void 0,store=void 0;
+
+before(function(){
+var div=global.document.createElement('div');
+global.document.body.appendChild(div);
+
+store=mockStore(COMPLETED_STATE);
+connectedComponent=(0,_enzyme.mount)(
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:79}},
+_react2['default'].createElement(Mission,{mission:COMPLETED_STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:80}})),
+
+{attachTo:div});
+
+});
+
+it('should render a modal',function(){
+var mission=connectedComponent.find(Mission);
+
+mission.find('.modal-contents').length.should.eql(1);
+
+
 });
 
 after(function(){

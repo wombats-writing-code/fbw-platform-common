@@ -60,7 +60,7 @@ export const getRouteQuestions = (sectionQuestions, target) => {
   // return _.sortBy(routeQuestions, 'referenceNumber');
 }
 
-export const computeSectionProgress= (questionsInSection) => {
+export const computeSectionProgress = (questionsInSection) => {
   if (!questionsInSection) return null;
 
   let targetsForDirective = _.uniqBy(_.filter(_.flatMap(questionsInSection), isTarget), q => q.referenceNumber);
@@ -200,7 +200,7 @@ export const pointsEarned = (questions) => {
 }
 
 
-export const numberUnansweredTargets = (targetQuestions) => {
+export const numberUnattemptedTargets = (targetQuestions) => {
   // assumes targetQuestions is already a list of targets
   // Call `grabTargetQuestionsFromRecords` first
   // targetQuestion.responseResult is when the data is from `records`
