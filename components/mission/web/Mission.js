@@ -186,7 +186,9 @@ _this.props.onSelectDirective(index);
 };_this.
 
 _onSelectTarget=function(target){
-_this.questionsRef.focus();
+
+
+
 _this.props.onSelectTarget(target);
 };_this.
 
