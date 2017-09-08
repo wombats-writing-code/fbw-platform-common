@@ -151,6 +151,7 @@ class Mission extends Component {
         <div>
           <div>
             <div className='current-status'>
+              <h4 className='current-status-heading'>Current Mission Status:</h4>
               {this.currentStatus()}
             </div>
           </div>
