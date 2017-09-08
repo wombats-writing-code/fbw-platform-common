@@ -107,7 +107,9 @@ class Mission extends Component {
               or quit the Fly-by-Wire application.
             </p>
           </div>
-          <button onClick={() => this.setState({closeModal: true})}>Close Modal</button>
+          <button
+            className="close-modal-button"
+            onClick={() => this.setState({closeModal: true})}>Return to Mission</button>
         </Modal>
       )
     }

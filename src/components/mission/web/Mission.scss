@@ -1,3 +1,5 @@
+@import '../../../styles/base';
+
 .duck {
   display: block;
   width: 120px;
@@ -11,4 +13,14 @@
 
 .current-status {
   margin-bottom: 1rem;
+}
+
+.close-modal-button {
+  border: 1px solid $app-blue-dark;
+  border-radius: 5px;
+}
+
+.close-modal-button:hover {
+  background: $app-blue-dark;
+  color: white;
 }
