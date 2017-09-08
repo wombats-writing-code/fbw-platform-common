@@ -197,11 +197,14 @@ var numberUnansweredTargets=exports.numberUnansweredTargets=function(){function 
 
 
 
-return _lodash2['default'].filter(targetQuestions,function(targetQuestion){return!targetQuestion.responseResult;}).length;
+
+return _lodash2['default'].filter(targetQuestions,function(targetQuestion){return!(targetQuestion.responseResult||targetQuestion.response);}).length;
 }return numberUnansweredTargets;}();
 
 var numberAttemptedTargets=exports.numberAttemptedTargets=function(){function numberAttemptedTargets(targetQuestions){
 
 
-return _lodash2['default'].filter(targetQuestions,function(targetQuestion){return targetQuestion.responseResult;}).length;
+
+
+return _lodash2['default'].filter(targetQuestions,function(targetQuestion){return targetQuestion.responseResult||targetQuestion.response;}).length;
 }return numberAttemptedTargets;}();

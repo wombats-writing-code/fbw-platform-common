@@ -196,14 +196,17 @@ export const pointsEarned = (questions) => {
 export const numberUnansweredTargets = (targetQuestions) => {
   // assumes targetQuestions is already a list of targets
   // Call `grabTargetQuestionsFromRecords` first
-
-  return _.filter(targetQuestions, targetQuestion => !targetQuestion.responseResult).length;
+  // targetQuestion.responseResult is when the data is from `records`
+  // targetQuestion.response is when the data is from `mission.questions`
+  return _.filter(targetQuestions, targetQuestion => !(targetQuestion.responseResult || targetQuestion.response)).length;
 }
 
 export const numberAttemptedTargets = (targetQuestions) => {
   // assumes targetQuestions is already a list of targets
   // Call `grabTargetQuestionsFromRecords` first
-  return _.filter(targetQuestions, targetQuestion => targetQuestion.responseResult).length;
+  // targetQuestion.responseResult is when the data is from `records`
+  // targetQuestion.response is when the data is from `mission.questions
+  return _.filter(targetQuestions, targetQuestion => targetQuestion.responseResult || targetQuestion.response).length;
 }
 
 // export function hasAchievedDirective (targets) {

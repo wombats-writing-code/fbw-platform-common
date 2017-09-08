@@ -282,7 +282,7 @@ describe('grabTargetQuestionsFromRecords selector', () => {
 
 describe('numberUnansweredTargets selector', () => {
 
-  it(`should calculate 0 targets remaining when all responded`, function(done) {
+  it(`should calculate 0 targets remaining when all have responseResult`, function(done) {
     const questions = [
       {responseResult: true,
        referenceNumber: '1',
@@ -301,7 +301,7 @@ describe('numberUnansweredTargets selector', () => {
     done();
   });
 
-  it(`should not calculate unresponded targets`, function(done) {
+  it(`should not calculate unresponded targets with responseResult`, function(done) {
     const questions = [
       {responseResult: true,
        referenceNumber: '1',
@@ -320,7 +320,7 @@ describe('numberUnansweredTargets selector', () => {
     done();
   });
 
-  it(`should not calculate unresponded targets with responded false`, function(done) {
+  it(`should not calculate unresponded targets with responseResult false`, function(done) {
     // this state should never actually happen?
     const questions = [
       {responseResult: true,
@@ -340,11 +340,68 @@ describe('numberUnansweredTargets selector', () => {
     done();
   });
 
+  it(`should calculate 0 targets remaining when all responded`, function(done) {
+    const questions = [
+      {response: true,
+       referenceNumber: '1',
+       id: '1'},
+      {response: true,
+       referenceNumber: '2',
+       id: '2'},
+      {response: true,
+       referenceNumber: '3',
+       id: '3'},
+    ];
+
+    let results = numberUnansweredTargets(questions);
+    results.should.eql(0);
+
+    done();
+  });
+
+  it(`should not calculate unresponded targets`, function(done) {
+    const questions = [
+      {response: true,
+       referenceNumber: '1',
+       id: '1'},
+      {foo: 'bar',
+       referenceNumber: '2',
+       id: '2'},
+      {response: true,
+       referenceNumber: '3',
+       id: '3'},
+    ];
+
+    let results = numberUnansweredTargets(questions);
+    results.should.eql(1);
+
+    done();
+  });
+
+  it(`should not calculate unresponded targets with responded false`, function(done) {
+    // this state should never actually happen?
+    const questions = [
+      {response: true,
+       referenceNumber: '1',
+       id: '1'},
+      {response: false,
+       referenceNumber: '2',
+       id: '2'},
+      {response: true,
+       referenceNumber: '3',
+       id: '3'},
+    ];
+
+    let results = numberUnansweredTargets(questions);
+    results.should.eql(1);
+
+    done();
+  });
 })
 
 describe('numberAttemptedTargets selector', () => {
 
-  it(`should calculate 3 attempted targets when all responded`, function(done) {
+  it(`should calculate 3 attempted targets when all have responseResult`, function(done) {
     const questions = [
       {responseResult: true,
        referenceNumber: '1',
@@ -363,7 +420,7 @@ describe('numberAttemptedTargets selector', () => {
     done();
   });
 
-  it(`should not calculate unresponded targets`, function(done) {
+  it(`should not calculate non-responseResult targets`, function(done) {
     const questions = [
       {responseResult: true,
        referenceNumber: '1',
@@ -382,7 +439,7 @@ describe('numberAttemptedTargets selector', () => {
     done();
   });
 
-  it(`should not calculate unresponded targets with responded false`, function(done) {
+  it(`should not calculate unresponded targets with responseResult false`, function(done) {
     // this state should never actually happen?
     const questions = [
       {responseResult: true,
@@ -402,4 +459,61 @@ describe('numberAttemptedTargets selector', () => {
     done();
   });
 
+  it(`should calculate 3 attempted targets when all have response`, function(done) {
+    const questions = [
+      {response: true,
+       referenceNumber: '1',
+       id: '1'},
+      {response: true,
+       referenceNumber: '2',
+       id: '2'},
+      {response: true,
+       referenceNumber: '3',
+       id: '3'},
+    ];
+
+    let results = numberAttemptedTargets(questions);
+    results.should.eql(3);
+
+    done();
+  });
+
+  it(`should not calculate non-response targets`, function(done) {
+    const questions = [
+      {response: true,
+       referenceNumber: '1',
+       id: '1'},
+      {foo: 'bar',
+       referenceNumber: '2',
+       id: '2'},
+      {response: true,
+       referenceNumber: '3',
+       id: '3'},
+    ];
+
+    let results = numberAttemptedTargets(questions);
+    results.should.eql(2);
+
+    done();
+  });
+
+  it(`should not calculate unresponded targets with response false`, function(done) {
+    // this state should never actually happen?
+    const questions = [
+      {response: true,
+       referenceNumber: '1',
+       id: '1'},
+      {response: false,
+       referenceNumber: '2',
+       id: '2'},
+      {response: true,
+       referenceNumber: '3',
+       id: '3'},
+    ];
+
+    let results = numberAttemptedTargets(questions);
+    results.should.eql(2);
+
+    done();
+  });
 })
