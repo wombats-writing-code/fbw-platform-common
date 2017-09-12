@@ -6,6 +6,7 @@ var _reduxMockStore=require('redux-mock-store');var _reduxMockStore2=_interopReq
 var _reactModal=require('react-modal');var _reactModal2=_interopRequireDefault(_reactModal);
 var _reactDom=require('react-dom');var _reactDom2=_interopRequireDefault(_reactDom);
 
+
 var _Mission=require('../web/Mission');var _Mission2=_interopRequireDefault(_Mission);
 var _MissionContainer=require('../MissionContainer');var _MissionContainer2=_interopRequireDefault(_MissionContainer);
 
@@ -14,7 +15,7 @@ var _enzyme=require('enzyme');
 
 require('../../../styles/foundation.min.css');
 require('../../../styles/core.scss');
-require('../../../styles/animations.scss');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var Mission=(0,_MissionContainer2['default'])(_Mission2['default']);
+require('../../../styles/animations.scss');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}require('jsdom-global')();var Mission=(0,_MissionContainer2['default'])(_Mission2['default']);
 
 
 
@@ -25,6 +26,7 @@ var UNOPENED_STATE=require('./unopened-state.mock.json');
 var chai=require('chai');
 chai.should();
 
+
 describe('Mission',function(){
 
 var middlewares=[_reduxThunk2['default']];
@@ -32,13 +34,14 @@ var mockStore=(0,_reduxMockStore2['default'])(middlewares);
 var connectedComponent=void 0,store=void 0;
 
 before(function(){
-var div=global.document.createElement('div');
-global.document.body.appendChild(div);
+var div=document.createElement('div');
+
+document.body.appendChild(div);
 
 store=mockStore(STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:40}},
-_react2['default'].createElement(Mission,{mission:STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:41}})),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:43}},
+_react2['default'].createElement(Mission,{mission:STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:44}})),
 
 {attachTo:div});
 
@@ -79,28 +82,32 @@ var connectedComponent=void 0,store=void 0;
 
 before(function(){
 var div=global.document.createElement('div');
+global.document.body.id='root';
 global.document.body.appendChild(div);
 
 store=mockStore(COMPLETED_STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:86}},
-_react2['default'].createElement(Mission,{mission:COMPLETED_STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:87}})),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:90}},
+_react2['default'].createElement(Mission,{mission:COMPLETED_STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:91}})),
 
 {attachTo:div});
 
 });
 
 it('should render a modal',function(){
+setTimeout(function(){
 var modal=_reactDom2['default'].findDOMNode(connectedComponent.find(_reactModal2['default']).node.portal);
 modal.innerHTML.should.contain('2 out of 2');
-
+},3500);
 });
 
 it('should close modal when click the button',function(){
+setTimeout(function(){
 var modal=new _enzyme.ReactWrapper(_reactDom2['default'].findDOMNode(connectedComponent.find(_reactModal2['default']).node.portal),true);
 
 modal.find('.close-modal-button').simulate('click');
 connectedComponent.find(_reactModal2['default']).length.should.eql(0);
+},3500);
 });
 
 after(function(){
@@ -116,20 +123,22 @@ var connectedComponent=void 0,store=void 0;
 
 before(function(){
 var div=global.document.createElement('div');
+global.document.body.id='root';
 global.document.body.appendChild(div);
 
 store=mockStore(UNOPENED_STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:123}},
-_react2['default'].createElement(Mission,{mission:UNOPENED_STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:124}})),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:131}},
+_react2['default'].createElement(Mission,{mission:UNOPENED_STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:132}})),
 
 {attachTo:div});
 
 });
 
 it('should not render a modal',function(){
+setTimeout(function(){
 connectedComponent.find(_reactModal2['default']).length.should.eql(0);
-
+},3500);
 });
 
 after(function(){

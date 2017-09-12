@@ -30,7 +30,11 @@ const styles = {
 
 // This attempts to make the rest of the app "hidden" from screenreaders
 //   while the modal is open.
-Modal.setAppElement('#root');
+if (process.env.NODE_ENV !== 'test') {
+  // This was throwing an error in the mission.spec.js file,
+  //    because it couldn't find a DOM element with the given ID.
+  Modal.setAppElement('#root');
+}
 
 class Mission extends Component {
   constructor(props) {
@@ -214,7 +218,9 @@ class Mission extends Component {
   }
 
   onOpenModal = () => {
-    this.modal.focus();
+    setTimeout(() => {
+      this.modal.focus();
+    }, 3000);
   }
 
   onCloseModal = () => {

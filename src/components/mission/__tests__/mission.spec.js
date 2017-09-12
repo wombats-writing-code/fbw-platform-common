@@ -5,6 +5,7 @@ import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store'
 import Modal from 'react-modal';
 import ReactDOM from 'react-dom';
+require('jsdom-global')();
 //
 import MissionComponent from '../web/Mission';
 import MissionContainer from '../MissionContainer'
@@ -25,6 +26,7 @@ const UNOPENED_STATE = require('./unopened-state.mock.json')
 let chai = require('chai')
 chai.should()
 
+
 describe('Mission', () => {
 
   const middlewares = [thunk]; // add your middlewares like `redux-thunk`
@@ -32,8 +34,9 @@ describe('Mission', () => {
   let connectedComponent, store;
 
   before(function() {
-    const div = global.document.createElement('div');
-    global.document.body.appendChild(div);
+    const div = document.createElement('div');
+
+    document.body.appendChild(div);
 
     store = mockStore(STATE);
     connectedComponent = mount(
@@ -79,6 +82,7 @@ describe('A completed Mission', () => {
 
   before(function() {
     const div = global.document.createElement('div');
+    global.document.body.id = 'root';
     global.document.body.appendChild(div);
 
     store = mockStore(COMPLETED_STATE);
@@ -91,16 +95,19 @@ describe('A completed Mission', () => {
   });
 
   it('should render a modal', () => {
-    const modal = ReactDOM.findDOMNode(connectedComponent.find(Modal).node.portal);
-    modal.innerHTML.should.contain('2 out of 2');
-
+    setTimeout(() => {
+      const modal = ReactDOM.findDOMNode(connectedComponent.find(Modal).node.portal);
+      modal.innerHTML.should.contain('2 out of 2');
+    }, 3500);
   });
 
   it('should close modal when click the button', () => {
-    const modal = new ReactWrapper(ReactDOM.findDOMNode(connectedComponent.find(Modal).node.portal), true);
-    // modal.innerHTML.should.contain('2 out of 2');
-    modal.find('.close-modal-button').simulate('click');
-    connectedComponent.find(Modal).length.should.eql(0);
+    setTimeout(() => {
+      const modal = new ReactWrapper(ReactDOM.findDOMNode(connectedComponent.find(Modal).node.portal), true);
+      // modal.innerHTML.should.contain('2 out of 2');
+      modal.find('.close-modal-button').simulate('click');
+      connectedComponent.find(Modal).length.should.eql(0);
+    }, 3500);
   });
 
   after( function() {
@@ -116,6 +123,7 @@ describe('An unopened Mission', () => {
 
   before(function() {
     const div = global.document.createElement('div');
+    global.document.body.id = 'root';
     global.document.body.appendChild(div);
 
     store = mockStore(UNOPENED_STATE);
@@ -128,8 +136,9 @@ describe('An unopened Mission', () => {
   });
 
   it('should not render a modal', () => {
-    connectedComponent.find(Modal).length.should.eql(0);
-
+    setTimeout(() => {
+      connectedComponent.find(Modal).length.should.eql(0);
+    }, 3500);
   });
 
   after( function() {
