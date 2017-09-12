@@ -1,4 +1,5 @@
 import React, { Component, }  from 'react';
+import ReactDOM from 'react-dom';
 import $ from 'jquery'
 import { isTarget } from '../../../selectors/mission';
 
@@ -185,9 +186,6 @@ class QuestionCard extends Component {
 
   _onSubmitChoice = (choiceId, question) => {
     if (!this.props.isInProgressSubmitChoice) {
-      $('html, body').animate({
-        scrollTop: $("body")[0].scrollHeight - 30
-      }, 1000);
 
       let choice = _.find(this.props.question.choices, {id: choiceId});
 
@@ -197,6 +195,9 @@ class QuestionCard extends Component {
       // console.log('this.props.routeQuestions', this.props.routeQuestions)
       setTimeout(() => {
         this.solution.focus();
+        $('html, body').animate({
+          scrollTop: $('body')[0].scrollTop + ReactDOM.findDOMNode(this.solution).scrollHeight
+        }, 1000);
       }, 1000);
       this.props.onSubmitResponse({
         mission: this.props.mission,
