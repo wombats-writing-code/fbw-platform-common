@@ -63,9 +63,9 @@ describe('Mission', () => {
     mission.html().should.contain('34 Remaining');
   });
 
-  it('should not render a modal when have unattempted questions', () => {
-    connectedComponent.find(Modal).length.should.eql(0);
-
+  it('should render a closed modal when have unattempted questions', () => {
+    connectedComponent.find(Modal).length.should.eql(1);
+    connectedComponent.find(Modal).first().prop('isOpen').should.eql(false);
   });
 
   after( function() {
@@ -81,7 +81,6 @@ describe('A completed Mission', () => {
 
   before(function() {
     const div = global.document.createElement('div');
-    global.document.body.id = 'root';
     global.document.body.appendChild(div);
 
     store = mockStore(COMPLETED_STATE);
@@ -97,7 +96,8 @@ describe('A completed Mission', () => {
     setTimeout(() => {
       const modal = ReactDOM.findDOMNode(connectedComponent.find(Modal).node.portal);
       modal.innerHTML.should.contain('2 out of 2');
-    }, 3500);
+      connectedComponent.find(Modal).first().prop('isOpen').should.eql(true);
+    }, 4000);
   });
 
   it('should close modal when click the button', () => {
@@ -105,8 +105,9 @@ describe('A completed Mission', () => {
       const modal = new ReactWrapper(ReactDOM.findDOMNode(connectedComponent.find(Modal).node.portal), true);
       // modal.innerHTML.should.contain('2 out of 2');
       modal.find('.close-modal-button').simulate('click');
-      connectedComponent.find(Modal).length.should.eql(0);
-    }, 3500);
+      connectedComponent.find(Modal).length.should.eql(1);
+      connectedComponent.find(Modal).first().prop('isOpen').should.eql(false);
+    }, 4000);
   });
 
   after( function() {
@@ -122,7 +123,6 @@ describe('An unopened Mission', () => {
 
   before(function() {
     const div = global.document.createElement('div');
-    global.document.body.id = 'root';
     global.document.body.appendChild(div);
 
     store = mockStore(UNOPENED_STATE);
@@ -134,10 +134,8 @@ describe('An unopened Mission', () => {
     );
   });
 
-  it('should not render a modal', () => {
-    setTimeout(() => {
-      connectedComponent.find(Modal).length.should.eql(0);
-    }, 3500);
+  it('should render a closed modal', () => {
+    connectedComponent.find(Modal).length.should.eql(0);
   });
 
   after( function() {

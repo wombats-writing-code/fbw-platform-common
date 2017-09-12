@@ -74,7 +74,7 @@ class Mission extends Component {
 
   componentWillReceiveProps = (nextProps) => {
     const status = this.calculateStatus(nextProps);
-    if (this.state.closeModal && status.unattempted === 0 && status.correct > 0) {
+    if (this.state.closeModal && status.unattempted === 0 && status.attempted > 0) {
       this.onCheckMissionDone();
     }
   }
@@ -108,40 +108,38 @@ class Mission extends Component {
     // show a modal window telling them they've finished the mission, if
     //   there are 0 unattempted.
     const status = this.calculateStatus();
-    if (!this.state.closeModal && status.unattempted === 0 && status.correct > 0) {
-      const summaryString = `${status.correct} out of ${status.attempted}`; // for testing
-      return (
-        <Modal
-          onAfterOpen={this.onOpenModal}
-          onBeforeClose={this.onClickReturnToDirectiveCarousel}
-          isOpen={true}
-          contentLabel="Completed Mission Summary"
-        >
-          <div
-            aria-label={`You've answered all the goal questions for this mission. You correctly answered ${summaryString} goal questions. Feel free to return to the mission and review your questions.`}
-            ref={(modal) => {this.modal = modal;}}
-            tabIndex={-1}>
-            <h3>Mission complete!</h3>
-            <div className="modal-contents">
-              <p>
-                Congratulations, you've answered all the goal questions for this mission.
-              </p>
-              <p>
-                You correctly answered {summaryString} goal questions.
-              </p>
-              <p>
-                Feel free to close this dialog window and review the questions,
-                or quit the Fly-by-Wire application.
-              </p>
-            </div>
-            <button
-              aria-label="Return to mission"
-              className="close-modal-button"
-              onClick={this.onCloseModal}>Return to Mission</button>
+    const summaryString = `${status.correct} out of ${status.attempted}`; // for testing
+    const statusModal = (
+      <Modal
+        onAfterOpen={this.onOpenModal}
+        onBeforeClose={this.onClickReturnToDirectiveCarousel}
+        isOpen={!this.state.closeModal}
+        contentLabel="Completed Mission Summary"
+      >
+        <div
+          aria-label={`You've answered all the goal questions for this mission. You correctly answered ${summaryString} goal questions. Feel free to return to the mission and review your questions.`}
+          ref={(modal) => {this.modal = modal;}}
+          tabIndex={-1}>
+          <h3>Mission complete!</h3>
+          <div className="modal-contents">
+            <p>
+              Congratulations, you've answered all the goal questions for this mission.
+            </p>
+            <p>
+              You correctly answered {summaryString} goal questions.
+            </p>
+            <p>
+              Feel free to close this dialog window and review the questions,
+              or quit the Fly-by-Wire application.
+            </p>
           </div>
-        </Modal>
-      )
-    }
+          <button
+            aria-label="Return to mission"
+            className="close-modal-button"
+            onClick={this.onCloseModal}>Return to Mission</button>
+        </div>
+      </Modal>
+    )
 
     let loadingIndicator;
     if (this.props.isGetMissionInProgress) {
@@ -205,6 +203,7 @@ class Mission extends Component {
           </main>
 
           {loadingIndicator}
+          {statusModal}
         </div>
       </DocumentTitle>
     )
@@ -239,7 +238,7 @@ class Mission extends Component {
     //   should be opened or not.
     setTimeout(() => {
       const status = this.calculateStatus();
-      if (this.state.closeModal && status.unattempted === 0 && status.correct > 0) {
+      if (this.state.closeModal && status.unattempted === 0 && status.attempted > 0) {
         this.setState({ closeModal: false });
       }
     }, 3000);
