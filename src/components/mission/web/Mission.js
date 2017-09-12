@@ -74,7 +74,15 @@ class Mission extends Component {
 
   componentWillReceiveProps = (nextProps) => {
     const status = this.calculateStatus(nextProps);
-    if (this.state.closeModal && status.unattempted === 0 && status.attempted > 0) {
+    const previousStatus = this.calculateStatus();
+    if (this.state.closeModal &&
+        status.unattempted === 0 &&
+        status.attempted > 0 &&
+        previousStatus.unattempted !== status.unattempted) {
+      // make sure this only checks mission status if
+      //   student is working on target questions -- so if
+      //   student comes back and answers waypoints, the
+      //   .unattempted stays the same, so this doesn't check
       this.onCheckMissionDone();
     }
   }
@@ -234,7 +242,7 @@ class Mission extends Component {
   }
 
   onCheckMissionDone = () => {
-    // delay checking after submit, to see if the modal
+    // delay checking to see if the modal
     //   should be opened or not.
     setTimeout(() => {
       const status = this.calculateStatus();
