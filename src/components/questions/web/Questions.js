@@ -101,7 +101,6 @@ class Questions extends Component {
               question={questionItem}
               outcome={outcome}
               isExpanded={isExpanded}
-              onCheckMissionDone={this.props.onCheckMissionDone}
               isSubmitEnabled={isSubmitEnabled}/>
           </div>
         </div>

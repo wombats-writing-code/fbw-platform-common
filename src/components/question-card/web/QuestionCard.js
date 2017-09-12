@@ -197,9 +197,6 @@ class QuestionCard extends Component {
       // console.log('this.props.routeQuestions', this.props.routeQuestions)
       setTimeout(() => {
         this.solution.focus();
-        if (isTarget(question)) {
-          this.props.onCheckMissionDone();
-        }
       }, 1000);
       this.props.onSubmitResponse({
         mission: this.props.mission,

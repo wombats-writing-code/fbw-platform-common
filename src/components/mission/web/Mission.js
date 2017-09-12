@@ -44,6 +44,8 @@ class Mission extends Component {
     }
   }
   componentDidMount() {
+    this.onCheckMissionDone();
+
     let missionState = checkMissionStatus(this.props.mission);
     let mission = this.props.params && this.props.missions ?
               _.find(this.props.missions, m => slug(m.displayName) === slug(this.props.params.missionName)) :
@@ -70,8 +72,19 @@ class Mission extends Component {
     }
   }
 
-  calculateStatus = () => {
-    const missionQuestionsFlat = _.flattenDeep(this.props.mission.questions);
+  componentWillReceiveProps = (nextProps) => {
+    const status = this.calculateStatus(nextProps);
+    if (!this.state.closeModal && status.unattempted === 0 && status.correct > 0) {
+      this.onCheckMissionDone();
+    }
+  }
+
+  calculateStatus = (props) => {
+    let currentProps = props;
+    if (!currentProps) {
+      currentProps = this.props;
+    }
+    const missionQuestionsFlat = _.flattenDeep(currentProps.mission.questions);
     const targetQuestions = grabTargetQuestionsFromMission(missionQuestionsFlat);
     return {
       correct: numberCorrectTargets(targetQuestions),
@@ -186,7 +199,6 @@ class Mission extends Component {
             ref={ (questions) => {this.questionsRef = questions;} }>
             <Questions
               mission={this.props.mission}
-              onCheckMissionDone={this.onCheckMissionDone}
               isSubmitEnabled={this.props.doNotTakeMission ? false : undefined}
               onClickReturnToTargetCarousel={this.onClickReturnToTargetCarousel}
               onClickReturnToDirectiveCarousel={this.onClickReturnToDirectiveCarousel}/>

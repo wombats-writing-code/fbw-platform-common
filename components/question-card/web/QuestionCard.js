@@ -197,9 +197,6 @@ var choice=_lodash2['default'].find(_this.props.question.choices,{id:choiceId});
 
 setTimeout(function(){
 _this.solution.focus();
-if((0,_mission.isTarget)(question)){
-_this.props.onCheckMissionDone();
-}
 },1000);
 _this.props.onSubmitResponse({
 mission:_this.props.mission,
