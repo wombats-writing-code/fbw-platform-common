@@ -74,7 +74,7 @@ class Mission extends Component {
 
   componentWillReceiveProps = (nextProps) => {
     const status = this.calculateStatus(nextProps);
-    if (!this.state.closeModal && status.unattempted === 0 && status.correct > 0) {
+    if (this.state.closeModal && status.unattempted === 0 && status.correct > 0) {
       this.onCheckMissionDone();
     }
   }
@@ -239,7 +239,7 @@ class Mission extends Component {
     //   should be opened or not.
     setTimeout(() => {
       const status = this.calculateStatus();
-      if (!this.state.closeModal && status.unattempted === 0 && status.correct > 0) {
+      if (this.state.closeModal && status.unattempted === 0 && status.correct > 0) {
         this.setState({ closeModal: false });
       }
     }, 3000);

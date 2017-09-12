@@ -208,7 +208,7 @@ loadingIndicator)));
 
 
 
-}return render;}()}]);return Mission;}(_react.Component);var _initialiseProps=function(){function _initialiseProps(){var _this4=this;this.componentWillReceiveProps=function(nextProps){var status=_this4.calculateStatus(nextProps);if(!_this4.state.closeModal&&status.unattempted===0&&status.correct>0){_this4.onCheckMissionDone();}};this.calculateStatus=function(props){var currentProps=props;if(!currentProps){currentProps=_this4.props;}var missionQuestionsFlat=_lodash2['default'].flattenDeep(currentProps.mission.questions);var targetQuestions=(0,_mission.grabTargetQuestionsFromMission)(missionQuestionsFlat);return{correct:(0,_mission.numberCorrectTargets)(targetQuestions),attempted:(0,_mission.numberAttemptedTargets)(targetQuestions),unattempted:(0,_mission.numberUnattemptedTargets)(targetQuestions)};};this.currentStatus=function(){var status=_this4.calculateStatus();return status.correct+' Correct | '+status.attempted+' Attempted | '+status.unattempted+' Remaining';};this.
+}return render;}()}]);return Mission;}(_react.Component);var _initialiseProps=function(){function _initialiseProps(){var _this4=this;this.componentWillReceiveProps=function(nextProps){var status=_this4.calculateStatus(nextProps);if(_this4.state.closeModal&&status.unattempted===0&&status.correct>0){_this4.onCheckMissionDone();}};this.calculateStatus=function(props){var currentProps=props;if(!currentProps){currentProps=_this4.props;}var missionQuestionsFlat=_lodash2['default'].flattenDeep(currentProps.mission.questions);var targetQuestions=(0,_mission.grabTargetQuestionsFromMission)(missionQuestionsFlat);return{correct:(0,_mission.numberCorrectTargets)(targetQuestions),attempted:(0,_mission.numberAttemptedTargets)(targetQuestions),unattempted:(0,_mission.numberUnattemptedTargets)(targetQuestions)};};this.currentStatus=function(){var status=_this4.calculateStatus();return status.correct+' Correct | '+status.attempted+' Attempted | '+status.unattempted+' Remaining';};this.
 
 _onSelectDirective=function(index){
 _this4.targetCarouselRef.focus();
@@ -239,7 +239,7 @@ onCheckMissionDone=function(){
 
 setTimeout(function(){
 var status=_this4.calculateStatus();
-if(!_this4.state.closeModal&&status.unattempted===0&&status.correct>0){
+if(_this4.state.closeModal&&status.unattempted===0&&status.correct>0){
 _this4.setState({closeModal:false});
 }
 },3000);
