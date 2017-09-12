@@ -97,7 +97,12 @@ class Questions extends Component {
       questionCard = (
         <div className="row" id="main-content" tabIndex={-1}>
           <div className="medium-9 medium-centered large-8 large-centered columns">
-            <QuestionCard question={questionItem} outcome={outcome} isExpanded={isExpanded} isSubmitEnabled={isSubmitEnabled}/>
+            <QuestionCard
+              question={questionItem}
+              outcome={outcome}
+              isExpanded={isExpanded}
+              onCheckMissionDone={this.props.onCheckMissionDone}
+              isSubmitEnabled={isSubmitEnabled}/>
           </div>
         </div>
       )

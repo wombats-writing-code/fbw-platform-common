@@ -40,7 +40,7 @@ class Mission extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      closeModal: false
+      closeModal: true
     }
   }
   componentDidMount() {
@@ -186,6 +186,7 @@ class Mission extends Component {
             ref={ (questions) => {this.questionsRef = questions;} }>
             <Questions
               mission={this.props.mission}
+              onCheckMissionDone={this.onCheckMissionDone}
               isSubmitEnabled={this.props.doNotTakeMission ? false : undefined}
               onClickReturnToTargetCarousel={this.onClickReturnToTargetCarousel}
               onClickReturnToDirectiveCarousel={this.onClickReturnToDirectiveCarousel}/>
@@ -218,8 +219,17 @@ class Mission extends Component {
   }
 
   onOpenModal = () => {
+    this.modal.focus();
+  }
+
+  onCheckMissionDone = () => {
+    // delay checking after submit, to see if the modal
+    //   should be opened or not.
     setTimeout(() => {
-      this.modal.focus();
+      const status = this.calculateStatus();
+      if (!this.state.closeModal && status.unattempted === 0 && status.correct > 0) {
+        this.setState({ closeModal: false });
+      }
     }, 3000);
   }
 

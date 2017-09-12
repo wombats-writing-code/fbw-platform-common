@@ -5,7 +5,6 @@ import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store'
 import Modal from 'react-modal';
 import ReactDOM from 'react-dom';
-require('jsdom-global')();
 //
 import MissionComponent from '../web/Mission';
 import MissionContainer from '../MissionContainer'
@@ -34,9 +33,9 @@ describe('Mission', () => {
   let connectedComponent, store;
 
   before(function() {
-    const div = document.createElement('div');
+    const div = global.document.createElement('div');
 
-    document.body.appendChild(div);
+    global.document.body.appendChild(div);
 
     store = mockStore(STATE);
     connectedComponent = mount(

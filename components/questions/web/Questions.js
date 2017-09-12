@@ -97,7 +97,12 @@ if(questionItem===_lodash2['default'].last(_this.props.questions)){
 questionCard=
 _react2['default'].createElement('div',{className:'row',id:'main-content',tabIndex:-1,__source:{fileName:_jsxFileName,lineNumber:98}},
 _react2['default'].createElement('div',{className:'medium-9 medium-centered large-8 large-centered columns',__source:{fileName:_jsxFileName,lineNumber:99}},
-_react2['default'].createElement(QuestionCard,{question:questionItem,outcome:outcome,isExpanded:isExpanded,isSubmitEnabled:isSubmitEnabled,__source:{fileName:_jsxFileName,lineNumber:100}})));
+_react2['default'].createElement(QuestionCard,{
+question:questionItem,
+outcome:outcome,
+isExpanded:isExpanded,
+onCheckMissionDone:_this.props.onCheckMissionDone,
+isSubmitEnabled:isSubmitEnabled,__source:{fileName:_jsxFileName,lineNumber:100}})));
 
 
 
@@ -106,7 +111,7 @@ _react2['default'].createElement(QuestionCard,{question:questionItem,outcome:out
 return(
 _react2['default'].createElement('li',{
 key:questionItem.id+'-'+idx,
-className:'questions-list__item',__source:{fileName:_jsxFileName,lineNumber:107}},
+className:'questions-list__item',__source:{fileName:_jsxFileName,lineNumber:112}},
 questionCard,
 
 nextCue));
@@ -180,7 +185,7 @@ _skipToTargetCarousel=function(){
 
 
 document.getElementById('target-carousel').focus();
-};return _this;}_createClass(Questions,[{key:'componentDidUpdate',value:function(){function componentDidUpdate(prevProps){if(prevProps.isInProgressSubmitChoice&&!this.props.isInProgressSubmitChoice){var nextCueTop=(0,_jquery2['default'])('.answered-question-cue').last();(0,_jquery2['default'])("html, body").animate({scrollTop:nextCueTop.offset.top},1000);}if(prevProps.currentTarget!==this.props.currentTarget){(0,_jquery2['default'])("html, body").animate({scrollTop:0},1000);}}return componentDidUpdate;}()},{key:'render',value:function(){function render(){if(!this.props.questions){return null;}var inProgressIndicator=void 0;if(this.props.isInProgressSubmitChoice){inProgressIndicator=_react2['default'].createElement('div',{className:'text-center',__source:{fileName:_jsxFileName,lineNumber:130}},_react2['default'].createElement('p',{__source:{fileName:_jsxFileName,lineNumber:131}},'Please wait while we check your answer...'),_react2['default'].createElement(_reactSpinner2['default'],{__source:{fileName:_jsxFileName,lineNumber:132}}));}var infiniteTimelineHeight={height:this.props.questionListHeight};var infiniteTimeline=_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:141}});return _react2['default'].createElement('div',{className:'questions',__source:{fileName:_jsxFileName,lineNumber:144}},infiniteTimeline,_react2['default'].createElement('ul',{className:'questions-list',__source:{fileName:_jsxFileName,lineNumber:146}},_lodash2['default'].map(this.props.questions,this.renderListRow)),inProgressIndicator,_react2['default'].createElement('div',{id:'skip-link-to-directive-carousel',__source:{fileName:_jsxFileName,lineNumber:151}},_react2['default'].createElement('a',{href:'#directive-carousel',className:'element-invisible element-focusable',onClick:this._skipToDirectiveCarousel,__source:{fileName:_jsxFileName,lineNumber:152}},'Skip to goals')),_react2['default'].createElement('div',{id:'skip-link-to-target-carousel',__source:{fileName:_jsxFileName,lineNumber:157}},_react2['default'].createElement('a',{href:'#target-carousel',className:'element-invisible element-focusable',onClick:this._skipToTargetCarousel,__source:{fileName:_jsxFileName,lineNumber:158}},'Skip to goal questions')));}return render;}()}]);return Questions;}(_react.Component);exports['default']=
+};return _this;}_createClass(Questions,[{key:'componentDidUpdate',value:function(){function componentDidUpdate(prevProps){if(prevProps.isInProgressSubmitChoice&&!this.props.isInProgressSubmitChoice){var nextCueTop=(0,_jquery2['default'])('.answered-question-cue').last();(0,_jquery2['default'])("html, body").animate({scrollTop:nextCueTop.offset.top},1000);}if(prevProps.currentTarget!==this.props.currentTarget){(0,_jquery2['default'])("html, body").animate({scrollTop:0},1000);}}return componentDidUpdate;}()},{key:'render',value:function(){function render(){if(!this.props.questions){return null;}var inProgressIndicator=void 0;if(this.props.isInProgressSubmitChoice){inProgressIndicator=_react2['default'].createElement('div',{className:'text-center',__source:{fileName:_jsxFileName,lineNumber:135}},_react2['default'].createElement('p',{__source:{fileName:_jsxFileName,lineNumber:136}},'Please wait while we check your answer...'),_react2['default'].createElement(_reactSpinner2['default'],{__source:{fileName:_jsxFileName,lineNumber:137}}));}var infiniteTimelineHeight={height:this.props.questionListHeight};var infiniteTimeline=_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:146}});return _react2['default'].createElement('div',{className:'questions',__source:{fileName:_jsxFileName,lineNumber:149}},infiniteTimeline,_react2['default'].createElement('ul',{className:'questions-list',__source:{fileName:_jsxFileName,lineNumber:151}},_lodash2['default'].map(this.props.questions,this.renderListRow)),inProgressIndicator,_react2['default'].createElement('div',{id:'skip-link-to-directive-carousel',__source:{fileName:_jsxFileName,lineNumber:156}},_react2['default'].createElement('a',{href:'#directive-carousel',className:'element-invisible element-focusable',onClick:this._skipToDirectiveCarousel,__source:{fileName:_jsxFileName,lineNumber:157}},'Skip to goals')),_react2['default'].createElement('div',{id:'skip-link-to-target-carousel',__source:{fileName:_jsxFileName,lineNumber:162}},_react2['default'].createElement('a',{href:'#target-carousel',className:'element-invisible element-focusable',onClick:this._skipToTargetCarousel,__source:{fileName:_jsxFileName,lineNumber:163}},'Skip to goal questions')));}return render;}()}]);return Questions;}(_react.Component);exports['default']=
 
 
 Questions;
