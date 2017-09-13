@@ -49,14 +49,14 @@ class Login extends Component {
         <div className="login">
           <div className="app-name text-center clearfix">
             <div className="medium-7 large-5 columns medium-centered">
-              <img className="app-logo" src={require('../../../assets/fbw-web-icon.png')} />
+              <img alt="Fly-by-Wire" className="app-logo" src={require('../../../assets/fbw-web-icon.png')} />
             </div>
           </div>
 
           <div className="row">
             <div className="medium-5 large-4 medium-centered columns">
               <button className="login-button login-button--d2l " onClick={() => this._handleACCLogin()}>
-                <img className="login-button__image" src={require('../../../assets/myACC.png')} />
+                <img aria-hidden className="login-button__image" src={require('../../../assets/myACC.png')} />
                 Arapahoe
               </button>
             </div>
