@@ -195,7 +195,7 @@ class QuestionCard extends Component {
       setTimeout(() => {
         this.solution.focus();
         $('html, body').animate({
-          scrollTop: $('body')[0].scrollTop + ReactDOM.findDOMNode(this.solution).scrollHeight
+          scrollTop: $(document).scrollTop() + ReactDOM.findDOMNode(this.solution).scrollHeight - 100
         }, 1000);
       }, 1000);
       this.props.onSubmitResponse({

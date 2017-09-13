@@ -195,7 +195,7 @@ var choice=_lodash2['default'].find(_this.props.question.choices,{id:choiceId});
 setTimeout(function(){
 _this.solution.focus();
 (0,_jquery2['default'])('html, body').animate({
-scrollTop:(0,_jquery2['default'])('body')[0].scrollTop+_reactDom2['default'].findDOMNode(_this.solution).scrollHeight},
+scrollTop:(0,_jquery2['default'])(document).scrollTop()+_reactDom2['default'].findDOMNode(_this.solution).scrollHeight-100},
 1000);
 },1000);
 _this.props.onSubmitResponse({
