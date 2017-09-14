@@ -45,6 +45,10 @@ closeModal:true};return _this;
 
 }_createClass(Mission,[{key:'componentDidMount',value:function(){function componentDidMount()
 {var _this2=this;
+
+
+
+
 this.onCheckMissionDone();
 
 var missionState=(0,_time.checkMissionStatus)(this.props.mission);
@@ -123,21 +127,21 @@ _react2['default'].createElement(_reactModal2['default'],{
 onAfterOpen:this.onOpenModal,
 onBeforeClose:this.onClickReturnToDirectiveCarousel,
 isOpen:!this.state.closeModal,
-contentLabel:'Completed Mission Summary',__source:{fileName:_jsxFileName,lineNumber:122}},
+contentLabel:'Completed Mission Summary',__source:{fileName:_jsxFileName,lineNumber:126}},
 
 _react2['default'].createElement('div',{
 'aria-label':'You\'ve answered all the goal questions for this mission. You correctly answered '+summaryString+' goal questions. Feel free to return to the mission and review your questions.',
 ref:function(){function ref(modal){_this3.modal=modal;}return ref;}(),
-tabIndex:-1,__source:{fileName:_jsxFileName,lineNumber:128}},
-_react2['default'].createElement('h3',{__source:{fileName:_jsxFileName,lineNumber:132}},'Mission complete!'),
-_react2['default'].createElement('div',{className:'modal-contents',__source:{fileName:_jsxFileName,lineNumber:133}},
-_react2['default'].createElement('p',{__source:{fileName:_jsxFileName,lineNumber:134}},'Congratulations, you\'ve answered all the goal questions for this mission.'),
+tabIndex:-1,__source:{fileName:_jsxFileName,lineNumber:132}},
+_react2['default'].createElement('h3',{__source:{fileName:_jsxFileName,lineNumber:136}},'Mission complete!'),
+_react2['default'].createElement('div',{className:'modal-contents',__source:{fileName:_jsxFileName,lineNumber:137}},
+_react2['default'].createElement('p',{__source:{fileName:_jsxFileName,lineNumber:138}},'Congratulations, you\'ve answered all the goal questions for this mission.'),
 
 
-_react2['default'].createElement('p',{__source:{fileName:_jsxFileName,lineNumber:137}},'You correctly answered ',
+_react2['default'].createElement('p',{__source:{fileName:_jsxFileName,lineNumber:141}},'You correctly answered ',
 summaryString,' goal questions.'),
 
-_react2['default'].createElement('p',{__source:{fileName:_jsxFileName,lineNumber:140}},'Feel free to close this dialog window and review the questions, or quit the Fly-by-Wire application.')),
+_react2['default'].createElement('p',{__source:{fileName:_jsxFileName,lineNumber:144}},'Feel free to close this dialog window and review the questions, or quit the Fly-by-Wire application.')),
 
 
 
@@ -145,14 +149,14 @@ _react2['default'].createElement('p',{__source:{fileName:_jsxFileName,lineNumber
 _react2['default'].createElement('button',{
 'aria-label':'Return to mission',
 className:'close-modal-button',
-onClick:this.onCloseModal,__source:{fileName:_jsxFileName,lineNumber:145}},'Return to Mission')));
+onClick:this.onCloseModal,__source:{fileName:_jsxFileName,lineNumber:149}},'Return to Mission')));
 
 
 
 
 var loadingIndicator=void 0;
 if(this.props.isGetMissionInProgress){
-return _react2['default'].createElement(_reactSpinner2['default'],{__source:{fileName:_jsxFileName,lineNumber:155}});
+return _react2['default'].createElement(_reactSpinner2['default'],{__source:{fileName:_jsxFileName,lineNumber:159}});
 }
 
 if(this.props.mission){
@@ -163,20 +167,20 @@ var missionState=(0,_time.checkMissionStatus)(this.props.mission);
 if(this.props.mission.questions.length===0&&missionState==="over"){
 
 return(
-_react2['default'].createElement('div',{style:[styles.container,{paddingTop:80,paddingLeft:30}],__source:{fileName:_jsxFileName,lineNumber:166}},
-_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:167}},'This mission is over. You didn\'t open it while it was open, so you have no results here.')));
+_react2['default'].createElement('div',{style:[styles.container,{paddingTop:80,paddingLeft:30}],__source:{fileName:_jsxFileName,lineNumber:170}},
+_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:171}},'This mission is over. You didn\'t open it while it was open, so you have no results here.')));
 
 
 }
 }
 
 return(
-_react2['default'].createElement(_reactDocumentTitle2['default'],{title:'Mission: '+this.props.mission.displayName,__source:{fileName:_jsxFileName,lineNumber:174}},
-_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:175}},
-_react2['default'].createElement(_reactAriaLive.LiveMessage,{message:'Mission: '+this.props.mission.displayName,'aria-live':'polite',__source:{fileName:_jsxFileName,lineNumber:176}}),
-_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:177}},
-_react2['default'].createElement('div',{className:'current-status',__source:{fileName:_jsxFileName,lineNumber:178}},
-_react2['default'].createElement('h4',{className:'current-status-heading',__source:{fileName:_jsxFileName,lineNumber:179}},'Current Mission Status:'),
+_react2['default'].createElement(_reactDocumentTitle2['default'],{title:'Mission: '+this.props.mission.displayName,__source:{fileName:_jsxFileName,lineNumber:178}},
+_react2['default'].createElement('div',{ref:function(){function ref(div){_this3.div=div;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:179}},
+_react2['default'].createElement(_reactAriaLive.LiveMessage,{message:'Mission: '+this.props.mission.displayName,'aria-live':'polite',__source:{fileName:_jsxFileName,lineNumber:180}}),
+_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:181}},
+_react2['default'].createElement('div',{className:'current-status',__source:{fileName:_jsxFileName,lineNumber:182}},
+_react2['default'].createElement('h4',{className:'current-status-heading',__source:{fileName:_jsxFileName,lineNumber:183}},'Current Mission Status:'),
 this.currentStatus())),
 
 
@@ -184,11 +188,11 @@ _react2['default'].createElement('nav',{
 tabIndex:-1,
 role:'navigation',
 'aria-label':'Directives Menu',
-ref:function(){function ref(directives){_this3.directiveCarouselRef=directives;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:183}},
+ref:function(){function ref(directives){_this3.directiveCarouselRef=directives;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:187}},
 _react2['default'].createElement(DirectiveCarousel,{directives:this.props.directives,
 currentDirectiveIndex:this.props.currentDirectiveIndex,
 directiveIndicators:this.props.directiveIndicators,
-onSelectDirective:this._onSelectDirective,__source:{fileName:_jsxFileName,lineNumber:188}})),
+onSelectDirective:this._onSelectDirective,__source:{fileName:_jsxFileName,lineNumber:192}})),
 
 
 _react2['default'].createElement('nav',{
@@ -196,20 +200,20 @@ tabIndex:-1,
 className:'nav-target-carousel',
 role:'navigation',
 'aria-label':'Target Questions Menu',
-ref:function(){function ref(targets){_this3.targetCarouselRef=targets;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:194}},
+ref:function(){function ref(targets){_this3.targetCarouselRef=targets;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:198}},
 _react2['default'].createElement(TargetCarousel,{
 onSelectTarget:this._onSelectTarget,
-mission:this.props.mission,__source:{fileName:_jsxFileName,lineNumber:200}})),
+mission:this.props.mission,__source:{fileName:_jsxFileName,lineNumber:204}})),
 
 
 _react2['default'].createElement('main',{
 tabIndex:-1,
-ref:function(){function ref(questions){_this3.questionsRef=questions;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:205}},
+ref:function(){function ref(questions){_this3.questionsRef=questions;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:209}},
 _react2['default'].createElement(Questions,{
 mission:this.props.mission,
 isSubmitEnabled:this.props.doNotTakeMission?false:undefined,
 onClickReturnToTargetCarousel:this.onClickReturnToTargetCarousel,
-onClickReturnToDirectiveCarousel:this.onClickReturnToDirectiveCarousel,__source:{fileName:_jsxFileName,lineNumber:208}})),
+onClickReturnToDirectiveCarousel:this.onClickReturnToDirectiveCarousel,__source:{fileName:_jsxFileName,lineNumber:212}})),
 
 
 loadingIndicator,

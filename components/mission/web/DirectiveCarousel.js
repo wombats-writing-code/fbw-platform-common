@@ -29,7 +29,10 @@ indicatorStyle+=' carousel-thumb__tried';
 
 
 }else{
-indicatorText=indicator?(indicator.numerator||'--')+' of '+indicator.denominator:'';
+var numberRemaining=indicator?indicator.denominator-indicator.numerator:'?';
+indicatorText='Unfinished ('+numberRemaining+')';
+indicatorStyle+=' carousel-thumb__unfinished';
+
 }
 }
 
@@ -39,14 +42,14 @@ var displayName=directive?directive.displayName:'Error. Somehow this outcome is 
 var isActive=idx===_this.props.currentDirectiveIndex;
 var thumb=
 _react2['default'].createElement('div',{key:idx,
-className:isActive?"carousel-thumb is-active carousel-thumb--directive":"carousel-thumb carousel-thumb--directive",__source:{fileName:_jsxFileName,lineNumber:41}},
+className:isActive?"carousel-thumb is-active carousel-thumb--directive":"carousel-thumb carousel-thumb--directive",__source:{fileName:_jsxFileName,lineNumber:44}},
 _react2['default'].createElement('button',{className:'carousel-thumb__button',onClick:function(){function onClick(){return _this.props.onSelectDirective(idx);}return onClick;}(),
-'aria-label':'Learning Outcome: '+displayName+'; '+indicatorText,__source:{fileName:_jsxFileName,lineNumber:43}},
-_react2['default'].createElement('div',{className:'flex-container align-bottom space-between prewrap',__source:{fileName:_jsxFileName,lineNumber:45}},
-_react2['default'].createElement('span',{className:indicatorStyle,__source:{fileName:_jsxFileName,lineNumber:46}},
+'aria-label':'Learning Outcome: '+displayName+'; '+indicatorText,__source:{fileName:_jsxFileName,lineNumber:46}},
+_react2['default'].createElement('div',{className:'flex-container align-bottom space-between prewrap',__source:{fileName:_jsxFileName,lineNumber:48}},
+_react2['default'].createElement('span',{className:indicatorStyle,__source:{fileName:_jsxFileName,lineNumber:49}},
 indicatorText),
 
-_react2['default'].createElement('p',{className:'carousel-thumb__text',__source:{fileName:_jsxFileName,lineNumber:49}},displayName))));
+_react2['default'].createElement('p',{className:'carousel-thumb__text',__source:{fileName:_jsxFileName,lineNumber:52}},displayName))));
 
 
 
@@ -72,8 +75,8 @@ return thumb;
 var directivesCarousel=void 0;
 if(this.props.directives&&this.props.directives.length>0){
 directivesCarousel=
-_react2['default'].createElement('div',{className:'carousel-container directive-carousel',__source:{fileName:_jsxFileName,lineNumber:75}},
-_react2['default'].createElement('div',{className:'carousel flex-container',__source:{fileName:_jsxFileName,lineNumber:76}},
+_react2['default'].createElement('div',{className:'carousel-container directive-carousel',__source:{fileName:_jsxFileName,lineNumber:78}},
+_react2['default'].createElement('div',{className:'carousel flex-container',__source:{fileName:_jsxFileName,lineNumber:79}},
 _lodash2['default'].map(this.props.directives,this._renderThumb)));
 
 
@@ -81,7 +84,7 @@ _lodash2['default'].map(this.props.directives,this._renderThumb)));
 }
 
 return(
-_react2['default'].createElement('div',{id:'directive-carousel',className:'',__source:{fileName:_jsxFileName,lineNumber:84}},
+_react2['default'].createElement('div',{id:'directive-carousel',className:'',__source:{fileName:_jsxFileName,lineNumber:87}},
 directivesCarousel));
 
 

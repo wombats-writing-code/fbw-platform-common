@@ -29,7 +29,10 @@ class DirectiveCarousel extends Component {
 
       // if the goal isn't completed, show how many left
       } else {
-        indicatorText = indicator ? `${indicator.numerator || '--'} of ${indicator.denominator}` : ''
+        const numberRemaining = indicator ? indicator.denominator - indicator.numerator : '?';
+        indicatorText = `Unfinished (${numberRemaining})`;
+        indicatorStyle += ' carousel-thumb__unfinished'
+        // indicatorText = indicator ? `${indicator.numerator || '--'} of ${indicator.denominator}` : ''
       }
     }
 

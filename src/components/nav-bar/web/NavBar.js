@@ -6,7 +6,8 @@ import './NavBar.scss'
 import {getD2LDisplayName} from '../../../selectors/login'
 
 class NavBar extends Component {
-
+  // TODO: on page-change, make this component focus on the skip-link,
+  //   so that focus stays on the page and can announce the new page
   render() {
     let props = this.props;
     let breadcrumbs = this._getPath(this.props);
