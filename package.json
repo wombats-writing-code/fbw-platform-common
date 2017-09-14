@@ -59,6 +59,7 @@
     "react": "^15.4.2",
     "react-addons-shallow-compare": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
+    "react-aria-live": "^1.0.4",
     "react-dates": "^4.3.0",
     "react-document-title": "^2.0.3",
     "react-dom": "^15.4.2",
