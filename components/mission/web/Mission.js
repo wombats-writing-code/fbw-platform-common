@@ -172,9 +172,10 @@ _react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumb
 return(
 _react2['default'].createElement(_reactDocumentTitle2['default'],{title:'Mission: '+this.props.mission.displayName,__source:{fileName:_jsxFileName,lineNumber:173}},
 _react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:174}},
-_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:175}},
-_react2['default'].createElement('div',{className:'current-status',__source:{fileName:_jsxFileName,lineNumber:176}},
-_react2['default'].createElement('h4',{className:'current-status-heading',__source:{fileName:_jsxFileName,lineNumber:177}},'Current Mission Status:'),
+_react2['default'].createElement(LiveMessage,{message:'Mission: '+this.props.mission.displayName,__source:{fileName:_jsxFileName,lineNumber:175}}),
+_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:176}},
+_react2['default'].createElement('div',{className:'current-status',__source:{fileName:_jsxFileName,lineNumber:177}},
+_react2['default'].createElement('h4',{className:'current-status-heading',__source:{fileName:_jsxFileName,lineNumber:178}},'Current Mission Status:'),
 this.currentStatus())),
 
 
@@ -182,11 +183,11 @@ _react2['default'].createElement('nav',{
 tabIndex:-1,
 role:'navigation',
 'aria-label':'Directives Menu',
-ref:function(){function ref(directives){_this3.directiveCarouselRef=directives;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:181}},
+ref:function(){function ref(directives){_this3.directiveCarouselRef=directives;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:182}},
 _react2['default'].createElement(DirectiveCarousel,{directives:this.props.directives,
 currentDirectiveIndex:this.props.currentDirectiveIndex,
 directiveIndicators:this.props.directiveIndicators,
-onSelectDirective:this._onSelectDirective,__source:{fileName:_jsxFileName,lineNumber:186}})),
+onSelectDirective:this._onSelectDirective,__source:{fileName:_jsxFileName,lineNumber:187}})),
 
 
 _react2['default'].createElement('nav',{
@@ -194,20 +195,20 @@ tabIndex:-1,
 className:'nav-target-carousel',
 role:'navigation',
 'aria-label':'Target Questions Menu',
-ref:function(){function ref(targets){_this3.targetCarouselRef=targets;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:192}},
+ref:function(){function ref(targets){_this3.targetCarouselRef=targets;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:193}},
 _react2['default'].createElement(TargetCarousel,{
 onSelectTarget:this._onSelectTarget,
-mission:this.props.mission,__source:{fileName:_jsxFileName,lineNumber:198}})),
+mission:this.props.mission,__source:{fileName:_jsxFileName,lineNumber:199}})),
 
 
 _react2['default'].createElement('main',{
 tabIndex:-1,
-ref:function(){function ref(questions){_this3.questionsRef=questions;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:203}},
+ref:function(){function ref(questions){_this3.questionsRef=questions;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:204}},
 _react2['default'].createElement(Questions,{
 mission:this.props.mission,
 isSubmitEnabled:this.props.doNotTakeMission?false:undefined,
 onClickReturnToTargetCarousel:this.onClickReturnToTargetCarousel,
-onClickReturnToDirectiveCarousel:this.onClickReturnToDirectiveCarousel,__source:{fileName:_jsxFileName,lineNumber:206}})),
+onClickReturnToDirectiveCarousel:this.onClickReturnToDirectiveCarousel,__source:{fileName:_jsxFileName,lineNumber:207}})),
 
 
 loadingIndicator,

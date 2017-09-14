@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import { browserHistory } from 'react-router'
 import slug from 'slug'
 import DocumentTitle from 'react-document-title'
+import { LiveMessage } from 'react-aria-live'
 
 import './Login.scss'
 
@@ -47,6 +48,7 @@ class Login extends Component {
     return (
       <DocumentTitle title="Login">
         <div className="login">
+          <LiveMessage message="Login to fly-by-wire" />
           <div className="app-name text-center clearfix">
             <div className="medium-7 large-5 columns medium-centered">
               <img alt="Fly-by-Wire" className="app-logo" src={require('../../../assets/fbw-web-icon.png')} />

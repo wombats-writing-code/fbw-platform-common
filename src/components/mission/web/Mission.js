@@ -4,6 +4,7 @@ import slug from 'slug'
 import _ from 'lodash'
 import DocumentTitle from 'react-document-title'
 import Modal from 'react-modal'
+import { LiveMessage } from 'react-aria-live'
 
 import DirectiveCarouselContainer from '../DirectiveCarouselContainer'
 import DirectiveCarouselComponent from './DirectiveCarousel'
@@ -172,6 +173,7 @@ class Mission extends Component {
     return (
       <DocumentTitle title={`Mission: ${this.props.mission.displayName}`}>
         <div>
+          <LiveMessage message={`Mission: ${this.props.mission.displayName}`} />
           <div>
             <div className='current-status'>
               <h4 className='current-status-heading'>Current Mission Status:</h4>
