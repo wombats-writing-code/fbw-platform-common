@@ -2,6 +2,7 @@ var _jsxFileName='src/components/login/__tests__/login.spec.js';var _react=requi
 
 var _reactRedux=require('react-redux');
 var _reduxMockStore=require('redux-mock-store');var _reduxMockStore2=_interopRequireDefault(_reduxMockStore);
+var _reactAriaLive=require('react-aria-live');
 
 var _d2lcredentials=require('../../../d2lcredentials');var _d2lcredentials2=_interopRequireDefault(_d2lcredentials);
 var _Login=require('../web/Login');var _Login2=_interopRequireDefault(_Login);
@@ -30,8 +31,10 @@ global.document.body.appendChild(div);
 
 store=mockStore(STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:33}},
-_react2['default'].createElement(Login,{__source:{fileName:_jsxFileName,lineNumber:34}})),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:34}},
+_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:35}},
+_react2['default'].createElement(Login,{__source:{fileName:_jsxFileName,lineNumber:36}}))),
+
 
 {attachTo:div});
 

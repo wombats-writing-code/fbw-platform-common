@@ -5,6 +5,7 @@ import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store'
 import Modal from 'react-modal';
 import ReactDOM from 'react-dom';
+import { LiveAnnouncer } from 'react-aria-live';
 //
 import MissionComponent from '../web/Mission';
 import MissionContainer from '../MissionContainer'
@@ -40,7 +41,9 @@ describe('Mission', () => {
     store = mockStore(STATE);
     connectedComponent = mount(
       <Provider store={store}>
-        <Mission mission={STATE.mission.currentMission} />
+        <LiveAnnouncer>
+          <Mission mission={STATE.mission.currentMission} />
+        </LiveAnnouncer>
       </Provider>,
       {attachTo: div}
     );
@@ -86,7 +89,9 @@ describe('A completed Mission', () => {
     store = mockStore(COMPLETED_STATE);
     connectedComponent = mount(
       <Provider store={store}>
-        <Mission mission={COMPLETED_STATE.mission.currentMission} />
+        <LiveAnnouncer>
+          <Mission mission={COMPLETED_STATE.mission.currentMission} />
+        </LiveAnnouncer>
       </Provider>,
       {attachTo: div}
     );
@@ -128,7 +133,9 @@ describe('An unopened Mission', () => {
     store = mockStore(UNOPENED_STATE);
     connectedComponent = mount(
       <Provider store={store}>
-        <Mission mission={UNOPENED_STATE.mission.currentMission} />
+        <LiveAnnouncer>
+          <Mission mission={UNOPENED_STATE.mission.currentMission} />
+        </LiveAnnouncer>
       </Provider>,
       {attachTo: div}
     );

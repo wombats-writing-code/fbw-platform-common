@@ -5,6 +5,7 @@ var _reduxThunk=require('redux-thunk');var _reduxThunk2=_interopRequireDefault(_
 var _reduxMockStore=require('redux-mock-store');var _reduxMockStore2=_interopRequireDefault(_reduxMockStore);
 var _reactModal=require('react-modal');var _reactModal2=_interopRequireDefault(_reactModal);
 var _reactDom=require('react-dom');var _reactDom2=_interopRequireDefault(_reactDom);
+var _reactAriaLive=require('react-aria-live');
 
 var _Mission=require('../web/Mission');var _Mission2=_interopRequireDefault(_Mission);
 var _MissionContainer=require('../MissionContainer');var _MissionContainer2=_interopRequireDefault(_MissionContainer);
@@ -39,8 +40,10 @@ global.document.body.appendChild(div);
 
 store=mockStore(STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:42}},
-_react2['default'].createElement(Mission,{mission:STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:43}})),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:43}},
+_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:44}},
+_react2['default'].createElement(Mission,{mission:STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:45}}))),
+
 
 {attachTo:div});
 
@@ -85,8 +88,10 @@ global.document.body.appendChild(div);
 
 store=mockStore(COMPLETED_STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:88}},
-_react2['default'].createElement(Mission,{mission:COMPLETED_STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:89}})),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:91}},
+_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:92}},
+_react2['default'].createElement(Mission,{mission:COMPLETED_STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:93}}))),
+
 
 {attachTo:div});
 
@@ -127,8 +132,10 @@ global.document.body.appendChild(div);
 
 store=mockStore(UNOPENED_STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:130}},
-_react2['default'].createElement(Mission,{mission:UNOPENED_STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:131}})),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:135}},
+_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:136}},
+_react2['default'].createElement(Mission,{mission:UNOPENED_STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:137}}))),
+
 
 {attachTo:div});
 
