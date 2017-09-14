@@ -173,7 +173,7 @@ class Mission extends Component {
     return (
       <DocumentTitle title={`Mission: ${this.props.mission.displayName}`}>
         <div>
-          <LiveMessage message={`Mission: ${this.props.mission.displayName}`} />
+          <LiveMessage message={`Mission: ${this.props.mission.displayName}`} aria-live="polite"/>
           <div>
             <div className='current-status'>
               <h4 className='current-status-heading'>Current Mission Status:</h4>

@@ -48,7 +48,7 @@ class Login extends Component {
     return (
       <DocumentTitle title="Login">
         <div className="login">
-          <LiveMessage message="Login to fly-by-wire" />
+          <LiveMessage message="Login to fly-by-wire" aria-live="polite"/>
           <div className="app-name text-center clearfix">
             <div className="medium-7 large-5 columns medium-centered">
               <img alt="Fly-by-Wire" className="app-logo" src={require('../../../assets/fbw-web-icon.png')} />
