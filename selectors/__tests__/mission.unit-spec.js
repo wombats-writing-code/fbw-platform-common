@@ -5,7 +5,8 @@
 var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);
 
 
-var _mission=require('../mission');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var chai=require('chai');var path=require('path');chai.should();var sectionQuestions=require('./section-questions.json');
+var _mission=require('../mission');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var chai=require('chai');var path=require('path');should=chai.should();var sectionQuestions=require('./section-questions.json');
+
 
 
 
@@ -335,13 +336,13 @@ describe('numberUnattemptedTargets selector',function(){
 
 it('should calculate 0 targets remaining when all have responseResult',function(done){
 var questions=[
-{responseResult:true,
+{responseResult:{},
 referenceNumber:'1',
 id:'1'},
-{responseResult:true,
+{responseResult:{},
 referenceNumber:'2',
 id:'2'},
-{responseResult:true,
+{responseResult:{},
 referenceNumber:'3',
 id:'3'}];
 
@@ -354,33 +355,13 @@ done();
 
 it('should not calculate unresponded targets with responseResult',function(done){
 var questions=[
-{responseResult:true,
+{responseResult:{},
 referenceNumber:'1',
 id:'1'},
 {foo:'bar',
 referenceNumber:'2',
 id:'2'},
-{responseResult:true,
-referenceNumber:'3',
-id:'3'}];
-
-
-var results=(0,_mission.numberUnattemptedTargets)(questions);
-results.should.eql(1);
-
-done();
-});
-
-it('should not calculate unresponded targets with responseResult false',function(done){
-
-var questions=[
-{responseResult:true,
-referenceNumber:'1',
-id:'1'},
-{responseResult:false,
-referenceNumber:'2',
-id:'2'},
-{responseResult:true,
+{responseResult:{},
 referenceNumber:'3',
 id:'3'}];
 
@@ -393,13 +374,13 @@ done();
 
 it('should calculate 0 targets remaining when all responded',function(done){
 var questions=[
-{response:true,
+{response:{},
 referenceNumber:'1',
 id:'1'},
-{response:true,
+{response:{},
 referenceNumber:'2',
 id:'2'},
-{response:true,
+{response:{},
 referenceNumber:'3',
 id:'3'}];
 
@@ -412,33 +393,13 @@ done();
 
 it('should not calculate unresponded targets',function(done){
 var questions=[
-{response:true,
+{response:{},
 referenceNumber:'1',
 id:'1'},
 {foo:'bar',
 referenceNumber:'2',
 id:'2'},
-{response:true,
-referenceNumber:'3',
-id:'3'}];
-
-
-var results=(0,_mission.numberUnattemptedTargets)(questions);
-results.should.eql(1);
-
-done();
-});
-
-it('should not calculate unresponded targets with responded false',function(done){
-
-var questions=[
-{response:true,
-referenceNumber:'1',
-id:'1'},
-{response:false,
-referenceNumber:'2',
-id:'2'},
-{response:true,
+{response:{},
 referenceNumber:'3',
 id:'3'}];
 
@@ -454,13 +415,13 @@ describe('numberAttemptedTargets selector',function(){
 
 it('should calculate 3 attempted targets when all have responseResult',function(done){
 var questions=[
-{responseResult:true,
+{responseResult:{},
 referenceNumber:'1',
 id:'1'},
-{responseResult:true,
+{responseResult:{},
 referenceNumber:'2',
 id:'2'},
-{responseResult:true,
+{responseResult:{},
 referenceNumber:'3',
 id:'3'}];
 
@@ -473,33 +434,13 @@ done();
 
 it('should not calculate non-responseResult targets',function(done){
 var questions=[
-{responseResult:true,
+{responseResult:{},
 referenceNumber:'1',
 id:'1'},
 {foo:'bar',
 referenceNumber:'2',
 id:'2'},
-{responseResult:true,
-referenceNumber:'3',
-id:'3'}];
-
-
-var results=(0,_mission.numberAttemptedTargets)(questions);
-results.should.eql(2);
-
-done();
-});
-
-it('should not calculate unresponded targets with responseResult false',function(done){
-
-var questions=[
-{responseResult:true,
-referenceNumber:'1',
-id:'1'},
-{responseResult:false,
-referenceNumber:'2',
-id:'2'},
-{responseResult:true,
+{responseResult:{},
 referenceNumber:'3',
 id:'3'}];
 
@@ -512,13 +453,13 @@ done();
 
 it('should calculate 3 attempted targets when all have response',function(done){
 var questions=[
-{response:true,
+{response:{},
 referenceNumber:'1',
 id:'1'},
-{response:true,
+{response:{},
 referenceNumber:'2',
 id:'2'},
-{response:true,
+{response:{},
 referenceNumber:'3',
 id:'3'}];
 
@@ -531,13 +472,13 @@ done();
 
 it('should not calculate non-response targets',function(done){
 var questions=[
-{response:true,
+{response:{},
 referenceNumber:'1',
 id:'1'},
 {foo:'bar',
 referenceNumber:'2',
 id:'2'},
-{response:true,
+{response:{},
 referenceNumber:'3',
 id:'3'}];
 
@@ -547,23 +488,143 @@ results.should.eql(2);
 
 done();
 });
+});
 
-it('should not calculate unresponded targets with response false',function(done){
+describe('isSyntheticDivision selector',function(){
 
+it('should throw exception when nothing passed in',function(done){
+should.Throw(function(){
+(0,_mission.isSyntheticDivision)(null);
+});
+done();
+});
+
+it('should throw exception when question arg has no displayName',function(done){
+should.Throw(function(){
+(0,_mission.isSyntheticDivision)({
+foo:'bar'});
+
+});
+done();
+});
+
+it('should return true for "synthetic division"',function(done){
+var results=(0,_mission.isSyntheticDivision)({
+displayName:'synthetic division #3'});
+
+results.should.eql(true);
+done();
+});
+
+it('should return true for "SYNTHETIC DIVISION"',function(done){
+var results=(0,_mission.isSyntheticDivision)({
+displayName:'SYNTHETIC DIVISION #3'});
+
+results.should.eql(true);
+done();
+});
+
+it('should return false for "synthetic multiplication"',function(done){
+var results=(0,_mission.isSyntheticDivision)({
+displayName:'synthetic multiplication #3'});
+
+results.should.eql(false);
+done();
+});
+
+it('should return false for "real division"',function(done){
+var results=(0,_mission.isSyntheticDivision)({
+displayName:'real division #3'});
+
+results.should.eql(false);
+done();
+});
+});
+
+describe('questionResponded selector',function(){
+
+it('should return true for responseResult',function(done){
+var results=(0,_mission.questionResponded)({
+responseResult:{}});
+
+results.should.eql(true);
+done();
+});
+
+it('should return true for response',function(done){
+var results=(0,_mission.questionResponded)({
+response:{}});
+
+results.should.eql(true);
+done();
+});
+
+it('should return false for no responseResult or response',function(done){
+var results=(0,_mission.questionResponded)({
+foo:'bar'});
+
+results.should.eql(false);
+done();
+});
+});
+
+
+
+describe('numberUnfinishedRoutes selector',function(){
+
+it('should calculate 0 when all have responseResult',function(done){
 var questions=[
-{response:true,
+{responseResult:{},
 referenceNumber:'1',
 id:'1'},
-{response:false,
-referenceNumber:'2',
+{responseResult:{},
+referenceNumber:'1.1',
 id:'2'},
-{response:true,
-referenceNumber:'3',
+{responseResult:{},
+referenceNumber:'2',
 id:'3'}];
 
 
-var results=(0,_mission.numberAttemptedTargets)(questions);
+var results=(0,_mission.numberUnfinishedRoutes)(questions);
+results.should.eql(0);
+
+done();
+});
+
+it('should include non-targets in the calculation',function(done){
+var questions=[
+{responseResult:{},
+referenceNumber:'1',
+id:'1'},
+{foo:'bar',
+referenceNumber:'1.1',
+id:'2'},
+{responseResult:{},
+referenceNumber:'2',
+id:'3'},
+{foo:'bar',
+referenceNumber:'2.1',
+id:'4'}];
+
+
+var results=(0,_mission.numberUnfinishedRoutes)(questions);
 results.should.eql(2);
+
+done();
+});
+
+it('should include targets in the calcuation',function(done){
+var questions=[
+{referenceNumber:'1',
+id:'1'},
+{referenceNumber:'2',
+id:'2'},
+{referenceNumber:'3',
+id:'3'}];
+
+
+var results=(0,_mission.numberUnfinishedRoutes)(questions);
+results.should.eql(3);
 
 done();
 });

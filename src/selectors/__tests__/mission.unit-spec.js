@@ -1,6 +1,6 @@
 let chai = require('chai');
 let path = require('path')
-chai.should();
+should = chai.should();
 
 import _ from 'lodash';
 
@@ -9,7 +9,8 @@ import {getSectionTargets, isTargetRouteNavigated,
   isLastTargetInRoute, getRouteQuestions, pointsEarned,
   numberUnattemptedTargets, grabTargetQuestionsFromRecords,
   numberAttemptedTargets, numberCorrectTargets,
-  grabTargetQuestionsFromMission} from '../mission'
+  grabTargetQuestionsFromMission, questionResponded,
+  numberUnfinishedRoutes, isSyntheticDivision} from '../mission'
 
 describe('mission selectors', () => {
 
@@ -335,13 +336,13 @@ describe('numberUnattemptedTargets selector', () => {
 
   it(`should calculate 0 targets remaining when all have responseResult`, function(done) {
     const questions = [
-      {responseResult: true,
+      {responseResult: {},
        referenceNumber: '1',
        id: '1'},
-      {responseResult: true,
+      {responseResult: {},
        referenceNumber: '2',
        id: '2'},
-      {responseResult: true,
+      {responseResult: {},
        referenceNumber: '3',
        id: '3'},
     ];
@@ -354,33 +355,13 @@ describe('numberUnattemptedTargets selector', () => {
 
   it(`should not calculate unresponded targets with responseResult`, function(done) {
     const questions = [
-      {responseResult: true,
+      {responseResult: {},
        referenceNumber: '1',
        id: '1'},
       {foo: 'bar',
        referenceNumber: '2',
        id: '2'},
-      {responseResult: true,
-       referenceNumber: '3',
-       id: '3'},
-    ];
-
-    let results = numberUnattemptedTargets(questions);
-    results.should.eql(1);
-
-    done();
-  });
-
-  it(`should not calculate unresponded targets with responseResult false`, function(done) {
-    // this state should never actually happen?
-    const questions = [
-      {responseResult: true,
-       referenceNumber: '1',
-       id: '1'},
-      {responseResult: false,
-       referenceNumber: '2',
-       id: '2'},
-      {responseResult: true,
+      {responseResult: {},
        referenceNumber: '3',
        id: '3'},
     ];
@@ -393,13 +374,13 @@ describe('numberUnattemptedTargets selector', () => {
 
   it(`should calculate 0 targets remaining when all responded`, function(done) {
     const questions = [
-      {response: true,
+      {response: {},
        referenceNumber: '1',
        id: '1'},
-      {response: true,
+      {response: {},
        referenceNumber: '2',
        id: '2'},
-      {response: true,
+      {response: {},
        referenceNumber: '3',
        id: '3'},
     ];
@@ -412,33 +393,13 @@ describe('numberUnattemptedTargets selector', () => {
 
   it(`should not calculate unresponded targets`, function(done) {
     const questions = [
-      {response: true,
+      {response: {},
        referenceNumber: '1',
        id: '1'},
       {foo: 'bar',
        referenceNumber: '2',
        id: '2'},
-      {response: true,
-       referenceNumber: '3',
-       id: '3'},
-    ];
-
-    let results = numberUnattemptedTargets(questions);
-    results.should.eql(1);
-
-    done();
-  });
-
-  it(`should not calculate unresponded targets with responded false`, function(done) {
-    // this state should never actually happen?
-    const questions = [
-      {response: true,
-       referenceNumber: '1',
-       id: '1'},
-      {response: false,
-       referenceNumber: '2',
-       id: '2'},
-      {response: true,
+      {response: {},
        referenceNumber: '3',
        id: '3'},
     ];
@@ -454,13 +415,13 @@ describe('numberAttemptedTargets selector', () => {
 
   it(`should calculate 3 attempted targets when all have responseResult`, function(done) {
     const questions = [
-      {responseResult: true,
+      {responseResult: {},
        referenceNumber: '1',
        id: '1'},
-      {responseResult: true,
+      {responseResult: {},
        referenceNumber: '2',
        id: '2'},
-      {responseResult: true,
+      {responseResult: {},
        referenceNumber: '3',
        id: '3'},
     ];
@@ -473,33 +434,13 @@ describe('numberAttemptedTargets selector', () => {
 
   it(`should not calculate non-responseResult targets`, function(done) {
     const questions = [
-      {responseResult: true,
+      {responseResult: {},
        referenceNumber: '1',
        id: '1'},
       {foo: 'bar',
        referenceNumber: '2',
        id: '2'},
-      {responseResult: true,
-       referenceNumber: '3',
-       id: '3'},
-    ];
-
-    let results = numberAttemptedTargets(questions);
-    results.should.eql(2);
-
-    done();
-  });
-
-  it(`should not calculate unresponded targets with responseResult false`, function(done) {
-    // this state should never actually happen?
-    const questions = [
-      {responseResult: true,
-       referenceNumber: '1',
-       id: '1'},
-      {responseResult: false,
-       referenceNumber: '2',
-       id: '2'},
-      {responseResult: true,
+      {responseResult: {},
        referenceNumber: '3',
        id: '3'},
     ];
@@ -512,13 +453,13 @@ describe('numberAttemptedTargets selector', () => {
 
   it(`should calculate 3 attempted targets when all have response`, function(done) {
     const questions = [
-      {response: true,
+      {response: {},
        referenceNumber: '1',
        id: '1'},
-      {response: true,
+      {response: {},
        referenceNumber: '2',
        id: '2'},
-      {response: true,
+      {response: {},
        referenceNumber: '3',
        id: '3'},
     ];
@@ -531,13 +472,13 @@ describe('numberAttemptedTargets selector', () => {
 
   it(`should not calculate non-response targets`, function(done) {
     const questions = [
-      {response: true,
+      {response: {},
        referenceNumber: '1',
        id: '1'},
       {foo: 'bar',
        referenceNumber: '2',
        id: '2'},
-      {response: true,
+      {response: {},
        referenceNumber: '3',
        id: '3'},
     ];
@@ -547,23 +488,143 @@ describe('numberAttemptedTargets selector', () => {
 
     done();
   });
+})
 
-  it(`should not calculate unresponded targets with response false`, function(done) {
-    // this state should never actually happen?
+describe('isSyntheticDivision selector', () => {
+
+  it(`should throw exception when nothing passed in`, function(done) {
+    should.Throw(() => {
+      isSyntheticDivision(null)
+    });
+    done();
+  });
+
+  it(`should throw exception when question arg has no displayName`, function(done) {
+    should.Throw(() => {
+      isSyntheticDivision({
+        foo: 'bar'
+      })
+    });
+    done();
+  });
+
+  it(`should return true for "synthetic division"`, function(done) {
+    const results = isSyntheticDivision({
+      displayName: 'synthetic division #3'
+    });
+    results.should.eql(true);
+    done();
+  });
+
+  it(`should return true for "SYNTHETIC DIVISION"`, function(done) {
+    const results = isSyntheticDivision({
+      displayName: 'SYNTHETIC DIVISION #3'
+    });
+    results.should.eql(true);
+    done();
+  });
+
+  it(`should return false for "synthetic multiplication"`, function(done) {
+    const results = isSyntheticDivision({
+      displayName: 'synthetic multiplication #3'
+    });
+    results.should.eql(false);
+    done();
+  });
+
+  it(`should return false for "real division"`, function(done) {
+    const results = isSyntheticDivision({
+      displayName: 'real division #3'
+    });
+    results.should.eql(false);
+    done();
+  });
+});
+
+describe('questionResponded selector', () => {
+
+  it(`should return true for responseResult`, function(done) {
+    const results = questionResponded({
+      responseResult: {}
+    });
+    results.should.eql(true);
+    done();
+  });
+
+  it(`should return true for response`, function(done) {
+    const results = questionResponded({
+      response: {}
+    });
+    results.should.eql(true);
+    done();
+  });
+
+  it(`should return false for no responseResult or response`, function(done) {
+    const results = questionResponded({
+      foo: 'bar'
+    });
+    results.should.eql(false);
+    done();
+  });
+});
+
+
+
+describe('numberUnfinishedRoutes selector', () => {
+
+  it(`should calculate 0 when all have responseResult`, function(done) {
     const questions = [
-      {response: true,
+      {responseResult: {},
        referenceNumber: '1',
        id: '1'},
-      {response: false,
-       referenceNumber: '2',
+      {responseResult: {},
+       referenceNumber: '1.1',
        id: '2'},
-      {response: true,
-       referenceNumber: '3',
+      {responseResult: {},
+       referenceNumber: '2',
        id: '3'},
     ];
 
-    let results = numberAttemptedTargets(questions);
+    let results = numberUnfinishedRoutes(questions);
+    results.should.eql(0);
+
+    done();
+  });
+
+  it(`should include non-targets in the calculation`, function(done) {
+    const questions = [
+      {responseResult: {},
+       referenceNumber: '1',
+       id: '1'},
+      {foo: 'bar',
+       referenceNumber: '1.1',
+       id: '2'},
+      {responseResult: {},
+       referenceNumber: '2',
+       id: '3'},
+      {foo: 'bar',
+       referenceNumber: '2.1',
+       id: '4'},
+    ];
+
+    let results = numberUnfinishedRoutes(questions);
     results.should.eql(2);
+
+    done();
+  });
+
+  it(`should include targets in the calcuation`, function(done) {
+    const questions = [
+      {referenceNumber: '1',
+       id: '1'},
+      {referenceNumber: '2',
+       id: '2'},
+      {referenceNumber: '3',
+       id: '3'},
+    ];
+
+    let results = numberUnfinishedRoutes(questions);
+    results.should.eql(3);
 
     done();
   });

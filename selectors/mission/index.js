@@ -1,4 +1,4 @@
-Object.defineProperty(exports,"__esModule",{value:true});exports.numberAttemptedTargets=exports.numberUnattemptedTargets=exports.pointsEarned=exports.numberCorrectTargets=exports.grabTargetQuestionsFromMission=exports.grabTargetQuestionsFromRecords=exports.directiveIdsFromQuestions=exports.isGoalMastered=exports.isGoalCompleted=exports.isLastTargetInRoute=exports.targetStatus=exports.isTargetRouteNavigated=exports.computeSectionProgress=exports.getRouteQuestions=exports.getSectionTargets=exports.getMissionDirectives=exports.targetKey=exports.isTarget=undefined;exports.
+Object.defineProperty(exports,"__esModule",{value:true});exports.isSyntheticDivision=exports.numberUnfinishedRoutes=exports.numberAttemptedTargets=exports.numberUnattemptedTargets=exports.questionResponded=exports.pointsEarned=exports.numberCorrectTargets=exports.grabTargetQuestionsFromMission=exports.grabTargetQuestionsFromRecords=exports.directiveIdsFromQuestions=exports.isGoalMastered=exports.isGoalCompleted=exports.isLastTargetInRoute=exports.targetStatus=exports.isTargetRouteNavigated=exports.computeSectionProgress=exports.getRouteQuestions=exports.getSectionTargets=exports.getMissionDirectives=exports.targetKey=exports.isTarget=undefined;exports.
 
 
 
@@ -200,12 +200,16 @@ return numberCorrect+' / '+questions.length+'; '+percentCorrect+'%';
 }return pointsEarned;}();
 
 
+var questionResponded=exports.questionResponded=function(){function questionResponded(question){
+return _lodash2['default'].has(question,'responseResult')||_lodash2['default'].has(question,'response');
+}return questionResponded;}();
+
 var numberUnattemptedTargets=exports.numberUnattemptedTargets=function(){function numberUnattemptedTargets(targetQuestions){
 
 
 
 
-return _lodash2['default'].filter(targetQuestions,function(targetQuestion){return!(targetQuestion.responseResult||targetQuestion.response);}).length;
+return _lodash2['default'].filter(targetQuestions,function(targetQuestion){return!questionResponded(targetQuestion);}).length;
 }return numberUnattemptedTargets;}();
 
 var numberAttemptedTargets=exports.numberAttemptedTargets=function(){function numberAttemptedTargets(targetQuestions){
@@ -213,5 +217,21 @@ var numberAttemptedTargets=exports.numberAttemptedTargets=function(){function nu
 
 
 
-return _lodash2['default'].filter(targetQuestions,function(targetQuestion){return targetQuestion.responseResult||targetQuestion.response;}).length;
+return _lodash2['default'].filter(targetQuestions,questionResponded).length;
 }return numberAttemptedTargets;}();
+
+var numberUnfinishedRoutes=exports.numberUnfinishedRoutes=function(){function numberUnfinishedRoutes(missionQuestions){
+
+
+return _lodash2['default'].find(missionQuestions,function(question){return!questionResponded(question);})?
+_lodash2['default'].filter(missionQuestions,function(question){return!questionResponded(question);}).length:0;
+}return numberUnfinishedRoutes;}();
+
+var isSyntheticDivision=exports.isSyntheticDivision=function(){function isSyntheticDivision(question){
+
+
+if(!question||!question.displayName){
+throw new Exception('isSyntheticDivision requires a question input with a displayName property');
+}
+return question.displayName.toLowerCase().indexOf('synthetic division')>=0;
+}return isSyntheticDivision;}();

@@ -200,12 +200,16 @@ export const pointsEarned = (questions) => {
 }
 
 
+export const questionResponded = (question) => {
+  return _.has(question, 'responseResult') || _.has(question, 'response');
+}
+
 export const numberUnattemptedTargets = (targetQuestions) => {
   // assumes targetQuestions is already a list of targets
   // Call `grabTargetQuestionsFromRecords` first
   // targetQuestion.responseResult is when the data is from `records`
   // targetQuestion.response is when the data is from `mission.questions`
-  return _.filter(targetQuestions, targetQuestion => !(targetQuestion.responseResult || targetQuestion.response)).length;
+  return _.filter(targetQuestions, targetQuestion => !(questionResponded(targetQuestion))).length;
 }
 
 export const numberAttemptedTargets = (targetQuestions) => {
@@ -213,7 +217,23 @@ export const numberAttemptedTargets = (targetQuestions) => {
   // Call `grabTargetQuestionsFromRecords` first
   // targetQuestion.responseResult is when the data is from `records`
   // targetQuestion.response is when the data is from `mission.questions
-  return _.filter(targetQuestions, targetQuestion => targetQuestion.responseResult || targetQuestion.response).length;
+  return _.filter(targetQuestions, questionResponded).length;
+}
+
+export const numberUnfinishedRoutes = (missionQuestions) => {
+  // checks to see if any unanwered questions remain
+  // Used to see if the student has finished all routes
+  return _.find(missionQuestions, question => !questionResponded(question)) ?
+    _.filter(missionQuestions, question => !questionResponded(question)).length : 0;
+}
+
+export const isSyntheticDivision = (question) => {
+  // In order to get the table border right, need a selector
+  //   that can identify synthetic division questions
+  if (!question || !question.displayName) {
+    throw new Exception('isSyntheticDivision requires a question input with a displayName property');
+  }
+  return question.displayName.toLowerCase().indexOf('synthetic division') >= 0;
 }
 
 // export function hasAchievedDirective (targets) {
