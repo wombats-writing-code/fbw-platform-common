@@ -47,6 +47,7 @@ class Mission extends Component {
     }
   }
   componentDidMount() {
+    this.div.focus();
     this.onCheckMissionDone();
 
     let missionState = checkMissionStatus(this.props.mission);
@@ -113,6 +114,8 @@ class Mission extends Component {
     // console.log('Mission.props', this.props)
     // show a modal window telling them they've finished the mission, if
     //   there are 0 unattempted.
+    let content;
+    let renderContent = true;
     const status = this.calculateStatus();
     const routeProgress = 100 * status.finished / status.numberGoals;
     const progressString = `${status.finished} / ${status.numberGoals} goals completed`;
@@ -149,30 +152,28 @@ class Mission extends Component {
       </Modal>
     )
 
-    let loadingIndicator;
     if (this.props.isGetMissionInProgress) {
-      return (<Spinner/>)
+      content = <Spinner/>;
+      renderContent = false;
     }
 
-    if (this.props.mission) {
+    if (!this.props.isGetMissionInProgress && this.props.mission) {
       // console.log('this.props.mission', this.props.mission)
       let missionState = checkMissionStatus(this.props.mission)
-      // console.log('checkMissionStatus', missionState, this.props.mission.questions.length)
 
       if (this.props.mission.questions.length === 0 && missionState === "over") {
-      // if (this.props.mission.questions.length === 0 && missionState === "over") {
-        return (
+        content = (
           <div style={[styles.container, {paddingTop: 80, paddingLeft: 30}]}>
             <div>This mission is over. You didn't open it while it was open, so you have no results here.</div>
           </div>
-        )
+        );
+        renderContent = false;
       }
     }
 
-    return (
-      <DocumentTitle title={`Mission: ${this.props.mission.displayName}`}>
+    if (renderContent) {
+      content = (
         <div>
-          <LiveMessage message={`Mission: ${this.props.mission.displayName}`} aria-live="polite"/>
           <div className="status-wrapper">
             <div className="progress-bar-wrapper">
               <Progress completed={routeProgress} color="hsla(124,93%,20%,1)"/>
@@ -213,8 +214,19 @@ class Mission extends Component {
               onClickReturnToDirectiveCarousel={this.onClickReturnToDirectiveCarousel}/>
           </main>
 
-          {loadingIndicator}
           {statusModal}
+        </div>
+      );
+    }
+
+    return (
+      <DocumentTitle title={`Mission: ${this.props.mission.displayName}`}>
+        <div
+          ref={(div) => { this.div = div }}
+          tabIndex={-1}>
+          <LiveMessage message={`Mission: ${this.props.mission.displayName}`} aria-live="polite"/>
+          {content}
+
         </div>
       </DocumentTitle>
     )
