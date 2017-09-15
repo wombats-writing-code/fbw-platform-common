@@ -73,3 +73,11 @@ fieldset {
 .question-card__synthetic_division table .quotient-row td:not(:first-child){
   border-top: 1px solid black;
 }
+
+.question-card:not(.question-card__synthetic_division) table .quotient-row td:not(:first-child){
+  border-bottom: 1px solid black !important;
+}
+
+.question-card table tr:not(:nth-child(3)) .quotient-row td:not(:first-child){
+  border-top: 1px solid black !important;
+}
