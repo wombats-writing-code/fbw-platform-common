@@ -5,6 +5,7 @@ import _ from 'lodash'
 import DocumentTitle from 'react-document-title'
 import Modal from 'react-modal'
 import { LiveMessage } from 'react-aria-live'
+import Progress from 'react-progressbar'
 
 import DirectiveCarouselContainer from '../DirectiveCarouselContainer'
 import DirectiveCarouselComponent from './DirectiveCarousel'
@@ -21,7 +22,7 @@ const Questions = QuestionsContainer(QuestionsComponent)
 import {checkMissionStatus } from '../../../utilities/time'
 import { numberCorrectTargets, numberAttemptedTargets,
   numberUnattemptedTargets, grabTargetQuestionsFromMission,
-  numberUnfinishedRoutes } from '../../../selectors/mission';
+  numberUnfinishedGoals } from '../../../selectors/mission';
 
 import './Mission.scss'
 const styles = {
@@ -96,10 +97,17 @@ class Mission extends Component {
     }
     const missionQuestionsFlat = _.flattenDeep(currentProps.mission.questions);
     const targetQuestions = grabTargetQuestionsFromMission(missionQuestionsFlat);
+    const unfinishedGoals = numberUnfinishedGoals(currentProps.mission.questions);
+    const totalGoals = currentProps.mission.questions ? currentProps.mission.questions.length : 0;
+    console.log('goals', totalGoals)
+    console.log('unfinishedGoals', unfinishedGoals);
+    console.log('finished', totalGoals - unfinishedGoals)
     return {
       correct: numberCorrectTargets(targetQuestions),
       attempted: numberAttemptedTargets(targetQuestions),
-      unfinished: numberUnfinishedRoutes(missionQuestionsFlat),
+      numberGoals: totalGoals,
+      finished: totalGoals - unfinishedGoals,
+      unfinished: unfinishedGoals,
       unattempted: numberUnattemptedTargets(targetQuestions)
     }
   }
@@ -119,6 +127,9 @@ class Mission extends Component {
     // show a modal window telling them they've finished the mission, if
     //   there are 0 unattempted.
     const status = this.calculateStatus();
+    const routeProgress = status.finished / status.numberGoals;
+    console.log('routeProgress', routeProgress);
+    const progressString = `${status.finished} / ${status.numberGoals} goals completed`;
     const summaryString = `${status.correct} out of ${status.attempted}`; // for testing
     const statusModal = (
       <Modal
@@ -177,10 +188,14 @@ class Mission extends Component {
         <div>
           <LiveMessage message={`Mission: ${this.props.mission.displayName}`} aria-live="polite"/>
           <div>
-            <div className='current-status'>
+            <Progress completed={routeProgress} />
+            <span>
+              {progressString}
+            </span>
+            {/* <div className='current-status'>
               <h4 className='current-status-heading'>Current Mission Status:</h4>
               {this.currentStatus()}
-            </div>
+            </div> */}
           </div>
           <nav
             tabIndex={-1}
@@ -250,7 +265,9 @@ class Mission extends Component {
     //   should be opened or not.
     setTimeout(() => {
       const status = this.calculateStatus();
-      if (this.state.closeModal && status.unattempted === 0 && status.attempted > 0) {
+      // need to check status.attempted > 0 here in case they didn't even open
+      //   the mission
+      if (this.state.closeModal && status.unfinished === 0 && status.attempted > 0) {
         this.setState({ closeModal: false });
       }
     }, 3000);

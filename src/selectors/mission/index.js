@@ -220,11 +220,25 @@ export const numberAttemptedTargets = (targetQuestions) => {
   return _.filter(targetQuestions, questionResponded).length;
 }
 
-export const numberUnfinishedRoutes = (missionQuestions) => {
+export const numberUnfinishedRoutes = (goalQuestions) => {
+  // input is mission.questions[idx], so one list of questions for the same goal.
   // checks to see if any unanwered questions remain
   // Used to see if the student has finished all routes
-  return _.find(missionQuestions, question => !questionResponded(question)) ?
-    _.filter(missionQuestions, question => !questionResponded(question)).length : 0;
+  return _.find(goalQuestions, question => !questionResponded(question)) ?
+    _.filter(goalQuestions, question => !questionResponded(question)).length : 0;
+}
+
+export const numberUnfinishedGoals = (missionQuestions) => {
+  // given a list of questions sorted by goals (mission.questions)
+  // counts how many goals include unfinished routes
+  return _.reduce(missionQuestions, (sum, goalQuestions) => {
+    const unfinishedRoutes = numberUnfinishedRoutes(_.flattenDeep(goalQuestions));
+    if (unfinishedRoutes !== 0) {
+      // if any routes are unfinished, then the goal itself is incomplete
+      return sum + 1;
+    }
+    return sum;
+  }, 0);
 }
 
 export const isSyntheticDivision = (question) => {

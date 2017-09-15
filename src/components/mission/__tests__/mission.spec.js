@@ -6,6 +6,7 @@ import configureStore from 'redux-mock-store'
 import Modal from 'react-modal';
 import ReactDOM from 'react-dom';
 import { LiveAnnouncer } from 'react-aria-live';
+import Progress from 'react-progressbar';
 //
 import MissionComponent from '../web/Mission';
 import MissionContainer from '../MissionContainer'
@@ -57,13 +58,11 @@ describe('Mission', () => {
 
   });
 
-  it('should render a mission with the current status displayed', () => {
+  it('should render a mission with the progress bar displayed', () => {
     const mission = connectedComponent.find(Mission)
 
-    mission.find('.current-status').length.should.be.eql(1);
-    mission.html().should.contain('5 Correct');
-    mission.html().should.contain('11 Attempted');
-    mission.html().should.contain('34 Remaining');
+    mission.find('.progressbar-container').length.should.be.eql(1);
+    mission.html().should.contain('3 / 15 goals completed');
   });
 
   it('should render a closed modal when have unattempted questions', () => {

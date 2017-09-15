@@ -6,6 +6,7 @@ var _reduxMockStore=require('redux-mock-store');var _reduxMockStore2=_interopReq
 var _reactModal=require('react-modal');var _reactModal2=_interopRequireDefault(_reactModal);
 var _reactDom=require('react-dom');var _reactDom2=_interopRequireDefault(_reactDom);
 var _reactAriaLive=require('react-aria-live');
+var _reactProgressbar=require('react-progressbar');var _reactProgressbar2=_interopRequireDefault(_reactProgressbar);
 
 var _Mission=require('../web/Mission');var _Mission2=_interopRequireDefault(_Mission);
 var _MissionContainer=require('../MissionContainer');var _MissionContainer2=_interopRequireDefault(_MissionContainer);
@@ -40,9 +41,9 @@ global.document.body.appendChild(div);
 
 store=mockStore(STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:43}},
-_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:44}},
-_react2['default'].createElement(Mission,{mission:STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:45}}))),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:44}},
+_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:45}},
+_react2['default'].createElement(Mission,{mission:STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:46}}))),
 
 
 {attachTo:div});
@@ -57,13 +58,11 @@ mission.find('.question-card').length.should.be.eql(2);
 
 });
 
-it('should render a mission with the current status displayed',function(){
+it('should render a mission with the progress bar displayed',function(){
 var mission=connectedComponent.find(Mission);
 
-mission.find('.current-status').length.should.be.eql(1);
-mission.html().should.contain('5 Correct');
-mission.html().should.contain('11 Attempted');
-mission.html().should.contain('34 Remaining');
+mission.find('.progressbar-container').length.should.be.eql(1);
+mission.html().should.contain('3 / 15 goals completed');
 });
 
 it('should render a closed modal when have unattempted questions',function(){
@@ -88,9 +87,9 @@ global.document.body.appendChild(div);
 
 store=mockStore(COMPLETED_STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:91}},
-_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:92}},
-_react2['default'].createElement(Mission,{mission:COMPLETED_STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:93}}))),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:90}},
+_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:91}},
+_react2['default'].createElement(Mission,{mission:COMPLETED_STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:92}}))),
 
 
 {attachTo:div});
@@ -132,9 +131,9 @@ global.document.body.appendChild(div);
 
 store=mockStore(UNOPENED_STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:135}},
-_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:136}},
-_react2['default'].createElement(Mission,{mission:UNOPENED_STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:137}}))),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:134}},
+_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:135}},
+_react2['default'].createElement(Mission,{mission:UNOPENED_STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:136}}))),
 
 
 {attachTo:div});

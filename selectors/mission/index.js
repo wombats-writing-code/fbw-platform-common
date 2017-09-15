@@ -1,4 +1,4 @@
-Object.defineProperty(exports,"__esModule",{value:true});exports.isSyntheticDivision=exports.numberUnfinishedRoutes=exports.numberAttemptedTargets=exports.numberUnattemptedTargets=exports.questionResponded=exports.pointsEarned=exports.numberCorrectTargets=exports.grabTargetQuestionsFromMission=exports.grabTargetQuestionsFromRecords=exports.directiveIdsFromQuestions=exports.isGoalMastered=exports.isGoalCompleted=exports.isLastTargetInRoute=exports.targetStatus=exports.isTargetRouteNavigated=exports.computeSectionProgress=exports.getRouteQuestions=exports.getSectionTargets=exports.getMissionDirectives=exports.targetKey=exports.isTarget=undefined;exports.
+Object.defineProperty(exports,"__esModule",{value:true});exports.isSyntheticDivision=exports.numberUnfinishedGoals=exports.numberUnfinishedRoutes=exports.numberAttemptedTargets=exports.numberUnattemptedTargets=exports.questionResponded=exports.pointsEarned=exports.numberCorrectTargets=exports.grabTargetQuestionsFromMission=exports.grabTargetQuestionsFromRecords=exports.directiveIdsFromQuestions=exports.isGoalMastered=exports.isGoalCompleted=exports.isLastTargetInRoute=exports.targetStatus=exports.isTargetRouteNavigated=exports.computeSectionProgress=exports.getRouteQuestions=exports.getSectionTargets=exports.getMissionDirectives=exports.targetKey=exports.isTarget=undefined;exports.
 
 
 
@@ -220,12 +220,26 @@ var numberAttemptedTargets=exports.numberAttemptedTargets=function(){function nu
 return _lodash2['default'].filter(targetQuestions,questionResponded).length;
 }return numberAttemptedTargets;}();
 
-var numberUnfinishedRoutes=exports.numberUnfinishedRoutes=function(){function numberUnfinishedRoutes(missionQuestions){
+var numberUnfinishedRoutes=exports.numberUnfinishedRoutes=function(){function numberUnfinishedRoutes(goalQuestions){
 
 
-return _lodash2['default'].find(missionQuestions,function(question){return!questionResponded(question);})?
-_lodash2['default'].filter(missionQuestions,function(question){return!questionResponded(question);}).length:0;
+
+return _lodash2['default'].find(goalQuestions,function(question){return!questionResponded(question);})?
+_lodash2['default'].filter(goalQuestions,function(question){return!questionResponded(question);}).length:0;
 }return numberUnfinishedRoutes;}();
+
+var numberUnfinishedGoals=exports.numberUnfinishedGoals=function(){function numberUnfinishedGoals(missionQuestions){
+
+
+return _lodash2['default'].reduce(missionQuestions,function(sum,goalQuestions){
+var unfinishedRoutes=numberUnfinishedRoutes(_lodash2['default'].flattenDeep(goalQuestions));
+if(unfinishedRoutes!==0){
+
+return sum+1;
+}
+return sum;
+},0);
+}return numberUnfinishedGoals;}();
 
 var isSyntheticDivision=exports.isSyntheticDivision=function(){function isSyntheticDivision(question){
 
