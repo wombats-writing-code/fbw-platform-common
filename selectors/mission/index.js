@@ -228,13 +228,11 @@ return _lodash2['default'].find(goalQuestions,function(question){return!question
 _lodash2['default'].filter(goalQuestions,function(question){return!questionResponded(question);}).length:0;
 }return numberUnfinishedRoutes;}();
 
-var numberUnfinishedGoals=exports.numberUnfinishedGoals=function(){function numberUnfinishedGoals(missionQuestions){
+var numberUnfinishedGoals=exports.numberUnfinishedGoals=function(){function numberUnfinishedGoals(directiveIndicators){
 
 
-return _lodash2['default'].reduce(missionQuestions,function(sum,goalQuestions){
-var unfinishedRoutes=numberUnfinishedRoutes(_lodash2['default'].flattenDeep(goalQuestions));
-if(unfinishedRoutes!==0){
-
+return _lodash2['default'].reduce(directiveIndicators,function(sum,indicator){
+if(!indicator.isComplete){
 return sum+1;
 }
 return sum;

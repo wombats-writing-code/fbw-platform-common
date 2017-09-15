@@ -634,39 +634,12 @@ describe('numberUnfinishedRoutes selector', () => {
 describe('numberUnfinishedGoals selector', () => {
   it(`should only count each goal once, even if multiple routes unfinished`, (done) => {
     const questions = [
-      [
-        [
-          {referenceNumber: '1',
-            id: '1'},
-          {referenceNumber: '2',
-            id: '2'},
-        ],
-        [
-          {referenceNumber: '1',
-            id: '3'},
-          {referenceNumber: '2',
-            id: '4'},
-        ]
-      ],
-      [
-        [
-          {referenceNumber: '1',
-            response: {},
-            id: '5'},
-          {referenceNumber: '2',
-            id: '6'},
-        ],
-        [
-          {referenceNumber: '1',
-            id: '7'},
-          {referenceNumber: '2',
-            response: {},
-            id: '8'},
-          {referenceNumber: '2.1',
-            response: {},
-            id: '9'},
-        ]
-      ]
+      {
+        isComplete: false
+      },
+      {
+        isComplete: false
+      }
     ];
     const result = numberUnfinishedGoals(questions);
     result.should.eql(2);
@@ -674,41 +647,15 @@ describe('numberUnfinishedGoals selector', () => {
   });
 
   it(`should not count goals where all routes finished`, (done) => {
-    const questions = [
-      [
-        [
-          {referenceNumber: '1',
-            id: '1'},
-          {referenceNumber: '2',
-            id: '2'},
-        ],
-        [
-          {referenceNumber: '1',
-            id: '3'},
-          {referenceNumber: '2',
-            id: '4'},
-        ]
-      ],
-      [
-        [
-          {referenceNumber: '1',
-            response: {},
-            id: '5'},
-          {referenceNumber: '2',
-            response: {},
-            id: '6'},
-        ],
-        [
-          {referenceNumber: '1',
-            response: {},
-            id: '7'},
-          {referenceNumber: '2',
-            response: {},
-            id: '8'},
-        ]
-      ]
+    const indicators = [
+      {
+        isComplete: false
+      },
+      {
+        isComplete: true
+      }
     ];
-    const result = numberUnfinishedGoals(questions);
+    const result = numberUnfinishedGoals(indicators);
     result.should.eql(1);
     done();
   });

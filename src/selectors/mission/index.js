@@ -228,13 +228,11 @@ export const numberUnfinishedRoutes = (goalQuestions) => {
     _.filter(goalQuestions, question => !questionResponded(question)).length : 0;
 }
 
-export const numberUnfinishedGoals = (missionQuestions) => {
-  // given a list of questions sorted by goals (mission.questions)
-  // counts how many goals include unfinished routes
-  return _.reduce(missionQuestions, (sum, goalQuestions) => {
-    const unfinishedRoutes = numberUnfinishedRoutes(_.flattenDeep(goalQuestions));
-    if (unfinishedRoutes !== 0) {
-      // if any routes are unfinished, then the goal itself is incomplete
+export const numberUnfinishedGoals = (directiveIndicators) => {
+  // given a set of directiveIndicators (from computeSectionProgress above),
+  //   we calculate simply how many are unfinished
+  return _.reduce(directiveIndicators, (sum, indicator) => {
+    if (!indicator.isComplete) {
       return sum + 1;
     }
     return sum;

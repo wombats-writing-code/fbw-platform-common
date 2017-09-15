@@ -634,38 +634,11 @@ done();
 describe('numberUnfinishedGoals selector',function(){
 it('should only count each goal once, even if multiple routes unfinished',function(done){
 var questions=[
-[
-[
-{referenceNumber:'1',
-id:'1'},
-{referenceNumber:'2',
-id:'2'}],
+{
+isComplete:false},
 
-[
-{referenceNumber:'1',
-id:'3'},
-{referenceNumber:'2',
-id:'4'}]],
-
-
-[
-[
-{referenceNumber:'1',
-response:{},
-id:'5'},
-{referenceNumber:'2',
-id:'6'}],
-
-[
-{referenceNumber:'1',
-id:'7'},
-{referenceNumber:'2',
-response:{},
-id:'8'},
-{referenceNumber:'2.1',
-response:{},
-id:'9'}]]];
-
+{
+isComplete:false}];
 
 
 var result=(0,_mission.numberUnfinishedGoals)(questions);
@@ -674,41 +647,15 @@ done();
 });
 
 it('should not count goals where all routes finished',function(done){
-var questions=[
-[
-[
-{referenceNumber:'1',
-id:'1'},
-{referenceNumber:'2',
-id:'2'}],
+var indicators=[
+{
+isComplete:false},
 
-[
-{referenceNumber:'1',
-id:'3'},
-{referenceNumber:'2',
-id:'4'}]],
+{
+isComplete:true}];
 
 
-[
-[
-{referenceNumber:'1',
-response:{},
-id:'5'},
-{referenceNumber:'2',
-response:{},
-id:'6'}],
-
-[
-{referenceNumber:'1',
-response:{},
-id:'7'},
-{referenceNumber:'2',
-response:{},
-id:'8'}]]];
-
-
-
-var result=(0,_mission.numberUnfinishedGoals)(questions);
+var result=(0,_mission.numberUnfinishedGoals)(indicators);
 result.should.eql(1);
 done();
 });

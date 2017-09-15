@@ -35,5 +35,14 @@
 .current-status-heading {
   font-size: 1rem;
   margin-right: 1rem;
-  display: inline;
+  min-width: 200px;
+  flex: 1;
+}
+
+.status-wrapper {
+  display: flex;
+}
+
+.progress-bar-wrapper {
+  flex: 100%;
 }

@@ -79,9 +79,9 @@ class Mission extends Component {
     const status = this.calculateStatus(nextProps);
     const previousStatus = this.calculateStatus();
     if (this.state.closeModal &&
-        status.unattempted === 0 &&
-        status.attempted > 0 &&
-        previousStatus.unattempted !== status.unattempted) {
+        status.unfinished === 0 &&
+        status.finished > 0 &&
+        previousStatus.unfinished !== status.unfinished) {
       // make sure this only checks mission status if
       //   student is working on target questions -- so if
       //   student comes back and answers waypoints, the
@@ -97,11 +97,8 @@ class Mission extends Component {
     }
     const missionQuestionsFlat = _.flattenDeep(currentProps.mission.questions);
     const targetQuestions = grabTargetQuestionsFromMission(missionQuestionsFlat);
-    const unfinishedGoals = numberUnfinishedGoals(currentProps.mission.questions);
+    const unfinishedGoals = numberUnfinishedGoals(currentProps.directiveIndicators);
     const totalGoals = currentProps.mission.questions ? currentProps.mission.questions.length : 0;
-    console.log('goals', totalGoals)
-    console.log('unfinishedGoals', unfinishedGoals);
-    console.log('finished', totalGoals - unfinishedGoals)
     return {
       correct: numberCorrectTargets(targetQuestions),
       attempted: numberAttemptedTargets(targetQuestions),
@@ -112,23 +109,12 @@ class Mission extends Component {
     }
   }
 
-  currentStatus = () => {
-    // calculate the student's:
-    // # question / # correct / # unattempted
-    // to show at the top of the page
-    // `records` should be from this.props.mission.questions
-    //    which needs to be flattened
-    const status = this.calculateStatus();
-    return `${status.correct} Correct | ${status.attempted} Attempted | ${status.unattempted} Remaining`;
-  }
-
   render() {
     // console.log('Mission.props', this.props)
     // show a modal window telling them they've finished the mission, if
     //   there are 0 unattempted.
     const status = this.calculateStatus();
-    const routeProgress = status.finished / status.numberGoals;
-    console.log('routeProgress', routeProgress);
+    const routeProgress = 100 * status.finished / status.numberGoals;
     const progressString = `${status.finished} / ${status.numberGoals} goals completed`;
     const summaryString = `${status.correct} out of ${status.attempted}`; // for testing
     const statusModal = (
@@ -187,15 +173,13 @@ class Mission extends Component {
       <DocumentTitle title={`Mission: ${this.props.mission.displayName}`}>
         <div>
           <LiveMessage message={`Mission: ${this.props.mission.displayName}`} aria-live="polite"/>
-          <div>
-            <Progress completed={routeProgress} />
-            <span>
+          <div className="status-wrapper">
+            <div className="progress-bar-wrapper">
+              <Progress completed={routeProgress} />
+            </div>
+            <h4 className="current-status-heading">
               {progressString}
-            </span>
-            {/* <div className='current-status'>
-              <h4 className='current-status-heading'>Current Mission Status:</h4>
-              {this.currentStatus()}
-            </div> */}
+            </h4>
           </div>
           <nav
             tabIndex={-1}
@@ -265,9 +249,9 @@ class Mission extends Component {
     //   should be opened or not.
     setTimeout(() => {
       const status = this.calculateStatus();
-      // need to check status.attempted > 0 here in case they didn't even open
-      //   the mission
-      if (this.state.closeModal && status.unfinished === 0 && status.attempted > 0) {
+      // need to check status.finished > 0 here in case they didn't even open
+      //   the original mission before the deadline
+      if (this.state.closeModal && status.unfinished === 0 && status.finished > 0) {
         this.setState({ closeModal: false });
       }
     }, 3000);
