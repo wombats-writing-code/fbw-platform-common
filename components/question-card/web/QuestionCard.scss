@@ -59,8 +59,17 @@ fieldset {
   outline-color: $app-red-dark;
 }
 
-.question-card table tbody,
-.question-card table thead,
-.question-card table tfoot {
-  border-color: black;
+// .question-card table tbody,
+// .question-card table thead,
+// .question-card table tfoot {
+//   border-color: black;
+// }
+
+.question-card table .divisor-col {
+  border-right-color: black;
+}
+
+.question-card table .quotient-row {
+  border-top-color: black;
+  border-left: 0;
 }
