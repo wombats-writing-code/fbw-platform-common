@@ -20,7 +20,8 @@ const Questions = QuestionsContainer(QuestionsComponent)
 
 import {checkMissionStatus } from '../../../utilities/time'
 import { numberCorrectTargets, numberAttemptedTargets,
-  numberUnattemptedTargets, grabTargetQuestionsFromMission } from '../../../selectors/mission';
+  numberUnattemptedTargets, grabTargetQuestionsFromMission,
+  numberUnfinishedRoutes } from '../../../selectors/mission';
 
 import './Mission.scss'
 const styles = {
@@ -98,6 +99,7 @@ class Mission extends Component {
     return {
       correct: numberCorrectTargets(targetQuestions),
       attempted: numberAttemptedTargets(targetQuestions),
+      unfinished: numberUnfinishedRoutes(missionQuestionsFlat),
       unattempted: numberUnattemptedTargets(targetQuestions)
     }
   }
