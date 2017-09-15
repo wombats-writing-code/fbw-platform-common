@@ -23,6 +23,7 @@ require('../../../styles/animations.scss');function _interopRequireDefault(obj){
 var STATE=require('./solution-state.mock.json');
 var COMPLETED_STATE=require('./completed-state.mock.json');
 var UNOPENED_STATE=require('./unopened-state.mock.json');
+var EMPTY_PHASE_II_STATE=require('./empty-phase-ii.mock.json');
 
 var chai=require('chai');
 chai.should();
@@ -41,9 +42,9 @@ global.document.body.appendChild(div);
 
 store=mockStore(STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:44}},
-_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:45}},
-_react2['default'].createElement(Mission,{mission:STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:46}}))),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:45}},
+_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:46}},
+_react2['default'].createElement(Mission,{mission:STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:47}}))),
 
 
 {attachTo:div});
@@ -87,9 +88,9 @@ global.document.body.appendChild(div);
 
 store=mockStore(COMPLETED_STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:90}},
-_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:91}},
-_react2['default'].createElement(Mission,{mission:COMPLETED_STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:92}}))),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:91}},
+_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:92}},
+_react2['default'].createElement(Mission,{mission:COMPLETED_STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:93}}))),
 
 
 {attachTo:div});
@@ -131,9 +132,9 @@ global.document.body.appendChild(div);
 
 store=mockStore(UNOPENED_STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:134}},
-_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:135}},
-_react2['default'].createElement(Mission,{mission:UNOPENED_STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:136}}))),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:135}},
+_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:136}},
+_react2['default'].createElement(Mission,{mission:UNOPENED_STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:137}}))),
 
 
 {attachTo:div});
@@ -142,6 +143,46 @@ _react2['default'].createElement(Mission,{mission:UNOPENED_STATE.mission.current
 
 it('should render a closed modal',function(){
 connectedComponent.find(_reactModal2['default']).length.should.eql(0);
+});
+
+it('should tell the student they did not open the original mission',function(){
+var mission=connectedComponent.find(Mission);
+mission.html().should.contain('This mission is over');
+});
+
+after(function(){
+connectedComponent.detach();
+});
+});
+
+describe('An empty phase 2 Mission',function(){
+
+var middlewares=[_reduxThunk2['default']];
+var mockStore=(0,_reduxMockStore2['default'])(middlewares);
+var connectedComponent=void 0,store=void 0;
+
+before(function(){
+var div=global.document.createElement('div');
+global.document.body.appendChild(div);
+
+store=mockStore(EMPTY_PHASE_II_STATE);
+connectedComponent=(0,_enzyme.mount)(
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:170}},
+_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:171}},
+_react2['default'].createElement(Mission,{mission:EMPTY_PHASE_II_STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:172}}))),
+
+
+{attachTo:div});
+
+});
+
+it('should render a closed modal',function(){
+connectedComponent.find(_reactModal2['default']).length.should.eql(0);
+});
+
+it('should tell the student they aced phase 1',function(){
+var mission=connectedComponent.find(Mission);
+mission.html().should.contain('Congratulations!');
 });
 
 after(function(){

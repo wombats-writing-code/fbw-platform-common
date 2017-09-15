@@ -64,17 +64,15 @@
     "currentMission": {
       "_id": "58bac8c867064a000f27e719",
       "displayName": "mission 1",
-      "type": "PHASE_I_MISSION_TYPE",
-      "startTime": "2013-03-01T14:00:00.000Z",
-      "deadline": "2013-08-01T01:00:00.000Z",
+      "type": "PHASE_II_MISSION_TYPE",
+      "startTime": "2017-03-01T14:00:00.000Z",
+      "deadline": "2017-08-01T01:00:00.000Z",
       "course": "589e4c3ef36d2837a7c6790d",
       "user": null,
       "__v": 0,
       "followsFromMissions": [],
       "leadsToMissions": [],
       "goals": [
-        "58a8a02e0895cd3f6b528231",
-        "58a8a02e0895cd3f6b528234"
       ],
       "id": "58bac8c867064a000f27e719",
       "questions": []

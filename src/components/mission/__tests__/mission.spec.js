@@ -23,6 +23,7 @@ import '../../../styles/animations.scss'
 const STATE = require('./solution-state.mock.json')
 const COMPLETED_STATE = require('./completed-state.mock.json')
 const UNOPENED_STATE = require('./unopened-state.mock.json')
+const EMPTY_PHASE_II_STATE = require('./empty-phase-ii.mock.json')
 
 let chai = require('chai')
 chai.should()
@@ -142,6 +143,46 @@ describe('An unopened Mission', () => {
 
   it('should render a closed modal', () => {
     connectedComponent.find(Modal).length.should.eql(0);
+  });
+
+  it('should tell the student they did not open the original mission', () => {
+    const mission = connectedComponent.find(Mission);
+    mission.html().should.contain('This mission is over');
+  });
+
+  after( function() {
+    connectedComponent.detach();
+  });
+});
+
+describe('An empty phase 2 Mission', () => {
+
+  const middlewares = [thunk]; // add your middlewares like `redux-thunk`
+  let mockStore = configureStore(middlewares);
+  let connectedComponent, store;
+
+  before(function() {
+    const div = global.document.createElement('div');
+    global.document.body.appendChild(div);
+
+    store = mockStore(EMPTY_PHASE_II_STATE);
+    connectedComponent = mount(
+      <Provider store={store}>
+        <LiveAnnouncer>
+          <Mission mission={EMPTY_PHASE_II_STATE.mission.currentMission} />
+        </LiveAnnouncer>
+      </Provider>,
+      {attachTo: div}
+    );
+  });
+
+  it('should render a closed modal', () => {
+    connectedComponent.find(Modal).length.should.eql(0);
+  });
+
+  it('should tell the student they aced phase 1', () => {
+    const mission = connectedComponent.find(Mission);
+    mission.html().should.contain('Congratulations!');
   });
 
   after( function() {

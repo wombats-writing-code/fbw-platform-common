@@ -23,6 +23,7 @@ import {checkMissionStatus } from '../../../utilities/time'
 import { numberCorrectTargets, numberAttemptedTargets,
   numberUnattemptedTargets, grabTargetQuestionsFromMission,
   numberUnfinishedGoals } from '../../../selectors/mission';
+import { missionConfig } from '../../../reducers/mission';
 
 import './Mission.scss'
 const styles = {
@@ -161,7 +162,15 @@ class Mission extends Component {
       // console.log('this.props.mission', this.props.mission)
       let missionState = checkMissionStatus(this.props.mission)
 
-      if (this.props.mission.questions.length === 0 && missionState === "over") {
+      if (this.props.mission.goals.length === 0 && this.props.mission.type === missionConfig.PHASE_II_MISSION_TYPE) {
+        content = (
+          <div style={[styles.container, {paddingTop: 80, paddingLeft: 30}]}>
+            <div>Congratulations! You aced the Phase I mission, so you have no Phase II questions.</div>
+            <div>We encourage you to review your Phase I mission before your exam.</div>
+          </div>
+        );
+        renderContent = false;
+      } else if (this.props.mission.questions.length === 0 && missionState === "over") {
         content = (
           <div style={[styles.container, {paddingTop: 80, paddingLeft: 30}]}>
             <div>This mission is over. You didn't open it while it was open, so you have no results here.</div>
