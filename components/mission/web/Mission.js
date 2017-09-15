@@ -119,7 +119,7 @@ var content=void 0;
 var renderContent=true;
 var status=this.calculateStatus();
 var routeProgress=100*status.finished/status.numberGoals;
-var progressString=status.finished+' / '+status.numberGoals+' goals completed';
+var progressString=status.finished+' / '+status.numberGoals+' goal questions completed';
 var summaryString=status.correct+' out of '+status.attempted;
 var statusModal=
 _react2['default'].createElement(_reactModal2['default'],{
@@ -239,7 +239,7 @@ content)));
 
 
 
-}return render;}()}]);return Mission;}(_react.Component);var _initialiseProps=function(){function _initialiseProps(){var _this4=this;this.componentWillReceiveProps=function(nextProps){var status=_this4.calculateStatus(nextProps);var previousStatus=_this4.calculateStatus();if(_this4.state.closeModal&&status.unfinished===0&&status.finished>0&&previousStatus.unfinished!==status.unfinished){_this4.onCheckMissionDone();}};this.calculateStatus=function(props){var currentProps=props;if(!currentProps){currentProps=_this4.props;}var missionQuestionsFlat=_lodash2['default'].flattenDeep(currentProps.mission.questions);var targetQuestions=(0,_mission.grabTargetQuestionsFromMission)(missionQuestionsFlat);var unfinishedGoals=(0,_mission.numberUnfinishedGoals)(currentProps.directiveIndicators);var totalGoals=currentProps.mission.questions?currentProps.mission.questions.length:0;return{correct:(0,_mission.numberCorrectTargets)(targetQuestions),attempted:(0,_mission.numberAttemptedTargets)(targetQuestions),numberGoals:totalGoals,finished:totalGoals-unfinishedGoals,unfinished:unfinishedGoals,unattempted:(0,_mission.numberUnattemptedTargets)(targetQuestions)};};this.
+}return render;}()}]);return Mission;}(_react.Component);var _initialiseProps=function(){function _initialiseProps(){var _this4=this;this.componentWillReceiveProps=function(nextProps){var status=_this4.calculateStatus(nextProps);var previousStatus=_this4.calculateStatus();if(_this4.state.closeModal&&status.unfinished===0&&status.finished>0&&previousStatus.unfinished!==status.unfinished){_this4.onCheckMissionDone();}};this.calculateStatus=function(props){var currentProps=props;if(!currentProps){currentProps=_this4.props;}var missionQuestionsFlat=_lodash2['default'].flattenDeep(currentProps.mission.questions);var targetQuestions=(0,_mission.grabTargetQuestionsFromMission)(missionQuestionsFlat);var unfinishedGoalQs=(0,_mission.numberUnfinishedRoutes)(missionQuestionsFlat);var totalGoals=currentProps.mission.questions?targetQuestions.length:0;return{correct:(0,_mission.numberCorrectTargets)(targetQuestions),attempted:(0,_mission.numberAttemptedTargets)(targetQuestions),numberGoals:totalGoals,finished:totalGoals-unfinishedGoalQs,unfinished:unfinishedGoalQs,unattempted:(0,_mission.numberUnattemptedTargets)(targetQuestions)};};this.
 
 _onSelectDirective=function(index){
 _this4.targetCarouselRef.focus();

@@ -22,7 +22,7 @@ const Questions = QuestionsContainer(QuestionsComponent)
 import {checkMissionStatus } from '../../../utilities/time'
 import { numberCorrectTargets, numberAttemptedTargets,
   numberUnattemptedTargets, grabTargetQuestionsFromMission,
-  numberUnfinishedGoals } from '../../../selectors/mission';
+  numberUnfinishedGoals, numberUnfinishedRoutes } from '../../../selectors/mission';
 import { missionConfig } from '../../../reducers/mission';
 
 import './Mission.scss'
@@ -99,14 +99,14 @@ class Mission extends Component {
     }
     const missionQuestionsFlat = _.flattenDeep(currentProps.mission.questions);
     const targetQuestions = grabTargetQuestionsFromMission(missionQuestionsFlat);
-    const unfinishedGoals = numberUnfinishedGoals(currentProps.directiveIndicators);
-    const totalGoals = currentProps.mission.questions ? currentProps.mission.questions.length : 0;
+    const unfinishedGoalQs = numberUnfinishedRoutes(missionQuestionsFlat);
+    const totalGoals = currentProps.mission.questions ? targetQuestions.length : 0;
     return {
       correct: numberCorrectTargets(targetQuestions),
       attempted: numberAttemptedTargets(targetQuestions),
       numberGoals: totalGoals,
-      finished: totalGoals - unfinishedGoals,
-      unfinished: unfinishedGoals,
+      finished: totalGoals - unfinishedGoalQs,
+      unfinished: unfinishedGoalQs,
       unattempted: numberUnattemptedTargets(targetQuestions)
     }
   }
@@ -119,7 +119,7 @@ class Mission extends Component {
     let renderContent = true;
     const status = this.calculateStatus();
     const routeProgress = 100 * status.finished / status.numberGoals;
-    const progressString = `${status.finished} / ${status.numberGoals} goals completed`;
+    const progressString = `${status.finished} / ${status.numberGoals} goal questions completed`;
     const summaryString = `${status.correct} out of ${status.attempted}`; // for testing
     const statusModal = (
       <Modal
