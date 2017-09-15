@@ -1,7 +1,7 @@
 import React, { Component, }  from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery'
-import { isTarget } from '../../../selectors/mission';
+import { isTarget, isSyntheticDivision } from '../../../selectors/mission';
 
 import _ from 'lodash';
 
@@ -37,6 +37,12 @@ class QuestionCard extends Component {
   }
 
   render() {
+    let questionCardClasses = 'question-card clearfix';
+
+    if (isSyntheticDivision(this.props.question)) {
+      questionCardClasses += ' question-card__synthetic_division';
+    }
+
     let submitButtonText;
     if (!this.props.isInProgressSubmitChoice) {
       submitButtonText = 'Submit';
@@ -159,7 +165,7 @@ class QuestionCard extends Component {
     return (
       <div
         role="group"
-        className="question-card clearfix">
+        className={questionCardClasses}>
         <QuestionHeader questionTypeIcon={questionTypeIcon}
                         headerText={this.props.outcome ? this.props.outcome.displayName : ''}
                         onShowAnswer={() => this._onShowAnswer(this.props.question)}
