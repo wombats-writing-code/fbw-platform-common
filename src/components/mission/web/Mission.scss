@@ -35,14 +35,22 @@
 .current-status-heading {
   font-size: 1rem;
   margin-right: 1rem;
+  margin-bottom: 0;
   min-width: 200px;
   flex: 1;
 }
 
 .status-wrapper {
   display: flex;
+  margin-top: -1.5rem;
+  background-color: hsla(0,0%,83%,1);
 }
 
 .progress-bar-wrapper {
   flex: 100%;
+  padding-top: 0.4rem;
+}
+
+.progressbar-container {
+  background: white;
 }

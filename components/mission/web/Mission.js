@@ -175,7 +175,7 @@ _react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumb
 _react2['default'].createElement(_reactAriaLive.LiveMessage,{message:'Mission: '+this.props.mission.displayName,'aria-live':'polite',__source:{fileName:_jsxFileName,lineNumber:175}}),
 _react2['default'].createElement('div',{className:'status-wrapper',__source:{fileName:_jsxFileName,lineNumber:176}},
 _react2['default'].createElement('div',{className:'progress-bar-wrapper',__source:{fileName:_jsxFileName,lineNumber:177}},
-_react2['default'].createElement(_reactProgressbar2['default'],{completed:routeProgress,__source:{fileName:_jsxFileName,lineNumber:178}})),
+_react2['default'].createElement(_reactProgressbar2['default'],{completed:routeProgress,color:'hsla(124,93%,20%,1)',__source:{fileName:_jsxFileName,lineNumber:178}})),
 
 _react2['default'].createElement('h4',{className:'current-status-heading',__source:{fileName:_jsxFileName,lineNumber:180}},
 progressString)),

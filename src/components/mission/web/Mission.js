@@ -175,7 +175,7 @@ class Mission extends Component {
           <LiveMessage message={`Mission: ${this.props.mission.displayName}`} aria-live="polite"/>
           <div className="status-wrapper">
             <div className="progress-bar-wrapper">
-              <Progress completed={routeProgress} />
+              <Progress completed={routeProgress} color="hsla(124,93%,20%,1)"/>
             </div>
             <h4 className="current-status-heading">
               {progressString}
