@@ -196,11 +196,12 @@ class QuestionCard extends Component {
 
       // console.log('this.props.routeQuestions', this.props.routeQuestions)
       setTimeout(() => {
+        // let the browser automatically move to the right spot via focus, instead
+        //   of trying to manually scroll.
         this.solution.focus();
-
-        $('html, body').animate({
-          scrollTop: $(document).scrollTop() + ReactDOM.findDOMNode(this.solution).scrollHeight - 100
-        }, 1000);
+        // $('html, body').animate({
+        //   scrollTop: $(document).scrollTop() + ReactDOM.findDOMNode(this.solution).scrollHeight / 2
+        // }, 1000);
       }, 1000);
       this.props.onSubmitResponse({
         mission: this.props.mission,
