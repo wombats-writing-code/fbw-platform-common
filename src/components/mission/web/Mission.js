@@ -251,7 +251,7 @@ class Mission extends Component {
     this.questionsRef.focus();
     // Prevent funky scrolling to the bottom of the
     //   questions list and then back up, by
-    //   explicitly calling .scrollTo here
+    //   explicitly calling .scrollTo() here
     window.scrollTo(0,0);
 
     this.props.onSelectTarget(target);

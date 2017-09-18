@@ -140,6 +140,8 @@ class QuestionCard extends Component {
 
     let solution = (this.props.question.responded && this.state.isExpanded) ?
                     (<div
+                      tabIndex={-1}
+                      ref={(sol) => { this.solution = sol; }}
                       role="group"
                       className="question-card__solution">
                         <p className="bold uppercase">{solutionStateText}</p>
@@ -179,11 +181,7 @@ class QuestionCard extends Component {
 
         {choices}
       </fieldset>
-      <div
-        tabIndex={-1}
-        ref={(sol) => { this.solution = sol; }}>
-        {solution}
-      </div>
+      {solution}
       {submitButton}
     </div>
     )
