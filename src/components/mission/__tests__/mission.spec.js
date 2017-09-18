@@ -63,7 +63,7 @@ describe('Mission', () => {
     const mission = connectedComponent.find(Mission)
 
     mission.find('.progressbar-container').length.should.be.eql(1);
-    mission.html().should.contain('11 / 45 goal questions completed');
+    mission.html().should.contain('11 / 45 finished');
   });
 
   it('should render a closed modal when have unattempted questions', () => {

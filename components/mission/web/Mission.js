@@ -119,7 +119,7 @@ var content=void 0;
 var renderContent=true;
 var status=this.calculateStatus();
 var routeProgress=100*status.finished/status.numberGoals;
-var progressString=status.finished+' / '+status.numberGoals+' goal questions completed';
+var progressString=status.finished+' / '+status.numberGoals+' finished';
 var summaryString=status.correct+' out of '+status.attempted;
 var statusModal=
 _react2['default'].createElement(_reactModal2['default'],{

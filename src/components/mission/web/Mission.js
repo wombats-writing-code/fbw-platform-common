@@ -119,7 +119,7 @@ class Mission extends Component {
     let renderContent = true;
     const status = this.calculateStatus();
     const routeProgress = 100 * status.finished / status.numberGoals;
-    const progressString = `${status.finished} / ${status.numberGoals} goal questions completed`;
+    const progressString = `${status.finished} / ${status.numberGoals} finished`;
     const summaryString = `${status.correct} out of ${status.attempted}`; // for testing
     const statusModal = (
       <Modal
