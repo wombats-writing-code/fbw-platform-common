@@ -248,8 +248,11 @@ _this4.props.onSelectDirective(index);
 };this.
 
 _onSelectTarget=function(target){
+_this4.questionsRef.focus();
 
 
+
+window.scrollTo(0,0);
 
 _this4.props.onSelectTarget(target);
 };this.

@@ -141,9 +141,7 @@ class QuestionCard extends Component {
     let solution = (this.props.question.responded && this.state.isExpanded) ?
                     (<div
                       role="group"
-                      className="question-card__solution"
-                      tabIndex={-1}
-                      ref={(sol) => { this.solution = sol; }}>
+                      className="question-card__solution">
                         <p className="bold uppercase">{solutionStateText}</p>
                         <p className="bold uppercase">Solution</p>
                         <div className=""
@@ -181,9 +179,11 @@ class QuestionCard extends Component {
 
         {choices}
       </fieldset>
-
-      {solution}
-
+      <div
+        tabIndex={-1}
+        ref={(sol) => { this.solution = sol; }}>
+        {solution}
+      </div>
       {submitButton}
     </div>
     )
@@ -191,7 +191,6 @@ class QuestionCard extends Component {
 
   _onSubmitChoice = (choiceId, question) => {
     if (!this.props.isInProgressSubmitChoice) {
-
       let choice = _.find(this.props.question.choices, {id: choiceId});
 
       // we'll move this logic elsewhere, but for now it belongs here
@@ -200,6 +199,7 @@ class QuestionCard extends Component {
       // console.log('this.props.routeQuestions', this.props.routeQuestions)
       setTimeout(() => {
         this.solution.focus();
+
         $('html, body').animate({
           scrollTop: $(document).scrollTop() + ReactDOM.findDOMNode(this.solution).scrollHeight - 100
         }, 1000);

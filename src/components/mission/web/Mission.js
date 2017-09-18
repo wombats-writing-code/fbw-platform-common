@@ -248,9 +248,12 @@ class Mission extends Component {
   }
 
   _onSelectTarget = (target) => {
-    // this.questionsRef.focus();
-    // Changing focus here causes funky / annoying scroll backwards
-    //   issues in Chrome...removing.
+    this.questionsRef.focus();
+    // Prevent funky scrolling to the bottom of the
+    //   questions list and then back up, by
+    //   explicitly calling .scrollTo here
+    window.scrollTo(0,0);
+
     this.props.onSelectTarget(target);
   }
 
