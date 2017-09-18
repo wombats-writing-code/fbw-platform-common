@@ -43,8 +43,11 @@ if (process.env.NODE_ENV !== 'test') {
 class Mission extends Component {
   constructor(props) {
     super(props);
+    const status = this.calculateStatus(props);
+
     this.state = {
-      closeModal: true
+      closeModal: true,
+      progressText: `${status.finished} / ${status.numberGoals} finished`
     }
   }
   componentDidMount() {
@@ -80,6 +83,7 @@ class Mission extends Component {
   componentWillReceiveProps = (nextProps) => {
     const status = this.calculateStatus(nextProps);
     const previousStatus = this.calculateStatus();
+    this.setState({ progressText: `${status.finished} / ${status.numberGoals} finished`});
     if (this.state.closeModal &&
         status.unfinished === 0 &&
         status.finished > 0 &&
@@ -119,7 +123,7 @@ class Mission extends Component {
     let renderContent = true;
     const status = this.calculateStatus();
     const routeProgress = 100 * status.finished / status.numberGoals;
-    const progressString = `${status.finished} / ${status.numberGoals} finished`;
+    // const progressString = `${status.finished} / ${status.numberGoals} finished`;
     const summaryString = `${status.correct} out of ${status.attempted}`; // for testing
     const statusModal = (
       <Modal
@@ -187,9 +191,9 @@ class Mission extends Component {
             <div className="progress-bar-wrapper">
               <Progress completed={routeProgress} color="hsla(124,93%,20%,1)"/>
             </div>
-            <LiveMessage message={progressString} aria-live="polite" />
+            <LiveMessage message={this.state.progressText} aria-live="assertive" />
             <h4 className="current-status-heading">
-              {progressString}
+              {this.state.progressText}
             </h4>
           </div>
           <nav

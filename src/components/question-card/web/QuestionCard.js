@@ -141,7 +141,7 @@ class QuestionCard extends Component {
     let solution = (this.props.question.responded && this.state.isExpanded) ?
                     (<div
                       tabIndex={-1}
-                      ref={(sol) => { this.solution = sol; }}
+                      ref={(solution) => {this.solution = solution}}
                       role="group"
                       className="question-card__solution">
                         <p className="bold uppercase">{solutionStateText}</p>
@@ -197,12 +197,19 @@ class QuestionCard extends Component {
       // console.log('this.props.routeQuestions', this.props.routeQuestions)
       setTimeout(() => {
         // let the browser automatically move to the right spot via focus, instead
-        //   of trying to manually scroll.
+        //   of trying to manually scroll. Especially since now we want it to
+        //   focus / stop on the solution, instead of scrolling to the next
+        //   question.
         this.solution.focus();
         // $('html, body').animate({
         //   scrollTop: $(document).scrollTop() + ReactDOM.findDOMNode(this.solution).scrollHeight / 2
         // }, 1000);
-      }, 1000);
+      // 1500 seconds seems to be enough for the aria-live message
+      //   about the progress state (in Mission.js) to complete,
+      //   before the solution starts reading. It's a compromise,
+      //   because there is a slight delay on the UI for the .focus()
+      //   call. But we have to wait for the RESTful response, anyways.
+      }, 1500);
       this.props.onSubmitResponse({
         mission: this.props.mission,
         choice: choice,
