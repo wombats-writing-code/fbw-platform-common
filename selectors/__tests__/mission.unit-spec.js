@@ -546,7 +546,9 @@ describe('questionResponded selector',function(){
 
 it('should return true for responseResult',function(done){
 var results=(0,_mission.questionResponded)({
-responseResult:{}});
+responseResult:{
+foo:'bar'}});
+
 
 results.should.eql(true);
 done();
@@ -554,7 +556,9 @@ done();
 
 it('should return true for response',function(done){
 var results=(0,_mission.questionResponded)({
-response:{}});
+response:{
+foo:'bar'}});
+
 
 results.should.eql(true);
 done();
@@ -563,6 +567,38 @@ done();
 it('should return false for no responseResult or response',function(done){
 var results=(0,_mission.questionResponded)({
 foo:'bar'});
+
+results.should.eql(false);
+done();
+});
+
+it('should return false for false responseResult',function(done){
+var results=(0,_mission.questionResponded)({
+responseResult:false});
+
+results.should.eql(false);
+done();
+});
+
+it('should return false for false response',function(done){
+var results=(0,_mission.questionResponded)({
+response:false});
+
+results.should.eql(false);
+done();
+});
+
+it('should return false for null responseResult',function(done){
+var results=(0,_mission.questionResponded)({
+responseResult:null});
+
+results.should.eql(false);
+done();
+});
+
+it('should return false for null response',function(done){
+var results=(0,_mission.questionResponded)({
+response:null});
 
 results.should.eql(false);
 done();

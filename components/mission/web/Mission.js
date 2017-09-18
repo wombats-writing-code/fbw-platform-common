@@ -187,7 +187,8 @@ _react2['default'].createElement('div',{className:'status-wrapper',__source:{fil
 _react2['default'].createElement('div',{className:'progress-bar-wrapper',__source:{fileName:_jsxFileName,lineNumber:187}},
 _react2['default'].createElement(_reactProgressbar2['default'],{completed:routeProgress,color:'hsla(124,93%,20%,1)',__source:{fileName:_jsxFileName,lineNumber:188}})),
 
-_react2['default'].createElement('h4',{className:'current-status-heading',__source:{fileName:_jsxFileName,lineNumber:190}},
+_react2['default'].createElement(_reactAriaLive.LiveMessage,{message:progressString,'aria-live':'polite',__source:{fileName:_jsxFileName,lineNumber:190}}),
+_react2['default'].createElement('h4',{className:'current-status-heading',__source:{fileName:_jsxFileName,lineNumber:191}},
 progressString)),
 
 
@@ -195,11 +196,11 @@ _react2['default'].createElement('nav',{
 tabIndex:-1,
 role:'navigation',
 'aria-label':'Directives Menu',
-ref:function(){function ref(directives){_this3.directiveCarouselRef=directives;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:194}},
+ref:function(){function ref(directives){_this3.directiveCarouselRef=directives;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:195}},
 _react2['default'].createElement(DirectiveCarousel,{directives:this.props.directives,
 currentDirectiveIndex:this.props.currentDirectiveIndex,
 directiveIndicators:this.props.directiveIndicators,
-onSelectDirective:this._onSelectDirective,__source:{fileName:_jsxFileName,lineNumber:199}})),
+onSelectDirective:this._onSelectDirective,__source:{fileName:_jsxFileName,lineNumber:200}})),
 
 
 _react2['default'].createElement('nav',{
@@ -207,20 +208,20 @@ tabIndex:-1,
 className:'nav-target-carousel',
 role:'navigation',
 'aria-label':'Target Questions Menu',
-ref:function(){function ref(targets){_this3.targetCarouselRef=targets;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:205}},
+ref:function(){function ref(targets){_this3.targetCarouselRef=targets;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:206}},
 _react2['default'].createElement(TargetCarousel,{
 onSelectTarget:this._onSelectTarget,
-mission:this.props.mission,__source:{fileName:_jsxFileName,lineNumber:211}})),
+mission:this.props.mission,__source:{fileName:_jsxFileName,lineNumber:212}})),
 
 
 _react2['default'].createElement('main',{
 tabIndex:-1,
-ref:function(){function ref(questions){_this3.questionsRef=questions;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:216}},
+ref:function(){function ref(questions){_this3.questionsRef=questions;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:217}},
 _react2['default'].createElement(Questions,{
 mission:this.props.mission,
 isSubmitEnabled:this.props.doNotTakeMission?false:undefined,
 onClickReturnToTargetCarousel:this.onClickReturnToTargetCarousel,
-onClickReturnToDirectiveCarousel:this.onClickReturnToDirectiveCarousel,__source:{fileName:_jsxFileName,lineNumber:219}})),
+onClickReturnToDirectiveCarousel:this.onClickReturnToDirectiveCarousel,__source:{fileName:_jsxFileName,lineNumber:220}})),
 
 
 statusModal);
@@ -229,11 +230,11 @@ statusModal);
 }
 
 return(
-_react2['default'].createElement(_reactDocumentTitle2['default'],{title:'Mission: '+this.props.mission.displayName,__source:{fileName:_jsxFileName,lineNumber:232}},
+_react2['default'].createElement(_reactDocumentTitle2['default'],{title:'Mission: '+this.props.mission.displayName,__source:{fileName:_jsxFileName,lineNumber:233}},
 _react2['default'].createElement('div',{
 ref:function(){function ref(div){_this3.div=div;}return ref;}(),
-tabIndex:-1,__source:{fileName:_jsxFileName,lineNumber:233}},
-_react2['default'].createElement(_reactAriaLive.LiveMessage,{message:'Mission: '+this.props.mission.displayName,'aria-live':'polite',__source:{fileName:_jsxFileName,lineNumber:236}}),
+tabIndex:-1,__source:{fileName:_jsxFileName,lineNumber:234}},
+_react2['default'].createElement(_reactAriaLive.LiveMessage,{message:'Mission: '+this.props.mission.displayName,'aria-live':'polite',__source:{fileName:_jsxFileName,lineNumber:237}}),
 content)));
 
 

@@ -201,7 +201,10 @@ return numberCorrect+' / '+questions.length+'; '+percentCorrect+'%';
 
 
 var questionResponded=exports.questionResponded=function(){function questionResponded(question){
-return _lodash2['default'].has(question,'responseResult')||_lodash2['default'].has(question,'response');
+if(question.responseResult||question.response){
+return true;
+}
+return false;
 }return questionResponded;}();
 
 var numberUnattemptedTargets=exports.numberUnattemptedTargets=function(){function numberUnattemptedTargets(targetQuestions){

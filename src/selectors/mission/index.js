@@ -201,7 +201,10 @@ export const pointsEarned = (questions) => {
 
 
 export const questionResponded = (question) => {
-  return _.has(question, 'responseResult') || _.has(question, 'response');
+  if (question.responseResult || question.response) {
+    return true;
+  }
+  return false;
 }
 
 export const numberUnattemptedTargets = (targetQuestions) => {

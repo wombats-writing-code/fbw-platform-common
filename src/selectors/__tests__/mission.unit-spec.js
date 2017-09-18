@@ -546,7 +546,9 @@ describe('questionResponded selector', () => {
 
   it(`should return true for responseResult`, function(done) {
     const results = questionResponded({
-      responseResult: {}
+      responseResult: {
+        foo: 'bar'
+      }
     });
     results.should.eql(true);
     done();
@@ -554,7 +556,9 @@ describe('questionResponded selector', () => {
 
   it(`should return true for response`, function(done) {
     const results = questionResponded({
-      response: {}
+      response: {
+        foo: 'bar'
+      }
     });
     results.should.eql(true);
     done();
@@ -563,6 +567,38 @@ describe('questionResponded selector', () => {
   it(`should return false for no responseResult or response`, function(done) {
     const results = questionResponded({
       foo: 'bar'
+    });
+    results.should.eql(false);
+    done();
+  });
+
+  it(`should return false for false responseResult`, function(done) {
+    const results = questionResponded({
+      responseResult: false
+    });
+    results.should.eql(false);
+    done();
+  });
+
+  it(`should return false for false response`, function(done) {
+    const results = questionResponded({
+      response: false
+    });
+    results.should.eql(false);
+    done();
+  });
+
+  it(`should return false for null responseResult`, function(done) {
+    const results = questionResponded({
+      responseResult: null
+    });
+    results.should.eql(false);
+    done();
+  });
+
+  it(`should return false for null response`, function(done) {
+    const results = questionResponded({
+      response: null
     });
     results.should.eql(false);
     done();
