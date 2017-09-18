@@ -23,7 +23,7 @@ import {checkMissionStatus } from '../../../utilities/time'
 import { numberCorrectTargets, numberAttemptedTargets,
   numberUnattemptedTargets, grabTargetQuestionsFromMission,
   numberUnfinishedGoals, numberUnfinishedRoutes } from '../../../selectors/mission';
-import { missionConfig } from '../../../reducers/mission';
+import { missionConfig } from '../../../reducers/Mission';
 
 import './Mission.scss'
 const styles = {

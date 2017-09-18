@@ -23,7 +23,7 @@ var _time=require('../../../utilities/time');
 var _mission=require('../../../selectors/mission');
 
 
-var _mission2=require('../../../reducers/mission');
+var _Mission=require('../../../reducers/Mission');
 
 require('./Mission.scss');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var DirectiveCarousel=(0,_DirectiveCarouselContainer2['default'])(_DirectiveCarousel2['default']);var TargetCarousel=(0,_TargetCarouselContainer2['default'])(_TargetCarousel2['default']);var Questions=(0,_QuestionsContainer2['default'])(_Questions2['default']);
 var styles={
@@ -162,7 +162,7 @@ if(!this.props.isGetMissionInProgress&&this.props.mission){
 
 var missionState=(0,_time.checkMissionStatus)(this.props.mission);
 
-if(this.props.mission.goals.length===0&&this.props.mission.type===_mission2.missionConfig.PHASE_II_MISSION_TYPE){
+if(this.props.mission.goals.length===0&&this.props.mission.type===_Mission.missionConfig.PHASE_II_MISSION_TYPE){
 content=
 _react2['default'].createElement('div',{style:[styles.container,{paddingTop:80,paddingLeft:30}],__source:{fileName:_jsxFileName,lineNumber:167}},
 _react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:168}},'Congratulations! You aced the Phase I mission, so you have no Phase II questions.'),
