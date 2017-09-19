@@ -87,6 +87,10 @@
   pointer-events: none;
 }
 
+.login-button--guest:disabled {
+  background: transparent;
+}
+
 .login__guest-input {
   padding: 1em 0 1em 0;
   margin-bottom: 3rem;
