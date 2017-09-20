@@ -51,9 +51,9 @@
 }
 
 .more-questions-indicator {
-  color: white;
+  color: hsla(0,0%,67%,1);
   background: $app-red-dark;
-  padding: 1rem 2rem 1rem 2rem;
+  padding: 1rem 2rem 0.5rem 2rem;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   position: fixed;
@@ -62,8 +62,8 @@
 }
 
 .more-questions-indicator__chevron {
-  font-weight: bolder;
-  font-size: 1.5rem;
+  padding-bottom: 0.5rem;
+  width: 1.5rem;
   margin-left: 0.5rem;
 }
 
