@@ -53,9 +53,9 @@
 .more-questions-indicator {
   color: white;
   background: $app-red-dark;
-  padding: 2rem 2rem;
+  padding: 1rem 2rem 1rem 2rem;
   border-radius: 5px;
-  position: absolute;
+  position: fixed;
   bottom: 0px;
   right: 100px;
 }
