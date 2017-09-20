@@ -17,8 +17,19 @@ import './Questions.scss'
 
 class Questions extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
+    console.log('near bottom', this._nearBottom());
+    if (this._nearBottom()) {
+      this.state = {
+        showMoreQuestions: false
+      }
+    } else {
+      this.state = {
+        showMoreQuestions: true
+      }
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -35,6 +46,43 @@ class Questions extends Component {
     if (prevProps.currentTarget !== this.props.currentTarget) {
       // console.log('prev target', prevProps.currentTarget, 'currentTarget', this.props.currentTarget)
       $("html, body").animate({ scrollTop: 0 }, 1000);
+    }
+  }
+
+  _nearBottom = () => {
+    // console.log('current position', $(window).scrollTop() + $(window).height());
+    // console.log('doc height minus some', $(document).height() - 250);
+    if ($(window).scrollTop() + $(window).height() > $(document).height() - 250) {
+      return true;
+    }
+    return false;
+  }
+
+  showMoreQuestions = () => {
+    // hints from https://stackoverflow.com/a/38115696
+    // and https://stackoverflow.com/questions/3898130/check-if-a-user-has-scrolled-to-the-bottom
+    if (this._nearBottom()) {
+      this.setState({ showMoreQuestions: false });
+    } else {
+      this.setState({ showMoreQuestions: true });
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.showMoreQuestions);
+    // call showMoreQuestions post-render so that the height is recalculated
+    this.showMoreQuestions();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.showMoreQuestions);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('questions updated')
+    if (this.props.questions != prevProps.questions) {
+      console.log('checking height');
+      this.showMoreQuestions();
     }
   }
 
@@ -144,6 +192,16 @@ class Questions extends Component {
 
     let infiniteTimeline = (<div></div>);
 
+    let moreQuestionsIndicator;
+
+    if (this.state.showMoreQuestions) {
+      moreQuestionsIndicator = (
+        <div className="more-questions-indicator">
+          <span>More Information &darr;</span>
+        </div>
+      );
+    }
+
     return (
       <div className="questions">
         {infiniteTimeline}
@@ -152,6 +210,7 @@ class Questions extends Component {
         </ul>
 
         {inProgressIndicator}
+        {moreQuestionsIndicator}
         <div id="skip-link-to-directive-carousel">
           <a
             href="#directive-carousel"
