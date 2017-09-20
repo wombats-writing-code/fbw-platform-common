@@ -79,9 +79,7 @@ class Questions extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('questions updated')
     if (this.props.questions != prevProps.questions) {
-      console.log('checking height');
       this.showMoreQuestions();
     }
   }

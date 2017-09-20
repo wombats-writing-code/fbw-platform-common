@@ -195,12 +195,6 @@ var choice=_lodash2['default'].find(_this.props.question.choices,{id:choiceId});
 
 
 
-setTimeout(function(){
-
-
-
-
-_this.solution.focus();
 
 
 
@@ -209,7 +203,13 @@ _this.solution.focus();
 
 
 
-},1500);
+
+
+
+
+
+
+
 _this.props.onSubmitResponse({
 mission:_this.props.mission,
 choice:choice,

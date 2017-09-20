@@ -195,12 +195,12 @@ class QuestionCard extends Component {
       // we cut out the Target from the response history
 
       // console.log('this.props.routeQuestions', this.props.routeQuestions)
-      setTimeout(() => {
+      // setTimeout(() => {
         // let the browser automatically move to the right spot via focus, instead
         //   of trying to manually scroll. Especially since now we want it to
         //   focus / stop on the solution, instead of scrolling to the next
         //   question.
-        this.solution.focus();
+        // this.solution.focus();
         // $('html, body').animate({
         //   scrollTop: $(document).scrollTop() + ReactDOM.findDOMNode(this.solution).scrollHeight / 2
         // }, 1000);
@@ -209,7 +209,7 @@ class QuestionCard extends Component {
       //   before the solution starts reading. It's a compromise,
       //   because there is a slight delay on the UI for the .focus()
       //   call. But we have to wait for the RESTful response, anyways.
-      }, 1500);
+      // }, 1500);
       this.props.onSubmitResponse({
         mission: this.props.mission,
         choice: choice,
