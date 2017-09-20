@@ -195,7 +195,7 @@ class Questions extends Component {
     if (this.state.showMoreQuestions) {
       moreQuestionsIndicator = (
         <div className="more-questions-indicator">
-          <span>More Information &darr;</span>
+          <span>More &or;</span>
         </div>
       );
     }
