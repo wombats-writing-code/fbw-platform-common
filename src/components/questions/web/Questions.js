@@ -195,7 +195,11 @@ class Questions extends Component {
     if (this.state.showMoreQuestions) {
       moreQuestionsIndicator = (
         <div className="more-questions-indicator">
-          <span>More &or;</span>
+          <span>More</span>
+          <img
+            aria-hidden
+            className="more-questions-indicator__chevron"
+            src={require('../../../assets/show-more--down@2x.png')}/>
         </div>
       );
     }
