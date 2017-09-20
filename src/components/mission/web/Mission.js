@@ -189,7 +189,7 @@ class Mission extends Component {
         <div>
           <div className="status-wrapper">
             <div className="progress-bar-wrapper">
-              <Progress completed={routeProgress} color="hsla(124,93%,20%,1)"/>
+              <Progress completed={routeProgress} color="hsla(210,29%,24%,1)"/>
             </div>
             <LiveMessage message={this.state.progressText} aria-live="assertive" />
             <h4 className="current-status-heading">
