@@ -80,7 +80,7 @@ _react2['default'].createElement(_reactRouter.Link,{to:directiveCarouselPath,cla
 if(this.props.nextQuestion&&this.props.nextOutcome){
 cueText=
 _react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:82}},
-_react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:83}},'Not quite. Looks like you need to work on'),
+_react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:83}},'Looks like you need to work on'),
 _react2['default'].createElement('span',{className:'bold',__source:{fileName:_jsxFileName,lineNumber:84}},' ',this.props.nextOutcome.displayName),
 _react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:85}},'.'));
 
@@ -89,7 +89,7 @@ _react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNum
 }else if(this.props.nextQuestion&&!this.props.nextOutcome){
 cueText=
 _react2['default'].createElement('p',{className:'cue-text',__source:{fileName:_jsxFileName,lineNumber:91}},
-_react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:92}},'Not quite. Let\'s try to '),
+_react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:92}},'Let\'s try to '),
 _react2['default'].createElement('span',{className:'bold',__source:{fileName:_jsxFileName,lineNumber:93}},this.props.outcome.displayName),
 _react2['default'].createElement('span',{__source:{fileName:_jsxFileName,lineNumber:94}},' again.'));
 

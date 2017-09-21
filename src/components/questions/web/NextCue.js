@@ -80,7 +80,7 @@ class NextCue extends Component {
       if (this.props.nextQuestion && this.props.nextOutcome) {
         cueText = (
           <p className="cue-text">
-            <span >Not quite. Looks like you need to work on</span>
+            <span >Looks like you need to work on</span>
             <span className="bold"> {this.props.nextOutcome.displayName}</span>
             <span>.</span>
           </p>
@@ -89,7 +89,7 @@ class NextCue extends Component {
       } else if (this.props.nextQuestion && !this.props.nextOutcome) {
         cueText = (
           <p className="cue-text">
-              <span >Not quite. Let's try to </span>
+              <span >Let's try to </span>
               <span className="bold">{this.props.outcome.displayName}</span>
               <span> again.</span>
           </p>
