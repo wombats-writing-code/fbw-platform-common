@@ -26,6 +26,7 @@ var _updateMissionForm=require('../updateMissionForm');
 
 
 
+
 var _Mission=require('../../Mission');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}require('moment-timezone');var middlewares=[_reduxThunk2['default']];var mockStore=(0,_reduxMockStore2['default'])(middlewares);var should=require('should');
 
 
@@ -227,5 +228,73 @@ type:_clickEditMission.CANCEL_EDIT_MISSION});
 newState.isEditMissionInProgress.should.eql(false);
 });
 
+it('should update state upon the MOVE_OUTCOME_UP action',function(){
+var unusedGoal=(0,_index2['default'])({
+newMission:{
+goals:[2]}},
 
+{
+type:_updateMissionForm.MOVE_OUTCOME_UP,
+outcome:{id:1}});
+
+
+unusedGoal.newMission.goals.should.eql([2]);
+
+var firstGoal=(0,_index2['default'])({
+newMission:{
+goals:[1,2]}},
+
+{
+type:_updateMissionForm.MOVE_OUTCOME_UP,
+outcome:{id:1}});
+
+
+firstGoal.newMission.goals.should.eql([1,2]);
+
+var secondGoal=(0,_index2['default'])({
+newMission:{
+goals:[1,2]}},
+
+{
+type:_updateMissionForm.MOVE_OUTCOME_UP,
+outcome:{id:2}});
+
+
+secondGoal.newMission.goals.should.eql([2,1]);
+});
+
+it('should update state upon the MOVE_OUTCOME_DOWN action',function(){
+var unusedGoal=(0,_index2['default'])({
+newMission:{
+goals:[2]}},
+
+{
+type:_updateMissionForm.MOVE_OUTCOME_DOWN,
+outcome:{id:1}});
+
+
+unusedGoal.newMission.goals.should.eql([2]);
+
+var firstGoal=(0,_index2['default'])({
+newMission:{
+goals:[1,2]}},
+
+{
+type:_updateMissionForm.MOVE_OUTCOME_DOWN,
+outcome:{id:1}});
+
+
+firstGoal.newMission.goals.should.eql([2,1]);
+
+var secondGoal=(0,_index2['default'])({
+newMission:{
+goals:[1,2]}},
+
+{
+type:_updateMissionForm.MOVE_OUTCOME_DOWN,
+outcome:{id:2}});
+
+
+secondGoal.newMission.goals.should.eql([1,2]);
+});
 });

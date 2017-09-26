@@ -12,7 +12,8 @@ import {UPDATE_MISSION_OPTIMISTIC, RECEIVE_UPDATE_MISSION} from './updateMission
 import {DELETE_MISSION_OPTIMISTIC, RECEIVE_DELETE_MISSION} from './deleteMission'
 import {
   CHANGE_MISSION_NAME, CHANGE_MISSION_TYPE, CHANGE_MISSION_START, CHANGE_MISSION_END,
-  SELECT_MODULE, CHANGE_OUTCOME_SEARCH, TOGGLE_OUTCOME, CHANGE_FOLLOWS_FROM_MISSIONS
+  SELECT_MODULE, CHANGE_OUTCOME_SEARCH, TOGGLE_OUTCOME, CHANGE_FOLLOWS_FROM_MISSIONS,
+  MOVE_OUTCOME_DOWN, MOVE_OUTCOME_UP
 } from './updateMissionForm'
 import {EDIT_MISSION} from './editMission'
 import {CLICK_ADD_MISSION} from './clickAddMission'
@@ -156,6 +157,36 @@ export default function editMissionReducer (state = initialState, action) {
           displayName: `Phase II (from ${displayNames.join(' + ')})`
         })
       })
+
+    case MOVE_OUTCOME_UP:
+      const outcomeIncludedUp = state.newMission.goals.indexOf(action.outcome.id) > -1;
+      if (!outcomeIncludedUp || outcomeIncludedUp === 0) {
+        return _.assign({}, state);
+      }
+      let reorderedUpGoals = _.filter(
+        _.assign([], state.newMission.goals),
+        id => id !== action.outcome.id);
+      reorderedUpGoals.splice(outcomeIncludedUp - 1, 0, action.outcome.id);
+      return _.assign({}, state, {
+        newMission: _.assign({}, state.newMission, {
+          goals: reorderedUpGoals
+        })
+      });
+
+    case MOVE_OUTCOME_DOWN:
+      const outcomeIncludedDown = state.newMission.goals.indexOf(action.outcome.id) > -1;
+      if (!outcomeIncludedDown || outcomeIncludedDown === state.newMission.goals.length + 1) {
+        return _.assign({}, state);
+      }
+      let reorderedDownGoals = _.filter(
+        _.assign([], state.newMission.goals),
+        id => id !== action.outcome.id);
+      reorderedDownGoals.splice(outcomeIncludedDown, 0, action.outcome.id);
+      return _.assign({}, state, {
+        newMission: _.assign({}, state.newMission, {
+          goals: reorderedDownGoals
+        })
+      });
 
     default:
       return state

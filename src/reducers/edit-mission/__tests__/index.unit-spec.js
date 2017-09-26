@@ -24,7 +24,8 @@ import {UPDATE_MISSION_OPTIMISTIC, RECEIVE_UPDATE_MISSION} from '../updateMissio
 import {RECEIVE_DELETE_MISSION} from '../deleteMission'
 import {
   CHANGE_MISSION_NAME, CHANGE_MISSION_TYPE, CHANGE_MISSION_START, CHANGE_MISSION_END,
-  SELECT_MODULE, CHANGE_OUTCOME_SEARCH, TOGGLE_OUTCOME, CHANGE_FOLLOWS_FROM_MISSIONS
+  SELECT_MODULE, CHANGE_OUTCOME_SEARCH, TOGGLE_OUTCOME, CHANGE_FOLLOWS_FROM_MISSIONS,
+  MOVE_OUTCOME_UP, MOVE_OUTCOME_DOWN
 } from '../updateMissionForm'
 import {missionConfig} from '../../Mission'
 
@@ -227,5 +228,73 @@ describe('edit-mission reducer', () => {
     newState.isEditMissionInProgress.should.eql(false);
   });
 
+  it('should update state upon the MOVE_OUTCOME_UP action', () => {
+    let unusedGoal = reducer({
+      newMission: {
+        goals: [2]
+      }
+    }, {
+      type: MOVE_OUTCOME_UP,
+      outcome: {id: 1}
+    });
 
+    unusedGoal.newMission.goals.should.eql([2]);
+
+    let firstGoal = reducer({
+      newMission: {
+        goals: [1, 2]
+      }
+    }, {
+      type: MOVE_OUTCOME_UP,
+      outcome: {id: 1}
+    });
+
+    firstGoal.newMission.goals.should.eql([1, 2]);
+
+    let secondGoal = reducer({
+      newMission: {
+        goals: [1, 2]
+      }
+    }, {
+      type: MOVE_OUTCOME_UP,
+      outcome: {id: 2}
+    });
+
+    secondGoal.newMission.goals.should.eql([2, 1]);
+  });
+
+  it('should update state upon the MOVE_OUTCOME_DOWN action', () => {
+    let unusedGoal = reducer({
+      newMission: {
+        goals: [2]
+      }
+    }, {
+      type: MOVE_OUTCOME_DOWN,
+      outcome: {id: 1}
+    });
+
+    unusedGoal.newMission.goals.should.eql([2]);
+
+    let firstGoal = reducer({
+      newMission: {
+        goals: [1, 2]
+      }
+    }, {
+      type: MOVE_OUTCOME_DOWN,
+      outcome: {id: 1}
+    });
+
+    firstGoal.newMission.goals.should.eql([2, 1]);
+
+    let secondGoal = reducer({
+      newMission: {
+        goals: [1, 2]
+      }
+    }, {
+      type: MOVE_OUTCOME_DOWN,
+      outcome: {id: 2}
+    });
+
+    secondGoal.newMission.goals.should.eql([1, 2]);
+  });
 })
