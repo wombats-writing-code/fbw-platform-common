@@ -261,6 +261,17 @@ describe('edit-mission reducer', () => {
     });
 
     secondGoal.newMission.goals.should.eql([2, 1]);
+
+    let thirdGoal = reducer({
+      newMission: {
+        goals: [1, 2, 3]
+      }
+    }, {
+      type: MOVE_OUTCOME_UP,
+      outcome: {id: 3}
+    });
+
+    thirdGoal.newMission.goals.should.eql([1, 3, 2]);
   });
 
   it('should update state upon the MOVE_OUTCOME_DOWN action', () => {
@@ -296,5 +307,16 @@ describe('edit-mission reducer', () => {
     });
 
     secondGoal.newMission.goals.should.eql([1, 2]);
+
+    let thirdGoal = reducer({
+      newMission: {
+        goals: [1, 2, 3]
+      }
+    }, {
+      type: MOVE_OUTCOME_DOWN,
+      outcome: {id: 1}
+    });
+
+    thirdGoal.newMission.goals.should.eql([2, 1, 3]);
   });
 })

@@ -159,14 +159,16 @@ export default function editMissionReducer (state = initialState, action) {
       })
 
     case MOVE_OUTCOME_UP:
-      const outcomeIncludedUp = state.newMission.goals.indexOf(action.outcome.id) > -1;
-      if (!outcomeIncludedUp || outcomeIncludedUp === 0) {
+      const outcomeUpIndex = state.newMission.goals.indexOf(action.outcome.id);
+      const outcomeIncludedUp = outcomeUpIndex > -1;
+      if (!outcomeIncludedUp || outcomeUpIndex === 0) {
         return _.assign({}, state);
       }
+
       let reorderedUpGoals = _.filter(
         _.assign([], state.newMission.goals),
         id => id !== action.outcome.id);
-      reorderedUpGoals.splice(outcomeIncludedUp - 1, 0, action.outcome.id);
+      reorderedUpGoals.splice(outcomeUpIndex - 1, 0, action.outcome.id);
       return _.assign({}, state, {
         newMission: _.assign({}, state.newMission, {
           goals: reorderedUpGoals
@@ -174,14 +176,15 @@ export default function editMissionReducer (state = initialState, action) {
       });
 
     case MOVE_OUTCOME_DOWN:
-      const outcomeIncludedDown = state.newMission.goals.indexOf(action.outcome.id) > -1;
-      if (!outcomeIncludedDown || outcomeIncludedDown === state.newMission.goals.length + 1) {
+      const outcomeDownIndex = state.newMission.goals.indexOf(action.outcome.id);
+      const outcomeIncludedDown = outcomeDownIndex > -1;
+      if (!outcomeIncludedDown || outcomeDownIndex === state.newMission.goals.length + 1) {
         return _.assign({}, state);
       }
       let reorderedDownGoals = _.filter(
         _.assign([], state.newMission.goals),
         id => id !== action.outcome.id);
-      reorderedDownGoals.splice(outcomeIncludedDown, 0, action.outcome.id);
+      reorderedDownGoals.splice(outcomeDownIndex + 1, 0, action.outcome.id);
       return _.assign({}, state, {
         newMission: _.assign({}, state.newMission, {
           goals: reorderedDownGoals

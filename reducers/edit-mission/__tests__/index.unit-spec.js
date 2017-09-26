@@ -261,6 +261,17 @@ outcome:{id:2}});
 
 
 secondGoal.newMission.goals.should.eql([2,1]);
+
+var thirdGoal=(0,_index2['default'])({
+newMission:{
+goals:[1,2,3]}},
+
+{
+type:_updateMissionForm.MOVE_OUTCOME_UP,
+outcome:{id:3}});
+
+
+thirdGoal.newMission.goals.should.eql([1,3,2]);
 });
 
 it('should update state upon the MOVE_OUTCOME_DOWN action',function(){
@@ -296,5 +307,16 @@ outcome:{id:2}});
 
 
 secondGoal.newMission.goals.should.eql([1,2]);
+
+var thirdGoal=(0,_index2['default'])({
+newMission:{
+goals:[1,2,3]}},
+
+{
+type:_updateMissionForm.MOVE_OUTCOME_DOWN,
+outcome:{id:1}});
+
+
+thirdGoal.newMission.goals.should.eql([2,1,3]);
 });
 });
