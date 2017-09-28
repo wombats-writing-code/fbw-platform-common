@@ -24,6 +24,14 @@ describe('login selectors', () => {
     result.should.be.eql('Foo Bar');
   });
 
+  it('should get the displayName of a first-name-only d2l object', () => {
+    let result = getD2LDisplayName({
+      "FirstName": "foo"
+    });
+
+    result.should.be.eql('Foo');
+  });
+
   it('should get the displayNameLastName of a d2l user', () => {
     let result = getD2LDisplayNameLastFirst({
       "FirstName": "Obi-wan",

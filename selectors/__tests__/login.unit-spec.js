@@ -24,6 +24,14 @@ var result=(0,_index.getD2LDisplayName)({
 result.should.be.eql('Foo Bar');
 });
 
+it('should get the displayName of a first-name-only d2l object',function(){
+var result=(0,_index.getD2LDisplayName)({
+"FirstName":"foo"});
+
+
+result.should.be.eql('Foo');
+});
+
 it('should get the displayNameLastName of a d2l user',function(){
 var result=(0,_index.getD2LDisplayNameLastFirst)({
 "FirstName":"Obi-wan",

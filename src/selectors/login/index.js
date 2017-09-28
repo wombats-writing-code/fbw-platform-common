@@ -9,6 +9,9 @@ export const getD2LDisplayName = (d2lUser) => {
 
   } else if (d2lUser.FirstName && d2lUser.LastName) {
     return _.capitalize(d2lUser.FirstName) + ' ' + _.capitalize(d2lUser.LastName);
+  } else if (d2lUser.FirstName) {
+    // if someone only puts in their first name....
+    return _.capitalize(d2lUser.FirstName);
   }
 }
 

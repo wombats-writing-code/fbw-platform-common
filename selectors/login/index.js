@@ -9,6 +9,9 @@ return parts[1]+' '+parts[0];
 
 }else if(d2lUser.FirstName&&d2lUser.LastName){
 return _.capitalize(d2lUser.FirstName)+' '+_.capitalize(d2lUser.LastName);
+}else if(d2lUser.FirstName){
+
+return _.capitalize(d2lUser.FirstName);
 }
 }return getD2LDisplayName;}();
 
