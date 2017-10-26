@@ -25,7 +25,7 @@ import {RECEIVE_DELETE_MISSION} from '../deleteMission'
 import {
   CHANGE_MISSION_NAME, CHANGE_MISSION_TYPE, CHANGE_MISSION_START, CHANGE_MISSION_END,
   SELECT_MODULE, CHANGE_OUTCOME_SEARCH, TOGGLE_OUTCOME, CHANGE_FOLLOWS_FROM_MISSIONS,
-  MOVE_OUTCOME_UP, MOVE_OUTCOME_DOWN
+  MOVE_OUTCOME_UP, MOVE_OUTCOME_DOWN, CHANGE_MISSION_LEADS_TO_END
 } from '../updateMissionForm'
 import {missionConfig} from '../../Mission'
 
@@ -121,6 +121,16 @@ describe('edit-mission reducer', () => {
     })
 
     newState.newMission.deadline.should.eql(datetime);
+  });
+
+  it('should update state upon the CHANGE_MISSION_LEADS_TO_END action', () => {
+    let datetime = moment();
+    let newState = reducer({}, {
+      type: CHANGE_MISSION_LEADS_TO_END,
+      datetime
+    })
+
+    newState.newMission.leadsToMissionsDeadline.should.eql(datetime);
   });
 
   it('should update state upon the SELECT_MODULE action', () => {

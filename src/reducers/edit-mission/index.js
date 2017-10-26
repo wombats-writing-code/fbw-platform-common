@@ -13,7 +13,7 @@ import {DELETE_MISSION_OPTIMISTIC, RECEIVE_DELETE_MISSION} from './deleteMission
 import {
   CHANGE_MISSION_NAME, CHANGE_MISSION_TYPE, CHANGE_MISSION_START, CHANGE_MISSION_END,
   SELECT_MODULE, CHANGE_OUTCOME_SEARCH, TOGGLE_OUTCOME, CHANGE_FOLLOWS_FROM_MISSIONS,
-  MOVE_OUTCOME_DOWN, MOVE_OUTCOME_UP
+  MOVE_OUTCOME_DOWN, MOVE_OUTCOME_UP, CHANGE_MISSION_LEADS_TO_END
 } from './updateMissionForm'
 import {EDIT_MISSION} from './editMission'
 import {CLICK_ADD_MISSION} from './clickAddMission'
@@ -121,6 +121,13 @@ export default function editMissionReducer (state = initialState, action) {
       return _.assign({}, state, {
         newMission: _.assign({}, state.newMission, {
           deadline: action.datetime
+        })
+      })
+
+    case CHANGE_MISSION_LEADS_TO_END:
+      return _.assign({}, state, {
+        newMission: _.assign({}, state.newMission, {
+          leadsToMissionsDeadline: action.datetime
         })
       })
 

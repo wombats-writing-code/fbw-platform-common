@@ -3,6 +3,7 @@ export const CHANGE_MISSION_NAME = 'CHANGE_MISSION_NAME'
 export const CHANGE_MISSION_TYPE = 'CHANGE_MISSION_TYPE'
 export const CHANGE_MISSION_START = 'CHANGE_MISSION_START'
 export const CHANGE_MISSION_END = 'CHANGE_MISSION_END'
+export const CHANGE_MISSION_LEADS_TO_END = 'CHANGE_MISSION_LEADS_TO_END'
 export const SELECT_MODULE = 'SELECT_MODULE'
 export const CHANGE_OUTCOME_SEARCH = 'CHANGE_OUTCOME_SEARCH'
 export const TOGGLE_OUTCOME = 'TOGGLE_OUTCOME'
@@ -24,6 +25,10 @@ export function changeMissionStart(datetime) {
 
 export function changeMissionEnd(datetime) {
   return {type: CHANGE_MISSION_END, datetime};
+}
+
+export function changeMissionLeadsToEnd(datetime) {
+  return {type: CHANGE_MISSION_LEADS_TO_END, datetime};
 }
 
 export function selectModule(module) {

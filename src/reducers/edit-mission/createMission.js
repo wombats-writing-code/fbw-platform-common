@@ -50,15 +50,7 @@ export function createMission(mission, course, user) {
 
     return axios({
       data: {
-        mission: {
-          displayName: mission.displayName,
-          description: mission.description,
-          type: mission.type,
-          startTime: mission.startTime,
-          deadline: mission.deadline,
-          goals: mission.goals,
-          followsFromMissions: mission.followsFromMissions,
-        },
+        mission,
         courseId: course.Id || course.Identifier,
       },
       method: 'POST',
