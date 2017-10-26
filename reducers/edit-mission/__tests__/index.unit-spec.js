@@ -123,6 +123,16 @@ datetime:datetime});
 newState.newMission.deadline.should.eql(datetime);
 });
 
+it('should update state upon the CHANGE_MISSION_LEADS_TO_END action',function(){
+var datetime=(0,_moment2['default'])();
+var newState=(0,_index2['default'])({},{
+type:_updateMissionForm.CHANGE_MISSION_LEADS_TO_END,
+datetime:datetime});
+
+
+newState.newMission.leadsToMissionsDeadline.should.eql(datetime);
+});
+
 it('should update state upon the SELECT_MODULE action',function(){
 var newState=(0,_index2['default'])({},{
 type:_updateMissionForm.SELECT_MODULE,
