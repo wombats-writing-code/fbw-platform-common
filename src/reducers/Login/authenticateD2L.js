@@ -4,6 +4,7 @@ import axios from 'axios'
 import moment from 'moment'
 let Q = require('q')
 import D2L from 'valence'
+import queryString from 'query-string'
 
 import {createUser} from './createUser'
 import {getD2LEnrollments, whoami} from './_authenticateD2LHelper'
@@ -41,6 +42,8 @@ export function authenticateD2L(D2LConfig, optionalUrl) {
       if (process.env.NODE_ENV !== 'test') console.log('got whoami', response);
 
       d2lUser = response;
+
+      d2lUser.D2LTokens = queryString.parse(window.location.search);
 
       // we need to create the user
       return createUser(d2lUser);
