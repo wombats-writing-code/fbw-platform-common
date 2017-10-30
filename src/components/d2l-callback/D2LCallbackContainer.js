@@ -5,7 +5,9 @@ import D2LCallback from './web/D2LCallback'
 import { authenticateD2L } from '../../reducers/Login/authenticateD2L'
 
 const mapStateToProps = (state, ownProps) => {
+  console.log('state in d2l callback', state);
   return {
+    location: state.location.pathname
   }
 }
 

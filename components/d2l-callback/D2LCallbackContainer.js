@@ -5,7 +5,9 @@ var _D2LCallback=require('./web/D2LCallback');var _D2LCallback2=_interopRequireD
 var _authenticateD2L2=require('../../reducers/Login/authenticateD2L');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}
 
 var mapStateToProps=function(){function mapStateToProps(state,ownProps){
-return{};
+console.log('state in d2l callback',state);
+return{
+location:state.location.pathname};
 
 }return mapStateToProps;}();
 
