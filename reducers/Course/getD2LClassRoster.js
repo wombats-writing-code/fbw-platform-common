@@ -61,7 +61,8 @@ _getFbWUsers=_getFbWUsers;var _lodash=require('lodash');var _lodash2=_interopReq
 return(0,_axios2['default'])({
 url:(0,_utilities.getDomain)()+'/l4/users',
 headers:{
-'x-fbw-user':userObject.Identifier}}).
+'x-fbw-user':userObject.Identifier,
+'x-fbw-token':userObject.token}}).
 
 
 then(function(res){

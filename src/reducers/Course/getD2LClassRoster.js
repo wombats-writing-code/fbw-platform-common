@@ -61,7 +61,8 @@ export function _getFbWUsers(userObject) {
   return axios({
     url: `${getDomain()}/l4/users`,
     headers: {
-      'x-fbw-user': userObject.Identifier
+      'x-fbw-user': userObject.Identifier,
+      'x-fbw-token': userObject.token
     }
   })
   .then( res => {
