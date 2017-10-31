@@ -43,7 +43,7 @@ class Register extends Component {
     return (
       <DocumentTitle title="Register">
         <div className="register">
-          <LiveMessage message="Register fly-by-wire account" aria-live="polite"/>
+          <LiveMessage message="Register for fly-by-wire account" aria-live="polite"/>
 
           <div className="error-message">
             {props.errorMessage}
