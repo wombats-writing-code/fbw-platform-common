@@ -27,6 +27,7 @@ var _updateMissionForm=require('../updateMissionForm');
 
 
 
+
 var _Mission=require('../../Mission');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}require('moment-timezone');var middlewares=[_reduxThunk2['default']];var mockStore=(0,_reduxMockStore2['default'])(middlewares);var should=require('should');
 
 
@@ -131,6 +132,16 @@ datetime:datetime});
 
 
 newState.newMission.leadsToMissionsDeadline.should.eql(datetime);
+});
+
+it('should update state upon the CHANGE_MISSION_LEADS_TO_START action',function(){
+var datetime=(0,_moment2['default'])();
+var newState=(0,_index2['default'])({},{
+type:_updateMissionForm.CHANGE_MISSION_LEADS_TO_START,
+datetime:datetime});
+
+
+newState.newMission.leadsToMissionsStartTime.should.eql(datetime);
 });
 
 it('should update state upon the SELECT_MODULE action',function(){
