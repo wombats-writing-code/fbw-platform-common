@@ -28,7 +28,8 @@ describe('selectClosedMission', () => {
 
     store.dispatch(selectClosedMission({
       user: {
-        Identifier: userId
+        Identifier: userId,
+        token: 'foo'
       },
       mission: {
         _id: missionId

@@ -29,7 +29,8 @@ var store=mockStore({});
 
 store.dispatch((0,_selectOpenMission.selectOpenMission)({
 user:{
-Identifier:1145645},
+Identifier:1145645,
+token:'123'},
 
 mission:{
 _id:'58a302bcf36d2837a7c8042e'},

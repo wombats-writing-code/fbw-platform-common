@@ -46,7 +46,8 @@ export function getMissions (data) {
     return axios({
       url: `${getDomain()}/l4/missions` + `?courseId=${data.course.Id || data.course.Identifier}${getAllMissionsFlag}`,
       headers: {
-        'x-fbw-user': data.user.Identifier
+        'x-fbw-user': data.user.Identifier,
+        'x-fbw-token': data.user.token
       }
     })
     .then((res) => {

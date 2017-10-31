@@ -34,7 +34,8 @@ describe('getResults', () => {
         id: 'fooMission'
       },
       user: {
-        Identifier: 1145645     // shea butter
+        Identifier: 1145645,     // shea butter
+        token: '123'
       },
     }))
     .then(res => {

@@ -5,16 +5,14 @@ var _D2LCallback=require('./web/D2LCallback');var _D2LCallback2=_interopRequireD
 var _authenticateD2L2=require('../../reducers/Login/authenticateD2L');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}
 
 var mapStateToProps=function(){function mapStateToProps(state,ownProps){
-console.log('state in d2l callback',state);
-return{
-location:state.location.pathname};
+return{};
 
 }return mapStateToProps;}();
 
 var mapDispatchToProps=function(){function mapDispatchToProps(dispatch,ownProps){
 return{
-authenticateD2L:function(){function authenticateD2L(credentials,optionalUrl){
-dispatch((0,_authenticateD2L2.authenticateD2L)(credentials,optionalUrl));
+authenticateD2L:function(){function authenticateD2L(credentials,options){
+dispatch((0,_authenticateD2L2.authenticateD2L)(credentials,options));
 
 
 

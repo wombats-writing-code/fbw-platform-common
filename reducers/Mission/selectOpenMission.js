@@ -38,7 +38,8 @@ var options={
 url:(0,_utilities.getDomain)()+'/l4/missions/'+data.mission._id,
 method:'POST',
 headers:{
-'x-fbw-user':data.user.Identifier}};
+'x-fbw-user':data.user.Identifier,
+'x-fbw-token':data.user.token}};
 
 
 

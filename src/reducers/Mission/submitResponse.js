@@ -39,7 +39,8 @@ export function submitResponse(data) {
         missionId: data.mission._id
       },
       headers: {
-        'x-fbw-user': data.user.Identifier
+        'x-fbw-user': data.user.Identifier,
+        'x-fbw-token': data.user.token
       }
     }
 

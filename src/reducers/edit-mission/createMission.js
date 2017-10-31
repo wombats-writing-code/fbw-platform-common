@@ -96,7 +96,8 @@ export function createMissions(missions, course, user) {
         courseId: course.Id || course.Identifier,
       },
       headers: {
-        'x-fbw-user': user.Identifier
+        'x-fbw-user': user.Identifier,
+        'x-fbw-token': user.token
       }
     })
     .then( res => {

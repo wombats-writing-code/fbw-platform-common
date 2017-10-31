@@ -33,7 +33,8 @@ export function deleteMission(mission, user) {
       method: 'DELETE',
       url: `${getDomain()}/l4/missions/${mission.id}`,
       headers: {
-        'x-fbw-user': user.Identifier
+        'x-fbw-user': user.Identifier,
+        'x-fbw-token': user.token
       }
     })
     .then((results) => {

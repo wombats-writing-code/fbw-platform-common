@@ -12,7 +12,6 @@ class Login extends Component {
     super();
     this.state = {
       guestName: '',
-      password: '',
       isVisitorLoginVisible: false
     }
   }
@@ -72,9 +71,6 @@ class Login extends Component {
                 <input className="input login__guest-input" placeholder="Username"
                       value={this.state.guestName}
                       onChange={(e) => this.setState({guestName: e.target.value})}/>
-                <input className="input login__guest-input" placeholder="Password"
-                      value={this.state.password}
-                      onChange={(e) => this.setState({password: e.target.value})}/>
                 {loginButton}
               </div>
               <a className="login__guest-prompt text-center" href="/register">Register</a>

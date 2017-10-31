@@ -75,7 +75,8 @@ function _getResults(missionId,user){
 return(0,_axios2['default'])({
 url:(0,_utilities.getDomain)()+'/l4/results?missionId='+missionId,
 headers:{
-'x-fbw-user':user.Identifier}});
+'x-fbw-user':user.Identifier,
+'x-fbw-token':user.token}});
 
 
 }

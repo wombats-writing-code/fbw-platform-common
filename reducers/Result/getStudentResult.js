@@ -22,7 +22,8 @@ dispatch(getStudentResultOptimistic(student,mission));
 return(0,_axios2['default'])({
 url:(0,_utilities.getDomain)()+'/l4/results?missionId='+mission.id+'&reconstruction=true&userId='+student.Identifier,
 headers:{
-'x-fbw-user':user.Identifier}}).
+'x-fbw-user':user.Identifier,
+'x-fbw-token':user.token}}).
 
 
 then(function(res){

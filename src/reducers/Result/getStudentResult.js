@@ -22,7 +22,8 @@ export function getStudentResult(student, mission, user) {
     return axios({
       url: `${getDomain()}/l4/results?missionId=${mission.id}&reconstruction=true&userId=${student.Identifier}`,
       headers: {
-        'x-fbw-user': user.Identifier
+        'x-fbw-user': user.Identifier,
+        'x-fbw-token': user.token
       }
     })
     .then( res => {

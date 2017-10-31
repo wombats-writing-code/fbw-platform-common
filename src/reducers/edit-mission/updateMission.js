@@ -36,7 +36,8 @@ export function updateMission(mission, user) {
         mission,
       },
       headers: {
-        'x-fbw-user': user.Identifier
+        'x-fbw-user': user.Identifier,
+        'x-fbw-token': user.token
       }
     })
     .then( res => {

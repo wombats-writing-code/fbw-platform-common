@@ -46,7 +46,8 @@ dispatch(getMissionsOptimistic());
 return(0,_axios2['default'])({
 url:(0,_utilities.getDomain)()+'/l4/missions'+('?courseId='+(data.course.Id||data.course.Identifier)+getAllMissionsFlag),
 headers:{
-'x-fbw-user':data.user.Identifier}}).
+'x-fbw-user':data.user.Identifier,
+'x-fbw-token':data.user.token}}).
 
 
 then(function(res){

@@ -21,7 +21,8 @@ var store=mockStore({});
 
 store.dispatch((0,_getMissions.getMissions)({
 user:{
-Identifier:1145645},
+Identifier:1145645,
+token:'123'},
 
 course:{Id:'1744153'}})).
 

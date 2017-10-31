@@ -21,7 +21,8 @@ describe('getMissions', () => {
 
     store.dispatch(getMissions({
       user: {
-        Identifier: 1145645     // shea butter
+        Identifier: 1145645,     // shea butter
+        token: '123'
       },
       course: {Id: '1744153'}
     }))

@@ -33,7 +33,8 @@ return(0,_axios2['default'])({
 method:'DELETE',
 url:(0,_utilities.getDomain)()+'/l4/missions/'+mission.id,
 headers:{
-'x-fbw-user':user.Identifier}}).
+'x-fbw-user':user.Identifier,
+'x-fbw-token':user.token}}).
 
 
 then(function(results){

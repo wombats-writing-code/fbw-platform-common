@@ -75,7 +75,8 @@ function _getResults(missionId, user) {
   return axios({
     url: `${getDomain()}/l4/results?missionId=${missionId}`,
     headers: {
-      'x-fbw-user': user.Identifier
+      'x-fbw-user': user.Identifier,
+      'x-fbw-token': user.token
     }
   })
 }

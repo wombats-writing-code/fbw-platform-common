@@ -34,7 +34,8 @@ mission:{
 id:'fooMission'},
 
 user:{
-Identifier:1145645}})).
+Identifier:1145645,
+token:'123'}})).
 
 
 then(function(res){

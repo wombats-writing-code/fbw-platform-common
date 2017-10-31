@@ -21,7 +21,8 @@ describe('getStudentResult', () => {
 
   it('should call getStudentResult and receive a list of records for a single user', function(done) {
     const USER = {
-      Identifier: 1145645     // shea butter
+      Identifier: 1145645,     // shea butter
+      token: '123'
     }
 
     const MISSION = {

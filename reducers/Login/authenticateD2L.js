@@ -14,6 +14,7 @@ Object.defineProperty(exports,"__esModule",{value:true});exports.RECEIVE_AUTHENT
 
 
 
+
 receiveAuthenticateUrl=receiveAuthenticateUrl;exports.
 
 
@@ -41,6 +42,8 @@ then(function(response){
 if(process.env.NODE_ENV!=='test')console.log('got whoami',response);
 
 d2lUser=response;
+
+
 
 
 return(0,_createUser.createUser)(d2lUser);

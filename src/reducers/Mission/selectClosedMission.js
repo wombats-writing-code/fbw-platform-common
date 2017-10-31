@@ -32,7 +32,8 @@ export function selectClosedMission (data) {
     return axios({
       url: `${getDomain()}/l4/results?missionId=${data.mission._id}&userId=${data.user.Identifier}&reconstruction=true`,
       headers: {
-        'x-fbw-user': data.user.Identifier
+        'x-fbw-user': data.user.Identifier,
+        'x-fbw-token': data.user.token
       }
     })
     .then((res) => {

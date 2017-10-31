@@ -32,7 +32,8 @@ dispatch(getClosedMissionOptimistic(data.mission));
 return(0,_axios2['default'])({
 url:(0,_utilities.getDomain)()+'/l4/results?missionId='+data.mission._id+'&userId='+data.user.Identifier+'&reconstruction=true',
 headers:{
-'x-fbw-user':data.user.Identifier}}).
+'x-fbw-user':data.user.Identifier,
+'x-fbw-token':data.user.token}}).
 
 
 then(function(res){

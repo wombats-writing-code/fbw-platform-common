@@ -29,7 +29,8 @@ describe('selectOpenMission', () => {
 
     store.dispatch(selectOpenMission({
       user: {
-        Identifier: 1145645     // shea butter
+        Identifier: 1145645,     // shea butter
+        token: '123'
       },
       mission: {
         _id: '58a302bcf36d2837a7c8042e'
