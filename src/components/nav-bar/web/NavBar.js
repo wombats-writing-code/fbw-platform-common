@@ -52,9 +52,9 @@ class NavBar extends Component {
           <Link className="help-button" to="/guide" target="_blank">
             Help
           </Link>
-          <button className="logout-button" onClick={this._logout}>
+          <Link className="logout-button" to="/logout-success" onClick={this._logout}>
             Logout
-          </button>
+          </Link>
         </div>
 
       </div>
@@ -128,7 +128,7 @@ class NavBar extends Component {
   }
 
   _logout = () => {
-    browserHistory.push('/logout-success')
+    // browserHistory.push('/logout-success');
     this.props.logout();
   }
 
