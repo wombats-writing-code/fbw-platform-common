@@ -47,7 +47,7 @@ describe('getD2LClassRoster', function() {
       courseId: "1724986",
       D2LConfig,
       url: 'blah',
-      user: {Identifier: 'admin'}
+      user: {Identifier: 'admin', token: 'foo'}
     }))
     .then(res => {
       // console.log('getD2LClassRoster res', res);

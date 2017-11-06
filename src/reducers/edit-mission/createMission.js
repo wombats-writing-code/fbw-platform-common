@@ -64,7 +64,8 @@ export function createMission(mission, course, user) {
       method: 'POST',
       url: `${getDomain()}/l4/missions/`,
       headers: {
-        'x-fbw-user': user.Identifier
+        'x-fbw-user': user.Identifier,
+        'x-fbw-token': user.token
       }
     })
     .then( response => {

@@ -47,7 +47,7 @@ store.dispatch((0,_getD2LClassRoster.getD2LClassRoster)({
 courseId:"1724986",
 D2LConfig:D2LConfig,
 url:'blah',
-user:{Identifier:'admin'}})).
+user:{Identifier:'admin',token:'foo'}})).
 
 then(function(res){
 
