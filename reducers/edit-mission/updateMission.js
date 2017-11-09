@@ -61,7 +61,8 @@ data:{
 missions:missions},
 
 headers:{
-'x-fbw-user':user.Identifier}}).
+'x-fbw-user':user.Identifier,
+'x-fbw-token':user.token}}).
 
 
 then(function(res){

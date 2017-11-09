@@ -15,6 +15,9 @@ var _index=require('../index');var _index2=_interopRequireDefault(_index);
 var _editMission=require('../editMission');
 var _clickAddMission=require('../clickAddMission');
 var _clickEditMission=require('../clickEditMission');
+var _clickEditMissionDates=require('../clickEditMissionDates');
+
+
 
 
 
@@ -247,6 +250,28 @@ type:_clickEditMission.CANCEL_EDIT_MISSION});
 
 
 newState.isEditMissionInProgress.should.eql(false);
+});
+
+it('should update the state upon the CLICK_EDIT_MISSION_DATES action',function(){
+var newDeadline=Date.now+1000;
+var newState=(0,_index2['default'])({},{
+type:_clickEditMissionDates.CLICK_EDIT_MISSION_DATES,
+mission:{
+deadline:newDeadline}});
+
+
+
+newState.newMission.deadline.should.eql(newDeadline);
+newState.isEditMissionDatesInProgress.should.eql(true);
+});
+
+it('should update the state upon the CANCEL_EDIT_MISSION_DATES action',function(){
+var newState=(0,_index2['default'])({},{
+type:_clickEditMissionDates.CANCEL_EDIT_MISSION_DATES});
+
+
+should.not.exist(newState.newMission);
+newState.isEditMissionDatesInProgress.should.eql(false);
 });
 
 it('should update state upon the MOVE_OUTCOME_UP action',function(){

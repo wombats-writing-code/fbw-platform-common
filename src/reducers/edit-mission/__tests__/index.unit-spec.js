@@ -15,6 +15,9 @@ import reducer from '../index'
 import {EDIT_MISSION} from '../editMission'
 import {CLICK_ADD_MISSION} from '../clickAddMission'
 import {CLICK_EDIT_MISSION, CANCEL_EDIT_MISSION} from '../clickEditMission'
+import {
+  CLICK_EDIT_MISSION_DATES, CANCEL_EDIT_MISSION_DATES
+} from '../clickEditMissionDates'
 
 import {
   CREATE_MISSION_OPTIMISTIC, RECEIVE_CREATE_MISSION,
@@ -247,6 +250,28 @@ describe('edit-mission reducer', () => {
 
     // should.not.exist(newState.newMission.);
     newState.isEditMissionInProgress.should.eql(false);
+  });
+
+  it('should update the state upon the CLICK_EDIT_MISSION_DATES action', () => {
+    const newDeadline = Date.now + 1000
+    let newState = reducer({}, {
+      type: CLICK_EDIT_MISSION_DATES,
+      mission: {
+        deadline: newDeadline
+      }
+    });
+
+    newState.newMission.deadline.should.eql(newDeadline);
+    newState.isEditMissionDatesInProgress.should.eql(true);
+  });
+
+  it('should update the state upon the CANCEL_EDIT_MISSION_DATES action', () => {
+    let newState = reducer({}, {
+      type: CANCEL_EDIT_MISSION_DATES,
+    });
+
+    should.not.exist(newState.newMission);
+    newState.isEditMissionDatesInProgress.should.eql(false);
   });
 
   it('should update state upon the MOVE_OUTCOME_UP action', () => {

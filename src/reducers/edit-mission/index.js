@@ -19,6 +19,7 @@ import {
 import {EDIT_MISSION} from './editMission'
 import {CLICK_ADD_MISSION} from './clickAddMission'
 import {CLICK_EDIT_MISSION, CANCEL_EDIT_MISSION} from './clickEditMission'
+import {CLICK_EDIT_MISSION_DATES, CANCEL_EDIT_MISSION_DATES} from './clickEditMissionDates'
 
 import {localDateTime} from '../../utilities/time'
 
@@ -46,6 +47,18 @@ export default function editMissionReducer (state = initialState, action) {
     case CANCEL_EDIT_MISSION:
       return _.assign({}, state, {
         isEditMissionInProgress: false,
+        newMission: null
+      })
+
+    case CLICK_EDIT_MISSION_DATES:
+      return _.assign({}, state, {
+        isEditMissionDatesInProgress: true,
+        newMission: action.mission
+      })
+
+    case CANCEL_EDIT_MISSION_DATES:
+      return _.assign({}, state, {
+        isEditMissionDatesInProgress: false,
         newMission: null
       })
 
