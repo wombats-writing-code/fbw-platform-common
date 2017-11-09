@@ -73,7 +73,6 @@ class Login extends Component {
                       onChange={(e) => this.setState({guestName: e.target.value})}/>
                 {loginButton}
               </div>
-              <a className="login__guest-prompt text-center" href="/register">Register</a>
             </div>
           </div>
 
