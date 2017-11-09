@@ -41,7 +41,7 @@ export default function editMissionReducer (state = initialState, action) {
     case CLICK_EDIT_MISSION:
       return _.assign({}, state, {
         isEditMissionInProgress: true,
-        newMission: action.mission
+        newMission: _.assign({}, action.mission)
       })
 
     case CANCEL_EDIT_MISSION:
@@ -53,7 +53,10 @@ export default function editMissionReducer (state = initialState, action) {
     case CLICK_EDIT_MISSION_DATES:
       return _.assign({}, state, {
         isEditMissionDatesInProgress: true,
-        newMission: action.mission
+        newMission: _.assign({}, action.mission, {
+          startTime: action.mission.leadsToMissionsStartTime,
+          deadline: action.mission.leadsToMissionsDeadline
+        })
       })
 
     case CANCEL_EDIT_MISSION_DATES:

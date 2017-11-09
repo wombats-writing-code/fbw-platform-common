@@ -254,10 +254,12 @@ newState.isEditMissionInProgress.should.eql(false);
 
 it('should update the state upon the CLICK_EDIT_MISSION_DATES action',function(){
 var newDeadline=Date.now+1000;
+var fakeDeadline=Date.now+5000;
 var newState=(0,_index2['default'])({},{
 type:_clickEditMissionDates.CLICK_EDIT_MISSION_DATES,
 mission:{
-deadline:newDeadline}});
+deadline:fakeDeadline,
+leadsToMissionsDeadline:newDeadline}});
 
 
 

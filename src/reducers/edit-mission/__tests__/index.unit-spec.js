@@ -254,10 +254,12 @@ describe('edit-mission reducer', () => {
 
   it('should update the state upon the CLICK_EDIT_MISSION_DATES action', () => {
     const newDeadline = Date.now + 1000
+    const fakeDeadline = Date.now + 5000
     let newState = reducer({}, {
       type: CLICK_EDIT_MISSION_DATES,
       mission: {
-        deadline: newDeadline
+        deadline: fakeDeadline,
+        leadsToMissionsDeadline: newDeadline
       }
     });
 
