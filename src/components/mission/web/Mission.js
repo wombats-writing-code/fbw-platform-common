@@ -26,11 +26,6 @@ import { numberCorrectTargets, numberAttemptedTargets,
 import { missionConfig } from '../../../reducers/Mission';
 
 import './Mission.scss'
-const styles = {
-  container: {
-    height: '100%'
-  }
-}
 
 // This attempts to make the rest of the app "hidden" from screenreaders
 //   while the modal is open.
@@ -101,6 +96,7 @@ class Mission extends Component {
     if (!currentProps) {
       currentProps = this.props;
     }
+
     const missionQuestionsFlat = _.flattenDeep(currentProps.mission.questions);
     const targetQuestions = grabTargetQuestionsFromMission(missionQuestionsFlat);
     const unfinishedGoalQs = numberUnfinishedRoutes(missionQuestionsFlat);
@@ -156,7 +152,7 @@ class Mission extends Component {
         </div>
       </Modal>
     )
-
+    // console.log('props in mission component', this.props)
     if (this.props.isGetMissionInProgress) {
       content = <Spinner/>;
       renderContent = false;
@@ -168,7 +164,7 @@ class Mission extends Component {
 
       if (this.props.mission.goals.length === 0 && this.props.mission.type === missionConfig.PHASE_II_MISSION_TYPE) {
         content = (
-          <div style={[styles.container, {paddingTop: 80, paddingLeft: 30}]}>
+          <div className="mission-done-message">
             <div>Congratulations! You aced the Phase I mission, so you have no Phase II questions.</div>
             <div>We encourage you to review your Phase I mission before your exam.</div>
           </div>
@@ -176,7 +172,7 @@ class Mission extends Component {
         renderContent = false;
       } else if (this.props.mission.questions.length === 0 && missionState === "over") {
         content = (
-          <div style={[styles.container, {paddingTop: 80, paddingLeft: 30}]}>
+          <div className="mission-done-message">
             <div>This mission is over. You didn't open it while it was open, so you have no results here.</div>
           </div>
         );

@@ -6,7 +6,9 @@ let Q = require('q')
 import { getDomain } from '../../utilities'
 
 export function createUser(userObject) {
-  if (!userObject);
+  if (!userObject) {
+    throw new Error('Must include a userObject')
+  };
 
   return axios({
     method: 'POST',
