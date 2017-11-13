@@ -23,7 +23,10 @@ import {
   CREATE_MISSION_OPTIMISTIC, RECEIVE_CREATE_MISSION,
   CREATE_MISSIONS_OPTIMISTIC, RECEIVE_CREATE_MISSIONS
 } from '../createMission'
-import {UPDATE_MISSION_OPTIMISTIC, RECEIVE_UPDATE_MISSION} from '../updateMission'
+import {
+  UPDATE_MISSION_OPTIMISTIC, RECEIVE_UPDATE_MISSION,
+  UPDATE_MISSIONS_OPTIMISTIC, RECEIVE_UPDATE_MISSIONS
+} from '../updateMission'
 import {RECEIVE_DELETE_MISSION} from '../deleteMission'
 import {
   CHANGE_MISSION_NAME, CHANGE_MISSION_TYPE, CHANGE_MISSION_START, CHANGE_MISSION_END,
@@ -65,6 +68,15 @@ describe('edit-mission reducer', () => {
     newState.isCreateMissionInProgress.should.eql(false);
   });
 
+  it('should update state upon the UPDATE_MISSION_OPTIMISTIC action', () => {
+    let newState = reducer({}, {
+      type: UPDATE_MISSION_OPTIMISTIC
+    })
+    // console.log(newState)
+
+    newState.isUpdateMissionInProgress.should.eql(true);
+  });
+
   it('should update state upon the RECEIVE_UPDATE_MISSION action', () => {
     let newState = reducer({}, {
       type: RECEIVE_UPDATE_MISSION,
@@ -75,6 +87,27 @@ describe('edit-mission reducer', () => {
     newState.newMission.displayName.should.eql('');
     newState.isUpdateMissionInProgress.should.eql(false);
     newState.isEditMissionInProgress.should.eql(false)
+  });
+
+  it('should update state upon the UPDATE_MISSIONS_OPTIMISTIC action', () => {
+    let newState = reducer({}, {
+      type: UPDATE_MISSIONS_OPTIMISTIC
+    })
+    // console.log(newState)
+
+    newState.isUpdateMissionsInProgress.should.eql(true);
+  });
+
+  it('should update state upon the RECEIVE_UPDATE_MISSIONS action', () => {
+    let newState = reducer({}, {
+      type: RECEIVE_UPDATE_MISSIONS,
+      missions: [{displayName: 'foo'}]
+    })
+    // console.log(newState)
+
+    newState.newMission.displayName.should.eql('');
+    newState.isUpdateMissionsInProgress.should.eql(false);
+    newState.isEditMissionDatesInProgress.should.eql(false)
   });
 
   it('should update state upon the RECEIVE_DELETE_MISSION action', () => {

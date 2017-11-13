@@ -235,6 +235,19 @@ return m;
 
 
 
+case _updateMission.RECEIVE_UPDATE_MISSIONS:
+return _lodash2['default'].assign({},state,{
+missions:_lodash2['default'].map(state.missions,function(m){
+var updatedMission=_lodash2['default'].find(action.missions,{id:m.id});
+if(updatedMission){
+return updatedMission;
+}
+
+return m;
+})});
+
+
+
 case _getStudentResult.GET_STUDENT_RESULT_SUCCESS:
 return _lodash2['default'].assign({},state,{
 currentMission:_lodash2['default'].assign({},action.mission,{

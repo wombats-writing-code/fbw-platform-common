@@ -13,6 +13,7 @@ import {RECEIVE_SUBMIT_RESPONSE} from '../submitResponse'
 import {RECEIVE_CREATE_TAKE_MISSION, CREATE_TAKE_MISSION_OPTIMISTIC} from '../selectOpenMission'
 import {RECEIVE_CLOSED_MISSION, GET_CLOSED_MISSION_OPTIMISTIC} from '../selectClosedMission'
 
+import {RECEIVE_UPDATE_MISSION, RECEIVE_UPDATE_MISSIONS} from '../../edit-mission/updateMission'
 import {RECEIVE_CREATE_MISSION, RECEIVE_CREATE_MISSIONS} from '../../edit-mission/createMission'
 import {RECEIVE_DELETE_MISSION} from '../../edit-mission/deleteMission'
 import {LOG_OUT} from '../../Login/logOutUser'
@@ -299,5 +300,60 @@ describe('mission reducer', () => {
     });
 
     newState.currentMission.should.eql(phaseIIMission);
+  });
+
+  it('should update the right mission for RECEIVE_UPDATE_MISSION', () => {
+    let newState = reducer({
+      missions: [{
+        id: 125,
+        displayName: 'foo'
+      }, {
+        id: 1,
+        displayName: 'baz'
+      }, {
+        id: 321,
+        displayName: 'zim'
+      }]
+    }, {
+      type: RECEIVE_UPDATE_MISSION,
+      mission: {
+        id: 125,
+        displayName: 'bar'
+      }
+    });
+
+    newState.missions.length.should.eql(3);
+    newState.missions[0].displayName.should.eql('bar');
+    newState.missions[1].displayName.should.eql('baz');
+    newState.missions[2].displayName.should.eql('zim');
+  });
+
+  it('should update all relevant missions for RECEIVE_UPDATE_MISSIONS', () => {
+    let newState = reducer({
+      missions: [{
+        id: 125,
+        displayName: 'foo'
+      }, {
+        id: 1,
+        displayName: 'baz'
+      }, {
+        id: 321,
+        displayName: 'zim'
+      }]
+    }, {
+      type: RECEIVE_UPDATE_MISSIONS,
+      missions: [{
+        id: 125,
+        displayName: 'bar'
+      }, {
+        id: 1,
+        displayName: 'bar2'
+      }]
+    });
+
+    newState.missions.length.should.eql(3);
+    newState.missions[0].displayName.should.eql('bar');
+    newState.missions[1].displayName.should.eql('bar2');
+    newState.missions[2].displayName.should.eql('zim');
   });
 })

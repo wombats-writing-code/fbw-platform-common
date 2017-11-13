@@ -8,7 +8,12 @@ import {
   CREATE_MISSION_OPTIMISTIC, RECEIVE_CREATE_MISSION,
   CREATE_MISSIONS_OPTIMISTIC, RECEIVE_CREATE_MISSIONS
 } from './createMission'
-import {UPDATE_MISSION_OPTIMISTIC, RECEIVE_UPDATE_MISSION} from './updateMission'
+import {
+  UPDATE_MISSION_OPTIMISTIC,
+  RECEIVE_UPDATE_MISSION,
+  UPDATE_MISSIONS_OPTIMISTIC,
+  RECEIVE_UPDATE_MISSIONS
+} from './updateMission'
 import {DELETE_MISSION_OPTIMISTIC, RECEIVE_DELETE_MISSION} from './deleteMission'
 import {
   CHANGE_MISSION_NAME, CHANGE_MISSION_TYPE, CHANGE_MISSION_START, CHANGE_MISSION_END,
@@ -97,6 +102,18 @@ export default function editMissionReducer (state = initialState, action) {
         isUpdateMissionInProgress: false,
         newMission: stampNewMission(),
         isEditMissionInProgress: false
+      })
+
+    case UPDATE_MISSIONS_OPTIMISTIC:
+      return _.assign({}, state, {
+        isUpdateMissionsInProgress: true
+      })
+
+    case RECEIVE_UPDATE_MISSIONS:
+      return _.assign({}, state, {
+        isUpdateMissionsInProgress: false,
+        newMission: stampNewMission(),
+        isEditMissionDatesInProgress: false
       })
 
     case DELETE_MISSION_OPTIMISTIC:

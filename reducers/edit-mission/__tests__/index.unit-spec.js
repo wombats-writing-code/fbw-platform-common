@@ -25,6 +25,9 @@ var _clickEditMissionDates=require('../clickEditMissionDates');
 
 
 
+
+
+
 var _updateMissionForm=require('../updateMissionForm');
 
 
@@ -65,6 +68,15 @@ newState.newMission.displayName.should.eql('');
 newState.isCreateMissionInProgress.should.eql(false);
 });
 
+it('should update state upon the UPDATE_MISSION_OPTIMISTIC action',function(){
+var newState=(0,_index2['default'])({},{
+type:_updateMission.UPDATE_MISSION_OPTIMISTIC});
+
+
+
+newState.isUpdateMissionInProgress.should.eql(true);
+});
+
 it('should update state upon the RECEIVE_UPDATE_MISSION action',function(){
 var newState=(0,_index2['default'])({},{
 type:_updateMission.RECEIVE_UPDATE_MISSION,
@@ -75,6 +87,27 @@ missions:[{displayName:'foo'}]});
 newState.newMission.displayName.should.eql('');
 newState.isUpdateMissionInProgress.should.eql(false);
 newState.isEditMissionInProgress.should.eql(false);
+});
+
+it('should update state upon the UPDATE_MISSIONS_OPTIMISTIC action',function(){
+var newState=(0,_index2['default'])({},{
+type:_updateMission.UPDATE_MISSIONS_OPTIMISTIC});
+
+
+
+newState.isUpdateMissionsInProgress.should.eql(true);
+});
+
+it('should update state upon the RECEIVE_UPDATE_MISSIONS action',function(){
+var newState=(0,_index2['default'])({},{
+type:_updateMission.RECEIVE_UPDATE_MISSIONS,
+missions:[{displayName:'foo'}]});
+
+
+
+newState.newMission.displayName.should.eql('');
+newState.isUpdateMissionsInProgress.should.eql(false);
+newState.isEditMissionDatesInProgress.should.eql(false);
 });
 
 it('should update state upon the RECEIVE_DELETE_MISSION action',function(){
