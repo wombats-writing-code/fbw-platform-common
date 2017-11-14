@@ -13,6 +13,7 @@ var _submitResponse=require('../submitResponse');
 var _selectOpenMission=require('../selectOpenMission');
 var _selectClosedMission=require('../selectClosedMission');
 
+var _updateMission=require('../../edit-mission/updateMission');
 var _createMission=require('../../edit-mission/createMission');
 var _deleteMission=require('../../edit-mission/deleteMission');
 var _logOutUser=require('../../Login/logOutUser');
@@ -299,5 +300,60 @@ mission:null});
 
 
 newState.currentMission.should.eql(phaseIIMission);
+});
+
+it('should update the right mission for RECEIVE_UPDATE_MISSION',function(){
+var newState=(0,_index2['default'])({
+missions:[{
+id:125,
+displayName:'foo'},
+{
+id:1,
+displayName:'baz'},
+{
+id:321,
+displayName:'zim'}]},
+
+{
+type:_updateMission.RECEIVE_UPDATE_MISSION,
+mission:{
+id:125,
+displayName:'bar'}});
+
+
+
+newState.missions.length.should.eql(3);
+newState.missions[0].displayName.should.eql('bar');
+newState.missions[1].displayName.should.eql('baz');
+newState.missions[2].displayName.should.eql('zim');
+});
+
+it('should update all relevant missions for RECEIVE_UPDATE_MISSIONS',function(){
+var newState=(0,_index2['default'])({
+missions:[{
+id:125,
+displayName:'foo'},
+{
+id:1,
+displayName:'baz'},
+{
+id:321,
+displayName:'zim'}]},
+
+{
+type:_updateMission.RECEIVE_UPDATE_MISSIONS,
+missions:[{
+id:125,
+displayName:'bar'},
+{
+id:1,
+displayName:'bar2'}]});
+
+
+
+newState.missions.length.should.eql(3);
+newState.missions[0].displayName.should.eql('bar');
+newState.missions[1].displayName.should.eql('bar2');
+newState.missions[2].displayName.should.eql('zim');
 });
 });

@@ -15,6 +15,12 @@ var _index=require('../index');var _index2=_interopRequireDefault(_index);
 var _editMission=require('../editMission');
 var _clickAddMission=require('../clickAddMission');
 var _clickEditMission=require('../clickEditMission');
+var _clickEditMissionDates=require('../clickEditMissionDates');
+
+
+
+
+
 
 
 
@@ -23,6 +29,7 @@ var _clickEditMission=require('../clickEditMission');
 
 
 var _updateMissionForm=require('../updateMissionForm');
+
 
 
 
@@ -61,6 +68,15 @@ newState.newMission.displayName.should.eql('');
 newState.isCreateMissionInProgress.should.eql(false);
 });
 
+it('should update state upon the UPDATE_MISSION_OPTIMISTIC action',function(){
+var newState=(0,_index2['default'])({},{
+type:_updateMission.UPDATE_MISSION_OPTIMISTIC});
+
+
+
+newState.isUpdateMissionInProgress.should.eql(true);
+});
+
 it('should update state upon the RECEIVE_UPDATE_MISSION action',function(){
 var newState=(0,_index2['default'])({},{
 type:_updateMission.RECEIVE_UPDATE_MISSION,
@@ -71,6 +87,27 @@ missions:[{displayName:'foo'}]});
 newState.newMission.displayName.should.eql('');
 newState.isUpdateMissionInProgress.should.eql(false);
 newState.isEditMissionInProgress.should.eql(false);
+});
+
+it('should update state upon the UPDATE_MISSIONS_OPTIMISTIC action',function(){
+var newState=(0,_index2['default'])({},{
+type:_updateMission.UPDATE_MISSIONS_OPTIMISTIC});
+
+
+
+newState.isUpdateMissionsInProgress.should.eql(true);
+});
+
+it('should update state upon the RECEIVE_UPDATE_MISSIONS action',function(){
+var newState=(0,_index2['default'])({},{
+type:_updateMission.RECEIVE_UPDATE_MISSIONS,
+missions:[{displayName:'foo'}]});
+
+
+
+newState.newMission.displayName.should.eql('');
+newState.isUpdateMissionsInProgress.should.eql(false);
+newState.isEditMissionDatesInProgress.should.eql(false);
 });
 
 it('should update state upon the RECEIVE_DELETE_MISSION action',function(){
@@ -121,6 +158,26 @@ datetime:datetime});
 
 
 newState.newMission.deadline.should.eql(datetime);
+});
+
+it('should update state upon the CHANGE_MISSION_LEADS_TO_END action',function(){
+var datetime=(0,_moment2['default'])();
+var newState=(0,_index2['default'])({},{
+type:_updateMissionForm.CHANGE_MISSION_LEADS_TO_END,
+datetime:datetime});
+
+
+newState.newMission.leadsToMissionsDeadline.should.eql(datetime);
+});
+
+it('should update state upon the CHANGE_MISSION_LEADS_TO_START action',function(){
+var datetime=(0,_moment2['default'])();
+var newState=(0,_index2['default'])({},{
+type:_updateMissionForm.CHANGE_MISSION_LEADS_TO_START,
+datetime:datetime});
+
+
+newState.newMission.leadsToMissionsStartTime.should.eql(datetime);
 });
 
 it('should update state upon the SELECT_MODULE action',function(){
@@ -226,6 +283,30 @@ type:_clickEditMission.CANCEL_EDIT_MISSION});
 
 
 newState.isEditMissionInProgress.should.eql(false);
+});
+
+it('should update the state upon the CLICK_EDIT_MISSION_DATES action',function(){
+var newDeadline=Date.now+1000;
+var fakeDeadline=Date.now+5000;
+var newState=(0,_index2['default'])({},{
+type:_clickEditMissionDates.CLICK_EDIT_MISSION_DATES,
+mission:{
+deadline:fakeDeadline,
+leadsToMissionsDeadline:newDeadline}});
+
+
+
+newState.newMission.deadline.should.eql(newDeadline);
+newState.isEditMissionDatesInProgress.should.eql(true);
+});
+
+it('should update the state upon the CANCEL_EDIT_MISSION_DATES action',function(){
+var newState=(0,_index2['default'])({},{
+type:_clickEditMissionDates.CANCEL_EDIT_MISSION_DATES});
+
+
+should.not.exist(newState.newMission);
+newState.isEditMissionDatesInProgress.should.eql(false);
 });
 
 it('should update state upon the MOVE_OUTCOME_UP action',function(){

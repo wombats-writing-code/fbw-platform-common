@@ -15,17 +15,24 @@ import reducer from '../index'
 import {EDIT_MISSION} from '../editMission'
 import {CLICK_ADD_MISSION} from '../clickAddMission'
 import {CLICK_EDIT_MISSION, CANCEL_EDIT_MISSION} from '../clickEditMission'
+import {
+  CLICK_EDIT_MISSION_DATES, CANCEL_EDIT_MISSION_DATES
+} from '../clickEditMissionDates'
 
 import {
   CREATE_MISSION_OPTIMISTIC, RECEIVE_CREATE_MISSION,
   CREATE_MISSIONS_OPTIMISTIC, RECEIVE_CREATE_MISSIONS
 } from '../createMission'
-import {UPDATE_MISSION_OPTIMISTIC, RECEIVE_UPDATE_MISSION} from '../updateMission'
+import {
+  UPDATE_MISSION_OPTIMISTIC, RECEIVE_UPDATE_MISSION,
+  UPDATE_MISSIONS_OPTIMISTIC, RECEIVE_UPDATE_MISSIONS
+} from '../updateMission'
 import {RECEIVE_DELETE_MISSION} from '../deleteMission'
 import {
   CHANGE_MISSION_NAME, CHANGE_MISSION_TYPE, CHANGE_MISSION_START, CHANGE_MISSION_END,
   SELECT_MODULE, CHANGE_OUTCOME_SEARCH, TOGGLE_OUTCOME, CHANGE_FOLLOWS_FROM_MISSIONS,
-  MOVE_OUTCOME_UP, MOVE_OUTCOME_DOWN
+  MOVE_OUTCOME_UP, MOVE_OUTCOME_DOWN, CHANGE_MISSION_LEADS_TO_END,
+  CHANGE_MISSION_LEADS_TO_START
 } from '../updateMissionForm'
 import {missionConfig} from '../../Mission'
 
@@ -61,6 +68,15 @@ describe('edit-mission reducer', () => {
     newState.isCreateMissionInProgress.should.eql(false);
   });
 
+  it('should update state upon the UPDATE_MISSION_OPTIMISTIC action', () => {
+    let newState = reducer({}, {
+      type: UPDATE_MISSION_OPTIMISTIC
+    })
+    // console.log(newState)
+
+    newState.isUpdateMissionInProgress.should.eql(true);
+  });
+
   it('should update state upon the RECEIVE_UPDATE_MISSION action', () => {
     let newState = reducer({}, {
       type: RECEIVE_UPDATE_MISSION,
@@ -71,6 +87,27 @@ describe('edit-mission reducer', () => {
     newState.newMission.displayName.should.eql('');
     newState.isUpdateMissionInProgress.should.eql(false);
     newState.isEditMissionInProgress.should.eql(false)
+  });
+
+  it('should update state upon the UPDATE_MISSIONS_OPTIMISTIC action', () => {
+    let newState = reducer({}, {
+      type: UPDATE_MISSIONS_OPTIMISTIC
+    })
+    // console.log(newState)
+
+    newState.isUpdateMissionsInProgress.should.eql(true);
+  });
+
+  it('should update state upon the RECEIVE_UPDATE_MISSIONS action', () => {
+    let newState = reducer({}, {
+      type: RECEIVE_UPDATE_MISSIONS,
+      missions: [{displayName: 'foo'}]
+    })
+    // console.log(newState)
+
+    newState.newMission.displayName.should.eql('');
+    newState.isUpdateMissionsInProgress.should.eql(false);
+    newState.isEditMissionDatesInProgress.should.eql(false)
   });
 
   it('should update state upon the RECEIVE_DELETE_MISSION action', () => {
@@ -121,6 +158,26 @@ describe('edit-mission reducer', () => {
     })
 
     newState.newMission.deadline.should.eql(datetime);
+  });
+
+  it('should update state upon the CHANGE_MISSION_LEADS_TO_END action', () => {
+    let datetime = moment();
+    let newState = reducer({}, {
+      type: CHANGE_MISSION_LEADS_TO_END,
+      datetime
+    })
+
+    newState.newMission.leadsToMissionsDeadline.should.eql(datetime);
+  });
+
+  it('should update state upon the CHANGE_MISSION_LEADS_TO_START action', () => {
+    let datetime = moment();
+    let newState = reducer({}, {
+      type: CHANGE_MISSION_LEADS_TO_START,
+      datetime
+    })
+
+    newState.newMission.leadsToMissionsStartTime.should.eql(datetime);
   });
 
   it('should update state upon the SELECT_MODULE action', () => {
@@ -226,6 +283,30 @@ describe('edit-mission reducer', () => {
 
     // should.not.exist(newState.newMission.);
     newState.isEditMissionInProgress.should.eql(false);
+  });
+
+  it('should update the state upon the CLICK_EDIT_MISSION_DATES action', () => {
+    const newDeadline = Date.now + 1000
+    const fakeDeadline = Date.now + 5000
+    let newState = reducer({}, {
+      type: CLICK_EDIT_MISSION_DATES,
+      mission: {
+        deadline: fakeDeadline,
+        leadsToMissionsDeadline: newDeadline
+      }
+    });
+
+    newState.newMission.deadline.should.eql(newDeadline);
+    newState.isEditMissionDatesInProgress.should.eql(true);
+  });
+
+  it('should update the state upon the CANCEL_EDIT_MISSION_DATES action', () => {
+    let newState = reducer({}, {
+      type: CANCEL_EDIT_MISSION_DATES,
+    });
+
+    should.not.exist(newState.newMission);
+    newState.isEditMissionDatesInProgress.should.eql(false);
   });
 
   it('should update state upon the MOVE_OUTCOME_UP action', () => {

@@ -8,16 +8,23 @@ import {
   CREATE_MISSION_OPTIMISTIC, RECEIVE_CREATE_MISSION,
   CREATE_MISSIONS_OPTIMISTIC, RECEIVE_CREATE_MISSIONS
 } from './createMission'
-import {UPDATE_MISSION_OPTIMISTIC, RECEIVE_UPDATE_MISSION} from './updateMission'
+import {
+  UPDATE_MISSION_OPTIMISTIC,
+  RECEIVE_UPDATE_MISSION,
+  UPDATE_MISSIONS_OPTIMISTIC,
+  RECEIVE_UPDATE_MISSIONS
+} from './updateMission'
 import {DELETE_MISSION_OPTIMISTIC, RECEIVE_DELETE_MISSION} from './deleteMission'
 import {
   CHANGE_MISSION_NAME, CHANGE_MISSION_TYPE, CHANGE_MISSION_START, CHANGE_MISSION_END,
   SELECT_MODULE, CHANGE_OUTCOME_SEARCH, TOGGLE_OUTCOME, CHANGE_FOLLOWS_FROM_MISSIONS,
-  MOVE_OUTCOME_DOWN, MOVE_OUTCOME_UP
+  MOVE_OUTCOME_DOWN, MOVE_OUTCOME_UP, CHANGE_MISSION_LEADS_TO_END,
+  CHANGE_MISSION_LEADS_TO_START
 } from './updateMissionForm'
 import {EDIT_MISSION} from './editMission'
 import {CLICK_ADD_MISSION} from './clickAddMission'
 import {CLICK_EDIT_MISSION, CANCEL_EDIT_MISSION} from './clickEditMission'
+import {CLICK_EDIT_MISSION_DATES, CANCEL_EDIT_MISSION_DATES} from './clickEditMissionDates'
 
 import {localDateTime} from '../../utilities/time'
 
@@ -39,12 +46,27 @@ export default function editMissionReducer (state = initialState, action) {
     case CLICK_EDIT_MISSION:
       return _.assign({}, state, {
         isEditMissionInProgress: true,
-        newMission: action.mission
+        newMission: _.assign({}, action.mission)
       })
 
     case CANCEL_EDIT_MISSION:
       return _.assign({}, state, {
         isEditMissionInProgress: false,
+        newMission: null
+      })
+
+    case CLICK_EDIT_MISSION_DATES:
+      return _.assign({}, state, {
+        isEditMissionDatesInProgress: true,
+        newMission: _.assign({}, action.mission, {
+          startTime: action.mission.leadsToMissionsStartTime,
+          deadline: action.mission.leadsToMissionsDeadline
+        })
+      })
+
+    case CANCEL_EDIT_MISSION_DATES:
+      return _.assign({}, state, {
+        isEditMissionDatesInProgress: false,
         newMission: null
       })
 
@@ -80,6 +102,18 @@ export default function editMissionReducer (state = initialState, action) {
         isUpdateMissionInProgress: false,
         newMission: stampNewMission(),
         isEditMissionInProgress: false
+      })
+
+    case UPDATE_MISSIONS_OPTIMISTIC:
+      return _.assign({}, state, {
+        isUpdateMissionsInProgress: true
+      })
+
+    case RECEIVE_UPDATE_MISSIONS:
+      return _.assign({}, state, {
+        isUpdateMissionsInProgress: false,
+        newMission: stampNewMission(),
+        isEditMissionDatesInProgress: false
       })
 
     case DELETE_MISSION_OPTIMISTIC:
@@ -121,6 +155,20 @@ export default function editMissionReducer (state = initialState, action) {
       return _.assign({}, state, {
         newMission: _.assign({}, state.newMission, {
           deadline: action.datetime
+        })
+      })
+
+    case CHANGE_MISSION_LEADS_TO_END:
+      return _.assign({}, state, {
+        newMission: _.assign({}, state.newMission, {
+          leadsToMissionsDeadline: action.datetime
+        })
+      })
+
+    case CHANGE_MISSION_LEADS_TO_START:
+      return _.assign({}, state, {
+        newMission: _.assign({}, state.newMission, {
+          leadsToMissionsStartTime: action.datetime
         })
       })
 

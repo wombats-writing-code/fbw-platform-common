@@ -11,7 +11,7 @@ import {SUBMIT_RESPONSE_OPTIMISTIC, RECEIVE_SUBMIT_RESPONSE } from './submitResp
 import { SHOW_ANSWER_OPTIMISTIC, RECEIVE_SHOW_ANSWER } from './showAnswer'
 
 import {RECEIVE_CREATE_MISSION, RECEIVE_CREATE_MISSIONS} from '../edit-mission/createMission'
-import {RECEIVE_UPDATE_MISSION} from '../edit-mission/updateMission'
+import {RECEIVE_UPDATE_MISSION, RECEIVE_UPDATE_MISSIONS} from '../edit-mission/updateMission'
 import {RECEIVE_DELETE_MISSION} from '../edit-mission/deleteMission'
 
 import {GET_STUDENT_RESULT_SUCCESS} from '../Result/getStudentResult'
@@ -228,6 +228,19 @@ export default function missionReducer (state = initialState, action) {
         missions: _.map(state.missions, (m) => {
           if (m.id === action.mission.id) {
             return action.mission;
+          }
+
+          return m;
+        }),
+        // currentMission: action.mission
+      })
+
+    case RECEIVE_UPDATE_MISSIONS:
+      return _.assign({}, state, {
+        missions: _.map(state.missions, (m) => {
+          const updatedMission = _.find(action.missions, {id: m.id});
+          if (updatedMission) {
+            return updatedMission;
           }
 
           return m;
