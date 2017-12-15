@@ -107,7 +107,10 @@ function _appendDevRole(credentials) {
 export function isCurrentFbW(name) {
   let lowercased = name.toLowerCase()
   return lowercased.indexOf('fly-by-wire') >= 0 || lowercased.indexOf('fbw') >= 0 ||
-        lowercased.indexOf('fa17') > -1 && _isValidClass(lowercased);
+        lowercased.indexOf('sp18') > -1 && _isValidClass(lowercased);
+
+        // old code for fall 2017
+        // lowercased.indexOf('fa17') > -1 && _isValidClass(lowercased);
 
           // old code for spring 2017
           // (lowercased.indexOf('sp17') >= 0 &&
