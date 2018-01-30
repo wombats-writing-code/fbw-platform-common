@@ -10,8 +10,14 @@ var _reduxMockStore=require('redux-mock-store');var _reduxMockStore2=_interopReq
 
 
 
+
+
 var _authenticateD2L=require('../authenticateD2L');
-var _authenticateD2LHelper=require('../_authenticateD2LHelper');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}process.env.NODE_ENV='test';var should=require('should');var middlewares=[_reduxThunk2['default']];var mockStore=(0,_reduxMockStore2['default'])(middlewares);var chai=require('chai');var chaiHttp=require('chai-http');chai.use(chaiHttp);
+
+
+
+
+var _authenticateD2LHelper=require('../_authenticateD2LHelper');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}process.env.NODE_ENV='test';var middlewares=[_reduxThunk2['default']];var mockStore=(0,_reduxMockStore2['default'])(middlewares);var chai=require('chai');var should=require('should');var chaiHttp=require('chai-http');chai.use(chaiHttp);chai.should();
 
 describe('authenticateD2L and authenticateD2LHelper',function(done){
 it('should create an action for authenticateD2L',function(done){
@@ -46,6 +52,22 @@ then(function(courses){
 
 courses[0].Code.should.be.a('string');
 
+done();
+});
+});
+
+it('should should dispatch event for failed D2L login',function(done){
+var D2LConfig=_lodash2['default'].assign({},require('../../../d2lcredentials'),{
+role:'instructor',
+name:'fakeinstructor'});
+
+
+var store=mockStore({});
+store.dispatch((0,_authenticateD2L.authenticateD2L)(D2LConfig)).
+then(function(){
+var actions=store.getActions();
+actions.length.should.be.eql(1);
+actions[0].type.should.be.eql(_authenticateD2L.FAILED_AUTHENTICATE_D2L);
 done();
 });
 });

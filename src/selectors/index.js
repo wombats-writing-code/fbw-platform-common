@@ -1,7 +1,9 @@
 
 export const getUser = (state) => state.login.user.d2lUser;
 
-export const isLoggedIn = (state) => state.login.isLoggedIn
+export const isLoggedIn = (state) => state.login.isLoggedIn;
+
+export const failedLogIn = (state) => state.login.logInError;
 
 export const getD2LToken = (state) => state.login.user.d2l ? state.login.user.d2l.authenticatedUrl : null
 

@@ -14,6 +14,10 @@ var _nock=require('nock');var _nock2=_interopRequireDefault(_nock);
 
 var _authenticateGuest=require('../authenticateGuest');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}process.env.NODE_ENV='test';var chai=require('chai');var should=require('should');var middlewares=[_reduxThunk2['default']];var mockStore=(0,_reduxMockStore2['default'])(middlewares);chai.should();
 
+
+
+
+
 describe('authenticateGuest',function(done){
 it('should create an action for authenticateGuest with no name',function(done){
 var D2LConfig=_lodash2['default'].assign({},require('../../../d2lcredentials'),{
@@ -84,6 +88,22 @@ actions[0].type.should.be.eql(_authenticateGuest.RECEIVE_AUTHENTICATE_GUEST);
 actions[0].data.courses.should.be.a('array');
 actions[0].data.url.should.be.a('string');
 actions[0].data.d2lUser.should.be.a('object');
+done();
+});
+});
+
+it('should should dispatch event for failed guest login',function(done){
+var D2LConfig=_lodash2['default'].assign({},require('../../../d2lcredentials'),{
+role:'instructor',
+name:'fakeinstructor'});
+
+
+var store=mockStore({});
+store.dispatch((0,_authenticateGuest.authenticateGuest)(D2LConfig)).
+then(function(){
+var actions=store.getActions();
+actions.length.should.be.eql(1);
+actions[0].type.should.be.eql(_authenticateGuest.FAILED_AUTHENTICATE_GUEST);
 done();
 });
 });

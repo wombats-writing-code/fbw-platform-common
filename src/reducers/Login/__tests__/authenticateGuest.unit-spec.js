@@ -12,7 +12,11 @@ import nock from 'nock'
 
 chai.should();
 
-import { authenticateGuest, RECEIVE_AUTHENTICATE_GUEST } from '../authenticateGuest'
+import {
+  authenticateGuest,
+  RECEIVE_AUTHENTICATE_GUEST,
+  FAILED_AUTHENTICATE_GUEST
+} from '../authenticateGuest'
 
 describe('authenticateGuest', function(done) {
   it('should create an action for authenticateGuest with no name', done => {
@@ -84,6 +88,22 @@ describe('authenticateGuest', function(done) {
       actions[0].data.courses.should.be.a('array')
       actions[0].data.url.should.be.a('string')
       actions[0].data.d2lUser.should.be.a('object')
+      done();
+    })
+  });
+
+  it('should should dispatch event for failed guest login', done => {
+    let D2LConfig = _.assign({}, require('../../../d2lcredentials'), {
+      role: 'instructor',
+      name: 'fakeinstructor'
+    })
+
+    const store = mockStore({})
+    store.dispatch(authenticateGuest(D2LConfig))
+    .then( () => {
+      let actions = store.getActions()
+      actions.length.should.be.eql(1);
+      actions[0].type.should.be.eql(FAILED_AUTHENTICATE_GUEST);
       done();
     })
   });

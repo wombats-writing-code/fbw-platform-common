@@ -2,15 +2,21 @@ process.env.NODE_ENV = 'test'
 
 import _ from 'lodash'
 import thunk from 'redux-thunk'
-let should = require('should');
+
 import configureMockStore from 'redux-mock-store'
 const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
 const chai = require('chai')
+let should = require('should');
 const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
+chai.should();
 
-import { authenticateD2L, RECEIVE_AUTHENTICATE_D2L } from '../authenticateD2L'
+import {
+  authenticateD2L,
+  RECEIVE_AUTHENTICATE_D2L,
+  FAILED_AUTHENTICATE_D2L
+} from '../authenticateD2L'
 import {getD2LEnrollments} from '../_authenticateD2LHelper';
 
 describe('authenticateD2L and authenticateD2LHelper', function(done) {
@@ -46,6 +52,22 @@ describe('authenticateD2L and authenticateD2LHelper', function(done) {
       // console.log('courses', courses);
       courses[0].Code.should.be.a('string');
 
+      done();
+    })
+  });
+
+  it('should should dispatch event for failed D2L login', done => {
+    let D2LConfig = _.assign({}, require('../../../d2lcredentials'), {
+      role: 'instructor',
+      name: 'fakeinstructor'
+    })
+
+    const store = mockStore({})
+    store.dispatch(authenticateD2L(D2LConfig))
+    .then( () => {
+      let actions = store.getActions()
+      actions.length.should.be.eql(1);
+      actions[0].type.should.be.eql(FAILED_AUTHENTICATE_D2L);
       done();
     })
   });

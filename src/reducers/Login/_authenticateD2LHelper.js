@@ -50,18 +50,27 @@ export function getD2LEnrollments(credentials, url) {
         validateStatus: () => {return true}  // evaluate this later, in case of 403s
       }
 
+      if (process.env.NODE_ENV === 'test' && credentials.name) {
+        options.data = {
+          sNumber: credentials.name
+        }
+      }
+
       courseTermPromises.push(axios(options))
     });
 
     return axios.all(courseTermPromises)
     .then(res => {
+      if (_.find(res, (response) => { return response.status !== 200 })) {
+        throw new Error('Error getting instructor courses');
+      }
       let courses = _.uniqBy(_.flatten(_.map(res, 'data')), 'Code');
       return courses;
-    });
+    })
   })
   .catch((error) => {
     console.log('error getting d2l enrollments', error)
-    return error;
+    throw new Error('Error getting instructor courses');
   })
 }
 
@@ -98,7 +107,11 @@ export function whoami(credentials, url) {
 
 function _appendDevRole(credentials) {
   if (process.env.NODE_ENV !== 'production') {
-    return '&role=' + credentials.role
+    let role = `&role=${credentials.role}`
+    if (credentials.name) {
+      role = `${role}&name=${credentials.name}`
+    }
+    return role
   }
 
   return '';

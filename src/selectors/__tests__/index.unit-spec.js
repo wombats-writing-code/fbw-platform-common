@@ -4,7 +4,8 @@ let path = require('path')
 chai.should();
 
 import {getUser, getD2LToken,
-        getMapping, getResults
+        getMapping, getResults,
+        failedLogIn
 } from '../index'
 
 describe('selectors', () => {
@@ -28,7 +29,7 @@ describe('selectors', () => {
   // mapping
   // ======
   it('should get the mapping from state', () => {
-    const mockState =   {
+    let mockState =   {
       mapping: {
         outcomes: [],
         modules: [],
@@ -46,5 +47,28 @@ describe('selectors', () => {
   // result
   // ======
 
+
+  // =====
+  // failed log in
+  // =====
+  it('should return any log in errors from state', () => {
+    let mockState =   {
+      login: {
+        logInError: false
+      }
+    };
+
+    let result = failedLogIn(mockState);
+    result.should.eql(false);
+
+    mockState =   {
+      login: {
+        logInError: true
+      }
+    };
+
+    result = failedLogIn(mockState);
+    result.should.eql(true);
+  });
 
 })

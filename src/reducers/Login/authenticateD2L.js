@@ -11,12 +11,17 @@ import {getD2LEnrollments, whoami} from './_authenticateD2LHelper'
 import { getDomain } from '../../utilities'
 
 export const RECEIVE_AUTHENTICATE_D2L = 'RECEIVE_AUTHENTICATE_D2L'
+export const FAILED_AUTHENTICATE_D2L = 'FAILED_AUTHENTICATE_D2L'
 
 // ------------------------------------
 // Actions
 // ------------------------------------
 export function receiveAuthenticateUrl(data) {
   return { type: RECEIVE_AUTHENTICATE_D2L, data }
+}
+
+export function failedAuthenticateUrl() {
+  return { type: FAILED_AUTHENTICATE_D2L }
 }
 
 export function authenticateD2L(D2LConfig, optionalUrl) {
@@ -55,7 +60,8 @@ export function authenticateD2L(D2LConfig, optionalUrl) {
       return {url, courses, d2lUser}
     })
     .catch( err => {
-      console.error(err);
+      console.error('error', err);
+      dispatch(failedAuthenticateUrl());
     })
   }
 }

@@ -27,6 +27,12 @@ isLoggedIn:true});
 case _logOutUser.LOG_OUT:
 return _lodash2['default'].assign({},stampNullUser());
 
+case _authenticateD2L.FAILED_AUTHENTICATE_D2L:
+case _authenticateGuest.FAILED_AUTHENTICATE_GUEST:
+return _lodash2['default'].assign({},state,{
+isLoggedIn:false,
+logInError:true});
+
 
 default:
 return state;}
@@ -38,6 +44,7 @@ return{
 user:{},
 
 isLoggedIn:false,
+logInError:false,
 isLoginInProgress:false};
 
 }

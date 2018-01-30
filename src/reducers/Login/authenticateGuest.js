@@ -8,9 +8,14 @@ import { getDomain } from '../../utilities'
 
 
 export const RECEIVE_AUTHENTICATE_GUEST = 'RECEIVE_AUTHENTICATE_GUEST'
+export const FAILED_AUTHENTICATE_GUEST = 'FAILED_AUTHENTICATE_GUEST'
 
 function receiveAuthenticateGuest(data) {
   return {type: RECEIVE_AUTHENTICATE_GUEST, data}
+}
+
+function failedAuthenticateGuest() {
+  return {type: FAILED_AUTHENTICATE_GUEST}
 }
 
 export function getGuestAuthenticationUrl(D2LConfig) {
@@ -81,6 +86,7 @@ export function authenticateGuest(D2LConfig, name) {
     })
     .catch( err => {
       console.log(err);
+      dispatch(failedAuthenticateGuest())
     })
 
   }

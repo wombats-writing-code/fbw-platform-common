@@ -1,4 +1,5 @@
-Object.defineProperty(exports,"__esModule",{value:true});exports.RECEIVE_AUTHENTICATE_D2L=undefined;exports.
+Object.defineProperty(exports,"__esModule",{value:true});exports.FAILED_AUTHENTICATE_D2L=exports.RECEIVE_AUTHENTICATE_D2L=undefined;exports.
+
 
 
 
@@ -19,7 +20,11 @@ receiveAuthenticateUrl=receiveAuthenticateUrl;exports.
 
 
 
-authenticateD2L=authenticateD2L;var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);var _axios=require('axios');var _axios2=_interopRequireDefault(_axios);var _moment=require('moment');var _moment2=_interopRequireDefault(_moment);var _valence=require('valence');var _valence2=_interopRequireDefault(_valence);var _createUser=require('./createUser');var _authenticateD2LHelper=require('./_authenticateD2LHelper');var _utilities=require('../../utilities');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var Q=require('q');var RECEIVE_AUTHENTICATE_D2L=exports.RECEIVE_AUTHENTICATE_D2L='RECEIVE_AUTHENTICATE_D2L';function receiveAuthenticateUrl(data){return{type:RECEIVE_AUTHENTICATE_D2L,data:data};}function authenticateD2L(D2LConfig,optionalUrl){
+failedAuthenticateUrl=failedAuthenticateUrl;exports.
+
+
+
+authenticateD2L=authenticateD2L;var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);var _axios=require('axios');var _axios2=_interopRequireDefault(_axios);var _moment=require('moment');var _moment2=_interopRequireDefault(_moment);var _valence=require('valence');var _valence2=_interopRequireDefault(_valence);var _createUser=require('./createUser');var _authenticateD2LHelper=require('./_authenticateD2LHelper');var _utilities=require('../../utilities');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var Q=require('q');var RECEIVE_AUTHENTICATE_D2L=exports.RECEIVE_AUTHENTICATE_D2L='RECEIVE_AUTHENTICATE_D2L';var FAILED_AUTHENTICATE_D2L=exports.FAILED_AUTHENTICATE_D2L='FAILED_AUTHENTICATE_D2L';function receiveAuthenticateUrl(data){return{type:RECEIVE_AUTHENTICATE_D2L,data:data};}function failedAuthenticateUrl(){return{type:FAILED_AUTHENTICATE_D2L};}function authenticateD2L(D2LConfig,optionalUrl){
 
 return function(dispatch){
 
@@ -55,7 +60,8 @@ dispatch(receiveAuthenticateUrl({url:url,courses:courses,d2lUser:user}));
 return{url:url,courses:courses,d2lUser:d2lUser};
 })['catch'](
 function(err){
-console.error(err);
+console.error('error',err);
+dispatch(failedAuthenticateUrl());
 });
 };
 }

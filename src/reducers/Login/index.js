@@ -1,8 +1,8 @@
 // login reducer
 import _ from 'lodash'
 
-import {RECEIVE_AUTHENTICATE_D2L} from './authenticateD2L'
-import {RECEIVE_AUTHENTICATE_GUEST} from './authenticateGuest'
+import {RECEIVE_AUTHENTICATE_D2L, FAILED_AUTHENTICATE_D2L} from './authenticateD2L'
+import {RECEIVE_AUTHENTICATE_GUEST, FAILED_AUTHENTICATE_GUEST} from './authenticateGuest'
 
 import { LOG_OUT } from './logOutUser'
 
@@ -27,6 +27,12 @@ export default function loginReducer (state = initialState, action) {
     case LOG_OUT:
       return _.assign({}, stampNullUser())
 
+    case FAILED_AUTHENTICATE_D2L:
+    case FAILED_AUTHENTICATE_GUEST:
+      return _.assign({}, state, {
+        isLoggedIn: false,
+        logInError: true
+      })
 
     default:
       return state
@@ -38,6 +44,7 @@ function stampNullUser() {
     user: {
     },
     isLoggedIn: false,
+    logInError: false,
     isLoginInProgress: false,
   }
 }

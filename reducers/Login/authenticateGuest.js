@@ -1,4 +1,9 @@
-Object.defineProperty(exports,"__esModule",{value:true});exports.RECEIVE_AUTHENTICATE_GUEST=undefined;exports.
+Object.defineProperty(exports,"__esModule",{value:true});exports.FAILED_AUTHENTICATE_GUEST=exports.RECEIVE_AUTHENTICATE_GUEST=undefined;exports.
+
+
+
+
+
 
 
 
@@ -23,7 +28,7 @@ getGuestAuthenticationUrl=getGuestAuthenticationUrl;exports.
 
 
 
-authenticateGuest=authenticateGuest;var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);var _axios=require('axios');var _axios2=_interopRequireDefault(_axios);var _moment=require('moment');var _moment2=_interopRequireDefault(_moment);var _createUser=require('./createUser');var _utilities=require('../../utilities');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var Q=require('q');var RECEIVE_AUTHENTICATE_GUEST=exports.RECEIVE_AUTHENTICATE_GUEST='RECEIVE_AUTHENTICATE_GUEST';function receiveAuthenticateGuest(data){return{type:RECEIVE_AUTHENTICATE_GUEST,data:data};}function getGuestAuthenticationUrl(D2LConfig){if(!D2LConfig){throw new Error('D2LConfig object must be given to getGuestAuthenticationUrl');}var role=D2LConfig.role;return(0,_utilities.getDomain)()+'/mock-d2l/authenticate-guest?role='+role;}function authenticateGuest(D2LConfig,name){
+authenticateGuest=authenticateGuest;var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);var _axios=require('axios');var _axios2=_interopRequireDefault(_axios);var _moment=require('moment');var _moment2=_interopRequireDefault(_moment);var _createUser=require('./createUser');var _utilities=require('../../utilities');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var Q=require('q');var RECEIVE_AUTHENTICATE_GUEST=exports.RECEIVE_AUTHENTICATE_GUEST='RECEIVE_AUTHENTICATE_GUEST';var FAILED_AUTHENTICATE_GUEST=exports.FAILED_AUTHENTICATE_GUEST='FAILED_AUTHENTICATE_GUEST';function receiveAuthenticateGuest(data){return{type:RECEIVE_AUTHENTICATE_GUEST,data:data};}function failedAuthenticateGuest(){return{type:FAILED_AUTHENTICATE_GUEST};}function getGuestAuthenticationUrl(D2LConfig){if(!D2LConfig){throw new Error('D2LConfig object must be given to getGuestAuthenticationUrl');}var role=D2LConfig.role;return(0,_utilities.getDomain)()+'/mock-d2l/authenticate-guest?role='+role;}function authenticateGuest(D2LConfig,name){
 if(!D2LConfig){
 throw new Error('D2LConfig object must be given to getGuestAuthenticationUrl');
 }
@@ -81,6 +86,7 @@ return{url:url,courses:courses,d2lUser:d2lUser};
 })['catch'](
 function(err){
 console.log(err);
+dispatch(failedAuthenticateGuest());
 });
 
 };
