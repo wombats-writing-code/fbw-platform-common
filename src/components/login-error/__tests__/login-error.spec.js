@@ -43,7 +43,7 @@ describe('LoginError', () => {
     const loginError = connectedComponent.find(LoginError)
 
     loginError.find('.login-error').length.should.be.eql(1);
-    loginError.find('a').length.should.be.eql(1);
+    loginError.find('a').length.should.be.eql(3);
   });
 
   after( () => {
