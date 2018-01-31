@@ -3,9 +3,11 @@ import { connect, dispatch } from 'react-redux'
 import D2LCallback from './web/D2LCallback'
 
 import { authenticateD2L } from '../../reducers/Login/authenticateD2L'
+import { failedLogIn } from '../../selectors'
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    failedLogIn: failedLogIn(state)
   }
 }
 

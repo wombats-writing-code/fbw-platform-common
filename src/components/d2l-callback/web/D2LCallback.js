@@ -11,6 +11,12 @@ class D2LCallback extends Component {
 
   }
 
+  componentDidUpdate () {
+    if (this.props.failedLogIn) {
+      browserHistory.push('/login-error')
+    }
+  }
+
   render() {
     return (
       <div className="d2l-callback">

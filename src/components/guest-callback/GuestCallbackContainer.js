@@ -3,9 +3,11 @@ import { connect, dispatch } from 'react-redux'
 import GuestCallback from './web/GuestCallback'
 
 import {authenticateGuest } from '../../reducers/Login/authenticateGuest'
+import { failedLogIn } from '../../selectors'
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    failedLogIn: failedLogIn(state)
   }
 }
 

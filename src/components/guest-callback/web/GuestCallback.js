@@ -17,6 +17,12 @@ class GuestCallback extends Component {
     this.props.authenticateGuest(this.props.credentials, name);
   }
 
+  componentDidUpdate () {
+    if (this.props.failedLogIn) {
+      browserHistory.push('/login-error')
+    }
+  }
+
   render() {
     return (
       <div className="d2l-callback">

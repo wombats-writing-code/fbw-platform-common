@@ -9,12 +9,18 @@ D2LCallback=function(_Component){_inherits(D2LCallback,_Component);function D2LC
 
 this.props.authenticateD2L(this.props.credentials);
 
-}return componentDidMount;}()},{key:'render',value:function(){function render()
+}return componentDidMount;}()},{key:'componentDidUpdate',value:function(){function componentDidUpdate()
+
+{
+if(this.props.failedLogIn){
+_reactRouter.browserHistory.push('/login-error');
+}
+}return componentDidUpdate;}()},{key:'render',value:function(){function render()
 
 {
 return(
-_react2['default'].createElement('div',{className:'d2l-callback',__source:{fileName:_jsxFileName,lineNumber:16}},
-_react2['default'].createElement('p',{className:'text-center callback-text fade-in-out',__source:{fileName:_jsxFileName,lineNumber:17}},'Redirecting you to your dashboard...')));
+_react2['default'].createElement('div',{className:'d2l-callback',__source:{fileName:_jsxFileName,lineNumber:22}},
+_react2['default'].createElement('p',{className:'text-center callback-text fade-in-out',__source:{fileName:_jsxFileName,lineNumber:23}},'Redirecting you to your dashboard...')));
 
 
 }return render;}()}]);return D2LCallback;}(_react.Component);exports['default']=

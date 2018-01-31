@@ -15,12 +15,18 @@ name=_lodash2['default'].replace(name,'-',' ');
 
 
 this.props.authenticateGuest(this.props.credentials,name);
-}return componentDidMount;}()},{key:'render',value:function(){function render()
+}return componentDidMount;}()},{key:'componentDidUpdate',value:function(){function componentDidUpdate()
+
+{
+if(this.props.failedLogIn){
+_reactRouter.browserHistory.push('/login-error');
+}
+}return componentDidUpdate;}()},{key:'render',value:function(){function render()
 
 {
 return(
-_react2['default'].createElement('div',{className:'d2l-callback',__source:{fileName:_jsxFileName,lineNumber:22}},
-_react2['default'].createElement('p',{className:'text-center callback-text fade-in-out',__source:{fileName:_jsxFileName,lineNumber:23}},'Redirecting you to your dashboard...')));
+_react2['default'].createElement('div',{className:'d2l-callback',__source:{fileName:_jsxFileName,lineNumber:28}},
+_react2['default'].createElement('p',{className:'text-center callback-text fade-in-out',__source:{fileName:_jsxFileName,lineNumber:29}},'Redirecting you to your dashboard...')));
 
 
 }return render;}()}]);return GuestCallback;}(_react.Component);exports['default']=
