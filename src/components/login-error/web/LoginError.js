@@ -42,7 +42,7 @@ class LoginError extends Component {
           </div>
           <div className="row">
             <p>If you are having issues logging in and are a registered instructor,
-              please send an e-mail to
+              please send an e-mail to&nbsp;
               <a href="mailto:fbw-dev-team@mit.edu">
                 the Fly-by-Wire tech team
               </a>
