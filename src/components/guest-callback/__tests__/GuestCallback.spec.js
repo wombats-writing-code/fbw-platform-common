@@ -3,6 +3,7 @@ import {Provider} from 'react-redux'
 import configureStore from 'redux-mock-store'
 import thunk from 'redux-thunk';
 import {mount, shallow} from 'enzyme';
+import nock from 'nock';
 
 import GuestCallbackComponent from '../web/GuestCallback'
 import GuestCallbackContainer from '../GuestCallbackContainer'
@@ -29,6 +30,12 @@ describe('GuestCallback', () => {
   before(function() {
     const div = global.document.createElement('div');
     global.document.body.appendChild(div);
+
+    // Because guest logins will never get D2L enrollments, so
+    //   they will throw a D2L exception, so let's mock that.
+    nock('http://localhost:8888')
+    .get(`/mock-d2l/enrollments?role=instructor&name=foo`)
+    .reply(500, ['foo'])
 
     store = mockStore(STATE);
     connectedComponent = mount(

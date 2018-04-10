@@ -3,6 +3,7 @@ import React from 'react';
 import {Provider} from 'react-redux'
 import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store'
+
 import Modal from 'react-modal';
 import ReactDOM from 'react-dom';
 import { LiveAnnouncer } from 'react-aria-live';
@@ -13,6 +14,7 @@ import MissionContainer from '../MissionContainer'
 const Mission = MissionContainer(MissionComponent)
 //
 import {mount, shallow, ReactWrapper} from 'enzyme';
+import nock from 'nock';
 
 import '../../../styles/foundation.min.css'
 import '../../../styles/core.scss'
@@ -24,6 +26,13 @@ const STATE = require('./solution-state.mock.json')
 const COMPLETED_STATE = require('./completed-state.mock.json')
 const UNOPENED_STATE = require('./unopened-state.mock.json')
 const EMPTY_PHASE_II_STATE = require('./empty-phase-ii.mock.json')
+const USER = {
+  Identifier: '123',
+  token: 'xyz'
+}
+const COURSE = {
+  id: '1'
+}
 
 let chai = require('chai')
 chai.should()
@@ -36,6 +45,14 @@ describe('Mission', () => {
   let connectedComponent, store;
 
   before(function() {
+    nock('http://localhost:8888/l4')
+    .get(`/missions?courseId=${COURSE.id}`)
+    .reply(200, ['mission1', 'mission2']);
+
+    nock('http://localhost:8888/l4')
+    .get(`/results?missionId=${STATE.mission.currentMission.id}&userId=${USER.Identifier}&reconstruction=true`)
+    .reply(200, []);
+
     const div = global.document.createElement('div');
 
     global.document.body.appendChild(div);
@@ -44,7 +61,11 @@ describe('Mission', () => {
     connectedComponent = mount(
       <Provider store={store}>
         <LiveAnnouncer>
-          <Mission mission={STATE.mission.currentMission} />
+          <Mission
+            mission={STATE.mission.currentMission}
+            user={USER}
+            course={COURSE}
+          />
         </LiveAnnouncer>
       </Provider>,
       {attachTo: div}
@@ -83,6 +104,14 @@ describe('A completed Mission', () => {
   let connectedComponent, store;
 
   before(function() {
+    nock('http://localhost:8888/l4')
+    .get(`/missions?courseId=${COURSE.id}`)
+    .reply(200, ['mission1', 'mission2']);
+
+    nock('http://localhost:8888/l4')
+    .get(`/results?missionId=${COMPLETED_STATE.mission.currentMission.id}&userId=${USER.Identifier}&reconstruction=true`)
+    .reply(200, []);
+
     const div = global.document.createElement('div');
     global.document.body.appendChild(div);
 
@@ -90,7 +119,11 @@ describe('A completed Mission', () => {
     connectedComponent = mount(
       <Provider store={store}>
         <LiveAnnouncer>
-          <Mission mission={COMPLETED_STATE.mission.currentMission} />
+          <Mission
+            mission={COMPLETED_STATE.mission.currentMission}
+            user={USER}
+            course={COURSE}
+          />
         </LiveAnnouncer>
       </Provider>,
       {attachTo: div}
@@ -127,6 +160,14 @@ describe('An unopened Mission', () => {
   let connectedComponent, store;
 
   before(function() {
+    nock('http://localhost:8888/l4')
+    .get(`/missions?courseId=${COURSE.id}`)
+    .reply(200, ['mission1', 'mission2']);
+
+    nock('http://localhost:8888/l4')
+    .get(`/results?missionId=${UNOPENED_STATE.mission.currentMission.id}&userId=${USER.Identifier}&reconstruction=true`)
+    .reply(200, []);
+
     const div = global.document.createElement('div');
     global.document.body.appendChild(div);
 
@@ -134,7 +175,11 @@ describe('An unopened Mission', () => {
     connectedComponent = mount(
       <Provider store={store}>
         <LiveAnnouncer>
-          <Mission mission={UNOPENED_STATE.mission.currentMission} />
+          <Mission
+            mission={UNOPENED_STATE.mission.currentMission}
+            user={USER}
+            course={COURSE}
+          />
         </LiveAnnouncer>
       </Provider>,
       {attachTo: div}
@@ -156,12 +201,27 @@ describe('An unopened Mission', () => {
 });
 
 describe('An empty phase 2 Mission', () => {
+  afterEach(() => {
+    nock.cleanAll()
+  })
+
+  beforeEach(() => {
+    if (!nock.isActive()) nock.activate()
+  })
 
   const middlewares = [thunk]; // add your middlewares like `redux-thunk`
   let mockStore = configureStore(middlewares);
   let connectedComponent, store;
 
   before(function() {
+    nock('http://localhost:8888/l4')
+    .get(`/missions?courseId=${COURSE.id}`)
+    .reply(200, ['mission1', 'mission2']);
+
+    nock('http://localhost:8888/l4')
+    .get(`/results?missionId=${EMPTY_PHASE_II_STATE.mission.currentMission.id}&userId=${USER.Identifier}&reconstruction=true`)
+    .reply(200, []);
+
     const div = global.document.createElement('div');
     global.document.body.appendChild(div);
 
@@ -169,7 +229,11 @@ describe('An empty phase 2 Mission', () => {
     connectedComponent = mount(
       <Provider store={store}>
         <LiveAnnouncer>
-          <Mission mission={EMPTY_PHASE_II_STATE.mission.currentMission} />
+          <Mission
+            mission={EMPTY_PHASE_II_STATE.mission.currentMission}
+            user={USER}
+            course={COURSE}
+          />
         </LiveAnnouncer>
       </Provider>,
       {attachTo: div}

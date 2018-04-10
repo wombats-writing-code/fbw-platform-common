@@ -39,6 +39,9 @@ export function selectClosedMission (data) {
     .then((res) => {
       dispatch(receiveClosedMission(data.mission, res.data))
       return res.data;
+    })
+    .catch((err) => {
+      console.log('error', err);
     });
   }
 }

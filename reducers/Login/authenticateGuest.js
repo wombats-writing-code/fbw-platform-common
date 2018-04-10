@@ -50,7 +50,7 @@ courses=res.data;
 
 if(process.env.NODE_ENV!=='test')console.log("got enrollments",courses);
 
-console.log('authenticateGuest name',name);
+
 
 
 if(name){
@@ -85,7 +85,7 @@ dispatch(receiveAuthenticateGuest({url:url,courses:courses,d2lUser:user}));
 return{url:url,courses:courses,d2lUser:d2lUser};
 })['catch'](
 function(err){
-console.log(err);
+
 dispatch(failedAuthenticateGuest());
 });
 

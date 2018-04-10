@@ -3,6 +3,7 @@ var _jsxFileName='src/components/mission/__tests__/mission.spec.js';var _react=r
 var _reactRedux=require('react-redux');
 var _reduxThunk=require('redux-thunk');var _reduxThunk2=_interopRequireDefault(_reduxThunk);
 var _reduxMockStore=require('redux-mock-store');var _reduxMockStore2=_interopRequireDefault(_reduxMockStore);
+
 var _reactModal=require('react-modal');var _reactModal2=_interopRequireDefault(_reactModal);
 var _reactDom=require('react-dom');var _reactDom2=_interopRequireDefault(_reactDom);
 var _reactAriaLive=require('react-aria-live');
@@ -13,6 +14,7 @@ var _MissionContainer=require('../MissionContainer');var _MissionContainer2=_int
 
 
 var _enzyme=require('enzyme');
+var _nock=require('nock');var _nock2=_interopRequireDefault(_nock);
 
 require('../../../styles/foundation.min.css');
 require('../../../styles/core.scss');
@@ -24,6 +26,13 @@ var STATE=require('./solution-state.mock.json');
 var COMPLETED_STATE=require('./completed-state.mock.json');
 var UNOPENED_STATE=require('./unopened-state.mock.json');
 var EMPTY_PHASE_II_STATE=require('./empty-phase-ii.mock.json');
+var USER={
+Identifier:'123',
+token:'xyz'};
+
+var COURSE={
+id:'1'};
+
 
 var chai=require('chai');
 chai.should();
@@ -36,15 +45,27 @@ var mockStore=(0,_reduxMockStore2['default'])(middlewares);
 var connectedComponent=void 0,store=void 0;
 
 before(function(){
+(0,_nock2['default'])('http://localhost:8888/l4').
+get('/missions?courseId='+COURSE.id).
+reply(200,['mission1','mission2']);
+
+(0,_nock2['default'])('http://localhost:8888/l4').
+get('/results?missionId='+STATE.mission.currentMission.id+'&userId='+USER.Identifier+'&reconstruction=true').
+reply(200,[]);
+
 var div=global.document.createElement('div');
 
 global.document.body.appendChild(div);
 
 store=mockStore(STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:45}},
-_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:46}},
-_react2['default'].createElement(Mission,{mission:STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:47}}))),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:62}},
+_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:63}},
+_react2['default'].createElement(Mission,{
+mission:STATE.mission.currentMission,
+user:USER,
+course:COURSE,__source:{fileName:_jsxFileName,lineNumber:64}}))),
+
 
 
 {attachTo:div});
@@ -83,14 +104,26 @@ var mockStore=(0,_reduxMockStore2['default'])(middlewares);
 var connectedComponent=void 0,store=void 0;
 
 before(function(){
+(0,_nock2['default'])('http://localhost:8888/l4').
+get('/missions?courseId='+COURSE.id).
+reply(200,['mission1','mission2']);
+
+(0,_nock2['default'])('http://localhost:8888/l4').
+get('/results?missionId='+COMPLETED_STATE.mission.currentMission.id+'&userId='+USER.Identifier+'&reconstruction=true').
+reply(200,[]);
+
 var div=global.document.createElement('div');
 global.document.body.appendChild(div);
 
 store=mockStore(COMPLETED_STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:91}},
-_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:92}},
-_react2['default'].createElement(Mission,{mission:COMPLETED_STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:93}}))),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:120}},
+_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:121}},
+_react2['default'].createElement(Mission,{
+mission:COMPLETED_STATE.mission.currentMission,
+user:USER,
+course:COURSE,__source:{fileName:_jsxFileName,lineNumber:122}}))),
+
 
 
 {attachTo:div});
@@ -127,14 +160,26 @@ var mockStore=(0,_reduxMockStore2['default'])(middlewares);
 var connectedComponent=void 0,store=void 0;
 
 before(function(){
+(0,_nock2['default'])('http://localhost:8888/l4').
+get('/missions?courseId='+COURSE.id).
+reply(200,['mission1','mission2']);
+
+(0,_nock2['default'])('http://localhost:8888/l4').
+get('/results?missionId='+UNOPENED_STATE.mission.currentMission.id+'&userId='+USER.Identifier+'&reconstruction=true').
+reply(200,[]);
+
 var div=global.document.createElement('div');
 global.document.body.appendChild(div);
 
 store=mockStore(UNOPENED_STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:135}},
-_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:136}},
-_react2['default'].createElement(Mission,{mission:UNOPENED_STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:137}}))),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:176}},
+_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:177}},
+_react2['default'].createElement(Mission,{
+mission:UNOPENED_STATE.mission.currentMission,
+user:USER,
+course:COURSE,__source:{fileName:_jsxFileName,lineNumber:178}}))),
+
 
 
 {attachTo:div});
@@ -156,20 +201,39 @@ connectedComponent.detach();
 });
 
 describe('An empty phase 2 Mission',function(){
+afterEach(function(){
+_nock2['default'].cleanAll();
+});
+
+beforeEach(function(){
+if(!_nock2['default'].isActive())_nock2['default'].activate();
+});
 
 var middlewares=[_reduxThunk2['default']];
 var mockStore=(0,_reduxMockStore2['default'])(middlewares);
 var connectedComponent=void 0,store=void 0;
 
 before(function(){
+(0,_nock2['default'])('http://localhost:8888/l4').
+get('/missions?courseId='+COURSE.id).
+reply(200,['mission1','mission2']);
+
+(0,_nock2['default'])('http://localhost:8888/l4').
+get('/results?missionId='+EMPTY_PHASE_II_STATE.mission.currentMission.id+'&userId='+USER.Identifier+'&reconstruction=true').
+reply(200,[]);
+
 var div=global.document.createElement('div');
 global.document.body.appendChild(div);
 
 store=mockStore(EMPTY_PHASE_II_STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:170}},
-_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:171}},
-_react2['default'].createElement(Mission,{mission:EMPTY_PHASE_II_STATE.mission.currentMission,__source:{fileName:_jsxFileName,lineNumber:172}}))),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:230}},
+_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:231}},
+_react2['default'].createElement(Mission,{
+mission:EMPTY_PHASE_II_STATE.mission.currentMission,
+user:USER,
+course:COURSE,__source:{fileName:_jsxFileName,lineNumber:232}}))),
+
 
 
 {attachTo:div});

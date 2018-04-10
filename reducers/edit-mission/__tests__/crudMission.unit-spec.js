@@ -6,7 +6,13 @@ var _reduxMockStore=require('redux-mock-store');var _reduxMockStore2=_interopReq
 
 
 
+
+
 var _nock=require('nock');var _nock2=_interopRequireDefault(_nock);
+
+
+
+var _reactRouter=require('react-router');var router=_interopRequireWildcard(_reactRouter);
 
 
 var _createMission=require('../createMission');
@@ -18,12 +24,13 @@ var _updateMission=require('../updateMission');
 
 
 var _deleteMission=require('../deleteMission');
-var _Mission=require('../../Mission');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var middlewares=[_reduxThunk2['default']];var mockStore=(0,_reduxMockStore2['default'])(middlewares);var should=require('should');
+var _Mission=require('../../Mission');function _interopRequireWildcard(obj){if(obj&&obj.__esModule){return obj;}else{var newObj={};if(obj!=null){for(var key in obj){if(Object.prototype.hasOwnProperty.call(obj,key))newObj[key]=obj[key];}}newObj['default']=obj;return newObj;}}function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var middlewares=[_reduxThunk2['default']];var mockStore=(0,_reduxMockStore2['default'])(middlewares);var should=require('should');router.browserHistory={push:function(){function push(){}return push;}()};
 
 
 
 var user={
-Identifier:1145644};
+Identifier:1145644,
+token:'123'};
 
 
 describe('createMission, deleteMission actions',function(){

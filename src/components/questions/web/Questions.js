@@ -20,7 +20,7 @@ class Questions extends Component {
   constructor(props) {
     super(props);
 
-    console.log('near bottom', this._nearBottom());
+    // console.log('near bottom', this._nearBottom());
     if (this._nearBottom()) {
       this.state = {
         showMoreQuestions: false

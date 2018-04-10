@@ -5,6 +5,7 @@ var _reduxMockStore=require('redux-mock-store');var _reduxMockStore2=_interopReq
 var _reactAriaLive=require('react-aria-live');
 
 var _d2lcredentials=require('../../../d2lcredentials');var _d2lcredentials2=_interopRequireDefault(_d2lcredentials);
+
 var _Login=require('../web/Login');var _Login2=_interopRequireDefault(_Login);
 var _LoginContainer=require('../LoginContainer');var _LoginContainer2=_interopRequireDefault(_LoginContainer);
 
@@ -13,7 +14,7 @@ var _enzyme=require('enzyme');
 
 require('../../../styles/foundation.min.css');
 require('../../../styles/core.scss');
-require('../../../styles/animations.scss');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var Login=(0,_LoginContainer2['default'])(_Login2['default'],_d2lcredentials2['default']);
+require('../../../styles/animations.scss');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}_d2lcredentials2['default'].role='student';var Login=(0,_LoginContainer2['default'])(_Login2['default'],_d2lcredentials2['default']);
 
 var STATE=require('./state.mock.json');
 
@@ -31,9 +32,9 @@ global.document.body.appendChild(div);
 
 store=mockStore(STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:34}},
-_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:35}},
-_react2['default'].createElement(Login,{__source:{fileName:_jsxFileName,lineNumber:36}}))),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:35}},
+_react2['default'].createElement(_reactAriaLive.LiveAnnouncer,{__source:{fileName:_jsxFileName,lineNumber:36}},
+_react2['default'].createElement(Login,{__source:{fileName:_jsxFileName,lineNumber:37}}))),
 
 
 {attachTo:div});

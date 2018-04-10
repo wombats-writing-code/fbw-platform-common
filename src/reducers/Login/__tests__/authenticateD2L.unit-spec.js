@@ -4,6 +4,7 @@ import _ from 'lodash'
 import thunk from 'redux-thunk'
 
 import configureMockStore from 'redux-mock-store'
+import nock from 'nock'
 const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
 const chai = require('chai')
@@ -25,6 +26,28 @@ describe('authenticateD2L and authenticateD2LHelper', function(done) {
       role: 'instructor'
     })
 
+    nock('http://localhost:8888')
+    .get(`/mock-d2l/d2l/api/lp/1.14/enrollments/myenrollments/`)
+    .query(true)
+    .reply(200, ['foo'])
+
+    nock('http://localhost:8888')
+    .get(`/mock-d2l/d2l/api/lp/1.5/users/whoami`)
+    .query(true)
+    .reply(200, {
+      "Identifier": "1145644"
+    })
+
+    nock('http://localhost:8888')
+    .post('/l4/users', {
+      'user': {
+        'Identifier': '1145644'
+      }
+    })
+    .reply(200, {
+      "Identifier": "1145644"
+    })
+
     const store = mockStore({})
 
     store.dispatch(authenticateD2L(D2LConfig))
@@ -41,9 +64,32 @@ describe('authenticateD2L and authenticateD2LHelper', function(done) {
   })
 
   it('should get instructor enrollments given instructor credentials', done => {
-    chai.request('http://localhost:8888')
-    .get('/mock-d2l/d2l/api/le/1.5/1724986/classlist/?x_t=1487894481&x_a=YDpql2AVTvFS26MznAudKw&x_c=Rvx97jTtSP6y0qucZ1mwN-uE0k7-Yo_nL5I6zhypJNU&x_b=&x_d=rq9_jTKmkx3_DtBmPlWFLdkxLeXdjlAXb9VFieHh7FE&role=instructor')
+    nock('http://localhost:8888')
+    .get(`/mock-d2l/d2l/api/lp/1.14/enrollments/myenrollments/`)
+    .query(true)
+    .reply(200, {
+      PagingInfo: {},
+      Items: [{
+        Access: {
+          IsActive: true,
+          CanAccess: true
+        },
+        OrgUnit: {
+          Id: 123,
+          Type: {
+            Code: 'Course Offering'
+          },
+          Name: 'fbw sp18 test'
+        }
+      }]
+    })
 
+    nock('http://localhost:8888')
+    .get(`/mock-d2l/d2l/api/lp/1.5/courses/123`)
+    .query(true)
+    .reply(200, [{
+      Code: 'Course Offering'
+    }])
     let credentials = require('../../../d2lcredentials')
     credentials.role = 'instructor';
 
@@ -56,11 +102,16 @@ describe('authenticateD2L and authenticateD2LHelper', function(done) {
     })
   });
 
-  it('should should dispatch event for failed D2L login', done => {
+  it('should dispatch event for failed D2L login', done => {
     let D2LConfig = _.assign({}, require('../../../d2lcredentials'), {
       role: 'instructor',
       name: 'fakeinstructor'
     })
+
+    nock('http://localhost:8888')
+    .get(`/mock-d2l/d2l/api/lp/1.14/enrollments/myenrollments/`)
+    .query(true)
+    .reply(500)
 
     const store = mockStore({})
     store.dispatch(authenticateD2L(D2LConfig))

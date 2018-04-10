@@ -3,6 +3,7 @@ var _reactRedux=require('react-redux');
 var _reduxMockStore=require('redux-mock-store');var _reduxMockStore2=_interopRequireDefault(_reduxMockStore);
 var _reduxThunk=require('redux-thunk');var _reduxThunk2=_interopRequireDefault(_reduxThunk);
 var _enzyme=require('enzyme');
+var _nock=require('nock');var _nock2=_interopRequireDefault(_nock);
 
 var _GuestCallback=require('../web/GuestCallback');var _GuestCallback2=_interopRequireDefault(_GuestCallback);
 var _GuestCallbackContainer=require('../GuestCallbackContainer');var _GuestCallbackContainer2=_interopRequireDefault(_GuestCallbackContainer);
@@ -30,10 +31,16 @@ before(function(){
 var div=global.document.createElement('div');
 global.document.body.appendChild(div);
 
+
+
+(0,_nock2['default'])('http://localhost:8888').
+get('/mock-d2l/enrollments?role=instructor&name=foo').
+reply(500,['foo']);
+
 store=mockStore(STATE);
 connectedComponent=(0,_enzyme.mount)(
-_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:35}},
-_react2['default'].createElement(GuestCallback,{location:{query:{name:'foo'}},__source:{fileName:_jsxFileName,lineNumber:36}})),
+_react2['default'].createElement(_reactRedux.Provider,{store:store,__source:{fileName:_jsxFileName,lineNumber:42}},
+_react2['default'].createElement(GuestCallback,{location:{query:{name:'foo'}},__source:{fileName:_jsxFileName,lineNumber:43}})),
 
 {attachTo:div});
 

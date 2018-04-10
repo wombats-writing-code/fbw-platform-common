@@ -24,7 +24,7 @@ var D2LConfig=_lodash2['default'].assign({},require('../../../d2lcredentials'),{
 role:'student'});
 
 
-console.log(D2LConfig);
+
 
 var store=mockStore({});
 
@@ -46,7 +46,7 @@ reply(200,{name:'superman'});
 store.dispatch((0,_authenticateGuest.authenticateGuest)(D2LConfig)).
 then(function(){
 var actions=store.getActions();
-console.log(actions);
+
 actions.length.should.be.eql(1);
 actions[0].type.should.be.eql(_authenticateGuest.RECEIVE_AUTHENTICATE_GUEST);
 
@@ -92,14 +92,18 @@ done();
 });
 });
 
-it('should should dispatch event for failed guest login',function(done){
+it('should dispatch event for failed guest login',function(done){
 var D2LConfig=_lodash2['default'].assign({},require('../../../d2lcredentials'),{
 role:'instructor',
 name:'fakeinstructor'});
 
 
+(0,_nock2['default'])('http://localhost:8888').
+get('/mock-d2l/enrollments?role=instructor&name=fakeinstructor').
+reply(500,['foo']);
+
 var store=mockStore({});
-store.dispatch((0,_authenticateGuest.authenticateGuest)(D2LConfig)).
+store.dispatch((0,_authenticateGuest.authenticateGuest)(D2LConfig,'fakeinstructor')).
 then(function(){
 var actions=store.getActions();
 actions.length.should.be.eql(1);

@@ -24,7 +24,7 @@ describe('authenticateGuest', function(done) {
       role: 'student'
     })
 
-    console.log(D2LConfig);
+    // console.log(D2LConfig);
 
     const store = mockStore({})
 
@@ -46,7 +46,7 @@ describe('authenticateGuest', function(done) {
     store.dispatch(authenticateGuest(D2LConfig))
     .then( () => {
       let actions = store.getActions()
-      console.log(actions)
+      // console.log(actions)
       actions.length.should.be.eql(1);
       actions[0].type.should.be.eql(RECEIVE_AUTHENTICATE_GUEST);
       // console.log('actions', actions)
@@ -92,14 +92,18 @@ describe('authenticateGuest', function(done) {
     })
   });
 
-  it('should should dispatch event for failed guest login', done => {
+  it('should dispatch event for failed guest login', done => {
     let D2LConfig = _.assign({}, require('../../../d2lcredentials'), {
       role: 'instructor',
       name: 'fakeinstructor'
     })
 
+    nock('http://localhost:8888')
+    .get(`/mock-d2l/enrollments?role=instructor&name=fakeinstructor`)
+    .reply(500, ['foo'])
+
     const store = mockStore({})
-    store.dispatch(authenticateGuest(D2LConfig))
+    store.dispatch(authenticateGuest(D2LConfig, 'fakeinstructor'))
     .then( () => {
       let actions = store.getActions()
       actions.length.should.be.eql(1);
