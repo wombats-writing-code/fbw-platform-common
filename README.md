@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/wombats-writing-code/fbw-platform-common.svg?branch=master)](https://travis-ci.org/wombats-writing-code/fbw-platform-common)
+
 
 # Fly-by-Wire components common to Instructor and Students (web + mobile)
 
