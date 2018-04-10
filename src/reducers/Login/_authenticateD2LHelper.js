@@ -69,7 +69,7 @@ export function getD2LEnrollments(credentials, url) {
     })
   })
   .catch((error) => {
-    console.log('error getting d2l enrollments', error)
+    // console.log('error getting d2l enrollments', error)
     throw new Error('Error getting instructor courses');
   })
 }

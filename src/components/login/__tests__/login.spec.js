@@ -5,6 +5,7 @@ import configureStore from 'redux-mock-store'
 import { LiveAnnouncer } from 'react-aria-live'
 
 import credentials from '../../../d2lcredentials'
+credentials.role = 'student'
 import LoginComponent from '../web/Login';
 import LoginContainer from '../LoginContainer'
 const Login = LoginContainer(LoginComponent, credentials)

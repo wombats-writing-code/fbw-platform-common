@@ -47,7 +47,7 @@ results:null});
 
 
 case _deleteMission.RECEIVE_DELETE_MISSION:
-console.log('update resultsByMission',action.mission.id);
+
 
 return _lodash2['default'].assign({},state,{
 resultsByMission:_lodash2['default'].assign({},state.resultsByMission,_defineProperty({},

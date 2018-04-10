@@ -50,7 +50,7 @@ export function authenticateGuest(D2LConfig, name) {
 
       if (process.env.NODE_ENV !== 'test') console.log("got enrollments", courses);
 
-      console.log('authenticateGuest name', name)
+      // console.log('authenticateGuest name', name)
 
       // if the name was provided, get the user associated with the name
       if (name) {
@@ -85,7 +85,7 @@ export function authenticateGuest(D2LConfig, name) {
       return {url, courses, d2lUser}
     })
     .catch( err => {
-      console.log(err);
+      // console.log(err);
       dispatch(failedAuthenticateGuest())
     })
 

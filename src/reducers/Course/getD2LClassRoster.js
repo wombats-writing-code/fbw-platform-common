@@ -49,7 +49,7 @@ export function getD2LClassRoster(data) {
         return _.assign({}, _.find(users, {Identifier: person.Identifier}))
       }), 'id')
 
-      console.log('rosterWithIds', rosterWithIds)
+      // console.log('rosterWithIds', rosterWithIds)
 
       dispatch(receiveD2LClassRoster(rosterWithIds));
       return rosterWithIds;

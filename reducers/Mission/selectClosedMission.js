@@ -39,6 +39,9 @@ headers:{
 then(function(res){
 dispatch(receiveClosedMission(data.mission,res.data));
 return res.data;
+})['catch'](
+function(err){
+console.log('error',err);
 });
 };
 }

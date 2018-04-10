@@ -4,6 +4,7 @@ var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);
 var _reduxThunk=require('redux-thunk');var _reduxThunk2=_interopRequireDefault(_reduxThunk);
 
 var _reduxMockStore=require('redux-mock-store');var _reduxMockStore2=_interopRequireDefault(_reduxMockStore);
+var _nock=require('nock');var _nock2=_interopRequireDefault(_nock);
 
 
 
@@ -25,6 +26,28 @@ var D2LConfig=_lodash2['default'].assign({},require('../../../d2lcredentials'),{
 role:'instructor'});
 
 
+(0,_nock2['default'])('http://localhost:8888').
+get('/mock-d2l/d2l/api/lp/1.14/enrollments/myenrollments/').
+query(true).
+reply(200,['foo']);
+
+(0,_nock2['default'])('http://localhost:8888').
+get('/mock-d2l/d2l/api/lp/1.5/users/whoami').
+query(true).
+reply(200,{
+"Identifier":"1145644"});
+
+
+(0,_nock2['default'])('http://localhost:8888').
+post('/l4/users',{
+'user':{
+'Identifier':'1145644'}}).
+
+
+reply(200,{
+"Identifier":"1145644"});
+
+
 var store=mockStore({});
 
 store.dispatch((0,_authenticateD2L.authenticateD2L)(D2LConfig)).
@@ -41,8 +64,31 @@ done();
 });
 
 it('should get instructor enrollments given instructor credentials',function(done){
-chai.request('http://localhost:8888').
-get('/mock-d2l/d2l/api/le/1.5/1724986/classlist/?x_t=1487894481&x_a=YDpql2AVTvFS26MznAudKw&x_c=Rvx97jTtSP6y0qucZ1mwN-uE0k7-Yo_nL5I6zhypJNU&x_b=&x_d=rq9_jTKmkx3_DtBmPlWFLdkxLeXdjlAXb9VFieHh7FE&role=instructor');
+(0,_nock2['default'])('http://localhost:8888').
+get('/mock-d2l/d2l/api/lp/1.14/enrollments/myenrollments/').
+query(true).
+reply(200,{
+PagingInfo:{},
+Items:[{
+Access:{
+IsActive:true,
+CanAccess:true},
+
+OrgUnit:{
+Id:123,
+Type:{
+Code:'Course Offering'},
+
+Name:'fbw sp18 test'}}]});
+
+
+
+
+(0,_nock2['default'])('http://localhost:8888').
+get('/mock-d2l/d2l/api/lp/1.5/courses/123').
+query(true).
+reply(200,[{
+Code:'Course Offering'}]);
 
 var credentials=require('../../../d2lcredentials');
 credentials.role='instructor';
@@ -56,11 +102,16 @@ done();
 });
 });
 
-it('should should dispatch event for failed D2L login',function(done){
+it('should dispatch event for failed D2L login',function(done){
 var D2LConfig=_lodash2['default'].assign({},require('../../../d2lcredentials'),{
 role:'instructor',
 name:'fakeinstructor'});
 
+
+(0,_nock2['default'])('http://localhost:8888').
+get('/mock-d2l/d2l/api/lp/1.14/enrollments/myenrollments/').
+query(true).
+reply(500);
 
 var store=mockStore({});
 store.dispatch((0,_authenticateD2L.authenticateD2L)(D2LConfig)).

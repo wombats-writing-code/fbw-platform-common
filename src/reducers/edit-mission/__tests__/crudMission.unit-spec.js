@@ -3,11 +3,17 @@ import moment from 'moment'
 import Q from 'q'
 import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store'
+
 const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
+
 const should = require('should');
 import nock from 'nock'
 
+// To mock browserHistory:
+//   https://stackoverflow.com/a/41066328
+import * as router from 'react-router'
+router.browserHistory = { push: () => {} }
 
 import {
   createMission, CREATE_MISSION_OPTIMISTIC, RECEIVE_CREATE_MISSION,
@@ -23,7 +29,8 @@ import {missionConfig} from '../../Mission'
 
 
 let user = {
-  Identifier: 1145644
+  Identifier: 1145644,
+  token: '123'
 }
 
 describe('createMission, deleteMission actions', () => {
