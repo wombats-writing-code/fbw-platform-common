@@ -85,8 +85,7 @@ onClick:function(){function onClick(){return _this.props.onSelectTarget(target);
 _react2['default'].createElement('button',{className:'carousel-thumb__button',ref:function(){function ref(btn){return _this.buttonRefs.push(btn);}return ref;}(),
 'aria-label':'Goal Question '+targetNumber+'; '+statusText,__source:{fileName:_jsxFileName,lineNumber:85}},
 _react2['default'].createElement('div',{className:'flex-container align-center',__source:{fileName:_jsxFileName,lineNumber:87}},
-image,
-_react2['default'].createElement('p',{className:'carousel-thumb__text carousel-thumb__text--target',__source:{fileName:_jsxFileName,lineNumber:89}},'#',target.referenceNumber))));
+image)));
 
 
 
@@ -102,14 +101,14 @@ return thumb;
 if(!this.props.targets||
 this.props.targets&&this.props.targets.length===0){
 return(
-_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:105}}));
+_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:104}}));
 
 }
 
 this.buttonRefs=[];
 return(
-_react2['default'].createElement('div',{id:'target-carousel',className:'carousel-container flex-container align-top',__source:{fileName:_jsxFileName,lineNumber:111}},
-_react2['default'].createElement('ul',{className:'carousel flex-container align-center',__source:{fileName:_jsxFileName,lineNumber:112}},
+_react2['default'].createElement('div',{id:'target-carousel',className:'carousel-container flex-container align-top',__source:{fileName:_jsxFileName,lineNumber:110}},
+_react2['default'].createElement('ul',{className:'carousel flex-container align-center',__source:{fileName:_jsxFileName,lineNumber:111}},
 _.map(this.props.targets,this._renderTarget))));
 
 

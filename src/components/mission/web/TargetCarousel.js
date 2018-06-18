@@ -86,7 +86,6 @@ class TargetCarousel extends Component {
           aria-label={`Goal Question ${targetNumber}; ${statusText}`}>
           <div className="flex-container align-center">
             {image}
-            <p className="carousel-thumb__text carousel-thumb__text--target">#{target.referenceNumber}</p>
           </div>
         </button>
       </li>
