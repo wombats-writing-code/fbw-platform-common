@@ -126,15 +126,15 @@ _react2['default'].createElement(_reactModal2['default'],{
 onAfterOpen:this.onOpenModal,
 onBeforeClose:this.onClickReturnToDirectiveCarousel,
 isOpen:!this.state.closeModal,
-contentLabel:'Completed Mission Summary',__source:{fileName:_jsxFileName,lineNumber:125}},
+contentLabel:'Completed Attempt Summary',__source:{fileName:_jsxFileName,lineNumber:125}},
 
 _react2['default'].createElement('div',{
-'aria-label':'You\'ve answered all the goal questions for this mission. You correctly answered '+summaryString+' goal questions. Feel free to return to the mission and review your questions.',
+'aria-label':'You\'ve answered all the goal questions for this attempt. You correctly answered '+summaryString+' goal questions. Feel free to return to the mission and review your questions.',
 ref:function(){function ref(modal){_this3.modal=modal;}return ref;}(),
 tabIndex:-1,__source:{fileName:_jsxFileName,lineNumber:131}},
-_react2['default'].createElement('h3',{__source:{fileName:_jsxFileName,lineNumber:135}},'Mission complete!'),
+_react2['default'].createElement('h3',{__source:{fileName:_jsxFileName,lineNumber:135}},'Attempt complete!'),
 _react2['default'].createElement('div',{className:'modal-contents',__source:{fileName:_jsxFileName,lineNumber:136}},
-_react2['default'].createElement('p',{__source:{fileName:_jsxFileName,lineNumber:137}},'Congratulations, you\'ve answered all the goal questions for this mission.'),
+_react2['default'].createElement('p',{__source:{fileName:_jsxFileName,lineNumber:137}},'Congratulations, you\'ve answered all the goal questions for this attempt.'),
 
 
 _react2['default'].createElement('p',{__source:{fileName:_jsxFileName,lineNumber:140}},'You correctly answered ',
@@ -165,8 +165,8 @@ var missionState=(0,_time.checkMissionStatus)(this.props.mission);
 if(this.props.mission.goals.length===0&&this.props.mission.type===_Mission.missionConfig.PHASE_II_MISSION_TYPE){
 content=
 _react2['default'].createElement('div',{className:'mission-done-message',__source:{fileName:_jsxFileName,lineNumber:167}},
-_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:168}},'Congratulations! You aced the Phase I mission, so you have no Phase II questions.'),
-_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:169}},'We encourage you to review your Phase I mission before your exam.'));
+_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:168}},'Congratulations! You aced the goals on the first attempt, so you have no second attempt questions.'),
+_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:169}},'We encourage you to review your first attempt before your exam.'));
 
 
 renderContent=false;
