@@ -126,16 +126,16 @@ class Mission extends Component {
         onAfterOpen={this.onOpenModal}
         onBeforeClose={this.onClickReturnToDirectiveCarousel}
         isOpen={!this.state.closeModal}
-        contentLabel="Completed Mission Summary"
+        contentLabel="Completed Attempt Summary"
       >
         <div
-          aria-label={`You've answered all the goal questions for this mission. You correctly answered ${summaryString} goal questions. Feel free to return to the mission and review your questions.`}
+          aria-label={`You've answered all the goal questions for this attempt. You correctly answered ${summaryString} goal questions. Feel free to return to the mission and review your questions.`}
           ref={(modal) => {this.modal = modal;}}
           tabIndex={-1}>
-          <h3>Mission complete!</h3>
+          <h3>Attempt complete!</h3>
           <div className="modal-contents">
             <p>
-              Congratulations, you've answered all the goal questions for this mission.
+              Congratulations, you've answered all the goal questions for this attempt.
             </p>
             <p>
               You correctly answered {summaryString} goal questions.
@@ -165,8 +165,8 @@ class Mission extends Component {
       if (this.props.mission.goals.length === 0 && this.props.mission.type === missionConfig.PHASE_II_MISSION_TYPE) {
         content = (
           <div className="mission-done-message">
-            <div>Congratulations! You aced the Phase I mission, so you have no Phase II questions.</div>
-            <div>We encourage you to review your Phase I mission before your exam.</div>
+            <div>Congratulations! You aced the goals on the first attempt, so you have no second attempt questions.</div>
+            <div>We encourage you to review your first attempt before your exam.</div>
           </div>
         );
         renderContent = false;
