@@ -124,3 +124,40 @@ done();
 });
 
 });
+
+describe('_isFbWTerm',function(){
+it('should return true for valid terms',function(){
+var validNames=['fake sp18',
+'fake fa18',
+'fake sp19',
+'fake fa19',
+'fake sp20'];
+_lodash2['default'].each(validNames,function(name){
+var result=(0,_authenticateD2LHelper._isFbWTerm)(name);
+result.should.eql(true);
+});
+});
+
+it('should return false for past terms',function(){
+var result=(0,_authenticateD2LHelper._isFbWTerm)('fake fa17');
+result.should.be.eql(false);
+});
+});
+
+describe('_isValidClass',function(){
+it('should return true for valid class names',function(){
+var validNames=['mat121',
+'acc121202'];
+_lodash2['default'].each(validNames,function(name){
+var result=(0,_authenticateD2LHelper._isValidClass)(name);
+result.should.eql(true);
+});
+});
+
+it('should return false for other classes',function(){
+var result=(0,_authenticateD2LHelper._isValidClass)('acc121201');
+result.should.be.eql(false);
+result=(0,_authenticateD2LHelper._isValidClass)('mat122');
+result.should.be.eql(false);
+});
+});

@@ -18,7 +18,7 @@ import {
   RECEIVE_AUTHENTICATE_D2L,
   FAILED_AUTHENTICATE_D2L
 } from '../authenticateD2L'
-import {getD2LEnrollments} from '../_authenticateD2LHelper';
+import {getD2LEnrollments, _isFbWTerm, _isValidClass} from '../_authenticateD2LHelper';
 
 describe('authenticateD2L and authenticateD2LHelper', function(done) {
   it('should create an action for authenticateD2L', done => {
@@ -123,4 +123,41 @@ describe('authenticateD2L and authenticateD2LHelper', function(done) {
     })
   });
 
-})
+});
+
+describe('_isFbWTerm', () => {
+  it('should return true for valid terms', () => {
+    const validNames = ['fake sp18',
+                        'fake fa18',
+                        'fake sp19',
+                        'fake fa19',
+                        'fake sp20'];
+    _.each(validNames, (name) => {
+      const result = _isFbWTerm(name);
+      result.should.eql(true);
+    });
+  });
+
+  it('should return false for past terms', () => {
+    const result = _isFbWTerm('fake fa17');
+    result.should.be.eql(false);
+  });
+});
+
+describe('_isValidClass', () => {
+  it('should return true for valid class names', () => {
+    const validNames = ['mat121',
+                        'acc121202'];
+    _.each(validNames, (name) => {
+      const result = _isValidClass(name);
+      result.should.eql(true);
+    });
+  });
+
+  it('should return false for other classes', () => {
+    let result = _isValidClass('acc121201');
+    result.should.be.eql(false);
+    result = _isValidClass('mat122');
+    result.should.be.eql(false);
+  });
+});

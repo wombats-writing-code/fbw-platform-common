@@ -120,7 +120,10 @@ function _appendDevRole(credentials) {
 export function isCurrentFbW(name) {
   let lowercased = name.toLowerCase()
   return lowercased.indexOf('fly-by-wire') >= 0 || lowercased.indexOf('fbw') >= 0 ||
-        lowercased.indexOf('sp18') > -1 && _isValidClass(lowercased);
+        _isFbWTerm(lowercased) && _isValidClass(lowercased);
+
+        // old code for spring 2018
+        // lowercased.indexOf('sp18') > -1 && _isValidClass(lowercased);
 
         // old code for fall 2017
         // lowercased.indexOf('fa17') > -1 && _isValidClass(lowercased);
@@ -130,10 +133,18 @@ export function isCurrentFbW(name) {
           // (isMAT121(lowercased) || isACC(lowercased)))
 }
 
-function _isValidClass(name) {
+export function _isValidClass(name) {
   return name.indexOf('mat121') > -1 || name.indexOf('acc121202') > -1;
 }
 
+export function _isFbWTerm(name) {
+  // to reduce future required code updates, we'll put in
+  //    a filter here for spring 2018 through spring 2020.
+  // This means that the faculty will see an accumulating
+  //    list of FbW sections.
+  const fbwTerms = ['sp18', 'fa18', 'sp19', 'fa19', 'sp20'];
+  return _.some(fbwTerms, term => (name.indexOf(term) > -1));
+}
 
 // function isMAT121(name) {
 //   return name.indexOf('mat') >= 0 &&
