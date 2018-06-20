@@ -138,7 +138,9 @@ class Mission extends Component {
               Congratulations, you've answered all the goal questions for this attempt.
             </p>
             <p>
-              You correctly answered {summaryString} goal questions.
+              You correctly answered {summaryString} goal questions. Please re-visit
+              this application and try again after your instructor launches
+              the second attempt.
             </p>
             <p>
               Feel free to close this dialog window and review the questions,
