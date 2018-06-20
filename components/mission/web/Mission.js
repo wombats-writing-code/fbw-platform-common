@@ -138,9 +138,11 @@ _react2['default'].createElement('p',{__source:{fileName:_jsxFileName,lineNumber
 
 
 _react2['default'].createElement('p',{__source:{fileName:_jsxFileName,lineNumber:140}},'You correctly answered ',
-summaryString,' goal questions.'),
+summaryString,' goal questions. Please re-visit this application and try again after your instructor launches the second attempt.'),
 
-_react2['default'].createElement('p',{__source:{fileName:_jsxFileName,lineNumber:143}},'Feel free to close this dialog window and review the questions, or quit the Fly-by-Wire application.')),
+
+
+_react2['default'].createElement('p',{__source:{fileName:_jsxFileName,lineNumber:145}},'Feel free to close this dialog window and review the questions, or quit the Fly-by-Wire application.')),
 
 
 
@@ -148,13 +150,13 @@ _react2['default'].createElement('p',{__source:{fileName:_jsxFileName,lineNumber
 _react2['default'].createElement('button',{
 'aria-label':'Return to mission',
 className:'close-modal-button',
-onClick:this.onCloseModal,__source:{fileName:_jsxFileName,lineNumber:148}},'Return to Mission')));
+onClick:this.onCloseModal,__source:{fileName:_jsxFileName,lineNumber:150}},'Return to Mission')));
 
 
 
 
 if(this.props.isGetMissionInProgress){
-content=_react2['default'].createElement(_reactSpinner2['default'],{__source:{fileName:_jsxFileName,lineNumber:157}});
+content=_react2['default'].createElement(_reactSpinner2['default'],{__source:{fileName:_jsxFileName,lineNumber:159}});
 renderContent=false;
 }
 
@@ -164,16 +166,16 @@ var missionState=(0,_time.checkMissionStatus)(this.props.mission);
 
 if(this.props.mission.goals.length===0&&this.props.mission.type===_Mission.missionConfig.PHASE_II_MISSION_TYPE){
 content=
-_react2['default'].createElement('div',{className:'mission-done-message',__source:{fileName:_jsxFileName,lineNumber:167}},
-_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:168}},'Congratulations! You aced the goals on the first attempt, so you have no second attempt questions.'),
-_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:169}},'We encourage you to review your first attempt before your exam.'));
+_react2['default'].createElement('div',{className:'mission-done-message',__source:{fileName:_jsxFileName,lineNumber:169}},
+_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:170}},'Congratulations! You aced the goals on the first attempt, so you have no second attempt questions.'),
+_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:171}},'We encourage you to review your first attempt before your exam.'));
 
 
 renderContent=false;
 }else if(this.props.mission.questions.length===0&&missionState==="over"){
 content=
-_react2['default'].createElement('div',{className:'mission-done-message',__source:{fileName:_jsxFileName,lineNumber:175}},
-_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:176}},'This mission is over. You didn\'t open it while it was open, so you have no results here.'));
+_react2['default'].createElement('div',{className:'mission-done-message',__source:{fileName:_jsxFileName,lineNumber:177}},
+_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:178}},'This mission is over. You didn\'t open it while it was open, so you have no results here.'));
 
 
 renderContent=false;
@@ -182,13 +184,13 @@ renderContent=false;
 
 if(renderContent){
 content=
-_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:185}},
-_react2['default'].createElement('div',{className:'status-wrapper',__source:{fileName:_jsxFileName,lineNumber:186}},
-_react2['default'].createElement('div',{className:'progress-bar-wrapper',__source:{fileName:_jsxFileName,lineNumber:187}},
-_react2['default'].createElement(_reactProgressbar2['default'],{completed:routeProgress,color:'hsla(210,29%,24%,1)',__source:{fileName:_jsxFileName,lineNumber:188}})),
+_react2['default'].createElement('div',{__source:{fileName:_jsxFileName,lineNumber:187}},
+_react2['default'].createElement('div',{className:'status-wrapper',__source:{fileName:_jsxFileName,lineNumber:188}},
+_react2['default'].createElement('div',{className:'progress-bar-wrapper',__source:{fileName:_jsxFileName,lineNumber:189}},
+_react2['default'].createElement(_reactProgressbar2['default'],{completed:routeProgress,color:'hsla(210,29%,24%,1)',__source:{fileName:_jsxFileName,lineNumber:190}})),
 
-_react2['default'].createElement(_reactAriaLive.LiveMessage,{message:this.state.progressText,'aria-live':'assertive',__source:{fileName:_jsxFileName,lineNumber:190}}),
-_react2['default'].createElement('h4',{className:'current-status-heading',__source:{fileName:_jsxFileName,lineNumber:191}},
+_react2['default'].createElement(_reactAriaLive.LiveMessage,{message:this.state.progressText,'aria-live':'assertive',__source:{fileName:_jsxFileName,lineNumber:192}}),
+_react2['default'].createElement('h4',{className:'current-status-heading',__source:{fileName:_jsxFileName,lineNumber:193}},
 this.state.progressText)),
 
 
@@ -196,11 +198,11 @@ _react2['default'].createElement('nav',{
 tabIndex:-1,
 role:'navigation',
 'aria-label':'Directives Menu',
-ref:function(){function ref(directives){_this3.directiveCarouselRef=directives;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:195}},
+ref:function(){function ref(directives){_this3.directiveCarouselRef=directives;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:197}},
 _react2['default'].createElement(DirectiveCarousel,{directives:this.props.directives,
 currentDirectiveIndex:this.props.currentDirectiveIndex,
 directiveIndicators:this.props.directiveIndicators,
-onSelectDirective:this._onSelectDirective,__source:{fileName:_jsxFileName,lineNumber:200}})),
+onSelectDirective:this._onSelectDirective,__source:{fileName:_jsxFileName,lineNumber:202}})),
 
 
 _react2['default'].createElement('nav',{
@@ -208,20 +210,20 @@ tabIndex:-1,
 className:'nav-target-carousel',
 role:'navigation',
 'aria-label':'Target Questions Menu',
-ref:function(){function ref(targets){_this3.targetCarouselRef=targets;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:206}},
+ref:function(){function ref(targets){_this3.targetCarouselRef=targets;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:208}},
 _react2['default'].createElement(TargetCarousel,{
 onSelectTarget:this._onSelectTarget,
-mission:this.props.mission,__source:{fileName:_jsxFileName,lineNumber:212}})),
+mission:this.props.mission,__source:{fileName:_jsxFileName,lineNumber:214}})),
 
 
 _react2['default'].createElement('main',{
 tabIndex:-1,
-ref:function(){function ref(questions){_this3.questionsRef=questions;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:217}},
+ref:function(){function ref(questions){_this3.questionsRef=questions;}return ref;}(),__source:{fileName:_jsxFileName,lineNumber:219}},
 _react2['default'].createElement(Questions,{
 mission:this.props.mission,
 isSubmitEnabled:this.props.doNotTakeMission?false:undefined,
 onClickReturnToTargetCarousel:this.onClickReturnToTargetCarousel,
-onClickReturnToDirectiveCarousel:this.onClickReturnToDirectiveCarousel,__source:{fileName:_jsxFileName,lineNumber:220}})),
+onClickReturnToDirectiveCarousel:this.onClickReturnToDirectiveCarousel,__source:{fileName:_jsxFileName,lineNumber:222}})),
 
 
 statusModal);
@@ -230,11 +232,11 @@ statusModal);
 }
 
 return(
-_react2['default'].createElement(_reactDocumentTitle2['default'],{title:'Mission: '+this.props.mission.displayName,__source:{fileName:_jsxFileName,lineNumber:233}},
+_react2['default'].createElement(_reactDocumentTitle2['default'],{title:'Mission: '+this.props.mission.displayName,__source:{fileName:_jsxFileName,lineNumber:235}},
 _react2['default'].createElement('div',{
 ref:function(){function ref(div){_this3.div=div;}return ref;}(),
-tabIndex:-1,__source:{fileName:_jsxFileName,lineNumber:234}},
-_react2['default'].createElement(_reactAriaLive.LiveMessage,{message:'Mission: '+this.props.mission.displayName,'aria-live':'polite',__source:{fileName:_jsxFileName,lineNumber:237}}),
+tabIndex:-1,__source:{fileName:_jsxFileName,lineNumber:236}},
+_react2['default'].createElement(_reactAriaLive.LiveMessage,{message:'Mission: '+this.props.mission.displayName,'aria-live':'polite',__source:{fileName:_jsxFileName,lineNumber:239}}),
 content)));
 
 
