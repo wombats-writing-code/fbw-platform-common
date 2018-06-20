@@ -171,7 +171,7 @@ done();
 });
 });
 
-describe('numberCorrectTargets selector',function(){
+describe('numberCorrectQuestions selector',function(){
 
 it('should count all correct',function(done){
 var questions=[
@@ -186,7 +186,7 @@ isCorrect:true}}];
 
 
 
-var results=(0,_mission.numberCorrectTargets)(questions);
+var results=(0,_mission.numberCorrectQuestions)(questions);
 results.should.eql(3);
 
 done();
@@ -205,7 +205,7 @@ isCorrect:false}}];
 
 
 
-var results=(0,_mission.numberCorrectTargets)(questions);
+var results=(0,_mission.numberCorrectQuestions)(questions);
 results.should.eql(0);
 
 done();
@@ -224,7 +224,7 @@ isCorrect:null}}];
 
 
 
-var results=(0,_mission.numberCorrectTargets)(questions);
+var results=(0,_mission.numberCorrectQuestions)(questions);
 results.should.eql(0);
 
 done();
@@ -333,7 +333,7 @@ done();
 
 });
 
-describe('numberUnattemptedTargets selector',function(){
+describe('numberUnattemptedQuestions selector',function(){
 
 it('should calculate 0 targets remaining when all have responseResult',function(done){
 var questions=[
@@ -348,7 +348,7 @@ referenceNumber:'3',
 id:'3'}];
 
 
-var results=(0,_mission.numberUnattemptedTargets)(questions);
+var results=(0,_mission.numberUnattemptedQuestions)(questions);
 results.should.eql(0);
 
 done();
@@ -367,7 +367,7 @@ referenceNumber:'3',
 id:'3'}];
 
 
-var results=(0,_mission.numberUnattemptedTargets)(questions);
+var results=(0,_mission.numberUnattemptedQuestions)(questions);
 results.should.eql(1);
 
 done();
@@ -386,7 +386,7 @@ referenceNumber:'3',
 id:'3'}];
 
 
-var results=(0,_mission.numberUnattemptedTargets)(questions);
+var results=(0,_mission.numberUnattemptedQuestions)(questions);
 results.should.eql(0);
 
 done();
@@ -405,14 +405,14 @@ referenceNumber:'3',
 id:'3'}];
 
 
-var results=(0,_mission.numberUnattemptedTargets)(questions);
+var results=(0,_mission.numberUnattemptedQuestions)(questions);
 results.should.eql(1);
 
 done();
 });
 });
 
-describe('numberAttemptedTargets selector',function(){
+describe('numberAttemptedQuestions selector',function(){
 
 it('should calculate 3 attempted targets when all have responseResult',function(done){
 var questions=[
@@ -427,7 +427,7 @@ referenceNumber:'3',
 id:'3'}];
 
 
-var results=(0,_mission.numberAttemptedTargets)(questions);
+var results=(0,_mission.numberAttemptedQuestions)(questions);
 results.should.eql(3);
 
 done();
@@ -446,7 +446,7 @@ referenceNumber:'3',
 id:'3'}];
 
 
-var results=(0,_mission.numberAttemptedTargets)(questions);
+var results=(0,_mission.numberAttemptedQuestions)(questions);
 results.should.eql(2);
 
 done();
@@ -465,7 +465,7 @@ referenceNumber:'3',
 id:'3'}];
 
 
-var results=(0,_mission.numberAttemptedTargets)(questions);
+var results=(0,_mission.numberAttemptedQuestions)(questions);
 results.should.eql(3);
 
 done();
@@ -484,7 +484,7 @@ referenceNumber:'3',
 id:'3'}];
 
 
-var results=(0,_mission.numberAttemptedTargets)(questions);
+var results=(0,_mission.numberAttemptedQuestions)(questions);
 results.should.eql(2);
 
 done();

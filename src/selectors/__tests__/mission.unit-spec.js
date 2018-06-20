@@ -7,8 +7,8 @@ import _ from 'lodash';
 const sectionQuestions = require('./section-questions.json');
 import {getSectionTargets, isTargetRouteNavigated,
   isLastTargetInRoute, getRouteQuestions, pointsEarned,
-  numberUnattemptedTargets, grabTargetQuestionsFromRecords,
-  numberAttemptedTargets, numberCorrectTargets,
+  numberUnattemptedQuestions, grabTargetQuestionsFromRecords,
+  numberAttemptedQuestions, numberCorrectQuestions,
   grabTargetQuestionsFromMission, questionResponded,
   numberUnfinishedRoutes, isSyntheticDivision,
   numberUnfinishedGoals} from '../mission'
@@ -171,7 +171,7 @@ describe('(resultsSelector) pointsEarned', () => {
   });
 })
 
-describe('numberCorrectTargets selector', () => {
+describe('numberCorrectQuestions selector', () => {
 
   it(`should count all correct`, function(done) {
     const questions = [
@@ -186,7 +186,7 @@ describe('numberCorrectTargets selector', () => {
       }},
     ];
 
-    let results = numberCorrectTargets(questions);
+    let results = numberCorrectQuestions(questions);
     results.should.eql(3);
 
     done();
@@ -205,7 +205,7 @@ describe('numberCorrectTargets selector', () => {
       }},
     ];
 
-    let results = numberCorrectTargets(questions);
+    let results = numberCorrectQuestions(questions);
     results.should.eql(0);
 
     done();
@@ -224,7 +224,7 @@ describe('numberCorrectTargets selector', () => {
       }},
     ];
 
-    let results = numberCorrectTargets(questions);
+    let results = numberCorrectQuestions(questions);
     results.should.eql(0);
 
     done();
@@ -333,7 +333,7 @@ describe('grabTargetQuestionsFromMission selector', () => {
 
 })
 
-describe('numberUnattemptedTargets selector', () => {
+describe('numberUnattemptedQuestions selector', () => {
 
   it(`should calculate 0 targets remaining when all have responseResult`, function(done) {
     const questions = [
@@ -348,7 +348,7 @@ describe('numberUnattemptedTargets selector', () => {
        id: '3'},
     ];
 
-    let results = numberUnattemptedTargets(questions);
+    let results = numberUnattemptedQuestions(questions);
     results.should.eql(0);
 
     done();
@@ -367,7 +367,7 @@ describe('numberUnattemptedTargets selector', () => {
        id: '3'},
     ];
 
-    let results = numberUnattemptedTargets(questions);
+    let results = numberUnattemptedQuestions(questions);
     results.should.eql(1);
 
     done();
@@ -386,7 +386,7 @@ describe('numberUnattemptedTargets selector', () => {
        id: '3'},
     ];
 
-    let results = numberUnattemptedTargets(questions);
+    let results = numberUnattemptedQuestions(questions);
     results.should.eql(0);
 
     done();
@@ -405,14 +405,14 @@ describe('numberUnattemptedTargets selector', () => {
        id: '3'},
     ];
 
-    let results = numberUnattemptedTargets(questions);
+    let results = numberUnattemptedQuestions(questions);
     results.should.eql(1);
 
     done();
   });
 })
 
-describe('numberAttemptedTargets selector', () => {
+describe('numberAttemptedQuestions selector', () => {
 
   it(`should calculate 3 attempted targets when all have responseResult`, function(done) {
     const questions = [
@@ -427,7 +427,7 @@ describe('numberAttemptedTargets selector', () => {
        id: '3'},
     ];
 
-    let results = numberAttemptedTargets(questions);
+    let results = numberAttemptedQuestions(questions);
     results.should.eql(3);
 
     done();
@@ -446,7 +446,7 @@ describe('numberAttemptedTargets selector', () => {
        id: '3'},
     ];
 
-    let results = numberAttemptedTargets(questions);
+    let results = numberAttemptedQuestions(questions);
     results.should.eql(2);
 
     done();
@@ -465,7 +465,7 @@ describe('numberAttemptedTargets selector', () => {
        id: '3'},
     ];
 
-    let results = numberAttemptedTargets(questions);
+    let results = numberAttemptedQuestions(questions);
     results.should.eql(3);
 
     done();
@@ -484,7 +484,7 @@ describe('numberAttemptedTargets selector', () => {
        id: '3'},
     ];
 
-    let results = numberAttemptedTargets(questions);
+    let results = numberAttemptedQuestions(questions);
     results.should.eql(2);
 
     done();

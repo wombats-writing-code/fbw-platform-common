@@ -1,4 +1,4 @@
-Object.defineProperty(exports,"__esModule",{value:true});exports.isSyntheticDivision=exports.numberUnfinishedGoals=exports.numberUnfinishedRoutes=exports.numberAttemptedTargets=exports.numberUnattemptedTargets=exports.questionResponded=exports.pointsEarned=exports.numberCorrectTargets=exports.grabTargetQuestionsFromMission=exports.grabTargetQuestionsFromRecords=exports.directiveIdsFromQuestions=exports.isGoalMastered=exports.isGoalCompleted=exports.isLastTargetInRoute=exports.targetStatus=exports.isTargetRouteNavigated=exports.computeSectionProgress=exports.getRouteQuestions=exports.getSectionTargets=exports.getMissionDirectives=exports.targetKey=exports.isTarget=undefined;exports.
+Object.defineProperty(exports,"__esModule",{value:true});exports.isSyntheticDivision=exports.numberUnfinishedGoals=exports.numberUnfinishedRoutes=exports.numberAttemptedQuestions=exports.numberUnattemptedQuestions=exports.questionResponded=exports.pointsEarned=exports.numberCorrectQuestions=exports.grabTargetQuestionsFromMission=exports.grabTargetQuestionsFromRecords=exports.directiveIdsFromQuestions=exports.isGoalMastered=exports.isGoalCompleted=exports.isLastTargetInRoute=exports.targetStatus=exports.isTargetRouteNavigated=exports.computeSectionProgress=exports.getRouteQuestions=exports.getSectionTargets=exports.getMissionDirectives=exports.targetKey=exports.isTarget=undefined;exports.
 
 
 
@@ -172,7 +172,7 @@ var grabTargetQuestionsFromMission=exports.grabTargetQuestionsFromMission=functi
 return _lodash2['default'].uniqBy(_lodash2['default'].filter(missionQuestions,function(q){return isTarget(q);}),function(question){return question.id;});
 }return grabTargetQuestionsFromMission;}();
 
-var numberCorrectTargets=exports.numberCorrectTargets=function(){function numberCorrectTargets(questions){
+var numberCorrectQuestions=exports.numberCorrectQuestions=function(){function numberCorrectQuestions(questions){
 
 
 return _lodash2['default'].reduce(questions,function(sum,question){
@@ -182,7 +182,7 @@ sum++;
 
 return sum;
 },0);
-}return numberCorrectTargets;}();
+}return numberCorrectQuestions;}();
 
 var pointsEarned=exports.pointsEarned=function(){function pointsEarned(questions){
 
@@ -190,7 +190,7 @@ var pointsEarned=exports.pointsEarned=function(){function pointsEarned(questions
 
 
 
-var numberCorrect=numberCorrectTargets(questions);
+var numberCorrect=numberCorrectQuestions(questions);
 
 var percentCorrect=_lodash2['default'].round(numberCorrect/questions.length*100,1);
 
@@ -207,21 +207,21 @@ return true;
 return false;
 }return questionResponded;}();
 
-var numberUnattemptedTargets=exports.numberUnattemptedTargets=function(){function numberUnattemptedTargets(targetQuestions){
+var numberUnattemptedQuestions=exports.numberUnattemptedQuestions=function(){function numberUnattemptedQuestions(questionsList){
 
 
 
 
-return _lodash2['default'].filter(targetQuestions,function(targetQuestion){return!questionResponded(targetQuestion);}).length;
-}return numberUnattemptedTargets;}();
+return _lodash2['default'].filter(questionsList,function(question){return!questionResponded(question);}).length;
+}return numberUnattemptedQuestions;}();
 
-var numberAttemptedTargets=exports.numberAttemptedTargets=function(){function numberAttemptedTargets(targetQuestions){
-
-
+var numberAttemptedQuestions=exports.numberAttemptedQuestions=function(){function numberAttemptedQuestions(questionsList){
 
 
-return _lodash2['default'].filter(targetQuestions,questionResponded).length;
-}return numberAttemptedTargets;}();
+
+
+return _lodash2['default'].filter(questionsList,questionResponded).length;
+}return numberAttemptedQuestions;}();
 
 var numberUnfinishedRoutes=exports.numberUnfinishedRoutes=function(){function numberUnfinishedRoutes(goalQuestions){
 

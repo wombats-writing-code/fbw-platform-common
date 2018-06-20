@@ -172,8 +172,8 @@ export const grabTargetQuestionsFromMission = (missionQuestions) => {
   return _.uniqBy(_.filter(missionQuestions, q => isTarget(q)), question => question.id);
 }
 
-export const numberCorrectTargets = (questions) => {
-  // assumes questions is already a list of targets
+export const numberCorrectQuestions = (questions) => {
+  // assumes questions is already a list of question records
   // Call `grabTargetQuestionsFromRecords` first
   return _.reduce(questions, (sum, question) => {
     if (question && question.response && question.response.isCorrect) {
@@ -190,7 +190,7 @@ export const pointsEarned = (questions) => {
 
   // console.log('points earned for', questions)
 
-  let numberCorrect = numberCorrectTargets(questions);
+  let numberCorrect = numberCorrectQuestions(questions);
 
   let percentCorrect = _.round((numberCorrect / questions.length) * 100, 1);
   // console.log('number correct', numberCorrect)
@@ -207,20 +207,20 @@ export const questionResponded = (question) => {
   return false;
 }
 
-export const numberUnattemptedTargets = (targetQuestions) => {
-  // assumes targetQuestions is already a list of targets
+export const numberUnattemptedQuestions = (questionsList) => {
+  // assumes questionsList is a list of question records
   // Call `grabTargetQuestionsFromRecords` first
-  // targetQuestion.responseResult is when the data is from `records`
-  // targetQuestion.response is when the data is from `mission.questions`
-  return _.filter(targetQuestions, targetQuestion => !(questionResponded(targetQuestion))).length;
+  // question.responseResult is when the data is from `records`
+  // question.response is when the data is from `mission.questions`
+  return _.filter(questionsList, question => !(questionResponded(question))).length;
 }
 
-export const numberAttemptedTargets = (targetQuestions) => {
-  // assumes targetQuestions is already a list of targets
+export const numberAttemptedQuestions = (questionsList) => {
+  // assumes questionsList is a list of question records
   // Call `grabTargetQuestionsFromRecords` first
-  // targetQuestion.responseResult is when the data is from `records`
-  // targetQuestion.response is when the data is from `mission.questions
-  return _.filter(targetQuestions, questionResponded).length;
+  // question.responseResult is when the data is from `records`
+  // question.response is when the data is from `mission.questions
+  return _.filter(questionsList, questionResponded).length;
 }
 
 export const numberUnfinishedRoutes = (goalQuestions) => {

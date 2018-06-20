@@ -20,8 +20,8 @@ import QuestionsComponent from '../../questions/web/Questions'
 const Questions = QuestionsContainer(QuestionsComponent)
 
 import {checkMissionStatus } from '../../../utilities/time'
-import { numberCorrectTargets, numberAttemptedTargets,
-  numberUnattemptedTargets, grabTargetQuestionsFromMission,
+import { numberCorrectQuestions, numberAttemptedQuestions,
+  numberUnattemptedQuestions, grabTargetQuestionsFromMission,
   numberUnfinishedGoals, numberUnfinishedRoutes } from '../../../selectors/mission';
 import { missionConfig } from '../../../reducers/Mission';
 
@@ -102,12 +102,12 @@ class Mission extends Component {
     const unfinishedGoalQs = numberUnfinishedRoutes(missionQuestionsFlat);
     const totalGoals = currentProps.mission.questions ? targetQuestions.length : 0;
     return {
-      correct: numberCorrectTargets(targetQuestions),
-      attempted: numberAttemptedTargets(targetQuestions),
+      correct: numberCorrectQuestions(targetQuestions),
+      attempted: numberAttemptedQuestions(targetQuestions),
       numberGoals: totalGoals,
       finished: totalGoals - unfinishedGoalQs,
       unfinished: unfinishedGoalQs,
-      unattempted: numberUnattemptedTargets(targetQuestions)
+      unattempted: numberUnattemptedQuestions(targetQuestions)
     }
   }
 
