@@ -75,7 +75,10 @@ class Login extends Component {
 
           <div className="row">
             <div className="medium-8 large-7 medium-centered columns">
-              <p className="login__guest-prompt text-center">Not Arapahoe? Login with your e-mail address and password: </p>
+              <span>
+                <p className="login__guest-prompt text-center">Not Arapahoe? Login with your e-mail address and password or </p>
+                <a className="registration-link" href="/register">register a new guest account</a>
+              </span>
               <div className="error-message">
                 {props.errorMessage}
               </div>

@@ -18,6 +18,11 @@
   font-weight: 800;
 }
 
+.registration-link {
+  display: inline;
+  font-style: italic;
+}
+
 .app-name {
   margin-bottom: 4.5rem;
 }
@@ -79,6 +84,7 @@
   font-style: italic;
   margin-top: 3rem;
   color: #eee;
+  display: inline;
 }
 
 .login__guest-label {
