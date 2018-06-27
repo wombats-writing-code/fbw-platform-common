@@ -51,6 +51,12 @@ export default function loginReducer (state = initialState, action) {
       })
 
     case REGISTER_USER_OPTIMISTIC:
+      return _.assign({}, state, {
+        isLoggedIn: false,
+        logInError: false,
+        errorMessage: null
+      })
+
     case LOGIN_GUEST_OPTIMISTIC:
       return _.assign({}, state, {
         isLoggedIn: false,
@@ -60,7 +66,8 @@ export default function loginReducer (state = initialState, action) {
 
     case RECEIVE_REGISTER_USER:
       return _.assign({}, state, {
-        user: action.user
+        user: action.user,
+        emailVerificationRequired: true
       })
 
     default:
@@ -75,5 +82,6 @@ function stampNullUser() {
     isLoggedIn: false,
     logInError: false,
     isLoginInProgress: false,
+    emailVerificationRequired: false
   }
 }

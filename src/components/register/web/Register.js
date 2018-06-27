@@ -14,7 +14,7 @@ class Register extends Component {
   constructor() {
     super();
     this.state = {
-      identifier: '',
+      Identifier: '',
       password: '',
       passwordAgain: '',
       firstName: '',
@@ -53,11 +53,25 @@ class Register extends Component {
   render() {
     const props = this.props;
 
+    if (props.emailVerificationRequired) {
+      return (
+        <DocumentTitle title="Register">
+          <div className="register">
+            <LiveMessage message="Check your e-mail for an account verification message" aria-live="polite"/>
+            <div className="verification-message">
+              Please check your e-mail for an account verification message.
+            </div>
+          </div>
+        </DocumentTitle>
+      )
+    }
+
+
     let loginButton = <button disabled className="login-button login-button--guest login-button--guest--disabled">
       Create Account
     </button>
 
-    if (this._cleanGuestUsername(this.state.identifier) !== '' &&
+    if (this._cleanGuestUsername(this.state.Identifier) !== '' &&
         this.state.password.length >= 10 &&
         this.state.password === this.state.passwordAgain &&
         this.state.firstName !== '' &&
@@ -73,6 +87,7 @@ class Register extends Component {
       <DocumentTitle title="Register">
         <div className="register">
           <LiveMessage message="Register for fly-by-wire account" aria-live="polite"/>
+          <h1>Register for a new Fly-by-Wire Guest account</h1>
 
           <div className="error-message">
             {props.errorMessage || this.state.errorMessage}
@@ -81,34 +96,43 @@ class Register extends Component {
           <form className="row">
             <div className="medium-7 large-6 medium-centered columns">
               <div className="flex-container space-between align-center">
-                <label>First Name:
+                <label className="login__guest-label">First Name:
                   <input
                     className="input login__guest-input"
                     placeholder="First Name"
                     name="firstName"
+                    type="text"
                     value={this.state.firstName}
                     onChange={this._updateFirstName}
                   />
                 </label>
-                <label>Last Name:
+              </div>
+              <div className="flex-container space-between align-center">
+                <label className="login__guest-label">Last Name:
                   <input
                     className="input login__guest-input"
                     placeholder="Last Name"
                     name="lastName"
+                    type="text"
                     value={this.state.lastName}
                     onChange={(e) => this.setState({lastName: e.target.value})}
                   />
                 </label>
-                <label>E-mail address:
+              </div>
+              <div className="flex-container space-between align-center">
+                <label className="login__guest-label">E-mail address:
                   <input
                     className="input login__guest-input"
                     placeholder="Email address"
-                    name="identifier"
-                    value={this.state.identifier}
-                    onChange={(e) => this.setState({identifier: e.target.value})}
+                    name="Identifier"
+                    type="email"
+                    value={this.state.Identifier}
+                    onChange={(e) => this.setState({Identifier: e.target.value})}
                   />
                 </label>
-                <label>Password (10+ characters):
+              </div>
+              <div className="flex-container space-between align-center">
+                <label className="login__guest-label">Password (10+ characters):
                   <input
                     type="password"
                     className="input login__guest-input"
@@ -118,7 +142,9 @@ class Register extends Component {
                     onChange={(e) => this.setState({password: e.target.value})}
                   />
                 </label>
-                <label>Password Again:
+              </div>
+              <div className="flex-container space-between align-center">
+                <label className="login__guest-label">Password Again:
                   <input
                     type="password"
                     className="input login__guest-input"
@@ -128,6 +154,8 @@ class Register extends Component {
                     onChange={(e) => this.setState({passwordAgain: e.target.value})}
                   />
                 </label>
+              </div>
+              <div className="flex-container space-between align-center">
                 {loginButton}
               </div>
             </div>

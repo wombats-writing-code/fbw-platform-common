@@ -10,6 +10,7 @@ const mapStateToProps = (state, ownProps) => {
   // console.log('state in RegisterContainer', state);
 
   return {
+    emailVerificationRequired: state.login.emailVerificationRequired ? state.login.emailVerificationRequired: null,
     errorMessage: state.login.errorMessage ? state.login.errorMessage : null,
     d2lUserIdentifer: getD2LUserIdentifier(state),
   }

@@ -51,6 +51,12 @@ errorMessage:'Failed login'});
 
 
 case _registerUser.REGISTER_USER_OPTIMISTIC:
+return _lodash2['default'].assign({},state,{
+isLoggedIn:false,
+logInError:false,
+errorMessage:null});
+
+
 case _loginGuest.LOGIN_GUEST_OPTIMISTIC:
 return _lodash2['default'].assign({},state,{
 isLoggedIn:false,
@@ -60,7 +66,8 @@ errorMessage:null});
 
 case _registerUser.RECEIVE_REGISTER_USER:
 return _lodash2['default'].assign({},state,{
-user:action.user});
+user:action.user,
+emailVerificationRequired:true});
 
 
 default:
@@ -74,6 +81,7 @@ user:{},
 
 isLoggedIn:false,
 logInError:false,
-isLoginInProgress:false};
+isLoginInProgress:false,
+emailVerificationRequired:false};
 
 }

@@ -10,6 +10,7 @@ export const RECEIVE_REGISTER_USER = 'RECEIVE_REGISTER_USER'
 export const FAILED_REGISTER_USER = 'FAILED_REGISTER_USER'
 
 export function receiveRegisterUser(user) {
+  console.log('received user', user);
   return {type: RECEIVE_REGISTER_USER, user };
 }
 
@@ -28,7 +29,7 @@ export function registerUser(userObject) {
 
   return function(dispatch) {
     dispatch(registerUserOptimistic());
-
+    console.log('sending', userObject, 'to', `${getDomain()}/l4/register`)
     return axios({
       method: 'POST',
       url: `${getDomain()}/l4/register`,
