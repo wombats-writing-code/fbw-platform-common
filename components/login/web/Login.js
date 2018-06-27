@@ -131,7 +131,7 @@ function Login(){_classCallCheck(this,Login);var _this=_possibleConstructorRetur
 _handleGuestLogin=function(){
 _this.props.handleGuestLogin({
 Identifier:_this.state.guestIdentifier,
-password:_this.state.password});
+password:_this.state.guestPassword});
 
 };_this.
 

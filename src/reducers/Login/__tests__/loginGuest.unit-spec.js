@@ -40,8 +40,8 @@ describe('loginGuest', function(done) {
       actions.length.should.be.eql(2);
       actions[0].type.should.be.eql(LOGIN_GUEST_OPTIMISTIC);
       actions[1].type.should.be.eql(RECEIVE_LOGIN_GUEST);
-      actions[1].user.token.should.be.a('string')
-      actions[1].user.Identifier.should.be.eql(321)
+      actions[1].data.d2luser.token.should.be.a('string')
+      actions[1].data.d2luser.Identifier.should.be.eql(321)
       done();
     })
     .catch( (err) => {

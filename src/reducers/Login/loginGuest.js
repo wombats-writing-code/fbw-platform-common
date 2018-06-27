@@ -9,8 +9,8 @@ export const LOGIN_GUEST_OPTIMISTIC = 'LOGIN_GUEST_OPTIMISTIC'
 export const RECEIVE_LOGIN_GUEST = 'RECEIVE_LOGIN_GUEST'
 export const FAILED_LOGIN_GUEST = 'FAILED_LOGIN_GUEST'
 
-export function receiveLoginGuest(user) {
-  return {type: RECEIVE_LOGIN_GUEST, user };
+export function receiveLoginGuest(data) {
+  return {type: RECEIVE_LOGIN_GUEST, data };
 }
 
 export function failedLoginGuest(error) {
@@ -37,7 +37,7 @@ export function loginGuest(userObject) {
       }
     })
     .then( res => {
-      dispatch(receiveLoginGuest(res.data));
+      dispatch(receiveLoginGuest({d2luser: res.data}));
     })
     .catch( err => {
       dispatch(failedLoginGuest(err));

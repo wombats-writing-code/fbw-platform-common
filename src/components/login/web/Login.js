@@ -131,7 +131,7 @@ class Login extends Component {
   _handleGuestLogin = () => {
     this.props.handleGuestLogin({
       Identifier: this.state.guestIdentifier,
-      password: this.state.password
+      password: this.state.guestPassword
     });
   }
 

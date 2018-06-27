@@ -87,7 +87,7 @@ describe('Register', () => {
 
     register.find('input[name="firstName"]').first().simulate('change', {target: {value: 'Bob'}});
     register.find('input[name="lastName"]').first().simulate('change', {target: {value: 'Anne'}});
-    register.find('input[name="identifier"]').first().simulate('change', {target: {value: 'foo@example.com'}});
+    register.find('input[name="Identifier"]').first().simulate('change', {target: {value: 'foo@example.com'}});
     register.find('input[name="password"]').first().simulate('change', {target: {value: 'foo1234567'}});
     register.find('input[name="passwordAgain"]').first().simulate('change', {target: {value: 'foo1234567'}});
 
@@ -103,7 +103,7 @@ describe('Register', () => {
 
     register.find('input[name="firstName"]').first().simulate('change', {target: {value: 'Bob'}});
     register.find('input[name="lastName"]').first().simulate('change', {target: {value: 'Anne'}});
-    register.find('input[name="identifier"]').first().simulate('change', {target: {value: 'foo@example.com'}});
+    register.find('input[name="Identifier"]').first().simulate('change', {target: {value: 'foo@example.com'}});
     register.find('input[name="password"]').first().simulate('change', {target: {value: 'foo123456'}});
     register.find('input[name="passwordAgain"]').first().simulate('change', {target: {value: 'foo123456'}});
 

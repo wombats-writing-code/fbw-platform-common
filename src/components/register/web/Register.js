@@ -76,7 +76,7 @@ class Register extends Component {
         this.state.password === this.state.passwordAgain &&
         this.state.firstName !== '' &&
         this.state.lastName !== '') {
-      loginButton = <button className="login-button login-button--guest" onClick={() => this._createAccount()}>
+      loginButton = <button type="button" className="login-button login-button--guest" onClick={() => this._createAccount()}>
         Create Account
       </button>
     }
@@ -170,7 +170,7 @@ class Register extends Component {
     return _.trim(_.lowerCase(name));
   }
 
-  _createAccount() {
+  _createAccount(e) {
     // console.log(name);
     this.props.registerUser({
       Identifier: this.state.Identifier,
@@ -178,6 +178,7 @@ class Register extends Component {
       FirstName: this.state.firstName,
       LastName: this.state.lastName,
     })
+    e.preventDefault();
   }
 
   _updateFirstName = (e) => {
