@@ -13,33 +13,33 @@ import nock from 'nock'
 chai.should();
 
 import {
-  registerUser,
-  REGISTER_USER_OPTIMISTIC,
-  RECEIVE_REGISTER_USER,
-  FAILED_REGISTER_USER
-} from '../registerUser'
+  loginGuest,
+  LOGIN_GUEST_OPTIMISTIC,
+  RECEIVE_LOGIN_GUEST,
+  FAILED_LOGIN_GUEST
+} from '../loginGuest'
 
-describe('registerUser', function(done) {
-  it('should create an action for register new user', done => {
+describe('loginGuest', function(done) {
+  it('should create an action for logging in a user', done => {
     const store = mockStore({})
 
     nock('http://localhost:8888')
-    .post(`/l4/register`)
+    .post(`/l4/guest-login`)
     .reply(200, {
       name: 'superman',
       Identifier: 321,
       token: '123'
     })
 
-    store.dispatch(registerUser({
+    store.dispatch(loginGuest({
       Identifier: 321,
       password: 'foo'
     }))
     .then( () => {
       let actions = store.getActions()
       actions.length.should.be.eql(2);
-      actions[0].type.should.be.eql(REGISTER_USER_OPTIMISTIC);
-      actions[1].type.should.be.eql(RECEIVE_REGISTER_USER);
+      actions[0].type.should.be.eql(LOGIN_GUEST_OPTIMISTIC);
+      actions[1].type.should.be.eql(RECEIVE_LOGIN_GUEST);
       actions[1].user.token.should.be.a('string')
       actions[1].user.Identifier.should.be.eql(321)
       done();
@@ -49,25 +49,25 @@ describe('registerUser', function(done) {
     })
   });
 
-  it('should dispatch event for failed registration', done => {
+  it('should dispatch event for failed login', done => {
     nock('http://localhost:8888')
-    .post(`/l4/register`)
+    .post(`/l4/guest-login`)
     .reply(400, "Username already exists")
 
     const store = mockStore({})
-    store.dispatch(registerUser({
+    store.dispatch(loginGuest({
       Identifier: 321,
       password: 'foo'
     }))
     .then( () => {
       let actions = store.getActions()
       actions.length.should.be.eql(2);
-      actions[0].type.should.be.eql(REGISTER_USER_OPTIMISTIC);
-      actions[1].type.should.be.eql(FAILED_REGISTER_USER);
+      actions[0].type.should.be.eql(LOGIN_GUEST_OPTIMISTIC);
+      actions[1].type.should.be.eql(FAILED_LOGIN_GUEST);
       done();
     })
     .catch((err) => {
-      console.log('failed registration', err);
+      console.log('failed login', err);
     })
   });
 })

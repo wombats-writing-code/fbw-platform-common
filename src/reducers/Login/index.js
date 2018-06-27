@@ -4,6 +4,7 @@ import _ from 'lodash'
 import {RECEIVE_AUTHENTICATE_D2L, FAILED_AUTHENTICATE_D2L} from './authenticateD2L'
 import {RECEIVE_AUTHENTICATE_GUEST, FAILED_AUTHENTICATE_GUEST} from './authenticateGuest'
 import {RECEIVE_REGISTER_USER, REGISTER_USER_OPTIMISTIC, FAILED_REGISTER_USER} from './registerUser'
+import {RECEIVE_LOGIN_GUEST, LOGIN_GUEST_OPTIMISTIC, FAILED_LOGIN_GUEST} from './loginGuest'
 import { LOG_OUT } from './logOutUser'
 
 // ------------------------------------
@@ -16,6 +17,7 @@ export default function loginReducer (state = initialState, action) {
 
     case RECEIVE_AUTHENTICATE_GUEST:
     case RECEIVE_AUTHENTICATE_D2L:
+    case RECEIVE_LOGIN_GUEST:
       return _.assign({}, state, {
         user: _.assign({}, state.user, {
           authenticatedUrl: action.data.url,
@@ -41,7 +43,15 @@ export default function loginReducer (state = initialState, action) {
         errorMessage: 'Username exists',
       })
 
+    case FAILED_LOGIN_GUEST:
+      return _.assign({}, state, {
+        isLoggedIn: false,
+        logInError: true,
+        errorMessage: 'Failed login',
+      })
+
     case REGISTER_USER_OPTIMISTIC:
+    case LOGIN_GUEST_OPTIMISTIC:
       return _.assign({}, state, {
         isLoggedIn: false,
         logInError: false,
