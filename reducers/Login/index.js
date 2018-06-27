@@ -11,7 +11,7 @@ Object.defineProperty(exports,"__esModule",{value:true});exports['default']=
 
 
 
-loginReducer;var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);var _authenticateD2L=require('./authenticateD2L');var _authenticateGuest=require('./authenticateGuest');var _logOutUser=require('./logOutUser');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var initialState=stampNullUser();function loginReducer(){var state=arguments.length>0&&arguments[0]!==undefined?arguments[0]:initialState;var action=arguments[1];
+loginReducer;var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);var _authenticateD2L=require('./authenticateD2L');var _authenticateGuest=require('./authenticateGuest');var _registerUser=require('./registerUser');var _logOutUser=require('./logOutUser');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var initialState=stampNullUser();function loginReducer(){var state=arguments.length>0&&arguments[0]!==undefined?arguments[0]:initialState;var action=arguments[1];
 switch(action.type){
 
 case _authenticateGuest.RECEIVE_AUTHENTICATE_GUEST:
@@ -32,6 +32,25 @@ case _authenticateGuest.FAILED_AUTHENTICATE_GUEST:
 return _lodash2['default'].assign({},state,{
 isLoggedIn:false,
 logInError:true});
+
+
+case _registerUser.FAILED_REGISTER_USER:
+return _lodash2['default'].assign({},state,{
+isLoggedIn:false,
+logInError:true,
+errorMessage:'Username exists'});
+
+
+case _registerUser.REGISTER_USER_OPTIMISTIC:
+return _lodash2['default'].assign({},state,{
+isLoggedIn:false,
+logInError:false,
+errorMessage:null});
+
+
+case _registerUser.RECEIVE_REGISTER_USER:
+return _lodash2['default'].assign({},state,{
+user:action.user});
 
 
 default:
