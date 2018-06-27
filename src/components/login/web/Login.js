@@ -91,6 +91,9 @@ class Login extends Component {
                 </label>
                 {loginButton}
               </div>
+              <div className="flex-container space-between align-center login__guest-registration">
+                <a href="/register">Register a new guest account.</a>
+              </div>
             </div>
           </div>
 
