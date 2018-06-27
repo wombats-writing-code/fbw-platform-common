@@ -75,6 +75,12 @@
   color: #eee;
 }
 
+.login__guest-label {
+  margin-left: 1.5rem;
+  margin-right: 1rem;
+  width: 100%;
+}
+
 .login-button--guest {
   background: transparent;
   color: #3D5EB7;
@@ -92,7 +98,7 @@
 }
 
 .login__guest-input {
-  padding: 1em 0 1em 0;
+  padding: 1em 0.5em 1em 0.5em;
   margin-bottom: 3rem;
   border-left: none;
   border-right: none;
@@ -101,6 +107,7 @@
   background: transparent;
   flex: 3;
   transition: 300ms ease border-color;
+  box-shadow: none;
 }
 
 .login__guest-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */

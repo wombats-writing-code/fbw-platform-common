@@ -74,21 +74,26 @@ class Login extends Component {
           </div>
 
           <div className="row">
-            <div className="medium-7 large-6 medium-centered columns">
+            <div className="medium-8 large-7 medium-centered columns">
               <p className="login__guest-prompt text-center">Not Arapahoe? Login with your e-mail address and password: </p>
               <div className="flex-container space-between align-center">
-                <label>E-mail:
+                <label className="login__guest-label">E-mail:
                   <input className="input login__guest-input login__guest-identifier" placeholder="Email Address"
                         value={this.state.guestIdentifier}
                         name="Email"
+                        type="text"
                         onChange={(e) => this.setState({guestIdentifier: e.target.value})}/>
                 </label>
-                <label>Password:
+              </div>
+              <div className="flex-container space-between align-center">
+                <label className="login__guest-label">Password:
                   <input className="input login__guest-input login__guest-password" placeholder="Password"
                     type="password"
                     value={this.state.guestPassword}
                     onChange={(e) => this.setState({guestPassword: e.target.value})}/>
                 </label>
+              </div>
+              <div className="flex-container space-between align-center">
                 {loginButton}
               </div>
               <div className="flex-container space-between align-center login__guest-registration">

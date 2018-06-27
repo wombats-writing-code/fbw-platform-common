@@ -145,12 +145,10 @@ class Register extends Component {
   _createAccount() {
     // console.log(name);
     this.props.registerUser({
-      user: {
-        Identifier: this.state.Identifier,
-        password: this.state.password,
-        FirstName: this.state.firstName,
-        LastName: this.state.lastName,
-      }
+      Identifier: this.state.Identifier,
+      password: this.state.password,
+      FirstName: this.state.firstName,
+      LastName: this.state.lastName,
     })
   }
 
