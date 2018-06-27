@@ -15,6 +15,7 @@ var mapStateToProps=function(){function mapStateToProps(state,ownProps){
 
 
 return{
+errorMessage:state.login.errorMessage?state.login.errorMessage:null,
 d2lUserIdentifer:(0,_login.getD2LUserIdentifier)(state),
 isLoggedIn:state.login.isLoggedIn};
 

@@ -76,6 +76,9 @@ class Login extends Component {
           <div className="row">
             <div className="medium-8 large-7 medium-centered columns">
               <p className="login__guest-prompt text-center">Not Arapahoe? Login with your e-mail address and password: </p>
+              <div className="error-message">
+                {props.errorMessage}
+              </div>
               <div className="flex-container space-between align-center">
                 <label className="login__guest-label">E-mail:
                   <input className="input login__guest-input login__guest-identifier" placeholder="Email Address"

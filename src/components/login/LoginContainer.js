@@ -15,6 +15,7 @@ const mapStateToProps = (state, ownProps) => {
   // console.log('state in LoginContainer', state);
 
   return {
+    errorMessage: state.login.errorMessage ? state.login.errorMessage : null,
     d2lUserIdentifer: getD2LUserIdentifier(state),
     isLoggedIn: state.login.isLoggedIn
   }
