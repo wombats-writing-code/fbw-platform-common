@@ -6,7 +6,7 @@ import {getAuthenticationUrl} from '../../d2lutils'
 import {authenticateD2L} from '../../reducers/Login/authenticateD2L'
 import {getD2LUserIdentifier} from '../../selectors/login'
 
-import {getGuestAuthenticationUrl} from '../../reducers/Login/authenticateGuest'
+import {loginGuest} from '../../reducers/Login/loginGuest'
 
 import { logOutUser } from '../../reducers/Login/logOutUser'
 
@@ -15,13 +15,16 @@ const mapStateToProps = (state, ownProps) => {
   // console.log('state in LoginContainer', state);
 
   return {
+    errorMessage: state.login.errorMessage ? state.login.errorMessage : null,
     d2lUserIdentifer: getD2LUserIdentifier(state),
+    isLoggedIn: state.login.isLoggedIn
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     logout: () => dispatch(logOutUser()),
+    handleGuestLogin: (user) => dispatch(loginGuest(user)),
     authenticateD2L: (D2LConfig, url) => dispatch(authenticateD2L(D2LConfig, url)) // this should only be needed in the iOS case
   }
 }
@@ -29,7 +32,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 const provider = (component, D2LConfig) => {
   let mergeProps = (stateProps, dispatchProps, ownProps) => {
     return _.assign({}, stateProps, dispatchProps, ownProps, {
-      guestAuthenticationUrl: getGuestAuthenticationUrl(D2LConfig),
       authenticationUrl: getAuthenticationUrl(D2LConfig),
       D2LConfig
     })

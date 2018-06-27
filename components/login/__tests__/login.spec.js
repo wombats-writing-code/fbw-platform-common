@@ -47,13 +47,21 @@ var login=connectedComponent.find(Login);
 login.find('.login-button').length.should.be.eql(2);
 login.find('.login-button--d2l').length.should.be.eql(1);
 login.find('.login-button--guest--disabled').length.should.be.eql(1);
+login.find('.login__guest-registration').length.should.be.eql(1);
 });
 
-it('should enable the guest login button if name provided',function(){
+it('should enable the guest login button if name and password provided',function(){
 var login=connectedComponent.find(Login);
-login.find('.login__guest-input').simulate('change',{
+
+login.find('.login-button--guest--disabled').length.should.be.eql(1);
+
+login.find('.login__guest-identifier').simulate('change',{
 target:{
 value:'foo'}});
+
+login.find('.login__guest-password').simulate('change',{
+target:{
+value:'foo2'}});
 
 login.find('.login-button').length.should.be.eql(2);
 login.find('.login-button--d2l').length.should.be.eql(1);

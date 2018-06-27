@@ -11,7 +11,8 @@ class Login extends Component {
   constructor() {
     super();
     this.state = {
-      guestName: '',
+      guestIdentifier: '',
+      guestPassword: '',
       isVisitorLoginVisible: false
     }
   }
@@ -19,6 +20,13 @@ class Login extends Component {
   componentDidMount () {
     if (this.props.d2lUserIdentifer) {
       this.props.logout()
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // redirect to guest-callback on successful guest login
+    if (!prevProps.isLoggedIn && this.props.isLoggedIn) {
+      window.open(`/guest-callback?name=${this.state.guestIdentifier}`, '_self');
     }
   }
 
@@ -38,8 +46,9 @@ class Login extends Component {
       Login &rarr;
     </button>
 
-    if (this._cleanGuestUsername(this.state.guestName) !== '') {
-      loginButton = <button className="login-button login-button--guest" onClick={() => this._handleGuestLogin(this.state.guestName)}>
+    if (this._cleanGuestUsername(this.state.guestIdentifier) !== '' &&
+        this.state.guestPassword !== '') {
+      loginButton = <button className="login-button login-button--guest" onClick={() => this._handleGuestLogin()}>
         Login &rarr;
       </button>
     }
@@ -65,13 +74,36 @@ class Login extends Component {
           </div>
 
           <div className="row">
-            <div className="medium-7 large-6 medium-centered columns">
-              <p className="login__guest-prompt text-center">Not Arapahoe? Login with your name: </p>
+            <div className="medium-8 large-7 medium-centered columns">
+              <span>
+                <p className="login__guest-prompt text-center">Not Arapahoe? Login with your e-mail address and password or </p>
+                <a className="registration-link" href="/register">register a new guest account</a>
+              </span>
+              <div className="error-message">
+                {props.errorMessage}
+              </div>
               <div className="flex-container space-between align-center">
-                <input className="input login__guest-input" placeholder="First and last name, e.g. Jane Doe"
-                      value={this.state.guestName}
-                      onChange={(e) => this.setState({guestName: e.target.value})}/>
+                <label className="login__guest-label">E-mail:
+                  <input className="input login__guest-input login__guest-identifier" placeholder="Email Address"
+                        value={this.state.guestIdentifier}
+                        name="Email"
+                        type="text"
+                        onChange={(e) => this.setState({guestIdentifier: e.target.value})}/>
+                </label>
+              </div>
+              <div className="flex-container space-between align-center">
+                <label className="login__guest-label">Password:
+                  <input className="input login__guest-input login__guest-password" placeholder="Password"
+                    type="password"
+                    value={this.state.guestPassword}
+                    onChange={(e) => this.setState({guestPassword: e.target.value})}/>
+                </label>
+              </div>
+              <div className="flex-container space-between align-center">
                 {loginButton}
+              </div>
+              <div className="flex-container space-between align-center login__guest-registration">
+                <a href="/register">Register a new guest account.</a>
               </div>
             </div>
           </div>
@@ -102,9 +134,11 @@ class Login extends Component {
     return slug(_.trim(_.lowerCase(name)));
   }
 
-  _handleGuestLogin(name) {
-    // console.log(name);
-    window.open(`${this.props.guestAuthenticationUrl}&name=${this._cleanGuestUsername(name)}`, '_self')
+  _handleGuestLogin = () => {
+    this.props.handleGuestLogin({
+      Identifier: this.state.guestIdentifier,
+      password: this.state.guestPassword
+    });
   }
 
   _handleACCLogin = () => {
