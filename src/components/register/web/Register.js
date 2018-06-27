@@ -170,7 +170,7 @@ class Register extends Component {
     return _.trim(_.lowerCase(name));
   }
 
-  _createAccount(e) {
+  _createAccount() {
     // console.log(name);
     this.props.registerUser({
       Identifier: this.state.Identifier,
@@ -178,7 +178,6 @@ class Register extends Component {
       FirstName: this.state.firstName,
       LastName: this.state.lastName,
     })
-    e.preventDefault();
   }
 
   _updateFirstName = (e) => {
