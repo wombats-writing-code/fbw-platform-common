@@ -44,7 +44,7 @@ return _lodash2['default'].assign({},state,{
 isLoggedIn:false,
 logInError:true,
 failedRegisterUser:true,
-errorMessage:action.error.indexOf('unverified')>-1?
+errorMessage:action.error.response.data.indexOf('unverified')>-1?
 'Username registered but unverified':
 'Username exists. Did you forget your password?'});
 
