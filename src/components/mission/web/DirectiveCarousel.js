@@ -23,7 +23,7 @@ class DirectiveCarousel extends Component {
         // checkIcon = <img className="carousel-thumb__check" src={require('../../../assets/goal--mastered.png')}/>
 
       } else if (indicator.isComplete && !indicator.isMastered) {
-        indicatorText = 'Tried';
+        indicatorText = 'Completed';
         indicatorStyle += ' carousel-thumb__tried';
         // checkIcon = <img className="carousel-thumb__check" src={require('../../../assets/goal--tried.png')}/>
 

@@ -23,7 +23,7 @@ indicatorStyle+=' carousel-thumb__achieved';
 
 
 }else if(indicator.isComplete&&!indicator.isMastered){
-indicatorText='Tried';
+indicatorText='Completed';
 indicatorStyle+=' carousel-thumb__tried';
 
 
