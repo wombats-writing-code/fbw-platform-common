@@ -33,20 +33,26 @@ class ResetPassword extends Component {
         Reset Password
       </button>
 
-      if (props.sendingEmail && !props.sentEmail) {
+      if (this.props.resetPasswordFailed) {
+        resetPasswordBtn = (
+          <button className="register-guest__resend" onClick={this._handleResendVerificationEmail}>
+            Click here to resend your verification email.
+          </button>
+        );
+      } else if (props.sendingEmail && !props.sentEmail) {
         resetPasswordBtn = <button type="button" disabled className="login-button login-button--guest">
-          Resetting Password ...
+          Sending email ...
         </button>
       } else if (!props.sendingEmail && props.sentEmail) {
         resetPasswordBtn = <button type="button" disabled className="login-button login-button--guest">
-          Password Reset. Please check your Inbox for further instructions.
+          Email sent. Please check your Inbox for further instructions.
         </button>
       }
     }
 
     const errorMessage = this.props.resetPasswordFailed ?
       (<p>
-        User account not found or unverified. Click <a href="/resend-verification">here</a> to resend your verification email.
+        User account not found or unverified.
       </p>)
       :
       ''
@@ -88,6 +94,12 @@ class ResetPassword extends Component {
 
   _cleanGuestUsername(name) {
     return _.trim(_.lowerCase(name));
+  }
+
+  _handleResendVerificationEmail = () => {
+    this.props.handleResendVerificationEmail({
+      Identifier: this.state.Identifier
+    })
   }
 
   _onHandleResetPassword = () => {
