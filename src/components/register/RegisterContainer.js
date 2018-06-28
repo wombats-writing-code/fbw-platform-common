@@ -6,14 +6,15 @@ import {getD2LUserIdentifier} from '../../selectors/login'
 
 import {registerUser} from '../../reducers/Login/registerUser'
 import {resendVerificationEmail} from '../../reducers/Login/resendVerificationEmail'
+import {resetPassword} from '../../reducers/Login/resetPassword'
 
 const mapStateToProps = (state, ownProps) => {
   // console.log('state in RegisterContainer', state);
 
   return {
     emailVerificationRequired: state.login.emailVerificationRequired ? state.login.emailVerificationRequired: null,
-    sendingVerificationEmail: state.login.sendingVerificationEmail ? state.login.sendingVerificationEmail : null,
-    sentVerificationEmail: state.login.sentVerificationEmail ? state.login.sentVerificationEmail : null,
+    sendingEmail: state.login.sendingEmail ? state.login.sendingEmail : null,
+    sentEmail: state.login.sentEmail ? state.login.sentEmail : null,
     failedRegisterUser: state.login.failedRegisterUser ? state.login.failedRegisterUser : null,
     errorMessage: state.login.errorMessage ? state.login.errorMessage : null,
     d2lUserIdentifer: getD2LUserIdentifier(state),
@@ -23,7 +24,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     registerUser: (userData) => dispatch(registerUser(userData)),
-    handleResendVerificationEmail: (userData) => dispatch(resendVerificationEmail(userData))
+    handleResendVerificationEmail: (userData) => dispatch(resendVerificationEmail(userData)),
+    handleResetPassword: (userData) => dispatch(resetPassword(userData))
   }
 }
 

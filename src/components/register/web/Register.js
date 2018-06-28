@@ -83,24 +83,32 @@ class Register extends Component {
 
     // console.log('in the component', this.state);
 
-    let resendVerificationEmailBtn;
+    let registerFailBtn;
 
-    if (props.failedRegisterUser) {
-      resendVerificationEmailBtn = (
-        <button className="register-guest__resend" onClick={this.handleResendVerificationEmail}>
-          Click here to resend the verification email.
-        </button>
-      )
+    if (props.failedRegisterUser && props.errorMessage) {
+      if (props.errorMessage.indexOf('unverified') > -1) {
+        registerFailBtn = (
+          <button className="register-guest__resend" onClick={this._handleResendVerificationEmail}>
+            Click here to resend the verification email.
+          </button>
+        )
+      } else {
+        registerFailBtn = (
+          <button className="register-guest__resend" onClick={this._handleResetPassword}>
+            Click here to reset your password.
+          </button>
+        )
+      }
 
-      if (props.sendingVerificationEmail && !props.sentVerificationEmail) {
-        resendVerificationEmailBtn = (
+      if (props.sendingEmail && !props.sentEmail) {
+        registerFailBtn = (
           <button className="register-guest__resend" disabled>
             Sending ...
           </button>
         )
       }
-      if (!props.sendingVerificationEmail && props.sentVerificationEmail) {
-        resendVerificationEmailBtn = (
+      if (!props.sendingEmail && props.sentEmail) {
+        registerFailBtn = (
           <button className="register-guest__resend" disabled>
             Email sent. Please check your inbox.
           </button>
@@ -116,7 +124,7 @@ class Register extends Component {
 
           <div className="error-message">
             {props.errorMessage || this.state.errorMessage}
-            {resendVerificationEmailBtn}
+            {registerFailBtn}
           </div>
 
           <form className="row">
@@ -203,6 +211,18 @@ class Register extends Component {
       password: this.state.password,
       FirstName: this.state.firstName,
       LastName: this.state.lastName,
+    })
+  }
+
+  _handleResendVerificationEmail = () => {
+    this.props.handleResendVerificationEmail({
+      Identifier: this.state.Identifier
+    })
+  }
+
+  _handleResetPassword = () => {
+    this.props.handleResetPassword({
+      Identifier: this.state.Identifier
     })
   }
 

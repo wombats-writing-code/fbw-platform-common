@@ -44,7 +44,9 @@ export default function loginReducer (state = initialState, action) {
         isLoggedIn: false,
         logInError: true,
         failedRegisterUser: true,
-        errorMessage: 'Username exists',
+        errorMessage: action.error.indexOf('unverified') > -1 ?
+          'Username registered but unverified' :
+          'Username exists. Did you forget your password?',
       })
 
     case FAILED_LOGIN_GUEST:
@@ -55,13 +57,23 @@ export default function loginReducer (state = initialState, action) {
       })
 
     case RESET_PASSWORD_OPTIMISTIC:
+      return _.assign({}, state, {
+        sendingEmail: true,
+        sentEmail: false,
+        resetPasswordFailed: false
+      })
+
     case RECEIVE_RESET_PASSWORD:
       return _.assign({}, state, {
+        sendingEmail: false,
+        sentEmail: true,
         resetPasswordFailed: false
       })
 
     case FAILED_RESET_PASSWORD:
       return _.assign({}, state, {
+        sendingEmail: false,
+        sentEmail: true,
         resetPasswordFailed: true
       })
 
@@ -78,21 +90,21 @@ export default function loginReducer (state = initialState, action) {
 
     case RESEND_VERIFICATION_EMAIL_OPTIMISTIC:
       return _.assign({}, state, {
-        sendingVerificationEmail: true,
-        sentVerificationEmail: false,
+        sendingEmail: true,
+        sentEmail: false,
         resendVerificationEmailFailed: false
       })
 
     case RECEIVE_RESEND_VERIFICATION_EMAIL:
       return _.assign({}, state, {
-        sendingVerificationEmail: false,
-        sentVerificationEmail: true,
+        sendingEmail: false,
+        sentEmail: true,
         resendVerificationEmailFailed: false
       })
 
     case FAILED_RESEND_VERIFICATION_EMAIL:
       return _.assign({}, state, {
-        sendingVerificationEmail: false,
+        sendingEmail: false,
         resendVerificationEmailFailed: true
       })
 

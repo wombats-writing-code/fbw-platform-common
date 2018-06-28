@@ -84,7 +84,8 @@ describe('Register', () => {
     global.document.body.appendChild(div2);
     const newState = _.assign({}, STATE, {
       login: {
-        failedRegisterUser: true
+        failedRegisterUser: true,
+        errorMessage: 'User unverified'
       }
     })
     store = mockStore(newState);

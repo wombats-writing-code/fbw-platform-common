@@ -53,6 +53,16 @@ class Login extends Component {
       </button>
     }
 
+    let resetPasswordLink;
+
+    if (props.errorMessage) {
+      resetPasswordLink = (
+        <div>
+          Did you forget your password? You can <a href="/reset-password">reset it here</a>.
+        </div>
+      )
+    }
+
 
     return (
       <DocumentTitle title="Login">
@@ -81,6 +91,7 @@ class Login extends Component {
               </span>
               <div className="error-message">
                 {props.errorMessage}
+                {resetPasswordLink}
               </div>
               <div className="flex-container space-between align-center">
                 <label className="login__guest-label">E-mail:

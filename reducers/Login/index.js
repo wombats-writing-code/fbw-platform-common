@@ -44,7 +44,9 @@ return _lodash2['default'].assign({},state,{
 isLoggedIn:false,
 logInError:true,
 failedRegisterUser:true,
-errorMessage:'Username exists'});
+errorMessage:action.error.indexOf('unverified')>-1?
+'Username registered but unverified':
+'Username exists. Did you forget your password?'});
 
 
 case _loginGuest.FAILED_LOGIN_GUEST:
@@ -55,13 +57,23 @@ errorMessage:'Failed login'});
 
 
 case _resetPassword.RESET_PASSWORD_OPTIMISTIC:
+return _lodash2['default'].assign({},state,{
+sendingEmail:true,
+sentEmail:false,
+resetPasswordFailed:false});
+
+
 case _resetPassword.RECEIVE_RESET_PASSWORD:
 return _lodash2['default'].assign({},state,{
+sendingEmail:false,
+sentEmail:true,
 resetPasswordFailed:false});
 
 
 case _resetPassword.FAILED_RESET_PASSWORD:
 return _lodash2['default'].assign({},state,{
+sendingEmail:false,
+sentEmail:true,
 resetPasswordFailed:true});
 
 
@@ -78,21 +90,21 @@ setNewPasswordFailed:true});
 
 case _resendVerificationEmail.RESEND_VERIFICATION_EMAIL_OPTIMISTIC:
 return _lodash2['default'].assign({},state,{
-sendingVerificationEmail:true,
-sentVerificationEmail:false,
+sendingEmail:true,
+sentEmail:false,
 resendVerificationEmailFailed:false});
 
 
 case _resendVerificationEmail.RECEIVE_RESEND_VERIFICATION_EMAIL:
 return _lodash2['default'].assign({},state,{
-sendingVerificationEmail:false,
-sentVerificationEmail:true,
+sendingEmail:false,
+sentEmail:true,
 resendVerificationEmailFailed:false});
 
 
 case _resendVerificationEmail.FAILED_RESEND_VERIFICATION_EMAIL:
 return _lodash2['default'].assign({},state,{
-sendingVerificationEmail:false,
+sendingEmail:false,
 resendVerificationEmailFailed:true});
 
 
