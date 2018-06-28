@@ -39,12 +39,14 @@ class ResetPassword extends Component {
             Click here to resend your verification email.
           </button>
         );
-      } else if (props.sendingEmail && !props.sentEmail) {
-        resetPasswordBtn = <button type="button" disabled className="login-button login-button--guest">
+      }
+
+      if (props.sendingEmail && !props.sentEmail) {
+        resetPasswordBtn = <button type="button" disabled className="login-button login-button--guest login-button--guest--disabled">
           Sending email ...
         </button>
       } else if (!props.sendingEmail && props.sentEmail) {
-        resetPasswordBtn = <button type="button" disabled className="login-button login-button--guest">
+        resetPasswordBtn = <button type="button" disabled className="login-button login-button--guest login-button--guest--disabled">
           Email sent. Please check your Inbox for further instructions.
         </button>
       }

@@ -66,8 +66,32 @@ describe('ResetPassword', () => {
       {attachTo: div}
     );
     connectedResetPassword2.html().should.contain('User account not found or unverified.')
-    connectedResetPassword2.html().should.contain('<a href="/resend-verification">here</a>')
-    connectedResetPassword2.html().should.contain('resend your verification email.')
+  });
+
+  it('should display resend verification button if reducer sets prop', () => {
+    const div = global.document.createElement('div');
+    global.document.body.appendChild(div);
+
+    const modifiedState = _.assign({}, STATE, {
+      login: {
+        resetPasswordFailed: true
+      }
+    })
+    store = mockStore(modifiedState);
+    const connectedResetPassword2 = mount(
+      <Provider store={store}>
+        <LiveAnnouncer>
+          <ResetPassword  />
+        </LiveAnnouncer>
+      </Provider>,
+      {attachTo: div}
+    );
+
+    const resetPassword = connectedResetPassword2.find(ResetPassword)
+
+    resetPassword.find('input[name="Identifier"]').first().simulate('change', {target: {value: 'foo@example.com'}});
+
+    connectedResetPassword2.html().should.contain('Click here to resend your verification email.')
   });
 
   it('should enable the submit button when inputs validated', () => {
