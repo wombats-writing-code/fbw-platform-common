@@ -5,6 +5,9 @@ import {RECEIVE_AUTHENTICATE_D2L, FAILED_AUTHENTICATE_D2L} from './authenticateD
 import {RECEIVE_AUTHENTICATE_GUEST, FAILED_AUTHENTICATE_GUEST} from './authenticateGuest'
 import {RECEIVE_REGISTER_USER, REGISTER_USER_OPTIMISTIC, FAILED_REGISTER_USER} from './registerUser'
 import {RECEIVE_LOGIN_GUEST, LOGIN_GUEST_OPTIMISTIC, FAILED_LOGIN_GUEST} from './loginGuest'
+import {RECEIVE_RESET_PASSWORD, RESET_PASSWORD_OPTIMISTIC, FAILED_RESET_PASSWORD} from './resetPassword'
+import {RECEIVE_SET_NEW_PASSWORD, SET_NEW_PASSWORD_OPTIMISTIC, FAILED_SET_NEW_PASSWORD} from './setNewPassword'
+import {RECEIVE_RESEND_VERIFICATION_EMAIL, RESEND_VERIFICATION_EMAIL_OPTIMISTIC, FAILED_RESEND_VERIFICATION_EMAIL} from './resendVerificationEmail'
 import { LOG_OUT } from './logOutUser'
 
 // ------------------------------------
@@ -40,6 +43,7 @@ export default function loginReducer (state = initialState, action) {
       return _.assign({}, state, {
         isLoggedIn: false,
         logInError: true,
+        failedRegisterUser: true,
         errorMessage: 'Username exists',
       })
 
@@ -50,10 +54,53 @@ export default function loginReducer (state = initialState, action) {
         errorMessage: 'Failed login',
       })
 
+    case RESET_PASSWORD_OPTIMISTIC:
+    case RECEIVE_RESET_PASSWORD:
+      return _.assign({}, state, {
+        resetPasswordFailed: false
+      })
+
+    case FAILED_RESET_PASSWORD:
+      return _.assign({}, state, {
+        resetPasswordFailed: true
+      })
+
+    case SET_NEW_PASSWORD_OPTIMISTIC:
+    case RECEIVE_SET_NEW_PASSWORD:
+      return _.assign({}, state, {
+        setNewPasswordFailed: false
+      })
+
+    case FAILED_SET_NEW_PASSWORD:
+      return _.assign({}, state, {
+        setNewPasswordFailed: true
+      })
+
+    case RESEND_VERIFICATION_EMAIL_OPTIMISTIC:
+      return _.assign({}, state, {
+        sendingVerificationEmail: true,
+        sentVerificationEmail: false,
+        resendVerificationEmailFailed: false
+      })
+
+    case RECEIVE_RESEND_VERIFICATION_EMAIL:
+      return _.assign({}, state, {
+        sendingVerificationEmail: false,
+        sentVerificationEmail: true,
+        resendVerificationEmailFailed: false
+      })
+
+    case FAILED_RESEND_VERIFICATION_EMAIL:
+      return _.assign({}, state, {
+        sendingVerificationEmail: false,
+        resendVerificationEmailFailed: true
+      })
+
     case REGISTER_USER_OPTIMISTIC:
       return _.assign({}, state, {
         isLoggedIn: false,
         logInError: false,
+        failedRegisterUser: false,
         errorMessage: null
       })
 

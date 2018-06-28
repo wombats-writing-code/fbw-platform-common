@@ -53,7 +53,7 @@ describe('Register', () => {
     const passwordInput = connectedRegister.find('input[type="password"]').first();
     passwordInput.simulate('change', {target: {value: 'foo'}});
 
-    connectedRegister.html().should.contain('<div class="error-message">Passwords must match</div>');
+    connectedRegister.html().should.contain('Passwords must match');
   });
 
   it('should display a props error message', () => {
@@ -75,6 +75,29 @@ describe('Register', () => {
     );
     const register = connectedRegister2.find(Register);
     register.html().should.contain('foo');
+
+    connectedRegister2.detach();
+  });
+
+  it('should render a button for failed registration', () => {
+    const div2 = global.document.createElement('div');
+    global.document.body.appendChild(div2);
+    const newState = _.assign({}, STATE, {
+      login: {
+        failedRegisterUser: true
+      }
+    })
+    store = mockStore(newState);
+    const connectedRegister2 = mount(
+      <Provider store={store}>
+        <LiveAnnouncer>
+          <Register />
+        </LiveAnnouncer>
+      </Provider>,
+      {attachTo: div2}
+    );
+    const register = connectedRegister2.find(Register);
+    register.find('.register-guest__resend').length.should.be.eql(1);
 
     connectedRegister2.detach();
   });
@@ -107,7 +130,7 @@ describe('Register', () => {
     register.find('input[name="password"]').first().simulate('change', {target: {value: 'foo123456'}});
     register.find('input[name="passwordAgain"]').first().simulate('change', {target: {value: 'foo123456'}});
 
-    register.html().should.contain('<div class="error-message">Password must be at least 10 characters long</div>');
+    register.html().should.contain('Password must be at least 10 characters long');
     register.html().should.contain('login-button--guest--disabled');
 
   });

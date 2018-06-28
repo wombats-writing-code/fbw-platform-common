@@ -12,7 +12,10 @@ Object.defineProperty(exports,"__esModule",{value:true});exports['default']=
 
 
 
-loginReducer;var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);var _authenticateD2L=require('./authenticateD2L');var _authenticateGuest=require('./authenticateGuest');var _registerUser=require('./registerUser');var _loginGuest=require('./loginGuest');var _logOutUser=require('./logOutUser');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var initialState=stampNullUser();function loginReducer(){var state=arguments.length>0&&arguments[0]!==undefined?arguments[0]:initialState;var action=arguments[1];
+
+
+
+loginReducer;var _lodash=require('lodash');var _lodash2=_interopRequireDefault(_lodash);var _authenticateD2L=require('./authenticateD2L');var _authenticateGuest=require('./authenticateGuest');var _registerUser=require('./registerUser');var _loginGuest=require('./loginGuest');var _resetPassword=require('./resetPassword');var _setNewPassword=require('./setNewPassword');var _resendVerificationEmail=require('./resendVerificationEmail');var _logOutUser=require('./logOutUser');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{'default':obj};}var initialState=stampNullUser();function loginReducer(){var state=arguments.length>0&&arguments[0]!==undefined?arguments[0]:initialState;var action=arguments[1];
 switch(action.type){
 
 case _authenticateGuest.RECEIVE_AUTHENTICATE_GUEST:
@@ -40,6 +43,7 @@ case _registerUser.FAILED_REGISTER_USER:
 return _lodash2['default'].assign({},state,{
 isLoggedIn:false,
 logInError:true,
+failedRegisterUser:true,
 errorMessage:'Username exists'});
 
 
@@ -50,10 +54,53 @@ logInError:true,
 errorMessage:'Failed login'});
 
 
+case _resetPassword.RESET_PASSWORD_OPTIMISTIC:
+case _resetPassword.RECEIVE_RESET_PASSWORD:
+return _lodash2['default'].assign({},state,{
+resetPasswordFailed:false});
+
+
+case _resetPassword.FAILED_RESET_PASSWORD:
+return _lodash2['default'].assign({},state,{
+resetPasswordFailed:true});
+
+
+case _setNewPassword.SET_NEW_PASSWORD_OPTIMISTIC:
+case _setNewPassword.RECEIVE_SET_NEW_PASSWORD:
+return _lodash2['default'].assign({},state,{
+setNewPasswordFailed:false});
+
+
+case _setNewPassword.FAILED_SET_NEW_PASSWORD:
+return _lodash2['default'].assign({},state,{
+setNewPasswordFailed:true});
+
+
+case _resendVerificationEmail.RESEND_VERIFICATION_EMAIL_OPTIMISTIC:
+return _lodash2['default'].assign({},state,{
+sendingVerificationEmail:true,
+sentVerificationEmail:false,
+resendVerificationEmailFailed:false});
+
+
+case _resendVerificationEmail.RECEIVE_RESEND_VERIFICATION_EMAIL:
+return _lodash2['default'].assign({},state,{
+sendingVerificationEmail:false,
+sentVerificationEmail:true,
+resendVerificationEmailFailed:false});
+
+
+case _resendVerificationEmail.FAILED_RESEND_VERIFICATION_EMAIL:
+return _lodash2['default'].assign({},state,{
+sendingVerificationEmail:false,
+resendVerificationEmailFailed:true});
+
+
 case _registerUser.REGISTER_USER_OPTIMISTIC:
 return _lodash2['default'].assign({},state,{
 isLoggedIn:false,
 logInError:false,
+failedRegisterUser:false,
 errorMessage:null});
 
 

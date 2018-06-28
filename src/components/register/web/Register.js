@@ -83,6 +83,31 @@ class Register extends Component {
 
     // console.log('in the component', this.state);
 
+    let resendVerificationEmailBtn;
+
+    if (props.failedRegisterUser) {
+      resendVerificationEmailBtn = (
+        <button className="register-guest__resend" onClick={this.handleResendVerificationEmail}>
+          Click here to resend the verification email.
+        </button>
+      )
+
+      if (props.sendingVerificationEmail && !props.sentVerificationEmail) {
+        resendVerificationEmailBtn = (
+          <button className="register-guest__resend" disabled>
+            Sending ...
+          </button>
+        )
+      }
+      if (!props.sendingVerificationEmail && props.sentVerificationEmail) {
+        resendVerificationEmailBtn = (
+          <button className="register-guest__resend" disabled>
+            Email sent. Please check your inbox.
+          </button>
+        )
+      }
+    }
+
     return (
       <DocumentTitle title="Register">
         <div className="register">
@@ -91,6 +116,7 @@ class Register extends Component {
 
           <div className="error-message">
             {props.errorMessage || this.state.errorMessage}
+            {resendVerificationEmailBtn}
           </div>
 
           <form className="row">
