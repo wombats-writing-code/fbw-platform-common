@@ -80,7 +80,7 @@ class ResetPassword extends Component {
     return _.trim(_.lowerCase(name));
   }
 
-  _onHandleResetPassword() {
+  _onHandleResetPassword = () => {
     this.props.handleResetPassword({
       Identifier: this.state.Identifier
     })
