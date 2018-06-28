@@ -32,6 +32,16 @@ class ResetPassword extends Component {
       resetPasswordBtn = <button type="button" className="login-button login-button--guest" onClick={this._onHandleResetPassword}>
         Reset Password
       </button>
+
+      if (props.sendingEmail && !props.sentEmail) {
+        resetPasswordBtn = <button type="button" disabled className="login-button login-button--guest">
+          Resetting Password ...
+        </button>
+      } else if (!props.sendingEmail && props.sentEmail) {
+        resetPasswordBtn = <button type="button" disabled className="login-button login-button--guest">
+          Password Reset. Please check your Inbox for further instructions.
+        </button>
+      }
     }
 
     const errorMessage = this.props.resetPasswordFailed ?

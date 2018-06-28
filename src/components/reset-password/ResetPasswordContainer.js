@@ -8,6 +8,8 @@ import {resetPassword} from '../../reducers/Login/resetPassword'
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    sendingEmail: state.login.sendingEmail ? state.login.sendingEmail : null,
+    sentEmail: state.login.sentEmail ? state.login.sentEmail : null,
     resetPasswordFailed: state.login.resetPasswordFailed ? state.login.resetPasswordFailed: null,
     d2lUserIdentifer: getD2LUserIdentifier(state),
   }

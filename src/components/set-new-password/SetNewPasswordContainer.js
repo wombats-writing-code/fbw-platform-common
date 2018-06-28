@@ -8,6 +8,7 @@ import {setNewPassword} from '../../reducers/Login/setNewPassword'
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    setNewPasswordDone: state.login.setNewPasswordDone ? state.login.setNewPasswordDone : null,
     setNewPasswordFailed: state.login.setNewPasswordFailed ? state.login.setNewPasswordFailed: null,
     d2lUserIdentifer: getD2LUserIdentifier(state),
   }

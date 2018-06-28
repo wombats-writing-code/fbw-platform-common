@@ -64,6 +64,12 @@ class SetNewPassword extends Component {
       setNewPasswordBtn = <button type="button" className="login-button login-button--guest" onClick={() => this._handleSetNewPassword()}>
         Set New Password
       </button>
+
+      if (props.setNewPasswordDone) {
+        setNewPasswordBtn = <a href="/login">
+          Password reset. Please return to the login page by clicking here.
+        </a>
+      }
     }
 
     // console.log('in the component', this.state);
