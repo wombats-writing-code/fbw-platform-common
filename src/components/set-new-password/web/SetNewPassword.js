@@ -61,7 +61,7 @@ class SetNewPassword extends Component {
 
     if (this.state.password.length >= 10 &&
         this.state.password === this.state.passwordAgain) {
-      setNewPasswordBtn = <button type="button" className="login-button login-button--guest" onClick={() => this._createAccount()}>
+      setNewPasswordBtn = <button type="button" className="login-button login-button--guest" onClick={() => this._handleSetNewPassword()}>
         Set New Password
       </button>
     }
