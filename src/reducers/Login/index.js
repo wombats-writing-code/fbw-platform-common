@@ -99,6 +99,7 @@ export default function loginReducer (state = initialState, action) {
       return _.assign({}, state, {
         sendingEmail: true,
         sentEmail: false,
+        resetPasswordFailed: false,
         resendVerificationEmailFailed: false
       })
 

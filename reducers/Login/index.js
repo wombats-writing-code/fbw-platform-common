@@ -99,6 +99,7 @@ case _resendVerificationEmail.RESEND_VERIFICATION_EMAIL_OPTIMISTIC:
 return _lodash2['default'].assign({},state,{
 sendingEmail:true,
 sentEmail:false,
+resetPasswordFailed:false,
 resendVerificationEmailFailed:false});
 
 

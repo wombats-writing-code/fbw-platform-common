@@ -35,13 +35,17 @@ class ResetPassword extends Component {
 
       if (this.props.resetPasswordFailed) {
         resetPasswordBtn = (
-          <button className="register-guest__resend" onClick={this._handleResendVerificationEmail}>
+          <button type="button" className="register-guest__resend" onClick={this._handleResendVerificationEmail}>
             Click here to resend your verification email.
           </button>
         );
-      }
-
-      if (props.sendingEmail && !props.sentEmail) {
+      } else if (props.resendVerificationEmailFailed) {
+        resetPasswordBtn = (
+          <p>
+            Are you sure you've registered? <a href="/register">You can do so here</a>.
+          </p>
+        );
+      } else if (props.sendingEmail && !props.sentEmail) {
         resetPasswordBtn = <button type="button" disabled className="login-button login-button--guest login-button--guest--disabled">
           Sending email ...
         </button>
