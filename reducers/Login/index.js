@@ -80,12 +80,14 @@ resetPasswordFailed:true});
 case _setNewPassword.SET_NEW_PASSWORD_OPTIMISTIC:
 return _lodash2['default'].assign({},state,{
 setNewPasswordFailed:false,
-setNewPasswordDone:false});
+setNewPasswordDone:false,
+settingNewPassword:true});
 
 
 case _setNewPassword.RECEIVE_SET_NEW_PASSWORD:
 return _lodash2['default'].assign({},state,{
-setNewPasswordDone:true});
+setNewPasswordDone:true,
+settingNewPassword:false});
 
 
 case _setNewPassword.FAILED_SET_NEW_PASSWORD:

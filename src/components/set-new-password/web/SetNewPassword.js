@@ -65,7 +65,11 @@ class SetNewPassword extends Component {
         Set New Password
       </button>
 
-      if (props.setNewPasswordDone) {
+      if (props.settingNewPassword && !props.setNewPasswordDone) {
+        setNewPasswordBtn = <button disabled type="button" className="login-button login-button--guest">
+          Setting Password ...
+        </button>
+      } else if (!props.settingNewPassword && props.setNewPasswordDone) {
         setNewPasswordBtn = <a href="/login">
           Password reset. Please return to the login page by clicking here.
         </a>

@@ -80,12 +80,14 @@ export default function loginReducer (state = initialState, action) {
     case SET_NEW_PASSWORD_OPTIMISTIC:
       return _.assign({}, state, {
         setNewPasswordFailed: false,
-        setNewPasswordDone: false
+        setNewPasswordDone: false,
+        settingNewPassword: true
       })
 
     case RECEIVE_SET_NEW_PASSWORD:
       return _.assign({}, state, {
-        setNewPasswordDone: true
+        setNewPasswordDone: true,
+        settingNewPassword: false
       })
 
     case FAILED_SET_NEW_PASSWORD:
