@@ -121,30 +121,50 @@ class Mission extends Component {
     const routeProgress = 100 * status.finished / status.numberGoals;
     // const progressString = `${status.finished} / ${status.numberGoals} finished`;
     const summaryString = `${status.correct} out of ${status.attempted}`; // for testing
-    const statusModal = (
-      <Modal
-        onAfterOpen={this.onOpenModal}
-        onBeforeClose={this.onClickReturnToDirectiveCarousel}
-        isOpen={!this.state.closeModal}
-        contentLabel="Completed Attempt Summary"
-      >
+
+    let modalContent = (
+      <div
+        aria-label={`You've answered all the goal questions for attempt 1. You correctly answered ${summaryString} goal questions. Feel free to return to the mission and review your questions.`}
+        ref={(modal) => {this.modal = modal;}}
+        tabIndex={-1}>
+        <h3>Attempt <span className="bold">1</span> complete!</h3>
+        <div className="modal-contents">
+          <p>
+            Thank you for trying all of the questions.
+          </p>
+          <p>
+            You correctly answered {summaryString} goal questions. You will have the opportunity
+            to get more goal questions right in <span className="bold">Attempt 2</span>.
+          </p>
+          <p>
+            Click "Return to Mission" to review the questions, or you can close
+            the Fly-by-Wire application.
+          </p>
+        </div>
+        <button
+          aria-label="Return to mission"
+          className="close-modal-button"
+          onClick={this.onCloseModal}>Return to Mission</button>
+      </div>
+    );
+
+    if (this.props.mission.type === missionConfig.PHASE_II_MISSION_TYPE) {
+      missionContent = (
         <div
-          aria-label={`You've answered all the goal questions for this attempt. You correctly answered ${summaryString} goal questions. Feel free to return to the mission and review your questions.`}
+          aria-label={`You've answered all the goal questions for attempt 2. You correctly answered ${summaryString} goal questions. Feel free to return to the mission and review your questions.`}
           ref={(modal) => {this.modal = modal;}}
           tabIndex={-1}>
-          <h3>Attempt complete!</h3>
+          <h3>Attempt <span className="bold">2</span> complete!</h3>
           <div className="modal-contents">
             <p>
-              Congratulations, you've answered all the goal questions for this attempt.
+              Thank you for trying all of the questions. This will help you master the material for the exams.
             </p>
             <p>
-              You correctly answered {summaryString} goal questions. Please re-visit
-              this application and try again after your instructor launches
-              the second attempt.
+              You correctly answered {summaryString} goal questions.
             </p>
             <p>
-              Feel free to close this dialog window and review the questions,
-              or quit the Fly-by-Wire application.
+              Click "Return to Mission" to review the questions, or you can close
+              the Fly-by-Wire application.
             </p>
           </div>
           <button
@@ -152,6 +172,17 @@ class Mission extends Component {
             className="close-modal-button"
             onClick={this.onCloseModal}>Return to Mission</button>
         </div>
+      )
+    }
+
+    const statusModal = (
+      <Modal
+        onAfterOpen={this.onOpenModal}
+        onBeforeClose={this.onClickReturnToDirectiveCarousel}
+        isOpen={!this.state.closeModal}
+        contentLabel="Completed Attempt Summary"
+      >
+        {modalContent}
       </Modal>
     )
     // console.log('props in mission component', this.props)
