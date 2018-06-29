@@ -149,7 +149,7 @@ class Mission extends Component {
     );
 
     if (this.props.mission.type === missionConfig.PHASE_II_MISSION_TYPE) {
-      missionContent = (
+      modalContent = (
         <div
           aria-label={`You've answered all the goal questions for attempt 2. You correctly answered ${summaryString} goal questions. Feel free to return to the mission and review your questions.`}
           ref={(modal) => {this.modal = modal;}}
