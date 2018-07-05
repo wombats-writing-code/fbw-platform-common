@@ -16,6 +16,20 @@ class NavBar extends Component {
 
     // console.log('props in NavBar', props)
 
+    let logOutLink = (
+      <Link className="logout-button" to="/logout-success" onClick={this._logout}>
+        Logout
+      </Link>
+    )
+
+    if (this.props.isVisitor) {
+      logOutLink = (
+        <Link className="logout-button" to="/login" onClick={this._logout}>
+          Logout
+        </Link>
+      )
+    }
+
     return (
       <div
         className="nav-bar flex-container align-center space-between wrap">
@@ -52,9 +66,7 @@ class NavBar extends Component {
           <Link className="help-button" to="/guide" target="_blank">
             Help
           </Link>
-          <Link className="logout-button" to="/logout-success" onClick={this._logout}>
-            Logout
-          </Link>
+          {logOutLink}
         </div>
 
       </div>
@@ -130,9 +142,6 @@ class NavBar extends Component {
   _logout = () => {
     // browserHistory.push('/logout-success');
     this.props.logout();
-    if (this.props.isVisitor) {
-      browserHistory.push('/');
-    }
   }
 
   _skipToMain = () => {
