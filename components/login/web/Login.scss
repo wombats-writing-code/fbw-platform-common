@@ -16,11 +16,17 @@
   background-color: $app-red-dark;
   color: white;
   padding: 1rem;
-  margin-left: 33vw;
-  width: 34vw;
   border-radius: 5px;
   margin-bottom: 2rem;
   font-weight: 800;
+}
+
+.error-message a {
+  color: hsla(201, 30%, 80%, 1);
+}
+
+.error-message a:hover {
+  color: hsla(201, 30%, 60%, 1);
 }
 
 .login__guest-registration {

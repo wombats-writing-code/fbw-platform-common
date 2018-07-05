@@ -102,10 +102,6 @@ class Login extends Component {
           <div className="row">
             <div className="medium-8 large-7 medium-centered columns">
               {guestLoginText}
-              <div className="error-message">
-                {props.errorMessage}
-                {resetPasswordLink}
-              </div>
               <div className="flex-container space-between align-center">
                 <label className="login__guest-label">E-mail:
                   <input className="input login__guest-input login__guest-identifier" placeholder="Email Address"
@@ -122,6 +118,10 @@ class Login extends Component {
                     value={this.state.guestPassword}
                     onChange={(e) => this.setState({guestPassword: e.target.value})}/>
                 </label>
+              </div>
+              <div className="login__error-message">
+                {props.errorMessage}
+                {resetPasswordLink}
               </div>
               <div className="flex-container space-between align-center">
                 {loginButton}
