@@ -142,7 +142,7 @@ export function _isFbWTerm(name) {
   //    a filter here for spring 2018 through spring 2020.
   // This means that the faculty will see an accumulating
   //    list of FbW sections.
-  const fbwTerms = ['sp18', 'fa18', 'sp19', 'fa19', 'sp20'];
+  const fbwTerms = ['sp17', 'fa17', 'sp18', 'fa18', 'sp19', 'fa19', 'sp20'];
   return _.some(fbwTerms, term => (name.indexOf(term) > -1));
 }
 

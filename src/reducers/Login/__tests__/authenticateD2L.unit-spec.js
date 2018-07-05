@@ -127,7 +127,9 @@ describe('authenticateD2L and authenticateD2LHelper', function(done) {
 
 describe('_isFbWTerm', () => {
   it('should return true for valid terms', () => {
-    const validNames = ['fake sp18',
+    const validNames = ['fake sp17',
+                        'fake fa17',
+                        'fake sp18',
                         'fake fa18',
                         'fake sp19',
                         'fake fa19',
@@ -139,7 +141,7 @@ describe('_isFbWTerm', () => {
   });
 
   it('should return false for past terms', () => {
-    const result = _isFbWTerm('fake fa17');
+    const result = _isFbWTerm('fake fa16');
     result.should.be.eql(false);
   });
 });
