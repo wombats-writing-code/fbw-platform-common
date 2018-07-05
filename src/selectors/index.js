@@ -14,3 +14,5 @@ export const getCourses = (state) => state.course.courses
 export const getPhaseIResults = (state) => state.result.phaseIResults
 
 export const getPhaseIIResults = (state) => state.result.phaseIIResults
+
+export const isInstructorApp = () => window.location.hostname.indexOf('instructor') > -1
