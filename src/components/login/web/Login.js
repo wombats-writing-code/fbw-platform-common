@@ -127,6 +127,7 @@ class Login extends Component {
                 {loginButton}
               </div>
               <div className="flex-container space-between align-center">
+                <a href="/resend-verification-email">Resend Verification Email?</a>
                 <a href="/reset-password">Forgot Password?</a>
               </div>
             </div>
