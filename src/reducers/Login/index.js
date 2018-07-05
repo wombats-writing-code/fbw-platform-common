@@ -21,9 +21,9 @@ export default function loginReducer (state = initialState, action) {
     case RECEIVE_AUTHENTICATE_GUEST:
     case RECEIVE_AUTHENTICATE_D2L:
     case RECEIVE_LOGIN_GUEST:
-      let isVisitor = false;
-      if (action.type === RECEIVE_LOGIN_GUEST) {
-        isVisitor = true;
+      let isVisitor = true;
+      if (action.type === RECEIVE_AUTHENTICATE_D2L) {
+        isVisitor = false;
       }
       return _.assign({}, state, {
         user: _.assign({}, state.user, {
@@ -32,16 +32,6 @@ export default function loginReducer (state = initialState, action) {
         }),
         isLoggedIn: true,
         isVisitor
-      })
-
-    case RECEIVE_LOGIN_GUEST:
-      return _.assign({}, state, {
-        user: _.assign({}, state.user, {
-          authenticatedUrl: action.data.url,
-          d2lUser: action.data.d2lUser
-        }),
-        isLoggedIn: true,
-        isVisitor: r
       })
 
     case LOG_OUT:

@@ -51,7 +51,7 @@ courses:['bar']}});
 newState.user.d2lUser.Identifier.should.be.eql('foo');
 newState.user.authenticatedUrl.should.be.eql('bah');
 newState.isLoggedIn.should.be.eql(true);
-newState.isVisitor.should.be.eql(false);
+newState.isVisitor.should.be.eql(true);
 
 done();
 });
