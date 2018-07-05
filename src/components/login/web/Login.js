@@ -5,6 +5,8 @@ import slug from 'slug'
 import DocumentTitle from 'react-document-title'
 import { LiveMessage } from 'react-aria-live'
 
+import { isInstructorApp } from '../../../selectors'
+
 import './Login.scss'
 
 class Login extends Component {
@@ -63,6 +65,20 @@ class Login extends Component {
       )
     }
 
+    let guestLoginText = (
+      <span>
+        <p className="login__guest-prompt text-center">Not Arapahoe? Login with your e-mail address and password or </p>
+        <a className="login__guest-registration" href="/register">register a new guest account</a>
+      </span>
+    )
+
+    if (isInstructorApp()) {
+      guestLoginText = (
+        <span>
+          <p className="login__guest-prompt text-center">Not Arapahoe? Login with your e-mail address and password</p>
+        </span>
+      )
+    }
 
     return (
       <DocumentTitle title="Login">
@@ -85,10 +101,7 @@ class Login extends Component {
 
           <div className="row">
             <div className="medium-8 large-7 medium-centered columns">
-              <span>
-                <p className="login__guest-prompt text-center">Not Arapahoe? Login with your e-mail address and password or </p>
-                <a className="login__guest-registration" href="/register">register a new guest account</a>
-              </span>
+              {guestLoginText}
               <div className="error-message">
                 {props.errorMessage}
                 {resetPasswordLink}
@@ -112,6 +125,9 @@ class Login extends Component {
               </div>
               <div className="flex-container space-between align-center">
                 {loginButton}
+              </div>
+              <div className="flex-container space-between align-center">
+                <a href="/reset-password">Forgot Password?</a>
               </div>
             </div>
           </div>
