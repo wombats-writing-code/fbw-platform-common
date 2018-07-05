@@ -103,7 +103,7 @@ class Login extends Component {
 
           <div className="row">
             <div className="medium-8 large-7 medium-centered columns">
-              <div className="flex-container space-between align-center">
+              <div className="login__guest-instructions flex-container space-between align-center">
                 {guestLoginText}
               </div>
               <div className="flex-container space-between align-center">

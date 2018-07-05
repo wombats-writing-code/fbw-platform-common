@@ -76,6 +76,12 @@ class SetNewPassword extends Component {
       }
     }
 
+    let errorMessageClass = "set-password__error-message";
+
+    if (errorMessage) {
+      errorMessageClass += " active";
+    }
+
     // console.log('in the component', this.state);
 
     return (
@@ -111,7 +117,7 @@ class SetNewPassword extends Component {
                 </label>
               </div>
 
-              <div className="error-message">
+              <div className={errorMessageClass}>
                 {errorMessage}
               </div>
 

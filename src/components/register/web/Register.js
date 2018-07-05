@@ -58,7 +58,7 @@ class Register extends Component {
         <DocumentTitle title="Register">
           <div className="register">
             <LiveMessage message="Check your e-mail for an account verification message" aria-live="polite"/>
-            <div className="verification-message">
+            <div className="register__verification-message">
               Please check your e-mail for an account verification message.
             </div>
           </div>
@@ -114,6 +114,14 @@ class Register extends Component {
           </button>
         )
       }
+    }
+
+    let errorMessageClass = "register__error-message";
+
+    let errorMessage = props.errorMessage || this.state.errorMessage;
+
+    if (errorMessage) {
+      errorMessageClass += " active";
     }
 
     return (
@@ -184,8 +192,8 @@ class Register extends Component {
                   />
                 </label>
               </div>
-              <div className="error-message">
-                {props.errorMessage || this.state.errorMessage}
+              <div className={errorMessageClass}>
+                {errorMessage}
                 {registerFailBtn}
               </div>
               <div className="flex-container space-between align-center">

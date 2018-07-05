@@ -12,13 +12,11 @@
   overflow-y: scroll;
 }
 
-.register__error-message,
-.register__verification-message {
+.register__error-message.active,
+.register__verification-message.active {
   background-color: $app-red-dark;
   color: white;
   padding: 1rem;
-  margin-left: 33vw;
-  width: 34vw;
   border-radius: 5px;
   margin-bottom: 2rem;
   font-weight: 800;
