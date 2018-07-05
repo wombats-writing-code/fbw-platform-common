@@ -127,7 +127,9 @@ done();
 
 describe('_isFbWTerm',function(){
 it('should return true for valid terms',function(){
-var validNames=['fake sp18',
+var validNames=['fake sp17',
+'fake fa17',
+'fake sp18',
 'fake fa18',
 'fake sp19',
 'fake fa19',
@@ -139,7 +141,7 @@ result.should.eql(true);
 });
 
 it('should return false for past terms',function(){
-var result=(0,_authenticateD2LHelper._isFbWTerm)('fake fa17');
+var result=(0,_authenticateD2LHelper._isFbWTerm)('fake fa16');
 result.should.be.eql(false);
 });
 });
