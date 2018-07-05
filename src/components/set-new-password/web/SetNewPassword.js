@@ -84,10 +84,6 @@ class SetNewPassword extends Component {
           <LiveMessage message="Set a new password for your fly-by-wire account" aria-live="polite"/>
           <h1>Set a New Password For Your Fly-by-Wire Guest account</h1>
 
-          <div className="error-message">
-            {errorMessage}
-          </div>
-
           <form className="row">
             <div className="medium-7 large-6 medium-centered columns">
               <div className="flex-container space-between align-center">
@@ -114,6 +110,11 @@ class SetNewPassword extends Component {
                   />
                 </label>
               </div>
+
+              <div className="error-message">
+                {errorMessage}
+              </div>
+
               <div className="flex-container space-between align-center">
                 {setNewPasswordBtn}
               </div>

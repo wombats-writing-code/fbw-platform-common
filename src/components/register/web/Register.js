@@ -122,11 +122,6 @@ class Register extends Component {
           <LiveMessage message="Register for fly-by-wire account" aria-live="polite"/>
           <h1>Register for a new Fly-by-Wire Guest account</h1>
 
-          <div className="error-message">
-            {props.errorMessage || this.state.errorMessage}
-            {registerFailBtn}
-          </div>
-
           <form className="row">
             <div className="medium-7 large-6 medium-centered columns">
               <div className="flex-container space-between align-center">
@@ -188,6 +183,10 @@ class Register extends Component {
                     onChange={(e) => this.setState({passwordAgain: e.target.value})}
                   />
                 </label>
+              </div>
+              <div className="error-message">
+                {props.errorMessage || this.state.errorMessage}
+                {registerFailBtn}
               </div>
               <div className="flex-container space-between align-center">
                 {loginButton}
