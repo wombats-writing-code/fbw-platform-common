@@ -130,6 +130,9 @@ NavBar=function(_Component){_inherits(NavBar,_Component);function NavBar(){var _
 _logout=function(){
 
 _this.props.logout();
+if(_this.props.isVisitor){
+_reactRouter.browserHistory.push('/');
+}
 },_this.
 
 _skipToMain=function(){
