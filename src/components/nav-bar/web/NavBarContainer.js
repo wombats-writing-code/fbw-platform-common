@@ -6,7 +6,7 @@ import {getUser} from '../../../selectors'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    isVisitor: state.login.isVisitor,
+    isVisitor: state.login.isVisitor ? state.login.isVisitor : null,
     user: getUser(state),
     missions: state.mission ? state.mission.missions : null,
   }

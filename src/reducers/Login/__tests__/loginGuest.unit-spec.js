@@ -9,6 +9,7 @@ import configureMockStore from 'redux-mock-store'
 const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
 import nock from 'nock'
+import reducer from '../index'
 
 chai.should();
 
@@ -69,5 +70,25 @@ describe('loginGuest', function(done) {
     .catch((err) => {
       console.log('failed login', err);
     })
+  });
+
+  it('should update state upon RECEIVE_LOGIN_GUEST', (done) => {
+    let newState = reducer({}, {
+      type: RECEIVE_LOGIN_GUEST,
+      data: {
+        url: 'bah',
+        d2lUser: {
+          Identifier: 'foo'
+        },
+        courses: ['bar']
+      }
+    });
+
+    newState.user.d2lUser.Identifier.should.be.eql('foo');
+    newState.user.authenticatedUrl.should.be.eql('bah')
+    newState.isLoggedIn.should.be.eql(true);
+    newState.isVisitor.should.be.eql(true);
+
+    done();
   });
 })

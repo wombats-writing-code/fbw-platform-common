@@ -149,7 +149,7 @@ onClick:this.onCloseModal,__source:{fileName:_jsxFileName,lineNumber:144}},'Retu
 
 
 if(this.props.mission.type===_Mission.missionConfig.PHASE_II_MISSION_TYPE){
-missionContent=
+modalContent=
 _react2['default'].createElement('div',{
 'aria-label':'You\'ve answered all the goal questions for attempt 2. You correctly answered '+summaryString+' goal questions. Feel free to return to the mission and review your questions.',
 ref:function(){function ref(modal){_this3.modal=modal;}return ref;}(),
