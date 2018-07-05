@@ -29,6 +29,7 @@ describe('login reducer', function(done) {
     newState.user.d2lUser.Identifier.should.be.eql('foo');
     newState.user.authenticatedUrl.should.be.eql('bah')
     newState.isLoggedIn.should.be.eql(true);
+    newState.isVisitor.should.be.eql(false);
 
     done();
   });
@@ -50,6 +51,7 @@ describe('login reducer', function(done) {
     newState.user.d2lUser.Identifier.should.be.eql('foo');
     newState.user.authenticatedUrl.should.be.eql('bah')
     newState.isLoggedIn.should.be.eql(true);
+    newState.isVisitor.should.be.eql(false);
 
     done();
   });

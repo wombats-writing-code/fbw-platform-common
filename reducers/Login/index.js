@@ -21,12 +21,27 @@ switch(action.type){
 case _authenticateGuest.RECEIVE_AUTHENTICATE_GUEST:
 case _authenticateD2L.RECEIVE_AUTHENTICATE_D2L:
 case _loginGuest.RECEIVE_LOGIN_GUEST:
+var isVisitor=false;
+if(action.type===_loginGuest.RECEIVE_LOGIN_GUEST){
+isVisitor=true;
+}
 return _lodash2['default'].assign({},state,{
 user:_lodash2['default'].assign({},state.user,{
 authenticatedUrl:action.data.url,
 d2lUser:action.data.d2lUser}),
 
-isLoggedIn:true});
+isLoggedIn:true,
+isVisitor:isVisitor});
+
+
+case _loginGuest.RECEIVE_LOGIN_GUEST:
+return _lodash2['default'].assign({},state,{
+user:_lodash2['default'].assign({},state.user,{
+authenticatedUrl:action.data.url,
+d2lUser:action.data.d2lUser}),
+
+isLoggedIn:true,
+isVisitor:r});
 
 
 case _logOutUser.LOG_OUT:
