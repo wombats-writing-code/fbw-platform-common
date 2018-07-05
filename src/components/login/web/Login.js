@@ -56,8 +56,10 @@ class Login extends Component {
     }
 
     let resetPasswordLink;
+    let errorMessageClass = "login__error-message";
 
     if (props.errorMessage) {
+      errorMessageClass += " active";
       resetPasswordLink = (
         <div>
           Did you forget your password? You can <a href="/reset-password">reset it here</a>.
