@@ -14,3 +14,5 @@ var getCourses=exports.getCourses=function(){function getCourses(state){return s
 var getPhaseIResults=exports.getPhaseIResults=function(){function getPhaseIResults(state){return state.result.phaseIResults;}return getPhaseIResults;}();
 
 var getPhaseIIResults=exports.getPhaseIIResults=function(){function getPhaseIIResults(state){return state.result.phaseIIResults;}return getPhaseIIResults;}();
+
+var isInstructorApp=exports.isInstructorApp=function(){function isInstructorApp(){return window.location.hostname.indexOf('instructor')>-1;}return isInstructorApp;}();

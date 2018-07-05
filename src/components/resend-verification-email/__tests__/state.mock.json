@@ -1,0 +1,22 @@
+{
+  "location": {
+    "pathname": "/register",
+    "search": "",
+    "hash": "",
+    "action": "PUSH",
+    "key": "ewcufo",
+    "query": {}
+  },
+  "login": {
+    "user": {
+    },
+    "isLoggedIn": false,
+    "logInError": false,
+    "isLoginInProgress": false
+  },
+  "course": {
+  },
+  "mission": {
+  },
+  "result": {}
+}

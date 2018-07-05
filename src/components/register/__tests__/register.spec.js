@@ -48,7 +48,7 @@ describe('Register', () => {
   });
 
   it('should display error message if passwords do not match', () => {
-    connectedRegister.html().should.contain('<div class="error-message"></div>');
+    connectedRegister.html().should.contain('<div class="register__error-message"></div>');
 
     const passwordInput = connectedRegister.find('input[type="password"]').first();
     passwordInput.simulate('change', {target: {value: 'foo'}});
@@ -106,7 +106,7 @@ describe('Register', () => {
   it('should enable the submit button when inputs validated', () => {
     register = connectedRegister.find(Register)
 
-    register.html().should.contain('<div class="error-message"></div>');
+    register.html().should.contain('<div class="register__error-message"></div>');
     register.html().should.contain('login-button--guest--disabled');
 
     register.find('input[name="firstName"]').first().simulate('change', {target: {value: 'Bob'}});
@@ -115,14 +115,14 @@ describe('Register', () => {
     register.find('input[name="password"]').first().simulate('change', {target: {value: 'foo1234567'}});
     register.find('input[name="passwordAgain"]').first().simulate('change', {target: {value: 'foo1234567'}});
 
-    register.html().should.contain('<div class="error-message"></div>');
+    register.html().should.contain('<div class="register__error-message"></div>');
     register.html().should.not.contain('login-button--guest--disabled');
   })
 
   it('should render an error message for short passwords', () => {
     register = connectedRegister.find(Register)
 
-    register.html().should.contain('<div class="error-message"></div>');
+    register.html().should.contain('<div class="register__error-message"></div>');
     register.html().should.contain('login-button--guest--disabled');
 
     register.find('input[name="firstName"]').first().simulate('change', {target: {value: 'Bob'}});

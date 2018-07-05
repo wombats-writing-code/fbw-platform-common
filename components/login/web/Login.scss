@@ -12,10 +12,25 @@
   overflow-y: scroll;
 }
 
-.error-message {
-  color: $app-red-dark;
+.login__error-message.active {
+  background-color: $app-red-dark;
+  color: white;
+  padding: 1rem;
+  border-radius: 5px;
   margin-bottom: 2rem;
   font-weight: 800;
+}
+
+.login__error-message a {
+  color: hsla(201, 30%, 80%, 1);
+}
+
+.login__error-message a:hover {
+  color: hsla(201, 30%, 60%, 1);
+}
+
+.login__guest-instructions {
+  margin-bottom: 2rem;
 }
 
 .login__guest-registration {

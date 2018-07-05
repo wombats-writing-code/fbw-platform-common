@@ -56,8 +56,10 @@ class Login extends Component {
     }
 
     let resetPasswordLink;
+    let errorMessageClass = "login__error-message";
 
     if (props.errorMessage) {
+      errorMessageClass += " active";
       resetPasswordLink = (
         <div>
           Did you forget your password? You can <a href="/reset-password">reset it here</a>.
@@ -101,10 +103,8 @@ class Login extends Component {
 
           <div className="row">
             <div className="medium-8 large-7 medium-centered columns">
-              {guestLoginText}
-              <div className="error-message">
-                {props.errorMessage}
-                {resetPasswordLink}
+              <div className="login__guest-instructions flex-container space-between align-center">
+                {guestLoginText}
               </div>
               <div className="flex-container space-between align-center">
                 <label className="login__guest-label">E-mail:
@@ -123,10 +123,15 @@ class Login extends Component {
                     onChange={(e) => this.setState({guestPassword: e.target.value})}/>
                 </label>
               </div>
+              <div className={errorMessageClass}>
+                {props.errorMessage}
+                {resetPasswordLink}
+              </div>
               <div className="flex-container space-between align-center">
                 {loginButton}
               </div>
               <div className="flex-container space-between align-center">
+                <a href="/resend-verification-email">Resend Verification Email?</a>
                 <a href="/reset-password">Forgot Password?</a>
               </div>
             </div>

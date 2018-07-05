@@ -58,7 +58,7 @@ class Register extends Component {
         <DocumentTitle title="Register">
           <div className="register">
             <LiveMessage message="Check your e-mail for an account verification message" aria-live="polite"/>
-            <div className="verification-message">
+            <div className="register__verification-message">
               Please check your e-mail for an account verification message.
             </div>
           </div>
@@ -116,16 +116,19 @@ class Register extends Component {
       }
     }
 
+    let errorMessageClass = "register__error-message";
+
+    let errorMessage = props.errorMessage || this.state.errorMessage;
+
+    if (errorMessage) {
+      errorMessageClass += " active";
+    }
+
     return (
       <DocumentTitle title="Register">
         <div className="register">
           <LiveMessage message="Register for fly-by-wire account" aria-live="polite"/>
           <h1>Register for a new Fly-by-Wire Guest account</h1>
-
-          <div className="error-message">
-            {props.errorMessage || this.state.errorMessage}
-            {registerFailBtn}
-          </div>
 
           <form className="row">
             <div className="medium-7 large-6 medium-centered columns">
@@ -188,6 +191,10 @@ class Register extends Component {
                     onChange={(e) => this.setState({passwordAgain: e.target.value})}
                   />
                 </label>
+              </div>
+              <div className={errorMessageClass}>
+                {errorMessage}
+                {registerFailBtn}
               </div>
               <div className="flex-container space-between align-center">
                 {loginButton}
