@@ -56,7 +56,9 @@ export const getRouteQuestions = (sectionQuestions, target) => {
   //      sort here, to make sure that the target question was always
   //      the first question in the list. BUT:
   // Sorting breaks the student experience
-  return routeQuestions;
+  // Can sort by createdAt?
+  return _.sortBy(routeQuestions, 'createdAt');
+  // return routeQuestions;
   // return _.sortBy(routeQuestions, 'referenceNumber');
 }
 
