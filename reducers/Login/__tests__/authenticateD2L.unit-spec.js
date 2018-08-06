@@ -149,7 +149,8 @@ result.should.be.eql(false);
 describe('_isValidClass',function(){
 it('should return true for valid class names',function(){
 var validNames=['mat121',
-'acc121202'];
+'acc121202',
+'acc121201 fa18'];
 _lodash2['default'].each(validNames,function(name){
 var result=(0,_authenticateD2LHelper._isValidClass)(name);
 result.should.eql(true);
