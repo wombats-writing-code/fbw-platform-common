@@ -56,8 +56,8 @@ export const getRouteQuestions = (sectionQuestions, target) => {
   //      sort here, to make sure that the target question was always
   //      the first question in the list. BUT:
   // Sorting breaks the student experience
-  // Can sort by id, assuming that no two objects were created in the same second
-  return _.sortBy(routeQuestions, 'id');
+  // Added 'createdAt' field in web backend
+  return _.sortBy(routeQuestions, 'createdAt');
   // return routeQuestions;
   // return _.sortBy(routeQuestions, 'referenceNumber');
 }
