@@ -134,7 +134,10 @@ export function isCurrentFbW(name) {
 }
 
 export function _isValidClass(name) {
-  return name.indexOf('mat121') > -1 || name.indexOf('acc121202') > -1;
+  return name.indexOf('mat121') > -1 ||
+    name.indexOf('acc121202') > -1 ||
+    // Because Denice's 202 section may not fill up for fa18
+    (name.indexOf('acc121201') > -1 && name.indexOf('fa18') > -1);
 }
 
 export function _isFbWTerm(name) {

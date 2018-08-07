@@ -149,7 +149,8 @@ describe('_isFbWTerm', () => {
 describe('_isValidClass', () => {
   it('should return true for valid class names', () => {
     const validNames = ['mat121',
-                        'acc121202'];
+                        'acc121202',
+                        'acc121201 fa18'];
     _.each(validNames, (name) => {
       const result = _isValidClass(name);
       result.should.eql(true);
