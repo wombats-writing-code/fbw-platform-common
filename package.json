@@ -1,6 +1,6 @@
 {
   "name": "@wombats-writing-code/fbw-platform-common",
-  "version": "5.3.3",
+  "version": "5.3.4",
   "description": "Common stuff to the FbW apps",
   "main": "index.js",
   "engines": {
